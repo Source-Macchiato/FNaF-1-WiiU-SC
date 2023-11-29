@@ -1119,7 +1119,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 638302270}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &284829986
 AudioSource:
@@ -1228,7 +1228,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 638302270}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &312262509
 AudioSource:
@@ -1979,7 +1979,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 638302270}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &622291134
 AudioSource:
@@ -2089,11 +2089,11 @@ Transform:
   - {fileID: 355252806}
   - {fileID: 2055750849}
   - {fileID: 616761961}
-  - {fileID: 1365021204}
   - {fileID: 312262508}
   - {fileID: 284829985}
   - {fileID: 622291133}
   - {fileID: 1832742646}
+  - {fileID: 930409631}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2567,6 +2567,35 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 907097821}
+--- !u!1 &930409630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 930409631}
+  m_Layer: 0
+  m_Name: phoneCalls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &930409631
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 930409630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1365021204}
+  m_Father: {fileID: 638302270}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &943347021
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,12 +3876,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365021203}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -770, y: -429, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 638302270}
-  m_RootOrder: 3
+  m_Father: {fileID: 930409631}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1365021205
 AudioSource:
@@ -4699,7 +4728,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1743620086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: becc56e5ebdc0d34eaa8b657b71dca8b, type: 2}
   m_CullingMode: 0
@@ -5283,7 +5312,7 @@ Transform:
   m_LocalScale: {x: 1.1759377, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 638302270}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836076809
 GameObject:
@@ -5643,7 +5672,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1959479695}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b14b969827bf164f85fdf34ab3f2418, type: 3}
   m_Name: 
@@ -5698,17 +5727,17 @@ MonoBehaviour:
   OfficeObject: {fileID: 1959479695}
   AmountLeft: 0
   camIsUp: 0
-  LowerCanvas: {fileID: 0}
-  ResetPoint: {fileID: 0}
-  Phonecalls: {fileID: 0}
-  AudioSources: {fileID: 0}
-  CamViewTabletOpen: {fileID: 0}
-  CamViewTabletClose: {fileID: 0}
-  Dot: {fileID: 0}
-  Image: {fileID: 0}
-  Black: {fileID: 0}
-  StripeGlitches: {fileID: 0}
-  OriginalOfficeImage: {fileID: 0}
+  LowerCanvas: {fileID: 2018316003}
+  ResetPoint: {fileID: 1836076809}
+  Phonecalls: {fileID: 930409630}
+  AudioSources: {fileID: 638302269}
+  CamViewTabletOpen: {fileID: 1743620086}
+  CamViewTabletClose: {fileID: 1155714871}
+  Dot: {fileID: 1131507111}
+  Image: {fileID: 113357115}
+  Black: {fileID: 1097015881}
+  StripeGlitches: {fileID: 409080837}
+  OriginalOfficeImage: {fileID: 1969409250}
   FoxyEnterOffice: {fileID: 0}
   FoxyRunDownHall: {fileID: 0}
   DoorBang: {fileID: 0}
