@@ -513,7 +513,6 @@ GameObject:
   - component: {fileID: 106103911}
   - component: {fileID: 106103910}
   - component: {fileID: 106103909}
-  - component: {fileID: 106103908}
   m_Layer: 0
   m_Name: GamePad Camera
   m_TagString: Untagged
@@ -521,13 +520,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &106103908
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 106103907}
-  m_Enabled: 1
 --- !u!92 &106103909
 Behaviour:
   m_ObjectHideFlags: 0
