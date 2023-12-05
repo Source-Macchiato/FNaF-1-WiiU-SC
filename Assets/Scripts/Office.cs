@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using WiiU = UnityEngine.WiiU;
 
 public class Office : MonoBehaviour {
 
@@ -57,6 +58,10 @@ public class Office : MonoBehaviour {
 
     public AudioSource Scare;
 
+    WiiU.GamePad gamePad;
+
+    private float joystickThreshold = 0.5f;
+
     void Start()
     {
         // SceneManager.UnloadSceneAsync("MainMenu");
@@ -68,68 +73,132 @@ public class Office : MonoBehaviour {
         SceneManager.UnloadSceneAsync("PowerOut");
         SceneManager.UnloadSceneAsync("TheEnd");
         SceneManager.UnloadSceneAsync("CostumNight");
+
+        gamePad = WiiU.GamePad.access;
     }
 
     void Update()
     {
-
         Resources.UnloadUnusedAssets();
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Max += 1 * Time.deltaTime;
+        WiiU.GamePadState gamePadState = gamePad.state;
 
-            if (Max > 0.3495193f)
-            {
-                Max = 0.3495193f;
-            }
-            
-            if (Max < 0.3495193f)
-            {
-                OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
-            }
-        }
-        else if (Input.GetKey(KeyCode.Keypad4))
+        float leftVerticalInput = Input.GetAxis("LeftStickY");
+        float leftHorizontalInput = Input.GetAxis("LeftStickX");
+
+        if (Mathf.Abs(leftHorizontalInput) > joystickThreshold)
         {
-            Max += 1 * Time.deltaTime;
+            int direction = leftHorizontalInput > 0 ? -1 : 1;
+
+            Max += direction * Time.deltaTime;
 
             if (Max > 0.3495193f)
             {
                 Max = 0.3495193f;
             }
 
-            if (Max < 0.3495193f)
-            {
-                OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Max -= 1 * Time.deltaTime;
-
             if (Max < -0.5801594f)
             {
                 Max = -0.5801594f;
             }
 
-            if (Max > -0.5801594f)
+            if (Max >= -0.5801594f && Max <= 0.3495193f)
             {
-                OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
+                OfficeImage.transform.position += Vector3.right * speed * direction * Time.deltaTime;
             }
         }
-        else if (Input.GetKey(KeyCode.Keypad6))
-        {
-            Max -= 1 * Time.deltaTime;
 
-            if (Max < -0.5801594f)
+        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+        {
+            if (gamePadState.IsReleased(WiiU.GamePadButton.Left))
             {
-                Max = -0.5801594f;
+                Max += 1 * Time.deltaTime;
+
+                if (Max > 0.3495193f)
+                {
+                    Max = 0.3495193f;
+                }
+
+                if (Max < 0.3495193f)
+                {
+                    OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
+                }
             }
 
-            if (Max > -0.5801594f)
+            if (gamePadState.IsReleased(WiiU.GamePadButton.Right))
             {
-                OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
+                Max -= 1 * Time.deltaTime;
+
+                if (Max < -0.5801594f)
+                {
+                    Max = -0.5801594f;
+                }
+
+                if (Max > -0.5801594f)
+                {
+                    OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
+                }
+            }
+        }
+
+        if (Application.isEditor)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                Max += 1 * Time.deltaTime;
+
+                if (Max > 0.3495193f)
+                {
+                    Max = 0.3495193f;
+                }
+
+                if (Max < 0.3495193f)
+                {
+                    OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
+                }
+            }
+            else if (Input.GetKey(KeyCode.Keypad4))
+            {
+                Max += 1 * Time.deltaTime;
+
+                if (Max > 0.3495193f)
+                {
+                    Max = 0.3495193f;
+                }
+
+                if (Max < 0.3495193f)
+                {
+                    OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
+                }
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                Max -= 1 * Time.deltaTime;
+
+                if (Max < -0.5801594f)
+                {
+                    Max = -0.5801594f;
+                }
+
+                if (Max > -0.5801594f)
+                {
+                    OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
+                }
+            }
+            else if (Input.GetKey(KeyCode.Keypad6))
+            {
+                Max -= 1 * Time.deltaTime;
+
+                if (Max < -0.5801594f)
+                {
+                    Max = -0.5801594f;
+                }
+
+                if (Max > -0.5801594f)
+                {
+                    OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
+                }
             }
         }
 
@@ -137,82 +206,88 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
         if (Max == 0.3495193f)
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Application.isEditor)
             {
-                if (!L_Door_Closed)
+                if (Input.GetKeyDown(KeyCode.A))
                 {
-                    Door_L_closed.SetActive(true);
-                    Door_L_open.SetActive(false);
-                    L_Door_Closed = true;
-                    DoorButton_L1.SetActive(false);
-                    DoorButton_L2.SetActive(true);
+                    if (!L_Door_Closed)
+                    {
+                        Door_L_closed.SetActive(true);
+                        Door_L_open.SetActive(false);
+                        L_Door_Closed = true;
+                        DoorButton_L1.SetActive(false);
+                        DoorButton_L2.SetActive(true);
 
-                    DoorClose.Play();
+                        DoorClose.Play();
 
 
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-                    OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
+                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
 
-                    OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
+                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
 
+                    }
                 }
-            }
 
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                if (L_Door_Closed)
+                if (Input.GetKeyDown(KeyCode.X))
                 {
-                    Door_L_closed.SetActive(false);
-                    Door_L_open.SetActive(true);
-                    L_Door_Closed = false;
-                    DoorButton_L1.SetActive(true);
-                    DoorButton_L2.SetActive(false);
-                    DoorButton_R4.SetActive(false);
+                    if (L_Door_Closed)
+                    {
+                        Door_L_closed.SetActive(false);
+                        Door_L_open.SetActive(true);
+                        L_Door_Closed = false;
+                        DoorButton_L1.SetActive(true);
+                        DoorButton_L2.SetActive(false);
+                        DoorButton_R4.SetActive(false);
 
-                    DoorClose.Play();
+                        DoorClose.Play();
 
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
 
-                    OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
-                    OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
+                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
+                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
 
+                    }
                 }
             }
 
             //-------------------------------------LIGHT---------------------------------------------------------------------------------------------------
 
-            if (Input.GetKeyDown(KeyCode.B))
+            if (Application.isEditor)
             {
-                LeftLightIsOn = true;
-
-                if (!BonnieOutsideDoor)
+                if (Input.GetKeyDown(KeyCode.B))
                 {
-                    Light_L_No_Door.SetActive(true);
-                    Light.Play();
-                }
+                    LeftLightIsOn = true;
 
-                if (BonnieOutsideDoor)
-                {
-                    Light_L_Door_Bonnie.SetActive(true);
-                    Light.Play();
-
-                    if (!L_Door_Closed)
+                    if (!BonnieOutsideDoor)
                     {
-                        Scare.Play();
+                        Light_L_No_Door.SetActive(true);
+                        Light.Play();
                     }
-                }
 
-                OriginalOfficeImage.GetComponent<Image>().enabled = false;
+                    if (BonnieOutsideDoor)
+                    {
+                        Light_L_Door_Bonnie.SetActive(true);
+                        Light.Play();
 
-                OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+                        if (!L_Door_Closed)
+                        {
+                            Scare.Play();
+                        }
+                    }
 
-                DoorButton_L3.SetActive(true);
+                    OriginalOfficeImage.GetComponent<Image>().enabled = false;
 
-                if (L_Door_Closed)
-                {
-                    DoorButton_L1.SetActive(false);
-                    DoorButton_L4.SetActive(true);
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+                    DoorButton_L3.SetActive(true);
+
+                    if (L_Door_Closed)
+                    {
+                        DoorButton_L1.SetActive(false);
+                        DoorButton_L4.SetActive(true);
+                    }
                 }
             }
         }
@@ -221,168 +296,177 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
         if (Max == -0.5801594f)
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Application.isEditor)
             {
-                if (!R_Door_Closed)
+                if (Input.GetKeyDown(KeyCode.A))
                 {
-                    Door_R_closed.SetActive(true);
-                    Door_R_open.SetActive(false);
-                    R_Door_Closed = true;
-                    DoorButton_R1.SetActive(false);
-                    DoorButton_R2.SetActive(true);
-
-                    DoorClose.Play();
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                    OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
-
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                if (R_Door_Closed)
-                {
-                    Door_R_closed.SetActive(false);
-                    Door_R_open.SetActive(true);
-                    R_Door_Closed = false;
-                    DoorButton_R1.SetActive(true);
-                    DoorButton_R2.SetActive(false);
-                    DoorButton_R4.SetActive(false);
-
-                    DoorClose.Play();
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                    OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                RightLightIsOn = true;
-
-                if (!ChicaOutsideDoor)
-                {
-                    Light_R_No_Door.SetActive(true);
-                    Light.Play();
-                }
-
-                if (ChicaOutsideDoor)
-                {
-                    Light_R_Door_Chica.SetActive(true);
-                    Light.Play();
-
                     if (!R_Door_Closed)
                     {
-                        Scare.Play();
+                        Door_R_closed.SetActive(true);
+                        Door_R_open.SetActive(false);
+                        R_Door_Closed = true;
+                        DoorButton_R1.SetActive(false);
+                        DoorButton_R2.SetActive(true);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
+
                     }
                 }
 
-                OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                DoorButton_R3.SetActive(true);
-
-                if (R_Door_Closed)
+                if (Input.GetKeyDown(KeyCode.X))
                 {
-                    DoorButton_R1.SetActive(false);
-                    DoorButton_R4.SetActive(true);
+                    if (R_Door_Closed)
+                    {
+                        Door_R_closed.SetActive(false);
+                        Door_R_open.SetActive(true);
+                        R_Door_Closed = false;
+                        DoorButton_R1.SetActive(true);
+                        DoorButton_R2.SetActive(false);
+                        DoorButton_R4.SetActive(false);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+                    RightLightIsOn = true;
+
+                    if (!ChicaOutsideDoor)
+                    {
+                        Light_R_No_Door.SetActive(true);
+                        Light.Play();
+                    }
+
+                    if (ChicaOutsideDoor)
+                    {
+                        Light_R_Door_Chica.SetActive(true);
+                        Light.Play();
+
+                        if (!R_Door_Closed)
+                        {
+                            Scare.Play();
+                        }
+                    }
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+                    DoorButton_R3.SetActive(true);
+
+                    if (R_Door_Closed)
+                    {
+                        DoorButton_R1.SetActive(false);
+                        DoorButton_R4.SetActive(true);
+                    }
                 }
             }
         }
         //-----------------------------------------------
 
         //-----------------------------------------------
-        if (Input.GetKeyUp(KeyCode.B))
+        if (Application.isEditor)
         {
-            if (LeftLightIsOn)
+            if (Input.GetKeyUp(KeyCode.B))
             {
-                if (!BonnieOutsideDoor)
+                if (LeftLightIsOn)
                 {
-                    Light_L_No_Door.SetActive(false);
-                    Light.Pause();
+                    if (!BonnieOutsideDoor)
+                    {
+                        Light_L_No_Door.SetActive(false);
+                        Light.Pause();
+                    }
+
+                    if (BonnieOutsideDoor)
+                    {
+                        Light_L_Door_Bonnie.SetActive(false);
+                        Light.Pause();
+                    }
+
+                    OriginalOfficeImage.GetComponent<Image>().enabled = true;
+
+                    DoorButton_L3.SetActive(false);
+
+                    if (L_Door_Closed)
+                    {
+                        DoorButton_L1.SetActive(true);
+                        DoorButton_L4.SetActive(false);
+                    }
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                    LeftLightIsOn = false;
                 }
 
+
+                if (RightLightIsOn)
+                {
+                    if (!ChicaOutsideDoor)
+                    {
+                        Light_R_No_Door.SetActive(false);
+                        Light.Pause();
+                    }
+
+                    if (ChicaOutsideDoor)
+                    {
+                        Light_R_Door_Chica.SetActive(false);
+                        Light.Pause();
+                    }
+
+                    OriginalOfficeImage.GetComponent<Image>().enabled = true;
+
+                    DoorButton_R3.SetActive(false);
+
+                    if (R_Door_Closed)
+                    {
+                        DoorButton_R1.SetActive(true);
+                        DoorButton_R4.SetActive(false);
+                    }
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                    RightLightIsOn = false;
+                }
+
+
+            }
+        }
+        //----------------------------------------------
+
+        //----------------------------------------------
+        if (Application.isEditor)
+        {
+            if (Input.GetKey(KeyCode.B))
+            {
                 if (BonnieOutsideDoor)
                 {
-                    Light_L_Door_Bonnie.SetActive(false);
-                    Light.Pause();
-                }
-
-                OriginalOfficeImage.GetComponent<Image>().enabled = true;
-
-                DoorButton_L3.SetActive(false);
-
-                if (L_Door_Closed)
-                {
-                    DoorButton_L1.SetActive(true);
-                    DoorButton_L4.SetActive(false);
-                }
-
-                OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                LeftLightIsOn = false;
-            }
-
-
-            if (RightLightIsOn)
-            {
-                if (!ChicaOutsideDoor)
-                {
-                    Light_R_No_Door.SetActive(false);
-                    Light.Pause();
+                    if (OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime <= 2)
+                    {
+                        OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime = 1;
+                    }
                 }
 
                 if (ChicaOutsideDoor)
                 {
-                    Light_R_Door_Chica.SetActive(false);
-                    Light.Pause();
+                    if (OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime <= 2)
+                    {
+                        OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime = 1;
+                    }
                 }
 
-                OriginalOfficeImage.GetComponent<Image>().enabled = true;
-
-                DoorButton_R3.SetActive(false);
-
-                if (R_Door_Closed)
+                if (FreddyOutsideDoor)
                 {
-                    DoorButton_R1.SetActive(true);
-                    DoorButton_R4.SetActive(false);
-                }
-
-                OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                RightLightIsOn = false;
-            }
-
-
-        }
-        //----------------------------------------------
-
-        //----------------------------------------------
-        if (Input.GetKey(KeyCode.B))
-        {
-            if (BonnieOutsideDoor)
-            {
-                if (OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime <= 2)
-                {
-                    OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime = 1;
-                }
-            }
-
-            if (ChicaOutsideDoor)
-            {
-                if (OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime <= 2)
-                {
-                    OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime = 1;
-                }
-            }
-
-            if (FreddyOutsideDoor)
-            {
-                if (OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime <= 2)
-                {
-                    OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime = 1;
+                    if (OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime <= 2)
+                    {
+                        OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime = 1;
+                    }
                 }
             }
         }
