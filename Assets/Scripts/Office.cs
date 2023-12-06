@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using WiiU = UnityEngine.WiiU;
@@ -110,7 +107,7 @@ public class Office : MonoBehaviour {
 
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsReleased(WiiU.GamePadButton.Left))
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.Left))
             {
                 Max += 1 * Time.deltaTime;
 
@@ -125,7 +122,7 @@ public class Office : MonoBehaviour {
                 }
             }
 
-            if (gamePadState.IsReleased(WiiU.GamePadButton.Right))
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.Right))
             {
                 Max -= 1 * Time.deltaTime;
 
@@ -206,6 +203,52 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
         if (Max == 0.3495193f)
         {
+            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+            {
+                if (gamePadState.IsPressed(WiiU.GamePadButton.A))
+                {
+                    if (!L_Door_Closed)
+                    {
+                        Door_L_closed.SetActive(true);
+                        Door_L_open.SetActive(false);
+                        L_Door_Closed = true;
+                        DoorButton_L1.SetActive(false);
+                        DoorButton_L2.SetActive(true);
+
+                        DoorClose.Play();
+
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
+
+                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
+
+                    }
+                }
+
+                if (gamePadState.IsPressed(WiiU.GamePadButton.X))
+                {
+                    if (L_Door_Closed)
+                    {
+                        Door_L_closed.SetActive(false);
+                        Door_L_open.SetActive(true);
+                        L_Door_Closed = false;
+                        DoorButton_L1.SetActive(true);
+                        DoorButton_L2.SetActive(false);
+                        DoorButton_R4.SetActive(false);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
+                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
+
+                    }
+                }
+            }
+
             if (Application.isEditor)
             {
                 if (Input.GetKeyDown(KeyCode.A))
@@ -254,6 +297,43 @@ public class Office : MonoBehaviour {
 
             //-------------------------------------LIGHT---------------------------------------------------------------------------------------------------
 
+            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+            {
+                if (gamePadState.IsPressed(WiiU.GamePadButton.B))
+                {
+                    LeftLightIsOn = true;
+
+                    if (!BonnieOutsideDoor)
+                    {
+                        Light_L_No_Door.SetActive(true);
+                        Light.Play();
+                    }
+
+                    if (BonnieOutsideDoor)
+                    {
+                        Light_L_Door_Bonnie.SetActive(true);
+                        Light.Play();
+
+                        if (!L_Door_Closed)
+                        {
+                            Scare.Play();
+                        }
+                    }
+
+                    OriginalOfficeImage.GetComponent<Image>().enabled = false;
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+                    DoorButton_L3.SetActive(true);
+
+                    if (L_Door_Closed)
+                    {
+                        DoorButton_L1.SetActive(false);
+                        DoorButton_L4.SetActive(true);
+                    }
+                }
+            }
+
             if (Application.isEditor)
             {
                 if (Input.GetKeyDown(KeyCode.B))
@@ -296,6 +376,79 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
         if (Max == -0.5801594f)
         {
+            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+            {
+                if (gamePadState.IsPressed(WiiU.GamePadButton.A))
+                {
+                    if (!R_Door_Closed)
+                    {
+                        Door_R_closed.SetActive(true);
+                        Door_R_open.SetActive(false);
+                        R_Door_Closed = true;
+                        DoorButton_R1.SetActive(false);
+                        DoorButton_R2.SetActive(true);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
+
+                    }
+                }
+
+                if (gamePadState.IsPressed(WiiU.GamePadButton.X))
+                {
+                    if (R_Door_Closed)
+                    {
+                        Door_R_closed.SetActive(false);
+                        Door_R_open.SetActive(true);
+                        R_Door_Closed = false;
+                        DoorButton_R1.SetActive(true);
+                        DoorButton_R2.SetActive(false);
+                        DoorButton_R4.SetActive(false);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
+                    }
+                }
+
+                if (gamePadState.IsPressed(WiiU.GamePadButton.B))
+                {
+                    RightLightIsOn = true;
+
+                    if (!ChicaOutsideDoor)
+                    {
+                        Light_R_No_Door.SetActive(true);
+                        Light.Play();
+                    }
+
+                    if (ChicaOutsideDoor)
+                    {
+                        Light_R_Door_Chica.SetActive(true);
+                        Light.Play();
+
+                        if (!R_Door_Closed)
+                        {
+                            Scare.Play();
+                        }
+                    }
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+                    DoorButton_R3.SetActive(true);
+
+                    if (R_Door_Closed)
+                    {
+                        DoorButton_R1.SetActive(false);
+                        DoorButton_R4.SetActive(true);
+                    }
+                }
+            }
+
             if (Application.isEditor)
             {
                 if (Input.GetKeyDown(KeyCode.A))
@@ -313,7 +466,6 @@ public class Office : MonoBehaviour {
                         OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
                         OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
-
                     }
                 }
 
@@ -372,6 +524,71 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
 
         //-----------------------------------------------
+        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+        {
+            if (gamePadState.IsReleased(WiiU.GamePadButton.B))
+            {
+                if (LeftLightIsOn)
+                {
+                    if (!BonnieOutsideDoor)
+                    {
+                        Light_L_No_Door.SetActive(false);
+                        Light.Pause();
+                    }
+
+                    if (BonnieOutsideDoor)
+                    {
+                        Light_L_Door_Bonnie.SetActive(false);
+                        Light.Pause();
+                    }
+
+                    OriginalOfficeImage.GetComponent<Image>().enabled = true;
+
+                    DoorButton_L3.SetActive(false);
+
+                    if (L_Door_Closed)
+                    {
+                        DoorButton_L1.SetActive(true);
+                        DoorButton_L4.SetActive(false);
+                    }
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                    LeftLightIsOn = false;
+                }
+
+
+                if (RightLightIsOn)
+                {
+                    if (!ChicaOutsideDoor)
+                    {
+                        Light_R_No_Door.SetActive(false);
+                        Light.Pause();
+                    }
+
+                    if (ChicaOutsideDoor)
+                    {
+                        Light_R_Door_Chica.SetActive(false);
+                        Light.Pause();
+                    }
+
+                    OriginalOfficeImage.GetComponent<Image>().enabled = true;
+
+                    DoorButton_R3.SetActive(false);
+
+                    if (R_Door_Closed)
+                    {
+                        DoorButton_R1.SetActive(true);
+                        DoorButton_R4.SetActive(false);
+                    }
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                    RightLightIsOn = false;
+                }
+            }
+        }
+
         if (Application.isEditor)
         {
             if (Input.GetKeyUp(KeyCode.B))
@@ -434,13 +651,41 @@ public class Office : MonoBehaviour {
 
                     RightLightIsOn = false;
                 }
-
-
             }
         }
         //----------------------------------------------
 
         //----------------------------------------------
+        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+        {
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
+            {
+                if (BonnieOutsideDoor)
+                {
+                    if (OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime <= 2)
+                    {
+                        OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime = 1;
+                    }
+                }
+
+                if (ChicaOutsideDoor)
+                {
+                    if (OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime <= 2)
+                    {
+                        OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime = 1;
+                    }
+                }
+
+                if (FreddyOutsideDoor)
+                {
+                    if (OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime <= 2)
+                    {
+                        OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime = 1;
+                    }
+                }
+            }
+        }
+
         if (Application.isEditor)
         {
             if (Input.GetKey(KeyCode.B))
