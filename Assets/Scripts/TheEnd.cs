@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using WiiU = UnityEngine.WiiU;
 
 public class TheEnd : MonoBehaviour {
-	
+
+    WiiU.GamePad gamePad;
+
     void Start()
     {
         SceneManager.UnloadSceneAsync("MainMenu");
@@ -16,13 +17,28 @@ public class TheEnd : MonoBehaviour {
         SceneManager.UnloadSceneAsync("Advertisement");
         SceneManager.UnloadSceneAsync("PowerOut");
         SceneManager.UnloadSceneAsync("CostumNight");
+
+        gamePad = WiiU.GamePad.access;
     }
 
-	void Update () {
+	void Update ()
+    {
+        WiiU.GamePadState gamePadState = gamePad.state;
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            SceneManager.LoadScene("MainMenu");
+            if (gamePadState.IsPressed(WiiU.GamePadButton.A))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
+
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 	}
 }

@@ -44,7 +44,6 @@ public class Office : MonoBehaviour {
 
     public float speed = 230f;
 
-
     public bool BonnieOutsideDoor = false;
     public bool ChicaOutsideDoor = false;
     public bool FreddyOutsideDoor = false;
@@ -56,7 +55,6 @@ public class Office : MonoBehaviour {
     public AudioSource Scare;
 
     WiiU.GamePad gamePad;
-
     private float joystickThreshold = 0.5f;
 
     void Start()

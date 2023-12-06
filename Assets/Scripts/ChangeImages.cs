@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using System;
 using UnityEngine.SceneManagement;
 
 public class ChangeImages : MonoBehaviour
 {
-
     public float WichCamera = 1;
     public GameObject WichCameraShower;
     public GameObject black;

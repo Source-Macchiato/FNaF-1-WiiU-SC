@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using WiiU = UnityEngine.WiiU;
 
 public class CostumNight : MonoBehaviour {
 
@@ -25,7 +24,9 @@ public class CostumNight : MonoBehaviour {
     public GameObject FoxyShowerTop;
     public GameObject FoxyShowerBottom;
 
-	void Start ()
+    WiiU.GamePad gamePad;
+
+    void Start ()
     {
         FreddyAmount = 1;
         BonnieAmount = 1;
@@ -41,10 +42,14 @@ public class CostumNight : MonoBehaviour {
         SceneManager.UnloadSceneAsync("Advertisement");
         SceneManager.UnloadSceneAsync("PowerOut");
         SceneManager.UnloadSceneAsync("TheEnd");
+
+        gamePad = WiiU.GamePad.access;
     }
 	
 	void Update ()
     {
+        WiiU.GamePadState gamePadState = gamePad.state;
+
         PlayerPrefs.SetFloat("BonnieDifficulty", FreddyAmount);
         PlayerPrefs.SetFloat("ChicaDifficulty", BonnieAmount);
         PlayerPrefs.SetFloat("FreddyDifficulty", ChicaAmount);
@@ -97,15 +102,32 @@ public class CostumNight : MonoBehaviour {
             FoxyAmount = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            WichNight = 7;
-            SceneManager.LoadScene("Office");
+            if (gamePadState.IsPressed(WiiU.GamePadButton.A))
+            {
+                WichNight = 7;
+                SceneManager.LoadScene("Office");
+            }
+
+            if (gamePadState.IsPressed(WiiU.GamePadButton.B))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Application.isEditor)
         {
-            SceneManager.LoadScene("MainMenu");
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                WichNight = 7;
+                SceneManager.LoadScene("Office");
+            }
+
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 
         PlayerPrefs.SetFloat("WichNight", WichNight);

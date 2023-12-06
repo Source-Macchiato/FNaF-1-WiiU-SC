@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using WiiU = UnityEngine.WiiU;
 
 public class MainMenu : MonoBehaviour {
 
@@ -16,6 +15,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject CostumNight;
     public bool CostumNightEnabled = false;
 
+    WiiU.GamePad gamePad;
 
     void Start()
     {
@@ -33,44 +33,106 @@ public class MainMenu : MonoBehaviour {
         {
             WichNight = 5;
         }
+
+        gamePad = WiiU.GamePad.access;
     }
 
     void Update()
     {
+        WiiU.GamePadState gamePadState = gamePad.state;
 
         WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
 
         WichNightShower.GetComponent<Text>().text = WichNight.ToString();
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            Music.SetActive(false);
-            WichNight = 1;
-            PlayerPrefs.SetFloat("WichNight", WichNight);
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("Advertisement");
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Music.SetActive(false);
-            if (WichNight == 1)
+            if (gamePadState.IsPressed(WiiU.GamePadButton.B))
             {
+                Music.SetActive(false);
                 WichNight = 1;
                 PlayerPrefs.SetFloat("WichNight", WichNight);
                 PlayerPrefs.Save();
                 SceneManager.LoadScene("Advertisement");
             }
-            if (WichNight >= 2)
+
+            if (gamePadState.IsPressed(WiiU.GamePadButton.A))
             {
-                SceneManager.LoadScene("Office");
+                Music.SetActive(false);
+                if (WichNight == 1)
+                {
+                    WichNight = 1;
+                    PlayerPrefs.SetFloat("WichNight", WichNight);
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Advertisement");
+                }
+                if (WichNight >= 2)
+                {
+                    SceneManager.LoadScene("Office");
+                }
+            }
+
+            if (gamePadState.IsPressed(WiiU.GamePadButton.Y))
+            {
+                Music.SetActive(false);
+                SceneManager.LoadScene("Controlls");
+            }
+
+            if (gamePadState.IsPressed(WiiU.GamePadButton.X))
+            {
+                if (ExtraNightEnabled)
+                {
+                    WichNight = 6;
+                    PlayerPrefs.SetFloat("WichNight", WichNight);
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Office");
+                }
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Application.isEditor)
         {
-            Music.SetActive(false);
-            SceneManager.LoadScene("Controlls");
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                Music.SetActive(false);
+                WichNight = 1;
+                PlayerPrefs.SetFloat("WichNight", WichNight);
+                PlayerPrefs.Save();
+                SceneManager.LoadScene("Advertisement");
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Music.SetActive(false);
+                if (WichNight == 1)
+                {
+                    WichNight = 1;
+                    PlayerPrefs.SetFloat("WichNight", WichNight);
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Advertisement");
+                }
+                if (WichNight >= 2)
+                {
+                    SceneManager.LoadScene("Office");
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                Music.SetActive(false);
+                SceneManager.LoadScene("Controlls");
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                if (ExtraNightEnabled)
+                {
+                    WichNight = 6;
+                    PlayerPrefs.SetFloat("WichNight", WichNight);
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Office");
+                }
+            }
         }
 
         if (WichNight >= 5)
@@ -87,20 +149,7 @@ public class MainMenu : MonoBehaviour {
         if (CostumNightEnabled)
         {
             CostumNight.SetActive(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (ExtraNightEnabled)
-            {
-                WichNight = 6;
-                PlayerPrefs.SetFloat("WichNight", WichNight);
-                PlayerPrefs.Save();
-                SceneManager.LoadScene("Office");
-            }
-        }
-
-        
+        }     
     }
 
     public void CostumNightEnter()
