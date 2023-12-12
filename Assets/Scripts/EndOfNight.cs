@@ -14,15 +14,15 @@ public class EndOfNight : MonoBehaviour {
 
         WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
 
-        SceneManager.UnloadSceneAsync("MainMenu");
-        SceneManager.UnloadSceneAsync("GameOver");
-        SceneManager.UnloadSceneAsync("NextNight");
-        SceneManager.UnloadSceneAsync("Controlls");
-        SceneManager.UnloadSceneAsync("Office");
-        SceneManager.UnloadSceneAsync("Advertisement");
-        SceneManager.UnloadSceneAsync("PowerOut");
-        SceneManager.UnloadSceneAsync("TheEnd");
-        SceneManager.UnloadSceneAsync("CostumNight");
+        //SceneManager.UnloadSceneAsync("MainMenu");
+        //SceneManager.UnloadSceneAsync("GameOver");
+        //SceneManager.UnloadSceneAsync("NextNight");
+        //SceneManager.UnloadSceneAsync("Controlls");
+        //SceneManager.UnloadSceneAsync("Office");
+        //SceneManager.UnloadSceneAsync("Advertisement");
+        //SceneManager.UnloadSceneAsync("PowerOut");
+        //SceneManager.UnloadSceneAsync("TheEnd");
+        //SceneManager.UnloadSceneAsync("CostumNight");
     }
 	
 	// Update is called once per frame
@@ -40,7 +40,7 @@ public class EndOfNight : MonoBehaviour {
         }
         else if (WichNight > 5)
         {
-            SceneManager.LoadScene("TheEnd");
+            //SceneManager.LoadScene("TheEnd");
         }
 	}
 }
