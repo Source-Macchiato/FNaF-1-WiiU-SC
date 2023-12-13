@@ -40,7 +40,7 @@ public class EndOfNight : MonoBehaviour {
         }
         else if (WichNight > 5)
         {
-            //SceneManager.LoadScene("TheEnd");
+            SceneManager.LoadScene("TheEnd");
         }
 	}
 }

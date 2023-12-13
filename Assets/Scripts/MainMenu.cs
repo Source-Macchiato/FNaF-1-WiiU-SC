@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour {
 
     void Start()
     {
+        WichNight = 1;
 
         if (WichNight >= 5)
         {
