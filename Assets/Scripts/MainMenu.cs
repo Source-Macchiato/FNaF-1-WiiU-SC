@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour {
 
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsPressed(WiiU.GamePadButton.B))
+            if (gamePadState.IsPressed(WiiU.GamePadButton.A))
             {
                 WichNight = 1;
                 PlayerPrefs.SetFloat("WichNight", WichNight);
@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour {
 
         if (Application.isEditor)
         {
-            if (Input.GetKeyDown(KeyCode.B))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 
                 WichNight = 1;
