@@ -1,14 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-        StartCoroutine(Update());
-
+    // Use this for initialization
+    void Start () {
+        StartCoroutine(InitCoroutine());
+        
+        // Unload unnecessary scenes (you may want to adjust this based on your actual scene names)
         SceneManager.UnloadSceneAsync("MainMenu");
         SceneManager.UnloadSceneAsync("6AM");
         SceneManager.UnloadSceneAsync("NextNight");
@@ -19,13 +19,9 @@ public class GameOver : MonoBehaviour {
         SceneManager.UnloadSceneAsync("TheEnd");
         SceneManager.UnloadSceneAsync("CostumNight");
     }
-	
-	// Update is called once per frame
-	IEnumerator Update () {
-
+    
+    IEnumerator InitCoroutine() {
         yield return new WaitForSeconds(5);
-
         SceneManager.LoadScene("MainMenu");
-
-	}
+    }
 }

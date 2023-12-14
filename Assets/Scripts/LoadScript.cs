@@ -20,12 +20,10 @@ public class LoadScript : MonoBehaviour {
     void Start()
     {
         Resources.UnloadUnusedAssets();
-
-
-        StartCoroutine(Update());
+        StartCoroutine(InitCoroutine());
     }
 
-    IEnumerator Update()
+    IEnumerator InitCoroutine()
     {
         PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
         PlayerPrefs.SetFloat("WhereChica", WhereChica);

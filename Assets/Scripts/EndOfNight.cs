@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +7,9 @@ public class EndOfNight : MonoBehaviour {
     public GameObject Children;
     public float WichNight;
 
-	// Use this for initialization
-	void Start () {
-        StartCoroutine(Update());
+    // Use this for initialization
+    void Start () {
+        StartCoroutine(InitCoroutine());
 
         WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
 
@@ -24,23 +23,18 @@ public class EndOfNight : MonoBehaviour {
         //SceneManager.UnloadSceneAsync("TheEnd");
         //SceneManager.UnloadSceneAsync("CostumNight");
     }
-	
-	// Update is called once per frame
-	IEnumerator Update () {
 
+    IEnumerator InitCoroutine() {
         yield return new WaitForSeconds(6);
 
         Children.SetActive(true);
 
         yield return new WaitForSeconds(5);
 
-        if (WichNight < 5)
-        {
+        if (WichNight < 5) {
             SceneManager.LoadScene("NextNight");
-        }
-        else if (WichNight > 5)
-        {
+        } else if (WichNight > 5) {
             SceneManager.LoadScene("TheEnd");
         }
-	}
+    }
 }
