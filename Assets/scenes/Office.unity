@@ -5243,7 +5243,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Power Left : '
+  m_Text: 'Power Left: '
 --- !u!222 &1640164979
 CanvasRenderer:
   m_ObjectHideFlags: 0

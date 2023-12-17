@@ -1,0 +1,3 @@
+﻿nightone.phoneguy.lineone=paint
+nightone.phoneguy.linetwo=au
+nightone.phoneguy.linethree=chocolatine
