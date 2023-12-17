@@ -10,7 +10,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Source Macchiato
   productName: FiveNightAtFreddy's
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -108,7 +108,7 @@ PlayerSettings:
   videoMemoryForVertexBuffers: 0
   psp2PowerMode: 0
   psp2AcquireBGM: 1
-  wiiUTVResolution: 0
+  wiiUTVResolution: 1
   wiiUGamePadMSAA: 1
   wiiUSupportsNunchuk: 0
   wiiUSupportsClassicController: 0
