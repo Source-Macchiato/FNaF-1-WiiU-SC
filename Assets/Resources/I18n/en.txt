@@ -1,0 +1,3 @@
+﻿nightone.phoneguy.lineone=Hello? Hello, hello? Uh, I wanted to record a message for you to help you get settled in on your first night.
+nightone.phoneguy.linetwo=Um, I actually worked in that office before you. I'm finishing up my last week now, as a matter of fact. So,
+nightone.phoneguy.linethree=I know it can be a bit overwhelming, but I'm here to tell you there's nothing to worry about.

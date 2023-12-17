@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SubtitleManager : MonoBehaviour
 {
     public Text subtitleText;
-    public List<string> subtitleLines;
+    public List<string> subtitleIdentifiers; // Utilisez des identifiants au lieu de texte
     public List<float> displayDurations;
 
     public float startDelay = 0.0f;
@@ -15,9 +15,9 @@ public class SubtitleManager : MonoBehaviour
 
     void Start()
     {
-        if (subtitleLines.Count != displayDurations.Count)
+        if (subtitleIdentifiers.Count != displayDurations.Count)
         {
-            Debug.LogError("Subtitle lines and display durations lists must have the same size!");
+            Debug.LogError("Subtitle identifiers and display durations lists must have the same size!");
             return;
         }
 
@@ -36,7 +36,7 @@ public class SubtitleManager : MonoBehaviour
             return;
         }
 
-        if (currentIndex >= subtitleLines.Count)
+        if (currentIndex >= subtitleIdentifiers.Count)
         {
             return;
         }
@@ -45,7 +45,7 @@ public class SubtitleManager : MonoBehaviour
         {
             currentIndex++;
 
-            if (currentIndex < subtitleLines.Count)
+            if (currentIndex < subtitleIdentifiers.Count)
             {
                 DisplaySubtitle();
             }
@@ -59,7 +59,25 @@ public class SubtitleManager : MonoBehaviour
 
     void DisplaySubtitle()
     {
-        subtitleText.text = subtitleLines[currentIndex];
+        // Utilisez l'identifiant pour récupérer le texte traduit
+        string translatedText = GetTranslatedText(subtitleIdentifiers[currentIndex]);
+        subtitleText.text = translatedText;
         displayStartTime = Time.timeSinceLevelLoad;
+    }
+
+    // Fonction pour récupérer le texte traduit à partir de l'identifiant
+    string GetTranslatedText(string identifier)
+    {
+        // Vérifiez si l'identifiant existe dans le dictionnaire de traduction
+        if (I18n.Texts.ContainsKey(identifier))
+        {
+            return I18n.Texts[identifier];
+        }
+        else
+        {
+            // Si l'identifiant n'est pas trouvé, retournez l'identifiant lui-même
+            Debug.LogWarning("Translation not found for identifier: " + identifier);
+            return identifier;
+        }
     }
 }
