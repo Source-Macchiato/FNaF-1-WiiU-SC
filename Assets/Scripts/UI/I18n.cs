@@ -7,6 +7,8 @@ public class I18n
 {
     public static Dictionary<string, string> Texts { get; private set; }
 
+    private static bool forceEnglish = true;
+
     static I18n()
     {
         LoadLanguage();
@@ -19,7 +21,17 @@ public class I18n
 
         Texts.Clear();
 
-        string lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
+        string lang;
+
+        if (forceEnglish)
+        {
+            lang = "en";
+        }
+        else
+        {
+            lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
+        }
+
         string filePath = "I18n/" + lang;
 
         TextAsset textAsset = Resources.Load<TextAsset>(filePath);
@@ -54,7 +66,7 @@ public class I18n
 
     public static string GetLanguage()
     {
-        return Get2LetterISOCodeFromSystemLanguage().ToLower();
+        return forceEnglish ? "en" : Get2LetterISOCodeFromSystemLanguage().ToLower();
     }
 
     public static string Get2LetterISOCodeFromSystemLanguage()

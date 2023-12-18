@@ -2422,7 +2422,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Made by \xA9Scott Cawthon\nported by Source Macchiato"
+  m_Text: "Made by \xA9Scott Cawthon\nRemade by Source Macchiato"
 --- !u!222 &1910286346
 CanvasRenderer:
   m_ObjectHideFlags: 0
