@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class I18n
 {
     public static Dictionary<string, string> Texts { get; private set; }
 
-    private static bool forceEnglish = true;
+    public static bool forceEnglish = false;
 
     static I18n()
     {
