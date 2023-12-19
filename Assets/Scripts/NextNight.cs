@@ -5,29 +5,18 @@ using UnityEngine.UI;
 
 public class NextNight : MonoBehaviour {
 
-    public float WichNight;
-    public GameObject WichNightShower;
+    private float NightNumber;
+    public Text NightNumberDisplayer;
 
     void Start () {
-        WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
+        NightNumber = PlayerPrefs.GetFloat("NightNumber");
+        NightNumberDisplayer.text = NightNumber.ToString();
 
         StartCoroutine(InitCoroutine());
-        
-        // Unload unnecessary scenes (you may want to adjust this based on your actual scene names)
-        SceneManager.UnloadSceneAsync("MainMenu");
-        SceneManager.UnloadSceneAsync("GameOver");
-        SceneManager.UnloadSceneAsync("6AM");
-        SceneManager.UnloadSceneAsync("Controlls");
-        SceneManager.UnloadSceneAsync("Office");
-        SceneManager.UnloadSceneAsync("Advertisement");
-        SceneManager.UnloadSceneAsync("PowerOut");
-        SceneManager.UnloadSceneAsync("TheEnd");
-        SceneManager.UnloadSceneAsync("CostumNight");
     }
     
     void Update () {
         Resources.UnloadUnusedAssets();
-        WichNightShower.GetComponent<Text>().text = WichNight.ToString();
     }
 
     IEnumerator InitCoroutine() {

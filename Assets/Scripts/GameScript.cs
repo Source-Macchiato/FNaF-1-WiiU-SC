@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour {
 
-    public float WichNight = 1;
+    private float NightNumber;
     public float Time = 360;
     public float Usage = 1;
 
-    public GameObject WichNightShower;
+    public Text NightNumberDisplayer;
     public GameObject TimeShower;
 
     public float PowerUsage = 1;
@@ -28,31 +26,31 @@ public class GameScript : MonoBehaviour {
 
 	void Start ()
     {
-        WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
-        WichNightShower.GetComponent<Text>().text = WichNight.ToString();
+        NightNumber = PlayerPrefs.GetFloat("NightNumber");
+        NightNumberDisplayer.text = NightNumber.ToString();
 
         //--------------------------------------CallAndNight----------------------//
-        if (WichNight == 1)
+        if (NightNumber == 1)
         {
             Call1.Play();
         }
 
-        if (WichNight == 2)
+        if (NightNumber == 2)
         {
             Call2.Play();
         }
 
-        if (WichNight == 3)
+        if (NightNumber == 3)
         {
             Call3.Play();
         }
 
-        if (WichNight == 4)
+        if (NightNumber == 4)
         {
             Call4.Play();
         }
 
-        if (WichNight == 5)
+        if (NightNumber == 5)
         {
             Call5.Play();
         }
@@ -61,10 +59,6 @@ public class GameScript : MonoBehaviour {
 
     void Update ()
     {
-
-        WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
-        WichNightShower.GetComponent<Text>().text = WichNight.ToString();
-
         //---------------------------------------TIME-------------------------------------//
         Time -= UnityEngine.Time.deltaTime;
 
@@ -101,8 +95,7 @@ public class GameScript : MonoBehaviour {
         if (Time <= 0)
         {
             TimeShower.GetComponent<Text>().text = "6 AM";
-            WichNight += 1;
-            PlayerPrefs.SetFloat("WichNight", WichNight);
+            PlayerPrefs.SetFloat("NightNumber", NightNumber + 1);
             PlayerPrefs.Save();
 
             SceneManager.LoadScene("6AM");

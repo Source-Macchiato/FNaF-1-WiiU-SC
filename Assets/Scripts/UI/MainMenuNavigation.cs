@@ -7,7 +7,7 @@ public class MainMenuNavigation : MonoBehaviour
     public Button[] MainMenuButtons;
     public Text[] MainMenuSelectionTexts;
 
-    private int selectedIndex = 0;
+    public int selectedIndex = 0;
 
     private float joystickThreshold = 0.5f;
     private float buttonChangeDelay = 0.2f;

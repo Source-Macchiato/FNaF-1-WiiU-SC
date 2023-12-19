@@ -5,19 +5,20 @@ using WiiU = UnityEngine.WiiU;
 
 public class MainMenu : MonoBehaviour {
 
-    public float WichNight = 1;
-    public GameObject WichNightShower;
+    public float NightNumber;
+    public Text NightNumberDisplayer;
 
     WiiU.GamePad gamePad;
 
+    MainMenuNavigation mainMenuNavigation;
+
     void Start()
     {
-        WichNight = 1;
+        mainMenuNavigation = FindObjectOfType<MainMenuNavigation>();
 
-        if (WichNight >= 5)
-        {
-            WichNight = 5;
-        }
+        NightNumber = PlayerPrefs.GetFloat("NightNumber", NightNumber);
+
+        NightNumberDisplayer.text = NightNumber.ToString();
 
         gamePad = WiiU.GamePad.access;
     }
@@ -26,18 +27,11 @@ public class MainMenu : MonoBehaviour {
     {
         WiiU.GamePadState gamePadState = gamePad.state;
 
-        WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
-
-        WichNightShower.GetComponent<Text>().text = WichNight.ToString();
-
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
             if (gamePadState.IsPressed(WiiU.GamePadButton.A))
             {
-                WichNight = 1;
-                PlayerPrefs.SetFloat("WichNight", WichNight);
-                PlayerPrefs.Save();
-                SceneManager.LoadScene("Advertisement");
+                MainMenuNavigation();
             }
         }
 
@@ -45,12 +39,32 @@ public class MainMenu : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                
-                WichNight = 1;
-                PlayerPrefs.SetFloat("WichNight", WichNight);
-                PlayerPrefs.Save();
-                SceneManager.LoadScene("Advertisement");
+                MainMenuNavigation();
             }
         }  
+    }
+
+    void MainMenuNavigation()
+    {
+        if (mainMenuNavigation.selectedIndex == 0)
+        {
+            NightNumber = 1;
+            PlayerPrefs.SetFloat("NightNumber", NightNumber);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("Advertisement");
+        }
+        else if (mainMenuNavigation.selectedIndex == 1)
+        {
+            NightNumber = PlayerPrefs.GetFloat("NightNumber");
+
+            if (NightNumber == 1)
+            {
+                SceneManager.LoadScene("Advertisement");
+            }
+            else if (NightNumber > 1 && NightNumber < 6)
+            {
+                SceneManager.LoadScene("Office");
+            }
+        }
     }
 }
