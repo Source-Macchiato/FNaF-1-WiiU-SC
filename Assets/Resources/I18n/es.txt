@@ -1,0 +1,17 @@
+mainmenu.newgame=Nueva Partida
+mainmenu.continue=Continuar
+mainmenu.night=NOCHE
+office.night=Noche
+office.usage=Energia
+office.power=Energia Restante:
+camera.showstage=El Escenario
+camera.diningarea=Comedor
+camera.piratecove=La Cueva del pirata
+camera.westhall=Salón Oeste
+camera.westhallcorner=Esquina del pasillo oeste
+camera.supplycloset=Closet de suministros
+camera.easthall=Salón Este
+camera.easthallcorner=Esquina del pasillo este
+camera.backstage=Camerino
+camera.kitchen=Cocina
+camera.restrooms=Baños

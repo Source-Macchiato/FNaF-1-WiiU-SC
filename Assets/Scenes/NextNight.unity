@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 72010664}
   - component: {fileID: 72010666}
   - component: {fileID: 72010665}
+  - component: {fileID: 72010667}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -281,6 +282,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 72010663}
+--- !u!114 &72010667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 72010663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: mainmenu.night
 --- !u!1 &92812522
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c36298b7d57b1499759d38a02ae2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NightNumber: 0
   NightNumberDisplayer: {fileID: 1348725349}
 --- !u!4 &211926082
 Transform:
