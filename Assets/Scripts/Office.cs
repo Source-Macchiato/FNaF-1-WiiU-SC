@@ -80,7 +80,6 @@ public class Office : MonoBehaviour {
 
         WiiU.GamePadState gamePadState = gamePad.state;
 
-        float leftVerticalInput = Input.GetAxis("LeftStickY");
         float leftHorizontalInput = Input.GetAxis("LeftStickX");
 
         if (Mathf.Abs(leftHorizontalInput) > joystickThreshold)
@@ -107,7 +106,7 @@ public class Office : MonoBehaviour {
 
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsTriggered(WiiU.GamePadButton.Left))
+            if (gamePadState.IsPressed(WiiU.GamePadButton.Left))
             {
                 Max += 1 * Time.deltaTime;
 
@@ -122,7 +121,7 @@ public class Office : MonoBehaviour {
                 }
             }
 
-            if (gamePadState.IsTriggered(WiiU.GamePadButton.Right))
+            if (gamePadState.IsPressed(WiiU.GamePadButton.Right))
             {
                 Max -= 1 * Time.deltaTime;
 

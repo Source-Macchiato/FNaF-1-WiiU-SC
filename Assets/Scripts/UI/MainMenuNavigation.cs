@@ -28,7 +28,6 @@ public class MainMenuNavigation : MonoBehaviour
         WiiU.GamePadState gamePadState = gamePad.state;
 
         float leftVerticalInput = Input.GetAxis("LeftStickY");
-        float leftHorizontalInput = Input.GetAxis("LeftStickX");
 
         if (Mathf.Abs(leftVerticalInput) > joystickThreshold)
         {
