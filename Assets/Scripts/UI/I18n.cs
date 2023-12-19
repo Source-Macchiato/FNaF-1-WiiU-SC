@@ -75,11 +75,10 @@ public class I18n
         string res = "EN";
         switch (lang)
         {
-            case SystemLanguage.Dutch: res = "DE"; break;
             case SystemLanguage.English: res = "EN"; break;
             case SystemLanguage.Spanish: res = "ES"; break;
             case SystemLanguage.French: res = "FR"; break;
-            case SystemLanguage.Russian: res = "RU"; break;
+            case SystemLanguage.Italian: res = "IT"; break;
         }
         return res;
     }
