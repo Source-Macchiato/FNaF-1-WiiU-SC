@@ -172,6 +172,21 @@ public class Movement : MonoBehaviour {
 
                 bonnieInCount = true;
             }
+
+            ChicaActive = true;
+
+            if(!chicaInCount)
+            {
+                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(215f, 280f), 0);
+                ChicaMovementTime -= ChicaDifficulty;
+                
+                chicaInCount = true;
+                
+            }
+            
+
+
+
         }
 
         if (WichNight >= 2)
