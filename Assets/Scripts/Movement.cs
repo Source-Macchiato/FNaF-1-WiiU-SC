@@ -70,8 +70,8 @@ public class Movement : MonoBehaviour {
 
         if (WichNight == 1)
         {
-            BonnieDifficulty = 3;
-            ChicaDifficulty = 3;
+            BonnieDifficulty = 1;
+            ChicaDifficulty = 1;
             FreddyDifficulty = 0;
             FoxyDifficulty = 0;
 
@@ -166,7 +166,7 @@ public class Movement : MonoBehaviour {
 
             if (!bonnieInCount)
             {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 35f), 0);
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(115f, 180f), 0);
                 BonnieMovementTime -= BonnieDifficulty;
 
 
