@@ -86,9 +86,14 @@ public class Office : MonoBehaviour {
                 Max = -0.5801594f;
             }
 
-            if (Max >= -0.5801594f && Max <= 0.3495193f)
+            if (Max < 0.3495193f)
             {
-                OfficeImage.transform.position += Vector3.right * speed * direction * Time.deltaTime;
+                OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
+            }
+
+            if (Max > -0.5801594f)
+            {
+                OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
             }
         }
 
