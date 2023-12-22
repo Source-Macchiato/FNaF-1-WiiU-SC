@@ -59,18 +59,6 @@ public class Office : MonoBehaviour {
 
     void Start()
     {
-        /*
-        // SceneManager.UnloadSceneAsync("MainMenu");
-        SceneManager.UnloadSceneAsync("GameOver");
-        SceneManager.UnloadSceneAsync("6AM");
-        SceneManager.UnloadSceneAsync("NextNight");
-        SceneManager.UnloadSceneAsync("Controlls");
-        SceneManager.UnloadSceneAsync("Advertisement");
-        SceneManager.UnloadSceneAsync("PowerOut");
-        SceneManager.UnloadSceneAsync("TheEnd");
-        SceneManager.UnloadSceneAsync("CostumNight");
-        */
-
         gamePad = WiiU.GamePad.access;
     }
 

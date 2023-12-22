@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
@@ -27,7 +24,7 @@ public class Movement : MonoBehaviour {
 
     public bool camIsUp = false;
 
-    public float WichNight = 1;
+    public float NightNumber;
 
     public GameObject MoveGlitch;
     public bool GlitchActive = false;
@@ -60,7 +57,7 @@ public class Movement : MonoBehaviour {
     void Start()
     {
 
-        WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
+        NightNumber = PlayerPrefs.GetFloat("NightNumber");
 
         GenNumber();
     }
@@ -68,7 +65,7 @@ public class Movement : MonoBehaviour {
     public void GenNumber()
     {
 
-        if (WichNight == 1)
+        if (NightNumber == 1)
         {
             BonnieDifficulty = 1;
             ChicaDifficulty = 1;
@@ -82,7 +79,7 @@ public class Movement : MonoBehaviour {
             PlayerPrefs.Save();
         }
 
-        if (WichNight == 2)
+        if (NightNumber == 2)
         {
             BonnieDifficulty = 6;
             ChicaDifficulty = 6;
@@ -96,7 +93,7 @@ public class Movement : MonoBehaviour {
             PlayerPrefs.Save();
         }
 
-        if (WichNight == 3)
+        if (NightNumber == 3)
         {
             BonnieDifficulty = 11;
             ChicaDifficulty = 11;
@@ -110,7 +107,7 @@ public class Movement : MonoBehaviour {
             PlayerPrefs.Save();
         }
 
-        if (WichNight == 4)
+        if (NightNumber == 4)
         {
             BonnieDifficulty = 15;
             ChicaDifficulty = 15;
@@ -124,7 +121,7 @@ public class Movement : MonoBehaviour {
             PlayerPrefs.Save();
         }
 
-        if (WichNight == 5)
+        if (NightNumber == 5)
         {
             BonnieDifficulty = 16;
             ChicaDifficulty = 16;
@@ -138,7 +135,7 @@ public class Movement : MonoBehaviour {
             PlayerPrefs.Save();
         }
 
-        if (WichNight == 6)
+        if (NightNumber == 6)
         {
             BonnieDifficulty = 17;
             ChicaDifficulty = 16;
@@ -152,7 +149,7 @@ public class Movement : MonoBehaviour {
             PlayerPrefs.Save();
         }
 
-        if (WichNight == 7)
+        if (NightNumber == 7)
         {
             BonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", BonnieDifficulty);
             ChicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", ChicaDifficulty);
@@ -160,7 +157,7 @@ public class Movement : MonoBehaviour {
             FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
         }
 
-        if (WichNight >= 1)
+        if (NightNumber >= 1)
         {
             BonnieActive = true;
 
@@ -189,7 +186,7 @@ public class Movement : MonoBehaviour {
 
         }
 
-        if (WichNight >= 2)
+        if (NightNumber >= 2)
         {
             ChicaActive = true;
 
@@ -214,7 +211,7 @@ public class Movement : MonoBehaviour {
             }
         }
 
-        if (WichNight >= 3)
+        if (NightNumber >= 3)
         {
             FreddyActive = true;
 
@@ -313,7 +310,7 @@ public class Movement : MonoBehaviour {
         }
 
 
-        if (WichNight >= 1)
+        if (NightNumber >= 1)
         {
 
             BonnieMovementTime -= Time.deltaTime;
@@ -340,7 +337,7 @@ public class Movement : MonoBehaviour {
 
 
 
-        if (WichNight >= 2)
+        if (NightNumber >= 2)
         {
             ChicaMovementTime -= Time.deltaTime;
 
@@ -388,7 +385,7 @@ public class Movement : MonoBehaviour {
             }
         }
 
-        if (WichNight >= 3)
+        if (NightNumber >= 3)
         {
             FreddyMovementTime -= Time.deltaTime;
 
@@ -499,8 +496,6 @@ public class Movement : MonoBehaviour {
                 GlitchActive = false;
                 MoveGlitchUp = 0.5f;
             }
-        }
-
-        
+        }        
     }
 }

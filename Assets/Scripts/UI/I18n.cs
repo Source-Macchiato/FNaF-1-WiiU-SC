@@ -6,7 +6,7 @@ public class I18n
 {
     public static Dictionary<string, string> Texts { get; private set; }
 
-    public static bool forceEnglish = true;
+    public static bool forceEnglish = false;
 
     static I18n()
     {
