@@ -168,7 +168,7 @@ public class Office : MonoBehaviour {
         {
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                if (gamePadState.IsPressed(WiiU.GamePadButton.A))
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
                     if (L_Door_Closed)
                     {
@@ -252,7 +252,7 @@ public class Office : MonoBehaviour {
 
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                if (gamePadState.IsPressed(WiiU.GamePadButton.X))
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
                 {
                     LeftLightIsOn = true;
 
@@ -331,7 +331,7 @@ public class Office : MonoBehaviour {
         {
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                if (gamePadState.IsPressed(WiiU.GamePadButton.A))
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
                     if (R_Door_Closed)
                     {
@@ -365,7 +365,7 @@ public class Office : MonoBehaviour {
                     }
                 }
 
-                if (gamePadState.IsPressed(WiiU.GamePadButton.X))
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
                 {
                     RightLightIsOn = true;
 
@@ -471,7 +471,7 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsReleased(WiiU.GamePadButton.X))
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
             {
                 if (LeftLightIsOn)
                 {

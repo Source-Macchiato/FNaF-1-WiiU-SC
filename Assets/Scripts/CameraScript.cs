@@ -36,7 +36,7 @@ public class CameraScript : MonoBehaviour
 
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsPressed(WiiU.GamePadButton.L))
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.L))
             {
                 if (camIsUp)
                 {
