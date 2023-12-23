@@ -472,7 +472,7 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
+            if (gamePadState.IsReleased(WiiU.GamePadButton.X))
             {
                 if (LeftLightIsOn)
                 {
@@ -604,7 +604,7 @@ public class Office : MonoBehaviour {
         //----------------------------------------------
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
+            if (gamePadState.IsPressed(WiiU.GamePadButton.X))
             {
                 if (BonnieOutsideDoor)
                 {
