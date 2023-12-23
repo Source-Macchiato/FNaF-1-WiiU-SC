@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour {
 
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsPressed(WiiU.GamePadButton.A))
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
             {
                 MainMenuNavigation();
             }
@@ -55,7 +55,7 @@ public class MainMenu : MonoBehaviour {
         }
         else if (mainMenuNavigation.selectedIndex == 1)
         {
-            NightNumber = PlayerPrefs.GetFloat("NightNumber");
+            NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
             if (NightNumber == 1)
             {
