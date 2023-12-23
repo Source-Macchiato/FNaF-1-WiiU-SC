@@ -72,7 +72,7 @@ public class Office : MonoBehaviour {
 
         float leftHorizontalInput = Input.GetAxis("LeftStickX");
 
-        if (Mathf.Abs(leftHorizontalInput) > joystickThreshold)
+        /*if (Mathf.Abs(leftHorizontalInput) > joystickThreshold)
         {
             int direction = leftHorizontalInput > 0 ? -1 : 1;
 
@@ -96,7 +96,7 @@ public class Office : MonoBehaviour {
             {
                 OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
             }
-        }
+        }*/
 
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
