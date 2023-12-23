@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour {
     {
         mainMenuNavigation = FindObjectOfType<MainMenuNavigation>();
 
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", NightNumber);
+        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
         NightNumberDisplayer.text = NightNumber.ToString();
 
