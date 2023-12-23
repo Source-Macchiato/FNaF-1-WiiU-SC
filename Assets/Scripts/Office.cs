@@ -56,11 +56,12 @@ public class Office : MonoBehaviour {
     WiiU.GamePad gamePad;
     private float joystickThreshold = 0.5f;
 
-    float centerPosition = 0;
+    float centerPosition;
 
     void Start()
     {
         gamePad = WiiU.GamePad.access;
+        centerPosition = 0;
     }
 
     void Update()
