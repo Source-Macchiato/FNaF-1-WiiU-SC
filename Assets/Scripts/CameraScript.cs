@@ -38,37 +38,6 @@ public class CameraScript : MonoBehaviour
         {
             if (gamePadState.IsPressed(WiiU.GamePadButton.L))
             {
-                if (!camIsUp)
-                {
-                    CamSelectPanel.SetActive(true);
-                    OfficeStuff.SetActive(false);
-
-                    FlipOpen.Play();
-                    CamViewTabletOpen.SetActive(true);
-                    CamViewTabletClose.SetActive(false);
-
-                    Dot.SetActive(true);
-                    Glitch.SetActive(true);
-                    Stripes.SetActive(true);
-
-                    camIsUp = true;
-
-                    wait = 0.2f;
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-                    OfficeControllerObject.GetComponent<Office>().enabled = false;
-                    OfficeControllerObject.GetComponent<Office>().Max = 0;
-                    OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
-
-                    OfficeStuff.transform.position = ResetPoint.transform.position;
-                }
-            }
-
-            if (gamePadState.IsPressed(WiiU.GamePadButton.R))
-            {
                 if (camIsUp)
                 {
                     CamSelectPanel.SetActive(false);
@@ -94,6 +63,33 @@ public class CameraScript : MonoBehaviour
                     OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = false;
                     OfficeControllerObject.GetComponent<ChangeImages>().enabled = false;
 
+                }
+                else
+                {
+                    CamSelectPanel.SetActive(true);
+                    OfficeStuff.SetActive(false);
+
+                    FlipOpen.Play();
+                    CamViewTabletOpen.SetActive(true);
+                    CamViewTabletClose.SetActive(false);
+
+                    Dot.SetActive(true);
+                    Glitch.SetActive(true);
+                    Stripes.SetActive(true);
+
+                    camIsUp = true;
+
+                    wait = 0.2f;
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+                    OfficeControllerObject.GetComponent<Office>().enabled = false;
+                    OfficeControllerObject.GetComponent<Office>().Max = 0;
+                    OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
+                    OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
+                    OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
+                    OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
+
+                    OfficeStuff.transform.position = ResetPoint.transform.position;
                 }
             }
         }
@@ -102,37 +98,6 @@ public class CameraScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
-                if (!camIsUp)
-                {
-                    CamSelectPanel.SetActive(true);
-                    OfficeStuff.SetActive(false);
-
-                    FlipOpen.Play();
-                    CamViewTabletOpen.SetActive(true);
-                    CamViewTabletClose.SetActive(false);
-
-                    Dot.SetActive(true);
-                    Glitch.SetActive(true);
-                    Stripes.SetActive(true);
-
-                    camIsUp = true;
-
-                    wait = 0.2f;
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-                    OfficeControllerObject.GetComponent<Office>().enabled = false;
-                    OfficeControllerObject.GetComponent<Office>().Max = 0;
-                    OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
-
-                    OfficeStuff.transform.position = ResetPoint.transform.position;
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
                 if (camIsUp)
                 {
                     CamSelectPanel.SetActive(false);
@@ -158,6 +123,33 @@ public class CameraScript : MonoBehaviour
                     OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = false;
                     OfficeControllerObject.GetComponent<ChangeImages>().enabled = false;
 
+                }
+                else
+                {
+                    CamSelectPanel.SetActive(true);
+                    OfficeStuff.SetActive(false);
+
+                    FlipOpen.Play();
+                    CamViewTabletOpen.SetActive(true);
+                    CamViewTabletClose.SetActive(false);
+
+                    Dot.SetActive(true);
+                    Glitch.SetActive(true);
+                    Stripes.SetActive(true);
+
+                    camIsUp = true;
+
+                    wait = 0.2f;
+
+                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+                    OfficeControllerObject.GetComponent<Office>().enabled = false;
+                    OfficeControllerObject.GetComponent<Office>().Max = 0;
+                    OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
+                    OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
+                    OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
+                    OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
+
+                    OfficeStuff.transform.position = ResetPoint.transform.position;
                 }
             }
         }
