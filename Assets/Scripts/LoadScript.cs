@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LoadScript : MonoBehaviour {
 
@@ -11,6 +9,7 @@ public class LoadScript : MonoBehaviour {
     public GameObject DoorButtons_L;
     public GameObject DoorButtons_R;
     public GameObject Fan;
+    public GameObject Minimap;
 
     public float WhereBonnie = 1;
     public float WhereChica = 1;
@@ -20,6 +19,9 @@ public class LoadScript : MonoBehaviour {
     void Start()
     {
         Resources.UnloadUnusedAssets();
+
+        Minimap.SetActive(false);
+
         StartCoroutine(InitCoroutine());
     }
 
