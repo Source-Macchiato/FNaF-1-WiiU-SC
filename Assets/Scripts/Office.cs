@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using WiiU = UnityEngine.WiiU;
 
 public class Office : MonoBehaviour {
@@ -57,6 +56,8 @@ public class Office : MonoBehaviour {
     WiiU.GamePad gamePad;
     private float joystickThreshold = 0.5f;
 
+    float centerPosition = 0;
+
     void Start()
     {
         gamePad = WiiU.GamePad.access;
@@ -74,16 +75,16 @@ public class Office : MonoBehaviour {
         {
             int direction = leftHorizontalInput > 0 ? -1 : 1;
 
-            Max += direction * Time.deltaTime;
+            centerPosition += direction * Time.deltaTime;
 
-            if (Max > 0.3495193f)
+            if (centerPosition > 0.3495193f)
             {
-                Max = 0.3495193f;
+                centerPosition = 0.3495193f;
             }
 
-            if (Max < -0.5801594f)
+            if (centerPosition < -0.5801594f)
             {
-                Max = -0.5801594f;
+                centerPosition = -0.5801594f;
             }
 
             if (direction > 0)
@@ -100,14 +101,14 @@ public class Office : MonoBehaviour {
         {
             if (gamePadState.IsPressed(WiiU.GamePadButton.Left))
             {
-                Max += 1 * Time.deltaTime;
+                centerPosition += 1 * Time.deltaTime;
 
-                if (Max > 0.3495193f)
+                if (centerPosition > 0.3495193f)
                 {
-                    Max = 0.3495193f;
+                    centerPosition = 0.3495193f;
                 }
 
-                if (Max < 0.3495193f)
+                if (centerPosition < 0.3495193f)
                 {
                     OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
                 }
@@ -115,14 +116,14 @@ public class Office : MonoBehaviour {
 
             if (gamePadState.IsPressed(WiiU.GamePadButton.Right))
             {
-                Max -= 1 * Time.deltaTime;
+                centerPosition -= 1 * Time.deltaTime;
 
-                if (Max < -0.5801594f)
+                if (centerPosition < -0.5801594f)
                 {
-                    Max = -0.5801594f;
+                    centerPosition = -0.5801594f;
                 }
 
-                if (Max > -0.5801594f)
+                if (centerPosition > -0.5801594f)
                 {
                     OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
                 }
@@ -133,28 +134,14 @@ public class Office : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                Max += 1 * Time.deltaTime;
+                centerPosition += 1 * Time.deltaTime;
 
-                if (Max > 0.3495193f)
+                if (centerPosition > 0.3495193f)
                 {
-                    Max = 0.3495193f;
+                    centerPosition = 0.3495193f;
                 }
 
-                if (Max < 0.3495193f)
-                {
-                    OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
-                }
-            }
-            else if (Input.GetKey(KeyCode.Keypad4))
-            {
-                Max += 1 * Time.deltaTime;
-
-                if (Max > 0.3495193f)
-                {
-                    Max = 0.3495193f;
-                }
-
-                if (Max < 0.3495193f)
+                if (centerPosition < 0.3495193f)
                 {
                     OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
                 }
@@ -162,63 +149,26 @@ public class Office : MonoBehaviour {
 
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                Max -= 1 * Time.deltaTime;
+                centerPosition -= 1 * Time.deltaTime;
 
-                if (Max < -0.5801594f)
+                if (centerPosition < -0.5801594f)
                 {
-                    Max = -0.5801594f;
+                    centerPosition = -0.5801594f;
                 }
 
-                if (Max > -0.5801594f)
-                {
-                    OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
-                }
-            }
-            else if (Input.GetKey(KeyCode.Keypad6))
-            {
-                Max -= 1 * Time.deltaTime;
-
-                if (Max < -0.5801594f)
-                {
-                    Max = -0.5801594f;
-                }
-
-                if (Max > -0.5801594f)
+                if (centerPosition > -0.5801594f)
                 {
                     OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
                 }
             }
         }
 
-
         //-----------------------------------------------
-        if (Max == 0.3495193f)
+        if (centerPosition == 0.3495193f)
         {
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
                 if (gamePadState.IsPressed(WiiU.GamePadButton.A))
-                {
-                    if (!L_Door_Closed)
-                    {
-                        Door_L_closed.SetActive(true);
-                        Door_L_open.SetActive(false);
-                        L_Door_Closed = true;
-                        DoorButton_L1.SetActive(false);
-                        DoorButton_L2.SetActive(true);
-
-                        DoorClose.Play();
-
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
-
-                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
-
-                    }
-                }
-
-                if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
                 {
                     if (L_Door_Closed)
                     {
@@ -235,6 +185,23 @@ public class Office : MonoBehaviour {
 
                         OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
                         OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
+
+                    }
+                    else
+                    {
+                        Door_L_closed.SetActive(true);
+                        Door_L_open.SetActive(false);
+                        L_Door_Closed = true;
+                        DoorButton_L1.SetActive(false);
+                        DoorButton_L2.SetActive(true);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
+
+                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
 
                     }
                 }
@@ -244,7 +211,23 @@ public class Office : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    if (!L_Door_Closed)
+                    if (L_Door_Closed)
+                    {
+                        Door_L_closed.SetActive(false);
+                        Door_L_open.SetActive(true);
+                        L_Door_Closed = false;
+                        DoorButton_L1.SetActive(true);
+                        DoorButton_L2.SetActive(false);
+                        DoorButton_R4.SetActive(false);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
+                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
+                    }
+                    else
                     {
                         Door_L_closed.SetActive(true);
                         Door_L_open.SetActive(false);
@@ -263,34 +246,13 @@ public class Office : MonoBehaviour {
 
                     }
                 }
-
-                if (Input.GetKeyDown(KeyCode.X))
-                {
-                    if (L_Door_Closed)
-                    {
-                        Door_L_closed.SetActive(false);
-                        Door_L_open.SetActive(true);
-                        L_Door_Closed = false;
-                        DoorButton_L1.SetActive(true);
-                        DoorButton_L2.SetActive(false);
-                        DoorButton_R4.SetActive(false);
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
-                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
-
-                    }
-                }
             }
 
             //-------------------------------------LIGHT---------------------------------------------------------------------------------------------------
 
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                if (gamePadState.IsPressed(WiiU.GamePadButton.B))
+                if (gamePadState.IsPressed(WiiU.GamePadButton.X))
                 {
                     LeftLightIsOn = true;
 
@@ -327,7 +289,7 @@ public class Office : MonoBehaviour {
 
             if (Application.isEditor)
             {
-                if (Input.GetKeyDown(KeyCode.B))
+                if (Input.GetKeyDown(KeyCode.X))
                 {
                     LeftLightIsOn = true;
 
@@ -365,13 +327,28 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
 
         //-----------------------------------------------
-        if (Max == -0.5801594f)
+        if (centerPosition == -0.5801594f)
         {
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
                 if (gamePadState.IsPressed(WiiU.GamePadButton.A))
                 {
-                    if (!R_Door_Closed)
+                    if (R_Door_Closed)
+                    {
+                        Door_R_closed.SetActive(false);
+                        Door_R_open.SetActive(true);
+                        R_Door_Closed = false;
+                        DoorButton_R1.SetActive(true);
+                        DoorButton_R2.SetActive(false);
+                        DoorButton_R4.SetActive(false);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
+                    }
+                    else
                     {
                         Door_R_closed.SetActive(true);
                         Door_R_open.SetActive(false);
@@ -390,25 +367,6 @@ public class Office : MonoBehaviour {
 
                 if (gamePadState.IsPressed(WiiU.GamePadButton.X))
                 {
-                    if (R_Door_Closed)
-                    {
-                        Door_R_closed.SetActive(false);
-                        Door_R_open.SetActive(true);
-                        R_Door_Closed = false;
-                        DoorButton_R1.SetActive(true);
-                        DoorButton_R2.SetActive(false);
-                        DoorButton_R4.SetActive(false);
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
-                    }
-                }
-
-                if (gamePadState.IsPressed(WiiU.GamePadButton.B))
-                {
                     RightLightIsOn = true;
 
                     if (!ChicaOutsideDoor)
@@ -444,7 +402,22 @@ public class Office : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    if (!R_Door_Closed)
+                    if (R_Door_Closed)
+                    {
+                        Door_R_closed.SetActive(false);
+                        Door_R_open.SetActive(true);
+                        R_Door_Closed = false;
+                        DoorButton_R1.SetActive(true);
+                        DoorButton_R2.SetActive(false);
+                        DoorButton_R4.SetActive(false);
+
+                        DoorClose.Play();
+
+                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
+                    }
+                    else
                     {
                         Door_R_closed.SetActive(true);
                         Door_R_open.SetActive(false);
@@ -461,25 +434,6 @@ public class Office : MonoBehaviour {
                 }
 
                 if (Input.GetKeyDown(KeyCode.X))
-                {
-                    if (R_Door_Closed)
-                    {
-                        Door_R_closed.SetActive(false);
-                        Door_R_open.SetActive(true);
-                        R_Door_Closed = false;
-                        DoorButton_R1.SetActive(true);
-                        DoorButton_R2.SetActive(false);
-                        DoorButton_R4.SetActive(false);
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
-                    }
-                }
-
-                if (Input.GetKeyDown(KeyCode.B))
                 {
                     RightLightIsOn = true;
 
@@ -517,7 +471,7 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsReleased(WiiU.GamePadButton.B))
+            if (gamePadState.IsReleased(WiiU.GamePadButton.X))
             {
                 if (LeftLightIsOn)
                 {
@@ -582,7 +536,7 @@ public class Office : MonoBehaviour {
 
         if (Application.isEditor)
         {
-            if (Input.GetKeyUp(KeyCode.B))
+            if (Input.GetKeyUp(KeyCode.X))
             {
                 if (LeftLightIsOn)
                 {
@@ -649,7 +603,7 @@ public class Office : MonoBehaviour {
         //----------------------------------------------
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
             {
                 if (BonnieOutsideDoor)
                 {
