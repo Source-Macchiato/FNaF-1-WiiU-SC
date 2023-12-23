@@ -218,7 +218,7 @@ public class Office : MonoBehaviour {
                     }
                 }
 
-                if (gamePadState.IsPressed(WiiU.GamePadButton.X))
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
                 {
                     if (L_Door_Closed)
                     {
