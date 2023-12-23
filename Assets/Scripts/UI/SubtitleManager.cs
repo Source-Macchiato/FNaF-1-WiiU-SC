@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SubtitleManager : MonoBehaviour
 {
     public Text subtitleText;
-    public List<string> subtitleIdentifiers; // Utilisez des identifiants au lieu de texte
+    public List<string> subtitleIdentifiers;
     public List<float> displayDurations;
 
     public float startDelay = 0.0f;
@@ -15,6 +15,18 @@ public class SubtitleManager : MonoBehaviour
 
     void Start()
     {
+        TextAsset subtitleFile = Resources.Load<TextAsset>("Data/night1.txt");
+        string[] lines = subtitleFile.text.Split('\n');
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(';');
+            if (parts.Length == 2)
+            {
+                subtitleIdentifiers.Add(parts[0]);
+                displayDurations.Add(float.Parse(parts[1]));
+            }
+        }
+
         if (subtitleIdentifiers.Count != displayDurations.Count)
         {
             Debug.LogError("Subtitle identifiers and display durations lists must have the same size!");
@@ -59,23 +71,19 @@ public class SubtitleManager : MonoBehaviour
 
     void DisplaySubtitle()
     {
-        // Utilisez l'identifiant pour récupérer le texte traduit
         string translatedText = GetTranslatedText(subtitleIdentifiers[currentIndex]);
         subtitleText.text = translatedText;
-        displayStartTime = Time.timeSinceLevelLoad;
+        displayStartTime = Time.timeSinceLevelLoad + displayDurations[currentIndex];
     }
 
-    // Fonction pour récupérer le texte traduit à partir de l'identifiant
     string GetTranslatedText(string identifier)
     {
-        // Vérifiez si l'identifiant existe dans le dictionnaire de traduction
         if (I18n.Texts.ContainsKey(identifier))
         {
             return I18n.Texts[identifier];
         }
         else
         {
-            // Si l'identifiant n'est pas trouvé, retournez l'identifiant lui-même
             Debug.LogWarning("Translation not found for identifier: " + identifier);
             return identifier;
         }
