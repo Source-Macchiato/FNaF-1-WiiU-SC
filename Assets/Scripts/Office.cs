@@ -9,8 +9,6 @@ public class Office : MonoBehaviour {
 
     public GameObject OfficeControllerObject;
 
-    public float Max;
-
     public GameObject Door_L_closed;
     public GameObject Door_L_open;
 
@@ -56,11 +54,12 @@ public class Office : MonoBehaviour {
     WiiU.GamePad gamePad;
     private float joystickThreshold = 0.5f;
 
-    float centerPosition;
+    public float centerPosition;
 
     void Start()
     {
         gamePad = WiiU.GamePad.access;
+
         centerPosition = 0;
     }
 

@@ -83,7 +83,7 @@ public class CameraScript : MonoBehaviour
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
                     OfficeControllerObject.GetComponent<Office>().enabled = false;
-                    OfficeControllerObject.GetComponent<Office>().Max = 0;
+                    OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
                     OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
                     OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
                     OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
@@ -143,7 +143,7 @@ public class CameraScript : MonoBehaviour
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
                     OfficeControllerObject.GetComponent<Office>().enabled = false;
-                    OfficeControllerObject.GetComponent<Office>().Max = 0;
+                    OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
                     OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
                     OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
                     OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
