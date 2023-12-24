@@ -328,10 +328,10 @@ if (NightNumber >= 1)
     {
         if (BonnieActive)
         {
-            // Ajouter la vérification pour éviter la position commune avec Chica
+            
             if (WhereBonnie == WhereChica && WhereChica == 2)
             {
-                // Si la position est commune avec Chica, déplacer Bonnie à la position 3
+                
                 WhereBonnie = 3;
                 bonnieInCount = false;
                 GlitchActive = true;
@@ -347,7 +347,7 @@ if (NightNumber >= 1)
             }
             else
             {
-                // Sinon, incrémenter normalement
+                
                 WhereBonnie += 1;
                 bonnieInCount = false;
                 GlitchActive = true;
@@ -373,10 +373,10 @@ if (NightNumber >= 2)
     {
         if (ChicaActive)
         {
-            // Ajouter la vérification pour éviter la position commune avec Bonnie
+            
             if (WhereChica == WhereBonnie && WhereBonnie == 2)
             {
-                // Si la position est commune avec Bonnie, déplacer Chica à la position 3
+                
                 WhereChica = 3;
                 chicaInCount = false;
                 GlitchActive = true;
@@ -392,7 +392,7 @@ if (NightNumber >= 2)
             }
             else
             {
-                // Sinon, incrémenter normalement
+                
                 WhereChica += 1;
                 chicaInCount = false;
                 GlitchActive = true;
