@@ -7483,14 +7483,14 @@ MonoBehaviour:
   PirateCove3: {fileID: 21300000, guid: eb2640a0abbd8354b8ac7426c7749e39, type: 3}
   WestHall1_1: {fileID: 21300000, guid: 32df2be6029b74b43b4aaf3194289aa5, type: 3}
   WestHall1_2: {fileID: 21300000, guid: e7b9eb16fe6012c43baef8d29a5f87b2, type: 3}
-  WestHall2_1: {fileID: 21300000, guid: 563c4449915d5f142a78545203946d85, type: 3}
+  WestHall2_1: {fileID: 21300000, guid: bfb2e0b5b1d58c24382afb6f36a9ef85, type: 3}
   WestHall2_2: {fileID: 21300000, guid: e06f4d01f058ba84e8660e1fd2c79734, type: 3}
   Closet1: {fileID: 21300000, guid: 1585e317dd731b2468ee44b8e46ae2f8, type: 3}
   Closet2: {fileID: 21300000, guid: cfc8ceb63be936d45ae1a21feb24bb0f, type: 3}
   EastHall1_1: {fileID: 21300000, guid: 07c924aba47d2d84d8e2229b4c5a1b19, type: 3}
   EastHall1_2: {fileID: 21300000, guid: 82aeedf6a803e5249ada48a341669050, type: 3}
   EastHall1_3: {fileID: 21300000, guid: 0a2dbd70abb5d2c41a7389f1811731f3, type: 3}
-  EastHall2_1: {fileID: 21300000, guid: ec656c52263c96b4ba53098bcb352735, type: 3}
+  EastHall2_1: {fileID: 21300000, guid: 563c4449915d5f142a78545203946d85, type: 3}
   EastHall2_2: {fileID: 21300000, guid: 7f3b2f87fd04d374789553a15d6ae591, type: 3}
   EastHall2_3: {fileID: 21300000, guid: b358d19607a54504a9c2d61dd3113fbd, type: 3}
   BackStage1: {fileID: 21300000, guid: b950f45837560b448a4e0e6c368499f6, type: 3}
