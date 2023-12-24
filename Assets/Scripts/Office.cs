@@ -4,6 +4,9 @@ using WiiU = UnityEngine.WiiU;
 
 public class Office : MonoBehaviour {
 
+    private bool LeftScareAlrdPlayed = false;
+    private bool RightScareAlrdPlayed = false;
+
     public GameObject OfficeImage;
     public RectTransform OfficeBounds;
 
@@ -267,9 +270,10 @@ public class Office : MonoBehaviour {
                         Light_L_Door_Bonnie.SetActive(true);
                         Light.Play();
 
-                        if (!L_Door_Closed)
+                        if (!L_Door_Closed && LeftScareAlrdPlayed == false)
                         {
                             Scare.Play();
+                            LeftScareAlrdPlayed = true;
                         }
                     }
 
@@ -304,8 +308,9 @@ public class Office : MonoBehaviour {
                         Light_L_Door_Bonnie.SetActive(true);
                         Light.Play();
 
-                        if (!L_Door_Closed)
+                        if (!L_Door_Closed && LeftScareAlrdPlayed == false)
                         {
+                            LeftScareAlrdPlayed = true;
                             Scare.Play();
                         }
                     }
@@ -380,8 +385,9 @@ public class Office : MonoBehaviour {
                         Light_R_Door_Chica.SetActive(true);
                         Light.Play();
 
-                        if (!R_Door_Closed)
+                        if (!R_Door_Closed && RightScareAlrdPlayed == false)
                         {
+                            RightScareAlrdPlayed = true;
                             Scare.Play();
                         }
                     }
@@ -448,8 +454,9 @@ public class Office : MonoBehaviour {
                         Light_R_Door_Chica.SetActive(true);
                         Light.Play();
 
-                        if (!R_Door_Closed)
+                        if (!R_Door_Closed && RightScareAlrdPlayed == false)
                         {
+                            RightScareAlrdPlayed = true;
                             Scare.Play();
                         }
                     }
