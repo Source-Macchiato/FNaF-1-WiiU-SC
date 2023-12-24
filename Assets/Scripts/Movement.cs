@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 public class Movement : MonoBehaviour {
+    public GameScript GameScript;
 
     public double BonnieMovementTime;
     public double ChicaMovementTime;
@@ -159,11 +160,12 @@ public class Movement : MonoBehaviour {
 
         if (NightNumber == 1)
         {
+            
             BonnieActive = true;
 
             if (!bonnieInCount)
             {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(115f, 180f), 0);
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(50f, 60f), 0);
                 BonnieMovementTime -= BonnieDifficulty;
 
 
@@ -172,13 +174,13 @@ public class Movement : MonoBehaviour {
 
             ChicaActive = true;
 
-            if(!chicaInCount)
+            if (!chicaInCount)
             {
-                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(215f, 280f), 0);
+                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(60f, 90f), 0);
                 ChicaMovementTime -= ChicaDifficulty;
-                
+
+
                 chicaInCount = true;
-                
             }
             
 
@@ -319,8 +321,9 @@ public class Movement : MonoBehaviour {
             }
         }
 
-
-if (NightNumber >= 1)
+if(GameScript.Time <= 240.0f)
+{
+    if (NightNumber >= 1)
 {
     BonnieMovementTime -= Time.deltaTime;
 
@@ -435,6 +438,9 @@ if (NightNumber >= 2)
                 }
             }
         }
+
+}
+
 
 
 

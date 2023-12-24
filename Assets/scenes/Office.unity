@@ -7594,6 +7594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998d6286e8193a84e9fe68e04c8e85b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameScript: {fileID: 1959479698}
   BonnieMovementTime: 0
   ChicaMovementTime: 0
   FreddyMovementTime: 0
@@ -7698,7 +7699,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5c4232dbce228d044ab2f6346046de4a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6c0e421fd2d79341acacda59fcdb496, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
