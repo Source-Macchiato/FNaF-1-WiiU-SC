@@ -158,6 +158,7 @@ public class Movement : MonoBehaviour {
             FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
         }
 
+        //-------------------------------Night 1 param ----------------------------------------
         if (NightNumber == 1)
         {
             
@@ -186,6 +187,7 @@ public class Movement : MonoBehaviour {
             
 
 
+        //-------------------------night 2 param -------------------------------------------
 
         }
 
@@ -195,7 +197,7 @@ public class Movement : MonoBehaviour {
 
             if (!bonnieInCount)
             {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(100f, 180f), 0);
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 60f), 0);
                 BonnieMovementTime -= BonnieDifficulty;
 
 
@@ -205,7 +207,7 @@ public class Movement : MonoBehaviour {
 
             if (!chicaInCount)
             {
-                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(110f, 200f), 0);
+                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 70f), 0);
                 ChicaMovementTime -= ChicaDifficulty;
 
 
@@ -223,6 +225,8 @@ public class Movement : MonoBehaviour {
                 foxyInCount = true;
             }
         }
+
+        //-----------------------night >=3 param (NOT FINISHED YET)--------------------------------------------
 
         if (NightNumber >= 3)
         {
@@ -322,10 +326,14 @@ public class Movement : MonoBehaviour {
             }
         }
 
+        //------------------------AI param depend of nights----------------------------------------
+
+//wait 240 seconds
 if(GameScript.Time <= 240.0f)
 {
     if (NightNumber == 1)
 {
+    //-------------------bonnie init------------------------------
     BonnieMovementTime -= Time.deltaTime;
 
     if (BonnieMovementTime <= 0)
@@ -367,16 +375,19 @@ if(GameScript.Time <= 240.0f)
             }
         }
     }
+    //-----------------------------------------------------
 
+
+    //---------chica init--------------------------------
     ChicaMovementTime -= Time.deltaTime;
 
     if (ChicaMovementTime <= 0)
     {
         if (ChicaActive)
         {
-            if(WhereBonnie != 1)
+            if(WhereBonnie != 1) //check if bonnie is ou of the stage.
             {
-            if (WhereChica == WhereBonnie)
+            if (WhereChica == WhereBonnie) // checki if bonnie is on Dining Area
             {
                 
                 WhereChica += 2;
@@ -392,7 +403,7 @@ if(GameScript.Time <= 240.0f)
 
                 GenNumber();
             }
-            else
+            else // if bonnie isn't at Dining Area 
             {
                 
                 WhereChica += 1;
@@ -414,6 +425,7 @@ if(GameScript.Time <= 240.0f)
 
         }
     }
+    //-----------------------------------------------
 }
 
 
@@ -421,20 +433,67 @@ if(GameScript.Time <= 240.0f)
 
 
 }
-
-if (NightNumber >= 2)
+// ---------------Night 2 param------------------
+if (NightNumber == 2)
 {
+    
+    //-------------------bonnie init------------------------------
+    BonnieMovementTime -= Time.deltaTime;
+
+    if (BonnieMovementTime <= 0)
+    {
+        if (BonnieActive)
+        {
+            
+            if (WhereBonnie == WhereChica)
+            {
+                
+                WhereBonnie += 2;
+                bonnieInCount = false;
+                GlitchActive = true;
+                MoveGlitch.SetActive(true);
+
+                if (!camIsUp)
+                {
+                    GlitchActive = false;
+                    MoveGlitch.SetActive(false);
+                }
+
+                GenNumber();
+            }
+            else
+            {
+                
+                WhereBonnie += 1;
+                bonnieInCount = false;
+                GlitchActive = true;
+                MoveGlitch.SetActive(true);
+
+                if (!camIsUp)
+                {
+                    GlitchActive = false;
+                    MoveGlitch.SetActive(false);
+                }
+
+                GenNumber();
+            }
+        }
+    }
+    //-----------------------------------------------------
+
+    //---------chica init--------------------------------
     ChicaMovementTime -= Time.deltaTime;
 
     if (ChicaMovementTime <= 0)
     {
         if (ChicaActive)
         {
-            
-            if (WhereChica == WhereBonnie && WhereBonnie == 2)
+            if(WhereBonnie != 1) //check if bonnie is ou of the stage.
+            {
+            if (WhereChica == WhereBonnie) // checki if bonnie is on Dining Area
             {
                 
-                WhereChica = 3;
+                WhereChica += 2;
                 chicaInCount = false;
                 GlitchActive = true;
                 MoveGlitch.SetActive(true);
@@ -447,7 +506,7 @@ if (NightNumber >= 2)
 
                 GenNumber();
             }
-            else
+            else // if bonnie isn't at Dining Area 
             {
                 
                 WhereChica += 1;
@@ -463,12 +522,42 @@ if (NightNumber >= 2)
 
                 GenNumber();
             }
+
+            }
+            
+
         }
     }
+    //-----------------------------------------------
+
+    //------------Foxy init--------------------------
+    if (!camIsUp)
+    {
+        FoxyMovementTime -= Time.deltaTime;
+    }
+     if (FoxyMovementTime <= 0)
+      {
+          if (FoxyActive)
+           {
+               WhereFoxy += 1;
+               foxyInCount = false;
+               GlitchActive = true;
+              MoveGlitch.SetActive(true);
+
+              if (!camIsUp)
+            {
+                GlitchActive = false;
+                MoveGlitch.SetActive(false);
+               }
+            GenNumber();
+                }
+            }
+
+    //-----------------------------------------------
 }
 
     
-
+    //----------night 3 param------------------------
         if (NightNumber >= 3)
         {
             FreddyMovementTime -= Time.deltaTime;
@@ -493,9 +582,11 @@ if (NightNumber >= 2)
             }
         }
 
+    //----------------------------------------------
 
 
 
+        //---------bonnie at door config------------
         if (BonnieOutsideDoor)
         {
             if (LeftDoorClosed)
@@ -520,7 +611,9 @@ if (NightNumber >= 2)
                 }
             }
         }
+        //-----------------------------------------
 
+        //-----------Chica at door config----------
         if (ChicaOutsideDoor)
         {
             if (RightDoorClosed)
@@ -545,7 +638,10 @@ if (NightNumber >= 2)
                 }
             }
         }
+        //------------------------------------------
 
+
+        //-----------freddy is close to the office---------
         if (FreddyOutsideDoor)
         {
             if (RightDoorClosed)
@@ -570,6 +666,7 @@ if (NightNumber >= 2)
                 }
             }
         }
+        //--------------------------------------------------
 
         if (GlitchActive)
         {
