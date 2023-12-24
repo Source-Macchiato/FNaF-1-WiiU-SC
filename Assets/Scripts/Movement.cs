@@ -310,80 +310,95 @@ public class Movement : MonoBehaviour {
         }
 
 
-        if (NightNumber >= 1)
+if (NightNumber >= 1)
+{
+    BonnieMovementTime -= Time.deltaTime;
+
+    if (BonnieMovementTime <= 0)
+    {
+        if (BonnieActive)
         {
-
-            BonnieMovementTime -= Time.deltaTime;
-
-            if (BonnieMovementTime <= 0)
+            // Ajouter la vérification pour éviter la position commune avec Chica
+            if (WhereBonnie == WhereChica)
             {
-                if (BonnieActive)
+                // Si la position est commune avec Chica, déplacer Bonnie à la position 3
+                WhereBonnie = 3;
+                bonnieInCount = false;
+                GlitchActive = true;
+                MoveGlitch.SetActive(true);
+
+                if (!camIsUp)
                 {
-                    WhereBonnie += 1;
-                    bonnieInCount = false;
-                    GlitchActive = true;
-                    MoveGlitch.SetActive(true);
-
-                    if (!camIsUp)
-                    {
-                        GlitchActive = false;
-                        MoveGlitch.SetActive(false);
-                    }
-
-                    GenNumber();
+                    GlitchActive = false;
+                    MoveGlitch.SetActive(false);
                 }
+
+                GenNumber();
+            }
+            else
+            {
+                // Sinon, incrémenter normalement
+                WhereBonnie += 1;
+                bonnieInCount = false;
+                GlitchActive = true;
+                MoveGlitch.SetActive(true);
+
+                if (!camIsUp)
+                {
+                    GlitchActive = false;
+                    MoveGlitch.SetActive(false);
+                }
+
+                GenNumber();
             }
         }
+    }
+}
 
+if (NightNumber >= 2)
+{
+    ChicaMovementTime -= Time.deltaTime;
 
-
-        if (NightNumber >= 2)
+    if (ChicaMovementTime <= 0)
+    {
+        if (ChicaActive)
         {
-            ChicaMovementTime -= Time.deltaTime;
-
-            if (ChicaMovementTime <= 0)
+            // Ajouter la vérification pour éviter la position commune avec Bonnie
+            if (WhereChica == WhereBonnie)
             {
-                if (ChicaActive)
+                // Si la position est commune avec Bonnie, déplacer Chica à la position 3
+                WhereChica = 3;
+                chicaInCount = false;
+                GlitchActive = true;
+                MoveGlitch.SetActive(true);
+
+                if (!camIsUp)
                 {
-                    WhereChica += 1;
-                    chicaInCount = false;
-                    GlitchActive = true;
-                    MoveGlitch.SetActive(true);
-
-                    if (!camIsUp)
-                    {
-                        GlitchActive = false;
-                        MoveGlitch.SetActive(false);
-                    }
-
-                    GenNumber();
+                    GlitchActive = false;
+                    MoveGlitch.SetActive(false);
                 }
-            }
 
-            if (!camIsUp)
-            {
-                FoxyMovementTime -= Time.deltaTime;
+                GenNumber();
             }
-
-            if (FoxyMovementTime <= 0)
+            else
             {
-                if (FoxyActive)
+                // Sinon, incrémenter normalement
+                WhereChica += 1;
+                chicaInCount = false;
+                GlitchActive = true;
+                MoveGlitch.SetActive(true);
+
+                if (!camIsUp)
                 {
-                    WhereFoxy += 1;
-                    foxyInCount = false;
-                    GlitchActive = true;
-                    MoveGlitch.SetActive(true);
-
-                    if (!camIsUp)
-                    {
-                        GlitchActive = false;
-                        MoveGlitch.SetActive(false);
-                    }
-
-                    GenNumber();
+                    GlitchActive = false;
+                    MoveGlitch.SetActive(false);
                 }
+
+                GenNumber();
             }
         }
+    }
+}
 
         if (NightNumber >= 3)
         {
