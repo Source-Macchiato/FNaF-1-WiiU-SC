@@ -22,7 +22,7 @@ public class EndOfNight : MonoBehaviour {
 
         if (NightNumber < 5) {
             SceneManager.LoadScene("NextNight");
-        } else if (NightNumber == 5) {
+        } else if (NightNumber == 6) {
             SceneManager.LoadScene("TheEnd");
         }
     }

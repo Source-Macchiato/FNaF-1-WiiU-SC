@@ -226,15 +226,145 @@ public class Movement : MonoBehaviour {
             }
         }
 
-        //-----------------------night >=3 param (NOT FINISHED YET)--------------------------------------------
+        //-----------------------night >=3 param --------------------------------------------
 
-        if (NightNumber >= 3)
+        if (NightNumber == 3)
         {
+
+            BonnieActive = true;
+
+            if (!bonnieInCount)
+            {
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 60f), 0);
+                BonnieMovementTime -= BonnieDifficulty;
+
+
+                bonnieInCount = true;
+            }
+            ChicaActive = true;
+
+            if (!chicaInCount)
+            {
+                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 70f), 0);
+                ChicaMovementTime -= ChicaDifficulty;
+
+
+                chicaInCount = true;
+            }
+
+            FoxyActive = true;
+
+            if (!foxyInCount)
+            {
+                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(140f, 180f), 0);
+                FoxyMovementTime -= FoxyDifficulty;
+
+
+                foxyInCount = true;
+            }
+
             FreddyActive = true;
 
             if (!freddyInCount)
             {
-                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(40f, 60f));
+                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(140f, 180f));
+                FreddyMovementTime -= FreddyDifficulty;
+
+                freddyInCount = true;
+            }
+        }
+        //--------------------------------------------------------------------------------------------------
+
+        //-------------------------night 4 param ----------------------------------------------------------
+        if (NightNumber == 4)
+        {
+
+            BonnieActive = true;
+
+            if (!bonnieInCount)
+            {
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 40f), 0);
+                BonnieMovementTime -= BonnieDifficulty;
+
+
+                bonnieInCount = true;
+            }
+            ChicaActive = true;
+
+            if (!chicaInCount)
+            {
+                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 50f), 0);
+                ChicaMovementTime -= ChicaDifficulty;
+
+
+                chicaInCount = true;
+            }
+
+            FoxyActive = true;
+
+            if (!foxyInCount)
+            {
+                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(140f, 180f), 0);
+                FoxyMovementTime -= FoxyDifficulty;
+
+
+                foxyInCount = true;
+            }
+
+            FreddyActive = true;
+
+            if (!freddyInCount)
+            {
+                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(100f, 120f));
+                FreddyMovementTime -= FreddyDifficulty;
+
+                freddyInCount = true;
+            }
+        }
+
+        //-------------------------------------------------------------------------------------
+
+        //-------------------------night 5 ---------------------------------------------------------
+                if (NightNumber == 5)
+        {
+
+            BonnieActive = true;
+
+            if (!bonnieInCount)
+            {
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 30f), 0);
+                BonnieMovementTime -= BonnieDifficulty;
+
+
+                bonnieInCount = true;
+            }
+            ChicaActive = true;
+
+            if (!chicaInCount)
+            {
+                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 30f), 0);
+                ChicaMovementTime -= ChicaDifficulty;
+
+
+                chicaInCount = true;
+            }
+
+            FoxyActive = true;
+
+            if (!foxyInCount)
+            {
+                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(140f, 180f), 0);
+                FoxyMovementTime -= FoxyDifficulty;
+
+
+                foxyInCount = true;
+            }
+
+            FreddyActive = true;
+
+            if (!freddyInCount)
+            {
+                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(90f, 100f));
                 FreddyMovementTime -= FreddyDifficulty;
 
                 freddyInCount = true;
@@ -434,7 +564,9 @@ if(GameScript.Time <= 240.0f)
 
 }
 // ---------------Night 2 param------------------
-if (NightNumber == 2)
+if(GameScript.Time <= 300.0f)
+{
+    if (NightNumber == 2)
 {
     
     //-------------------bonnie init------------------------------
@@ -556,31 +688,138 @@ if (NightNumber == 2)
     //-----------------------------------------------
 }
 
+}
+
+
     
-    //----------night 3 param------------------------
-        if (NightNumber >= 3)
-        {
-            FreddyMovementTime -= Time.deltaTime;
+//----------night 3, 4, 5 param------------------------
+    if (NightNumber >= 3) {
+      //-------------------bonnie init------------------------------
+      BonnieMovementTime -= Time.deltaTime;
 
-            if (FreddyMovementTime <= 0)
-            {
-                if (FreddyActive)
-                {
-                    WhereFreddy += 1;
-                    freddyInCount = false;
-                    GlitchActive = true;
-                    MoveGlitch.SetActive(true);
+      if (BonnieMovementTime <= 0) {
+        if (BonnieActive) {
 
-                    if (!camIsUp)
-                    {
-                        GlitchActive = false;
-                        MoveGlitch.SetActive(false);
-                    }
+          if (WhereBonnie == WhereChica) {
 
-                    GenNumber();
-                }
+            WhereBonnie += 2;
+            bonnieInCount = false;
+            GlitchActive = true;
+            MoveGlitch.SetActive(true);
+
+            if (!camIsUp) {
+              GlitchActive = false;
+              MoveGlitch.SetActive(false);
             }
+
+            GenNumber();
+          } else {
+
+            WhereBonnie += 1;
+            bonnieInCount = false;
+            GlitchActive = true;
+            MoveGlitch.SetActive(true);
+
+            if (!camIsUp) {
+              GlitchActive = false;
+              MoveGlitch.SetActive(false);
+            }
+
+            GenNumber();
+          }
         }
+      }
+      //-----------------------------------------------------
+
+      //---------chica init--------------------------------
+      ChicaMovementTime -= Time.deltaTime;
+
+      if (ChicaMovementTime <= 0) {
+        if (ChicaActive) {
+          if (WhereBonnie != 1) //check if bonnie is ou of the stage.
+          {
+            if (WhereChica == WhereBonnie) // checki if bonnie is on Dining Area
+            {
+
+              WhereChica += 2;
+              chicaInCount = false;
+              GlitchActive = true;
+              MoveGlitch.SetActive(true);
+
+              if (!camIsUp) {
+                GlitchActive = false;
+                MoveGlitch.SetActive(false);
+              }
+
+              GenNumber();
+            } else // if bonnie isn't at Dining Area 
+            {
+
+              WhereChica += 1;
+              chicaInCount = false;
+              GlitchActive = true;
+              MoveGlitch.SetActive(true);
+
+              if (!camIsUp) {
+                GlitchActive = false;
+                MoveGlitch.SetActive(false);
+              }
+
+              GenNumber();
+            }
+
+          }
+
+        }
+      }
+      //-----------------------------------------------
+
+      //------------Foxy init--------------------------
+      if (!camIsUp) {
+        FoxyMovementTime -= Time.deltaTime;
+      }
+      if (FoxyMovementTime <= 0) {
+        if (FoxyActive) {
+          WhereFoxy += 1;
+          foxyInCount = false;
+          GlitchActive = true;
+          MoveGlitch.SetActive(true);
+
+          if (!camIsUp) {
+            GlitchActive = false;
+            MoveGlitch.SetActive(false);
+          }
+          GenNumber();
+        }
+      }
+
+      //-----------------------------------------------
+
+      //-------freddy init--------------------
+      FreddyMovementTime -= Time.deltaTime;
+
+      if (FreddyMovementTime <= 0) {
+        if (FreddyActive) {
+            if(WhereBonnie != 1 && WhereChica != 1)
+            {
+            WhereFreddy += 1;
+            freddyInCount = false;
+            GlitchActive = true;
+            MoveGlitch.SetActive(true);
+
+          if (!camIsUp) {
+            GlitchActive = false;
+            MoveGlitch.SetActive(false);
+          }
+
+          GenNumber();
+
+            }
+          
+        }
+      }
+      //-------------------------------------------------
+    }
 
     //----------------------------------------------
 
