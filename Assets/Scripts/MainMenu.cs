@@ -5,6 +5,10 @@ using WiiU = UnityEngine.WiiU;
 
 public class MainMenu : MonoBehaviour {
 
+    public GameObject  advertisementImage;
+    private float startTime;
+    private float waitTime = 10f;
+    private bool advertisementIsActive;
     public float NightNumber;
     public Text NightNumberDisplayer;
 
@@ -14,6 +18,9 @@ public class MainMenu : MonoBehaviour {
 
     void Start()
     {
+        advertisementIsActive = false;
+
+        advertisementImage.SetActive(false);
         mainMenuNavigation = FindObjectOfType<MainMenuNavigation>();
 
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
@@ -25,6 +32,12 @@ public class MainMenu : MonoBehaviour {
 
     void Update()
     {
+        if (Time.time - startTime >= waitTime && advertisementIsActive == true)
+        {
+            // load scene after advertisementload is called
+            SceneManager.LoadScene("NextNight");
+        }
+
         WiiU.GamePadState gamePadState = gamePad.state;
 
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
@@ -51,7 +64,7 @@ public class MainMenu : MonoBehaviour {
             NightNumber = 1;
             PlayerPrefs.SetFloat("NightNumber", NightNumber);
             PlayerPrefs.Save();
-            SceneManager.LoadScene("Advertisement");
+            AdvertisementLoaded();
         }
         else if (mainMenuNavigation.selectedIndex == 1)
         {
@@ -59,12 +72,19 @@ public class MainMenu : MonoBehaviour {
 
             if (NightNumber == 1)
             {
-                SceneManager.LoadScene("Advertisement");
+                AdvertisementLoaded();
             }
             else if (NightNumber > 1 && NightNumber < 6)
             {
-                SceneManager.LoadScene("Office");
+                SceneManager.LoadScene("NextNight");
             }
         }
+    }
+
+    private void AdvertisementLoaded()
+    {
+        advertisementIsActive = true;
+        startTime = Time.time;
+        advertisementImage.SetActive(true);
     }
 }
