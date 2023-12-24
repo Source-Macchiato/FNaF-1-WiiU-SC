@@ -24,5 +24,5 @@ EditorBuildSettings:
     path: Assets/Scenes/NextNight.unity
     guid: 84aa54bb482bd3d4ca233971153dafbc
   - enabled: 1
-    path: Assets/Scenes/GmeOver.unity
+    path: Assets/Scenes/GameOver.unity
     guid: 5365eada158224345a60fd8c2f7ae2d5
