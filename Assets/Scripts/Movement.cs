@@ -410,6 +410,8 @@ if (NightNumber >= 2)
     }
 }
 
+    
+
         if (NightNumber >= 3)
         {
             FreddyMovementTime -= Time.deltaTime;
