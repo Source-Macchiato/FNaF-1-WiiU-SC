@@ -2324,7 +2324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fc66cad39fc144f8a3af09e51ab727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NightNumber: 0
+  NightNumber: 1
   NightNumberDisplayer: {fileID: 1465002431}
 --- !u!1 &1623041115
 GameObject:
