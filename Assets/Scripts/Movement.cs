@@ -157,7 +157,7 @@ public class Movement : MonoBehaviour {
             FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
         }
 
-        if (NightNumber >= 1)
+        if (NightNumber == 1)
         {
             BonnieActive = true;
 
@@ -186,13 +186,23 @@ public class Movement : MonoBehaviour {
 
         }
 
-        if (NightNumber >= 2)
+        if (NightNumber == 2)
         {
+            BonnieActive = true;
+
+            if (!bonnieInCount)
+            {
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(100f, 180f), 0);
+                BonnieMovementTime -= BonnieDifficulty;
+
+
+                bonnieInCount = true;
+            }
             ChicaActive = true;
 
             if (!chicaInCount)
             {
-                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(35f, 40f), 0);
+                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(110f, 200f), 0);
                 ChicaMovementTime -= ChicaDifficulty;
 
 
@@ -203,7 +213,7 @@ public class Movement : MonoBehaviour {
 
             if (!foxyInCount)
             {
-                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(60f, 90f), 0);
+                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(130f, 190f), 0);
                 FoxyMovementTime -= FoxyDifficulty;
 
 
@@ -319,7 +329,7 @@ if (NightNumber >= 1)
         if (BonnieActive)
         {
             // Ajouter la vérification pour éviter la position commune avec Chica
-            if (WhereBonnie == WhereChica)
+            if (WhereBonnie == WhereChica && WhereChica == 2)
             {
                 // Si la position est commune avec Chica, déplacer Bonnie à la position 3
                 WhereBonnie = 3;
@@ -364,7 +374,7 @@ if (NightNumber >= 2)
         if (ChicaActive)
         {
             // Ajouter la vérification pour éviter la position commune avec Bonnie
-            if (WhereChica == WhereBonnie)
+            if (WhereChica == WhereBonnie && WhereBonnie == 2)
             {
                 // Si la position est commune avec Bonnie, déplacer Chica à la position 3
                 WhereChica = 3;
