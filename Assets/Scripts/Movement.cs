@@ -161,11 +161,12 @@ public class Movement : MonoBehaviour {
         if (NightNumber == 1)
         {
             
+            
             BonnieActive = true;
 
             if (!bonnieInCount)
             {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(50f, 60f), 0);
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 60f), 0);
                 BonnieMovementTime -= BonnieDifficulty;
 
 
@@ -323,7 +324,7 @@ public class Movement : MonoBehaviour {
 
 if(GameScript.Time <= 240.0f)
 {
-    if (NightNumber >= 1)
+    if (NightNumber == 1)
 {
     BonnieMovementTime -= Time.deltaTime;
 
@@ -366,6 +367,54 @@ if(GameScript.Time <= 240.0f)
             }
         }
     }
+
+    ChicaMovementTime -= Time.deltaTime;
+
+    if (ChicaMovementTime <= 0)
+    {
+        if (ChicaActive)
+        {
+            
+            if (WhereChica == WhereBonnie && WhereBonnie == 2)
+            {
+                
+                WhereChica = 3;
+                chicaInCount = false;
+                GlitchActive = true;
+                MoveGlitch.SetActive(true);
+
+                if (!camIsUp)
+                {
+                    GlitchActive = false;
+                    MoveGlitch.SetActive(false);
+                }
+
+                GenNumber();
+            }
+            else
+            {
+                
+                WhereChica += 1;
+                chicaInCount = false;
+                GlitchActive = true;
+                MoveGlitch.SetActive(true);
+
+                if (!camIsUp)
+                {
+                    GlitchActive = false;
+                    MoveGlitch.SetActive(false);
+                }
+
+                GenNumber();
+            }
+        }
+    }
+}
+
+
+
+
+
 }
 
 if (NightNumber >= 2)
@@ -438,8 +487,6 @@ if (NightNumber >= 2)
                 }
             }
         }
-
-}
 
 
 

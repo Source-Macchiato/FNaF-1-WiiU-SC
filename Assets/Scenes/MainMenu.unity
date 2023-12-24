@@ -1107,8 +1107,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "This remake would be impossible without the help of the FNaF 3DS port.
-    Thanks to them and to Scott Cawthon\n\t\t\t<3"
+  m_Text: 
 --- !u!222 &571529123
 CanvasRenderer:
   m_ObjectHideFlags: 0

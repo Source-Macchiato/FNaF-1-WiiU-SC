@@ -189,7 +189,16 @@ public class ChangeImages : MonoBehaviour
             {
                 black.GetComponent<Image>().sprite = DiningArea1;
             }
+            if(WhereChica == 2)
+            {
+                black.GetComponent<Image>().sprite = DiningArea4;
+            }
+            else
+            {
+                black.GetComponent<Image>().sprite = DiningArea1;
+            }
         }
+        
 
         if (WichCamera == 3)
         {
