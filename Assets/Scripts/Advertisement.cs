@@ -20,6 +20,6 @@ public class Advertisement : MonoBehaviour {
 
         yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadScene("Office");
+        SceneManager.LoadScene("NextNight");
     }
 }
