@@ -333,10 +333,10 @@ if(GameScript.Time <= 240.0f)
         if (BonnieActive)
         {
             
-            if (WhereBonnie == WhereChica && WhereChica == 2)
+            if (WhereBonnie == WhereChica)
             {
                 
-                WhereBonnie = 3;
+                WhereBonnie += 2;
                 bonnieInCount = false;
                 GlitchActive = true;
                 MoveGlitch.SetActive(true);
@@ -374,11 +374,12 @@ if(GameScript.Time <= 240.0f)
     {
         if (ChicaActive)
         {
-            
-            if (WhereChica == WhereBonnie && WhereBonnie == 2)
+            if(WhereBonnie != 1)
+            {
+            if (WhereChica == WhereBonnie)
             {
                 
-                WhereChica = 3;
+                WhereChica += 2;
                 chicaInCount = false;
                 GlitchActive = true;
                 MoveGlitch.SetActive(true);
@@ -407,6 +408,10 @@ if(GameScript.Time <= 240.0f)
 
                 GenNumber();
             }
+
+            }
+            
+
         }
     }
 }
