@@ -1427,7 +1427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &355252805
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6941,7 +6941,6 @@ MonoBehaviour:
   OfficeImage: {fileID: 1969409250}
   OfficeBounds: {fileID: 1969409251}
   OfficeControllerObject: {fileID: 1959479695}
-  Max: 0
   Door_L_closed: {fileID: 620632518}
   Door_L_open: {fileID: 745054068}
   Door_R_closed: {fileID: 1480350697}
@@ -6971,6 +6970,7 @@ MonoBehaviour:
   LeftLightIsOn: 0
   RightLightIsOn: 0
   Scare: {fileID: 2026916158}
+  centerPosition: 0
 --- !u!4 &1959479697
 Transform:
   m_ObjectHideFlags: 0
