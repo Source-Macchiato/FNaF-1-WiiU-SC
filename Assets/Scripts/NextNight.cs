@@ -9,7 +9,7 @@ public class NextNight : MonoBehaviour {
     public Text NightNumberDisplayer;
 
     void Start () {
-        NightNumber = PlayerPrefs.GetFloat("NightNumber");
+        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
         NightNumberDisplayer.text = NightNumber.ToString();
 
         StartCoroutine(InitCoroutine());

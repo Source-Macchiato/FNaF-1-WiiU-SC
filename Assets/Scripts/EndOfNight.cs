@@ -10,7 +10,7 @@ public class EndOfNight : MonoBehaviour {
     void Start () {
         StartCoroutine(InitCoroutine());
 
-        NightNumber = PlayerPrefs.GetFloat("NightNumber");
+        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
     }
 
     IEnumerator InitCoroutine() {

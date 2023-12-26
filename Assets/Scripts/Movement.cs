@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour {
     void Start()
     {
 
-        NightNumber = PlayerPrefs.GetFloat("NightNumber");
+        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
         GenNumber();
     }

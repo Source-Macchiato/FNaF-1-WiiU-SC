@@ -26,7 +26,7 @@ public class GameScript : MonoBehaviour {
 
 	void Start ()
     {
-        NightNumber = PlayerPrefs.GetFloat("NightNumber");
+        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
         NightNumberDisplayer.text = NightNumber.ToString();
 
         //--------------------------------------CallAndNight----------------------//
