@@ -474,7 +474,7 @@ if(GameScript.Time <= 240.0f)
             if (WhereBonnie == WhereChica)
             {
                 
-                WhereBonnie += 2;
+                WhereBonnie += 1;
                 bonnieInCount = false;
                 GlitchActive = true;
                 MoveGlitch.SetActive(true);
@@ -517,7 +517,7 @@ if(GameScript.Time <= 240.0f)
         {
             if(WhereBonnie != 1) //check if bonnie is ou of the stage.
             {
-            if (WhereChica == WhereBonnie) // checki if bonnie is on Dining Area
+            if (WhereBonnie == 2) // checki if bonnie is on Dining Area
             {
                 
                 WhereChica += 2;
@@ -580,7 +580,7 @@ if(GameScript.Time <= 300.0f)
             if (WhereBonnie == WhereChica)
             {
                 
-                WhereBonnie += 2;
+                WhereBonnie += 1;
                 bonnieInCount = false;
                 GlitchActive = true;
                 MoveGlitch.SetActive(true);
@@ -622,7 +622,7 @@ if(GameScript.Time <= 300.0f)
         {
             if(WhereBonnie != 1) //check if bonnie is ou of the stage.
             {
-            if (WhereChica == WhereBonnie) // checki if bonnie is on Dining Area
+            if (WhereBonnie == 2) // checki if bonnie is on Dining Area
             {
                 
                 WhereChica += 2;
@@ -702,7 +702,7 @@ if(GameScript.Time <= 300.0f)
 
           if (WhereBonnie == WhereChica) {
 
-            WhereBonnie += 2;
+            WhereBonnie += 1;
             bonnieInCount = false;
             GlitchActive = true;
             MoveGlitch.SetActive(true);
@@ -738,7 +738,7 @@ if(GameScript.Time <= 300.0f)
         if (ChicaActive) {
           if (WhereBonnie != 1) //check if bonnie is ou of the stage.
           {
-            if (WhereChica == WhereBonnie) // checki if bonnie is on Dining Area
+            if (WhereBonnie == 2) // checki if bonnie is on Dining Area
             {
 
               WhereChica += 2;
