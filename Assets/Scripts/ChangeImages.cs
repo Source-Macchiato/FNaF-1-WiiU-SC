@@ -13,10 +13,27 @@ public class ChangeImages : MonoBehaviour
     public Sprite ShowStage3;
     public Sprite ShowStage4;
 
+    
+    // -----------DiningArea var----------
+
+
+    
+    //default dining Area
     public Sprite DiningArea1;
+    
+    //bonnie dining area
     public Sprite DiningArea2;
+    
+    //chica dining area
     public Sprite DiningArea3;
+    
+    //bonnie pos2 dining area
     public Sprite DiningArea4;
+
+    //freddy dining Area
+    public sprite DiningArea5;
+
+
 
     public Sprite PirateCove1;
     public Sprite PirateCove2;
@@ -34,6 +51,7 @@ public class ChangeImages : MonoBehaviour
     public Sprite EastHall1_1;
     public Sprite EastHall1_2;
     public Sprite EastHall1_3;
+    public sprite EastHall1_4;
 
     public Sprite EastHall2_1;
     public Sprite EastHall2_2;
@@ -45,9 +63,11 @@ public class ChangeImages : MonoBehaviour
 
     public Sprite Kitchen1;
 
+    //---------restRoom----------------
     public Sprite RestRooms1;
     public Sprite RestRooms2;
     public Sprite RestRooms3;
+    public sprite RestRoom4;
 
     public double RandCamNoise;
     public bool noiseIsPlaying;
@@ -177,6 +197,8 @@ public class ChangeImages : MonoBehaviour
 
         }
 
+        
+        //-----------------dining Area-------------------
         if (WichCamera == 2)
         {
             WichCameraShower.GetComponent<Text>().text = "Dining Area";
@@ -197,7 +219,18 @@ public class ChangeImages : MonoBehaviour
             {
                 black.GetComponent<Image>().sprite = DiningArea1;
             }
+            if(WhereFreddy == 2)
+            {
+                black.GetComponent<Image>().sprite = DiningArea5
+
+            }
+            else
+            {
+                black.GetComponent<Image>().sprite = DiningArea1;
+            }
         }
+
+        //--------------------------------------------------
         
 
         if (WichCamera == 3)
@@ -278,6 +311,15 @@ public class ChangeImages : MonoBehaviour
             {
                 black.GetComponent<Image>().sprite = EastHall1_1;
             }
+            if(WhereFreddy == 5)
+            {
+                black.GetComponent<Image>().sprite = EastHall1_4;
+
+            }
+            else
+            {
+                black.GetComponent<Image>().sprite = EastHall1_1;
+            }
         }
 
         if (WichCamera == 8)
@@ -297,7 +339,7 @@ public class ChangeImages : MonoBehaviour
                 black.GetComponent<Image>().sprite = EastHall2_1;
             }
 
-            if (WhereFreddy == 2)
+            if (WhereFreddy == 6)
             {
                 if (WhereChica <= 6)
                 {
@@ -355,6 +397,14 @@ public class ChangeImages : MonoBehaviour
             else if (WhereChica == 4)
             {
                 black.GetComponent<Image>().sprite = RestRooms3;
+            }
+            else
+            {
+                black.GetComponent<Image>().sprite = RestRooms1;
+            }
+            if(WhereFreddy == 3)
+            {
+                black.GetComponent<Image>().sprite = RestRooms4;
             }
             else
             {
@@ -420,13 +470,13 @@ public class ChangeImages : MonoBehaviour
                 Phonecalls.SetActive(false);
             }
         }
-        if (WhereFreddy >= 2)
+        if (WhereFreddy >= 6)
         {
             OfficeObject.GetComponent<Movement>().FreddyOutsideDoor = true;
             OfficeObject.GetComponent<RandNumberGen>().FreddyOutsideRightDoor = true;
         }
 
-        if (WhereFreddy >= 3)
+        if (WhereFreddy >= 7)
         {
             FreddyJumpscare.SetActive(true);
             isBeingJumpscared = true;
