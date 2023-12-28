@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &26534561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8908,6 +8908,7 @@ MonoBehaviour:
   DiningArea2: {fileID: 21300000, guid: d7f3a535228b8e341855e9a2e9577c02, type: 3}
   DiningArea3: {fileID: 21300000, guid: ff121e442258e0443b7e3457d587b548, type: 3}
   DiningArea4: {fileID: 21300000, guid: d6a660b4c53bbb5448a8c95bf9b220e2, type: 3}
+  DiningArea5: {fileID: 21300000, guid: 7f648771f3a6de049b812dbc2260a372, type: 3}
   PirateCove1: {fileID: 21300000, guid: ecf619e98d06b2749a0c85cb981be929, type: 3}
   PirateCove2: {fileID: 21300000, guid: 5a184e008d7e3d443b2c43d235c3ff93, type: 3}
   PirateCove3: {fileID: 21300000, guid: eb2640a0abbd8354b8ac7426c7749e39, type: 3}
@@ -8920,6 +8921,7 @@ MonoBehaviour:
   EastHall1_1: {fileID: 21300000, guid: 07c924aba47d2d84d8e2229b4c5a1b19, type: 3}
   EastHall1_2: {fileID: 21300000, guid: 82aeedf6a803e5249ada48a341669050, type: 3}
   EastHall1_3: {fileID: 21300000, guid: 0a2dbd70abb5d2c41a7389f1811731f3, type: 3}
+  EastHall1_4: {fileID: 21300000, guid: 392e3d6015132ab40a656948da0651af, type: 3}
   EastHall2_1: {fileID: 21300000, guid: 563c4449915d5f142a78545203946d85, type: 3}
   EastHall2_2: {fileID: 21300000, guid: 7f3b2f87fd04d374789553a15d6ae591, type: 3}
   EastHall2_3: {fileID: 21300000, guid: b358d19607a54504a9c2d61dd3113fbd, type: 3}
@@ -8930,6 +8932,7 @@ MonoBehaviour:
   RestRooms1: {fileID: 21300000, guid: cf97c94edd9cba34bb4248ce2c49a925, type: 3}
   RestRooms2: {fileID: 21300000, guid: 0db7f06343d5a614aba4396a20e9b4f4, type: 3}
   RestRooms3: {fileID: 21300000, guid: 5e968d259a26b2349a19e8d09ea91b32, type: 3}
+  RestRooms4: {fileID: 21300000, guid: 04f228aa691973b418ef0eb245b69883, type: 3}
   RandCamNoise: 0
   noiseIsPlaying: 0
   WhereBonnie: 1
@@ -9403,7 +9406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2018316004
 MonoBehaviour:
   m_ObjectHideFlags: 0
