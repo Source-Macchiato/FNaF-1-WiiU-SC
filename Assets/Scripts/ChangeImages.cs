@@ -31,7 +31,7 @@ public class ChangeImages : MonoBehaviour
     public Sprite DiningArea4;
 
     //freddy dining Area
-    public sprite DiningArea5;
+    public Sprite DiningArea5;
 
 
 
@@ -51,7 +51,7 @@ public class ChangeImages : MonoBehaviour
     public Sprite EastHall1_1;
     public Sprite EastHall1_2;
     public Sprite EastHall1_3;
-    public sprite EastHall1_4;
+    public Sprite EastHall1_4;
 
     public Sprite EastHall2_1;
     public Sprite EastHall2_2;
@@ -67,7 +67,7 @@ public class ChangeImages : MonoBehaviour
     public Sprite RestRooms1;
     public Sprite RestRooms2;
     public Sprite RestRooms3;
-    public sprite RestRoom4;
+    public Sprite RestRooms4;
 
     public double RandCamNoise;
     public bool noiseIsPlaying;
@@ -221,7 +221,7 @@ public class ChangeImages : MonoBehaviour
             }
             if(WhereFreddy == 2)
             {
-                black.GetComponent<Image>().sprite = DiningArea5
+                black.GetComponent<Image>().sprite = DiningArea5;
 
             }
             else

@@ -799,7 +799,8 @@ if(GameScript.Time <= 300.0f)
       FreddyMovementTime -= Time.deltaTime;
 
       if (FreddyMovementTime <= 0) {
-        if (FreddyActive) {
+        if (FreddyActive) 
+        {
             if(WhereBonnie != 1 && WhereChica != 1)
             {
             WhereFreddy += 1;
@@ -807,7 +808,8 @@ if(GameScript.Time <= 300.0f)
             GlitchActive = true;
             MoveGlitch.SetActive(true);
 
-          if (!camIsUp) {
+          if (!camIsUp) 
+          {
             GlitchActive = false;
             MoveGlitch.SetActive(false);
           }
@@ -841,7 +843,7 @@ if(GameScript.Time <= 300.0f)
                     {
                         BonnieOutsideDoor = false;
                         OfficeObject.GetComponent<Office>().BonnieOutsideDoor = false;
-                        WhereBonnie = 2;
+                        WhereBonnie = 3;
                         PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
                         PlayerPrefs.Save();
                         WaitForMovingFromDoorBonnie = false;
