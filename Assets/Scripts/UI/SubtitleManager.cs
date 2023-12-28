@@ -6,30 +6,41 @@ public class SubtitleManager : MonoBehaviour
 {
     public Text subtitleText;
     private List<string> subtitleIdentifiers;
-    public List<float> displayDurations;
+    private List<float> displayDurations;
 
     public float startDelay = 0.0f;
     private float displayStartTime;
     private int currentIndex = 0;
     private bool isDelayOver = false;
 
+    private float NightNumber;
+
+    private TextAsset subtitleFile;
+
     void Start()
     {
         subtitleIdentifiers = new List<string>();
         displayDurations = new List<float>();
 
-        TextAsset subtitleFile = Resources.Load<TextAsset>("Data/night1");
+        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
-        string[] lines = subtitleFile.text.Split('\n');
-        for (int i = 0; i < lines.Length; i++)
+        if (NightNumber == 1 || NightNumber == 2 || NightNumber == 3 || NightNumber == 4 || NightNumber == 5)
         {
-            string line = lines[i];
-            string[] parts = line.Split(new char[] { ';' });
-            if (parts.Length == 2)
+            subtitleFile = Resources.Load<TextAsset>("Data/night" + NightNumber);
+
+            string[] lines = subtitleFile.text.Split('\n');
+            for (int i = 0; i < lines.Length; i++)
             {
-                subtitleIdentifiers.Add(parts[0]);
-                displayDurations.Add(float.Parse(parts[1]));
+                string line = lines[i];
+                string[] parts = line.Split(new char[] { ';' });
+                if (parts.Length == 2)
+                {
+                    subtitleIdentifiers.Add(parts[0]);
+                    displayDurations.Add(float.Parse(parts[1]));
+                }
             }
+
+            displayStartTime = Time.timeSinceLevelLoad + startDelay;
         }
 
         displayStartTime = Time.timeSinceLevelLoad + startDelay;
@@ -72,7 +83,7 @@ public class SubtitleManager : MonoBehaviour
     {
         string translatedText = GetTranslatedText(subtitleIdentifiers[currentIndex]);
         subtitleText.text = translatedText;
-        displayStartTime = Time.timeSinceLevelLoad; // Utilisation directe de Time.timeSinceLevelLoad sans addition
+        displayStartTime = Time.timeSinceLevelLoad;
     }
 
     string GetTranslatedText(string identifier)
