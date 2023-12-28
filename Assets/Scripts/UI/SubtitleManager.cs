@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SubtitleManager : MonoBehaviour
 {
     public Text subtitleText;
-    public List<string> subtitleIdentifiers;
+    private List<string> subtitleIdentifiers;
     public List<float> displayDurations;
 
     public float startDelay = 0.0f;
@@ -15,22 +15,21 @@ public class SubtitleManager : MonoBehaviour
 
     void Start()
     {
-        TextAsset subtitleFile = Resources.Load<TextAsset>("Data/night1.txt");
+        subtitleIdentifiers = new List<string>();
+        displayDurations = new List<float>();
+
+        TextAsset subtitleFile = Resources.Load<TextAsset>("Data/night1");
+
         string[] lines = subtitleFile.text.Split('\n');
-        foreach (string line in lines)
+        for (int i = 0; i < lines.Length; i++)
         {
-            string[] parts = line.Split(';');
+            string line = lines[i];
+            string[] parts = line.Split(new char[] { ';' });
             if (parts.Length == 2)
             {
                 subtitleIdentifiers.Add(parts[0]);
                 displayDurations.Add(float.Parse(parts[1]));
             }
-        }
-
-        if (subtitleIdentifiers.Count != displayDurations.Count)
-        {
-            Debug.LogError("Subtitle identifiers and display durations lists must have the same size!");
-            return;
         }
 
         displayStartTime = Time.timeSinceLevelLoad + startDelay;
@@ -73,7 +72,7 @@ public class SubtitleManager : MonoBehaviour
     {
         string translatedText = GetTranslatedText(subtitleIdentifiers[currentIndex]);
         subtitleText.text = translatedText;
-        displayStartTime = Time.timeSinceLevelLoad + displayDurations[currentIndex];
+        displayStartTime = Time.timeSinceLevelLoad; // Utilisation directe de Time.timeSinceLevelLoad sans addition
     }
 
     string GetTranslatedText(string identifier)

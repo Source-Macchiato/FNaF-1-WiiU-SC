@@ -6546,7 +6546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1528391396
 Transform:
   m_ObjectHideFlags: 0
@@ -6572,72 +6572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subtitleText: {fileID: 1779849357}
-  subtitleIdentifiers:
-  - nightone.phoneguy.lineone
-  - nightone.phoneguy.linetwo
-  - nightone.phoneguy.linethree
-  - nightone.phoneguy.linefour
-  - nightone.phoneguy.linefive
-  - nightone.phoneguy.linesix
-  - nightone.phoneguy.lineseven
-  - nightone.phoneguy.lineheight
-  - nightone.phoneguy.linenine
-  - nightone.phoneguy.lineten
-  - nightone.phoneguy.lineeleven
-  - nightone.phoneguy.linetwelve
-  - nightone.phoneguy.linethirteen
-  - nightone.phoneguy.linefourteen
-  - nightone.phoneguy.linefifteen
-  - nightone.phoneguy.linesixteen
-  - nightone.phoneguy.lineseventeen
-  - nightone.phoneguy.lineeighteen
-  - nightone.phoneguy.linenineteen
-  - nightone.phoneguy.linetwenty
-  - nightone.phoneguy.linetwentyone
-  - nightone.phoneguy.linetwentytwo
-  - nightone.phoneguy.linetwentythree
-  - nightone.phoneguy.linetwentyfour
-  - nightone.phoneguy.linetwentyfive
-  - nightone.phoneguy.linetwentysix
-  - nightone.phoneguy.linetwentyseven
-  - nightone.phoneguy.linetwentyheight
-  - nightone.phoneguy.linetwentynine
-  - nightone.phoneguy.linethirty
-  - nightone.phoneguy.linethirtyone
-  - nightone.phoneguy.linethirtytwo
-  displayDurations:
-  - 8.672
-  - 7.768
-  - 5.451
-  - 6.715
-  - 5.656
-  - 5.768
-  - 5.743
-  - 4.531
-  - 5.956
-  - 5.014
-  - 6.289
-  - 6.531
-  - 5.611
-  - 4.706
-  - 5.781
-  - 6.713
-  - 4.795
-  - 4.962
-  - 8.892
-  - 6.31
-  - 8.207
-  - 5.047
-  - 5.595
-  - 6.675
-  - 6.063
-  - 4.015
-  - 6.111
-  - 3.806
-  - 3.049
-  - 5.12
-  - 4.052
-  - 5.454
+  displayDurations: []
   startDelay: 18.819
 --- !u!1 &1556741738
 GameObject:
