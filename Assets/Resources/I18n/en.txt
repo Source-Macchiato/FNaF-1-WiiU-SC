@@ -49,3 +49,6 @@ nightone.phoneguy.linethirty=Y-Yeah, they don't tell you these things when you s
 nightone.phoneguy.linethirtyone=I'll chat with you tomorrow. Uh, check those cameras, and remember to close the doors
 nightone.phoneguy.linethirtytwo=only if absolutely necessary. Gotta conserve power. Alright, good night.
 nighttwo.phoneguy.lineone=Uhh, Hello? Hello? Uh, well, if you're hearing this and you made it to day two, uh, congrats!
+nighttwo.phoneguy.linetwo=I-I won't talk quite as long this time since Freddy and his friends tend to become more active as the week progresses.
+nighttwo.phoneguy.linethree=Uhh, it might be a good idea to peek at those cameras while I talk
+nighttwo.phoneguy.linefour=just to make sure everyone's in their proper place. You know...
