@@ -48,3 +48,4 @@ nightone.phoneguy.linetwentynine=and teeth when they pop out the front of the ma
 nightone.phoneguy.linethirty=Y-Yeah, they don't tell you these things when you sign up. But hey, first day should be a breeze.
 nightone.phoneguy.linethirtyone=I'll chat with you tomorrow. Uh, check those cameras, and remember to close the doors
 nightone.phoneguy.linethirtytwo=only if absolutely necessary. Gotta conserve power. Alright, good night.
+nighttwo.phoneguy.lineone=Uhh, Hello? Hello? Uh, well, if you're hearing this and you made it to day two, uh, congrats!
