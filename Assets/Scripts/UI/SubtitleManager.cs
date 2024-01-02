@@ -8,7 +8,6 @@ public class SubtitleManager : MonoBehaviour
     private List<string> subtitleIdentifiers;
     private List<float> displayDurations;
 
-    public float startDelay = 0.0f;
     private float displayStartTime;
     private int currentIndex = 0;
     private bool isDelayOver = false;
@@ -40,10 +39,10 @@ public class SubtitleManager : MonoBehaviour
                 }
             }
 
-            displayStartTime = Time.timeSinceLevelLoad + startDelay;
+            displayStartTime = Time.timeSinceLevelLoad;
         }
 
-        displayStartTime = Time.timeSinceLevelLoad + startDelay;
+        displayStartTime = Time.timeSinceLevelLoad;
     }
 
     void Update()
