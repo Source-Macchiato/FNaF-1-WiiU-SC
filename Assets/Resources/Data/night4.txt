@@ -1,0 +1,8 @@
+none;17.650
+nightfour.phoneguy.lineone;5.680
+nightfour.phoneguy.linetwo;7.176
+nightfour.phoneguy.linethree;5.581
+nightfour.phoneguy.linefour;7.594
+nightfour.phoneguy.linefive;5.417
+nightfour.phoneguy.linesix;4.601
+nightfour.phoneguy.lineseven;7.777
