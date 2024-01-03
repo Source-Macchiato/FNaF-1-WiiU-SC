@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class SubtitleManager : MonoBehaviour
 {
+    public GameObject subtitleTextGameObject;
     public Text subtitleText;
     private List<string> subtitleIdentifiers;
     private List<float> displayDurations;
@@ -40,6 +41,11 @@ public class SubtitleManager : MonoBehaviour
             }
 
             displayStartTime = Time.timeSinceLevelLoad;
+        }
+
+        if (NightNumber == 5)
+        {
+            subtitleTextGameObject.transform.Rotate(0f, 180f, 0f);
         }
 
         displayStartTime = Time.timeSinceLevelLoad;
