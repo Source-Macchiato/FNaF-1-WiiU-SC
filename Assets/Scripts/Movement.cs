@@ -54,6 +54,8 @@ public class Movement : MonoBehaviour {
 
     public GameObject OfficeObject;
 
+    public AudioSource FreddyLaugh1;
+
 
     void Start()
     {
@@ -235,7 +237,7 @@ public class Movement : MonoBehaviour {
 
             if (!bonnieInCount)
             {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 60f), 0);
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(400f, 500f), 0);
                 BonnieMovementTime -= BonnieDifficulty;
 
 
@@ -517,7 +519,7 @@ if(GameScript.Time <= 240.0f)
         {
             if(WhereBonnie != 1) //check if bonnie is ou of the stage.
             {
-            if (WhereBonnie == 2) // checki if bonnie is on Dining Area
+            if (WhereBonnie == 2) // check if bonnie is on Dining Area
             {
                 
                 WhereChica += 2;
@@ -571,6 +573,7 @@ if(GameScript.Time <= 300.0f)
     
     //-------------------bonnie init------------------------------
     BonnieMovementTime -= Time.deltaTime;
+    
 
     if (BonnieMovementTime <= 0)
     {
@@ -695,6 +698,7 @@ if(GameScript.Time <= 300.0f)
 //----------night 3, 4, 5 param------------------------
     if (NightNumber >= 3) {
       //-------------------bonnie init------------------------------
+      
       BonnieMovementTime -= Time.deltaTime;
 
       if (BonnieMovementTime <= 0) {
@@ -775,6 +779,7 @@ if(GameScript.Time <= 300.0f)
       //-----------------------------------------------
 
       //------------Foxy init--------------------------
+      /*
       if (!camIsUp) {
         FoxyMovementTime -= Time.deltaTime;
       }
@@ -792,6 +797,7 @@ if(GameScript.Time <= 300.0f)
           GenNumber();
         }
       }
+      */
 
       //-----------------------------------------------
 
@@ -801,12 +807,14 @@ if(GameScript.Time <= 300.0f)
       if (FreddyMovementTime <= 0) {
         if (FreddyActive) 
         {
-            if(WhereBonnie != 1 && WhereChica != 1)
+            if(WhereBonnie != 2 && WhereFreddy == 1 || WhereChica != 2 && WhereFreddy == 1 || WhereChica != 3 && WhereFreddy == 2 || WhereChica != 4 && WhereFreddy == 3 || WhereChica != 5 && WhereFreddy == 4 || WhereChica != 6 && WhereFreddy == 5)
             {
             WhereFreddy += 1;
             freddyInCount = false;
             GlitchActive = true;
             MoveGlitch.SetActive(true);
+            FreddyLaugh1.Play();
+
 
           if (!camIsUp) 
           {
