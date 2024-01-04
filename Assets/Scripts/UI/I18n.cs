@@ -6,7 +6,7 @@ public class I18n
 {
     public static Dictionary<string, string> Texts { get; private set; }
 
-    public static bool forceEnglish = true;
+    public static bool forceEnglish = false;
 
     static I18n()
     {
@@ -75,9 +75,7 @@ public class I18n
         switch (lang)
         {
             case SystemLanguage.English: res = "EN"; break;
-            case SystemLanguage.Spanish: res = "ES"; break;
             case SystemLanguage.French: res = "FR"; break;
-            case SystemLanguage.Italian: res = "IT"; break;
         }
         return res;
     }
