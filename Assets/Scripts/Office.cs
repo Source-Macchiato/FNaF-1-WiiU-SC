@@ -42,7 +42,9 @@ public class Office : MonoBehaviour {
     public AudioSource DoorClose;
     public AudioSource Light;
 
-    public float speed = 230f;
+    private float speed = 400f;
+    private float leftEdge = 1225f;
+    private float rightEdge = 735f;
 
     public bool BonnieOutsideDoor = false;
     public bool ChicaOutsideDoor = false;
@@ -72,102 +74,50 @@ public class Office : MonoBehaviour {
 
         WiiU.GamePadState gamePadState = gamePad.state;
 
-        /*float leftHorizontalInput = Input.GetAxis("LeftStickX");
+        float leftHorizontalInput = Input.GetAxis("LeftStickX");
 
         if (Mathf.Abs(leftHorizontalInput) > joystickThreshold)
         {
-            int direction = leftHorizontalInput > 0 ? -1 : 1;
-
-            centerPosition += direction * Time.deltaTime;
-
-            if (centerPosition > 0.3495193f)
-            {
-                centerPosition = 0.3495193f;
-            }
-
-            if (centerPosition < -0.5801594f)
-            {
-                centerPosition = -0.5801594f;
-            }
+            int direction = leftHorizontalInput > 0 ? 1 : -1;
 
             if (direction > 0)
             {
-                OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
+                OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
             else
             {
-                OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
+                OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
-        }*/
+        }
 
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsPressed(WiiU.GamePadButton.Left))
+            if (gamePadState.IsPressed(WiiU.GamePadButton.Left) && OfficeImage.transform.position.x <= leftEdge)
             {
-                centerPosition += 1 * Time.deltaTime;
-
-                if (centerPosition > 0.3495193f)
-                {
-                    centerPosition = 0.3495193f;
-                }
-
-                if (centerPosition < 0.3495193f)
-                {
-                    OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
-                }
+                OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
 
-            if (gamePadState.IsPressed(WiiU.GamePadButton.Right))
+            if (gamePadState.IsPressed(WiiU.GamePadButton.Right) && OfficeImage.transform.position.x >= rightEdge)
             {
-                centerPosition -= 1 * Time.deltaTime;
-
-                if (centerPosition < -0.5801594f)
-                {
-                    centerPosition = -0.5801594f;
-                }
-
-                if (centerPosition > -0.5801594f)
-                {
-                    OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
-                }
+                OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
         }
 
         if (Application.isEditor)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) && OfficeImage.transform.position.x <= leftEdge)
             {
-                centerPosition += 1 * Time.deltaTime;
-
-                if (centerPosition > 0.3495193f)
-                {
-                    centerPosition = 0.3495193f;
-                }
-
-                if (centerPosition < 0.3495193f)
-                {
-                    OfficeImage.transform.position += Vector3.right * speed * Time.deltaTime;
-                }
+                OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) && OfficeImage.transform.position.x >= rightEdge)
             {
-                centerPosition -= 1 * Time.deltaTime;
-
-                if (centerPosition < -0.5801594f)
-                {
-                    centerPosition = -0.5801594f;
-                }
-
-                if (centerPosition > -0.5801594f)
-                {
-                    OfficeImage.transform.position += Vector3.left * speed * Time.deltaTime;
-                }
+                OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
         }
 
-        //-----------------------------------------------
-        if (centerPosition == 0.3495193f)
+        // Check position on the left for the left door
+        if (OfficeImage.transform.position.x >= leftEdge)
         {
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
@@ -251,8 +201,7 @@ public class Office : MonoBehaviour {
                 }
             }
 
-            //-------------------------------------LIGHT---------------------------------------------------------------------------------------------------
-
+            // Left light
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
@@ -331,8 +280,8 @@ public class Office : MonoBehaviour {
         }
         //-----------------------------------------------
 
-        //-----------------------------------------------
-        if (centerPosition == -0.5801594f)
+        // Check position on the right for the right door
+        if (OfficeImage.transform.position.x <= rightEdge)
         {
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
@@ -473,9 +422,8 @@ public class Office : MonoBehaviour {
                 }
             }
         }
-        //-----------------------------------------------
 
-        //-----------------------------------------------
+        // Right light
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
             if (gamePadState.IsReleased(WiiU.GamePadButton.X))
