@@ -42,9 +42,9 @@ public class Office : MonoBehaviour {
     public AudioSource DoorClose;
     public AudioSource Light;
 
-    private float speed = 400f;
-    private float leftEdge = 1225f;
-    private float rightEdge = 735f;
+    private const float speed = 400f;
+    private const float leftEdge = 271.72f;
+    private const float rightEdge = -253.72f;
 
     public bool BonnieOutsideDoor = false;
     public bool ChicaOutsideDoor = false;
@@ -83,36 +83,60 @@ public class Office : MonoBehaviour {
             if (direction > 0)
             {
                 OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                if (OfficeImage.transform.localPosition.x >= leftEdge)
+                {
+                    OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                }
             }
             else
             {
                 OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                if (OfficeImage.transform.localPosition.x <= rightEdge)
+                {
+                    OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                }
             }
         }
 
-        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+        else if (gamePadState.gamePadErr == WiiU.GamePadError.None) // (max here) i think if i didnt make this a else if then you could move faster if you use joystick and dpad at the same time, but look at this code it seems the french dont like else ifs
         {
-            if (gamePadState.IsPressed(WiiU.GamePadButton.Left) && OfficeImage.transform.position.x <= leftEdge)
+            if (gamePadState.IsPressed(WiiU.GamePadButton.Left) && OfficeImage.transform.localPosition.x <= leftEdge)
             {
                 OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                if (OfficeImage.transform.localPosition.x >= leftEdge)
+                {
+                    OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                }
             }
 
-            if (gamePadState.IsPressed(WiiU.GamePadButton.Right) && OfficeImage.transform.position.x >= rightEdge)
+            if (gamePadState.IsPressed(WiiU.GamePadButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
             {
                 OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                if (OfficeImage.transform.localPosition.x <= rightEdge)
+                {
+                    OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                }
             }
         }
 
         if (Application.isEditor)
         {
-            if (Input.GetKey(KeyCode.LeftArrow) && OfficeImage.transform.position.x <= leftEdge)
+            if (Input.GetKey(KeyCode.LeftArrow) && OfficeImage.transform.localPosition.x <= leftEdge)
             {
                 OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                if (OfficeImage.transform.localPosition.x >= leftEdge)
+                {
+                    OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                }
             }
 
-            if (Input.GetKey(KeyCode.RightArrow) && OfficeImage.transform.position.x >= rightEdge)
+            if (Input.GetKey(KeyCode.RightArrow) && OfficeImage.transform.localPosition.x >= rightEdge)
             {
                 OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                if (OfficeImage.transform.localPosition.x <= rightEdge)
+                {
+                    OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                }
             }
         }
 
