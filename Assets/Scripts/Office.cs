@@ -78,7 +78,7 @@ public class Office : MonoBehaviour {
 
         if (Mathf.Abs(leftHorizontalInput) > joystickThreshold)
         {
-            int direction = leftHorizontalInput > 0 ? 1 : -1;
+            int direction = leftHorizontalInput > 0 ? -1 : 1;
 
             if (direction > 0)
             {
