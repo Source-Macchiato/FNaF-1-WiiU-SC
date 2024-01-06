@@ -21,8 +21,6 @@ public class CameraScript : MonoBehaviour
     public GameObject Glitch;
     public GameObject Stripes;
 
-    public //GameObject ResetPoint;
-
     WiiU.GamePad gamePad;
 
     void Start()
@@ -72,10 +70,6 @@ public class CameraScript : MonoBehaviour
                     FlipOpen.Play();
                     CamViewTabletOpen.SetActive(true);
                     CamViewTabletClose.SetActive(false);
-
-                    Dot.SetActive(true);
-                    Glitch.SetActive(true);
-                    Stripes.SetActive(true);
 
                     camIsUp = true;
 
@@ -133,10 +127,6 @@ public class CameraScript : MonoBehaviour
                     CamViewTabletOpen.SetActive(true);
                     CamViewTabletClose.SetActive(false);
 
-                    Dot.SetActive(true);
-                    Glitch.SetActive(true);
-                    Stripes.SetActive(true);
-
                     camIsUp = true;
 
                     wait = 0.2f;
@@ -163,13 +153,16 @@ public class CameraScript : MonoBehaviour
                 RemoveAnimator();
 
                 wait = 0.2f;
-
+                Dot.SetActive(true);
+                Glitch.SetActive(true);
+                Stripes.SetActive(true);
                 Black.SetActive(true);
             }
         }
 
         if (!camIsUp)
         {
+            Black.SetActive(false);
             wait -= Time.deltaTime;
 
             if (wait <= 0)
@@ -178,7 +171,7 @@ public class CameraScript : MonoBehaviour
 
                 wait = 0.2f;
 
-                Black.SetActive(false);
+                //Black.SetActive(false);
             }
         }
 
