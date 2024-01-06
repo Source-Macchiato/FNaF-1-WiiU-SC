@@ -138,8 +138,6 @@ public class Office : MonoBehaviour {
                     OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                 }
             }
-
-            Debug.Log("Position: " + OfficeImage.transform.localPosition.x);
         }
 
         // Check position on the left for the left door

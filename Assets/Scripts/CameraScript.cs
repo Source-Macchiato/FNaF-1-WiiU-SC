@@ -156,7 +156,7 @@ public class CameraScript : MonoBehaviour
 
         if (camIsUp)
         {
-            wait -= UnityEngine.Time.deltaTime;
+            wait -= Time.deltaTime;
 
             if (wait <= 0)
             {
@@ -170,7 +170,7 @@ public class CameraScript : MonoBehaviour
 
         if (!camIsUp)
         {
-            wait -= UnityEngine.Time.deltaTime;
+            wait -= Time.deltaTime;
 
             if (wait <= 0)
             {
