@@ -17,7 +17,7 @@ public class Power : MonoBehaviour {
 
     void Start()
     {
-        SceneManager.UnloadSceneAsync("Office");
+        //SceneManager.UnloadSceneAsync("Office"); causes errors since scene is already unloaded
     }
 
     void Update ()
