@@ -43,8 +43,8 @@ public class Office : MonoBehaviour {
     public AudioSource Light;
 
     private const float speed = 400f;
-    private const float leftEdge = 271.72f;
-    private const float rightEdge = -253.72f;
+    private const float leftEdge = 272f;
+    private const float rightEdge = -208f;
 
     public bool BonnieOutsideDoor = false;
     public bool ChicaOutsideDoor = false;
@@ -138,6 +138,8 @@ public class Office : MonoBehaviour {
                     OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                 }
             }
+
+            Debug.Log("Position: " + OfficeImage.transform.localPosition.x);
         }
 
         // Check position on the left for the left door
