@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class RenderMovie : MonoBehaviour
 {
@@ -7,10 +8,16 @@ public class RenderMovie : MonoBehaviour
 
     void Start()
     {
-        GetComponent<MeshRenderer>().material.mainTexture = videoMovieTexture;
-        GetComponent<AudioSource>().clip = videoMovieTexture.audioClip;
+        RawImage rawImage = GetComponent<RawImage>();
+
+        rawImage.texture = videoMovieTexture;
+
+        if (videoAudioSource != null)
+        {
+            videoAudioSource.clip = videoMovieTexture.audioClip;
+            videoAudioSource.Play();
+        }
 
         videoMovieTexture.Play();
-        videoAudioSource.Play();
     }
 }
