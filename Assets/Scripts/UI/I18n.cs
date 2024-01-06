@@ -29,8 +29,9 @@ public class I18n
         else
         {
             lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
+            //lang = "fr";
         }
-
+        
         string filePath = "I18n/" + lang;
 
         TextAsset textAsset = Resources.Load<TextAsset>(filePath);
@@ -78,5 +79,10 @@ public class I18n
             case SystemLanguage.French: res = "FR"; break;
         }
         return res;
+    }
+    public static void SwitchToEN()
+    {
+        forceEnglish = true;
+        LoadLanguage();
     }
 }

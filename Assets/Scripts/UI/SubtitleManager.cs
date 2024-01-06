@@ -99,8 +99,9 @@ public class SubtitleManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Translation not found for identifier: " + identifier);
-            return identifier;
+            I18n.SwitchToEN();
+            Debug.LogWarning("Translation not found for identifier: " + identifier + ", Reverting to english.");
+            return GetTranslatedText(identifier);
         }
     }
 }
