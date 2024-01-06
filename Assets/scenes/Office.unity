@@ -205,8 +205,8 @@ RectTransform:
   - {fileID: 1525722926}
   - {fileID: 409080841}
   - {fileID: 113357119}
-  - {fileID: 969611534}
   - {fileID: 1131507112}
+  - {fileID: 969611534}
   - {fileID: 569191368}
   - {fileID: 1768309160}
   - {fileID: 1849677440}
@@ -5146,7 +5146,7 @@ RectTransform:
   m_LocalScale: {x: 0.6445236, y: 0.6081111, z: 0.7695655}
   m_Children: []
   m_Father: {fileID: 26534564}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8140,7 +8140,7 @@ Prefab:
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
@@ -8334,7 +8334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 87, y: -2}
+  m_AnchoredPosition: {x: -895, y: -540}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1849677439
@@ -9022,7 +9022,6 @@ MonoBehaviour:
   Dot: {fileID: 1131507111}
   Glitch: {fileID: 969611533}
   Stripes: {fileID: 409080837}
-  ResetPoint: {fileID: 1836076809}
 --- !u!114 &1959479701
 MonoBehaviour:
   m_ObjectHideFlags: 0

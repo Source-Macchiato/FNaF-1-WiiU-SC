@@ -21,7 +21,7 @@ public class CameraScript : MonoBehaviour
     public GameObject Glitch;
     public GameObject Stripes;
 
-    public GameObject ResetPoint;
+    public //GameObject ResetPoint;
 
     WiiU.GamePad gamePad;
 
@@ -89,7 +89,7 @@ public class CameraScript : MonoBehaviour
                     OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
                     OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
 
-                    OfficeStuff.transform.position = ResetPoint.transform.position;
+                    //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for
                 }
             }
         }
@@ -149,7 +149,7 @@ public class CameraScript : MonoBehaviour
                     OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
                     OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
 
-                    OfficeStuff.transform.position = ResetPoint.transform.position;
+                    //OfficeStuff.transform.position = ResetPoint.transform.position; wth was the point of this line of code anyways??????
                 }
             }
         }
