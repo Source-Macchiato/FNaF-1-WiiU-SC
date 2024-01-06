@@ -4,7 +4,7 @@ timeCreated: 1704560753
 licenseType: Pro
 VideoClipImporter:
   serializedVersion: 2
-  useLegacyImporter: 0
+  useLegacyImporter: 1
   quality: 1
   isColorLinear: 0
   originalWidth: 1280
