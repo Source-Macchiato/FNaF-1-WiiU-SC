@@ -4,11 +4,12 @@ using UnityEngine.SceneManagement;
 public class RenderMovie : MonoBehaviour
 {
     public MovieTexture movTexture;
-    public string nextSceneName;
     bool hasStarted = false;
+    public GameObject loadingScreenPanel;
 
     void Start()
     {
+        loadingScreenPanel.SetActive(false);
         movTexture.Play();
     }
 
@@ -21,7 +22,8 @@ public class RenderMovie : MonoBehaviour
 
         if (hasStarted && !movTexture.isPlaying)
         {
-            SceneManager.LoadScene(nextSceneName);
+            loadingScreenPanel.SetActive(true);
+            GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadLevel("MainMenu");
         }
     }
 }

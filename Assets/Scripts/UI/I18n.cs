@@ -29,7 +29,6 @@ public class I18n
         else
         {
             lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
-            //lang = "fr";
         }
         
         string filePath = "I18n/" + lang;
