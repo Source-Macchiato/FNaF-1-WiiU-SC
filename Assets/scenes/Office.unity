@@ -5299,14 +5299,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1152074781}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 396a56736947d3344a2247161834a71c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   displacementShader: {fileID: 4800000, guid: 9108a04f7c37d5f4280824ef38fed484, type: 3}
   displacementMap: {fileID: 2800000, guid: d498b2dfd0ee54446b9ac2ce8caa68a9, type: 3}
-  intensity: -0.1
+  intensity: -0.25
 --- !u!1 &1155714871
 GameObject:
   m_ObjectHideFlags: 0
