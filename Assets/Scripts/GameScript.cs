@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameScript : MonoBehaviour {
 
     private float NightNumber;
-    public float Time = 360;
+    public float Time = 535; //fixed i hope
     public float Usage = 1;
 
     public Text NightNumberDisplayer;
@@ -57,37 +57,37 @@ public class GameScript : MonoBehaviour {
         //-------------------------------CallAndNight-----------------------------//
     }
 
-    void Update ()
+    void Update () //(max) wow this function proves how much you hate else ifs
     {
         //---------------------------------------TIME-------------------------------------//
         Time -= UnityEngine.Time.deltaTime;
 
-        if (Time <= 360)
+        if (Time <= 535)
         {
             TimeShower.GetComponent<Text>().text = "12 AM";
         }
 
-        if (Time <= 300)
+        if (Time <= 445)
         {
             TimeShower.GetComponent<Text>().text = "1 AM";
         }
 
-        if (Time <= 240)
+        if (Time <= 354)
         {
             TimeShower.GetComponent<Text>().text = "2 AM";
         }
 
-        if (Time <= 180)
+        if (Time <= 267)
         {
             TimeShower.GetComponent<Text>().text = "3 AM";
         }
 
-        if (Time <= 120)
+        if (Time <= 178)
         {
             TimeShower.GetComponent<Text>().text = "4 AM";
         }
 
-        if (Time <= 60)
+        if (Time <= 89)
         {
             TimeShower.GetComponent<Text>().text = "5 AM";
         }
