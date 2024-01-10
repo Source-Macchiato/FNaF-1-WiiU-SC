@@ -8899,7 +8899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9758e248abfaa464990cb00afa6fbaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Time: 360
+  Time: 535
   Usage: 1
   NightNumberDisplayer: {fileID: 1398303401}
   TimeShower: {fileID: 1849677439}
