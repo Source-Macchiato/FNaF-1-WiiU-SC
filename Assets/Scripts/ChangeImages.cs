@@ -551,7 +551,7 @@ public class ChangeImages : MonoBehaviour
 
             }
 
-            if (!camIsUp)
+            else if (!camIsUp)
             {
                 FoxyRunDownHall.SetActive(false);
             }
