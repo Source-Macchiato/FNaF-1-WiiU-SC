@@ -2567,6 +2567,7 @@ MonoBehaviour:
   advertisementImage: {fileID: 1316367838}
   NightNumber: 1
   NightNumberDisplayer: {fileID: 1465002431}
+  UpdatePanel: {fileID: 2060722713}
 --- !u!1 &1623041115
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour {
     private bool advertisementIsActive;
     public float NightNumber;
     public Text NightNumberDisplayer;
+    public GameObject UpdatePanel;
 
     WiiU.GamePad gamePad;
 
@@ -40,21 +41,24 @@ public class MainMenu : MonoBehaviour {
 
         WiiU.GamePadState gamePadState = gamePad.state;
 
-        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+        if (!UpdatePanel.activeSelf)
         {
-            if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
+            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                MainMenuNavigation();
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
+                {
+                    MainMenuNavigation();
+                }
             }
-        }
 
-        if (Application.isEditor)
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Application.isEditor)
             {
-                MainMenuNavigation();
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    MainMenuNavigation();
+                }
             }
-        }  
+        } 
     }
 
     void MainMenuNavigation()
