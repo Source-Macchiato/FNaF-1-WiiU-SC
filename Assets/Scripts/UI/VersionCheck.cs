@@ -36,6 +36,8 @@ public class VersionCheck : MonoBehaviour
         }
         else
         {
+            objectToActivate.SetActive(false);
+
             Debug.LogError("Error connecting to URL : " + www.error);
         }
 
