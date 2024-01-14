@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540d57d396b73ef4bbb2a96145613c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpdatePanel: {fileID: 2060722713}
   MainMenuButtons:
   - {fileID: 114418856}
   - {fileID: 426348468}
