@@ -1,4 +1,3 @@
-none=
 ﻿mainmenu.newgame=Nouvelle Partie
 mainmenu.continue=Continuer
 mainmenu.night=NUIT

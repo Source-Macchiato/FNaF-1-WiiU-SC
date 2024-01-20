@@ -14,33 +14,30 @@ public class VersionCheck : MonoBehaviour
     {
         string url = "https://api.portal-wiiu-edition.com/version.txt";
 
-        WWW www = new WWW(url);
-
-        yield return www;
-
-        if (string.IsNullOrEmpty(www.error))
+        using (WWW www = new WWW(url))
         {
-            string onlineVersion = www.text;
+            yield return www;
 
-            TextAsset localVersionAsset = Resources.Load<TextAsset>("Meta/version");
-            string localVersion = localVersionAsset.text;
-
-            if (onlineVersion.Trim() == localVersion.Trim())
+            if (string.IsNullOrEmpty(www.error))
             {
-                objectToActivate.SetActive(false);
+                string onlineVersion = www.text;
+
+                TextAsset localVersionAsset = Resources.Load<TextAsset>("Meta/version");
+                string localVersion = localVersionAsset.text;
+
+                if (onlineVersion.Trim() == localVersion.Trim())
+                {
+                    objectToActivate.SetActive(false);
+                }
+                else
+                {
+                    objectToActivate.SetActive(true);
+                }
             }
             else
             {
-                objectToActivate.SetActive(true);
+                objectToActivate.SetActive(false);
             }
         }
-        else
-        {
-            objectToActivate.SetActive(false);
-
-            Debug.LogError("Error connecting to URL : " + www.error);
-        }
-
-        www.Dispose();
     }
 }
