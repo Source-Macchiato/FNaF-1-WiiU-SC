@@ -371,7 +371,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: V 1.1 Private Build
+  m_Text: v1.1 Private Build
 --- !u!222 &133706260
 CanvasRenderer:
   m_ObjectHideFlags: 0
