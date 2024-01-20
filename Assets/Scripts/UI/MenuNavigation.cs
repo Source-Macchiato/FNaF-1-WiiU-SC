@@ -2,14 +2,16 @@
 using UnityEngine.UI;
 using WiiU = UnityEngine.WiiU;
 
-public class MainMenuNavigation : MonoBehaviour
+public class MenuNavigation : MonoBehaviour
 {
+    public int selectedIndex = 0;
+    public int menuId = 0;
     public GameObject UpdatePanel;
 
     public Button[] MainMenuButtons;
     public Text[] MainMenuSelectionTexts;
-
-    public int selectedIndex = 0;
+    public Button[] OptionsMenuButtons;
+    public Text[] OptionsMenuSelectionTexts;
 
     private float joystickThreshold = 0.5f;
     private float buttonChangeDelay = 0.2f;
@@ -39,7 +41,7 @@ public class MainMenuNavigation : MonoBehaviour
                 {
                     int direction = leftVerticalInput > 0 ? -1 : 1;
 
-                    selectedIndex = (selectedIndex + direction + MainMenuButtons.Length) % MainMenuButtons.Length;
+                    selectedIndex = (selectedIndex + direction + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
                     UpdateSelectionTexts();
 
                     lastChangeTime = Time.time;
@@ -50,13 +52,13 @@ public class MainMenuNavigation : MonoBehaviour
             {
                 if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
                 {
-                    selectedIndex = (selectedIndex - 1 + MainMenuButtons.Length) % MainMenuButtons.Length;
+                    selectedIndex = (selectedIndex - 1 + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
                     UpdateSelectionTexts();
                 }
 
                 if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
                 {
-                    selectedIndex = (selectedIndex + 1) % MainMenuButtons.Length;
+                    selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
                     UpdateSelectionTexts();
                 }
             }
@@ -65,24 +67,36 @@ public class MainMenuNavigation : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    selectedIndex = (selectedIndex - 1 + MainMenuButtons.Length) % MainMenuButtons.Length;
+                    selectedIndex = (selectedIndex - 1 + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
                     UpdateSelectionTexts();
                 }
 
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    selectedIndex = (selectedIndex + 1) % MainMenuButtons.Length;
+                    selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
                     UpdateSelectionTexts();
                 }
             }
         }
     }
 
-    void UpdateSelectionTexts()
+    public void UpdateSelectionTexts()
     {
-        for (int i = 0; i < MainMenuButtons.Length; i++)
+        Text[] currentSelectionTexts = GetCurrentMenuSelectionTexts();
+
+        for (int i = 0; i < GetCurrentMenuButtons().Length; i++)
         {
-            MainMenuSelectionTexts[i].gameObject.SetActive(i == selectedIndex);
+            currentSelectionTexts[i].gameObject.SetActive(i == selectedIndex);
         }
+    }
+
+    Button[] GetCurrentMenuButtons()
+    {
+        return menuId == 0 ? MainMenuButtons : OptionsMenuButtons;
+    }
+
+    Text[] GetCurrentMenuSelectionTexts()
+    {
+        return menuId == 0 ? MainMenuSelectionTexts : OptionsMenuSelectionTexts;
     }
 }

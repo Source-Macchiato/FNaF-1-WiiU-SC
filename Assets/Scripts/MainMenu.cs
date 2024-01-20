@@ -12,17 +12,20 @@ public class MainMenu : MonoBehaviour {
     public float NightNumber;
     public Text NightNumberDisplayer;
     public GameObject UpdatePanel;
+    public GameObject MainMenuNavigationPanel;
+    public GameObject OptionsMenuNavigationPanel;
 
     WiiU.GamePad gamePad;
 
-    MainMenuNavigation mainMenuNavigation;
+    MenuNavigation menuNavigation;
 
     void Start()
     {
+        OptionsMenuNavigationPanel.SetActive(false);
         advertisementIsActive = false;
 
         advertisementImage.SetActive(false);
-        mainMenuNavigation = FindObjectOfType<MainMenuNavigation>();
+        menuNavigation = FindObjectOfType<MenuNavigation>();
 
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
@@ -49,6 +52,17 @@ public class MainMenu : MonoBehaviour {
                 {
                     MainMenuNavigation();
                 }
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
+                {
+                    if (menuNavigation.menuId == 1)
+                    {
+                        OptionsMenuNavigationPanel.SetActive(false);
+                        MainMenuNavigationPanel.SetActive(true);
+                        menuNavigation.menuId = 0;
+                        menuNavigation.selectedIndex = 0;
+                        menuNavigation.UpdateSelectionTexts();
+                    }
+                }
             }
 
             if (Application.isEditor)
@@ -56,6 +70,17 @@ public class MainMenu : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     MainMenuNavigation();
+                }
+                else if (Input.GetKeyDown(KeyCode.Backspace))
+                {
+                    if (menuNavigation.menuId == 1)
+                    {
+                        OptionsMenuNavigationPanel.SetActive(false);
+                        MainMenuNavigationPanel.SetActive(true);
+                        menuNavigation.menuId = 0;
+                        menuNavigation.selectedIndex = 0;
+                        menuNavigation.UpdateSelectionTexts();
+                    }
                 }
             }
         }
@@ -81,29 +106,40 @@ public class MainMenu : MonoBehaviour {
 
     void MainMenuNavigation()
     {
-        if (mainMenuNavigation.selectedIndex == 0)
+        if (menuNavigation.menuId == 0)
         {
-            NightNumber = 1;
-            PlayerPrefs.SetFloat("NightNumber", NightNumber);
-            PlayerPrefs.Save();
-            AdvertisementLoaded();
-        }
-        else if (mainMenuNavigation.selectedIndex == 1)
-        {
-            NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
-
-            if (NightNumber == 1)
+            if (menuNavigation.selectedIndex == 0)
             {
+                NightNumber = 1;
+                PlayerPrefs.SetFloat("NightNumber", NightNumber);
+                PlayerPrefs.Save();
                 AdvertisementLoaded();
             }
-            else if (NightNumber > 1 && NightNumber < 6)
+            else if (menuNavigation.selectedIndex == 1)
             {
-                SceneManager.LoadScene("NextNight");
+                NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+
+                if (NightNumber == 1)
+                {
+                    AdvertisementLoaded();
+                }
+                else if (NightNumber > 1 && NightNumber < 6)
+                {
+                    SceneManager.LoadScene("NextNight");
+                }
+            }
+            else if (menuNavigation.selectedIndex == 2)
+            {
+                MainMenuNavigationPanel.SetActive(false);
+                OptionsMenuNavigationPanel.SetActive(true);
+                menuNavigation.menuId = 1;
+                menuNavigation.selectedIndex = 0;
+                menuNavigation.UpdateSelectionTexts();
             }
         }
-        else if (mainMenuNavigation.selectedIndex == 2)
+        else if (menuNavigation.menuId == 1)
         {
-            Debug.Log("3rd button");
+
         }
     }
 
