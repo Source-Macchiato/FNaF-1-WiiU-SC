@@ -6,7 +6,7 @@ public class I18n
 {
     public static Dictionary<string, string> Texts { get; private set; }
 
-    public static Dictionary<string, string> ENTexts { get; private set; } //(max) THIS IS A TERRIBLE SOLUTION TO THIS PROBLEM BUT IT WORKS
+    public static Dictionary<string, string> ENTexts { get; private set; } //(max la menace) THIS IS A TERRIBLE SOLUTION TO THIS PROBLEM BUT IT WORKS
 
     public static bool forceEnglish = false;
 

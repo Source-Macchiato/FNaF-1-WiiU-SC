@@ -83,6 +83,10 @@ public class MainMenu : MonoBehaviour {
                 SceneManager.LoadScene("NextNight");
             }
         }
+        else if (mainMenuNavigation.selectedIndex == 2)
+        {
+            Debug.Log("3rd button");
+        }
     }
 
     private void AdvertisementLoaded()

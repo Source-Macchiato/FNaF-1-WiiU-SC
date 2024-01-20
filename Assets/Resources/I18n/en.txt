@@ -2,6 +2,7 @@
 mainmenu.newgame=New Game
 mainmenu.continue=Continue
 mainmenu.night=NIGHT
+mainmenu.options=Options
 office.night=Night
 office.usage=Usage:
 office.power=Power left:
