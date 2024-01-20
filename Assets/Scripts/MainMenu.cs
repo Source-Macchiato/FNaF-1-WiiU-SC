@@ -58,7 +58,25 @@ public class MainMenu : MonoBehaviour {
                     MainMenuNavigation();
                 }
             }
-        } 
+        }
+        else
+        {
+            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+            {
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
+                {
+                    UpdatePanel.SetActive(false);
+                }
+            }
+
+            if (Application.isEditor)
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    UpdatePanel.SetActive(false);
+                }
+            }
+        }
     }
 
     void MainMenuNavigation()
