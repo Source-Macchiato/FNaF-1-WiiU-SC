@@ -8,8 +8,6 @@ public class I18n
 
     public static Dictionary<string, string> ENTexts { get; private set; } //(max la menace) THIS IS A TERRIBLE SOLUTION TO THIS PROBLEM BUT IT WORKS
 
-    public static bool forceEnglish = false;
-
     static I18n()
     {
         LoadLanguage();
@@ -29,15 +27,15 @@ public class I18n
 
         if (languagePlayerPrefs == "English")
         {
-            lang = "EN";
+            lang = "en";
         }
         else if (languagePlayerPrefs == "French")
         {
-            lang = "FR";
+            lang = "fr";
         }
         else if (languagePlayerPrefs == "Spanish")
         {
-            lang = "ES";
+            lang = "es";
         }
         else
         {
@@ -47,6 +45,7 @@ public class I18n
         string filePath = "I18n/" + lang;
 
         TextAsset textAsset = Resources.Load<TextAsset>(filePath);
+        Debug.Log(filePath);
 
         if (textAsset == null)
         {
@@ -75,6 +74,7 @@ public class I18n
             }
         }
     }
+
     private static void ENLoadLanguage()
     {
         if (ENTexts == null)
@@ -113,9 +113,27 @@ public class I18n
             }
         }
     }
+
     public static string GetLanguage()
     {
-        return forceEnglish ? "en" : Get2LetterISOCodeFromSystemLanguage().ToLower();
+        string languagePlayerPrefs = PlayerPrefs.GetString("Language", "None");
+
+        if (languagePlayerPrefs == "English")
+        {
+            return "en";
+        }
+        else if (languagePlayerPrefs == "French")
+        {
+            return "fr";
+        }
+        else if (languagePlayerPrefs == "Spanish")
+        {
+            return "es";
+        }
+        else
+        {
+            return Get2LetterISOCodeFromSystemLanguage().ToLower();
+        }
     }
 
     public static string Get2LetterISOCodeFromSystemLanguage()
