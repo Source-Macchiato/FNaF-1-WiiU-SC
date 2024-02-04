@@ -1,4 +1,4 @@
-﻿none=
+none=
 mainmenu.newgame=New Game
 mainmenu.continue=Continue
 mainmenu.night=NIGHT
