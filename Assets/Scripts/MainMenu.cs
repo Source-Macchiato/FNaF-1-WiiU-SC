@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject UpdatePanel;
     public GameObject MainMenuNavigationPanel;
     public GameObject OptionsMenuNavigationPanel;
+    public GameObject AudioMenuPanel;
 
     WiiU.GamePad gamePad;
 
@@ -22,6 +23,7 @@ public class MainMenu : MonoBehaviour {
     void Start()
     {
         OptionsMenuNavigationPanel.SetActive(false);
+        AudioMenuPanel.SetActive(false);
         advertisementIsActive = false;
 
         advertisementImage.SetActive(false);
@@ -62,6 +64,14 @@ public class MainMenu : MonoBehaviour {
                         menuNavigation.selectedIndex = 0;
                         menuNavigation.UpdateSelectionTexts();
                     }
+                    else if (menuNavigation.menuId == 2)
+                    {
+                        AudioMenuPanel.SetActive(false);
+                        OptionsMenuNavigationPanel.SetActive(true);
+                        menuNavigation.menuId = 1;
+                        menuNavigation.selectedIndex = 0;
+                        menuNavigation.UpdateSelectionTexts();
+                    }
                 }
             }
 
@@ -78,6 +88,14 @@ public class MainMenu : MonoBehaviour {
                         OptionsMenuNavigationPanel.SetActive(false);
                         MainMenuNavigationPanel.SetActive(true);
                         menuNavigation.menuId = 0;
+                        menuNavigation.selectedIndex = 0;
+                        menuNavigation.UpdateSelectionTexts();
+                    }
+                    else if (menuNavigation.menuId == 2)
+                    {
+                        AudioMenuPanel.SetActive(false);
+                        OptionsMenuNavigationPanel.SetActive(true);
+                        menuNavigation.menuId = 1;
                         menuNavigation.selectedIndex = 0;
                         menuNavigation.UpdateSelectionTexts();
                     }
@@ -139,7 +157,13 @@ public class MainMenu : MonoBehaviour {
         }
         else if (menuNavigation.menuId == 1)
         {
-
+            if (menuNavigation.selectedIndex == 0)
+            {
+                OptionsMenuNavigationPanel.SetActive(false);
+                AudioMenuPanel.SetActive(true);
+                menuNavigation.menuId = 2;
+                menuNavigation.selectedIndex = 0;
+            }
         }
     }
 
