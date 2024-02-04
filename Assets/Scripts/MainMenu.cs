@@ -15,11 +15,11 @@ public class MainMenu : MonoBehaviour {
     public GameObject MainMenuNavigationPanel;
     public GameObject OptionsMenuNavigationPanel;
     public GameObject AudioMenuPanel;
+    public Text setLanguageText;
 
     WiiU.GamePad gamePad;
 
     MenuNavigation menuNavigation;
-    UserInputTextSwitcher userInputTextSwitcher;
 
     void Start()
     {
@@ -67,7 +67,7 @@ public class MainMenu : MonoBehaviour {
                     }
                     else if (menuNavigation.menuId == 2)
                     {
-                        PlayerPrefs.SetString("Language", userInputTextSwitcher.setLanguageText.text);
+                        PlayerPrefs.SetString("Language", setLanguageText.text);
                         PlayerPrefs.Save();
                         AudioMenuPanel.SetActive(false);
                         OptionsMenuNavigationPanel.SetActive(true);
@@ -96,7 +96,7 @@ public class MainMenu : MonoBehaviour {
                     }
                     else if (menuNavigation.menuId == 2)
                     {
-                        PlayerPrefs.SetString("Language", userInputTextSwitcher.setLanguageText.text);
+                        PlayerPrefs.SetString("Language", setLanguageText.text);
                         PlayerPrefs.Save();
                         AudioMenuPanel.SetActive(false);
                         OptionsMenuNavigationPanel.SetActive(true);

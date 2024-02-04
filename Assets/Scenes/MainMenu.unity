@@ -3537,6 +3537,7 @@ MonoBehaviour:
   MainMenuNavigationPanel: {fileID: 959594340}
   OptionsMenuNavigationPanel: {fileID: 685786507}
   AudioMenuPanel: {fileID: 1912968395}
+  setLanguageText: {fileID: 1437901696}
 --- !u!1 &1612590793
 GameObject:
   m_ObjectHideFlags: 0

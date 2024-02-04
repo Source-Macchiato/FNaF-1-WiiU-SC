@@ -25,15 +25,23 @@ public class I18n
 
         string lang;
 
-        if (forceEnglish)
+        string languagePlayerPrefs = PlayerPrefs.GetString("Language", "None");
+
+        if (languagePlayerPrefs == "English")
         {
-            lang = "en";
+            lang = "EN";
+        }
+        else if (languagePlayerPrefs == "French")
+        {
+            lang = "FR";
+        }
+        else if (languagePlayerPrefs == "Spanish")
+        {
+            lang = "ES";
         }
         else
         {
             lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
-            //lang = "fr";
-            //for testing on french i will just uncomment that
         }
 
         string filePath = "I18n/" + lang;
@@ -118,6 +126,7 @@ public class I18n
         {
             case SystemLanguage.English: res = "EN"; break;
             case SystemLanguage.French: res = "FR"; break;
+            case SystemLanguage.Spanish: res = "ES"; break;
         }
         return res;
     }

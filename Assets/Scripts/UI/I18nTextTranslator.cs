@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class I18nTextTranslator : MonoBehaviour
 {
