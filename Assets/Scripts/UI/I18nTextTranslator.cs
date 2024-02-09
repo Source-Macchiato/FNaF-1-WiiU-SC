@@ -23,7 +23,7 @@ public class I18nTextTranslator : MonoBehaviour
         UpdateText();
     }
 
-    void UpdateText()
+    public void UpdateText()
     {
         if (string.IsNullOrEmpty(textId))
         {

@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour {
         advertisementIsActive = false;
 
         advertisementImage.SetActive(false);
+
         menuNavigation = FindObjectOfType<MenuNavigation>();
 
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
@@ -69,6 +70,7 @@ public class MainMenu : MonoBehaviour {
                     {
                         PlayerPrefs.SetString("Language", setLanguageText.text);
                         PlayerPrefs.Save();
+                        I18n.ReloadLanguage();
                         AudioMenuPanel.SetActive(false);
                         OptionsMenuNavigationPanel.SetActive(true);
                         menuNavigation.menuId = 1;
@@ -98,6 +100,7 @@ public class MainMenu : MonoBehaviour {
                     {
                         PlayerPrefs.SetString("Language", setLanguageText.text);
                         PlayerPrefs.Save();
+                        I18n.ReloadLanguage();
                         AudioMenuPanel.SetActive(false);
                         OptionsMenuNavigationPanel.SetActive(true);
                         menuNavigation.menuId = 1;

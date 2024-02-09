@@ -14,6 +14,11 @@ public class I18n
         ENLoadLanguage();
     }
 
+    public static void ReloadLanguage()
+    {
+        LoadLanguage();
+    }
+
     private static void LoadLanguage()
     {
         if (Texts == null)
