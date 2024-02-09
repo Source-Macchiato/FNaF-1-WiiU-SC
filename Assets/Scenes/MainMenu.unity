@@ -1654,7 +1654,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentIndex: 0
   setLanguageText: {fileID: 1437901696}
-  setLanguageTextList: []
+  setLanguageTextList:
+  - English
+  - French
+  - Spanish
   AudioMenuPanel: {fileID: 1912968395}
 --- !u!1 &685786507
 GameObject:

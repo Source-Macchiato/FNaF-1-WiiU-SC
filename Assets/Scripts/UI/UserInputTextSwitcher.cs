@@ -14,12 +14,22 @@ public class UserInputTextSwitcher : MonoBehaviour
 
     void Start()
     {
-        setLanguageTextList = new List<string>()
+        string languagePlayerPrefs = PlayerPrefs.GetString("Language", "None");
+
+        if (languagePlayerPrefs == "French")
         {
-            "English",
-            "French",
-            "Spanish",
-        };
+            currentIndex = 1;
+        }
+        else if (languagePlayerPrefs == "Spanish")
+        {
+            currentIndex = 2;
+        }
+        else
+        {
+            currentIndex = 0;
+        }
+
+        setLanguageText.text = setLanguageTextList[currentIndex];
 
         gamePad = WiiU.GamePad.access;
     }
