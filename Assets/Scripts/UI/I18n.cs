@@ -42,6 +42,10 @@ public class I18n
         {
             lang = "es";
         }
+        else if (languagePlayerPrefs == "Italian")
+        {
+            lang = "it";
+        }
         else
         {
             lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
@@ -135,6 +139,10 @@ public class I18n
         {
             return "es";
         }
+        else if (languagePlayerPrefs == "Italian")
+        {
+            return "it";
+        }
         else
         {
             return Get2LetterISOCodeFromSystemLanguage().ToLower();
@@ -150,6 +158,7 @@ public class I18n
             case SystemLanguage.English: res = "EN"; break;
             case SystemLanguage.French: res = "FR"; break;
             case SystemLanguage.Spanish: res = "ES"; break;
+            case SystemLanguage.Italian: res = "IT"; break;
         }
         return res;
     }

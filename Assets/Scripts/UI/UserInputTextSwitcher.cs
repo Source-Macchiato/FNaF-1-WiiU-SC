@@ -24,6 +24,10 @@ public class UserInputTextSwitcher : MonoBehaviour
         {
             currentIndex = 2;
         }
+        else if (languagePlayerPrefs == "Italian")
+        {
+            currentIndex = 3;
+        }
         else
         {
             currentIndex = 0;
@@ -47,7 +51,7 @@ public class UserInputTextSwitcher : MonoBehaviour
                     currentIndex = Mathf.Max(currentIndex - 1, 0);
                     setLanguageText.text = setLanguageTextList[currentIndex];
                 }
-                else if (gamePadState.IsTriggered(WiiU.GamePadButton.Left))
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.Right))
                 {
                     currentIndex = Mathf.Min(currentIndex + 1, setLanguageTextList.Count - 1);
                     setLanguageText.text = setLanguageTextList[currentIndex];
