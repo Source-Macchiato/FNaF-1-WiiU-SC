@@ -1,6 +1,7 @@
 mainmenu.newgame=Nuova Partita
 mainmenu.continue=Continua
 mainmenu.night=NOTTE
+mainmenu.options=
 office.night=Notte
 office.usage=Consumo:
 office.power=Energia Rimasta:
@@ -47,3 +48,8 @@ nightone.phoneguy.linetwentynine=e i denti quando spuntano dal fronte della masc
 nightone.phoneguy.linethirty=S-Si, non te le dicono queste cose quando ti iscrivi. Ma hey, il primo giorno dovrebbe essere una passeggiata.
 nightone.phoneguy.linethirtyone=Ti contatterò di nuovo domani. Uh, controlla quelle videocamere, e ricordati di chiudere le porte
 nightone.phoneguy.linethirtytwo=solo se assolutamente necessario. Bisogna Risparmiare l'energia elettrica. Va bene, buona notte.
+nightfive.phoneguy.lineone=
+nightfive.phoneguy.linetwo=
+nightfive.phoneguy.linethree=
+nightfive.phoneguy.linefour=
+nightfive.phoneguy.linefive=
