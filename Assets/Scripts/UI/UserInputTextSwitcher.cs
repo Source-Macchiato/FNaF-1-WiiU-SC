@@ -14,17 +14,17 @@ public class UserInputTextSwitcher : MonoBehaviour
 
     void Start()
     {
-        string languagePlayerPrefs = PlayerPrefs.GetString("Language", "None");
+        string language = I18n.GetLanguage();
 
-        if (languagePlayerPrefs == "French")
+        if (language == "fr")
         {
             currentIndex = 1;
         }
-        else if (languagePlayerPrefs == "Spanish")
+        else if (language == "es")
         {
             currentIndex = 2;
         }
-        else if (languagePlayerPrefs == "Italian")
+        else if (language == "it")
         {
             currentIndex = 3;
         }
