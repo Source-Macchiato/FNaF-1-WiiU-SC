@@ -5455,6 +5455,7 @@ MonoBehaviour:
   MainMenuNavigationPanel: {fileID: 959594340}
   OptionsMenuNavigationPanel: {fileID: 685786507}
   AudioMenuPanel: {fileID: 1912968395}
+  CreditsMenuPanel: {fileID: 214317388}
   setLanguageText: {fileID: 1437901696}
 --- !u!1 &1612590793
 GameObject:

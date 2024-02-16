@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject MainMenuNavigationPanel;
     public GameObject OptionsMenuNavigationPanel;
     public GameObject AudioMenuPanel;
+    public GameObject CreditsMenuPanel;
     public Text setLanguageText;
 
     WiiU.GamePad gamePad;
@@ -25,6 +26,7 @@ public class MainMenu : MonoBehaviour {
     {
         OptionsMenuNavigationPanel.SetActive(false);
         AudioMenuPanel.SetActive(false);
+        CreditsMenuPanel.SetActive(false);
         advertisementIsActive = false;
 
         advertisementImage.SetActive(false);
@@ -107,6 +109,13 @@ public class MainMenu : MonoBehaviour {
                         menuNavigation.selectedIndex = 0;
                         menuNavigation.UpdateSelectionTexts();
                     }
+                    else if (menuNavigation.menuId == 3)
+                    {
+                        CreditsMenuPanel.SetActive(false);
+                        OptionsMenuNavigationPanel.SetActive(true);
+                        menuNavigation.menuId = 1;
+                        menuNavigation.selectedIndex = 0;
+                    }
                 }
             }
         }
@@ -170,6 +179,13 @@ public class MainMenu : MonoBehaviour {
                 OptionsMenuNavigationPanel.SetActive(false);
                 AudioMenuPanel.SetActive(true);
                 menuNavigation.menuId = 2;
+                menuNavigation.selectedIndex = 0;
+            }
+            else if (menuNavigation.selectedIndex == 1)
+            {
+                OptionsMenuNavigationPanel.SetActive(false);
+                CreditsMenuPanel.SetActive(true);
+                menuNavigation.menuId = 3;
                 menuNavigation.selectedIndex = 0;
             }
         }
