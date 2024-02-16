@@ -7,6 +7,8 @@ public class MenuNavigation : MonoBehaviour
     public int selectedIndex = 0;
     public int menuId = 0;
     public GameObject UpdatePanel;
+    public GameObject CreditsMenu;
+    public ScrollRect CreditsScrollView;
 
     public Button[] MainMenuButtons;
     public Text[] MainMenuSelectionTexts;
@@ -17,6 +19,7 @@ public class MenuNavigation : MonoBehaviour
     private float buttonChangeDelay = 0.2f;
     private bool canChangeButton = true;
     private float lastChangeTime;
+    public float scrollSpeed = 30f;
 
     WiiU.GamePad gamePad;
 
@@ -45,6 +48,15 @@ public class MenuNavigation : MonoBehaviour
                     UpdateSelectionTexts();
 
                     lastChangeTime = Time.time;
+
+                    if (CreditsMenu.activeSelf)
+                    {
+                        float scrollAmount = -leftVerticalInput * scrollSpeed * Time.deltaTime;
+                        ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
+                        Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
+                        newPosition.y = Mathf.Clamp01(newPosition.y);
+                        creditsScrollRect.normalizedPosition = newPosition;
+                    }
                 }
             }
 
