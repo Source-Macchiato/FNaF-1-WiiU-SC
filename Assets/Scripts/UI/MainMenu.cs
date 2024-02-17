@@ -79,6 +79,13 @@ public class MainMenu : MonoBehaviour {
                         menuNavigation.selectedIndex = 0;
                         menuNavigation.UpdateSelectionTexts();
                     }
+                    else if (menuNavigation.menuId == 3)
+                    {
+                        CreditsMenuPanel.SetActive(false);
+                        OptionsMenuNavigationPanel.SetActive(true);
+                        menuNavigation.menuId = 1;
+                        menuNavigation.selectedIndex = 0;
+                    }
                 }
             }
 
