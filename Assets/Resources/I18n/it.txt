@@ -1,7 +1,7 @@
 mainmenu.newgame=Nuova Partita
 mainmenu.continue=Continua
 mainmenu.night=NOTTE
-mainmenu.options=
+mainmenu.options=Impostazioni
 office.night=Notte
 office.usage=Consumo:
 office.power=Energia Rimasta:
