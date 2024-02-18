@@ -54,7 +54,6 @@ public class I18n
         string filePath = "I18n/" + lang;
 
         TextAsset textAsset = Resources.Load<TextAsset>(filePath);
-        Debug.Log(filePath);
 
         if (textAsset == null)
         {

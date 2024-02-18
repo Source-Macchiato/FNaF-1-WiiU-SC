@@ -54,7 +54,7 @@ public class MenuNavigation : MonoBehaviour
 
                         if (CreditsMenu.activeSelf)
                         {
-                            float scrollAmount = -leftVerticalInput * scrollSpeed * Time.deltaTime;
+                            float scrollAmount = +leftVerticalInput * scrollSpeed * Time.deltaTime;
                             ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
                             Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
                             newPosition.y = Mathf.Clamp01(newPosition.y);

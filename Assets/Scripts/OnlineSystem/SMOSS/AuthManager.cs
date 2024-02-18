@@ -29,7 +29,7 @@ public class AuthManager : MonoBehaviour
         {
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                if (!usernameKeyboard.active || !passwordKeyboard.active)
+                if (usernameKeyboard == null || !usernameKeyboard.active || passwordKeyboard == null || !passwordKeyboard.active)
                 {
                     if (gamePadState.IsTriggered(WiiU.GamePadButton.Up))
                     {
