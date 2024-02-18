@@ -860,7 +860,7 @@ MonoBehaviour:
   menuId: 0
   UpdatePanel: {fileID: 2060722713}
   CreditsMenu: {fileID: 214317388}
-  CreditsScrollView: {fileID: 0}
+  CreditsScrollView: {fileID: 1734938452}
   MainMenuButtons:
   - {fileID: 114418856}
   - {fileID: 426348468}

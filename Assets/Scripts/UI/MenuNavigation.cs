@@ -19,7 +19,7 @@ public class MenuNavigation : MonoBehaviour
     private float buttonChangeDelay = 0.2f;
     private bool canChangeButton = true;
     private float lastChangeTime;
-    public float scrollSpeed = 30f;
+    public float scrollSpeed = 5f;
 
     WiiU.GamePad gamePad;
 
