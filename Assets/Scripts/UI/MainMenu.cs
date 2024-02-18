@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour {
     public float NightNumber;
     public Text NightNumberDisplayer;
     public GameObject UpdatePanel;
+    public GameObject LoginPanel;
     public GameObject MainMenuNavigationPanel;
     public GameObject OptionsMenuNavigationPanel;
     public GameObject AudioMenuPanel;
@@ -50,97 +51,100 @@ public class MainMenu : MonoBehaviour {
 
         WiiU.GamePadState gamePadState = gamePad.state;
 
-        if (!UpdatePanel.activeSelf)
+        if (!LoginPanel.activeSelf)
         {
-            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+            if (!UpdatePanel.activeSelf)
             {
-                if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
+                if (gamePadState.gamePadErr == WiiU.GamePadError.None)
                 {
-                    MainMenuNavigation();
+                    if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
+                    {
+                        MainMenuNavigation();
+                    }
+                    else if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
+                    {
+                        if (menuNavigation.menuId == 1)
+                        {
+                            OptionsMenuNavigationPanel.SetActive(false);
+                            MainMenuNavigationPanel.SetActive(true);
+                            menuNavigation.menuId = 0;
+                            menuNavigation.selectedIndex = 0;
+                            menuNavigation.UpdateSelectionTexts();
+                        }
+                        else if (menuNavigation.menuId == 2)
+                        {
+                            PlayerPrefs.SetString("Language", setLanguageText.text);
+                            PlayerPrefs.Save();
+                            I18n.ReloadLanguage();
+                            AudioMenuPanel.SetActive(false);
+                            OptionsMenuNavigationPanel.SetActive(true);
+                            menuNavigation.menuId = 1;
+                            menuNavigation.selectedIndex = 0;
+                            menuNavigation.UpdateSelectionTexts();
+                        }
+                        else if (menuNavigation.menuId == 3)
+                        {
+                            CreditsMenuPanel.SetActive(false);
+                            OptionsMenuNavigationPanel.SetActive(true);
+                            menuNavigation.menuId = 1;
+                            menuNavigation.selectedIndex = 0;
+                        }
+                    }
                 }
-                else if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
-                {
-                    if (menuNavigation.menuId == 1)
-                    {
-                        OptionsMenuNavigationPanel.SetActive(false);
-                        MainMenuNavigationPanel.SetActive(true);
-                        menuNavigation.menuId = 0;
-                        menuNavigation.selectedIndex = 0;
-                        menuNavigation.UpdateSelectionTexts();
-                    }
-                    else if (menuNavigation.menuId == 2)
-                    {
-                        PlayerPrefs.SetString("Language", setLanguageText.text);
-                        PlayerPrefs.Save();
-                        I18n.ReloadLanguage();
-                        AudioMenuPanel.SetActive(false);
-                        OptionsMenuNavigationPanel.SetActive(true);
-                        menuNavigation.menuId = 1;
-                        menuNavigation.selectedIndex = 0;
-                        menuNavigation.UpdateSelectionTexts();
-                    }
-                    else if (menuNavigation.menuId == 3)
-                    {
-                        CreditsMenuPanel.SetActive(false);
-                        OptionsMenuNavigationPanel.SetActive(true);
-                        menuNavigation.menuId = 1;
-                        menuNavigation.selectedIndex = 0;
-                    }
-                }
-            }
 
-            if (Application.isEditor)
-            {
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Application.isEditor)
                 {
-                    MainMenuNavigation();
-                }
-                else if (Input.GetKeyDown(KeyCode.Backspace))
-                {
-                    if (menuNavigation.menuId == 1)
+                    if (Input.GetKeyDown(KeyCode.Return))
                     {
-                        OptionsMenuNavigationPanel.SetActive(false);
-                        MainMenuNavigationPanel.SetActive(true);
-                        menuNavigation.menuId = 0;
-                        menuNavigation.selectedIndex = 0;
-                        menuNavigation.UpdateSelectionTexts();
+                        MainMenuNavigation();
                     }
-                    else if (menuNavigation.menuId == 2)
+                    else if (Input.GetKeyDown(KeyCode.Backspace))
                     {
-                        PlayerPrefs.SetString("Language", setLanguageText.text);
-                        PlayerPrefs.Save();
-                        I18n.ReloadLanguage();
-                        AudioMenuPanel.SetActive(false);
-                        OptionsMenuNavigationPanel.SetActive(true);
-                        menuNavigation.menuId = 1;
-                        menuNavigation.selectedIndex = 0;
-                        menuNavigation.UpdateSelectionTexts();
+                        if (menuNavigation.menuId == 1)
+                        {
+                            OptionsMenuNavigationPanel.SetActive(false);
+                            MainMenuNavigationPanel.SetActive(true);
+                            menuNavigation.menuId = 0;
+                            menuNavigation.selectedIndex = 0;
+                            menuNavigation.UpdateSelectionTexts();
+                        }
+                        else if (menuNavigation.menuId == 2)
+                        {
+                            PlayerPrefs.SetString("Language", setLanguageText.text);
+                            PlayerPrefs.Save();
+                            I18n.ReloadLanguage();
+                            AudioMenuPanel.SetActive(false);
+                            OptionsMenuNavigationPanel.SetActive(true);
+                            menuNavigation.menuId = 1;
+                            menuNavigation.selectedIndex = 0;
+                            menuNavigation.UpdateSelectionTexts();
+                        }
+                        else if (menuNavigation.menuId == 3)
+                        {
+                            CreditsMenuPanel.SetActive(false);
+                            OptionsMenuNavigationPanel.SetActive(true);
+                            menuNavigation.menuId = 1;
+                            menuNavigation.selectedIndex = 0;
+                        }
                     }
-                    else if (menuNavigation.menuId == 3)
-                    {
-                        CreditsMenuPanel.SetActive(false);
-                        OptionsMenuNavigationPanel.SetActive(true);
-                        menuNavigation.menuId = 1;
-                        menuNavigation.selectedIndex = 0;
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
-            {
-                if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
-                {
-                    UpdatePanel.SetActive(false);
                 }
             }
+            else
+            {
+                if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+                {
+                    if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
+                    {
+                        UpdatePanel.SetActive(false);
+                    }
+                }
 
-            if (Application.isEditor)
-            {
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Application.isEditor)
                 {
-                    UpdatePanel.SetActive(false);
+                    if (Input.GetKeyDown(KeyCode.Return))
+                    {
+                        UpdatePanel.SetActive(false);
+                    }
                 }
             }
         }

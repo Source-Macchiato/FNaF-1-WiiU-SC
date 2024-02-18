@@ -7,6 +7,7 @@ public class MenuNavigation : MonoBehaviour
     public int selectedIndex = 0;
     public int menuId = 0;
     public GameObject UpdatePanel;
+    public GameObject LoginPanel;
     public GameObject CreditsMenu;
     public ScrollRect CreditsScrollView;
 
@@ -36,57 +37,60 @@ public class MenuNavigation : MonoBehaviour
 
         float leftVerticalInput = Input.GetAxis("LeftStickY");
 
-        if (!UpdatePanel.activeSelf)
+        if (!LoginPanel.activeSelf)
         {
-            if (Mathf.Abs(leftVerticalInput) > joystickThreshold)
+            if (!UpdatePanel.activeSelf)
             {
-                if (canChangeButton && Time.time - lastChangeTime >= buttonChangeDelay)
+                if (Mathf.Abs(leftVerticalInput) > joystickThreshold)
                 {
-                    int direction = leftVerticalInput > 0 ? -1 : 1;
-
-                    selectedIndex = (selectedIndex + direction + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
-                    UpdateSelectionTexts();
-
-                    lastChangeTime = Time.time;
-
-                    if (CreditsMenu.activeSelf)
+                    if (canChangeButton && Time.time - lastChangeTime >= buttonChangeDelay)
                     {
-                        float scrollAmount = -leftVerticalInput * scrollSpeed * Time.deltaTime;
-                        ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
-                        Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
-                        newPosition.y = Mathf.Clamp01(newPosition.y);
-                        creditsScrollRect.normalizedPosition = newPosition;
+                        int direction = leftVerticalInput > 0 ? -1 : 1;
+
+                        selectedIndex = (selectedIndex + direction + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
+                        UpdateSelectionTexts();
+
+                        lastChangeTime = Time.time;
+
+                        if (CreditsMenu.activeSelf)
+                        {
+                            float scrollAmount = -leftVerticalInput * scrollSpeed * Time.deltaTime;
+                            ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
+                            Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
+                            newPosition.y = Mathf.Clamp01(newPosition.y);
+                            creditsScrollRect.normalizedPosition = newPosition;
+                        }
                     }
                 }
-            }
 
-            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
-            {
-                if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
+                if (gamePadState.gamePadErr == WiiU.GamePadError.None)
                 {
-                    selectedIndex = (selectedIndex - 1 + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
-                    UpdateSelectionTexts();
+                    if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
+                    {
+                        selectedIndex = (selectedIndex - 1 + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
+                        UpdateSelectionTexts();
+                    }
+
+                    if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
+                    {
+                        selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
+                        UpdateSelectionTexts();
+                    }
                 }
 
-                if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
+                if (Application.isEditor)
                 {
-                    selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
-                    UpdateSelectionTexts();
-                }
-            }
+                    if (Input.GetKeyDown(KeyCode.UpArrow))
+                    {
+                        selectedIndex = (selectedIndex - 1 + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
+                        UpdateSelectionTexts();
+                    }
 
-            if (Application.isEditor)
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    selectedIndex = (selectedIndex - 1 + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
-                    UpdateSelectionTexts();
-                }
-
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
-                    UpdateSelectionTexts();
+                    if (Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
+                        UpdateSelectionTexts();
+                    }
                 }
             }
         }
