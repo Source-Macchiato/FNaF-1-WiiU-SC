@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using WiiU = UnityEngine.WiiU;
 
@@ -11,9 +14,10 @@ public class AuthManager : MonoBehaviour
 
     private const string apiUrl = "https://api.portal-wiiu-edition.com/authenticate";
 
-	public GameObject LoginPanel;
+	public GameObject loginPanel;
     public InputField[] inputFields;
     private int currentIndex = 0;
+    public Text statusText;
 
     TouchScreenKeyboard usernameKeyboard;
     TouchScreenKeyboard passwordKeyboard;
@@ -25,7 +29,7 @@ public class AuthManager : MonoBehaviour
 	void Update () {
         WiiU.GamePadState gamePadState = gamePad.state;
 
-        if (LoginPanel.activeSelf)
+        if (loginPanel.activeSelf)
         {
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
@@ -64,7 +68,7 @@ public class AuthManager : MonoBehaviour
 
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.Plus))
                 {
-                    LoginPanel.SetActive(false);
+                    Login();
                 }
             }
 
@@ -99,9 +103,73 @@ public class AuthManager : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    LoginPanel.SetActive(false);
+                    Login();
                 }
             }
         }
+    }
+
+    public void Login()
+    {
+        string username = inputFields[0].text;
+        string password = inputFields[1].text;
+        StartCoroutine(LoginRequest(username, password));
+    }
+
+    private IEnumerator LoginRequest(string username, string password)
+    {
+        string url = apiUrl;
+        string jsonString = "{\"username\":\"" + username + "\",\"password\":\"" + password + "\"}";
+        byte[] postData = System.Text.Encoding.UTF8.GetBytes(jsonString);
+
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("Content-Type", "application/json");
+
+        WWW www = new WWW(url, postData, headers);
+
+        yield return www;
+
+        if (!string.IsNullOrEmpty(www.error))
+        {
+            statusText.text = "API connection error : " + www.error;
+        }
+        else
+        {
+            string jsonResponse = www.text;
+            AuthenticationResponse response = JsonUtility.FromJson<AuthenticationResponse>(jsonResponse);
+
+            if (response != null)
+            {
+                if (response.message == "Authentication successful")
+                {
+                    string[] badgesArray = response.badges.Split(',');
+
+                    if (Array.Exists(badgesArray, badge => badge.Trim() == "1") || Array.Exists(badgesArray, badge => badge.Trim() == "2"))
+                    {
+                        loginPanel.SetActive(false);
+                    }
+                    else
+                    {
+                        statusText.text = "You are not authorized to access this test version.";
+                    }
+                }
+                else
+                {
+                    statusText.text = "Authentication failed : " + response.message;
+                }
+            }
+            else
+            {
+                statusText.text = "Invalid response from the server";
+            }
+        }
+    }
+
+    [System.Serializable]
+    private class AuthenticationResponse
+    {
+        public string message;
+        public string authToken;
+        public string badges;
     }
 }
