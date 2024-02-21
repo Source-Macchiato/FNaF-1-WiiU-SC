@@ -62,43 +62,39 @@ public class GameScript : MonoBehaviour {
         //---------------------------------------TIME-------------------------------------//
         Time -= UnityEngine.Time.deltaTime;
 
-        if (Time <= 535)
+        switch((int)Time)
         {
-            TimeShower.GetComponent<Text>().text = "12 AM";
-        }
+            case 535:
+                TimeShower.GetComponent<Text>().text = "12 AM";
+            break;
+                
+            case 445:
+                TimeShower.GetComponent<Text>().text = "1 AM";
+            break;
 
-        if (Time <= 445)
-        {
-            TimeShower.GetComponent<Text>().text = "1 AM";
-        }
+            case 354:
+                TimeShower.GetComponent<Text>().text = "2 AM";
+            break;
+            
+            case 267:
+                TimeShower.GetComponent<Text>().text = "3 AM";
+            break;
 
-        if (Time <= 354)
-        {
-            TimeShower.GetComponent<Text>().text = "2 AM";
-        }
+            case 178:
+                TimeShower.GetComponent<Text>().text = "4 AM";
+            break;
 
-        if (Time <= 267)
-        {
-            TimeShower.GetComponent<Text>().text = "3 AM";
-        }
-
-        if (Time <= 178)
-        {
-            TimeShower.GetComponent<Text>().text = "4 AM";
-        }
-
-        if (Time <= 89)
-        {
-            TimeShower.GetComponent<Text>().text = "5 AM";
-        }
-
-        if (Time <= 0)
-        {
+            case 89:
+                TimeShower.GetComponent<Text>().text = "5 AM";
+            break;
+            
+            case 0:
             TimeShower.GetComponent<Text>().text = "6 AM";
             PlayerPrefs.SetFloat("NightNumber", NightNumber + 1);
             PlayerPrefs.Save();
 
             SceneManager.LoadScene("6AM");
+            break;
         }
         //--------------------------------------TIME------------------------------//
 
