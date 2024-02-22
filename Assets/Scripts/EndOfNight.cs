@@ -20,7 +20,7 @@ public class EndOfNight : MonoBehaviour {
 
         yield return new WaitForSeconds(5);
 
-        if (NightNumber < 5) {
+        if (NightNumber <= 5) {
             SceneManager.LoadScene("NextNight");
         } else if (NightNumber == 6) {
             SceneManager.LoadScene("TheEnd");
