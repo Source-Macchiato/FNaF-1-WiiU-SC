@@ -57,6 +57,34 @@ public class GameScript : MonoBehaviour {
         //-------------------------------CallAndNight-----------------------------//
     }
 
+    public void DebugTwelveAMButton()
+    {
+        Time = 536;
+    }
+    public void DebugOneAMButton()
+    {
+        Time = 446;
+    }
+    public void DebugTwoAMButton()
+    {
+        Time = 355;
+    }
+    public void DebugThreeAMButton()
+    {
+        Time = 268;
+    }
+    public void DebugFourAMButton()
+    {
+        Time = 179;
+    }
+    public void DebugFiveAMButton()
+    {
+        Time = 90;
+    }
+    public void DebugSixAMButton()
+    {
+        Time = 1;
+    }
     void Update () //(max) wow this function proves how much you hate else ifs
     {
         //---------------------------------------TIME-------------------------------------//

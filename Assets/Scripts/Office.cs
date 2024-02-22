@@ -4,6 +4,9 @@ using WiiU = UnityEngine.WiiU;
 
 public class Office : MonoBehaviour {
 
+    public GameObject CheatPanel;
+    public bool CheatPanelActive = false;
+    private Movement movementScript;
     private bool LeftScareAlrdPlayed = false;
     private bool RightScareAlrdPlayed = false;
 
@@ -64,12 +67,32 @@ public class Office : MonoBehaviour {
     void Start()
     {
         gamePad = WiiU.GamePad.access;
+        movementScript = GetComponent<Movement>();
 
         centerPosition = 0;
     }
 
     void Update()
     {
+
+        if (Application.isEditor)
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if(CheatPanelActive == false)
+            {
+                CheatPanel.SetActive(true);
+                CheatPanelActive = true;
+            }
+            else if(CheatPanelActive == true)
+            {
+                CheatPanel.SetActive(false);
+                CheatPanelActive = false;
+            }
+            
+        }
+
+    }
         Resources.UnloadUnusedAssets();
 
         WiiU.GamePadState gamePadState = gamePad.state;
@@ -236,6 +259,7 @@ public class Office : MonoBehaviour {
                     {
                         Light_L_No_Door.SetActive(true);
                         Light.Play();
+                        LeftScareAlrdPlayed = false;
                     }
 
                     if (BonnieOutsideDoor)
@@ -248,6 +272,10 @@ public class Office : MonoBehaviour {
                             Scare.Play();
                             LeftScareAlrdPlayed = true;
                         }
+                    }
+                    else
+                    {
+                        LeftScareAlrdPlayed = false;
                     }
 
                     OriginalOfficeImage.GetComponent<Image>().enabled = false;
@@ -274,6 +302,7 @@ public class Office : MonoBehaviour {
                     {
                         Light_L_No_Door.SetActive(true);
                         Light.Play();
+                        LeftScareAlrdPlayed = false;
                     }
 
                     if (BonnieOutsideDoor)
@@ -342,6 +371,7 @@ public class Office : MonoBehaviour {
 
                     }
                 }
+                bool camIsUp = movementScript.camIsUp;
 
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
                 {
@@ -351,6 +381,7 @@ public class Office : MonoBehaviour {
                     {
                         Light_R_No_Door.SetActive(true);
                         Light.Play();
+                        RightScareAlrdPlayed = false;
                     }
 
                     if (ChicaOutsideDoor)
@@ -363,8 +394,9 @@ public class Office : MonoBehaviour {
                             RightScareAlrdPlayed = true;
                             Scare.Play();
                         }
-                    }
 
+                    }
+                    
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
                     DoorButton_R3.SetActive(true);
@@ -420,6 +452,7 @@ public class Office : MonoBehaviour {
                     {
                         Light_R_No_Door.SetActive(true);
                         Light.Play();
+                        RightScareAlrdPlayed = false;
                     }
 
                     if (ChicaOutsideDoor)
@@ -433,7 +466,6 @@ public class Office : MonoBehaviour {
                             Scare.Play();
                         }
                     }
-
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
                     DoorButton_R3.SetActive(true);
@@ -668,4 +700,5 @@ public class Office : MonoBehaviour {
             }
         }
     }
+           
 }

@@ -929,4 +929,29 @@ if(GameScript.Time <= 300.0f)
             }
         }        
     }
+
+    public void DebugWhereBonnieIncrease()
+    {
+        WhereBonnie += 1;
+    }
+    public void DebugWhereBonnieMin()
+    {
+        WhereBonnie -= 1;
+    }
+    public void DebugWhereChicaIncrease()
+    {
+        WhereChica += 1;
+    }
+    public void DebugWhereChicaMin()
+    {
+        WhereChica -= 1;
+    }
+    public void DebugWhereFreddyIncrease()
+    {
+        WhereFreddy += 1;
+    }
+    public void DebugWhereFreddyMin()
+    {
+        WhereFreddy -= 1;
+    }
 }
