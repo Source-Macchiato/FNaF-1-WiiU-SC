@@ -75,6 +75,24 @@ public class Office : MonoBehaviour {
 
     void Update()
     {
+        WiiU.GamePadState gamePadState = gamePad.state;
+
+        Resources.UnloadUnusedAssets();
+
+        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+        {
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.Up) && gamePadState.IsTriggered(WiiU.GamePadButton.R))
+            {
+                if (CheatPanel.activeSelf)
+                {
+                    CheatPanel.SetActive(false);
+                }
+                else
+                {
+                    CheatPanel.SetActive(true);
+                }
+            }
+        }
 
         if (Application.isEditor)
         {
@@ -90,9 +108,6 @@ public class Office : MonoBehaviour {
                 }
             }
         }
-        Resources.UnloadUnusedAssets();
-
-        WiiU.GamePadState gamePadState = gamePad.state;
 
         float leftHorizontalInput = Input.GetAxis("LeftStickX");
 
