@@ -5,7 +5,6 @@ using WiiU = UnityEngine.WiiU;
 public class Office : MonoBehaviour {
 
     public GameObject CheatPanel;
-    public bool CheatPanelActive = false;
     private Movement movementScript;
     private bool LeftScareAlrdPlayed = false;
     private bool RightScareAlrdPlayed = false;
@@ -70,29 +69,27 @@ public class Office : MonoBehaviour {
         movementScript = GetComponent<Movement>();
 
         centerPosition = 0;
+
+        CheatPanel.SetActive(false);
     }
 
     void Update()
     {
 
         if (Application.isEditor)
-    {
-        if (Input.GetKeyDown(KeyCode.E))
         {
-            if(CheatPanelActive == false)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                CheatPanel.SetActive(true);
-                CheatPanelActive = true;
+                if (CheatPanel.activeSelf)
+                {
+                    CheatPanel.SetActive(false);
+                }
+                else
+                {
+                    CheatPanel.SetActive(true);
+                }
             }
-            else if(CheatPanelActive == true)
-            {
-                CheatPanel.SetActive(false);
-                CheatPanelActive = false;
-            }
-            
         }
-
-    }
         Resources.UnloadUnusedAssets();
 
         WiiU.GamePadState gamePadState = gamePad.state;
