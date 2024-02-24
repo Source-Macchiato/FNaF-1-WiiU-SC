@@ -712,5 +712,4 @@ public class Office : MonoBehaviour {
             }
         }
     }
-           
 }

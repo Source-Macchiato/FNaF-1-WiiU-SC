@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using WiiU = UnityEngine.WiiU;
 
 public class ChangeImages : MonoBehaviour
 {
@@ -13,11 +14,13 @@ public class ChangeImages : MonoBehaviour
     public Sprite ShowStage3;
     public Sprite ShowStage4;
 
-    
+    WiiU.GamePad gamePad;
+    private int patternLength = 15;
+
     // -----------DiningArea var----------
 
 
-    
+
     //default dining Area
     public Sprite DiningArea1;
     
@@ -122,6 +125,11 @@ public class ChangeImages : MonoBehaviour
         {
             RandCamNoise = System.Math.Round(UnityEngine.Random.Range(0f, 10f), 0);
         }
+    }
+
+    void Start()
+    {
+        gamePad = WiiU.GamePad.access;
     }
 
     void Update()
@@ -439,6 +447,8 @@ public class ChangeImages : MonoBehaviour
             AudioSources.SetActive(false);
             Phonecalls.SetActive(false);
 
+            patternLength = 30;
+            Rumble();
         }
 
         if (WhereChica < 8)
@@ -468,6 +478,9 @@ public class ChangeImages : MonoBehaviour
                 StripeGlitches.SetActive(false);
                 AudioSources.SetActive(false);
                 Phonecalls.SetActive(false);
+
+                patternLength = 30;
+                Rumble();
             }
         }
         if (WhereFreddy >= 6)
@@ -491,6 +504,9 @@ public class ChangeImages : MonoBehaviour
             StripeGlitches.SetActive(false);
             AudioSources.SetActive(false);
             Phonecalls.SetActive(false);
+
+            patternLength = 30;
+            Rumble();
         }
 
         if (WhereFoxy >= 3)
@@ -622,5 +638,19 @@ public class ChangeImages : MonoBehaviour
     public void cam7()
     {
         WichCamera = 11;
+    }
+
+    void Rumble()
+    {
+        Debug.Log("Rumble");
+
+        byte[] pattern = new byte[patternLength];
+        for (int i = 0; i < pattern.Length; ++i)
+        {
+            pattern[i] = 0xff;
+        }
+
+        gamePad.ControlMotor(pattern, pattern.Length * 8);
+        gamePad.ControlMotor(pattern, pattern.Length * 8);
     }
 }
