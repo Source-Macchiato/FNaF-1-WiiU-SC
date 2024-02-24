@@ -16,6 +16,7 @@ public class ChangeImages : MonoBehaviour
 
     WiiU.GamePad gamePad;
     private int patternLength = 15;
+    private bool rumbleTriggered = false;
 
     // -----------DiningArea var----------
 
@@ -447,8 +448,11 @@ public class ChangeImages : MonoBehaviour
             AudioSources.SetActive(false);
             Phonecalls.SetActive(false);
 
-            patternLength = 30;
-            Rumble();
+            if (!rumbleTriggered)
+            {
+                Rumble();
+                rumbleTriggered = true;
+            }
         }
 
         if (WhereChica < 8)
@@ -479,8 +483,11 @@ public class ChangeImages : MonoBehaviour
                 AudioSources.SetActive(false);
                 Phonecalls.SetActive(false);
 
-                patternLength = 30;
-                Rumble();
+                if (!rumbleTriggered)
+                {
+                    Rumble();
+                    rumbleTriggered = true;
+                }
             }
         }
         if (WhereFreddy >= 6)
@@ -505,8 +512,11 @@ public class ChangeImages : MonoBehaviour
             AudioSources.SetActive(false);
             Phonecalls.SetActive(false);
 
-            patternLength = 30;
-            Rumble();
+            if (!rumbleTriggered)
+            {
+                Rumble();
+                rumbleTriggered = true;
+            }
         }
 
         if (WhereFoxy >= 3)
