@@ -140,8 +140,7 @@ public class MainMenu : MonoBehaviour {
 
                     default:
                         break;
-
-                }                
+                }
 
                 // Keyboard
                 if (Application.isEditor)

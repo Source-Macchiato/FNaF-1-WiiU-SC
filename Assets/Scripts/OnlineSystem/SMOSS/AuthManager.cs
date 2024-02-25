@@ -8,6 +8,7 @@ using WiiU = UnityEngine.WiiU;
 public class AuthManager : MonoBehaviour
 {
     WiiU.GamePad gamePad;
+    WiiU.Remote remote;
 
     public float joystickThreshold = 0.5f;
     public float buttonChangeDelay = 0.2f;
@@ -24,13 +25,16 @@ public class AuthManager : MonoBehaviour
 
     void Start () {
         gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
     }
 	
 	void Update () {
         WiiU.GamePadState gamePadState = gamePad.state;
+        WiiU.RemoteState remoteState = remote.state;
 
         if (loginPanel.activeSelf)
         {
+            // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
                 if (usernameKeyboard == null || !usernameKeyboard.active || passwordKeyboard == null || !passwordKeyboard.active)
@@ -72,6 +76,54 @@ public class AuthManager : MonoBehaviour
                 }
             }
 
+            // Remote
+            switch (remoteState.devType)
+            {
+                case WiiU.RemoteDevType.ProController:
+                    if (usernameKeyboard == null || !usernameKeyboard.active || passwordKeyboard == null || !passwordKeyboard.active)
+                    {
+                        if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up))
+                        {
+                            inputFields[currentIndex].DeactivateInputField();
+
+                            currentIndex = (currentIndex + 1) % inputFields.Length;
+                        }
+
+                        if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Down))
+                        {
+                            inputFields[currentIndex].DeactivateInputField();
+
+                            currentIndex = (currentIndex - 1 + inputFields.Length) % inputFields.Length;
+                        }
+                    }
+
+                    if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
+                    {
+                        inputFields[currentIndex].ActivateInputField();
+
+                        if (currentIndex == 0)
+                        {
+                            usernameKeyboard = TouchScreenKeyboard.Open(inputFields[0].text, TouchScreenKeyboardType.Default, false, false, false, false, "Username");
+                            usernameKeyboard.targetDisplay = WiiU.DisplayIndex.TV;
+                        }
+                        else if (currentIndex == 1)
+                        {
+                            passwordKeyboard = TouchScreenKeyboard.Open(inputFields[1].text, TouchScreenKeyboardType.Default, false, false, true, false, "Password");
+                            passwordKeyboard.targetDisplay = WiiU.DisplayIndex.TV;
+                        }
+                    }
+
+                    if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Plus))
+                    {
+                        Login();
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            // Keyboard
             if (Application.isEditor)
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))

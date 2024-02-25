@@ -19,7 +19,6 @@ public class ChangeImages : MonoBehaviour
     private float rumbleTimer = 0.0f;
 
     WiiU.GamePad gamePad;
-    WiiU.Remote remote;
 
     // -----------DiningArea var----------
 
@@ -132,7 +131,6 @@ public class ChangeImages : MonoBehaviour
     void Start()
     {
         gamePad = WiiU.GamePad.access;
-        remote = WiiU.Remote.Access(0);
     }
 
     void Update()
