@@ -44,7 +44,13 @@ public class CameraScript : MonoBehaviour
                 {
                     CamSelectPanel.SetActive(false);
                     OfficeStuff.SetActive(true);
-
+                    foreach (Animator anim in FindObjectsOfType<Animator>())
+                    {
+                        if (anim.gameObject.name.Contains("Door"))
+                        {
+                            anim.enabled = false;
+                        }
+                    }
                     FlipClose.Play();
 
                     CamViewTabletClose.SetActive(true);
@@ -102,7 +108,13 @@ public class CameraScript : MonoBehaviour
                     {
                         CamSelectPanel.SetActive(false);
                         OfficeStuff.SetActive(true);
-
+                        foreach (Animator anim in FindObjectsOfType<Animator>())
+                        {
+                            if (anim.gameObject.name.Contains("Door"))
+                            {
+                                anim.enabled = false;
+                            }
+                        }
                         FlipClose.Play();
 
                         CamViewTabletClose.SetActive(true);
@@ -163,7 +175,13 @@ public class CameraScript : MonoBehaviour
                 {
                     CamSelectPanel.SetActive(false);
                     OfficeStuff.SetActive(true);
-
+                    foreach (Animator anim in FindObjectsOfType<Animator>())
+                    {
+                        if (anim.gameObject.name.Contains("Door"))
+                        {
+                            anim.enabled = false;
+                        }
+                    }
                     FlipClose.Play();
 
                     CamViewTabletClose.SetActive(true);

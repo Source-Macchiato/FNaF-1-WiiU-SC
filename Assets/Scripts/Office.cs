@@ -239,6 +239,13 @@ public class Office : MonoBehaviour {
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
+                    foreach (Animator anim in FindObjectsOfType<Animator>())
+                    {
+                        if (anim.gameObject.name.Contains("Door"))
+                        {
+                            anim.enabled = true;
+                        }
+                    }
                     if (L_Door_Closed)
                     {
                         Door_L_closed.SetActive(false);
@@ -282,6 +289,13 @@ public class Office : MonoBehaviour {
                 case WiiU.RemoteDevType.ProController:
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
                     {
+                        foreach (Animator anim in FindObjectsOfType<Animator>())
+                        {
+                            if (anim.gameObject.name.Contains("Door"))
+                            {
+                                anim.enabled = true;
+                            }
+                        }
                         if (L_Door_Closed)
                         {
                             Door_L_closed.SetActive(false);
@@ -328,6 +342,13 @@ public class Office : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.A))
                 {
+                    foreach (Animator anim in FindObjectsOfType<Animator>())
+                    {
+                        if (anim.gameObject.name.Contains("Door"))
+                        {
+                            anim.enabled = true;
+                        }
+                    }
                     if (L_Door_Closed)
                     {
                         Door_L_closed.SetActive(false);
