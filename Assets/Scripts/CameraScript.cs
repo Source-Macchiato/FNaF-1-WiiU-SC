@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using WiiU = UnityEngine.WiiU;
-
+using UnityEngine.UI;
 public class CameraScript : MonoBehaviour
 {
     public bool camIsUp = false;
@@ -20,7 +20,7 @@ public class CameraScript : MonoBehaviour
     public GameObject Dot;
     public GameObject Glitch;
     public GameObject Stripes;
-
+    public Office officescript;
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
@@ -227,6 +227,64 @@ public class CameraScript : MonoBehaviour
                 Black.SetActive(true);
                 OfficeControllerObject.GetComponent<Office>().enabled = false;
                 OfficeStuff.SetActive(false);
+                if (officescript.LeftLightIsOn)
+                {
+                    if (!officescript.BonnieOutsideDoor)
+                    {
+                        officescript.Light_L_No_Door.SetActive(false);
+                        officescript.Light.Pause();
+                    }
+
+                    if (officescript.BonnieOutsideDoor)
+                    {
+                        officescript.Light_L_Door_Bonnie.SetActive(false);
+                        officescript.Light.Pause();
+                    }
+
+                    officescript.OriginalOfficeImage.GetComponent<Image>().enabled = true;
+
+                    officescript.DoorButton_L3.SetActive(false);
+
+                    if (officescript.L_Door_Closed)
+                    {
+                        officescript.DoorButton_L1.SetActive(true);
+                        officescript.DoorButton_L4.SetActive(false);
+                    }
+
+                    officescript.OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                    officescript.LeftLightIsOn = false;
+                }
+
+
+                else if (officescript.RightLightIsOn)
+                {
+                    if (!officescript.ChicaOutsideDoor)
+                    {
+                        officescript.Light_R_No_Door.SetActive(false);
+                        officescript.Light.Pause();
+                    }
+
+                    if (officescript.ChicaOutsideDoor)
+                    {
+                        officescript.Light_R_Door_Chica.SetActive(false);
+                        officescript.Light.Pause();
+                    }
+
+                    officescript.OriginalOfficeImage.GetComponent<Image>().enabled = true;
+
+                    officescript.DoorButton_R3.SetActive(false);
+
+                    if (officescript.R_Door_Closed)
+                    {
+                        officescript.DoorButton_R1.SetActive(true);
+                        officescript.DoorButton_R4.SetActive(false);
+                    }
+
+                    officescript.OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+                    officescript.RightLightIsOn = false;
+                }
             }
         }
 
