@@ -17,6 +17,7 @@ public class ChangeImages : MonoBehaviour
     WiiU.GamePad gamePad;
     private int patternLength = 15;
     private bool rumbleTriggered = false;
+    private float rumbleTimer = 0.0f;
 
     // -----------DiningArea var----------
 
@@ -124,7 +125,7 @@ public class ChangeImages : MonoBehaviour
     {
         if (!noiseIsPlaying)
         {
-            RandCamNoise = System.Math.Round(UnityEngine.Random.Range(0f, 10f), 0);
+            RandCamNoise = System.Math.Round(Random.Range(0f, 10f), 0);
         }
     }
 
@@ -142,6 +143,8 @@ public class ChangeImages : MonoBehaviour
         WhereChica = PlayerPrefs.GetFloat("WhereChica", WhereChica);
         WhereFreddy = PlayerPrefs.GetFloat("WhereFreddy", WhereFreddy);
         WhereFoxy = PlayerPrefs.GetFloat("WhereFoxy", WhereFoxy);
+
+        rumbleTimer += Time.deltaTime;
 
         if (WichCamera == 1)
         {
@@ -450,6 +453,8 @@ public class ChangeImages : MonoBehaviour
 
             if (!rumbleTriggered)
             {
+                Debug.Log("Rumble from Bonnie");
+                rumbleTimer = 0.0f;
                 Rumble();
                 rumbleTriggered = true;
             }
@@ -485,6 +490,8 @@ public class ChangeImages : MonoBehaviour
 
                 if (!rumbleTriggered)
                 {
+                    Debug.Log("Rumble from Chica");
+                    rumbleTimer = 0.0f;
                     Rumble();
                     rumbleTriggered = true;
                 }
@@ -514,6 +521,8 @@ public class ChangeImages : MonoBehaviour
 
             if (!rumbleTriggered)
             {
+                Debug.Log("Rumble from Freddy");
+                rumbleTimer = 0.0f;
                 Rumble();
                 rumbleTriggered = true;
             }
@@ -593,6 +602,10 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
+        if (rumbleTimer > (patternLength / 15))
+        {
+            rumbleTriggered = false;
+        }
     }
 
     public void cam1a()
@@ -652,8 +665,6 @@ public class ChangeImages : MonoBehaviour
 
     void Rumble()
     {
-        Debug.Log("Rumble");
-
         byte[] pattern = new byte[patternLength];
         for (int i = 0; i < pattern.Length; ++i)
         {
