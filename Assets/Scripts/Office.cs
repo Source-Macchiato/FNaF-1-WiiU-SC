@@ -565,7 +565,7 @@ public class Office : MonoBehaviour {
                         }
 
                     }
-                    
+
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
                     DoorButton_R3.SetActive(true);
@@ -930,6 +930,22 @@ public class Office : MonoBehaviour {
                     RightLightIsOn = false;
                 }
             }
+        }
+        if (!L_Door_Closed && DoorButton_L4.activeInHierarchy)
+        {
+            DoorButton_L4.SetActive(false);
+        }
+        if (!R_Door_Closed && DoorButton_R4.activeInHierarchy)
+        {
+            DoorButton_R4.SetActive(false);
+        }
+        if (DoorButton_L2.activeInHierarchy && DoorButton_L3.activeInHierarchy)
+        {
+            DoorButton_L4.SetActive(true);
+        }
+        if (DoorButton_R2.activeInHierarchy && DoorButton_R3.activeInHierarchy)
+        {
+            DoorButton_R4.SetActive(true);
         }
         //----------------------------------------------
 
