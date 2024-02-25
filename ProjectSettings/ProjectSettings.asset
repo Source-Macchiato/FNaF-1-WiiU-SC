@@ -114,7 +114,7 @@ PlayerSettings:
   wiiUSupportsClassicController: 0
   wiiUSupportsBalanceBoard: 0
   wiiUSupportsMotionPlus: 0
-  wiiUSupportsProController: 0
+  wiiUSupportsProController: 1
   wiiUAllowScreenCapture: 1
   wiiUControllerCount: 0
   m_SupportedAspectRatios:

@@ -14,14 +14,14 @@ public class ChangeImages : MonoBehaviour
     public Sprite ShowStage3;
     public Sprite ShowStage4;
 
-    WiiU.GamePad gamePad;
     private int patternLength = 15;
     private bool rumbleTriggered = false;
     private float rumbleTimer = 0.0f;
 
+    WiiU.GamePad gamePad;
+    WiiU.Remote remote;
+
     // -----------DiningArea var----------
-
-
 
     //default dining Area
     public Sprite DiningArea1;
@@ -132,6 +132,7 @@ public class ChangeImages : MonoBehaviour
     void Start()
     {
         gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
     }
 
     void Update()

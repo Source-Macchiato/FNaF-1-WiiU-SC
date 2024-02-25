@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour {
     public Text setLanguageText;
 
     WiiU.GamePad gamePad;
+    WiiU.Remote remote;
 
     MenuNavigation menuNavigation;
 
@@ -39,6 +40,7 @@ public class MainMenu : MonoBehaviour {
         NightNumberDisplayer.text = NightNumber.ToString();
 
         gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
     }
 
     void Update()
@@ -50,11 +52,13 @@ public class MainMenu : MonoBehaviour {
         }
 
         WiiU.GamePadState gamePadState = gamePad.state;
+        WiiU.RemoteState remoteState = remote.state;
 
         if (!LoginPanel.activeSelf)
         {
             if (!UpdatePanel.activeSelf)
             {
+                // Gamepad
                 if (gamePadState.gamePadErr == WiiU.GamePadError.None)
                 {
                     if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
@@ -92,6 +96,51 @@ public class MainMenu : MonoBehaviour {
                     }
                 }
 
+                // Remote
+                switch (remoteState.devType)
+                {
+                    case WiiU.RemoteDevType.ProController:
+                        if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
+                        {
+                            MainMenuNavigation();
+                        }
+                        else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
+                        {
+                            if (menuNavigation.menuId == 1)
+                            {
+                                OptionsMenuNavigationPanel.SetActive(false);
+                                MainMenuNavigationPanel.SetActive(true);
+                                menuNavigation.menuId = 0;
+                                menuNavigation.selectedIndex = 0;
+                                menuNavigation.UpdateSelectionTexts();
+                            }
+                            else if (menuNavigation.menuId == 2)
+                            {
+                                PlayerPrefs.SetString("Language", setLanguageText.text);
+                                PlayerPrefs.Save();
+                                I18n.ReloadLanguage();
+                                AudioMenuPanel.SetActive(false);
+                                OptionsMenuNavigationPanel.SetActive(true);
+                                menuNavigation.menuId = 1;
+                                menuNavigation.selectedIndex = 0;
+                                menuNavigation.UpdateSelectionTexts();
+                            }
+                            else if (menuNavigation.menuId == 3)
+                            {
+                                CreditsMenuPanel.SetActive(false);
+                                OptionsMenuNavigationPanel.SetActive(true);
+                                menuNavigation.menuId = 1;
+                                menuNavigation.selectedIndex = 0;
+                            }
+                        }
+                        break;
+
+                    default:
+                        break;
+
+                }                
+
+                // Keyboard
                 if (Application.isEditor)
                 {
                     if (Input.GetKeyDown(KeyCode.Return))
@@ -131,6 +180,7 @@ public class MainMenu : MonoBehaviour {
             }
             else
             {
+                // Gamepad
                 if (gamePadState.gamePadErr == WiiU.GamePadError.None)
                 {
                     if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
@@ -139,6 +189,21 @@ public class MainMenu : MonoBehaviour {
                     }
                 }
 
+                // Remote
+                switch (remoteState.devType)
+                {
+                    case WiiU.RemoteDevType.ProController:
+                        if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
+                        {
+                            UpdatePanel.SetActive(false);
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
+                // Keyboard
                 if (Application.isEditor)
                 {
                     if (Input.GetKeyDown(KeyCode.Return))

@@ -23,10 +23,12 @@ public class MenuNavigation : MonoBehaviour
     public float scrollSpeed = 5f;
 
     WiiU.GamePad gamePad;
+    WiiU.Remote remote;
 
     void Start()
     {
         gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
 
         UpdateSelectionTexts();
     }
@@ -34,6 +36,7 @@ public class MenuNavigation : MonoBehaviour
     void Update()
     {
         WiiU.GamePadState gamePadState = gamePad.state;
+        WiiU.RemoteState remoteState = remote.state;
 
         float leftVerticalInput = Input.GetAxis("LeftStickY");
 
@@ -63,6 +66,7 @@ public class MenuNavigation : MonoBehaviour
                     }
                 }
 
+                // Gamepad
                 if (gamePadState.gamePadErr == WiiU.GamePadError.None)
                 {
                     if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
@@ -78,6 +82,27 @@ public class MenuNavigation : MonoBehaviour
                     }
                 }
 
+                // Remote
+                switch (remoteState.devType)
+                {
+                    case WiiU.RemoteDevType.ProController:
+                        if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Up))
+                        {
+                            selectedIndex = (selectedIndex - 1 + GetCurrentMenuButtons().Length) % GetCurrentMenuButtons().Length;
+                            UpdateSelectionTexts();
+                        }
+
+                        if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Down))
+                        {
+                            selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
+                            UpdateSelectionTexts();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                // Keyboard
                 if (Application.isEditor)
                 {
                     if (Input.GetKeyDown(KeyCode.UpArrow))
