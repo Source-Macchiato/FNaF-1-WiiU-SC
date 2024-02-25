@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WiiU = UnityEngine.WiiU;
@@ -41,6 +42,8 @@ public class MainMenu : MonoBehaviour {
 
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
+
+        SetBoolForOneSecond();
     }
 
     void Update()
@@ -272,5 +275,12 @@ public class MainMenu : MonoBehaviour {
         advertisementIsActive = true;
         startTime = Time.time;
         advertisementImage.SetActive(true);
+    }
+
+    IEnumerator SetBoolForOneSecond()
+    {
+        remote.motorRumble = true;
+        yield return new WaitForSeconds(1f);
+        remote.motorRumble = false;
     }
 }
