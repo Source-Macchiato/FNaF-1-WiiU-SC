@@ -65,7 +65,7 @@ public class CameraScript : MonoBehaviour
                 else
                 {
                     CamSelectPanel.SetActive(true);
-                    OfficeStuff.SetActive(false);
+                    //OfficeStuff.SetActive(false);
 
                     FlipOpen.Play();
                     CamViewTabletOpen.SetActive(true);
@@ -76,7 +76,7 @@ public class CameraScript : MonoBehaviour
                     wait = 0.2f;
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-                    OfficeControllerObject.GetComponent<Office>().enabled = false;
+                    //OfficeControllerObject.GetComponent<Office>().enabled = false;
                     OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
                     OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
                     OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
@@ -121,7 +121,7 @@ public class CameraScript : MonoBehaviour
                 else
                 {
                     CamSelectPanel.SetActive(true);
-                    OfficeStuff.SetActive(false);
+                    //OfficeStuff.SetActive(false);
 
                     FlipOpen.Play();
                     CamViewTabletOpen.SetActive(true);
@@ -132,7 +132,7 @@ public class CameraScript : MonoBehaviour
                     wait = 0.2f;
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-                    OfficeControllerObject.GetComponent<Office>().enabled = false;
+                    //OfficeControllerObject.GetComponent<Office>().enabled = false;
                     OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
                     OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
                     OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
@@ -146,6 +146,7 @@ public class CameraScript : MonoBehaviour
 
         if (camIsUp)
         {
+
             wait -= Time.deltaTime;
 
             if (wait <= 0)
@@ -157,6 +158,8 @@ public class CameraScript : MonoBehaviour
                 Glitch.SetActive(true);
                 Stripes.SetActive(true);
                 Black.SetActive(true);
+                OfficeControllerObject.GetComponent<Office>().enabled = false;
+                OfficeStuff.SetActive(false);
             }
         }
 
