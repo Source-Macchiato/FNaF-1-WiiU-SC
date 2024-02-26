@@ -3,6 +3,7 @@ using WiiU = UnityEngine.WiiU;
 using UnityEngine.UI;
 public class CameraScript : MonoBehaviour
 {
+    public AudioSource Boop;
     public bool camIsUp = false;
 
     public float wait = 0.2f;
@@ -97,6 +98,16 @@ public class CameraScript : MonoBehaviour
                 }
             }
         }
+
+        if (gamePadState.IsTriggered(WiiU.GamePadButton.Y) && !camIsUp)
+            {
+                Boop.Play();
+            }
+        if (Input.GetKeyDown(KeyCode.Y) && !camIsUp)
+        {
+            Boop.Play();
+        }
+
 
         // Remote
         switch (remoteState.devType)
