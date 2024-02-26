@@ -4,6 +4,12 @@ using UnityEngine.UI;
 
 public class NextNight : MonoBehaviour {
 
+    public GameObject Night1;
+    public GameObject Night2;
+    public GameObject Night3;
+    public GameObject Night4;
+    public GameObject Night5;
+    public GameObject Night6;
     private float NightNumber;
     public Text NightNumberDisplayer;
     public GameObject loadingScreenPanel;
@@ -11,8 +17,25 @@ public class NextNight : MonoBehaviour {
     void Start () {
         loadingScreenPanel.SetActive(false);
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
-        NightNumberDisplayer.text = NightNumber.ToString();
-
+        Night1.SetActive(false);
+        Night2.SetActive(false);
+        Night3.SetActive(false);
+        Night4.SetActive(false);
+        Night5.SetActive(false);
+        Night6.SetActive(false);
+    if (NightNumber == 1) {
+        Night1.SetActive(true);
+    } else if (NightNumber == 2) {
+        Night2.SetActive(true);
+    } else if (NightNumber == 3) {
+        Night3.SetActive(true);
+    } else if (NightNumber == 4) {
+        Night4.SetActive(true);
+    } else if (NightNumber == 5) {
+        Night5.SetActive(true);
+    } else if (NightNumber == 6) {
+        Night6.SetActive(true);
+    }
         StartCoroutine(InitCoroutine());
     }
 
