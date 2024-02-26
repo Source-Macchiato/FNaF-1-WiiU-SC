@@ -145,7 +145,7 @@ public class GameScript : MonoBehaviour {
             {
                 PowerLeft -= 1;
                 PowerShower.GetComponent<Text>().text = PowerLeft.ToString();
-                PowerDrain = 8;
+                PowerDrain = 10;
             }
 
             Bar1.SetActive(true);

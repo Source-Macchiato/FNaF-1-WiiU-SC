@@ -931,10 +931,10 @@ if(GameScript.Time <= 300.0f)
             }
         }  
 
-        if(WhereChica == 4)
+        if(WhereChica == 5)
         {
             ChicaInKitchen.SetActive(true);
-        } else if (WhereChica != 4)
+        } else if (WhereChica != 5)
         {
             ChicaInKitchen.SetActive(false);
         }
