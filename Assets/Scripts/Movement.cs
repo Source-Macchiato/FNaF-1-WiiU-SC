@@ -3,6 +3,7 @@
 public class Movement : MonoBehaviour {
     public GameScript GameScript;
 
+    public GameObject ChicaInKitchen;
     public double BonnieMovementTime;
     public double ChicaMovementTime;
     public double FreddyMovementTime;
@@ -60,6 +61,7 @@ public class Movement : MonoBehaviour {
     void Start()
     {
 
+        ChicaInKitchen.SetActive(false);
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
         GenNumber();
@@ -461,7 +463,7 @@ public class Movement : MonoBehaviour {
         //------------------------AI param depend of nights----------------------------------------
 
 //wait 240 seconds
-if(GameScript.Time <= 240.0f)
+if(GameScript.Time <= 445.0f)
 {
     if (NightNumber == 1)
 {
@@ -927,7 +929,15 @@ if(GameScript.Time <= 300.0f)
                 GlitchActive = false;
                 MoveGlitchUp = 0.5f;
             }
-        }        
+        }  
+
+        if(WhereChica == 4)
+        {
+            ChicaInKitchen.SetActive(true);
+        } else if (WhereChica != 4)
+        {
+            ChicaInKitchen.SetActive(false);
+        }
     }
 
     public void DebugWhereBonnieIncrease()
