@@ -463,7 +463,7 @@ public class Movement : MonoBehaviour {
         //------------------------AI param depend of nights----------------------------------------
 
 //wait 240 seconds
-if(GameScript.Time <= 445.0f)
+if(GameScript.Time <= 267.0f)
 {
     if (NightNumber == 1)
 {
