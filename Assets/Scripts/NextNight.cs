@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class NextNight : MonoBehaviour {
 
+    public GameObject LoadingSprite;
+
     public GameObject Night1;
     public GameObject Night2;
     public GameObject Night3;
@@ -17,6 +19,7 @@ public class NextNight : MonoBehaviour {
     void Start () {
         loadingScreenPanel.SetActive(false);
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        LoadingSprite.SetActive(false);
         Night1.SetActive(false);
         Night2.SetActive(false);
         Night3.SetActive(false);
@@ -42,6 +45,7 @@ public class NextNight : MonoBehaviour {
     IEnumerator InitCoroutine() {
         yield return new WaitForSeconds(5);
         loadingScreenPanel.SetActive(true);
+        LoadingSprite.SetActive(true);
         GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadLevel("Office");
     }
 }
