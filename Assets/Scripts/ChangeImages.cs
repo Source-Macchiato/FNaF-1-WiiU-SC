@@ -404,15 +404,11 @@ public class ChangeImages : MonoBehaviour
             {
                 black.GetComponent<Image>().sprite = RestRooms3;
             }
-            else
-            {
-                black.GetComponent<Image>().sprite = RestRooms1;
-            }
             if(WhereFreddy == 3)
             {
                 black.GetComponent<Image>().sprite = RestRooms4;
             }
-            else
+            if(WhereChica !=3 && WhereChica !=4 && WhereFreddy !=3)
             {
                 black.GetComponent<Image>().sprite = RestRooms1;
             }
