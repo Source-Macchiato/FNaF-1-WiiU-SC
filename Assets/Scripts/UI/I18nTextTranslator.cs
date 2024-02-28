@@ -36,14 +36,9 @@ public class I18nTextTranslator : MonoBehaviour
 
     string GetTranslatedText()
     {
-        string language = I18n.GetLanguage();
         string translatedText;
 
-        if (I18n.Texts.TryGetValue(textId + "_" + language, out translatedText))
-        {
-            return translatedText;
-        }
-        else if (I18n.Texts.TryGetValue(textId, out translatedText))
+        if (I18n.Texts.TryGetValue(textId, out translatedText))
         {
             return translatedText;
         }

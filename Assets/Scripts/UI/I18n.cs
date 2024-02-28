@@ -57,29 +57,25 @@ public class I18n
 
         if (textAsset == null)
         {
-            Debug.LogError("File not found for I18n: Assets/Resources/" + filePath + ".txt");
+            Debug.LogError("File not found for I18n: Assets/Resources/" + filePath + ".json");
 
             filePath = "I18n/en";
             textAsset = Resources.Load<TextAsset>(filePath);
 
             if (textAsset == null)
             {
-                Debug.LogError("Default file not found for I18n: Assets/Resources/" + filePath + ".txt");
+                Debug.LogError("Default file not found for I18n: Assets/Resources/" + filePath + ".json");
                 return;
             }
         }
 
         string allTexts = textAsset.text;
-        string[] lines = allTexts.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+        var translations = JsonUtility.FromJson<Dictionary<string, string>>(allTexts);
 
-        for (int i = 0; i < lines.Length; i++)
+        foreach (var translation in translations)
         {
-            if (lines[i].IndexOf("=") >= 0 && !lines[i].StartsWith("#"))
-            {
-                string key = lines[i].Substring(0, lines[i].IndexOf("="));
-                string value = lines[i].Substring(lines[i].IndexOf("=") + 1, lines[i].Length - lines[i].IndexOf("=") - 1).Replace("\\n", Environment.NewLine);
-                Texts.Add(key, value);
-            }
+            Debug.Log("key" + translation.Key + ", value" + translation.Value);
+            Texts.Add(translation.Key, translation.Value.Replace("\\n", Environment.NewLine));
         }
     }
 
@@ -96,29 +92,25 @@ public class I18n
 
         if (textAsset == null)
         {
-            Debug.LogError("File not found for I18n: Assets/Resources/" + filePath + ".txt");
+            Debug.LogError("File not found for I18n: Assets/Resources/" + filePath + ".json");
 
             filePath = "I18n/en";
             textAsset = Resources.Load<TextAsset>(filePath);
 
             if (textAsset == null)
             {
-                Debug.LogError("Default file not found for I18n: Assets/Resources/" + filePath + ".txt");
+                Debug.LogError("Default file not found for I18n: Assets/Resources/" + filePath + ".json");
                 return;
             }
         }
 
         string allTexts = textAsset.text;
-        string[] lines = allTexts.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+        var translations = JsonUtility.FromJson<Dictionary<string, string>>(allTexts);
 
-        for (int i = 0; i < lines.Length; i++)
+        foreach (var translation in translations)
         {
-            if (lines[i].IndexOf("=") >= 0 && !lines[i].StartsWith("#"))
-            {
-                string key = lines[i].Substring(0, lines[i].IndexOf("="));
-                string value = lines[i].Substring(lines[i].IndexOf("=") + 1, lines[i].Length - lines[i].IndexOf("=") - 1).Replace("\\n", Environment.NewLine);
-                ENTexts.Add(key, value);
-            }
+            Debug.Log("key" + translation.Key + ", value" + translation.Value);
+            ENTexts.Add(translation.Key, translation.Value.Replace("\\n", Environment.NewLine));
         }
     }
 
