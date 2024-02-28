@@ -619,6 +619,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1525956016}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &83776930
@@ -754,6 +765,17 @@ MonoBehaviour:
       - m_Target: {fileID: 969611535}
         m_MethodName: Play
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 569234061}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1553,6 +1575,17 @@ MonoBehaviour:
       - m_Target: {fileID: 969611535}
         m_MethodName: Play
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 404404549}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2502,6 +2535,7 @@ GameObject:
   - component: {fileID: 356697117}
   - component: {fileID: 356697116}
   - component: {fileID: 356697115}
+  - component: {fileID: 356697118}
   m_Layer: 5
   m_Name: cam-Frame (6)
   m_TagString: Untagged
@@ -2634,6 +2668,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 356697113}
+--- !u!114 &356697118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 356697113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 356697116}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &360815323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2779,7 @@ GameObject:
   - component: {fileID: 404404548}
   - component: {fileID: 404404547}
   - component: {fileID: 404404546}
+  - component: {fileID: 404404549}
   m_Layer: 5
   m_Name: cam-Frame
   m_TagString: Untagged
@@ -2850,6 +2912,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 404404544}
+--- !u!114 &404404549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404404544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 404404547}
+  otherButtons:
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &409080837
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,6 +3944,7 @@ GameObject:
   - component: {fileID: 569234060}
   - component: {fileID: 569234059}
   - component: {fileID: 569234058}
+  - component: {fileID: 569234061}
   m_Layer: 5
   m_Name: cam-Frame (9)
   m_TagString: Untagged
@@ -3987,6 +4077,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 569234056}
+--- !u!114 &569234061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 569234056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 569234059}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 1735796343}
 --- !u!1 &596264437
 GameObject:
   m_ObjectHideFlags: 0
@@ -5242,6 +5359,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356697118}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &796983381
@@ -5325,6 +5453,7 @@ GameObject:
   - component: {fileID: 832747266}
   - component: {fileID: 832747265}
   - component: {fileID: 832747264}
+  - component: {fileID: 832747267}
   m_Layer: 5
   m_Name: cam-Frame (8)
   m_TagString: Untagged
@@ -5457,6 +5586,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832747262}
+--- !u!114 &832747267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832747262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 832747265}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &836525056
 GameObject:
   m_ObjectHideFlags: 0
@@ -5671,6 +5827,7 @@ GameObject:
   - component: {fileID: 899923991}
   - component: {fileID: 899923990}
   - component: {fileID: 899923989}
+  - component: {fileID: 899923992}
   m_Layer: 5
   m_Name: cam-Frame (3)
   m_TagString: Untagged
@@ -5803,6 +5960,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899923987}
+--- !u!114 &899923992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 899923987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 899923990}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &907097821
 GameObject:
   m_ObjectHideFlags: 0
@@ -5882,6 +6066,7 @@ GameObject:
   - component: {fileID: 910342326}
   - component: {fileID: 910342325}
   - component: {fileID: 910342324}
+  - component: {fileID: 910342327}
   m_Layer: 5
   m_Name: cam-Frame (2)
   m_TagString: Untagged
@@ -6014,6 +6199,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910342322}
+--- !u!114 &910342327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910342322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 910342325}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &930409630
 GameObject:
   m_ObjectHideFlags: 0
@@ -6503,6 +6715,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1302381241}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1035194036
@@ -6638,6 +6861,17 @@ MonoBehaviour:
       - m_Target: {fileID: 969611535}
         m_MethodName: Play
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1129389958}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7128,6 +7362,7 @@ GameObject:
   - component: {fileID: 1129389957}
   - component: {fileID: 1129389956}
   - component: {fileID: 1129389955}
+  - component: {fileID: 1129389958}
   m_Layer: 5
   m_Name: cam-Frame (7)
   m_TagString: Untagged
@@ -7260,6 +7495,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1129389953}
+--- !u!114 &1129389958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129389953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 1129389956}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &1131507111
 GameObject:
   m_ObjectHideFlags: 0
@@ -8064,6 +8326,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 910342327}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1259808996
@@ -8227,6 +8500,7 @@ GameObject:
   - component: {fileID: 1302381240}
   - component: {fileID: 1302381239}
   - component: {fileID: 1302381238}
+  - component: {fileID: 1302381241}
   m_Layer: 5
   m_Name: cam-Frame (1)
   m_TagString: Untagged
@@ -8359,6 +8633,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1302381236}
+--- !u!114 &1302381241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302381236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 1302381239}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &1347607973
 GameObject:
   m_ObjectHideFlags: 0
@@ -8640,6 +8941,17 @@ MonoBehaviour:
       - m_Target: {fileID: 969611535}
         m_MethodName: Play
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2118477138}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9580,6 +9892,7 @@ GameObject:
   - component: {fileID: 1525956015}
   - component: {fileID: 1525956014}
   - component: {fileID: 1525956013}
+  - component: {fileID: 1525956016}
   m_Layer: 5
   m_Name: cam-Frame (5)
   m_TagString: Untagged
@@ -9712,6 +10025,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1525956011}
+--- !u!114 &1525956016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1525956011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 1525956014}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &1528391395
 GameObject:
   m_ObjectHideFlags: 0
@@ -10402,6 +10742,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1735796345}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1691857634
@@ -10626,6 +10977,7 @@ GameObject:
   - component: {fileID: 1735796344}
   - component: {fileID: 1735796343}
   - component: {fileID: 1735796342}
+  - component: {fileID: 1735796345}
   m_Layer: 5
   m_Name: cam-Frame (10)
   m_TagString: Untagged
@@ -10758,6 +11110,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1735796340}
+--- !u!114 &1735796345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1735796340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 1735796343}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 2118477136}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
 --- !u!1 &1740351246
 GameObject:
   m_ObjectHideFlags: 0
@@ -11623,6 +12002,17 @@ MonoBehaviour:
       - m_Target: {fileID: 969611535}
         m_MethodName: Play
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 899923992}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13328,6 +13718,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 832747267}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1981355271
@@ -14099,6 +14500,7 @@ GameObject:
   - component: {fileID: 2118477137}
   - component: {fileID: 2118477136}
   - component: {fileID: 2118477135}
+  - component: {fileID: 2118477138}
   m_Layer: 5
   m_Name: cam-Frame (4)
   m_TagString: Untagged
@@ -14231,6 +14633,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2118477133}
+--- !u!114 &2118477138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118477133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
+    type: 3}
+  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
+    type: 3}
+  buttonSourceImage: {fileID: 2118477136}
+  otherButtons:
+  - {fileID: 404404547}
+  - {fileID: 1302381239}
+  - {fileID: 910342325}
+  - {fileID: 899923990}
+  - {fileID: 1525956014}
+  - {fileID: 356697116}
+  - {fileID: 1129389956}
+  - {fileID: 832747265}
+  - {fileID: 569234059}
+  - {fileID: 1735796343}
 --- !u!1 &2120008140
 GameObject:
   m_ObjectHideFlags: 0
