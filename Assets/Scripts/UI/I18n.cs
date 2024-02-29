@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class I18n
 {
     public static Dictionary<string, string> Texts { get; private set; }
 
-    public static Dictionary<string, string> ENTexts { get; private set; } //(max la menace) THIS IS A TERRIBLE SOLUTION TO THIS PROBLEM BUT IT WORKS
+    [Serializable]
+    public class TranslationDictionary
+    {
+        public List<TranslationItem> items;
+    }
+
+    [Serializable]
+    public class TranslationItem
+    {
+        public string key;
+        public string value;
+    }
 
     static I18n()
     {
         LoadLanguage();
-        ENLoadLanguage();
     }
 
     public static void ReloadLanguage()
@@ -53,64 +64,13 @@ public class I18n
 
         string filePath = "I18n/" + lang;
 
-        TextAsset textAsset = Resources.Load<TextAsset>(filePath);
+        string jsonPath = Path.Combine("Assets/Resources", filePath + ".json");
+        string allTexts = File.ReadAllText(jsonPath);
+        TranslationDictionary translations = JsonUtility.FromJson<TranslationDictionary>(allTexts);
 
-        if (textAsset == null)
+        foreach (TranslationItem item in translations.items)
         {
-            Debug.LogError("File not found for I18n: Assets/Resources/" + filePath + ".json");
-
-            filePath = "I18n/en";
-            textAsset = Resources.Load<TextAsset>(filePath);
-
-            if (textAsset == null)
-            {
-                Debug.LogError("Default file not found for I18n: Assets/Resources/" + filePath + ".json");
-                return;
-            }
-        }
-
-        string allTexts = textAsset.text;
-        var translations = JsonUtility.FromJson<Dictionary<string, string>>(allTexts);
-
-        foreach (var translation in translations)
-        {
-            Debug.Log("key" + translation.Key + ", value" + translation.Value);
-            Texts.Add(translation.Key, translation.Value.Replace("\\n", Environment.NewLine));
-        }
-    }
-
-    private static void ENLoadLanguage()
-    {
-        if (ENTexts == null)
-            ENTexts = new Dictionary<string, string>();
-
-        ENTexts.Clear();
-
-        string filePath = "I18n/en";
-
-        TextAsset textAsset = Resources.Load<TextAsset>(filePath);
-
-        if (textAsset == null)
-        {
-            Debug.LogError("File not found for I18n: Assets/Resources/" + filePath + ".json");
-
-            filePath = "I18n/en";
-            textAsset = Resources.Load<TextAsset>(filePath);
-
-            if (textAsset == null)
-            {
-                Debug.LogError("Default file not found for I18n: Assets/Resources/" + filePath + ".json");
-                return;
-            }
-        }
-
-        string allTexts = textAsset.text;
-        var translations = JsonUtility.FromJson<Dictionary<string, string>>(allTexts);
-
-        foreach (var translation in translations)
-        {
-            Debug.Log("key" + translation.Key + ", value" + translation.Value);
-            ENTexts.Add(translation.Key, translation.Value.Replace("\\n", Environment.NewLine));
+            Texts.Add(item.key, item.value);
         }
     }
 

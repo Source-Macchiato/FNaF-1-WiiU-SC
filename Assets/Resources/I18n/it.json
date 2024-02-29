@@ -1,88 +1,352 @@
 {
-    "mainmenu.newgame": "Nuova Partita",
-    "mainmenu.continue": "Continua",
-    "mainmenu.night": "NOTTE",
-    "mainmenu.options": "Impostazioni",
-    "office.night": "Notte",
-    "office.usage": "Consumo:",
-    "office.power": "Energia Rimasta:",
-    "camera.showstage": "Palcoscenico",
-    "camera.diningarea": "Zona pranzo",
-    "camera.piratecove": "Covo Dei Pirati",
-    "camera.westhall": "Sala Ovest",
-    "camera.westhallcorner": "Angolo Sala Ovest",
-    "camera.supplycloset": "Sgabuzzino",
-    "camera.easthall": "Sala Est",
-    "camera.easthallcorner": "Angolo Sala Est",
-    "camera.backstage": "Backstage",
-    "camera.kitchen": "Cucina",
-    "camera.restrooms": "Bagni",
-    "nightone.phoneguy.lineone": "Ciao? Salve, Ciao? Uh, volevo registrare un messaggio per aiutarti ad accomodarti in questa prima notte.",
-    "nightone.phoneguy.linetwo": "Um, lavoravo io in quel ufficio prima di te. A dire il vero, sto finendo la mia ultima settimana proprio ora. Dunque,",
-    "nightone.phoneguy.linethree": "So che può essere un po' stressante, ma sono qui per dirti che non c'è nulla di cui preoccuparsi.",
-    "nightone.phoneguy.linefour": "Uh, andrai bene. Dunque, concentriamoci solo sul farti superare la tua prima settimana, okay?",
-    "nightone.phoneguy.linefive": "Uh, vediamo, prima di tutto c'è un messaggio di benvenuto dalla compagnia che ti dovrei leggere.",
-    "nightone.phoneguy.linesix": "Uh, è una cosa legale, lo sai no. Um, \"Benvenuto a Freddy Fazbear's Pizza.",
-    "nightone.phoneguy.lineseven": "Un posto magico per bambini e piccini, dove la fantasia e il divertimento diventano realtà.",
-    "nightone.phoneguy.lineheight": "Fazbear Entertainment non è responsabile per danni verso proprietà o persone.",
-    "nightone.phoneguy.linenine": "Dopo la scoperta dell'avvenimento di una ferita o di una morte, una denuncia di scomparsa sarà firmata entro 90 giorni, o non appena",
-    "nightone.phoneguy.lineten": "proprietà e locali sono stati puliti e disinfettati, e i tappeti sono stati rimpiazzati.\"",
-    "nightone.phoneguy.lineeleven": "Blah, blah, blah. Ora questo potrebbe suonare male, lo so, ma non c'è davvero nulla di qui preoccuparsi.",
-    "nightone.phoneguy.linetwelve": "Uh, gli animatronici diventano un po' agitati di notte, se gli do colpa? No.",
-    "nightone.phoneguy.linethirteen": "Se sarei obbligato a cantare le stesse stupide canzoni per venti anni e senza mai lavarmi?",
-    "nightone.phoneguy.linefourteen": "Probabilmente anch'io diventerei un po' irritabile di notte. Perciò, ricorda, questi animatronici hanno un",
-    "nightone.phoneguy.linefifteen": "posto speciale nel cuore dei bambini e dobbiamo mostragli rispetto, okay? Okay.",
-    "nightone.phoneguy.linesixteen": "Dunque, sappi che, questi animatronici tendono a muoversi un po'. Uh, di notte sono lasciati in una specie",
-    "nightone.phoneguy.lineseventeen": "di modalità in cui sono liberi di camminare in giro. Uh... qualcosa sui loro servers che si bloccano",
-    "nightone.phoneguy.lineeighteen": "se sono spenti per troppo a lungo. Uh, tempo fa erano liberi di camminare in giro liberamente anche di giorno.",
-    "nightone.phoneguy.linenineteen": "Ma poi c'È stato il morso dell '87. Si. È fantastico che il corpo umano può vivere senza il lobo frontale, lo sapevi?",
-    "nightone.phoneguy.linetwenty": "Uh, ora preoccupiamoci della tua sicurezza, l'unico vero rischio che hai come guarda notturna qui, se c'è uno,",
-    "nightone.phoneguy.linetwentyone": "è che questi animatronici, uh, se gli capita di vederti dopo ore probabilmente non ti riconosceranno come persona.",
-    "nightone.phoneguy.linetwentytwo": "Probab- quasi sicuramente ti vedranno come un endoscheletro di metallo senza il costume sopra.",
-    "nightone.phoneguy.linetwentythree": "Visto che questo è contro le regole del Freddy Fazbear's Pizza, probabilmente proveranno di...",
-    "nightone.phoneguy.linetwentyfour": "metterti con la forza in una tuta da Freddy Fazbear. Um, adesso, questo non sarebbe così male",
-    "nightone.phoneguy.linetwentyfive": "se solo le tute non fossero riempite di travi, cavi elettrici, e dispositivi animatronici,",
-    "nightone.phoneguy.linetwentysix": "sopratutto nella zona del viso. Dunque, potresti immaginare che avere la tua testa",
-    "nightone.phoneguy.linetwentyseven": "premuta con forza dentro una di quelle cose potrebbe causare un po' di fastidio... e la morte.",
-    "nightone.phoneguy.linetwentyheight": "Uh, le uniche parti del tuo corpo che vedrebbero di nuovo la luce del sole sarebbero i tuoi bulbi oculari",
-    "nightone.phoneguy.linetwentynine": "e i denti quando spuntano dal fronte della maschera, heh.",
-    "nightone.phoneguy.linethirty": "S-Si, non te le dicono queste cose quando ti iscrivi. Ma hey, il primo giorno dovrebbe essere una passeggiata.",
-    "nightone.phoneguy.linethirtyone": "Ti contatterò di nuovo domani. Uh, controlla quelle videocamere, e ricordati di chiudere le porte",
-    "nightone.phoneguy.linethirtytwo": "solo se assolutamente necessario. Bisogna Risparmiare l'energia elettrica. Va bene, buona notte.",
-    "nighttwo.phoneguy.lineone": "Uhh, Salve? Uh, beh, se stai ascoltando questo messaggio e sei arrivato alla seconda notte, beh, congratulazioni!",
-    "nighttwo.phoneguy.linetwo": "I-Io non parlerò tanto quanto la scorsa volta visto che Freddy e i suoi amici tendono a diventare più attivi col passare della settimana.",
-    "nighttwo.phoneguy.linethree": "Uhm, potrebbe essere una buona idea controllare le videocamere nel mentre parlo",
-    "nighttwo.phoneguy.linefour": "giusto per essere sicuri che tutti siano nei loro posti. Sai no...",
-    "nighttwo.phoneguy.linefive": "Uh... curiosamente, Freddy stesso non scende dal palcoscenico spesso.",
-    "nighttwo.phoneguy.linesix": "Ho sentito che diventa molto più attivo nel buio però, dunque, hey,",
-    "nighttwo.phoneguy.lineseven": "Immagino che questa sia una ragione in più per non finire l'energia, giusto?",
-    "nighttwo.phoneguy.lineheight": "V-Volevo anche sottolineare l'importanza dell'usare le luci delle porte.",
-    "nighttwo.phoneguy.linenine": "Ci sono dei punti cechi nella visuale delle videocamere, e quei punti cechi capitano di essere proprio fuori dalle tue porte.",
-    "nighttwo.phoneguy.lineten": "Dunque s-se non trovi qualcosa, o qualcuno, sulle telecamere, si sicuro di avere controllato fuori dalle porte.",
-    "nighttwo.phoneguy.lineeleven": "Uh, potresti avere solo un paio di secondi per reagire... Uh, non che tu saresti in pericolo, ovviamente.",
-    "nighttwo.phoneguy.linetwelve": "Non stavo intendendo quello. In più, controlla la tenda del Covo dei Pirati qualche volta.",
-    "nighttwo.phoneguy.linethirteen": "L'individuo lì dentro sembra particolare, diventa più attivo se le telecamere rimangono spente per lunghi periodi.",
-    "nighttwo.phoneguy.linefourteen": "Immagino non gli piaccia essere visto. Non so.",
-    "nighttwo.phoneguy.linefifteen": "Comunque, sono sicuro che hai tutto sotto controllo! Uh, ci sentiamo presto.",
-    "nighthree.phoneguy.lineone": "Ciao, salve? Hey stai andando bene! La maggior parte delle persone non resiste così a lungo.",
-    "nighthree.phoneguy.linetwo": "Voglio dire, sai no, di solito vanno a fare altre cose a questo punto. Non stavo insinuando che fossero morti.",
-    "nighthree.phoneguy.linethree": "N-n-non è quello che volevo dire. Uh, comunque è meglio che non prenda troppo del tuo tempo.",
-    "nighthree.phoneguy.linefour": "Le cose cominciano a farsi serie oggi. Uh... hey, ascolta, ho avuto un'idea: se ti capita di essere catturato",
-    "nighthree.phoneguy.linefive": "e vuoi evitare di essere messo in una tuta di Freddy, uhh, prova a fingere di essere morto! Sai no, lascia andare il tuo corpo.",
-    "nighthree.phoneguy.linesix": "Così c'è una possibilità che, uh, forse penseranno che tu sia un costume vuoto.",
-    "nighthree.phoneguy.lineseven": "Poi e vero che, se penserebbero che tu sia un costume vuoto, potrebbero provare a... mettere un endoscheletro dentro di te.",
-    "nighthree.phoneguy.lineheight": "Mi chiedo come andrebbe. Seh, lascia stare, dimenticatene. È semplicemente meglio non essere catturati.",
-    "nighthree.phoneguy.linenine": "Um... okay, ti lascio solo. Ci vediamo dall'altra parte!",
-    "nightfour.phoneguy.lineone": "Ciao, salve? Hey! Hey, wow, giorno 4. Sapevo che c'è la potevi fare. Uh, hey, senti,",
-    "nightfour.phoneguy.linetwo": "Forse non sarò qui per mandarti un messaggio domani.* urto* è-è stata una brutta notte qui per me.",
-    "nightfour.phoneguy.linethree": "Um, S-sono abbastanza felice di aver registrato questo messaggio per te *si schiarisce la gola* uh, in questo momento.",
-    "nightfour.phoneguy.linefour": "Uh, hey, fammi un favore. * urto* Forse qualche volta, uh, potresti controllare in una di quelle tute nella stanza nel retro?",
-    "nightfour.phoneguy.linefive": "*urto* Cercherò di resistere finché qualcuno non controllerà. Forse non sarà così male.",
-    "nightfour.phoneguy.linesix": "*bang bang* Uh, M-m-m-mi son sempre chiesto cosa ci fosse in quelle teste vuote li dietro. *suoneria*.",
-    "nightfour.phoneguy.lineseven": "Sai... *sbadiglio profondo* oh, no – *rumori seguiti da un forse stridio e statico*",
-    "nightfive.phoneguy.lineone": "raramente ottengono (Omesso: il plauso) dei contemporanei; la gioia di rendere (Omesso: un servizio creando è una ricompensa sufficiente.)",
-    "nightfive.phoneguy.linetwo": "Saranno innumerevoli gli usi ai quali le future generaz- (Omesso: destineranno gli strumenti Bose.)(Omesso: Gli scienziati)",
-    "nightfive.phoneguy.linethree": "per indicare gli effetti di vari tipi di fertilizzanti sulla crescita delle piante? Lei ha ragione.",
-    "nightfive.phoneguy.linefour": "Sarebbe facilmente possibile impiegare alcune di esse in rapidi esperimenti di laboratorio",
-    "nightfive.phoneguy.linefive": "(Omesso: Signore,) è deplorabile che lo sviluppo dell’agricoltura su larga scala (Omesso: non) sia\naccelerato da un più ampio utilizzo delle vostre meravigliose apparecchiature."
-}
+  "items": [
+    {
+      "key": "none",
+      "value": ""
+    },
+    {
+      "key": "mainmenu.newgame",
+      "value": "Nuova Partita"
+    },
+    {
+      "key": "mainmenu.continue",
+      "value": "Continua"
+    },
+    {
+      "key": "mainmenu.night",
+      "value": "NOTTE"
+    },
+    {
+      "key": "mainmenu.options",
+      "value": "Impostazioni"
+    },
+    {
+      "key": "office.night",
+      "value": "Notte"
+    },
+    {
+      "key": "office.usage",
+      "value": "Consumo:"
+    },
+    {
+      "key": "office.power",
+      "value": "Energia Rimasta:"
+    },
+    {
+      "key": "camera.showstage",
+      "value": "Palcoscenico"
+    },
+    {
+      "key": "camera.diningarea",
+      "value": "Zona pranzo"
+    },
+    {
+      "key": "camera.piratecove",
+      "value": "Covo Dei Pirati"
+    },
+    {
+      "key": "camera.westhall",
+      "value": "Sala Ovest"
+    },
+    {
+      "key": "camera.westhallcorner",
+      "value": "Angolo Sala Ovest"
+    },
+    {
+      "key": "camera.supplycloset",
+      "value": "Sgabuzzino"
+    },
+    {
+      "key": "camera.easthall",
+      "value": "Sala Est"
+    },
+    {
+      "key": "camera.easthallcorner",
+      "value": "Angolo Sala Est"
+    },
+    {
+      "key": "camera.backstage",
+      "value": "Backstage"
+    },
+    {
+      "key": "camera.kitchen",
+      "value": "Cucina"
+    },
+    {
+      "key": "camera.restrooms",
+      "value": "Bagni"
+    },
+    {
+      "key": "nightone.phoneguy.lineone",
+      "value": "Ciao? Salve, Ciao? Uh, volevo registrare un messaggio per aiutarti ad accomodarti in questa prima notte."
+    },
+    {
+      "key": "nightone.phoneguy.linetwo",
+      "value": "Um, lavoravo io in quel ufficio prima di te. A dire il vero, sto finendo la mia ultima settimana proprio ora. Dunque,"
+    },
+    {
+      "key": "nightone.phoneguy.linethree",
+      "value": "So che può essere un po' stressante, ma sono qui per dirti che non c'è nulla di cui preoccuparsi."
+    },
+    {
+      "key": "nightone.phoneguy.linefour",
+      "value": "Uh, andrai bene. Dunque, concentriamoci solo sul farti superare la tua prima settimana, okay?"
+    },
+    {
+      "key": "nightone.phoneguy.linefive",
+      "value": "Uh, vediamo, prima di tutto c'è un messaggio di benvenuto dalla compagnia che ti dovrei leggere."
+    },
+    {
+      "key": "nightone.phoneguy.linesix",
+      "value": "Uh, è una cosa legale, lo sai no. Um, \"Benvenuto a Freddy Fazbear's Pizza."
+    },
+    {
+      "key": "nightone.phoneguy.lineseven",
+      "value": "Un posto magico per bambini e piccini, dove la fantasia e il divertimento diventano realtà."
+    },
+    {
+      "key": "nightone.phoneguy.lineheight",
+      "value": "Fazbear Entertainment non è responsabile per danni verso proprietà o persone."
+    },
+    {
+      "key": "nightone.phoneguy.linenine",
+      "value": "Dopo la scoperta dell'avvenimento di una ferita o di una morte, una denuncia di scomparsa sarà firmata entro 90 giorni, o non appena"
+    },
+    {
+      "key": "nightone.phoneguy.lineten",
+      "value": "proprietà e locali sono stati puliti e disinfettati, e i tappeti sono stati rimpiazzati.\""
+    },
+    {
+      "key": "nightone.phoneguy.lineeleven",
+      "value": "Blah, blah, blah. Ora questo potrebbe suonare male, lo so, ma non c'è davvero nulla di qui preoccuparsi."
+    },
+    {
+      "key": "nightone.phoneguy.linetwelve",
+      "value": "Uh, gli animatronici diventano un po' agitati di notte, se gli do colpa? No."
+    },
+    {
+      "key": "nightone.phoneguy.linethirteen",
+      "value": "Se sarei obbligato a cantare le stesse stupide canzoni per venti anni e senza mai lavarmi?"
+    },
+    {
+      "key": "nightone.phoneguy.linefourteen",
+      "value": "Probabilmente anch'io diventerei un po' irritabile di notte. Perciò, ricorda, questi animatronici hanno un"
+    },
+    {
+      "key": "nightone.phoneguy.linefifteen",
+      "value": "posto speciale nel cuore dei bambini e dobbiamo mostragli rispetto, okay? Okay."
+    },
+    {
+      "key": "nightone.phoneguy.linesixteen",
+      "value": "Dunque, sappi che, questi animatronici tendono a muoversi un po'. Uh, di notte sono lasciati in una specie"
+    },
+    {
+      "key": "nightone.phoneguy.lineseventeen",
+      "value": "di modalità in cui sono liberi di camminare in giro. Uh... qualcosa sui loro servers che si bloccano"
+    },
+    {
+      "key": "nightone.phoneguy.lineeighteen",
+      "value": "se sono spenti per troppo a lungo. Uh, tempo fa erano liberi di camminare in giro liberamente anche di giorno."
+    },
+    {
+      "key": "nightone.phoneguy.linenineteen",
+      "value": "Ma poi c'È stato il morso dell '87. Si. È fantastico che il corpo umano può vivere senza il lobo frontale, lo sapevi?"
+    },
+    {
+      "key": "nightone.phoneguy.linetwenty",
+      "value": "Uh, ora preoccupiamoci della tua sicurezza, l'unico vero rischio che hai come guarda notturna qui, se c'è uno,"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyone",
+      "value": "è che questi animatronici, uh, se gli capita di vederti dopo ore probabilmente non ti riconosceranno come persona."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentytwo",
+      "value": "Probab- quasi sicuramente ti vedranno come un endoscheletro di metallo senza il costume sopra."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentythree",
+      "value": "Visto che questo è contro le regole del Freddy Fazbear's Pizza, probabilmente proveranno di..."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyfour",
+      "value": "metterti con la forza in una tuta da Freddy Fazbear. Um, adesso, questo non sarebbe così male"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyfive",
+      "value": "se solo le tute non fossero riempite di travi, cavi elettrici, e dispositivi animatronici,"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentysix",
+      "value": "sopratutto nella zona del viso. Dunque, potresti immaginare che avere la tua testa"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyseven",
+      "value": "premuta con forza dentro una di quelle cose potrebbe causare un po' di fastidio... e la morte."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyheight",
+      "value": "Uh, le uniche parti del tuo corpo che vedrebbero di nuovo la luce del sole sarebbero i tuoi bulbi oculari"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentynine",
+      "value": "e i denti quando spuntano dal fronte della maschera, heh."
+    },
+    {
+      "key": "nightone.phoneguy.linethirty",
+      "value": "S-Si, non te le dicono queste cose quando ti iscrivi. Ma hey, il primo giorno dovrebbe essere una passeggiata."
+    },
+    {
+      "key": "nightone.phoneguy.linethirtyone",
+      "value": "Ti contatterò di nuovo domani. Uh, controlla quelle videocamere, e ricordati di chiudere le porte"
+    },
+    {
+      "key": "nightone.phoneguy.linethirtytwo",
+      "value": "solo se assolutamente necessario. Bisogna Risparmiare l'energia elettrica. Va bene, buona notte."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineone",
+      "value": "Uhh, Salve? Uh, beh, se stai ascoltando questo messaggio e sei arrivato alla seconda notte, beh, congratulazioni!"
+    },
+    {
+      "key": "nighttwo.phoneguy.linetwo",
+      "value": "I-Io non parlerò tanto quanto la scorsa volta visto che Freddy e i suoi amici tendono a diventare più attivi col passare della settimana."
+    },
+    {
+      "key": "nighttwo.phoneguy.linethree",
+      "value": "Uhm, potrebbe essere una buona idea controllare le videocamere nel mentre parlo"
+    },
+    {
+      "key": "nighttwo.phoneguy.linefour",
+      "value": "giusto per essere sicuri che tutti siano nei loro posti. Sai no..."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefive",
+      "value": "Uh... curiosamente, Freddy stesso non scende dal palcoscenico spesso."
+    },
+    {
+      "key": "nighttwo.phoneguy.linesix",
+      "value": "Ho sentito che diventa molto più attivo nel buio però, dunque, hey,"
+    },
+    {
+      "key": "nighttwo.phoneguy.lineseven",
+      "value": "Immagino che questa sia una ragione in più per non finire l'energia, giusto?"
+    },
+    {
+      "key": "nighttwo.phoneguy.lineheight",
+      "value": "V-Volevo anche sottolineare l'importanza dell'usare le luci delle porte."
+    },
+    {
+      "key": "nighttwo.phoneguy.linenine",
+      "value": "Ci sono dei punti cechi nella visuale delle videocamere, e quei punti cechi capitano di essere proprio fuori dalle tue porte."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineten",
+      "value": "Dunque s-se non trovi qualcosa, o qualcuno, sulle telecamere, si sicuro di avere controllato fuori dalle porte."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineeleven",
+      "value": "Uh, potresti avere solo un paio di secondi per reagire... Uh, non che tu saresti in pericolo, ovviamente."
+    },
+    {
+      "key": "nighttwo.phoneguy.linetwelve",
+      "value": "Non stavo intendendo quello. In più, controlla la tenda del Covo dei Pirati qualche volta."
+    },
+    {
+      "key": "nighttwo.phoneguy.linethirteen",
+      "value": "L'individuo lì dentro sembra particolare, diventa più attivo se le telecamere rimangono spente per lunghi periodi."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefourteen",
+      "value": "Immagino non gli piaccia essere visto. Non so."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefifteen",
+      "value": "Comunque, sono sicuro che hai tutto sotto controllo! Uh, ci sentiamo presto."
+    },
+    {
+      "key": "nighthree.phoneguy.lineone",
+      "value": "Ciao, salve? Hey stai andando bene! La maggior parte delle persone non resiste così a lungo."
+    },
+    {
+      "key": "nighthree.phoneguy.linetwo",
+      "value": "Voglio dire, sai no, di solito vanno a fare altre cose a questo punto. Non stavo insinuando che fossero morti."
+    },
+    {
+      "key": "nighthree.phoneguy.linethree",
+      "value": "N-n-non è quello che volevo dire. Uh, comunque è meglio che non prenda troppo del tuo tempo."
+    },
+    {
+      "key": "nighthree.phoneguy.linefour",
+      "value": "Le cose cominciano a farsi serie oggi. Uh... hey, ascolta, ho avuto un'idea: se ti capita di essere catturato"
+    },
+    {
+      "key": "nighthree.phoneguy.linefive",
+      "value": "e vuoi evitare di essere messo in una tuta di Freddy, uhh, prova a fingere di essere morto! Sai no, lascia andare il tuo corpo."
+    },
+    {
+      "key": "nighthree.phoneguy.linesix",
+      "value": "Così c'è una possibilità che, uh, forse penseranno che tu sia un costume vuoto."
+    },
+    {
+      "key": "nighthree.phoneguy.lineseven",
+      "value": "Poi e vero che, se penserebbero che tu sia un costume vuoto, potrebbero provare a... mettere un endoscheletro dentro di te."
+    },
+    {
+      "key": "nighthree.phoneguy.lineheight",
+      "value": "Mi chiedo come andrebbe. Seh, lascia stare, dimenticatene. È semplicemente meglio non essere catturati."
+    },
+    {
+      "key": "nighthree.phoneguy.linenine",
+      "value": "Um... okay, ti lascio solo. Ci vediamo dall'altra parte!"
+    },
+    {
+      "key": "nightfour.phoneguy.lineone",
+      "value": "Ciao, salve? Hey! Hey, wow, giorno 4. Sapevo che c'è la potevi fare. Uh, hey, senti,"
+    },
+    {
+      "key": "nightfour.phoneguy.linetwo",
+      "value": "Forse non sarò qui per mandarti un messaggio domani.* urto* è-è stata una brutta notte qui per me."
+    },
+    {
+      "key": "nightfour.phoneguy.linethree",
+      "value": "Um, S-sono abbastanza felice di aver registrato questo messaggio per te *si schiarisce la gola* uh, in questo momento."
+    },
+    {
+      "key": "nightfour.phoneguy.linefour",
+      "value": "Uh, hey, fammi un favore. * urto* Forse qualche volta, uh, potresti controllare in una di quelle tute nella stanza nel retro?"
+    },
+    {
+      "key": "nightfour.phoneguy.linefive",
+      "value": "*urto* Cercherò di resistere finché qualcuno non controllerà. Forse non sarà così male."
+    },
+    {
+      "key": "nightfour.phoneguy.linesix",
+      "value": "*bang bang* Uh, M-m-m-mi son sempre chiesto cosa ci fosse in quelle teste vuote li dietro. *suoneria*."
+    },
+    {
+      "key": "nightfour.phoneguy.lineseven",
+      "value": "Sai... *sbadiglio profondo* oh, no – *rumori seguiti da un forse stridio e statico*"
+    },
+    {
+      "key": "nightfive.phoneguy.lineone",
+      "value": "raramente ottengono (Omesso: il plauso) dei contemporanei; la gioia di rendere (Omesso: un servizio creando è una ricompensa sufficiente.)"
+    },
+    {
+      "key": "nightfive.phoneguy.linetwo",
+      "value": "Saranno innumerevoli gli usi ai quali le future generaz- (Omesso: destineranno gli strumenti Bose.)(Omesso: Gli scienziati)"
+    },
+    {
+      "key": "nightfive.phoneguy.linethree",
+      "value": "per indicare gli effetti di vari tipi di fertilizzanti sulla crescita delle piante? Lei ha ragione."
+    },
+    {
+      "key": "nightfive.phoneguy.linefour",
+      "value": "Sarebbe facilmente possibile impiegare alcune di esse in rapidi esperimenti di laboratorio"
+    },
+    {
+      "key": "nightfive.phoneguy.linefive",
+      "value": "(Omesso: Signore,) è deplorabile che lo sviluppo dell'agricoltura su larga scala (Omesso: non) sia\naccelerato da un più ampio utilizzo delle vostre meravigliose apparecchiature."
+    }
+  ]
+  }  
