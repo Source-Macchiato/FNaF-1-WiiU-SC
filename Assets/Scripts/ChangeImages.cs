@@ -662,6 +662,5 @@ public class ChangeImages : MonoBehaviour
         }
 
         gamePad.ControlMotor(pattern, pattern.Length * 8);
-        gamePad.ControlMotor(pattern, pattern.Length * 8);
     }
 }
