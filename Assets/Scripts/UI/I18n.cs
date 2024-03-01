@@ -64,8 +64,8 @@ public class I18n
 
         string filePath = "I18n/" + lang;
 
-        string jsonPath = Path.Combine(Application.dataPath, "Resources/" + filePath + ".json");
-        string allTexts = File.ReadAllText(jsonPath);
+        TextAsset jsonFile = Resources.Load<TextAsset>(filePath);
+        string allTexts = jsonFile.text;
         TranslationDictionary translations = JsonUtility.FromJson<TranslationDictionary>(allTexts);
 
         foreach (TranslationItem item in translations.items)
