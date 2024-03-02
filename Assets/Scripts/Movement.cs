@@ -811,20 +811,25 @@ if(GameScript.Time <= 300.0f)
         {
             if(WhereBonnie != 2 && WhereFreddy == 1 || WhereChica != 2 && WhereFreddy == 1 || WhereChica != 3 && WhereFreddy == 2 || WhereChica != 4 && WhereFreddy == 3 || WhereChica != 5 && WhereFreddy == 4 || WhereChica != 6 && WhereFreddy == 5)
             {
-            WhereFreddy += 1;
-            freddyInCount = false;
-            GlitchActive = true;
-            MoveGlitch.SetActive(true);
-            FreddyLaugh1.Play();
+                if(WhereBonnie != 1 && WhereChica != 1)
+                {
+                    WhereFreddy += 1;
+                    freddyInCount = false;
+                    GlitchActive = true;
+                    MoveGlitch.SetActive(true);
+                    FreddyLaugh1.Play();
 
 
-          if (!camIsUp) 
-          {
-            GlitchActive = false;
-            MoveGlitch.SetActive(false);
-          }
+                    if (!camIsUp) 
+                    {
+                        GlitchActive = false;
+                        MoveGlitch.SetActive(false);
+                    }
 
-          GenNumber();
+                     GenNumber();
+
+
+                }
 
             }
           
