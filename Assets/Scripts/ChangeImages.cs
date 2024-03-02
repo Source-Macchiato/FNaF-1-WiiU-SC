@@ -5,6 +5,7 @@ using WiiU = UnityEngine.WiiU;
 
 public class ChangeImages : MonoBehaviour
 {
+    public GameObject KitckenAudioOnly;
     public float WichCamera = 1;
     public GameObject WichCameraShower;
     public GameObject black;
@@ -372,6 +373,7 @@ public class ChangeImages : MonoBehaviour
         if (WichCamera == 10)
         {
             WichCameraShower.GetComponent<Text>().text = "Kitchen";
+            KitckenAudioOnly.SetActive(true);
 
             if (WhereChica == 5)
             {
@@ -381,6 +383,10 @@ public class ChangeImages : MonoBehaviour
             {
                 black.GetComponent<Image>().sprite = Kitchen1;
             }
+        }
+        else
+        {
+            KitckenAudioOnly.SetActive(false);
         }
 
         if (WichCamera == 11)

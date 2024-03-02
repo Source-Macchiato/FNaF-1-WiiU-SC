@@ -207,8 +207,8 @@ RectTransform:
   - {fileID: 113357119}
   - {fileID: 1131507112}
   - {fileID: 569191368}
-  - {fileID: 969611534}
   - {fileID: 1768309160}
+  - {fileID: 969611534}
   - {fileID: 1849677440}
   - {fileID: 1983494845}
   m_Father: {fileID: 0}
@@ -328,6 +328,73 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &59438677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 59438678}
+  - component: {fileID: 59438680}
+  - component: {fileID: 59438679}
+  m_Layer: 5
+  m_Name: Kitchen-Audio-Only
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &59438678
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59438677}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0108662, y: 1.0713946, z: 0.84661657}
+  m_Children: []
+  m_Father: {fileID: 1131507112}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 1397, y: 0}
+  m_SizeDelta: {x: 857.1, y: 40.599976}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &59438679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59438677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 2800000, guid: 7303497cc894e5a44b52ce8eeb63d8b5, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &59438680
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59438677}
 --- !u!1 &59919454
 GameObject:
   m_ObjectHideFlags: 0
@@ -7549,7 +7616,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6445236, y: 0.6081111, z: 0.7695655}
-  m_Children: []
+  m_Children:
+  - {fileID: 59438678}
   m_Father: {fileID: 26534564}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11559,7 +11627,7 @@ RectTransform:
   - {fileID: 1819803411}
   - {fileID: 1825086674}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12175,7 +12243,7 @@ Prefab:
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
@@ -13313,6 +13381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b14b969827bf164f85fdf34ab3f2418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KitckenAudioOnly: {fileID: 59438677}
   WichCamera: 1
   WichCameraShower: {fileID: 1265514370}
   black: {fileID: 1097015881}
