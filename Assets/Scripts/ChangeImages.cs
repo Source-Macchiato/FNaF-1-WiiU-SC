@@ -313,16 +313,13 @@ public class ChangeImages : MonoBehaviour
             {
                 black.GetComponent<Image>().sprite = EastHall1_3;
             }
-            else
-            {
-                black.GetComponent<Image>().sprite = EastHall1_1;
-            }
             if(WhereFreddy == 5)
             {
                 black.GetComponent<Image>().sprite = EastHall1_4;
 
             }
-            else
+
+            if(WhereChica != 5 && WhereChica != 6 && WhereFreddy != 5)
             {
                 black.GetComponent<Image>().sprite = EastHall1_1;
             }
@@ -339,12 +336,6 @@ public class ChangeImages : MonoBehaviour
                     black.GetComponent<Image>().sprite = EastHall2_2;
                 }
             }
-
-            else
-            {
-                black.GetComponent<Image>().sprite = EastHall2_1;
-            }
-
             if (WhereFreddy == 6)
             {
                 if (WhereChica <= 6)
@@ -353,7 +344,7 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
-            else
+            if (WhereChica != 7 && WhereFreddy != 6)
             {
                 black.GetComponent<Image>().sprite = EastHall2_1;
             }
