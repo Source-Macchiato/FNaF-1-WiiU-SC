@@ -19,6 +19,8 @@ public class ChangeImages : MonoBehaviour
     private bool rumbleTriggered = false;
     private float rumbleTimer = 0.0f;
 
+    public I18nTextTranslator i18nTextTranslator;
+
     WiiU.GamePad gamePad;
 
     // -----------DiningArea var----------
@@ -148,7 +150,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 1)
         {
-            WichCameraShower.GetComponent<Text>().text = "Show Stage";
+            i18nTextTranslator.textId = "camera.showstage";
+            i18nTextTranslator.UpdateText();
 
             black.GetComponent<Image>().sprite = ShowStage1;
 
@@ -213,7 +216,8 @@ public class ChangeImages : MonoBehaviour
         //-----------------dining Area-------------------
         if (WichCamera == 2)
         {
-            WichCameraShower.GetComponent<Text>().text = "Dining Area";
+            i18nTextTranslator.textId = "camera.diningarea";
+            i18nTextTranslator.UpdateText();
 
             if (WhereBonnie == 2)
             {
@@ -242,7 +246,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 3)
         {
-            WichCameraShower.GetComponent<Text>().text = "Pirate Cove";
+            i18nTextTranslator.textId = "camera.piratecove";
+            i18nTextTranslator.UpdateText();
 
             if (WhereFoxy == 2)
             {
@@ -262,7 +267,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 4)
         {
-            WichCameraShower.GetComponent<Text>().text = "West-Hall";
+            i18nTextTranslator.textId = "camera.westhall";
+            i18nTextTranslator.UpdateText();
 
             if (WhereBonnie == 5)
             {
@@ -276,7 +282,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 5)
         {
-            WichCameraShower.GetComponent<Text>().text = "West-Hall";
+            i18nTextTranslator.textId = "camera.westhallcorner";
+            i18nTextTranslator.UpdateText();
 
             if (WhereBonnie == 6)
             {
@@ -290,7 +297,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 6)
         {
-            WichCameraShower.GetComponent<Text>().text = "Closet";
+            i18nTextTranslator.textId = "camera.supplycloset";
+            i18nTextTranslator.UpdateText();
 
             if (WhereBonnie == 4)
             {
@@ -304,7 +312,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 7)
         {
-            WichCameraShower.GetComponent<Text>().text = "East-Hall";
+            i18nTextTranslator.textId = "camera.easthall";
+            i18nTextTranslator.UpdateText();
 
             if (WhereChica == 5)
             {
@@ -328,7 +337,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 8)
         {
-            WichCameraShower.GetComponent<Text>().text = "East-Hall";
+            i18nTextTranslator.textId = "camera.easthallcorner";
+            i18nTextTranslator.UpdateText();
 
             if (WhereChica == 7)
             {
@@ -358,7 +368,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 9)
         {
-            WichCameraShower.GetComponent<Text>().text = "Backstage";
+            i18nTextTranslator.textId = "camera.backstage";
+            i18nTextTranslator.UpdateText();
 
             if (WhereBonnie == 3)
             {
@@ -372,7 +383,9 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 10)
         {
-            WichCameraShower.GetComponent<Text>().text = "Kitchen";
+            i18nTextTranslator.textId = "camera.kitchen";
+            i18nTextTranslator.UpdateText();
+
             KitckenAudioOnly.SetActive(true);
 
             if (WhereChica == 5)
@@ -391,7 +404,8 @@ public class ChangeImages : MonoBehaviour
 
         if (WichCamera == 11)
         {
-            WichCameraShower.GetComponent<Text>().text = "Restrooms";
+            i18nTextTranslator.textId = "camera.restrooms";
+            i18nTextTranslator.UpdateText();
 
             if (WhereChica == 3)
             {

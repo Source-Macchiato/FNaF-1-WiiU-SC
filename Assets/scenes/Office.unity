@@ -8182,6 +8182,7 @@ GameObject:
   - component: {fileID: 1265514373}
   - component: {fileID: 1265514372}
   - component: {fileID: 1265514371}
+  - component: {fileID: 1265514374}
   m_Layer: 5
   m_Name: CamDisplayer
   m_TagString: Untagged
@@ -8215,11 +8216,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 68
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: CAM DISPLAYER
 --- !u!222 &1265514372
@@ -8246,6 +8247,18 @@ RectTransform:
   m_AnchoredPosition: {x: 51.109665, y: 38.07498}
   m_SizeDelta: {x: 374.18, y: 85.5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1265514374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265514370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: 
 --- !u!1 &1265553347
 GameObject:
   m_ObjectHideFlags: 0
@@ -13184,6 +13197,7 @@ MonoBehaviour:
   ShowStage2: {fileID: 21300000, guid: 03b8e40396cd176479e14c915d53b1c5, type: 3}
   ShowStage3: {fileID: 21300000, guid: ee7767b077c477544acdd83abc55e5b2, type: 3}
   ShowStage4: {fileID: 21300000, guid: 287b186023002094db62e0408973c4f4, type: 3}
+  i18nTextTranslator: {fileID: 1265514374}
   DiningArea1: {fileID: 21300000, guid: 60eabec4d85147d4a88217413c88c802, type: 3}
   DiningArea2: {fileID: 21300000, guid: d7f3a535228b8e341855e9a2e9577c02, type: 3}
   DiningArea3: {fileID: 21300000, guid: ff121e442258e0443b7e3457d587b548, type: 3}
