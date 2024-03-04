@@ -11,6 +11,12 @@ public class ChangeBackgroundButtonMinimap : MonoBehaviour
     private bool isBlinking = false;
     private string currentCameraName = "";
 
+    void Start()
+    {
+        currentCameraName = "1A";
+        StartCoroutine(BlinkBackground(currentCameraName));
+    }
+
     public void ButtonPressed(string cameraName)
     {
         if (currentCameraName == cameraName)
