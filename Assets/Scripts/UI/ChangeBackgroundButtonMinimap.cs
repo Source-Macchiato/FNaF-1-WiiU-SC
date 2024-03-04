@@ -1,166 +1,74 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeBackgroundButtonMinimap : MonoBehaviour {
-
+public class ChangeBackgroundButtonMinimap : MonoBehaviour
+{
     public Sprite defaultBackgroundSprite;
     public Sprite greenBackgroundSprite;
     public Image[] sourceImages;
 
-    public void ButtonPressed(string cameraName) {
-        if (cameraName == "1A")
+    private bool isBlinking = false;
+    private string currentCameraName = "";
+
+    public void ButtonPressed(string cameraName)
+    {
+        if (currentCameraName == cameraName)
         {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("1A-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
+            return;
         }
-        else if (cameraName == "1B")
+
+        if (isBlinking)
         {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("1B-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
+            StopCoroutine("BlinkBackground");
+            isBlinking = false;
         }
-        else if (cameraName == "1C")
+
+        StartCoroutine(BlinkBackground(cameraName));
+    }
+
+    IEnumerator BlinkBackground(string cameraName)
+    {
+        currentCameraName = cameraName;
+
+        while (true)
         {
-            foreach (Image image in sourceImages)
+            if (!isBlinking)
             {
-                if (image.gameObject.name.Contains("1C-Background"))
+                isBlinking = true;
+
+                foreach (Image image in sourceImages)
                 {
-                    image.sprite = greenBackgroundSprite;
+                    if (image.gameObject.name.Contains(cameraName + "-Background"))
+                    {
+                        image.sprite = greenBackgroundSprite;
+                    }
+                    else
+                    {
+                        image.sprite = defaultBackgroundSprite;
+                    }
                 }
-                else
+
+                yield return new WaitForSeconds(0.5f);
+
+                foreach (Image image in sourceImages)
                 {
-                    image.sprite = defaultBackgroundSprite;
+                    if (image.gameObject.name.Contains(cameraName + "-Background"))
+                    {
+                        image.sprite = defaultBackgroundSprite;
+                    }
                 }
+
+                isBlinking = false;
+                yield return new WaitForSeconds(0.5f);
             }
-        }
-        else if (cameraName == "2A")
-        {
-            foreach (Image image in sourceImages)
+
+            if (currentCameraName != cameraName)
             {
-                if (image.gameObject.name.Contains("2A-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
+                break;
             }
-        }
-        else if (cameraName == "2B")
-        {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("2B-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
-        }
-        else if (cameraName == "3")
-        {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("3-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
-        }
-        else if (cameraName == "4A")
-        {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("4A-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
-        }
-        else if (cameraName == "4B")
-        {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("4B-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
-        }
-        else if (cameraName == "5")
-        {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("5-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
-        }
-        else if (cameraName == "6")
-        {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("6-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
-        }
-        else if (cameraName == "7")
-        {
-            foreach (Image image in sourceImages)
-            {
-                if (image.gameObject.name.Contains("7-Background"))
-                {
-                    image.sprite = greenBackgroundSprite;
-                }
-                else
-                {
-                    image.sprite = defaultBackgroundSprite;
-                }
-            }
+
+            yield return null;
         }
     }
 }
