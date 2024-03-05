@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour {
 
         translators = FindObjectsOfType<I18nTextTranslator>();
 
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        NightNumber = SaveManager.LoadNightNumber();
 
         NightNumberDisplayer.text = NightNumber.ToString();
 
