@@ -23,11 +23,16 @@ public class GameScript : MonoBehaviour {
     public AudioSource Call4;
     public AudioSource Call5;
 
+    SaveGameState saveGameState;
+    SaveManager saveManager;
 
-	void Start ()
+    void Start ()
     {
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
         NightNumberDisplayer.text = NightNumber.ToString();
+
+        saveGameState = FindObjectOfType<SaveGameState>();
+        saveManager = FindObjectOfType<SaveManager>();
 
         //--------------------------------------CallAndNight----------------------//
         if (NightNumber == 1)
@@ -118,8 +123,9 @@ public class GameScript : MonoBehaviour {
             
             case 0:
             TimeShower.GetComponent<Text>().text = "6 AM";
-            PlayerPrefs.SetFloat("NightNumber", NightNumber + 1);
-            PlayerPrefs.Save();
+
+            saveManager.SaveNightNumber(NightNumber + 1);
+            bool saveResult = saveGameState.DoSave();
 
             SceneManager.LoadScene("6AM");
             break;
