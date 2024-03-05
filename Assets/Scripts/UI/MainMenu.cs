@@ -24,6 +24,9 @@ public class MainMenu : MonoBehaviour {
     WiiU.Remote remote;
 
     MenuNavigation menuNavigation;
+    SaveGameState saveGameState;
+    SaveManager saveManager;
+    I18nTextTranslator[] translators;
 
     void Start()
     {
@@ -35,6 +38,10 @@ public class MainMenu : MonoBehaviour {
         advertisementImage.SetActive(false);
 
         menuNavigation = FindObjectOfType<MenuNavigation>();
+        saveGameState = FindObjectOfType<SaveGameState>();
+        saveManager = FindObjectOfType<SaveManager>();
+
+        translators = FindObjectsOfType<I18nTextTranslator>();
 
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
@@ -80,9 +87,15 @@ public class MainMenu : MonoBehaviour {
                         }
                         else if (menuNavigation.menuId == 2)
                         {
-                            PlayerPrefs.SetString("Language", setLanguageText.text);
-                            PlayerPrefs.Save();
+                            saveManager.SaveLanguage(setLanguageText.text);
+                            bool saveResult = saveGameState.DoSave();
+
                             I18n.ReloadLanguage();
+                            foreach (I18nTextTranslator translator in translators)
+                            {
+                                translator.UpdateText();
+                            }
+
                             AudioMenuPanel.SetActive(false);
                             OptionsMenuNavigationPanel.SetActive(true);
                             menuNavigation.menuId = 1;
@@ -119,9 +132,15 @@ public class MainMenu : MonoBehaviour {
                             }
                             else if (menuNavigation.menuId == 2)
                             {
-                                PlayerPrefs.SetString("Language", setLanguageText.text);
-                                PlayerPrefs.Save();
+                                saveManager.SaveLanguage(setLanguageText.text);
+                                bool saveResult = saveGameState.DoSave();
+
                                 I18n.ReloadLanguage();
+                                foreach (I18nTextTranslator translator in translators)
+                                {
+                                    translator.UpdateText();
+                                }
+
                                 AudioMenuPanel.SetActive(false);
                                 OptionsMenuNavigationPanel.SetActive(true);
                                 menuNavigation.menuId = 1;
@@ -161,9 +180,15 @@ public class MainMenu : MonoBehaviour {
                         }
                         else if (menuNavigation.menuId == 2)
                         {
-                            PlayerPrefs.SetString("Language", setLanguageText.text);
-                            PlayerPrefs.Save();
+                            saveManager.SaveLanguage(setLanguageText.text);
+                            bool saveResult = saveGameState.DoSave();
+
                             I18n.ReloadLanguage();
+                            foreach (I18nTextTranslator translator in translators)
+                            {
+                                translator.UpdateText();
+                            }
+
                             AudioMenuPanel.SetActive(false);
                             OptionsMenuNavigationPanel.SetActive(true);
                             menuNavigation.menuId = 1;

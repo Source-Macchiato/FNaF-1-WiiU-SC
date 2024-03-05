@@ -1,14 +1,27 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 public class SaveManager : MonoBehaviour {
 
-	// Use this for initialization
+	private string[] saveFiles;
+
+	public string language;
+	public int nightNumber;
+
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        saveFiles = Directory.GetFiles(Application.persistentDataPath, "game_data.bin");
+    }
+
+	public void SaveLanguage(string language)
+	{
+        string languageData = JsonUtility.ToJson(language);
+
+        PlayerPrefs.SetString("Language", language);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadLanguage(string language)
+	{
+
 	}
 }
