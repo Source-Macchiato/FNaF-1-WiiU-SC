@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class I18n
 {
@@ -39,7 +38,7 @@ public class I18n
 
         string lang;
 
-        string languagePlayerPrefs = PlayerPrefs.GetString("Language", "None");
+        string languagePlayerPrefs = SaveManager.LoadLanguage();
 
         if (languagePlayerPrefs == "English")
         {
@@ -76,7 +75,7 @@ public class I18n
 
     public static string GetLanguage()
     {
-        string languagePlayerPrefs = PlayerPrefs.GetString("Language", "None");
+        string languagePlayerPrefs = SaveManager.LoadLanguage();
 
         if (languagePlayerPrefs == "English")
         {
