@@ -6,11 +6,6 @@ public class Console : MonoBehaviour
     private List<string> logMessages = new List<string>();
     private Vector2 scrollPosition = Vector2.zero;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
-
     void OnEnable()
     {
         Application.logMessageReceived += HandleLog;
