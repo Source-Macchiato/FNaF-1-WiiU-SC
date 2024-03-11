@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
 public class Movement : MonoBehaviour {
+    public ChangeImages changeImages;
     public GameScript GameScript;
+
+    public bool LongGlitch = false;
 
     public GameObject ChicaInKitchen;
     public double BonnieMovementTime;
@@ -30,7 +33,7 @@ public class Movement : MonoBehaviour {
 
     public GameObject MoveGlitch;
     public bool GlitchActive = false;
-    public float MoveGlitchUp = 0.5f;
+    public float MoveGlitchUp = 9.0f;
 
     public bool ChicaActive = false;
     public bool BonnieActive = false;
@@ -60,6 +63,7 @@ public class Movement : MonoBehaviour {
 
     void Start()
     {
+        
 
         ChicaInKitchen.SetActive(false);
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
@@ -407,6 +411,7 @@ public class Movement : MonoBehaviour {
 
 	void Update ()
     {
+        float WichCam = changeImages.WichCamera;
         PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
         PlayerPrefs.Save();
         PlayerPrefs.SetFloat("WhereChica", WhereChica);
@@ -480,8 +485,22 @@ if(GameScript.Time <= 267.0f)
                 
                 WhereBonnie += 1;
                 bonnieInCount = false;
-                GlitchActive = true;
-                MoveGlitch.SetActive(true);
+                
+                if(WichCam == WhereBonnie)
+                {
+                    MoveGlitchUp = 9.0f;
+                    GlitchActive = true;
+                    LongGlitch = true;
+                }
+                else if(WichCam != WhereBonnie)
+                {
+                    MoveGlitchUp = 0.5f;
+                    MoveGlitch.SetActive(true);
+                    GlitchActive = true;
+                    LongGlitch = false;
+
+                }
+                
 
                 if (!camIsUp)
                 {
@@ -625,7 +644,7 @@ if(GameScript.Time <= 300.0f)
     {
         if (ChicaActive)
         {
-            if(WhereBonnie != 1) //check if bonnie is ou of the stage.
+            if(WhereBonnie != 1) //check if bonnie is out of the stage.
             {
             if (WhereBonnie == 2) // checki if bonnie is on Dining Area
             {
@@ -928,7 +947,14 @@ if(GameScript.Time <= 300.0f)
         {
             MoveGlitchUp -= Time.deltaTime;
 
-            if (MoveGlitchUp <= 0)
+            if (MoveGlitchUp <= 0 && LongGlitch == true)
+            {
+                MoveGlitch.SetActive(false);
+                GlitchActive = false;
+                MoveGlitchUp = 0.5f;
+                LongGlitch = false;
+            }
+            else if(MoveGlitchUp <= 0)
             {
                 MoveGlitch.SetActive(false);
                 GlitchActive = false;

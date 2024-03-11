@@ -1182,7 +1182,7 @@ RectTransform:
   m_GameObject: {fileID: 110098913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 569234057}
   m_RootOrder: 0
@@ -2113,7 +2113,7 @@ RectTransform:
   m_GameObject: {fileID: 230027416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 356697114}
   m_RootOrder: 0
@@ -2859,7 +2859,7 @@ RectTransform:
   m_GameObject: {fileID: 380862622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 2118477134}
   m_RootOrder: 0
@@ -4653,7 +4653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &680659461
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6661,7 +6661,7 @@ RectTransform:
   m_GameObject: {fileID: 1070281481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 899923988}
   m_RootOrder: 0
@@ -7660,7 +7660,7 @@ RectTransform:
   m_GameObject: {fileID: 1178197919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 832747263}
   m_RootOrder: 0
@@ -8284,7 +8284,7 @@ RectTransform:
   m_GameObject: {fileID: 1265553347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 1129389954}
   m_RootOrder: 0
@@ -8422,7 +8422,7 @@ RectTransform:
   m_GameObject: {fileID: 1334703417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 404404545}
   m_RootOrder: 0
@@ -9165,7 +9165,7 @@ RectTransform:
   m_GameObject: {fileID: 1470600388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 1302381237}
   m_RootOrder: 0
@@ -9319,7 +9319,7 @@ RectTransform:
   m_GameObject: {fileID: 1483773580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 1735796341}
   m_RootOrder: 0
@@ -11184,7 +11184,7 @@ RectTransform:
   m_GameObject: {fileID: 1746291506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 910342323}
   m_RootOrder: 0
@@ -13026,7 +13026,7 @@ RectTransform:
   m_GameObject: {fileID: 1942418458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.58911383, y: 0.64065605, z: 0.58911383}
+  m_LocalScale: {x: 0.58911383, y: 0.69671077, z: 0.58911383}
   m_Children: []
   m_Father: {fileID: 1525956012}
   m_RootOrder: 0
@@ -13322,7 +13322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998d6286e8193a84e9fe68e04c8e85b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeImages: {fileID: 1959479699}
   GameScript: {fileID: 1959479698}
+  LongGlitch: 0
   ChicaInKitchen: {fileID: 1524675008}
   BonnieMovementTime: 0
   ChicaMovementTime: 0
@@ -13344,7 +13346,7 @@ MonoBehaviour:
   NightNumber: 0
   MoveGlitch: {fileID: 113357115}
   GlitchActive: 0
-  MoveGlitchUp: 0.5
+  MoveGlitchUp: 9
   ChicaActive: 0
   BonnieActive: 0
   FreddyActive: 0
