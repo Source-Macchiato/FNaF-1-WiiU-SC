@@ -21,6 +21,14 @@
       "value": "Impostazioni"
     },
     {
+      "key": "mainmenu.language",
+      "value": "Lingua di gioco"
+    },
+    {
+      "key": "mainmenu.credits",
+      "value": "Crediti"
+    },
+    {
       "key": "office.night",
       "value": "Notte"
     },

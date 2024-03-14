@@ -6162,7 +6162,7 @@ GameObject:
   - component: {fileID: 1419030244}
   - component: {fileID: 1419030243}
   m_Layer: 5
-  m_Name: TextAudio
+  m_Name: TextLanguage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6192,12 +6192,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1419030241}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textId: mainmenu.audio
+  textId: mainmenu.language
 --- !u!114 &1419030244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6230,7 +6230,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Audio
+  m_Text: Language
 --- !u!222 &1419030245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6985,7 +6985,7 @@ GameObject:
   - component: {fileID: 1612590796}
   - component: {fileID: 1612590795}
   m_Layer: 5
-  m_Name: ButtonAudio
+  m_Name: ButtonLanguage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7296,7 +7296,7 @@ GameObject:
   - component: {fileID: 1715796363}
   - component: {fileID: 1715796362}
   m_Layer: 5
-  m_Name: SelectionAudio
+  m_Name: SelectionLanguage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8015,7 +8015,7 @@ GameObject:
   - component: {fileID: 1912968398}
   - component: {fileID: 1912968397}
   m_Layer: 5
-  m_Name: AudioMenu
+  m_Name: LanguageMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8115,7 +8115,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1922568020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
   m_Name: 

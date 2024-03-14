@@ -101,7 +101,7 @@ public class Office : MonoBehaviour {
         } */
 
         // Remote
-        switch (remoteState.devType)
+        /* switch (remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
                 if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up) && remoteState.pro.IsTriggered(WiiU.ProControllerButton.R))
@@ -119,7 +119,7 @@ public class Office : MonoBehaviour {
 
             default:
                 break;
-        }
+        } */
 
         // Keyboard
         if (Application.isEditor)

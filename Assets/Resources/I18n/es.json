@@ -21,6 +21,14 @@
       "value": "Opciones"
     },
     {
+      "key": "mainmenu.language",
+      "value": "Idioma"
+    },
+    {
+      "key": "mainmenu.credits",
+      "value": "Creditos"
+    },
+    {
       "key": "office.night",
       "value": "Noche"
     },
