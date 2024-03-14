@@ -10,7 +10,7 @@ public class RandEvent : MonoBehaviour
     public bool ItsMeConditionMet;
     public const float minCountdown = 10f;
     public const float maxCountdown = 130f;
-    public const int ItsMeRandEvent = 2;
+    public const int ItsMeRandEvent = 70;
     public const int SecondRandEvent = 15;
     public bool ItsMePlayed = false;
     public bool CircusPlayed = false;
