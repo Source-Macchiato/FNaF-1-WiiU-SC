@@ -2,42 +2,75 @@
 
 public class RandEvent : MonoBehaviour
 {
-    public bool CircusAlrdPlayed = false;
-    public AudioSource Circus;
-    public float timer = 0f;
-    public int interval;
+    public GameObject ItsMeObj;
+    public AudioSource ItsMeSound;
+    public AudioSource circusSound;
+    public float countdown; 
+    public bool secondConditionMet; 
+    public bool ItsMeConditionMet;
+    public const float minCountdown = 10f;
+    public const float maxCountdown = 130f;
+    public const int ItsMeRandEvent = 2;
+    public const int SecondRandEvent = 15;
+    public bool ItsMePlayed = false;
+    public bool CircusPlayed = false;
 
     void Start()
     {
-        // Générer un intervalle initial aléatoire entre 30 et 60 secondes
-        interval = Random.Range(30, 61);
+        ResetCountdown();
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= interval)
+        countdown -= Time.deltaTime;
+        if (countdown <= 0f)
         {
-            timer = 0f;
-
-            // Générer un nouvel intervalle aléatoire entre 30 et 60 secondes
-            interval = Random.Range(30, 61);
-
-            int randomNumber = Random.Range(0, 101);
-
-            if (randomNumber >= 35 && randomNumber <= 60)
+            //play circus
+            if (secondConditionMet)
             {
-                CircusPlay();
+                circus(); 
+                ResetCountdown(); 
+            }
+            else
+            {
+                ResetCountdown(); 
+            }
+
+            //play It's me
+            if (ItsMeConditionMet)
+            {
+                ItsMe();
+                ResetCountdown();
+            }
+            else
+            {
+                ResetCountdown();
             }
         }
     }
-
-    void CircusPlay()
+    void ItsMe()
     {
-        if (CircusAlrdPlayed == false)
+        if(!ItsMePlayed)
         {
-            Circus.Play();
-            CircusAlrdPlayed = true;
+            ItsMeObj.SetActive(true);
+            ItsMeSound.Play();
+            ItsMePlayed = true;
         }
+        
+    }
+    void circus()
+    {
+        if(!CircusPlayed)
+        {
+            circusSound.Play();
+            CircusPlayed = true;
+        }
+        
+    }
+    void ResetCountdown()
+    {
+        countdown = Random.Range(minCountdown, maxCountdown);
+        ItsMeConditionMet = Random.Range(1, ItsMeRandEvent + 1) == 1;
+        secondConditionMet = Random.Range(1, SecondRandEvent + 1) == 1;
     }
 }

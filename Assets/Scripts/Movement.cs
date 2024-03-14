@@ -411,7 +411,6 @@ public class Movement : MonoBehaviour {
 
 	void Update ()
     {
-        float WichCam = changeImages.WichCamera;
         PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
         PlayerPrefs.Save();
         PlayerPrefs.SetFloat("WhereChica", WhereChica);
@@ -486,13 +485,14 @@ if(GameScript.Time <= 267.0f)
                 WhereBonnie += 1;
                 bonnieInCount = false;
                 
-                if(WichCam == WhereBonnie)
+                if(changeImages.WichCamera == WhereBonnie)
                 {
+                    Debug.Log("heeeyyy");
                     MoveGlitchUp = 9.0f;
                     GlitchActive = true;
                     LongGlitch = true;
                 }
-                else if(WichCam != WhereBonnie)
+                else if(changeImages.WichCamera != WhereBonnie)
                 {
                     MoveGlitchUp = 0.5f;
                     MoveGlitch.SetActive(true);
