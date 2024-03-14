@@ -54,15 +54,15 @@ public class MenuNavigation : MonoBehaviour
                         UpdateSelectionTexts();
 
                         lastChangeTime = Time.time;
+                    }
 
-                        if (CreditsMenu.activeSelf)
-                        {
-                            float scrollAmount = +leftVerticalInput * scrollSpeed * Time.deltaTime;
-                            ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
-                            Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
-                            newPosition.y = Mathf.Clamp01(newPosition.y);
-                            creditsScrollRect.normalizedPosition = newPosition;
-                        }
+                    if (CreditsMenu.activeSelf)
+                    {
+                        float scrollAmount = +leftVerticalInput * scrollSpeed * Time.deltaTime;
+                        ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
+                        Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
+                        newPosition.y = Mathf.Clamp01(newPosition.y);
+                        creditsScrollRect.normalizedPosition = newPosition;
                     }
                 }
 
