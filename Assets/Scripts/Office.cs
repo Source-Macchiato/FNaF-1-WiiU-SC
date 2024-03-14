@@ -85,7 +85,7 @@ public class Office : MonoBehaviour {
         Resources.UnloadUnusedAssets();
 
         // Gamepad
-        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+        /* if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
             if (gamePadState.IsTriggered(WiiU.GamePadButton.Up) && gamePadState.IsTriggered(WiiU.GamePadButton.R))
             {
@@ -98,7 +98,7 @@ public class Office : MonoBehaviour {
                     CheatPanel.SetActive(true);
                 }
             }
-        }
+        } */
 
         // Remote
         switch (remoteState.devType)
