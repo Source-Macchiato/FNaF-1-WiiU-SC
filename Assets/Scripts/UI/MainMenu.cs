@@ -20,6 +20,10 @@ public class MainMenu : MonoBehaviour {
     public GameObject CreditsMenuPanel;
     public Text setLanguageText;
 
+    // bad way to fix the issue, will have to find why the text isnt translated
+    public I18nTextTranslator languageText;
+    public I18nTextTranslator creditsText;
+
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
@@ -96,6 +100,10 @@ public class MainMenu : MonoBehaviour {
                                 translator.UpdateText();
                             }
 
+                            // This is the bad way because you can look up
+                            languageText.UpdateText();
+                            creditsText.UpdateText();
+
                             AudioMenuPanel.SetActive(false);
                             OptionsMenuNavigationPanel.SetActive(true);
                             menuNavigation.menuId = 1;
@@ -140,6 +148,10 @@ public class MainMenu : MonoBehaviour {
                                 {
                                     translator.UpdateText();
                                 }
+
+                                // This is the bad way because you can look up
+                                languageText.UpdateText();
+                                creditsText.UpdateText();
 
                                 AudioMenuPanel.SetActive(false);
                                 OptionsMenuNavigationPanel.SetActive(true);
@@ -188,6 +200,10 @@ public class MainMenu : MonoBehaviour {
                             {
                                 translator.UpdateText();
                             }
+
+                            // This is the bad way because you can look up
+                            languageText.UpdateText();
+                            creditsText.UpdateText();
 
                             AudioMenuPanel.SetActive(false);
                             OptionsMenuNavigationPanel.SetActive(true);

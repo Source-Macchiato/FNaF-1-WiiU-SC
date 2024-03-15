@@ -6974,6 +6974,8 @@ MonoBehaviour:
   AudioMenuPanel: {fileID: 1912968395}
   CreditsMenuPanel: {fileID: 214317388}
   setLanguageText: {fileID: 1437901696}
+  languageText: {fileID: 1419030243}
+  creditsText: {fileID: 1922568022}
 --- !u!1 &1612590793
 GameObject:
   m_ObjectHideFlags: 0
