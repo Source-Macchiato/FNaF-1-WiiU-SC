@@ -29,6 +29,26 @@
       "value": "Credits"
     },
     {
+      "key": "nextnight.firstnight",
+      "value": "1 s t  N i g h t"
+    },
+    {
+      "key": "nextnight.secondnight",
+      "value": "2 n d  N i g h t"
+    },
+    {
+      "key": "nextnight.thirdnight",
+      "value": "3 r d  N i g h t"
+    },
+    {
+      "key": "nextnight.fourthnight",
+      "value": "4 t h  N i g h t"
+    },
+    {
+      "key": "nextnight.fifthnight",
+      "value": "5 t h  N i g h t"
+    },
+    {
       "key": "office.night",
       "value": "Night"
     },

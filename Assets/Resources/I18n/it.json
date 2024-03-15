@@ -29,6 +29,26 @@
       "value": "Crediti"
     },
     {
+      "key": "nextnight.firstnight",
+      "value": "P r i m a  N o t t e"
+    },
+    {
+      "key": "nextnight.secondnight",
+      "value": "S e c o n d a  N o t t e"
+    },
+    {
+      "key": "nextnight.thirdnight",
+      "value": "T e r z a  N o t t e"
+    },
+    {
+      "key": "nextnight.fourthnight",
+      "value": "Q u a r t a  N o t t e"
+    },
+    {
+      "key": "nextnight.fifthnight",
+      "value": "Q u i n t a  N o t t e"
+    },
+    {
       "key": "office.night",
       "value": "Notte"
     },
