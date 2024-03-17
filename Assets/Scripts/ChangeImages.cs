@@ -117,7 +117,9 @@ public class ChangeImages : MonoBehaviour
 
     public GameObject FoxyRunDownHall;
     public AudioSource DoorBang;
+    public AudioSource FoxyFootsteps;
 
+    public bool FoxyAnimationPlayed = false;
     public float foxyRunTime = 3.5f;
 
     public bool L_Door_Closed;
@@ -540,7 +542,13 @@ public class ChangeImages : MonoBehaviour
 
                 if (foxyStarted)
                 {
-                    FoxyRunDownHall.SetActive(true);
+                    if(!FoxyAnimationPlayed)
+                    {
+                        FoxyFootsteps.Play();
+                        FoxyRunDownHall.SetActive(true);
+                        FoxyAnimationPlayed = true;
+                    }
+                    
 
                     foxyRunTime -= Time.deltaTime;
                 }
