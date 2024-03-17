@@ -485,21 +485,10 @@ if(GameScript.Time <= 267.0f)
                 WhereBonnie += 1;
                 bonnieInCount = false;
                 
-                if(changeImages.WichCamera == WhereBonnie)
-                {
-                    Debug.Log("heeeyyy");
-                    MoveGlitchUp = 9.0f;
-                    GlitchActive = true;
-                    LongGlitch = true;
-                }
-                else if(changeImages.WichCamera != WhereBonnie)
-                {
                     MoveGlitchUp = 0.5f;
                     MoveGlitch.SetActive(true);
                     GlitchActive = true;
                     LongGlitch = false;
-
-                }
                 
 
                 if (!camIsUp)
