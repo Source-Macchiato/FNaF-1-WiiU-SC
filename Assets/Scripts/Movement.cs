@@ -243,7 +243,7 @@ public class Movement : MonoBehaviour {
 
             if (!bonnieInCount)
             {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(400f, 500f), 0);
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 35f), 0);
                 BonnieMovementTime -= BonnieDifficulty;
 
 
