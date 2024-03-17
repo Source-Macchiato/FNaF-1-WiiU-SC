@@ -243,7 +243,7 @@ public class Movement : MonoBehaviour {
 
             if (!bonnieInCount)
             {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 35f), 0);
+                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 60f), 0);
                 BonnieMovementTime -= BonnieDifficulty;
 
 
@@ -372,7 +372,7 @@ public class Movement : MonoBehaviour {
 
             if (!freddyInCount)
             {
-                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(90f, 100f));
+                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(40f, 100f));
                 FreddyMovementTime -= FreddyDifficulty;
 
                 freddyInCount = true;
