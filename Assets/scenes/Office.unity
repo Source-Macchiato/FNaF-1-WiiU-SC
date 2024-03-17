@@ -13591,6 +13591,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b14b969827bf164f85fdf34ab3f2418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FoxyAnimationStarted: 0
+  FoxyAnimationTimer: 1
   KitckenAudioOnly: {fileID: 59438677}
   WichCamera: 1
   WichCameraShower: {fileID: 1265514370}

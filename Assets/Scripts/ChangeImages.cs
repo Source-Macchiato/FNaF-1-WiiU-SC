@@ -5,6 +5,9 @@ using WiiU = UnityEngine.WiiU;
 
 public class ChangeImages : MonoBehaviour
 {
+    private Animator foxyAnimator;
+    public bool FoxyAnimationStarted = false;
+    public float FoxyAnimationTimer = 0.50f;
     public GameObject KitckenAudioOnly;
     public float WichCamera = 1;
     public GameObject WichCameraShower;
@@ -135,6 +138,7 @@ public class ChangeImages : MonoBehaviour
 
     void Start()
     {
+        foxyAnimator = FoxyRunDownHall.GetComponent<Animator>();
         gamePad = WiiU.GamePad.access;
     }
 
@@ -538,22 +542,25 @@ public class ChangeImages : MonoBehaviour
                 if (camIsUp)
                 {
                     foxyStarted = true;
+                    
                 }
 
                 if (foxyStarted)
                 {
-                    if(!FoxyAnimationPlayed)
-                    {
-                        FoxyFootsteps.Play();
-                        FoxyRunDownHall.SetActive(true);
-                        FoxyAnimationPlayed = true;
-                    }
                     
+                 FoxyFootsteps.Play();
+                FoxyRunDownHall.SetActive(true);
+                FoxyAnimationPlayed = true;
+                    
+                foxyRunTime -= Time.deltaTime;
 
-                    foxyRunTime -= Time.deltaTime;
+                FoxyAnimationTimer -= Time.deltaTime;
+                if (FoxyAnimationTimer <= 0f)
+                {
+                foxyAnimator.enabled = false;
                 }
 
-                if (foxyRunTime <= 0)
+                  if (foxyRunTime <= 0)
                 {
                     if (!L_Door_Closed)
                     {
@@ -619,6 +626,7 @@ public class ChangeImages : MonoBehaviour
         {
             rumbleTriggered = false;
         }
+    }
     }
 
     public void cam1a()
