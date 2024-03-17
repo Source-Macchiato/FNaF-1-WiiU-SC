@@ -599,6 +599,10 @@ public class ChangeImages : MonoBehaviour
             {
                 FoxyRunDownHall.SetActive(false);
             }
+            if(WichCamera != 4)
+            {
+                FoxyRunDownHall.SetActive(false);
+            }
         }
 
         if (isBeingJumpscared)
