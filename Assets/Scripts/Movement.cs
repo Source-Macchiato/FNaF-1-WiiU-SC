@@ -521,7 +521,11 @@ if(GameScript.Time <= 267.0f)
 
 
     //---------chica init--------------------------------
-    ChicaMovementTime -= Time.deltaTime;
+    if(WhereChica != WhereBonnie)
+    {
+        ChicaMovementTime -= Time.deltaTime;
+    }
+    
 
     if (ChicaMovementTime <= 0)
     {
@@ -627,7 +631,10 @@ if(GameScript.Time <= 300.0f)
     //-----------------------------------------------------
 
     //---------chica init--------------------------------
-    ChicaMovementTime -= Time.deltaTime;
+        if(WhereChica != WhereBonnie)
+    {
+        ChicaMovementTime -= Time.deltaTime;
+    }
 
     if (ChicaMovementTime <= 0)
     {
@@ -746,7 +753,10 @@ if(GameScript.Time <= 300.0f)
       //-----------------------------------------------------
 
       //---------chica init--------------------------------
-      ChicaMovementTime -= Time.deltaTime;
+          if(WhereChica != WhereBonnie)
+    {
+        ChicaMovementTime -= Time.deltaTime;
+    }
 
       if (ChicaMovementTime <= 0) {
         if (ChicaActive) {
