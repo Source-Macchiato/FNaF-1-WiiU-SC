@@ -12,22 +12,26 @@ public class Power : MonoBehaviour {
     public float PlayTime = 15f;
     public float JumpscarePlayTime = 0.2f;
 
+    private ControllersRumble controllersRumble;
+
     void Start()
     {
         //SceneManager.UnloadSceneAsync("Office"); causes errors since scene is already unloaded
+
+        controllersRumble = FindObjectOfType<ControllersRumble>();
     }
 
-    void Update ()
+    void Update()
     {
         Resources.UnloadUnusedAssets();
 
-        WaitBeforeStart -= UnityEngine.Time.deltaTime;
+        WaitBeforeStart -= Time.deltaTime;
 
         if (WaitBeforeStart <= 0)
         {
             Song.SetActive(true);
             FreddySongDarkOffice.GetComponent<Animator>().enabled = true;
-            PlayTime -= UnityEngine.Time.deltaTime;
+            PlayTime -= Time.deltaTime;
             WaitBeforeStart = 0;
 
             if (PlayTime <= 0)
@@ -38,7 +42,9 @@ public class Power : MonoBehaviour {
                 freddyJumpScare.SetActive(true);
                 PlayTime = 0;
 
-                JumpscarePlayTime -= UnityEngine.Time.deltaTime;
+                JumpscarePlayTime -= Time.deltaTime;
+
+                controllersRumble.IsRumbleTriggered("No power");
 
                 if (JumpscarePlayTime <= 0)
                 {

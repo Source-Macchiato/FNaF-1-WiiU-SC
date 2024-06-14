@@ -18,7 +18,7 @@ public class ChangeImages : MonoBehaviour
     public Sprite ShowStage4;
 
     public I18nTextTranslator i18nTextTranslator;
-    public ControllersRumble controllersRumble;
+    private ControllersRumble controllersRumble;
 
     // -----------DiningArea var----------
 
@@ -145,8 +145,6 @@ public class ChangeImages : MonoBehaviour
         WhereChica = PlayerPrefs.GetFloat("WhereChica", WhereChica);
         WhereFreddy = PlayerPrefs.GetFloat("WhereFreddy", WhereFreddy);
         WhereFoxy = PlayerPrefs.GetFloat("WhereFoxy", WhereFoxy);
-
-        controllersRumble.rumbleTimer += Time.deltaTime;
 
         if (WichCamera == 1)
         {
@@ -597,8 +595,6 @@ public class ChangeImages : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
         }
-
-        controllersRumble.CalculateRumbleDuration();
     }
     }
 

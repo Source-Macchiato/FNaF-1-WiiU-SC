@@ -3,9 +3,9 @@ using WiiU = UnityEngine.WiiU;
 
 public class ControllersRumble : MonoBehaviour
 {
-    public int patternLength = 15;
-    public bool rumbleTriggered = false;
-    public float rumbleTimer = 0.0f;
+    private int patternLength = 15;
+    private bool rumbleTriggered = false;
+    private float rumbleTimer = 0.0f;
 
     WiiU.GamePad gamePad;
 
@@ -14,7 +14,18 @@ public class ControllersRumble : MonoBehaviour
         gamePad = WiiU.GamePad.access;
     }
 
-    public void Rumble()
+    void Update()
+    {
+        rumbleTimer += Time.deltaTime;
+
+        // this took me a lot of time
+        if (rumbleTimer > (patternLength / 15))
+        {
+            rumbleTriggered = false;
+        }
+    }
+
+    private void Rumble()
     {
         byte[] pattern = new byte[patternLength];
         for (int i = 0; i < pattern.Length; ++i)
@@ -33,15 +44,6 @@ public class ControllersRumble : MonoBehaviour
             rumbleTimer = 0.0f;
             Rumble();
             rumbleTriggered = true;
-        }
-    }
-
-    public void CalculateRumbleDuration()
-    {
-        // this took me a lot of time
-        if (rumbleTimer > (patternLength / 15))
-        {
-            rumbleTriggered = false;
         }
     }
 }
