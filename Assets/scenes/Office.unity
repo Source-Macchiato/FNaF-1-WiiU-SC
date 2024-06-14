@@ -3170,6 +3170,49 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419280403}
+--- !u!1 &434962843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 434962844}
+  - component: {fileID: 434962845}
+  m_Layer: 0
+  m_Name: ControllersRumble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &434962844
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434962843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1701380716}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &434962845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434962843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90c416c822b709499d64efc3e31799d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patternLength: 15
+  rumbleTriggered: 0
+  rumbleTimer: 0
 --- !u!1 &466247477
 GameObject:
   m_ObjectHideFlags: 0
@@ -10948,6 +10991,7 @@ Transform:
   m_Children:
   - {fileID: 1528391396}
   - {fileID: 969523383}
+  - {fileID: 434962844}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13602,6 +13646,7 @@ MonoBehaviour:
   ShowStage3: {fileID: 21300000, guid: ee7767b077c477544acdd83abc55e5b2, type: 3}
   ShowStage4: {fileID: 21300000, guid: 287b186023002094db62e0408973c4f4, type: 3}
   i18nTextTranslator: {fileID: 1265514374}
+  controllersRumble: {fileID: 0}
   DiningArea1: {fileID: 21300000, guid: 60eabec4d85147d4a88217413c88c802, type: 3}
   DiningArea2: {fileID: 21300000, guid: d7f3a535228b8e341855e9a2e9577c02, type: 3}
   DiningArea3: {fileID: 21300000, guid: ff121e442258e0443b7e3457d587b548, type: 3}
