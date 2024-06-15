@@ -8,10 +8,12 @@ public class ControllersRumble : MonoBehaviour
     private float rumbleTimer = 0.0f;
 
     WiiU.GamePad gamePad;
+    WiiU.Remote remote;
 
     void Start()
     {
         gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
     }
 
     void Update()
@@ -34,6 +36,9 @@ public class ControllersRumble : MonoBehaviour
         }
 
         gamePad.ControlMotor(pattern, pattern.Length * 8);
+
+        remote.motorRumble = true;
+        remote.PlayRumblePattern(pattern, pattern.Length * 8);
     }
 
     public void IsRumbleTriggered(string character)
