@@ -11,6 +11,8 @@ public class ChangeImages : MonoBehaviour
     public float WichCamera = 1;
     public GameObject WichCameraShower;
     public GameObject black;
+    public GameObject CanvasGameOver;
+    public GameObject GameOverScript;
 
     public Sprite ShowStage1;
     public Sprite ShowStage2;
@@ -516,7 +518,7 @@ public class ChangeImages : MonoBehaviour
                 if (camIsUp)
                 {
                     foxyStarted = true;
-                    
+
                 }
 
                 if (foxyStarted)
@@ -554,7 +556,8 @@ public class ChangeImages : MonoBehaviour
 
                         if (foxyRunTime <= -3)
                         {
-                            SceneManager.LoadScene("GameOver");
+                            CanvasGameOver.SetActive(true);
+                            GameOverScript.SetActive(true);
                             foxyRunTime = 3.5f;
                             foxyStarted = false;
                         }
@@ -585,7 +588,7 @@ public class ChangeImages : MonoBehaviour
                 FoxyRunDownHall.SetActive(false);
             }
         }
-
+    }
         if (isBeingJumpscared)
         {
             WaitJumpscare -= Time.deltaTime;
@@ -595,7 +598,6 @@ public class ChangeImages : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
         }
-    }
     }
 
     public void cam1a()
