@@ -36,8 +36,6 @@ public class ControllersRumble : MonoBehaviour
         }
 
         gamePad.ControlMotor(pattern, pattern.Length * 8);
-
-        remote.motorRumble = true;
         remote.PlayRumblePattern(pattern, pattern.Length * 8);
     }
 
