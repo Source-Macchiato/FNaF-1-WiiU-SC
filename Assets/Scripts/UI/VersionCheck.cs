@@ -37,15 +37,18 @@ public class VersionCheck : MonoBehaviour
                 if (onlineVersion.Trim() == localVersion.Trim())
                 {
                     objectToActivate.SetActive(false);
+                    Debug.Log("Same version number");
                 }
                 else
                 {
                     objectToActivate.SetActive(true);
+                    Debug.Log("Different version number");
                 }
             }
             else
             {
                 objectToActivate.SetActive(false);
+                Debug.Log("Network error: " + www.error);
             }
         }
     }
