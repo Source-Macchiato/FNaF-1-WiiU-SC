@@ -8,7 +8,7 @@ public class VersionCheck : MonoBehaviour
     [System.Serializable]
     public class VersionData
     {
-        public string latest;
+        public string version;
     }
 
     private void Start()
@@ -20,7 +20,7 @@ public class VersionCheck : MonoBehaviour
 
     IEnumerator CheckVersion()
     {
-        string url = "https://itch.io/api/1/x/wharf/latest?game_id=2435336&channel_name=wup";
+        string url = "https://api.sourcemacchiato.com/v1/fnaf/metadata";
 
         using (WWW www = new WWW(url))
         {
@@ -29,7 +29,7 @@ public class VersionCheck : MonoBehaviour
             if (string.IsNullOrEmpty(www.error))
             {
                 VersionData data = JsonUtility.FromJson<VersionData>(www.text);
-                string onlineVersion = data.latest;
+                string onlineVersion = data.version;
 
                 TextAsset localVersionAsset = Resources.Load<TextAsset>("Meta/version");
                 string localVersion = localVersionAsset.text;
