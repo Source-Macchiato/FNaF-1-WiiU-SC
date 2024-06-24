@@ -5,6 +5,14 @@
       "value": ""
     },
     {
+      "key": "mainmenu.update",
+      "value": "Une nouvelle mise à jour est disponible, allez la télécharger sur itch.io !"
+    },
+    {
+      "key": "mainmenu.sharedata",
+      "value": "Acceptez-vous le partage d'informations de statistique avec Source Macchiato tel que le nombre de fois que vous démarragez le jeu ?"
+    },
+    {
       "key": "mainmenu.newgame",
       "value": "Nouvelle Partie"
     },

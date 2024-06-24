@@ -5,6 +5,14 @@
       "value": ""
     },
     {
+      "key": "mainmenu.update",
+      "value": "È disponibile una nuova versione, scaricala su itch.io !"
+    },
+    {
+      "key": "mainmenu.sharedata",
+      "value": "Acceti al condividere data con Source Macchiato come il numero di volte che hai aperto il gioco ?"
+    },
+    {
       "key": "mainmenu.newgame",
       "value": "Nuova Partita"
     },

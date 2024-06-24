@@ -5,6 +5,14 @@
       "value": ""
     },
     {
+      "key": "mainmenu.update",
+      "value": "A new version is available, go download it on itch.io !"
+    },
+    {
+      "key": "mainmenu.sharedata",
+      "value": "Do you accept the sharing of statistical information with Source Macchiato such as the frequency of starting the game ?"
+    },
+    {
       "key": "mainmenu.newgame",
       "value": "New Game"
     },
