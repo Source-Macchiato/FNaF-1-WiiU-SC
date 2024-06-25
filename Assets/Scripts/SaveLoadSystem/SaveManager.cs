@@ -54,7 +54,7 @@ public class SaveManager : MonoBehaviour {
         }
     }
 
-    public static float ShareData()
+    public static float LoadShareData()
     {
         if (PlayerPrefs.HasKey("ShareData"))
         {

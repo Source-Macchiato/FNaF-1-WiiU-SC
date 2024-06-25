@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using WiiU = UnityEngine.WiiU;
 
 public class ShareData : MonoBehaviour
@@ -8,24 +10,75 @@ public class ShareData : MonoBehaviour
 
 	private const string url = "http://localhost/v1/fnaf/analytics";
 
+    private float canShareData = -1;
+
+    SaveGameState saveGameState;
+    SaveManager saveManager;
+
+    private string localUsername;
+    private string localVersion;
+
+    [System.Serializable]
+    private class ShareDataResponse
+    {
+        public string username;
+        public string version;
+    }
+
     void Start () {
 		shareDataPanel = GameObject.Find("ShareDataPanel");
 		updatePanel = GameObject.Find("UpdatePanel");
 
-		shareDataPanel.SetActive(false);
+        saveGameState = FindObjectOfType<SaveGameState>();
+        saveManager = FindObjectOfType<SaveManager>();
+
+        shareDataPanel.SetActive(false);
+
+        canShareData = SaveManager.LoadShareData();
 	}
 	
 	void Update () {
-		
-	}
+        if (!updatePanel.activeSelf)
+        {
+            CanShareData();
+        }
+    }
 
 	private void GetData()
 	{
         // Get username
-        string username = WiiU.Core.accountName;
+        localUsername = WiiU.Core.accountName;
 
         // Get game version
         TextAsset versionAsset = Resources.Load<TextAsset>("Meta/version");
-        string localVersion = versionAsset.text;
+        localVersion = versionAsset.text;
+    }
+
+    private void CanShareData()
+    {
+        GetData();
+
+        if (canShareData == -1)
+        {
+            shareDataPanel.SetActive(true);
+        }
+        else if (canShareData == 1)
+        {
+            StartCoroutine(SendData(localUsername, localVersion));
+        }
+    }
+
+    private IEnumerator SendData(string username, string version)
+    {
+        string jsonString = "{\"username\":\"" + username + "\",\"version\":\"" + version + "\"}";
+        byte[] postData = System.Text.Encoding.UTF8.GetBytes(jsonString);
+
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("Content-Type", "application/json");
+
+        using (WWW www = new WWW(url, postData, headers))
+        {
+            yield return www;
+        }
     }
 }
