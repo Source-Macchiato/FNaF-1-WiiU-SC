@@ -15,6 +15,12 @@ public class SaveManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
+    public void SaveShareData(float shareData)
+    {
+        PlayerPrefs.SetFloat("ShareData", shareData);
+        PlayerPrefs.Save();
+    }
+
     // Load
     public static string LoadLanguage()
 	{
@@ -45,6 +51,20 @@ public class SaveManager : MonoBehaviour {
         else
         {
             return 1;
+        }
+    }
+
+    public static float ShareData()
+    {
+        if (PlayerPrefs.HasKey("ShareData"))
+        {
+            float shareData = PlayerPrefs.GetFloat("ShareData");
+
+            return shareData;
+        }
+        else
+        {
+            return -1;
         }
     }
 }
