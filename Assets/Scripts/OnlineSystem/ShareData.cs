@@ -8,7 +8,7 @@ public class ShareData : MonoBehaviour
 	private GameObject shareDataPanel;
 	private GameObject updatePanel;
 
-	private const string url = "http://localhost/v1/fnaf/analytics";
+	private const string url = "https://api.sourcemacchiato/v1/fnaf/analytics";
 
     public float canShareData = -1;
 
@@ -27,10 +27,13 @@ public class ShareData : MonoBehaviour
         public string version;
     }
 
-    void Start () {
-		shareDataPanel = GameObject.Find("ShareDataPanel");
-		updatePanel = GameObject.Find("UpdatePanel");
+    void Awake ()
+    {
+        shareDataPanel = GameObject.Find("ShareDataPanel");
+        updatePanel = GameObject.Find("UpdatePanel");
+    }
 
+    void Start () {
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
 

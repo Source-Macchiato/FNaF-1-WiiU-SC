@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour {
     public float NightNumber;
     public Text NightNumberDisplayer;
     public GameObject UpdatePanel;
-    public GameObject ShareDataPanel;
+    private GameObject ShareDataPanel;
     public GameObject LoginPanel;
     public GameObject MainMenuNavigationPanel;
     public GameObject OptionsMenuNavigationPanel;
@@ -33,10 +33,13 @@ public class MainMenu : MonoBehaviour {
     SaveManager saveManager;
     I18nTextTranslator[] translators;
 
-    void Start()
+    void Awake()
     {
         ShareDataPanel = GameObject.Find("ShareDataPanel");
+    }
 
+    void Start()
+    {
         OptionsMenuNavigationPanel.SetActive(false);
         AudioMenuPanel.SetActive(false);
         CreditsMenuPanel.SetActive(false);
