@@ -8,7 +8,7 @@ public class ShareData : MonoBehaviour
 	private GameObject shareDataPanel;
 	private GameObject updatePanel;
 
-	private const string url = "https://api.sourcemacchiato/v1/fnaf/analytics";
+	private const string url = "https://api.sourcemacchiato.com/v1/fnaf/analytics";
 
     public float canShareData = -1;
 
