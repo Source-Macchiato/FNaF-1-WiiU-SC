@@ -10,7 +10,9 @@ public class ShareData : MonoBehaviour
 
 	private const string url = "http://localhost/v1/fnaf/analytics";
 
-    private float canShareData = -1;
+    public float canShareData = -1;
+
+    private bool isSent = false;
 
     SaveGameState saveGameState;
     SaveManager saveManager;
@@ -34,13 +36,16 @@ public class ShareData : MonoBehaviour
 
         shareDataPanel.SetActive(false);
 
-        canShareData = SaveManager.LoadShareData();
+        //canShareData = SaveManager.LoadShareData();
 	}
 	
 	void Update () {
-        if (!updatePanel.activeSelf)
+        if (!isSent)
         {
-            CanShareData();
+            if (!updatePanel.activeSelf)
+            {
+                CanShareData();
+            }
         }
     }
 
@@ -58,6 +63,11 @@ public class ShareData : MonoBehaviour
     {
         GetData();
 
+        if (localUsername == "")
+        {
+            localUsername = "Unknown";
+        }
+
         if (canShareData == -1)
         {
             shareDataPanel.SetActive(true);
@@ -65,6 +75,7 @@ public class ShareData : MonoBehaviour
         else if (canShareData == 1)
         {
             StartCoroutine(SendData(localUsername, localVersion));
+            isSent = true;
         }
     }
 

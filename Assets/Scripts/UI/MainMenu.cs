@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour {
     public float NightNumber;
     public Text NightNumberDisplayer;
     public GameObject UpdatePanel;
+    public GameObject ShareDataPanel;
     public GameObject LoginPanel;
     public GameObject MainMenuNavigationPanel;
     public GameObject OptionsMenuNavigationPanel;
@@ -34,6 +35,8 @@ public class MainMenu : MonoBehaviour {
 
     void Start()
     {
+        ShareDataPanel = GameObject.Find("ShareDataPanel");
+
         OptionsMenuNavigationPanel.SetActive(false);
         AudioMenuPanel.SetActive(false);
         CreditsMenuPanel.SetActive(false);
@@ -68,7 +71,7 @@ public class MainMenu : MonoBehaviour {
 
         if (!LoginPanel.activeSelf)
         {
-            if (!UpdatePanel.activeSelf)
+            if (!UpdatePanel.activeSelf && !ShareDataPanel.activeSelf)
             {
                 // Gamepad
                 if (gamePadState.gamePadErr == WiiU.GamePadError.None)
