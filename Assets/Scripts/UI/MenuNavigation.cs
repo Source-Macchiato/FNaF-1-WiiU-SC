@@ -7,6 +7,7 @@ public class MenuNavigation : MonoBehaviour
     public int selectedIndex = 0;
     public int menuId = 0;
     public GameObject UpdatePanel;
+    private GameObject ShareDataPanel;
     public GameObject LoginPanel;
     public GameObject CreditsMenu;
     public ScrollRect CreditsScrollView;
@@ -18,12 +19,17 @@ public class MenuNavigation : MonoBehaviour
 
     private float joystickThreshold = 0.5f;
     private float buttonChangeDelay = 0.2f;
-    private bool canChangeButton = true;
+    private bool canChangeButton = false;
     private float lastChangeTime;
     public float scrollSpeed = 5f;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
+
+    void Awake()
+    {
+        ShareDataPanel = GameObject.Find("ShareDataPanel");
+    }
 
     void Start()
     {
@@ -42,11 +48,11 @@ public class MenuNavigation : MonoBehaviour
 
         if (!LoginPanel.activeSelf)
         {
-            if (!UpdatePanel.activeSelf)
+            if (canChangeButton)
             {
                 if (Mathf.Abs(leftVerticalInput) > joystickThreshold)
                 {
-                    if (canChangeButton && Time.time - lastChangeTime >= buttonChangeDelay)
+                    if (Time.time - lastChangeTime >= buttonChangeDelay)
                     {
                         int direction = leftVerticalInput > 0 ? -1 : 1;
 

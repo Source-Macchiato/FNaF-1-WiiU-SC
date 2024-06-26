@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
+using WiiU = UnityEngine.WiiU;
 
 public class VersionCheck : MonoBehaviour
 {
-    public GameObject objectToActivate;
+    private GameObject updatePanel;
+    private GameObject shareDataPanel;
+
+    WiiU.GamePad gamePad;
+    WiiU.Remote remote;
+
+    MainMenu mainMenu;
 
     [System.Serializable]
     public class VersionData
@@ -11,11 +18,69 @@ public class VersionCheck : MonoBehaviour
         public string version;
     }
 
+    private void Awake()
+    {
+        updatePanel = GameObject.Find("UpdatePanel");
+        shareDataPanel = GameObject.Find("ShareDataPanel");
+    }
+
     private void Start()
     {
-        objectToActivate.SetActive(false);
+        gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
+
+        updatePanel.SetActive(false);
+
+        mainMenu = FindObjectOfType<MainMenu>();
 
         StartCoroutine(CheckVersion());
+    }
+
+    private void Update()
+    {
+        WiiU.GamePadState gamePadState = gamePad.state;
+        WiiU.RemoteState remoteState = remote.state;
+
+        if (updatePanel.activeSelf && !shareDataPanel.activeSelf)
+        {
+            // Gamepad
+            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+            {
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
+                {
+                    updatePanel.SetActive(false);
+
+                    mainMenu.canChangeButton = true;
+                }
+            }
+
+            // Remote
+            switch (remoteState.devType)
+            {
+                case WiiU.RemoteDevType.ProController:
+                    if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
+                    {
+                        updatePanel.SetActive(false);
+
+                        mainMenu.canChangeButton = true;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            // Keyboard
+            if (Application.isEditor)
+            {
+                if (Input.GetKeyUp(KeyCode.Return))
+                {
+                    updatePanel.SetActive(false);
+
+                    mainMenu.canChangeButton = true;
+                }
+            }
+        }
     }
 
     IEnumerator CheckVersion()
@@ -36,18 +101,18 @@ public class VersionCheck : MonoBehaviour
 
                 if (onlineVersion.Trim() == localVersion.Trim())
                 {
-                    objectToActivate.SetActive(false);
+                    updatePanel.SetActive(false);
                     Debug.Log("Same version number");
                 }
                 else
                 {
-                    objectToActivate.SetActive(true);
+                    updatePanel.SetActive(true);
                     Debug.Log("Different version number");
                 }
             }
             else
             {
-                objectToActivate.SetActive(false);
+                updatePanel.SetActive(false);
                 Debug.Log("Network error: " + www.error);
             }
         }

@@ -1,21 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using WiiU = UnityEngine.WiiU;
 
 public class ShareData : MonoBehaviour
 {
-	private GameObject shareDataPanel;
-	private GameObject updatePanel;
+    WiiU.GamePad gamePad;
+    WiiU.Remote remote;
+
+    public float joystickThreshold = 0.5f;
+    public float buttonChangeDelay = 0.2f;
+
+    public int selectedButtonIndex = 0;
+
+    public Text[] shareDataSelectionTexts;
+    public Button[] shareDataButtons;
+
+    private GameObject shareDataPanel;
 
 	private const string url = "https://api.sourcemacchiato.com/v1/fnaf/analytics";
 
-    public float canShareData = -1;
+    private float canShareData = -1;
 
     private bool isSent = false;
 
     SaveGameState saveGameState;
     SaveManager saveManager;
+    MainMenu mainMenu;
 
     private string localUsername;
     private string localVersion;
@@ -30,24 +42,158 @@ public class ShareData : MonoBehaviour
     void Awake ()
     {
         shareDataPanel = GameObject.Find("ShareDataPanel");
-        updatePanel = GameObject.Find("UpdatePanel");
     }
 
-    void Start () {
+    void Start ()
+    {
+        gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
+
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
+        mainMenu = FindObjectOfType<MainMenu>();
 
         shareDataPanel.SetActive(false);
 
-        //canShareData = SaveManager.LoadShareData();
-	}
+        canShareData = SaveManager.LoadShareData();
+
+        UpdateSelectionTexts();
+    }
 	
-	void Update () {
+	void Update ()
+    {
+        WiiU.GamePadState gamePadState = gamePad.state;
+        WiiU.RemoteState remoteState = remote.state;
+
         if (!isSent)
         {
-            if (!updatePanel.activeSelf)
+            CanShareData();
+        }
+
+        if (shareDataPanel.activeSelf)
+        {
+            // Gamepad
+            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                CanShareData();
+                if (gamePadState.IsReleased(WiiU.GamePadButton.Left))
+                {
+                    selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
+                    UpdateSelectionTexts();
+                }
+
+                if (gamePadState.IsReleased(WiiU.GamePadButton.Right))
+                {
+                    selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
+                    UpdateSelectionTexts();
+                }
+
+                if (gamePadState.IsReleased(WiiU.GamePadButton.A))
+                {
+                    if (selectedButtonIndex == 0)
+                    {
+                        canShareData = 1;
+                        saveManager.SaveShareData(canShareData);
+                        bool saveResult = saveGameState.DoSave();
+
+                        shareDataPanel.SetActive(false);
+
+                        mainMenu.canChangeButton = true;
+                    }
+                    else if (selectedButtonIndex == 1)
+                    {
+                        canShareData = 0;
+                        saveManager.SaveShareData(canShareData);
+                        bool saveResult = saveGameState.DoSave();
+
+                        shareDataPanel.SetActive(false);
+
+                        mainMenu.canChangeButton = true;
+                    }
+                }
+            }
+
+            // Remote
+            switch (remoteState.devType)
+            {
+                case WiiU.RemoteDevType.ProController:
+                    if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Left))
+                    {
+                        selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
+                        UpdateSelectionTexts();
+                    }
+
+                    if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Right))
+                    {
+                        selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
+                        UpdateSelectionTexts();
+                    }
+
+                    if (remoteState.pro.IsReleased(WiiU.ProControllerButton.A))
+                    {
+                        if (selectedButtonIndex == 0)
+                        {
+                            canShareData = 1;
+                            saveManager.SaveShareData(canShareData);
+                            bool saveResult = saveGameState.DoSave();
+
+                            shareDataPanel.SetActive(false);
+
+                            mainMenu.canChangeButton = true;
+                        }
+                        else if (selectedButtonIndex == 1)
+                        {
+                            canShareData = 0;
+                            saveManager.SaveShareData(canShareData);
+                            bool saveResult = saveGameState.DoSave();
+
+                            shareDataPanel.SetActive(false);
+
+                            mainMenu.canChangeButton = true;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            // Keyboard
+            if (Application.isEditor)
+            {
+                if (Input.GetKeyUp(KeyCode.LeftArrow))
+                {
+                    selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
+                    UpdateSelectionTexts();
+                }
+
+                if (Input.GetKeyUp(KeyCode.RightArrow))
+                {
+                    selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
+                    UpdateSelectionTexts();
+                }
+
+                if (Input.GetKeyUp(KeyCode.Return))
+                {
+                    if (selectedButtonIndex == 0)
+                    {
+                        canShareData = 1;
+                        saveManager.SaveShareData(canShareData);
+                        bool saveResult = saveGameState.DoSave();
+
+                        shareDataPanel.SetActive(false);
+
+                        mainMenu.canChangeButton = true;
+                    }
+                    else if (selectedButtonIndex == 1)
+                    {
+                        canShareData = 0;
+                        saveManager.SaveShareData(canShareData);
+                        bool saveResult = saveGameState.DoSave();
+
+                        shareDataPanel.SetActive(false);
+
+                        mainMenu.canChangeButton = true;
+                    }
+                }
             }
         }
     }
@@ -93,6 +239,16 @@ public class ShareData : MonoBehaviour
         using (WWW www = new WWW(url, postData, headers))
         {
             yield return www;
+        }
+    }
+
+    public void UpdateSelectionTexts()
+    {
+        Text[] currentSelectionTexts = shareDataSelectionTexts;
+
+        for (int i = 0; i < shareDataButtons.Length; i++)
+        {
+            currentSelectionTexts[i].gameObject.SetActive(i == selectedButtonIndex);
         }
     }
 }

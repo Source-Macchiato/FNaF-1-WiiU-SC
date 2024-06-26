@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject AudioMenuPanel;
     public GameObject CreditsMenuPanel;
     public Text setLanguageText;
+    public bool canChangeButton = false;
 
     // bad way to fix the issue, will have to find why the text isnt translated
     public I18nTextTranslator languageText;
@@ -74,16 +75,16 @@ public class MainMenu : MonoBehaviour {
 
         if (!LoginPanel.activeSelf)
         {
-            if (!UpdatePanel.activeSelf && !ShareDataPanel.activeSelf)
+            if (canChangeButton)
             {
                 // Gamepad
                 if (gamePadState.gamePadErr == WiiU.GamePadError.None)
                 {
-                    if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
+                    if (gamePadState.IsReleased(WiiU.GamePadButton.A))
                     {
                         MainMenuNavigation();
                     }
-                    else if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
+                    else if (gamePadState.IsReleased(WiiU.GamePadButton.B))
                     {
                         if (menuNavigation.menuId == 1)
                         {
@@ -128,11 +129,11 @@ public class MainMenu : MonoBehaviour {
                 switch (remoteState.devType)
                 {
                     case WiiU.RemoteDevType.ProController:
-                        if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
+                        if (remoteState.pro.IsReleased(WiiU.ProControllerButton.A))
                         {
                             MainMenuNavigation();
                         }
-                        else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
+                        else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.B))
                         {
                             if (menuNavigation.menuId == 1)
                             {
@@ -180,11 +181,11 @@ public class MainMenu : MonoBehaviour {
                 // Keyboard
                 if (Application.isEditor)
                 {
-                    if (Input.GetKeyDown(KeyCode.Return))
+                    if (Input.GetKeyUp(KeyCode.Return))
                     {
                         MainMenuNavigation();
                     }
-                    else if (Input.GetKeyDown(KeyCode.Backspace))
+                    else if (Input.GetKeyUp(KeyCode.Backspace))
                     {
                         if (menuNavigation.menuId == 1)
                         {
@@ -222,40 +223,6 @@ public class MainMenu : MonoBehaviour {
                             menuNavigation.menuId = 1;
                             menuNavigation.selectedIndex = 0;
                         }
-                    }
-                }
-            }
-            else
-            {
-                // Gamepad
-                if (gamePadState.gamePadErr == WiiU.GamePadError.None)
-                {
-                    if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
-                    {
-                        UpdatePanel.SetActive(false);
-                    }
-                }
-
-                // Remote
-                switch (remoteState.devType)
-                {
-                    case WiiU.RemoteDevType.ProController:
-                        if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
-                        {
-                            UpdatePanel.SetActive(false);
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-
-                // Keyboard
-                if (Application.isEditor)
-                {
-                    if (Input.GetKeyDown(KeyCode.Return))
-                    {
-                        UpdatePanel.SetActive(false);
                     }
                 }
             }
