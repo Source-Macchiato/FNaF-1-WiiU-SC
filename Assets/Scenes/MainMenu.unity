@@ -1010,7 +1010,6 @@ MonoBehaviour:
   OptionsMenuSelectionTexts:
   - {fileID: 1715796362}
   - {fileID: 627336992}
-  scrollSpeed: 5
 --- !u!1 &156539828
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3419,7 @@ Transform:
   - {fileID: 722955357}
   - {fileID: 659251409}
   - {fileID: 781059391}
+  - {fileID: 982427001}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4031,15 +4031,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07564ed1707fee143bf61c7fb59a6454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystickThreshold: 0.5
-  buttonChangeDelay: 0.2
-  selectedButtonIndex: 0
-  shareDataSelectionTexts:
-  - {fileID: 375610191}
-  - {fileID: 620610661}
-  shareDataButtons:
-  - {fileID: 412432958}
-  - {fileID: 873466584}
+  canShareData: -1
+  activateShareDataPanel: 0
 --- !u!1 &722483250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5316,6 +5309,55 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 977158400}
+--- !u!1 &982427000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 982427001}
+  - component: {fileID: 982427002}
+  m_Layer: 0
+  m_Name: ShareDataNavigation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &982427001
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 982427000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 608784600}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &982427002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 982427000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b750fd4ebaf65c46b703586d6c69069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystickThreshold: 0.5
+  buttonChangeDelay: 0.2
+  selectedButtonIndex: 0
+  shareDataSelectionTexts:
+  - {fileID: 375610191}
+  - {fileID: 620610661}
+  shareDataButtons:
+  - {fileID: 412432958}
+  - {fileID: 873466584}
 --- !u!1 &1006989330
 GameObject:
   m_ObjectHideFlags: 0
@@ -8076,7 +8118,6 @@ MonoBehaviour:
   AudioMenuPanel: {fileID: 1912968395}
   CreditsMenuPanel: {fileID: 214317388}
   setLanguageText: {fileID: 1437901696}
-  canChangeButton: 0
   languageText: {fileID: 1419030243}
   creditsText: {fileID: 1922568022}
 --- !u!1 &1612590793

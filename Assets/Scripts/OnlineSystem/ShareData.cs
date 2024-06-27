@@ -1,33 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using WiiU = UnityEngine.WiiU;
 
 public class ShareData : MonoBehaviour
 {
-    WiiU.GamePad gamePad;
-    WiiU.Remote remote;
-
-    public float joystickThreshold = 0.5f;
-    public float buttonChangeDelay = 0.2f;
-
-    public int selectedButtonIndex = 0;
-
-    public Text[] shareDataSelectionTexts;
-    public Button[] shareDataButtons;
-
-    private GameObject shareDataPanel;
-
 	private const string url = "https://api.sourcemacchiato.com/v1/fnaf/analytics";
 
-    private float canShareData = -1;
+    public float canShareData = -1;
 
     private bool isSent = false;
+    public bool activateShareDataPanel = false;
 
     SaveGameState saveGameState;
     SaveManager saveManager;
-    MainMenu mainMenu;
 
     private string localUsername;
     private string localVersion;
@@ -39,150 +25,19 @@ public class ShareData : MonoBehaviour
         public string version;
     }
 
-    void Awake ()
-    {
-        shareDataPanel = GameObject.Find("ShareDataPanel");
-    }
-
     void Start ()
     {
-        gamePad = WiiU.GamePad.access;
-        remote = WiiU.Remote.Access(0);
-
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
-        mainMenu = FindObjectOfType<MainMenu>();
-
-        shareDataPanel.SetActive(false);
 
         canShareData = SaveManager.LoadShareData();
-
-        UpdateSelectionTexts();
     }
 	
 	void Update ()
     {
-        WiiU.GamePadState gamePadState = gamePad.state;
-        WiiU.RemoteState remoteState = remote.state;
-
         if (!isSent)
         {
             CanShareData();
-        }
-
-        if (shareDataPanel.activeSelf)
-        {
-            // Gamepad
-            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
-            {
-                if (gamePadState.IsReleased(WiiU.GamePadButton.Left))
-                {
-                    selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
-                    UpdateSelectionTexts();
-                }
-
-                if (gamePadState.IsReleased(WiiU.GamePadButton.Right))
-                {
-                    selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
-                    UpdateSelectionTexts();
-                }
-
-                if (gamePadState.IsReleased(WiiU.GamePadButton.A))
-                {
-                    if (selectedButtonIndex == 0)
-                    {
-                        canShareData = 1;
-                        saveManager.SaveShareData(canShareData);
-                        bool saveResult = saveGameState.DoSave();
-
-                        shareDataPanel.SetActive(false);
-                    }
-                    else if (selectedButtonIndex == 1)
-                    {
-                        canShareData = 0;
-                        saveManager.SaveShareData(canShareData);
-                        bool saveResult = saveGameState.DoSave();
-
-                        shareDataPanel.SetActive(false);
-                    }
-                }
-            }
-
-            // Remote
-            switch (remoteState.devType)
-            {
-                case WiiU.RemoteDevType.ProController:
-                    if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Left))
-                    {
-                        selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
-                        UpdateSelectionTexts();
-                    }
-
-                    if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Right))
-                    {
-                        selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
-                        UpdateSelectionTexts();
-                    }
-
-                    if (remoteState.pro.IsReleased(WiiU.ProControllerButton.A))
-                    {
-                        if (selectedButtonIndex == 0)
-                        {
-                            canShareData = 1;
-                            saveManager.SaveShareData(canShareData);
-                            bool saveResult = saveGameState.DoSave();
-
-                            shareDataPanel.SetActive(false);
-                        }
-                        else if (selectedButtonIndex == 1)
-                        {
-                            canShareData = 0;
-                            saveManager.SaveShareData(canShareData);
-                            bool saveResult = saveGameState.DoSave();
-
-                            shareDataPanel.SetActive(false);
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-
-            // Keyboard
-            if (Application.isEditor)
-            {
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
-                    UpdateSelectionTexts();
-                }
-
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
-                    UpdateSelectionTexts();
-                }
-
-                if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    if (selectedButtonIndex == 0)
-                    {
-                        canShareData = 1;
-                        saveManager.SaveShareData(canShareData);
-                        bool saveResult = saveGameState.DoSave();
-
-                        shareDataPanel.SetActive(false);
-                    }
-                    else if (selectedButtonIndex == 1)
-                    {
-                        canShareData = 0;
-                        saveManager.SaveShareData(canShareData);
-                        bool saveResult = saveGameState.DoSave();
-
-                        shareDataPanel.SetActive(false);
-                    }
-                }
-            }
         }
     }
 
@@ -207,7 +62,7 @@ public class ShareData : MonoBehaviour
 
         if (canShareData == -1)
         {
-            shareDataPanel.SetActive(true);
+            activateShareDataPanel = true;
         }
         else if (canShareData == 1)
         {
@@ -227,16 +82,6 @@ public class ShareData : MonoBehaviour
         using (WWW www = new WWW(url, postData, headers))
         {
             yield return www;
-        }
-    }
-
-    public void UpdateSelectionTexts()
-    {
-        Text[] currentSelectionTexts = shareDataSelectionTexts;
-
-        for (int i = 0; i < shareDataButtons.Length; i++)
-        {
-            currentSelectionTexts[i].gameObject.SetActive(i == selectedButtonIndex);
         }
     }
 }
