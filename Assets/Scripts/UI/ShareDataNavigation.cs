@@ -12,6 +12,8 @@ public class ShareDataNavigation : MonoBehaviour
 
     public int selectedButtonIndex = 0;
 
+    private bool canActivateSharepanel = true;
+
     public Text[] shareDataSelectionTexts;
     public Button[] shareDataButtons;
 
@@ -163,11 +165,13 @@ public class ShareDataNavigation : MonoBehaviour
         }
         else
         {
-            if (shareData.activateShareDataPanel)
+            if (canActivateSharepanel)
             {
-                shareData.activateShareDataPanel = false;
-                shareDataPanel.SetActive(true);
-                Debug.Log("Activate");
+                if (shareData.activateShareDataPanel)
+                {
+                    canActivateSharepanel = false;
+                    shareDataPanel.SetActive(true);
+                }
             }
         }
     }
