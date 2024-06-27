@@ -7,10 +7,13 @@ public class VersionCheck : MonoBehaviour
     private GameObject updatePanel;
     private GameObject shareDataPanel;
 
+    private bool canChangeButton = false;
+
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
     MainMenu mainMenu;
+    MenuNavigation menuNavigation;
 
     [System.Serializable]
     public class VersionData
@@ -32,6 +35,7 @@ public class VersionCheck : MonoBehaviour
         updatePanel.SetActive(false);
 
         mainMenu = FindObjectOfType<MainMenu>();
+        menuNavigation = FindObjectOfType<MenuNavigation>();
 
         StartCoroutine(CheckVersion());
     }
@@ -43,14 +47,17 @@ public class VersionCheck : MonoBehaviour
 
         if (updatePanel.activeSelf && !shareDataPanel.activeSelf)
         {
+            StartCoroutine(EnableButtonChangeAfterDelay());
+        }
+
+        if (canChangeButton)
+        {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
                     updatePanel.SetActive(false);
-
-                    mainMenu.canChangeButton = true;
                 }
             }
 
@@ -61,8 +68,6 @@ public class VersionCheck : MonoBehaviour
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
                     {
                         updatePanel.SetActive(false);
-
-                        mainMenu.canChangeButton = true;
                     }
                     break;
 
@@ -73,11 +78,9 @@ public class VersionCheck : MonoBehaviour
             // Keyboard
             if (Application.isEditor)
             {
-                if (Input.GetKeyUp(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     updatePanel.SetActive(false);
-
-                    mainMenu.canChangeButton = true;
                 }
             }
         }
@@ -116,5 +119,11 @@ public class VersionCheck : MonoBehaviour
                 Debug.Log("Network error: " + www.error);
             }
         }
+    }
+
+    IEnumerator EnableButtonChangeAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        canChangeButton = true;
     }
 }

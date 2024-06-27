@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject AudioMenuPanel;
     public GameObject CreditsMenuPanel;
     public Text setLanguageText;
-    public bool canChangeButton = false;
+    private bool canChangeButton = false;
 
     // bad way to fix the issue, will have to find why the text isnt translated
     public I18nTextTranslator languageText;
@@ -75,6 +75,23 @@ public class MainMenu : MonoBehaviour {
 
         if (!LoginPanel.activeSelf)
         {
+            if (UpdatePanel.activeSelf && ShareDataPanel.activeSelf)
+            {
+                canChangeButton = false;
+            }
+            else if (UpdatePanel.activeSelf && !ShareDataPanel.activeSelf)
+            {
+                canChangeButton = false;
+            }
+            else if (!UpdatePanel.activeSelf && ShareDataPanel.activeSelf)
+            {
+                canChangeButton = false;
+            }
+            else
+            {
+                StartCoroutine(EnableButtonChangeAfterDelay());
+            }
+
             if (canChangeButton)
             {
                 // Gamepad
@@ -181,11 +198,11 @@ public class MainMenu : MonoBehaviour {
                 // Keyboard
                 if (Application.isEditor)
                 {
-                    if (Input.GetKeyUp(KeyCode.Return))
+                    if (Input.GetKeyDown(KeyCode.Return))
                     {
                         MainMenuNavigation();
                     }
-                    else if (Input.GetKeyUp(KeyCode.Backspace))
+                    else if (Input.GetKeyDown(KeyCode.Backspace))
                     {
                         if (menuNavigation.menuId == 1)
                         {
@@ -286,5 +303,11 @@ public class MainMenu : MonoBehaviour {
         advertisementIsActive = true;
         startTime = Time.time;
         advertisementImage.SetActive(true);
+    }
+
+    IEnumerator EnableButtonChangeAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        canChangeButton = true;
     }
 }

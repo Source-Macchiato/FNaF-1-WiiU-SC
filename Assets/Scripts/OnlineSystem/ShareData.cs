@@ -96,8 +96,6 @@ public class ShareData : MonoBehaviour
                         bool saveResult = saveGameState.DoSave();
 
                         shareDataPanel.SetActive(false);
-
-                        mainMenu.canChangeButton = true;
                     }
                     else if (selectedButtonIndex == 1)
                     {
@@ -106,8 +104,6 @@ public class ShareData : MonoBehaviour
                         bool saveResult = saveGameState.DoSave();
 
                         shareDataPanel.SetActive(false);
-
-                        mainMenu.canChangeButton = true;
                     }
                 }
             }
@@ -137,8 +133,6 @@ public class ShareData : MonoBehaviour
                             bool saveResult = saveGameState.DoSave();
 
                             shareDataPanel.SetActive(false);
-
-                            mainMenu.canChangeButton = true;
                         }
                         else if (selectedButtonIndex == 1)
                         {
@@ -147,8 +141,6 @@ public class ShareData : MonoBehaviour
                             bool saveResult = saveGameState.DoSave();
 
                             shareDataPanel.SetActive(false);
-
-                            mainMenu.canChangeButton = true;
                         }
                     }
                     break;
@@ -159,19 +151,19 @@ public class ShareData : MonoBehaviour
             // Keyboard
             if (Application.isEditor)
             {
-                if (Input.GetKeyUp(KeyCode.LeftArrow))
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
                     UpdateSelectionTexts();
                 }
 
-                if (Input.GetKeyUp(KeyCode.RightArrow))
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
                     UpdateSelectionTexts();
                 }
 
-                if (Input.GetKeyUp(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if (selectedButtonIndex == 0)
                     {
@@ -180,8 +172,6 @@ public class ShareData : MonoBehaviour
                         bool saveResult = saveGameState.DoSave();
 
                         shareDataPanel.SetActive(false);
-
-                        mainMenu.canChangeButton = true;
                     }
                     else if (selectedButtonIndex == 1)
                     {
@@ -190,8 +180,6 @@ public class ShareData : MonoBehaviour
                         bool saveResult = saveGameState.DoSave();
 
                         shareDataPanel.SetActive(false);
-
-                        mainMenu.canChangeButton = true;
                     }
                 }
             }

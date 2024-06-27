@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using WiiU = UnityEngine.WiiU;
 
@@ -21,7 +22,7 @@ public class MenuNavigation : MonoBehaviour
     private float buttonChangeDelay = 0.2f;
     private bool canChangeButton = false;
     private float lastChangeTime;
-    public float scrollSpeed = 5f;
+    private float scrollSpeed = 5f;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -48,6 +49,23 @@ public class MenuNavigation : MonoBehaviour
 
         if (!LoginPanel.activeSelf)
         {
+            if (UpdatePanel.activeSelf && ShareDataPanel.activeSelf)
+            {
+                canChangeButton = false;
+            }
+            else if (UpdatePanel.activeSelf && !ShareDataPanel.activeSelf)
+            {
+                canChangeButton = false;
+            }
+            else if (!UpdatePanel.activeSelf && ShareDataPanel.activeSelf)
+            {
+                canChangeButton = false;
+            }
+            else
+            {
+                StartCoroutine(EnableButtonChangeAfterDelay());
+            }
+
             if (canChangeButton)
             {
                 if (Mathf.Abs(leftVerticalInput) > joystickThreshold)
@@ -145,5 +163,11 @@ public class MenuNavigation : MonoBehaviour
     Text[] GetCurrentMenuSelectionTexts()
     {
         return menuId == 0 ? MainMenuSelectionTexts : OptionsMenuSelectionTexts;
+    }
+
+    IEnumerator EnableButtonChangeAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        canChangeButton = true;
     }
 }

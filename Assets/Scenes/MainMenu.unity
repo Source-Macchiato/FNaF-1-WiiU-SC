@@ -1010,7 +1010,7 @@ MonoBehaviour:
   OptionsMenuSelectionTexts:
   - {fileID: 1715796362}
   - {fileID: 627336992}
-  scrollSpeed: 30
+  scrollSpeed: 5
 --- !u!1 &156539828
 GameObject:
   m_ObjectHideFlags: 0
@@ -8076,6 +8076,7 @@ MonoBehaviour:
   AudioMenuPanel: {fileID: 1912968395}
   CreditsMenuPanel: {fileID: 214317388}
   setLanguageText: {fileID: 1437901696}
+  canChangeButton: 0
   languageText: {fileID: 1419030243}
   creditsText: {fileID: 1922568022}
 --- !u!1 &1612590793
