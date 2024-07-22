@@ -10,7 +10,7 @@ public class CostumNight : MonoBehaviour {
     public float ChicaAmount;
     public float FoxyAmount;
 
-    public float WichNight;
+    public float WhichNight;
 
     public GameObject FreddyShowerTop;
     public GameObject FreddyShowerBottom;
@@ -106,7 +106,7 @@ public class CostumNight : MonoBehaviour {
         {
             if (gamePadState.IsPressed(WiiU.GamePadButton.A))
             {
-                WichNight = 7;
+                WhichNight = 7;
                 SceneManager.LoadScene("Office");
             }
 
@@ -120,7 +120,7 @@ public class CostumNight : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                WichNight = 7;
+                WhichNight = 7;
                 SceneManager.LoadScene("Office");
             }
 
@@ -130,7 +130,7 @@ public class CostumNight : MonoBehaviour {
             }
         }
 
-        PlayerPrefs.SetFloat("WichNight", WichNight);
+        PlayerPrefs.SetFloat("WhichNight", WhichNight);
         PlayerPrefs.Save();
     }
 

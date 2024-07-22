@@ -19,13 +19,13 @@ public class RandNumberGen : MonoBehaviour {
     public bool ChicaLeftStage = false;
     public bool FreddyLeftStage = false;
 
-    public float WichNight;
+    public float WhichNight;
 
 	void GenRandomNumber ()
     {
         CountDown = System.Math.Round(UnityEngine.Random.Range(30f, 40f), 0);
 
-        if (WichNight >= 1)
+        if (WhichNight >= 1)
         {
             if (BonnieLeftStage)
             {
@@ -33,7 +33,7 @@ public class RandNumberGen : MonoBehaviour {
             }
         }
 
-        if (WichNight >= 2)
+        if (WhichNight >= 2)
         {
             if (ChicaLeftStage)
             {
@@ -41,7 +41,7 @@ public class RandNumberGen : MonoBehaviour {
             }
         }
 
-        if (WichNight >= 3)
+        if (WhichNight >= 3)
         {
             if (FreddyLeftStage)
             {
@@ -214,7 +214,7 @@ public class RandNumberGen : MonoBehaviour {
 
 	void Update ()
     {
-        WichNight = PlayerPrefs.GetFloat("WichNight", WichNight);
+        WhichNight = PlayerPrefs.GetFloat("WhichNight", WhichNight);
 
         CountDown -= Time.deltaTime;
 

@@ -8,7 +8,7 @@ public class ChangeImages : MonoBehaviour
     public bool FoxyAnimationStarted = false;
     public float FoxyAnimationTimer = 0.50f;
     public GameObject KitckenAudioOnly;
-    public float WichCamera = 1;
+    public float WhichCamera = 1;
     public GameObject WichCameraShower;
     public GameObject black;
     public GameObject CanvasGameOver;
@@ -140,7 +140,7 @@ public class ChangeImages : MonoBehaviour
 
     void Update()
     {
-        PlayerPrefs.SetFloat("WichCamera", WichCamera);
+        PlayerPrefs.SetFloat("WhichCamera", WhichCamera);
         PlayerPrefs.Save();
 
         WhereBonnie = PlayerPrefs.GetFloat("WhereBonnie", WhereBonnie);
@@ -148,7 +148,7 @@ public class ChangeImages : MonoBehaviour
         WhereFreddy = PlayerPrefs.GetFloat("WhereFreddy", WhereFreddy);
         WhereFoxy = PlayerPrefs.GetFloat("WhereFoxy", WhereFoxy);
 
-        if (WichCamera == 1)
+        if (WhichCamera == 1)
         {
             i18nTextTranslator.textId = "camera.showstage";
             i18nTextTranslator.UpdateText();
@@ -214,7 +214,7 @@ public class ChangeImages : MonoBehaviour
 
         
         //-----------------dining Area-------------------
-        if (WichCamera == 2)
+        if (WhichCamera == 2)
         {
             i18nTextTranslator.textId = "camera.diningarea";
             i18nTextTranslator.UpdateText();
@@ -244,7 +244,7 @@ public class ChangeImages : MonoBehaviour
         //--------------------------------------------------
         
 
-        if (WichCamera == 3)
+        if (WhichCamera == 3)
         {
             i18nTextTranslator.textId = "camera.piratecove";
             i18nTextTranslator.UpdateText();
@@ -265,7 +265,7 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
-        if (WichCamera == 4)
+        if (WhichCamera == 4)
         {
             i18nTextTranslator.textId = "camera.westhall";
             i18nTextTranslator.UpdateText();
@@ -280,7 +280,7 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
-        if (WichCamera == 5)
+        if (WhichCamera == 5)
         {
             i18nTextTranslator.textId = "camera.westhallcorner";
             i18nTextTranslator.UpdateText();
@@ -295,7 +295,7 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
-        if (WichCamera == 6)
+        if (WhichCamera == 6)
         {
             i18nTextTranslator.textId = "camera.supplycloset";
             i18nTextTranslator.UpdateText();
@@ -310,7 +310,7 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
-        if (WichCamera == 7)
+        if (WhichCamera == 7)
         {
             i18nTextTranslator.textId = "camera.easthall";
             i18nTextTranslator.UpdateText();
@@ -335,7 +335,7 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
-        if (WichCamera == 8)
+        if (WhichCamera == 8)
         {
             i18nTextTranslator.textId = "camera.easthallcorner";
             i18nTextTranslator.UpdateText();
@@ -361,12 +361,12 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
-        if (WichCamera == 8)
+        if (WhichCamera == 8)
         {
 
         }
 
-        if (WichCamera == 9)
+        if (WhichCamera == 9)
         {
             i18nTextTranslator.textId = "camera.backstage";
             i18nTextTranslator.UpdateText();
@@ -381,7 +381,7 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
-        if (WichCamera == 10)
+        if (WhichCamera == 10)
         {
             i18nTextTranslator.textId = "camera.kitchen";
             i18nTextTranslator.UpdateText();
@@ -402,7 +402,7 @@ public class ChangeImages : MonoBehaviour
             KitckenAudioOnly.SetActive(false);
         }
 
-        if (WichCamera == 11)
+        if (WhichCamera == 11)
         {
             i18nTextTranslator.textId = "camera.restrooms";
             i18nTextTranslator.UpdateText();
@@ -425,6 +425,7 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
+        // where is Bonnie system
         if (WhereBonnie < 7)
         {
             OfficeObject.GetComponent<RandNumberGen>().BonnieOutsideLeftDoor = false;
@@ -436,6 +437,7 @@ public class ChangeImages : MonoBehaviour
             OfficeObject.GetComponent<Movement>().BonnieOutsideDoor = true;
             OfficeObject.GetComponent<RandNumberGen>().BonnieOutsideLeftDoor = true;
         }
+
         if (WhereBonnie >= 8)
         {
             BonnieJumpscare.SetActive(true);
@@ -455,6 +457,7 @@ public class ChangeImages : MonoBehaviour
             controllersRumble.IsRumbleTriggered("Bonnie");
         }
 
+        // where is Chica system
         if (WhereChica < 8)
         {
             OfficeObject.GetComponent<RandNumberGen>().ChicaOutsideRightDoor = false;
@@ -486,6 +489,8 @@ public class ChangeImages : MonoBehaviour
                 controllersRumble.IsRumbleTriggered("Chica");
             }
         }
+
+        // where is Freddy system
         if (WhereFreddy >= 6)
         {
             OfficeObject.GetComponent<Movement>().FreddyOutsideDoor = true;
@@ -513,7 +518,7 @@ public class ChangeImages : MonoBehaviour
 
         if (WhereFoxy >= 3)
         {
-            if (WichCamera == 4)
+            if (WhichCamera == 4)
             {
                 if (camIsUp)
                 {
@@ -582,7 +587,7 @@ public class ChangeImages : MonoBehaviour
                     FoxyRunDownHall.SetActive(false);
                 }
 
-                if(WichCamera != 4)
+                if(WhichCamera != 4)
                 {
                     FoxyRunDownHall.SetActive(false);
                 }
@@ -602,56 +607,56 @@ public class ChangeImages : MonoBehaviour
 
     public void cam1a()
     {
-        WichCamera = 1;
+        WhichCamera = 1;
     }
 
     public void cam1b()
     {
-        WichCamera = 2;
+        WhichCamera = 2;
     }
 
     public void cam1c()
     {
-        WichCamera = 3;
+        WhichCamera = 3;
     }
 
     public void cam2a()
     {
-        WichCamera = 4;
+        WhichCamera = 4;
     }
 
     public void cam2b()
     {
-        WichCamera = 5;
+        WhichCamera = 5;
     }
 
     public void cam3()
     {
-        WichCamera = 6;
+        WhichCamera = 6;
     }
 
     public void cam4a()
     {
-        WichCamera = 7;
+        WhichCamera = 7;
     }
 
     public void cam4b()
     {
-        WichCamera = 8;
+        WhichCamera = 8;
     }
 
     public void cam5()
     {
-        WichCamera = 9;
+        WhichCamera = 9;
     }
 
     public void cam6()
     {
-        WichCamera = 10;
+        WhichCamera = 10;
     }
 
     public void cam7()
     {
-        WichCamera = 11;
+        WhichCamera = 11;
     }
 }
