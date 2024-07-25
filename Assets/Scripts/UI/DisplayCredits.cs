@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class DisplayCredits : MonoBehaviour
@@ -11,6 +12,8 @@ public class DisplayCredits : MonoBehaviour
     public GameObject h2Prefab;
     public GameObject h3Prefab;
     public GameObject textPrefab;
+
+    private const float lineSpacing = 20f; // 5 pixels space for empty lines
 
     void Start()
     {
@@ -28,6 +31,7 @@ public class DisplayCredits : MonoBehaviour
     {
         string[] lines = markdown.Split('\n');
         RectTransform lastElement = null;
+        float currentPosY = 0f;
 
         foreach (string line in lines)
         {
@@ -61,11 +65,14 @@ public class DisplayCredits : MonoBehaviour
 
                 if (lastElement != null)
                 {
-                    // Position the new element below the last one
-                    rectTransform.anchoredPosition = new Vector2(
-                        rectTransform.anchoredPosition.x,
-                        lastElement.anchoredPosition.y - lastElement.rect.height
-                    );
+                    // Adjust position Y with an additional line spacing if previous line was empty
+                    currentPosY -= lastElement.rect.height + (IsNullOrWhiteSpace(lines[Array.IndexOf(lines, line) - 1]) ? lineSpacing : 0);
+                    rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, currentPosY);
+                }
+                else
+                {
+                    // First element, just place it at the starting position
+                    rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, currentPosY);
                 }
 
                 // Update the last element reference
@@ -76,7 +83,7 @@ public class DisplayCredits : MonoBehaviour
         if (lastElement != null)
         {
             RectTransform contentRectTransform = creditsContent.GetComponent<RectTransform>();
-            float newHeight = Mathf.Abs(lastElement.anchoredPosition.y) + lastElement.rect.height;
+            float newHeight = Mathf.Abs(currentPosY) + lastElement.rect.height;
             contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, newHeight);
         }
     }
