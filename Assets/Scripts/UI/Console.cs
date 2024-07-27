@@ -6,6 +6,12 @@ public class Console : MonoBehaviour
     private List<string> logMessages = new List<string>();
     private Vector2 scrollPosition = Vector2.zero;
 
+    [Header("Log Type")]
+    public bool log = false;
+    public bool warning = false;
+    public bool error = false;
+    public bool exception = false;
+
     void OnEnable()
     {
         Application.logMessageReceived += HandleLog;
@@ -19,9 +25,30 @@ public class Console : MonoBehaviour
     void HandleLog(string logString, string stackTrace, LogType type)
     {
         // Filter for not display warnings
-        if (type == LogType.Log || type == LogType.Error || type == LogType.Exception)
+        if (type == LogType.Log)
         {
-            logMessages.Add(logString);
+            if (log == true)
+            {
+                logMessages.Add(logString);
+            }
+        } else if (type == LogType.Warning)
+        {
+            if (warning == true)
+            {
+                logMessages.Add(logString);
+            }
+        } else if (type == LogType.Error)
+        {
+            if (error == true)
+            {
+                logMessages.Add(logString);
+            }
+        } else if (type == LogType.Exception)
+        {
+            if (exception == true)
+            {
+                logMessages.Add(logString);
+            }
         }
     }
 
