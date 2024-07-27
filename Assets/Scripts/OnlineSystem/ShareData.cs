@@ -17,12 +17,14 @@ public class ShareData : MonoBehaviour
 
     private string localUsername;
     private string localVersion;
+    private string localAuthKey;
 
     [System.Serializable]
     private class ShareDataResponse
     {
         public string username;
         public string version;
+        public string authKey;
     }
 
     void Start ()
@@ -49,6 +51,9 @@ public class ShareData : MonoBehaviour
         // Get game version
         TextAsset versionAsset = Resources.Load<TextAsset>("Meta/version");
         localVersion = versionAsset.text;
+
+        // Authorization key
+        localAuthKey = "2XIXn7rHfyv4RAIWXSTxX5TXHqABqanP";
     }
 
     private void CanShareData()
@@ -66,14 +71,14 @@ public class ShareData : MonoBehaviour
         }
         else if (canShareData == 1)
         {
-            StartCoroutine(SendData(localUsername, localVersion));
+            StartCoroutine(SendData(localUsername, localVersion, localAuthKey));
             isSent = true;
         }
     }
 
-    private IEnumerator SendData(string username, string version)
+    private IEnumerator SendData(string username, string version, string authKey)
     {
-        string jsonString = "{\"username\":\"" + username + "\",\"version\":\"" + version + "\"}";
+        string jsonString = "{\"username\":\"" + username + "\",\"version\":\"" + version + "\",\"authKey\":\"" + authKey + "\"}";
         byte[] postData = System.Text.Encoding.UTF8.GetBytes(jsonString);
 
         Dictionary<string, string> headers = new Dictionary<string, string>();
