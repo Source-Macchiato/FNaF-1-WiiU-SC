@@ -4568,7 +4568,7 @@ Transform:
   - {fileID: 1800503525}
   - {fileID: 2008895000}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639445969
 GameObject:
@@ -9270,7 +9270,7 @@ RectTransform:
   m_Children:
   - {fileID: 1030642247}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11139,7 +11139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1735796340
 GameObject:
@@ -13590,7 +13590,7 @@ Transform:
   m_Children:
   - {fileID: 1094329999}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1959479698
 MonoBehaviour:
@@ -13635,7 +13635,7 @@ MonoBehaviour:
   FoxyAnimationStarted: 0
   FoxyAnimationTimer: 1
   KitckenAudioOnly: {fileID: 59438677}
-  WichCamera: 1
+  WhichCamera: 1
   WichCameraShower: {fileID: 1265514370}
   black: {fileID: 1097015881}
   CanvasGameOver: {fileID: 0}
@@ -13759,7 +13759,7 @@ MonoBehaviour:
   BonnieLeftStage: 0
   ChicaLeftStage: 0
   FreddyLeftStage: 0
-  WichNight: 0
+  WhichNight: 0
 --- !u!114 &1959479702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13921,7 +13921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1974914105}
   m_Layer: 0
-  m_Name: TV and GamePad Camera
+  m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13940,7 +13940,7 @@ Transform:
   - {fileID: 1152074786}
   - {fileID: 106103912}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1981355268
 GameObject:
@@ -14348,7 +14348,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 1
 --- !u!224 &2018316007
 RectTransform:
