@@ -232,7 +232,7 @@ public class Office : MonoBehaviour {
         }
 
         // Check position on the left for the left door
-        if (OfficeImage.transform.position.x >= leftEdge)
+        if (OfficeImage.transform.position.x >= (leftEdge - 100))
         {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
@@ -523,7 +523,7 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
 
         // Check position on the right for the right door
-        if (OfficeImage.transform.position.x <= rightEdge)
+        if (OfficeImage.transform.position.x <= (rightEdge + 100))
         {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
