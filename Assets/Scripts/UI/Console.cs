@@ -18,7 +18,11 @@ public class Console : MonoBehaviour
 
     void HandleLog(string logString, string stackTrace, LogType type)
     {
-        logMessages.Add(logString);
+        // Filter for not display warnings
+        if (type == LogType.Log || type == LogType.Error || type == LogType.Exception)
+        {
+            logMessages.Add(logString);
+        }
     }
 
     void OnGUI()
