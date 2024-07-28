@@ -31,10 +31,10 @@ public class Office : MonoBehaviour {
     public Image DoorButton_R3;
     public Image DoorButton_R4;
 
-    public GameObject Light_L_No_Door;
+    public Image Light_L_No_Door;
     public GameObject Light_L_Door_Bonnie;
 
-    public GameObject Light_R_No_Door;
+    public Image Light_R_No_Door;
     public GameObject Light_R_Door_Chica;
 
     public bool L_Door_Closed = false;
@@ -85,6 +85,9 @@ public class Office : MonoBehaviour {
         DoorButton_R2.enabled = false;
         DoorButton_R3.enabled = false;
         DoorButton_R4.enabled = false;
+
+        Light_L_No_Door.enabled = false;
+        Light_R_No_Door.enabled = false;
     }
 
     void Update()
@@ -406,7 +409,7 @@ public class Office : MonoBehaviour {
 
                     if (!BonnieOutsideDoor)
                     {
-                        Light_L_No_Door.SetActive(true);
+                        Light_L_No_Door.enabled = true;
                         Light.Play();
                         LeftScareAlrdPlayed = false;
                     }
@@ -451,7 +454,7 @@ public class Office : MonoBehaviour {
 
                         if (!BonnieOutsideDoor)
                         {
-                            Light_L_No_Door.SetActive(true);
+                            Light_L_No_Door.enabled = true;
                             Light.Play();
                             LeftScareAlrdPlayed = false;
                         }
@@ -499,7 +502,7 @@ public class Office : MonoBehaviour {
 
                     if (!BonnieOutsideDoor)
                     {
-                        Light_L_No_Door.SetActive(true);
+                        Light_L_No_Door.enabled = true;
                         Light.Play();
                         LeftScareAlrdPlayed = false;
                     }
@@ -579,7 +582,7 @@ public class Office : MonoBehaviour {
 
                     if (!ChicaOutsideDoor)
                     {
-                        Light_R_No_Door.SetActive(true);
+                        Light_R_No_Door.enabled = true;
                         Light.Play();
                         RightScareAlrdPlayed = false;
                     }
@@ -654,7 +657,7 @@ public class Office : MonoBehaviour {
 
                         if (!ChicaOutsideDoor)
                         {
-                            Light_R_No_Door.SetActive(true);
+                            Light_R_No_Door.enabled = true;
                             Light.Play();
                             RightScareAlrdPlayed = false;
                         }
@@ -730,7 +733,7 @@ public class Office : MonoBehaviour {
 
                     if (!ChicaOutsideDoor)
                     {
-                        Light_R_No_Door.SetActive(true);
+                        Light_R_No_Door.enabled = true;
                         Light.Play();
                         RightScareAlrdPlayed = false;
                     }
@@ -769,7 +772,7 @@ public class Office : MonoBehaviour {
                 {
                     if (!BonnieOutsideDoor)
                     {
-                        Light_L_No_Door.SetActive(false);
+                        Light_L_No_Door.enabled = false;
                         Light.Pause();
                     }
 
@@ -799,7 +802,7 @@ public class Office : MonoBehaviour {
                 {
                     if (!ChicaOutsideDoor)
                     {
-                        Light_R_No_Door.SetActive(false);
+                        Light_R_No_Door.enabled = false;
                         Light.Pause();
                     }
 
@@ -836,7 +839,7 @@ public class Office : MonoBehaviour {
                     {
                         if (!BonnieOutsideDoor)
                         {
-                            Light_L_No_Door.SetActive(false);
+                            Light_L_No_Door.enabled = false;
                             Light.Pause();
                         }
 
@@ -866,7 +869,7 @@ public class Office : MonoBehaviour {
                     {
                         if (!ChicaOutsideDoor)
                         {
-                            Light_R_No_Door.SetActive(false);
+                            Light_R_No_Door.enabled = false;
                             Light.Pause();
                         }
 
@@ -906,7 +909,7 @@ public class Office : MonoBehaviour {
                 {
                     if (!BonnieOutsideDoor)
                     {
-                        Light_L_No_Door.SetActive(false);
+                        Light_L_No_Door.enabled = false;
                         Light.Pause();
                     }
 
@@ -936,7 +939,7 @@ public class Office : MonoBehaviour {
                 {
                     if (!ChicaOutsideDoor)
                     {
-                        Light_R_No_Door.SetActive(false);
+                        Light_R_No_Door.enabled = false;
                         Light.Pause();
                     }
 

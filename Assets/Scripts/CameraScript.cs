@@ -260,7 +260,7 @@ public class CameraScript : MonoBehaviour
                 {
                     if (!officescript.BonnieOutsideDoor)
                     {
-                        officescript.Light_L_No_Door.SetActive(false);
+                        officescript.Light_L_No_Door.enabled = false;
                         officescript.Light.Pause();
                     }
 
@@ -290,7 +290,7 @@ public class CameraScript : MonoBehaviour
                 {
                     if (!officescript.ChicaOutsideDoor)
                     {
-                        officescript.Light_R_No_Door.SetActive(false);
+                        officescript.Light_R_No_Door.enabled = false;
                         officescript.Light.Pause();
                     }
 

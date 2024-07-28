@@ -2036,7 +2036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &217767948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5539,7 +5539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &836525057
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13561,9 +13561,9 @@ MonoBehaviour:
   DoorButton_R2: {fileID: 1123835018}
   DoorButton_R3: {fileID: 868180440}
   DoorButton_R4: {fileID: 907097823}
-  Light_L_No_Door: {fileID: 836525056}
+  Light_L_No_Door: {fileID: 836525058}
   Light_L_Door_Bonnie: {fileID: 1014525239}
-  Light_R_No_Door: {fileID: 217767947}
+  Light_R_No_Door: {fileID: 217767949}
   Light_R_Door_Chica: {fileID: 1894411167}
   L_Door_Closed: 0
   R_Door_Closed: 0
