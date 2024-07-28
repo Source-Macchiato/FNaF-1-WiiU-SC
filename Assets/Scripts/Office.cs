@@ -20,15 +20,16 @@ public class Office : MonoBehaviour {
     public GameObject Door_R_closed;
     public GameObject Door_R_open;
 
-    public GameObject DoorButton_L1;
-    public GameObject DoorButton_L2;
-    public GameObject DoorButton_L3;
-    public GameObject DoorButton_L4;
+    // Buttons textures
+    public Image DoorButton_L1;
+    public Image DoorButton_L2;
+    public Image DoorButton_L3;
+    public Image DoorButton_L4;
 
-    public GameObject DoorButton_R1;
-    public GameObject DoorButton_R2;
-    public GameObject DoorButton_R3;
-    public GameObject DoorButton_R4;
+    public Image DoorButton_R1;
+    public Image DoorButton_R2;
+    public Image DoorButton_R3;
+    public Image DoorButton_R4;
 
     public GameObject Light_L_No_Door;
     public GameObject Light_L_Door_Bonnie;
@@ -75,6 +76,15 @@ public class Office : MonoBehaviour {
         centerPosition = 0;
 
         CheatPanel.SetActive(false);
+
+        // Disable buttons textures
+        DoorButton_L2.enabled = false;
+        DoorButton_L3.enabled = false;
+        DoorButton_L4.enabled = false;
+
+        DoorButton_R2.enabled = false;
+        DoorButton_R3.enabled = false;
+        DoorButton_R4.enabled = false;
     }
 
     void Update()
@@ -251,9 +261,9 @@ public class Office : MonoBehaviour {
                         Door_L_closed.SetActive(false);
                         Door_L_open.SetActive(true);
                         L_Door_Closed = false;
-                        DoorButton_L1.SetActive(true);
-                        DoorButton_L2.SetActive(false);
-                        DoorButton_R4.SetActive(false);
+                        DoorButton_L1.enabled = true;
+                        DoorButton_L2.enabled = false;
+                        DoorButton_R4.enabled = false;
 
                         DoorClose.Play();
 
@@ -268,8 +278,8 @@ public class Office : MonoBehaviour {
                         Door_L_closed.SetActive(true);
                         Door_L_open.SetActive(false);
                         L_Door_Closed = true;
-                        DoorButton_L1.SetActive(false);
-                        DoorButton_L2.SetActive(true);
+                        DoorButton_L1.enabled = false;
+                        DoorButton_L2.enabled = true;
 
                         DoorClose.Play();
 
@@ -301,9 +311,9 @@ public class Office : MonoBehaviour {
                             Door_L_closed.SetActive(false);
                             Door_L_open.SetActive(true);
                             L_Door_Closed = false;
-                            DoorButton_L1.SetActive(true);
-                            DoorButton_L2.SetActive(false);
-                            DoorButton_R4.SetActive(false);
+                            DoorButton_L1.enabled = true;
+                            DoorButton_L2.enabled = false;
+                            DoorButton_R4.enabled = false;
 
                             DoorClose.Play();
 
@@ -318,8 +328,8 @@ public class Office : MonoBehaviour {
                             Door_L_closed.SetActive(true);
                             Door_L_open.SetActive(false);
                             L_Door_Closed = true;
-                            DoorButton_L1.SetActive(false);
-                            DoorButton_L2.SetActive(true);
+                            DoorButton_L1.enabled = false;
+                            DoorButton_L2.enabled = true;
 
                             DoorClose.Play();
 
@@ -354,9 +364,9 @@ public class Office : MonoBehaviour {
                         Door_L_closed.SetActive(false);
                         Door_L_open.SetActive(true);
                         L_Door_Closed = false;
-                        DoorButton_L1.SetActive(true);
-                        DoorButton_L2.SetActive(false);
-                        DoorButton_R4.SetActive(false);
+                        DoorButton_L1.enabled = true;
+                        DoorButton_L2.enabled = false;
+                        DoorButton_R4.enabled = false;
 
                         DoorClose.Play();
 
@@ -370,8 +380,8 @@ public class Office : MonoBehaviour {
                         Door_L_closed.SetActive(true);
                         Door_L_open.SetActive(false);
                         L_Door_Closed = true;
-                        DoorButton_L1.SetActive(false);
-                        DoorButton_L2.SetActive(true);
+                        DoorButton_L1.enabled = false;
+                        DoorButton_L2.enabled = true;
 
                         DoorClose.Play();
 
@@ -421,12 +431,12 @@ public class Office : MonoBehaviour {
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-                    DoorButton_L3.SetActive(true);
+                    DoorButton_L3.enabled = true;
 
                     if (L_Door_Closed)
                     {
-                        DoorButton_L1.SetActive(false);
-                        DoorButton_L4.SetActive(true);
+                        DoorButton_L1.enabled = false;
+                        DoorButton_L4.enabled = true;
                     }
                 }
             }
@@ -466,12 +476,12 @@ public class Office : MonoBehaviour {
 
                         OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-                        DoorButton_L3.SetActive(true);
+                        DoorButton_L3.enabled = true;
 
                         if (L_Door_Closed)
                         {
-                            DoorButton_L1.SetActive(false);
-                            DoorButton_L4.SetActive(true);
+                            DoorButton_L1.enabled = false;
+                            DoorButton_L4.enabled = true;
                         }
                     }
                     break;
@@ -510,12 +520,12 @@ public class Office : MonoBehaviour {
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-                    DoorButton_L3.SetActive(true);
+                    DoorButton_L3.enabled = true;
 
                     if (L_Door_Closed)
                     {
-                        DoorButton_L1.SetActive(false);
-                        DoorButton_L4.SetActive(true);
+                        DoorButton_L1.enabled = false;
+                        DoorButton_L4.enabled = true;
                     }
                 }
             }
@@ -535,9 +545,9 @@ public class Office : MonoBehaviour {
                         Door_R_closed.SetActive(false);
                         Door_R_open.SetActive(true);
                         R_Door_Closed = false;
-                        DoorButton_R1.SetActive(true);
-                        DoorButton_R2.SetActive(false);
-                        DoorButton_R4.SetActive(false);
+                        DoorButton_R1.enabled = true;
+                        DoorButton_R2.enabled = false;
+                        DoorButton_R4.enabled = false;
 
                         DoorClose.Play();
 
@@ -550,8 +560,8 @@ public class Office : MonoBehaviour {
                         Door_R_closed.SetActive(true);
                         Door_R_open.SetActive(false);
                         R_Door_Closed = true;
-                        DoorButton_R1.SetActive(false);
-                        DoorButton_R2.SetActive(true);
+                        DoorButton_R1.enabled = false;
+                        DoorButton_R2.enabled = true;
 
                         DoorClose.Play();
 
@@ -589,12 +599,12 @@ public class Office : MonoBehaviour {
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-                    DoorButton_R3.SetActive(true);
+                    DoorButton_R3.enabled = true;
 
                     if (R_Door_Closed)
                     {
-                        DoorButton_R1.SetActive(false);
-                        DoorButton_R4.SetActive(true);
+                        DoorButton_R1.enabled = false;
+                        DoorButton_R4.enabled = true;
                     }
                 }
             }
@@ -610,9 +620,9 @@ public class Office : MonoBehaviour {
                             Door_R_closed.SetActive(false);
                             Door_R_open.SetActive(true);
                             R_Door_Closed = false;
-                            DoorButton_R1.SetActive(true);
-                            DoorButton_R2.SetActive(false);
-                            DoorButton_R4.SetActive(false);
+                            DoorButton_R1.enabled = true;
+                            DoorButton_R2.enabled = false;
+                            DoorButton_R4.enabled = false;
 
                             DoorClose.Play();
 
@@ -625,8 +635,8 @@ public class Office : MonoBehaviour {
                             Door_R_closed.SetActive(true);
                             Door_R_open.SetActive(false);
                             R_Door_Closed = true;
-                            DoorButton_R1.SetActive(false);
-                            DoorButton_R2.SetActive(true);
+                            DoorButton_R1.enabled = false;
+                            DoorButton_R2.enabled = true;
 
                             DoorClose.Play();
 
@@ -664,12 +674,12 @@ public class Office : MonoBehaviour {
 
                         OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-                        DoorButton_R3.SetActive(true);
+                        DoorButton_R3.enabled = true;
 
                         if (R_Door_Closed)
                         {
-                            DoorButton_R1.SetActive(false);
-                            DoorButton_R4.SetActive(true);
+                            DoorButton_R1.enabled = false;
+                            DoorButton_R4.enabled = true;
                         }
                     }
                     break;
@@ -688,9 +698,9 @@ public class Office : MonoBehaviour {
                         Door_R_closed.SetActive(false);
                         Door_R_open.SetActive(true);
                         R_Door_Closed = false;
-                        DoorButton_R1.SetActive(true);
-                        DoorButton_R2.SetActive(false);
-                        DoorButton_R4.SetActive(false);
+                        DoorButton_R1.enabled = true;
+                        DoorButton_R2.enabled = false;
+                        DoorButton_R4.enabled = false;
 
                         DoorClose.Play();
 
@@ -703,8 +713,8 @@ public class Office : MonoBehaviour {
                         Door_R_closed.SetActive(true);
                         Door_R_open.SetActive(false);
                         R_Door_Closed = true;
-                        DoorButton_R1.SetActive(false);
-                        DoorButton_R2.SetActive(true);
+                        DoorButton_R1.enabled = false;
+                        DoorButton_R2.enabled = true;
 
                         DoorClose.Play();
 
@@ -738,12 +748,12 @@ public class Office : MonoBehaviour {
                     }
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-                    DoorButton_R3.SetActive(true);
+                    DoorButton_R3.enabled = true;
 
                     if (R_Door_Closed)
                     {
-                        DoorButton_R1.SetActive(false);
-                        DoorButton_R4.SetActive(true);
+                        DoorButton_R1.enabled = false;
+                        DoorButton_R4.enabled = true;
                     }
                 }
             }
@@ -771,12 +781,12 @@ public class Office : MonoBehaviour {
 
                     OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                    DoorButton_L3.SetActive(false);
+                    DoorButton_L3.enabled = false;
 
                     if (L_Door_Closed)
                     {
-                        DoorButton_L1.SetActive(true);
-                        DoorButton_L4.SetActive(false);
+                        DoorButton_L1.enabled = true;
+                        DoorButton_L4.enabled = false;
                     }
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -801,12 +811,12 @@ public class Office : MonoBehaviour {
 
                     OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                    DoorButton_R3.SetActive(false);
+                    DoorButton_R3.enabled = false;
 
                     if (R_Door_Closed)
                     {
-                        DoorButton_R1.SetActive(true);
-                        DoorButton_R4.SetActive(false);
+                        DoorButton_R1.enabled = true;
+                        DoorButton_R4.enabled = false;
                     }
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -838,12 +848,12 @@ public class Office : MonoBehaviour {
 
                         OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                        DoorButton_L3.SetActive(false);
+                        DoorButton_L3.enabled = false;
 
                         if (L_Door_Closed)
                         {
-                            DoorButton_L1.SetActive(true);
-                            DoorButton_L4.SetActive(false);
+                            DoorButton_L1.enabled = true;
+                            DoorButton_L4.enabled = false;
                         }
 
                         OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -868,12 +878,12 @@ public class Office : MonoBehaviour {
 
                         OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                        DoorButton_R3.SetActive(false);
+                        DoorButton_R3.enabled = false;
 
                         if (R_Door_Closed)
                         {
-                            DoorButton_R1.SetActive(true);
-                            DoorButton_R4.SetActive(false);
+                            DoorButton_R1.enabled = true;
+                            DoorButton_R4.enabled = false;
                         }
 
                         OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -908,12 +918,12 @@ public class Office : MonoBehaviour {
 
                     OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                    DoorButton_L3.SetActive(false);
+                    DoorButton_L3.enabled = false;
 
                     if (L_Door_Closed)
                     {
-                        DoorButton_L1.SetActive(true);
-                        DoorButton_L4.SetActive(false);
+                        DoorButton_L1.enabled = true;
+                        DoorButton_L4.enabled = false;
                     }
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -938,12 +948,12 @@ public class Office : MonoBehaviour {
 
                     OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                    DoorButton_R3.SetActive(false);
+                    DoorButton_R3.enabled = false;
 
                     if (R_Door_Closed)
                     {
-                        DoorButton_R1.SetActive(true);
-                        DoorButton_R4.SetActive(false);
+                        DoorButton_R1.enabled = true;
+                        DoorButton_R4.enabled = false;
                     }
 
                     OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -952,21 +962,21 @@ public class Office : MonoBehaviour {
                 }
             }
         }
-        if (!L_Door_Closed && DoorButton_L4.activeInHierarchy)
+        if (!L_Door_Closed && DoorButton_L4.isActiveAndEnabled == true)
         {
-            DoorButton_L4.SetActive(false);
+            DoorButton_L4.enabled = false;
         }
-        if (!R_Door_Closed && DoorButton_R4.activeInHierarchy)
+        if (!R_Door_Closed && DoorButton_R4.isActiveAndEnabled == true)
         {
-            DoorButton_R4.SetActive(false);
+            DoorButton_R4.enabled = false;
         }
-        if (DoorButton_L2.activeInHierarchy && DoorButton_L3.activeInHierarchy)
+        if (DoorButton_L2.isActiveAndEnabled == true && DoorButton_L3.isActiveAndEnabled == true)
         {
-            DoorButton_L4.SetActive(true);
+            DoorButton_L4.enabled = true;
         }
-        if (DoorButton_R2.activeInHierarchy && DoorButton_R3.activeInHierarchy)
+        if (DoorButton_R2.isActiveAndEnabled == true && DoorButton_R3.isActiveAndEnabled == true)
         {
-            DoorButton_R4.SetActive(true);
+            DoorButton_R4.enabled = true;
         }
         //----------------------------------------------
 

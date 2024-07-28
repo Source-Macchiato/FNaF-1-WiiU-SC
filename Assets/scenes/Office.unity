@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 170545080}
   - component: {fileID: 170545079}
   m_Layer: 5
-  m_Name: L_button
+  m_Name: L1_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5602,12 +5602,12 @@ GameObject:
   - component: {fileID: 868180441}
   - component: {fileID: 868180440}
   m_Layer: 5
-  m_Name: R_Button (3)
+  m_Name: R3_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &868180439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5807,12 +5807,12 @@ GameObject:
   - component: {fileID: 907097824}
   - component: {fileID: 907097823}
   m_Layer: 5
-  m_Name: R_Button (4)
+  m_Name: R4_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &907097822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5978,12 +5978,12 @@ GameObject:
   - component: {fileID: 943347024}
   - component: {fileID: 943347023}
   m_Layer: 5
-  m_Name: L_button (1)
+  m_Name: L2_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &943347022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7213,12 +7213,12 @@ GameObject:
   - component: {fileID: 1123835019}
   - component: {fileID: 1123835018}
   m_Layer: 5
-  m_Name: R_Button (2)
+  m_Name: R2_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1123835017
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9050,7 +9050,7 @@ GameObject:
   - component: {fileID: 1382900938}
   - component: {fileID: 1382900937}
   m_Layer: 5
-  m_Name: R_Button
+  m_Name: R1_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11752,12 +11752,12 @@ GameObject:
   - component: {fileID: 1776030388}
   - component: {fileID: 1776030387}
   m_Layer: 5
-  m_Name: L_button (3)
+  m_Name: L4_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1776030387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13070,12 +13070,12 @@ GameObject:
   - component: {fileID: 1899132714}
   - component: {fileID: 1899132713}
   m_Layer: 5
-  m_Name: L_button (2)
+  m_Name: L3_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1899132712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13553,14 +13553,14 @@ MonoBehaviour:
   Door_L_open: {fileID: 745054068}
   Door_R_closed: {fileID: 1480350697}
   Door_R_open: {fileID: 2101286253}
-  DoorButton_L1: {fileID: 170545077}
-  DoorButton_L2: {fileID: 943347021}
-  DoorButton_L3: {fileID: 1899132711}
-  DoorButton_L4: {fileID: 1776030386}
-  DoorButton_R1: {fileID: 1382900935}
-  DoorButton_R2: {fileID: 1123835016}
-  DoorButton_R3: {fileID: 868180438}
-  DoorButton_R4: {fileID: 907097821}
+  DoorButton_L1: {fileID: 170545079}
+  DoorButton_L2: {fileID: 943347023}
+  DoorButton_L3: {fileID: 1899132713}
+  DoorButton_L4: {fileID: 1776030387}
+  DoorButton_R1: {fileID: 1382900937}
+  DoorButton_R2: {fileID: 1123835018}
+  DoorButton_R3: {fileID: 868180440}
+  DoorButton_R4: {fileID: 907097823}
   Light_L_No_Door: {fileID: 836525056}
   Light_L_Door_Bonnie: {fileID: 1014525239}
   Light_R_No_Door: {fileID: 217767947}

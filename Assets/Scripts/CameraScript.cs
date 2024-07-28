@@ -272,12 +272,12 @@ public class CameraScript : MonoBehaviour
 
                     officescript.OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                    officescript.DoorButton_L3.SetActive(false);
+                    officescript.DoorButton_L3.enabled = false;
 
                     if (officescript.L_Door_Closed)
                     {
-                        officescript.DoorButton_L1.SetActive(true);
-                        officescript.DoorButton_L4.SetActive(false);
+                        officescript.DoorButton_L1.enabled = true;
+                        officescript.DoorButton_L4.enabled = false;
                     }
 
                     officescript.OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -302,12 +302,12 @@ public class CameraScript : MonoBehaviour
 
                     officescript.OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                    officescript.DoorButton_R3.SetActive(false);
+                    officescript.DoorButton_R3.enabled = false;
 
                     if (officescript.R_Door_Closed)
                     {
-                        officescript.DoorButton_R1.SetActive(true);
-                        officescript.DoorButton_R4.SetActive(false);
+                        officescript.DoorButton_R1.enabled = true;
+                        officescript.DoorButton_R4.enabled = false;
                     }
 
                     officescript.OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
