@@ -374,7 +374,14 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereBonnie == 3)
             {
-                black.GetComponent<Image>().sprite = BackStageBonnie;
+                if (ShouldPerformAction())
+                {
+                    black.GetComponent<Image>().sprite = BackStageBonnieEasterEgg;
+                }
+                else
+                {
+                    black.GetComponent<Image>().sprite = BackStageBonnie;
+                }
             }
             else
             {

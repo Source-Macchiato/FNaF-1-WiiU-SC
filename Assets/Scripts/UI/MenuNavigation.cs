@@ -22,7 +22,7 @@ public class MenuNavigation : MonoBehaviour
     private float buttonChangeDelay = 0.2f;
     private bool canChangeButton = false;
     private float lastChangeTime;
-    private float scrollSpeed = 5f;
+    private float scrollSpeed = 0.5f;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -82,7 +82,7 @@ public class MenuNavigation : MonoBehaviour
 
                     if (CreditsMenu.activeSelf)
                     {
-                        float scrollAmount = +leftVerticalInput * scrollSpeed * Time.deltaTime;
+                        float scrollAmount = leftVerticalInput * scrollSpeed * Time.deltaTime;
                         ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
                         Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
                         newPosition.y = Mathf.Clamp01(newPosition.y);
@@ -104,6 +104,16 @@ public class MenuNavigation : MonoBehaviour
                         selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
                         UpdateSelectionTexts();
                     }
+
+                    if (gamePadState.IsPressed(WiiU.GamePadButton.Up))
+                    {
+                        ScrollCreditsUp();
+                    }
+
+                    if (gamePadState.IsPressed(WiiU.GamePadButton.Down))
+                    {
+                        ScrollCreditsDown();
+                    }
                 }
 
                 // Remote
@@ -121,6 +131,16 @@ public class MenuNavigation : MonoBehaviour
                             selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
                             UpdateSelectionTexts();
                         }
+
+                        if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Up))
+                        {
+                            ScrollCreditsUp();
+                        }
+
+                        if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Down))
+                        {
+                            ScrollCreditsDown();
+                        }
                         break;
                     default:
                         break;
@@ -135,10 +155,20 @@ public class MenuNavigation : MonoBehaviour
                         UpdateSelectionTexts();
                     }
 
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        ScrollCreditsUp();
+                    }
+
                     if (Input.GetKeyDown(KeyCode.DownArrow))
                     {
                         selectedIndex = (selectedIndex + 1) % GetCurrentMenuButtons().Length;
                         UpdateSelectionTexts();
+                    }
+
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        ScrollCreditsDown();
                     }
                 }
             }
@@ -169,5 +199,29 @@ public class MenuNavigation : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         canChangeButton = true;
+    }
+
+    private void ScrollCreditsUp()
+    {
+        if (CreditsMenu.activeSelf)
+        {
+            float scrollAmount = 1 * scrollSpeed * Time.deltaTime;
+            ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
+            Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
+            newPosition.y = Mathf.Clamp01(newPosition.y);
+            creditsScrollRect.normalizedPosition = newPosition;
+        }
+    }
+
+    private void ScrollCreditsDown()
+    {
+        if (CreditsMenu.activeSelf)
+        {
+            float scrollAmount = -1 * scrollSpeed * Time.deltaTime;
+            ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
+            Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
+            newPosition.y = Mathf.Clamp01(newPosition.y);
+            creditsScrollRect.normalizedPosition = newPosition;
+        }
     }
 }
