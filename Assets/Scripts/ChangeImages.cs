@@ -63,9 +63,10 @@ public class ChangeImages : MonoBehaviour
     public Sprite EastHall2_2;
     public Sprite EastHall2_3;
 
-    public Sprite BackStage1;
-    public Sprite BackStage2;
-    public Sprite BackStage3;
+    public Sprite BackStageDefault;
+    public Sprite BackStageDefaultEasterEgg;
+    public Sprite BackStageBonnie;
+    public Sprite BackStageBonnieEasterEgg;
 
     public Sprite Kitchen1;
 
@@ -373,11 +374,20 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereBonnie == 3)
             {
-                black.GetComponent<Image>().sprite = BackStage2;
+                black.GetComponent<Image>().sprite = BackStageBonnie;
             }
             else
             {
-                black.GetComponent<Image>().sprite = BackStage1;
+                if (ShouldPerformAction())
+                {
+                    black.GetComponent<Image>().sprite = BackStageDefaultEasterEgg;
+                    Debug.Log("true");
+                }
+                else
+                {
+                    black.GetComponent<Image>().sprite = BackStageDefault;
+                    Debug.Log("false");
+                }
             }
         }
 
@@ -658,5 +668,12 @@ public class ChangeImages : MonoBehaviour
     public void cam7()
     {
         WhichCamera = 11;
+    }
+
+    bool ShouldPerformAction()
+    {
+        int randomNumber = Random.Range(0, 100);
+
+        return randomNumber == 0;
     }
 }

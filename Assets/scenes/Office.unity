@@ -13666,9 +13666,12 @@ MonoBehaviour:
   EastHall2_1: {fileID: 21300000, guid: 563c4449915d5f142a78545203946d85, type: 3}
   EastHall2_2: {fileID: 21300000, guid: 7f3b2f87fd04d374789553a15d6ae591, type: 3}
   EastHall2_3: {fileID: 21300000, guid: b358d19607a54504a9c2d61dd3113fbd, type: 3}
-  BackStage1: {fileID: 21300000, guid: 9fbe04dc552731c4d8932269b3d3767a, type: 3}
-  BackStage2: {fileID: 21300000, guid: dcbc2d74116a6cf4590d0b29fddb037c, type: 3}
-  BackStage3: {fileID: 21300000, guid: 2b77246c2fdfcb2479b5952637e88355, type: 3}
+  BackStageDefault: {fileID: 21300000, guid: 9fbe04dc552731c4d8932269b3d3767a, type: 3}
+  BackStageDefaultEasterEgg: {fileID: 21300000, guid: b950f45837560b448a4e0e6c368499f6,
+    type: 3}
+  BackStageBonnie: {fileID: 21300000, guid: dcbc2d74116a6cf4590d0b29fddb037c, type: 3}
+  BackStageBonnieEasterEgg: {fileID: 21300000, guid: 2b77246c2fdfcb2479b5952637e88355,
+    type: 3}
   Kitchen1: {fileID: 21300000, guid: 701f125af9d2b7d47994a68d7951ea04, type: 3}
   RestRooms1: {fileID: 21300000, guid: cf97c94edd9cba34bb4248ce2c49a925, type: 3}
   RestRooms2: {fileID: 21300000, guid: 0db7f06343d5a614aba4396a20e9b4f4, type: 3}
