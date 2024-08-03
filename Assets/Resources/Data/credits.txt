@@ -17,6 +17,9 @@ Alyx Lihoreau
 ## Video editing
 Alexis L.
 
+## Beta tester
+TeraByte
+
 ## Translations
 ### French
 Alexis L.
@@ -41,4 +44,5 @@ t3k3yur3
 The_Stern5544
 X (not Elon Musk)
 
-Special thanks to Scott Cawthon for creating Five Nights at Freddy's and to BasDEV for porting it to 3DS
+Special thanks to Scott Cawthon for creating Five Nights at Freddy's
+and to BasDEV for porting it to 3DS
