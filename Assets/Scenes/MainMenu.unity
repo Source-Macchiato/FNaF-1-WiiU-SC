@@ -2726,6 +2726,7 @@ MonoBehaviour:
   - French
   - Spanish
   - Italian
+  - Slovak
   AudioMenuPanel: {fileID: 1912968395}
 --- !u!1 &679080945
 GameObject:

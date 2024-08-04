@@ -1,0 +1,388 @@
+{
+  "items": [
+    {
+      "key": "none",
+      "value": ""
+    },
+    {
+      "key": "mainmenu.update",
+      "value": "Nová verzia je dostupná, stiahni si ju na itch.io !"
+    },
+    {
+      "key": "mainmenu.sharedata",
+      "value": "Súhlasíte so zdieľaním štatistických informácií so Source Macchiato, ako je napríklad frekvencia spúšťania hry?"
+    },
+    {
+      "key": "mainmenu.newgame",
+      "value": "Nová Hra"
+    },
+    {
+      "key": "mainmenu.continue",
+      "value": "Pokračovať"
+    },
+    {
+      "key": "mainmenu.night",
+      "value": "NOC"
+    },
+    {
+      "key": "mainmenu.options",
+      "value": "Nastavenia"
+    },
+    {
+      "key": "mainmenu.language",
+      "value": "Jazyk"
+    },
+    {
+      "key": "mainmenu.credits",
+      "value": "Zásluhy"
+    },
+    {
+      "key": "nextnight.firstnight",
+      "value": "1 .  N o c"
+    },
+    {
+      "key": "nextnight.secondnight",
+      "value": "2.  N o c"
+    },
+    {
+      "key": "nextnight.thirdnight",
+      "value": "3.  N o c"
+    },
+    {
+      "key": "nextnight.fourthnight",
+      "value": "4.  N o c"
+    },
+    {
+      "key": "nextnight.fifthnight",
+      "value": "5.  N o c"
+    },
+    {
+      "key": "office.night",
+      "value": "Noc"
+    },
+    {
+      "key": "office.usage",
+      "value": "Spotreba:"
+    },
+    {
+      "key": "office.power",
+      "value": "Zostávajúca Energia:"
+    },
+    {
+      "key": "camera.showstage",
+      "value": "Pódium"
+    },
+    {
+      "key": "camera.diningarea",
+      "value": "Jedáleň"
+    },
+    {
+      "key": "camera.piratecove",
+      "value": "Pirátska Zátoka"
+    },
+    {
+      "key": "camera.westhall",
+      "value": "Západna Chodba"
+    },
+    {
+      "key": "camera.westhallcorner",
+      "value": "Roh Západnej Chodby"
+    },
+    {
+      "key": "camera.supplycloset",
+      "value": "Komora"
+    },
+    {
+      "key": "camera.easthall",
+      "value": "Východna Chodba"
+    },
+    {
+      "key": "camera.easthallcorner",
+      "value": "Roh Východnej Chodby"
+    },
+    {
+      "key": "camera.backstage",
+      "value": "Zákulisie"
+    },
+    {
+      "key": "camera.kitchen",
+      "value": "Kuchyňa"
+    },
+    {
+      "key": "camera.restrooms",
+      "value": "Toaley"
+    },
+    {
+      "key": "nightone.phoneguy.lineone",
+      "value": "Haló? Haló, haló? Umm, Chcel som Vám nahrať správu ktorá Vám pomôže usadiť sa v prvú noc."
+    },
+    {
+      "key": "nightone.phoneguy.linetwo",
+      "value": "Um, ja som pracoval v tejto kancelárií pred Vami. Vlastne, teraz končim svoj posledný týždeň. Takže,"
+    },
+    {
+      "key": "nightone.phoneguy.linethree",
+      "value": "ja viem že to môže byť trochu ohromujúce, ale som tu aby som Vám povedal že sa nemusíte ničoho obávať."
+    },
+    {
+      "key": "nightone.phoneguy.linefour",
+      "value": "Um, pôjde Vám to dobre. Takže, sústreďme sa na to aby ste prešli Váš prvý týždeň, okej?"
+    },
+    {
+      "key": "nightone.phoneguy.linefive",
+      "value": "Um, pozrime sa, ako prvý je tu úvodný pozdrav od tejto spoločnosti ktorý mám prečítať."
+    },
+    {
+      "key": "nightone.phoneguy.linesix",
+      "value": "Um, vieš, je to tak trochu taká legála vec. Uh, \"Vitajte vo Freddy Fazbear's Pizza."
+    },
+    {
+      "key": "nightone.phoneguy.lineseven",
+      "value": "Magické miesto pre deti aj dospelákov, kde ožíva fantázia a zábava."
+    },
+    {
+      "key": "nightone.phoneguy.lineheight",
+      "value": "Fazbear Entertainment nezodpovedá za škody majetku alebo osôb."
+    },
+    {
+      "key": "nightone.phoneguy.linenine",
+      "value": "Po zisteníy že došlo k poškodeniu alebo ku smrti, nahláste hlásenie o nezvestnosti do 90 dní, alebo"
+    },
+    {
+      "key": "nightone.phoneguy.lineten",
+      "value": "po dôkladnom vyčistení majetku a priestorov a výmene kobercov.\""
+    },
+    {
+      "key": "nightone.phoneguy.lineeleven",
+      "value": "Bla, bla, bla. Môže to znieť zle, ja viem, ale v skutočnosti sa nie je čoho báť."
+    },
+    {
+      "key": "nightone.phoneguy.linetwelve",
+      "value": "Um, tie animatronické postavy sú v noci trochu zvláštne, ale obviňujem ich? Nie."
+    },
+    {
+      "key": "nightone.phoneguy.linethirteen",
+      "value": "Keby som bol dvadsať rokov nútený spievať tie isté hlúpe piesne a nikdy by som sa neokúpal?"
+    },
+    {
+      "key": "nightone.phoneguy.linefourteen",
+      "value": "Ja by som tiež asi bol cez noc trochu podráždený. Takže, pamätajte, tiesto postavy majú"
+    },
+    {
+      "key": "nightone.phoneguy.linefifteen",
+      "value": "v srdciach detí špeciálne miesto a my im musíme prejaviť trochu rešpektu, však? Okej."
+    },
+    {
+      "key": "nightone.phoneguy.linesixteen",
+      "value": "Takže, buďte si vedomí toho, že tie postavy majú tendenciu sa trochu potulovať. Um, v noci sú v nejakom"
+    },
+    {
+      "key": "nightone.phoneguy.lineseventeen",
+      "value": "voľne túlajucom sa režime. Um... niečo o tom, že ich servá sa zablokujú"
+    },
+    {
+      "key": "nightone.phoneguy.lineeighteen",
+      "value": "ak by boli príliš dlho vypnutý. Uh, they used to be allowed to walk around during the day too."
+    },
+    {
+      "key": "nightone.phoneguy.linenineteen",
+      "value": "But then there was The Bite of '87. Yeah. I-It's amazing that the human body can live without the frontal lobe, you know?"
+    },
+    {
+      "key": "nightone.phoneguy.linetwenty",
+      "value": "Uh, now concerning your safety, the only real risk to you as a night watchman here, if any,"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyone",
+      "value": "is the fact that these characters, uh, if they happen to see you after hours probably won't recognize you as a person."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentytwo",
+      "value": "They'll pr- they'll most likely see you as a metal endoskeleton without its costume on."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentythree",
+      "value": "Now since that's against the rules here at Freddy Fazbear's Pizza, they'll probably try to..."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyfour",
+      "value": "forcefully stuff you inside a Freddy Fazbear suit. Um, now, that wouldn't be so bad"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyfive",
+      "value": "if the suits themselves weren't filled with crossbeams, wires, and animatronic devices,"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentysix",
+      "value": "especially around the facial area. So, you could imagine how having your head"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyseven",
+      "value": "forcefully pressed inside one of those could cause a bit of discomfort... and death."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyheight",
+      "value": "Uh, the only parts of you that would likely see the light of day again would be your eyeballs"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentynine",
+      "value": "and teeth when they pop out the front of the mask, heh."
+    },
+    {
+      "key": "nightone.phoneguy.linethirty",
+      "value": "Y-Yeah, they don't tell you these things when you sign up. But hey, first day should be a breeze."
+    },
+    {
+      "key": "nightone.phoneguy.linethirtyone",
+      "value": "I'll chat with you tomorrow. Uh, check those cameras, and remember to close the doors"
+    },
+    {
+      "key": "nightone.phoneguy.linethirtytwo",
+      "value": "only if absolutely necessary. Gotta conserve power. Alright, good night."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineone",
+      "value": "Uhh, Hello? Hello? Uh, well, if you're hearing this and you made it to day two, uh, congrats!"
+    },
+    {
+      "key": "nighttwo.phoneguy.linetwo",
+      "value": "I-I won't talk quite as long this time since Freddy and his friends tend to become more active as the week progresses."
+    },
+    {
+      "key": "nighttwo.phoneguy.linethree",
+      "value": "Uhh, it might be a good idea to peek at those cameras while I talk"
+    },
+    {
+      "key": "nighttwo.phoneguy.linefour",
+      "value": "just to make sure everyone's in their proper place. You know..."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefive",
+      "value": "Uh... interestingly enough, Freddy himself doesn't come off stage very often."
+    },
+    {
+      "key": "nighttwo.phoneguy.linesix",
+      "value": "I heard he becomes a lot more active in the dark though, so, hey,"
+    },
+    {
+      "key": "nighttwo.phoneguy.lineseven",
+      "value": "I guess that's one more reason not to run out of power, right?"
+    },
+    {
+      "key": "nighttwo.phoneguy.lineheight",
+      "value": "I-I also want to emphasize the importance of using your door lights."
+    },
+    {
+      "key": "nighttwo.phoneguy.linenine",
+      "value": "There are blind spots in your camera views, and those blind spots happen to be right outside of your doors."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineten",
+      "value": "So if-if you can't find something, or someone, on your cameras, be sure to check the door lights."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineeleven",
+      "value": "Uh, you might only have a few seconds to react... Uh, not that you would be in any danger, of course."
+    },
+    {
+      "key": "nighttwo.phoneguy.linetwelve",
+      "value": "I'm not implying that. Also, check on the curtain in Pirate Cove from time to time."
+    },
+    {
+      "key": "nighttwo.phoneguy.linethirteen",
+      "value": "The character in there seems unique in that he becomes more active if the cameras remain off for long periods of time."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefourteen",
+      "value": "I guess he doesn't like being watched. I don't know."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefifteen",
+      "value": "Anyway, I'm sure you have everything under control! Uh, talk to you soon."
+    },
+    {
+      "key": "nighthree.phoneguy.lineone",
+      "value": "Hello, hello? Hey you're doing great! Most people don't last this long."
+    },
+    {
+      "key": "nighthree.phoneguy.linetwo",
+      "value": "I mean, you know, they usually move on to other things by now. I'm not implying that they died."
+    },
+    {
+      "key": "nighthree.phoneguy.linethree",
+      "value": "Th-th-that's not what I meant. Uh, anyway I better not take up too much of your time."
+    },
+    {
+      "key": "nighthree.phoneguy.linefour",
+      "value": "Things start getting real tonight. Uh... hey, listen, I had an idea: if you happen to get caught"
+    },
+    {
+      "key": "nighthree.phoneguy.linefive",
+      "value": "and want to avoid getting stuffed into a Freddy suit, uhh, try playing dead! You know, go limp."
+    },
+    {
+      "key": "nighthree.phoneguy.linesix",
+      "value": "Then there's a chance that, uh, maybe they'll think that you're an empty costume instead."
+    },
+    {
+      "key": "nighthree.phoneguy.lineseven",
+      "value": "Then again, if they think you're an empty costume, they might try to... stuff a metal skeleton into you."
+    },
+    {
+      "key": "nighthree.phoneguy.lineheight",
+      "value": "I wonder how that would work. Yeah, never mind, scratch that. It's best just not to get caught."
+    },
+    {
+      "key": "nighthree.phoneguy.linenine",
+      "value": "Um... okay, I'll leave you to it. See you on the flip side!"
+    },
+    {
+      "key": "nightfour.phoneguy.lineone",
+      "value": "Hello, hello? Hey! Hey, wow, day 4. I knew you could do it. Uh, hey, listen,"
+    },
+    {
+      "key": "nightfour.phoneguy.linetwo",
+      "value": "I may not be around to send you a message tomorrow. *banging* It's-It's been a bad night here for me."
+    },
+    {
+      "key": "nightfour.phoneguy.linethree",
+      "value": "Um, I-I'm kinda glad that I recorded my messages for you *clears throat* uh, when I did."
+    },
+    {
+      "key": "nightfour.phoneguy.linefour",
+      "value": "Uh, hey, do me a favor. *banging* Maybe sometime, uh, you could check inside those suits in the back room?"
+    },
+    {
+      "key": "nightfour.phoneguy.linefive",
+      "value": "*banging* I'm gonna to try to hold out until someone checks. Maybe it won't be so bad."
+    },
+    {
+      "key": "nightfour.phoneguy.linesix",
+      "value": "*bang bang* Uh, I-I-I-I always wondered what was in all those empty heads back there. *chime plays*."
+    },
+    {
+      "key": "nightfour.phoneguy.lineseven",
+      "value": "You know... *deep moan* oh, no - *noises followed by a loud screech and static*"
+    },
+    {
+      "key": "nightfive.phoneguy.lineone",
+      "value": "seldom knows contemporaneous (Omitted: reward; it is enough to possess) the joy of creative (Omitted: service.)"
+    },
+    {
+      "key": "nightfive.phoneguy.linetwo",
+      "value": "Countless uses (Omitted: of Bose instruments) will be made by future gener- (Omitted: ations. The scientist)"
+    },
+    {
+      "key": "nightfive.phoneguy.linethree",
+      "value": "to indicate the influence of various types of fertilizers on plant growth? You are right."
+    },
+    {
+      "key": "nightfive.phoneguy.linefour",
+      "value": "Would it not be easily possible to employ some of them in quick laboratory experiments"
+    },
+    {
+      "key": "nightfive.phoneguy.linefive",
+     "value": "(Omitted: Sir,) it is lamentable that mass agricultural development is (Omitted: not) speeded by fuller use of your marvelous mechanisms."
+    }
+  ]
+}
