@@ -53,7 +53,7 @@ public class ShareData : MonoBehaviour
         localVersion = versionAsset.text;
 
         // Authorization key
-        localAuthKey = "2XIXn7rHfyv4RAIWXSTxX5TXHqABqanP";
+        localAuthKey = "Yjz8bGa3Ah6Ox7Ukg4RmyZENHuBlQte1";
     }
 
     private void CanShareData()
