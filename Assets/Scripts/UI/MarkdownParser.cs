@@ -64,13 +64,6 @@ public class MarkdownParser : MonoBehaviour
                 lastElement = rectTransform;
             }
         }
-
-        if (lastElement != null)
-        {
-            RectTransform contentRectTransform = container.GetComponent<RectTransform>();
-            float newHeight = Mathf.Abs(currentPosY) + lastElement.rect.height;
-            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, newHeight);
-        }
     }
 
     bool IsNullOrWhiteSpace(string value)
