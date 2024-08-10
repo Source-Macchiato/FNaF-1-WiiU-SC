@@ -17,6 +17,8 @@ public class MenuSetup : MonoBehaviour
 {
     // Reference to the main and sub menus
     public MenuManager menuManager;
+    public PlayerData playerData;
+
     public GameObject SubOptionPanelDev;
     public GameObject SubOptionPanel;
     private bool SubOptionPanelDevState;
@@ -25,9 +27,9 @@ public class MenuSetup : MonoBehaviour
     void Start()
     {
         // Adding buttons to the main menu with corresponding actions
-        menuManager.AddButton("New Game", NewGame);
-        menuManager.AddButton("Continue", Continue);
-        menuManager.AddButton("Options", Options);
+        menuManager.AddButton("New Game", NewGame, "mainmenu.newgame");
+        menuManager.AddButton("Continue", Continue, "mainmenu.continue");
+        menuManager.AddButton("Options", Options, "mainmenu.options");
 
         // Uncomment to add a debug button for mounting the SD card
         //menuManager.AddButton("[DEBUG] MOUNT SD CARD", Mount);
@@ -43,13 +45,25 @@ public class MenuSetup : MonoBehaviour
     // Function for start a new game
     void NewGame()
     {
-        SceneManager.LoadScene("PortalDemo");
+        playerData.NightNumber = 1;
+        PlayerPrefs.SetFloat("NightNumber", playerData.NightNumber);
+        PlayerPrefs.Save();
+        playerData.LoadAdvertisement();
     }
 
     // Function for continue
     void Continue()
     {
-        Debug.Log("Continue");
+        playerData.NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+
+        if (playerData.NightNumber == 1)
+        {
+            playerData.LoadAdvertisement();
+        }
+        else if (playerData.NightNumber > 1 && playerData.NightNumber < 6)
+        {
+            SceneManager.LoadScene("NextNight");
+        }
     }
 
     // Function for open the "Options" sub-menu

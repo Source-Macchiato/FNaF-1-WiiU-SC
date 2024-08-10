@@ -135,20 +135,25 @@ public class MenuManager : MonoBehaviour
     }
 
     // Adds a button to the menu with the given text and click action
-    public void AddButton(string buttonText, UnityEngine.Events.UnityAction onClickAction)
+    public void AddButton(string buttonText, UnityEngine.Events.UnityAction onClickAction, string translationId)
     {
         // Instantiate the button prefab
         GameObject newButton = Instantiate(buttonPrefab, menuParent);
 
         // Set the button text
-        Text buttonTextComponent = newButton.transform.Find("Text").GetComponent<Text>();
-        buttonTextComponent.text = buttonText;
+        GameObject buttonTextComponent = newButton.transform.Find("Text").gameObject;
+        Text text = buttonTextComponent.GetComponent<Text>();
+        text.text = buttonText;
+
+        // Translate button text
+        I18nTextTranslator translator = buttonTextComponent.GetComponent<I18nTextTranslator>();
+        translator.textId = translationId;
 
         // Add the click action to the button
         Button buttonComponent = newButton.GetComponent<Button>();
         buttonComponent.onClick.AddListener(onClickAction);
 
-        // Disable rounded border and content initially
+        // Hide selection text initially
         Transform selectionText = newButton.transform.Find("Selection");
 
         if (selectionText != null)
@@ -161,11 +166,11 @@ public class MenuManager : MonoBehaviour
     }
 
     // Adds a submenu button that shows the submenu when clicked
-    public void AddSubMenu(string buttonText, MenuManager subMenuManager)
+    /*public void AddSubMenu(string buttonText, MenuManager subMenuManager)
     {
         AddButton(buttonText, () => subMenuManager.ShowMenu());
         subMenuManager.HideMenu();
-    }
+    }*/
 
     // Shows the menu
     public void ShowMenu()

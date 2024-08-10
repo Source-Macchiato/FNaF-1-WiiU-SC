@@ -1,0 +1,48 @@
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PlayerData : MonoBehaviour
+{
+    public float NightNumber;
+
+    // Save scripts
+    SaveGameState saveGameState;
+    SaveManager saveManager;
+
+    // Advertisement
+    public GameObject advertisementImage;
+    private bool advertisementIsActive;
+    private float startTime;
+    private float waitTime = 10f;
+
+    void Start()
+    {
+        // Get scripts
+        saveGameState = FindObjectOfType<SaveGameState>();
+        saveManager = FindObjectOfType<SaveManager>();
+
+        // Load night number from save and display it
+        NightNumber = SaveManager.LoadNightNumber();
+
+        // Disable advertisement by default
+        advertisementIsActive = false;
+        advertisementImage.SetActive(false);
+    }
+	
+	// Update is called once per frame
+	void Update()
+    {
+        // Load scene after advertisementload is called
+        if (Time.time - startTime >= waitTime && advertisementIsActive == true)
+        {
+            SceneManager.LoadScene("NextNight");
+        }
+    }
+
+    public void LoadAdvertisement()
+    {
+        advertisementIsActive = true;
+        startTime = Time.time;
+        advertisementImage.SetActive(true);
+    }
+}
