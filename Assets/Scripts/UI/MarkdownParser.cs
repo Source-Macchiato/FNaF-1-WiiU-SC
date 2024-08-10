@@ -1,16 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MarkdownParser : MonoBehaviour
 {
     // Markdown prefabs
+    public GameObject blankPrefab;
     public GameObject h1Prefab;
     public GameObject h2Prefab;
     public GameObject h3Prefab;
     public GameObject textPrefab;
-
-    public const float lineSpacing = 20f; // Spaces height
 
     public void ParseAndDisplayMarkdown(GameObject container, string markdown)
     {
@@ -43,6 +41,13 @@ public class MarkdownParser : MonoBehaviour
                 newTextObject = Instantiate(textPrefab, container.transform);
                 newTextObject.GetComponent<Text>().text = line.Trim();
             }
+            else
+            {
+                // If line is empty, instantiate blankPrefab to add a blank space
+                newTextObject = Instantiate(blankPrefab, container.transform);
+                rectTransform = newTextObject.GetComponent<RectTransform>();
+                rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, 20f);
+            }
 
             if (newTextObject != null)
             {
@@ -50,8 +55,8 @@ public class MarkdownParser : MonoBehaviour
 
                 if (lastElement != null)
                 {
-                    // Adjust position Y with an additional line spacing if previous line was empty
-                    currentPosY -= lastElement.rect.height + (IsNullOrWhiteSpace(lines[Array.IndexOf(lines, line) - 1]) ? lineSpacing : 0);
+                    // Adjust position Y based on the height of the previous element
+                    currentPosY -= lastElement.rect.height;
                     rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, currentPosY);
                 }
                 else
