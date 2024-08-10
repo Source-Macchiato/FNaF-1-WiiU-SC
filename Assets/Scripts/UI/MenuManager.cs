@@ -16,6 +16,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
+using UnityEditor;
 
 public class MenuManager : MonoBehaviour
 {
@@ -23,10 +24,12 @@ public class MenuManager : MonoBehaviour
     public GameObject buttonPrefab;
 
     // Parent transform where menu buttons will be placed
-    public Transform menuParent;
+    public Transform[] menus;
 
     // List to keep track of all menu buttons
-    private List<GameObject> buttons = new List<GameObject>();
+    private Dictionary<int, List<GameObject>> menuButtons = new Dictionary<int, List<GameObject>>();
+
+    int currentMenuId = 0;
 
     // References to WiiU controllers
     WiiU.GamePad gamePad;
@@ -38,12 +41,7 @@ public class MenuManager : MonoBehaviour
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
 
-        // Set the first button as the selected button if any buttons exist
-        if (buttons.Count > 0)
-        {
-            EventSystem.current.SetSelectedGameObject(buttons[0]);
-            EnableButtonVisual(buttons[0]);
-        }
+        ChangeMenu(0);
     }
 
     void Update()
@@ -57,11 +55,11 @@ public class MenuManager : MonoBehaviour
         {
             if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
             {
-                Navigate(-1);
+                Navigate(-1, currentMenuId);
             }
             else if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
             {
-                Navigate(1);
+                Navigate(1, currentMenuId);
             }
             else if (gamePadState.IsReleased(WiiU.GamePadButton.A))
             {
@@ -75,11 +73,11 @@ public class MenuManager : MonoBehaviour
             case WiiU.RemoteDevType.ProController:
                 if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Up))
                 {
-                    Navigate(-1);
+                    Navigate(-1, currentMenuId);
                 }
                 else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Down))
                 {
-                    Navigate(1);
+                    Navigate(1, currentMenuId);
                 }
                 else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.A))
                 {
@@ -89,11 +87,11 @@ public class MenuManager : MonoBehaviour
             case WiiU.RemoteDevType.Classic:
                 if (remoteState.classic.IsReleased(WiiU.ClassicButton.Up))
                 {
-                    Navigate(-1);
+                    Navigate(-1, currentMenuId);
                 }
                 else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Down))
                 {
-                    Navigate(1);
+                    Navigate(1, currentMenuId);
                 }
                 else if (remoteState.classic.IsReleased(WiiU.ClassicButton.A))
                 {
@@ -103,11 +101,11 @@ public class MenuManager : MonoBehaviour
             default:
                 if (remoteState.IsReleased(WiiU.RemoteButton.Up))
                 {
-                    Navigate(-1);
+                    Navigate(-1, currentMenuId);
                 }
                 else if (remoteState.IsReleased(WiiU.RemoteButton.Down))
                 {
-                    Navigate(1);
+                    Navigate(1, currentMenuId);
                 }
                 else if (remoteState.IsReleased(WiiU.RemoteButton.A))
                 {
@@ -121,11 +119,11 @@ public class MenuManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                Navigate(-1);
+                Navigate(-1, currentMenuId);
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                Navigate(1);
+                Navigate(1, currentMenuId);
             }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -135,10 +133,10 @@ public class MenuManager : MonoBehaviour
     }
 
     // Adds a button to the menu with the given text and click action
-    public void AddButton(string buttonText, UnityEngine.Events.UnityAction onClickAction, string translationId)
+    public void AddButton(string buttonText, UnityEngine.Events.UnityAction onClickAction, int menuId, string translationId)
     {
         // Instantiate the button prefab
-        GameObject newButton = Instantiate(buttonPrefab, menuParent);
+        GameObject newButton = Instantiate(buttonPrefab, menus[menuId]);
 
         // Set the button text
         GameObject buttonTextComponent = newButton.transform.Find("Text").gameObject;
@@ -161,48 +159,34 @@ public class MenuManager : MonoBehaviour
             selectionText.gameObject.SetActive(false);
         }
 
-        // Add the button to the list
-        buttons.Add(newButton);
-    }
-
-    // Adds a submenu button that shows the submenu when clicked
-    /*public void AddSubMenu(string buttonText, MenuManager subMenuManager)
-    {
-        AddButton(buttonText, () => subMenuManager.ShowMenu());
-        subMenuManager.HideMenu();
-    }*/
-
-    // Shows the menu
-    public void ShowMenu()
-    {
-        menuParent.gameObject.SetActive(true);
-    }
-
-    // Hides the menu
-    public void HideMenu()
-    {
-        menuParent.gameObject.SetActive(false);
+        // Add the button to the correct menu list in the dictionary
+        if (!menuButtons.ContainsKey(menuId))
+        {
+            menuButtons[menuId] = new List<GameObject>();
+        }
+        menuButtons[menuId].Add(newButton);
     }
 
     // Navigates through the menu buttons based on the direction
-    public void Navigate(int direction)
+    public void Navigate(int direction, int menuId)
     {
-        if (buttons.Count == 0) return;
+        if (!menuButtons.ContainsKey(menuId) || menuButtons[menuId].Count == 0) return;
 
+        List<GameObject> currentMenuButtons = menuButtons[menuId];
         GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
         if (currentSelected == null)
         {
-            currentSelected = buttons[0];
+            currentSelected = currentMenuButtons[0];
         }
 
-        int currentIndex = buttons.IndexOf(currentSelected);
-        int nextIndex = (currentIndex + direction + buttons.Count) % buttons.Count;
+        int currentIndex = currentMenuButtons.IndexOf(currentSelected);
+        int nextIndex = (currentIndex + direction + currentMenuButtons.Count) % currentMenuButtons.Count;
 
-        DisableButtonVisual(buttons[currentIndex]);
+        DisableButtonVisual(currentMenuButtons[currentIndex]);
 
-        EventSystem.current.SetSelectedGameObject(buttons[nextIndex]);
+        EventSystem.current.SetSelectedGameObject(currentMenuButtons[nextIndex]);
 
-        EnableButtonVisual(buttons[nextIndex]);
+        EnableButtonVisual(currentMenuButtons[nextIndex]);
     }
 
     // Clicks the currently selected button
@@ -238,6 +222,27 @@ public class MenuManager : MonoBehaviour
         if (selectionText != null)
         {
             selectionText.gameObject.SetActive(false);
+        }
+    }
+
+    public void ChangeMenu(int menuId)
+    {
+        foreach (Transform menu in menus)
+        {
+            if (menu != menus[menuId])
+            {
+                menu.gameObject.SetActive(false);
+            }
+        }
+
+        menus[menuId].gameObject.SetActive(true);
+
+        currentMenuId = menuId;
+
+        if (menuButtons.ContainsKey(menuId) && menuButtons[menuId].Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(menuButtons[menuId][0]);
+            EnableButtonVisual(menuButtons[menuId][0]);
         }
     }
 }

@@ -19,27 +19,15 @@ public class MenuSetup : MonoBehaviour
     public MenuManager menuManager;
     public PlayerData playerData;
 
-    public GameObject SubOptionPanelDev;
-    public GameObject SubOptionPanel;
-    private bool SubOptionPanelDevState;
-    private bool SubOptionPanelState;
-
     void Start()
     {
         // Adding buttons to the main menu with corresponding actions
-        menuManager.AddButton("New Game", NewGame, "mainmenu.newgame");
-        menuManager.AddButton("Continue", Continue, "mainmenu.continue");
-        menuManager.AddButton("Options", Options, "mainmenu.options");
+        menuManager.AddButton("New Game", NewGame, 0, "mainmenu.newgame");
+        menuManager.AddButton("Continue", Continue, 0, "mainmenu.continue");
+        menuManager.AddButton("Options", Options, 0, "mainmenu.options");
 
-        // Uncomment to add a debug button for mounting the SD card
-        //menuManager.AddButton("[DEBUG] MOUNT SD CARD", Mount);
-
-        // Uncomment to add a sub-menu to the main menu
-        // menuManager.AddSubMenu("SubMenu 1", subMenu1);
-
-        // Uncomment to add buttons to the sub-menu
-        // subMenu1.AddButton("Sub Option 1", SubOption1);
-        // subMenu1.AddButton("Back", subMenu1.HideMenu);
+        menuManager.AddButton("Language", Language, 1, "mainmenu.language");
+        menuManager.AddButton("Credits", Credits, 1, "mainmenu.credits");
     }
 
     // Function for start a new game
@@ -69,26 +57,16 @@ public class MenuSetup : MonoBehaviour
     // Function for open the "Options" sub-menu
     void Options()
     {
-        Debug.Log("Options");
+        menuManager.ChangeMenu(1);
     }
 
-    //function for accessing options submenu
-    void OptionsSubMenu()
+    void Language()
     {
-        if (SubOptionPanelDevState != true && SubOptionPanelState != true)
-        {
-            SubOptionPanel.SetActive(true);
-            SubOptionPanelState = true;
-        }
-        
+        Debug.Log("Language");
     }
 
-    void TempDevOption()
+    void Credits()
     {
-        if(SubOptionPanelDevState !=true && SubOptionPanelState != true)
-        {
-            SubOptionPanelDev.SetActive(true);
-            SubOptionPanelDevState = true;
-        }
+        Debug.Log("Credits");
     }
 }
