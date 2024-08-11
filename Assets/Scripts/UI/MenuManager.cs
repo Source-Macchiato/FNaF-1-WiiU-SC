@@ -16,7 +16,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
-using UnityEditor;
 
 public class MenuManager : MonoBehaviour
 {
@@ -28,6 +27,12 @@ public class MenuManager : MonoBehaviour
 
     // List to keep track of all menu buttons
     private Dictionary<int, List<GameObject>> menuButtons = new Dictionary<int, List<GameObject>>();
+
+    // Store menu history
+    private Stack<int> menuHistory = new Stack<int>();
+
+    // Flag to check if the user is navigating back
+    private bool isNavigatingBack = false;
 
     int currentMenuId = 0;
 
@@ -65,6 +70,10 @@ public class MenuManager : MonoBehaviour
             {
                 ClickSelectedButton();
             }
+            else if (gamePadState.IsReleased(WiiU.GamePadButton.B))
+            {
+                GoBack();
+            }
         }
 
         // Handle Remote input based on the device type
@@ -83,6 +92,10 @@ public class MenuManager : MonoBehaviour
                 {
                     ClickSelectedButton();
                 }
+                else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.B))
+                {
+                    GoBack();
+                }
                 break;
             case WiiU.RemoteDevType.Classic:
                 if (remoteState.classic.IsReleased(WiiU.ClassicButton.Up))
@@ -97,6 +110,10 @@ public class MenuManager : MonoBehaviour
                 {
                     ClickSelectedButton();
                 }
+                else if (remoteState.classic.IsReleased(WiiU.ClassicButton.B))
+                {
+                    GoBack();
+                }
                 break;
             default:
                 if (remoteState.IsReleased(WiiU.RemoteButton.Up))
@@ -110,6 +127,10 @@ public class MenuManager : MonoBehaviour
                 else if (remoteState.IsReleased(WiiU.RemoteButton.A))
                 {
                     ClickSelectedButton();
+                }
+                else if (remoteState.IsReleased(WiiU.RemoteButton.B))
+                {
+                    GoBack();
                 }
                 break;
         }
@@ -128,6 +149,10 @@ public class MenuManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Return))
             {
                 ClickSelectedButton();
+            }
+            else if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                GoBack();
             }
         }
     }
@@ -227,6 +252,12 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeMenu(int menuId)
     {
+        // add current menu ID to history
+        if (currentMenuId != menuId && !isNavigatingBack)
+        {
+            menuHistory.Push(currentMenuId);
+        }
+
         foreach (Transform menu in menus)
         {
             if (menu != menus[menuId])
@@ -243,6 +274,23 @@ public class MenuManager : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(menuButtons[menuId][0]);
             EnableButtonVisual(menuButtons[menuId][0]);
+        }
+
+        isNavigatingBack = false;
+    }
+
+    public void GoBack()
+    {
+        if (menuHistory.Count > 0)
+        {
+            // Set the navigation back flag to true
+            isNavigatingBack = true;
+
+            // Retrieve the previous menu ID from the history stack
+            int previousMenuId = menuHistory.Pop();
+
+            // Change to the previous menu
+            ChangeMenu(previousMenuId);
         }
     }
 }

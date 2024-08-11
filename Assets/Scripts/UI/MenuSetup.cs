@@ -30,7 +30,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddButton("Credits", Credits, 1, "mainmenu.credits");
     }
 
-    // Function for start a new game
+    // Functions for buttons
     void NewGame()
     {
         playerData.NightNumber = 1;
@@ -39,7 +39,6 @@ public class MenuSetup : MonoBehaviour
         playerData.LoadAdvertisement();
     }
 
-    // Function for continue
     void Continue()
     {
         playerData.NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
@@ -54,7 +53,6 @@ public class MenuSetup : MonoBehaviour
         }
     }
 
-    // Function for open the "Options" sub-menu
     void Options()
     {
         menuManager.ChangeMenu(1);
@@ -62,11 +60,11 @@ public class MenuSetup : MonoBehaviour
 
     void Language()
     {
-        Debug.Log("Language");
+        menuManager.ChangeMenu(2);
     }
 
     void Credits()
     {
-        Debug.Log("Credits");
+        menuManager.ChangeMenu(3);
     }
 }
