@@ -272,8 +272,15 @@ public class MenuManager : MonoBehaviour
 
         if (menuButtons.ContainsKey(menuId) && menuButtons[menuId].Count > 0)
         {
+            // Enable first button visual
             EventSystem.current.SetSelectedGameObject(menuButtons[menuId][0]);
             EnableButtonVisual(menuButtons[menuId][0]);
+
+            // Disable visual for other buttons
+            for (int i = 1; i < menuButtons[menuId].Count; i++)
+            {
+                DisableButtonVisual(menuButtons[menuId][i]);
+            }
         }
 
         isNavigatingBack = false;
