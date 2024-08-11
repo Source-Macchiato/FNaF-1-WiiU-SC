@@ -45,8 +45,6 @@ public class MenuManager : MonoBehaviour
         // Access the WiiU GamePad and Remote
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
-
-        ChangeMenu(0);
     }
 
     void Update()

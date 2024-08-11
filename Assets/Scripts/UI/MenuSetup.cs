@@ -28,6 +28,9 @@ public class MenuSetup : MonoBehaviour
 
         menuManager.AddButton("Language", Language, 1, "mainmenu.language");
         menuManager.AddButton("Credits", Credits, 1, "mainmenu.credits");
+
+        // Display main menu after loaded all buttons
+        menuManager.ChangeMenu(0);
     }
 
     // Functions for buttons
