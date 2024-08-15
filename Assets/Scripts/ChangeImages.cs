@@ -48,7 +48,8 @@ public class ChangeImages : MonoBehaviour
     public Sprite WestHall1_1;
     public Sprite WestHall1_2;
 
-    public Sprite WestHall2_1;
+    public Sprite WestHallCornerDefault;
+    public Sprite WestHallCornerDefaultEasterEgg;
     public Sprite WestHall2_2;
 
     public Sprite Closet1;
@@ -292,7 +293,14 @@ public class ChangeImages : MonoBehaviour
             }
             else
             {
-                black.GetComponent<Image>().sprite = WestHall2_1;
+                if (EasterEgg(100))
+                {
+                    black.GetComponent<Image>().sprite = WestHallCornerDefaultEasterEgg;
+                }
+                else
+                {
+                    black.GetComponent<Image>().sprite = WestHallCornerDefault;
+                }
             }
         }
 
@@ -374,7 +382,7 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereBonnie == 3)
             {
-                if (ShouldPerformAction())
+                if (EasterEgg(100))
                 {
                     black.GetComponent<Image>().sprite = BackStageBonnieEasterEgg;
                 }
@@ -385,7 +393,7 @@ public class ChangeImages : MonoBehaviour
             }
             else
             {
-                if (ShouldPerformAction())
+                if (EasterEgg(100))
                 {
                     black.GetComponent<Image>().sprite = BackStageDefaultEasterEgg;
                     Debug.Log("true");
@@ -677,9 +685,9 @@ public class ChangeImages : MonoBehaviour
         WhichCamera = 11;
     }
 
-    bool ShouldPerformAction()
+    bool EasterEgg(int max)
     {
-        int randomNumber = Random.Range(0, 100);
+        int randomNumber = Random.Range(0, max);
 
         return randomNumber == 0;
     }
