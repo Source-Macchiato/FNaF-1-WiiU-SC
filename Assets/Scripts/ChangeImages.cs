@@ -76,6 +76,8 @@ public class ChangeImages : MonoBehaviour
     public Sprite RestRoomsChicaPhase2Default;
     public Sprite RestRoomsFreddyDefault;
 
+    private Sprite currentSprite;
+
     public double RandCamNoise;
     public bool noiseIsPlaying;
 
@@ -149,14 +151,14 @@ public class ChangeImages : MonoBehaviour
         WhereFreddy = PlayerPrefs.GetFloat("WhereFreddy", WhereFreddy);
         WhereFoxy = PlayerPrefs.GetFloat("WhereFoxy", WhereFoxy);
 
-        Sprite currentSprite = cameraScreen.GetComponent<Image>().sprite;
+        currentSprite = cameraScreen.GetComponent<Image>().sprite;
 
         if (WhichCamera == 1)
         {
             i18nTextTranslator.textId = "camera.showstage";
             i18nTextTranslator.UpdateText();
 
-            cameraScreen.GetComponent<Image>().sprite = ShowStageBonnieChicaFreddyDefault;
+            currentSprite = ShowStageBonnieChicaFreddyDefault;
 
             if (WhereBonnie >= 2)
             {
@@ -764,6 +766,8 @@ public class ChangeImages : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
         }
+
+        cameraScreen.GetComponent<Image>().sprite = currentSprite;
     }
 
     public void cam1a()
