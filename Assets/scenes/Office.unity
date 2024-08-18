@@ -13637,49 +13637,76 @@ MonoBehaviour:
   KitckenAudioOnly: {fileID: 59438677}
   WhichCamera: 1
   WichCameraShower: {fileID: 1265514370}
-  black: {fileID: 1097015881}
+  cameraScreen: {fileID: 1097015881}
   CanvasGameOver: {fileID: 0}
   GameOverScript: {fileID: 0}
-  ShowStage1: {fileID: 21300000, guid: e7fba98626ce64a4895c33e5e2baeabc, type: 3}
-  ShowStage2: {fileID: 21300000, guid: 03b8e40396cd176479e14c915d53b1c5, type: 3}
-  ShowStage3: {fileID: 21300000, guid: ee7767b077c477544acdd83abc55e5b2, type: 3}
-  ShowStage4: {fileID: 21300000, guid: 287b186023002094db62e0408973c4f4, type: 3}
   i18nTextTranslator: {fileID: 1265514374}
-  DiningArea1: {fileID: 21300000, guid: 60eabec4d85147d4a88217413c88c802, type: 3}
-  DiningArea2: {fileID: 21300000, guid: d7f3a535228b8e341855e9a2e9577c02, type: 3}
-  DiningArea3: {fileID: 21300000, guid: ff121e442258e0443b7e3457d587b548, type: 3}
-  DiningArea4: {fileID: 21300000, guid: d6a660b4c53bbb5448a8c95bf9b220e2, type: 3}
-  DiningArea5: {fileID: 21300000, guid: 7f648771f3a6de049b812dbc2260a372, type: 3}
-  PirateCove1: {fileID: 21300000, guid: ecf619e98d06b2749a0c85cb981be929, type: 3}
-  PirateCove2: {fileID: 21300000, guid: 5a184e008d7e3d443b2c43d235c3ff93, type: 3}
-  PirateCove3: {fileID: 21300000, guid: eb2640a0abbd8354b8ac7426c7749e39, type: 3}
-  WestHall1_1: {fileID: 21300000, guid: 32df2be6029b74b43b4aaf3194289aa5, type: 3}
-  WestHall1_2: {fileID: 21300000, guid: e7b9eb16fe6012c43baef8d29a5f87b2, type: 3}
+  DiningAreaEmptyDefault: {fileID: 21300000, guid: 60eabec4d85147d4a88217413c88c802,
+    type: 3}
+  DiningAreaBonnieDefault: {fileID: 21300000, guid: d7f3a535228b8e341855e9a2e9577c02,
+    type: 3}
+  DiningAreaChicaDefault: {fileID: 21300000, guid: d6a660b4c53bbb5448a8c95bf9b220e2,
+    type: 3}
+  DiningAreaFreddyDefault: {fileID: 21300000, guid: 7f648771f3a6de049b812dbc2260a372,
+    type: 3}
+  ShowStageBonnieChicaFreddyDefault: {fileID: 21300000, guid: e7fba98626ce64a4895c33e5e2baeabc,
+    type: 3}
+  ShowStageChicaFreddyDefault: {fileID: 21300000, guid: 03b8e40396cd176479e14c915d53b1c5,
+    type: 3}
+  ShowStageFreddyDefault: {fileID: 21300000, guid: ee7767b077c477544acdd83abc55e5b2,
+    type: 3}
+  ShowStageFreddyEasterEgg: {fileID: 21300000, guid: 2733874c1fab08046befd0f0dca8cbda,
+    type: 3}
+  ShowStageEmptyDefault: {fileID: 21300000, guid: 287b186023002094db62e0408973c4f4,
+    type: 3}
+  PirateCovePhase1Default: {fileID: 21300000, guid: ecf619e98d06b2749a0c85cb981be929,
+    type: 3}
+  PirateCovePhase2Default: {fileID: 21300000, guid: 5a184e008d7e3d443b2c43d235c3ff93,
+    type: 3}
+  PirateCovePhase3Default: {fileID: 21300000, guid: eb2640a0abbd8354b8ac7426c7749e39,
+    type: 3}
+  WestHallDefault: {fileID: 21300000, guid: 413faaeec342849499ae9cb10cd7f50c, type: 3}
+  WestHallBonnieDefault: {fileID: 21300000, guid: e7b9eb16fe6012c43baef8d29a5f87b2,
+    type: 3}
   WestHallCornerDefault: {fileID: 21300000, guid: bfb2e0b5b1d58c24382afb6f36a9ef85,
     type: 3}
-  WestHallCornerDefaultEasterEgg: {fileID: 21300000, guid: ec656c52263c96b4ba53098bcb352735,
+  WestHallCornerEasterEgg: {fileID: 21300000, guid: ec656c52263c96b4ba53098bcb352735,
     type: 3}
-  WestHall2_2: {fileID: 21300000, guid: e06f4d01f058ba84e8660e1fd2c79734, type: 3}
-  Closet1: {fileID: 21300000, guid: 1585e317dd731b2468ee44b8e46ae2f8, type: 3}
-  Closet2: {fileID: 21300000, guid: cfc8ceb63be936d45ae1a21feb24bb0f, type: 3}
-  EastHall1_1: {fileID: 21300000, guid: 07c924aba47d2d84d8e2229b4c5a1b19, type: 3}
-  EastHall1_2: {fileID: 21300000, guid: 82aeedf6a803e5249ada48a341669050, type: 3}
-  EastHall1_3: {fileID: 21300000, guid: 0a2dbd70abb5d2c41a7389f1811731f3, type: 3}
-  EastHall1_4: {fileID: 21300000, guid: 392e3d6015132ab40a656948da0651af, type: 3}
-  EastHall2_1: {fileID: 21300000, guid: 563c4449915d5f142a78545203946d85, type: 3}
+  WestHallCornerBonnieDefault: {fileID: 21300000, guid: e06f4d01f058ba84e8660e1fd2c79734,
+    type: 3}
+  ClosetEmptyDefault: {fileID: 21300000, guid: 1585e317dd731b2468ee44b8e46ae2f8, type: 3}
+  ClosetBonnieDefault: {fileID: 21300000, guid: cfc8ceb63be936d45ae1a21feb24bb0f,
+    type: 3}
+  EastHallEmptyDefault: {fileID: 21300000, guid: 07c924aba47d2d84d8e2229b4c5a1b19,
+    type: 3}
+  EastHallChicaPhase1Default: {fileID: 21300000, guid: 82aeedf6a803e5249ada48a341669050,
+    type: 3}
+  EastHallChicaPhase2Default: {fileID: 21300000, guid: 0a2dbd70abb5d2c41a7389f1811731f3,
+    type: 3}
+  EastHallFreddyDefault: {fileID: 21300000, guid: 392e3d6015132ab40a656948da0651af,
+    type: 3}
+  EastHallCornerEmptyDefault: {fileID: 21300000, guid: 563c4449915d5f142a78545203946d85,
+    type: 3}
   EastHall2_2: {fileID: 21300000, guid: 7f3b2f87fd04d374789553a15d6ae591, type: 3}
   EastHall2_3: {fileID: 21300000, guid: b358d19607a54504a9c2d61dd3113fbd, type: 3}
-  BackStageDefault: {fileID: 21300000, guid: 9fbe04dc552731c4d8932269b3d3767a, type: 3}
-  BackStageDefaultEasterEgg: {fileID: 21300000, guid: b950f45837560b448a4e0e6c368499f6,
+  BackStageEmptyDefault: {fileID: 21300000, guid: 9fbe04dc552731c4d8932269b3d3767a,
     type: 3}
-  BackStageBonnie: {fileID: 21300000, guid: dcbc2d74116a6cf4590d0b29fddb037c, type: 3}
+  BackStageEmptyEasterEgg: {fileID: 21300000, guid: b950f45837560b448a4e0e6c368499f6,
+    type: 3}
+  BackStageBonnieDefault: {fileID: 21300000, guid: dcbc2d74116a6cf4590d0b29fddb037c,
+    type: 3}
   BackStageBonnieEasterEgg: {fileID: 21300000, guid: 2b77246c2fdfcb2479b5952637e88355,
     type: 3}
-  Kitchen1: {fileID: 21300000, guid: 701f125af9d2b7d47994a68d7951ea04, type: 3}
-  RestRooms1: {fileID: 21300000, guid: cf97c94edd9cba34bb4248ce2c49a925, type: 3}
-  RestRooms2: {fileID: 21300000, guid: 0db7f06343d5a614aba4396a20e9b4f4, type: 3}
-  RestRooms3: {fileID: 21300000, guid: 5e968d259a26b2349a19e8d09ea91b32, type: 3}
-  RestRooms4: {fileID: 21300000, guid: 04f228aa691973b418ef0eb245b69883, type: 3}
+  KitchenEmptyDefault: {fileID: 21300000, guid: 701f125af9d2b7d47994a68d7951ea04,
+    type: 3}
+  RestRoomsEmptyDefault: {fileID: 21300000, guid: cf97c94edd9cba34bb4248ce2c49a925,
+    type: 3}
+  RestRoomsChicaPhase1Default: {fileID: 21300000, guid: 0db7f06343d5a614aba4396a20e9b4f4,
+    type: 3}
+  RestRoomsChicaPhase2Default: {fileID: 21300000, guid: 5e968d259a26b2349a19e8d09ea91b32,
+    type: 3}
+  RestRoomsFreddyDefault: {fileID: 21300000, guid: 04f228aa691973b418ef0eb245b69883,
+    type: 3}
   RandCamNoise: 0
   noiseIsPlaying: 0
   WhereBonnie: 1

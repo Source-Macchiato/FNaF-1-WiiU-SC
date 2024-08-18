@@ -14,70 +14,67 @@ public class ChangeImages : MonoBehaviour
     public GameObject CanvasGameOver;
     public GameObject GameOverScript;
 
-    public Sprite ShowStage1;
-    public Sprite ShowStage2;
-    public Sprite ShowStage3;
-    public Sprite ShowStage4;
-
     public I18nTextTranslator i18nTextTranslator;
     private ControllersRumble controllersRumble;
 
     // -----------DiningArea var----------
 
-    //default dining Area
-    public Sprite DiningArea1;
-    
-    //bonnie dining area
-    public Sprite DiningArea2;
-    
-    //chica dining area
-    public Sprite DiningArea3;
-    
-    //bonnie pos2 dining area
-    public Sprite DiningArea4;
+    [Header("Dining Area sprites")]
+    public Sprite DiningAreaEmptyDefault;
+    public Sprite DiningAreaBonnieDefault;
+    public Sprite DiningAreaChicaDefault;
+    public Sprite DiningAreaFreddyDefault;
 
-    //freddy dining Area
-    public Sprite DiningArea5;
+    [Header("Show Stage sprites")]
+    public Sprite ShowStageBonnieChicaFreddyDefault;
+    public Sprite ShowStageChicaFreddyDefault;
+    public Sprite ShowStageFreddyDefault;
+    public Sprite ShowStageFreddyEasterEgg;
+    public Sprite ShowStageEmptyDefault;
 
+    [Header("Pirate Cove sprites")]
+    public Sprite PirateCovePhase1Default;
+    public Sprite PirateCovePhase2Default;
+    public Sprite PirateCovePhase3Default;
 
+    [Header("West Hall sprites")]
+    public Sprite WestHallDefault;
+    public Sprite WestHallBonnieDefault;
 
-    public Sprite PirateCove1;
-    public Sprite PirateCove2;
-    public Sprite PirateCove3;
-
-    public Sprite WestHall1_1;
-    public Sprite WestHall1_2;
-
+    [Header("West Hall Corner sprites")]
     public Sprite WestHallCornerDefault;
-    public Sprite WestHallCornerDefaultEasterEgg;
-    public Sprite WestHall2_2;
+    public Sprite WestHallCornerEasterEgg;
+    public Sprite WestHallCornerBonnieDefault;
 
-    public Sprite Closet1;
-    public Sprite Closet2;
+    [Header("Closet sprites")]
+    public Sprite ClosetEmptyDefault;
+    public Sprite ClosetBonnieDefault;
 
-    public Sprite EastHall1_1;
-    public Sprite EastHall1_2;
-    public Sprite EastHall1_3;
-    public Sprite EastHall1_4;
+    [Header("East Hall sprites")]
+    public Sprite EastHallEmptyDefault;
+    public Sprite EastHallChicaPhase1Default;
+    public Sprite EastHallChicaPhase2Default;
+    public Sprite EastHallFreddyDefault;
 
-    public Sprite EastHall2_1;
+    [Header("East Hall Corner sprites")]
+    public Sprite EastHallCornerEmptyDefault;
     public Sprite EastHall2_2;
     public Sprite EastHall2_3;
 
-    public Sprite BackStageDefault;
-    public Sprite BackStageDefaultEasterEgg;
-    public Sprite BackStageBonnie;
+    [Header("Back Stage sprites")]
+    public Sprite BackStageEmptyDefault;
+    public Sprite BackStageEmptyEasterEgg;
+    public Sprite BackStageBonnieDefault;
     public Sprite BackStageBonnieEasterEgg;
 
-    public Sprite Kitchen1;
+    [Header("Kitchen sprites")]
+    public Sprite KitchenEmptyDefault;
 
-    public Sprite RestRooms1;
-    public Sprite RestRooms2;
-    public Sprite RestRooms3;
-    public Sprite RestRooms4;
-
-    // Sprites display status
-    private bool WestHallCornerDisplayed = false;
+    [Header("Rest Rooms")]
+    public Sprite RestRoomsEmptyDefault;
+    public Sprite RestRoomsChicaPhase1Default;
+    public Sprite RestRoomsChicaPhase2Default;
+    public Sprite RestRoomsFreddyDefault;
 
     public double RandCamNoise;
     public bool noiseIsPlaying;
@@ -152,12 +149,14 @@ public class ChangeImages : MonoBehaviour
         WhereFreddy = PlayerPrefs.GetFloat("WhereFreddy", WhereFreddy);
         WhereFoxy = PlayerPrefs.GetFloat("WhereFoxy", WhereFoxy);
 
+        Sprite currentSprite = cameraScreen.GetComponent<Image>().sprite;
+
         if (WhichCamera == 1)
         {
             i18nTextTranslator.textId = "camera.showstage";
             i18nTextTranslator.UpdateText();
 
-            cameraScreen.GetComponent<Image>().sprite = ShowStage1;
+            cameraScreen.GetComponent<Image>().sprite = ShowStageBonnieChicaFreddyDefault;
 
             if (WhereBonnie >= 2)
             {
@@ -198,24 +197,43 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
+            // Chica and Freddy at Show Stage
             if (AmountLeft == 1)
             {
-                cameraScreen.GetComponent<Image>().sprite = ShowStage2;
+                // Check if sprite is already displayed
+                if (currentSprite != ShowStageChicaFreddyDefault)
+                {
+                    currentSprite = ShowStageChicaFreddyDefault;
+                }
             }
 
+            // Freddy at Show Stage
             if (AmountLeft == 2)
             {
-                cameraScreen.GetComponent<Image>().sprite = ShowStage3;
+                // Check if sprite is already displayed
+                if (currentSprite != ShowStageFreddyDefault && currentSprite != ShowStageFreddyEasterEgg)
+                {
+                    if (EasterEgg(100))
+                    {
+                        currentSprite = ShowStageFreddyEasterEgg;
+                    }
+                    else
+                    {
+                        currentSprite = ShowStageFreddyDefault;
+                    }
+                }
             }
 
+            // Empty Show Stage
             if (AmountLeft == 3)
             {
-                cameraScreen.GetComponent<Image>().sprite = ShowStage4;
+                // Check if sprite is already displayed
+                if (currentSprite != ShowStageEmptyDefault)
+                {
+                    currentSprite = ShowStageEmptyDefault;
+                }
             }
-
-
         }
-
         
         //-----------------dining Area-------------------
         if (WhichCamera == 2)
@@ -223,24 +241,45 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.diningarea";
             i18nTextTranslator.UpdateText();
 
+            // Bonnie at Dining Area
             if (WhereBonnie == 2)
             {
-                cameraScreen.GetComponent<Image>().sprite = DiningArea2;
+                // Check if sprite is already displayed
+                if (currentSprite != DiningAreaBonnieDefault)
+                {
+                    currentSprite = DiningAreaBonnieDefault;
+                }
             }
 
-            if(WhereChica == 2)
+            // Chica at Dining Area
+            if (WhereChica == 2)
             {
-                cameraScreen.GetComponent<Image>().sprite = DiningArea4;
+                // Check if sprite is already displayed
+                if (currentSprite != DiningAreaChicaDefault)
+                {
+                    currentSprite = DiningAreaChicaDefault;
+                }
             }
 
-            if(WhereFreddy == 2)
+            // Freddy at Dining Area
+            if (WhereFreddy == 2)
             {
-                cameraScreen.GetComponent<Image>().sprite = DiningArea5;
+                // Check if sprite is already displayed
+                if (currentSprite != DiningAreaFreddyDefault)
+                {
+                    currentSprite = DiningAreaFreddyDefault;
+                }
 
             }
-            if(WhereFreddy != 2 && WhereBonnie != 2 && WhereChica != 2)
+
+            // Empty Dining Area
+            if (WhereFreddy != 2 && WhereBonnie != 2 && WhereChica != 2)
             {
-                cameraScreen.GetComponent<Image>().sprite = DiningArea1;
+                // Check if sprite is already displayed
+                if (currentSprite != DiningAreaEmptyDefault)
+                {
+                    currentSprite = DiningAreaEmptyDefault;
+                }
             }
 
         }
@@ -253,19 +292,34 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.piratecove";
             i18nTextTranslator.UpdateText();
 
-            if (WhereFoxy == 2)
-            {
-                cameraScreen.GetComponent<Image>().sprite = PirateCove2;
-            }
-
-            if (WhereFoxy >= 3)
-            {
-                cameraScreen.GetComponent<Image>().sprite = PirateCove3;
-            }
-
+            // Foxy phase 1
             if (WhereFoxy <= 1)
             {
-                cameraScreen.GetComponent<Image>().sprite = PirateCove1;
+                // Check if sprite is already displayed
+                if (currentSprite != PirateCovePhase1Default)
+                {
+                    currentSprite = PirateCovePhase1Default;
+                }
+            }
+
+            // Foxy phase 2
+            if (WhereFoxy == 2)
+            {
+                // Check if sprite is already displayed
+                if (currentSprite != PirateCovePhase2Default)
+                {
+                    currentSprite = PirateCovePhase2Default;
+                }
+            }
+
+            // Foxy phase 3
+            if (WhereFoxy >= 3)
+            {
+                // Check if sprite is already displayed
+                if (currentSprite != PirateCovePhase3Default)
+                {
+                    currentSprite = PirateCovePhase3Default;
+                }
             }
         }
 
@@ -274,13 +328,22 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.westhall";
             i18nTextTranslator.UpdateText();
 
+            // Does Bonnie is at West Hall
             if (WhereBonnie == 5)
             {
-                cameraScreen.GetComponent<Image>().sprite = WestHall1_2;
+                // Check if sprite is alrady displayed
+                if (currentSprite != WestHallBonnieDefault)
+                {
+                    currentSprite = WestHallBonnieDefault;
+                }
             }
             else
             {
-                cameraScreen.GetComponent<Image>().sprite = WestHall1_1;
+                // Check if sprite is already displayed
+                if (currentSprite != WestHallDefault)
+                {
+                    currentSprite = WestHallDefault;
+                }
             }
         }
 
@@ -291,22 +354,24 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereBonnie == 6)
             {
-                cameraScreen.GetComponent<Image>().sprite = WestHall2_2;
+                // Check if sprite is alraedy displayed
+                if (currentSprite != WestHallCornerBonnieDefault)
+                {
+                    currentSprite = WestHallCornerBonnieDefault;
+                }
             }
             else
             {
-                // Get current sprite and check if sprite to display is already displayed
-                Sprite currentSprite = cameraScreen.GetComponent<Image>().sprite;
-
-                if (currentSprite != WestHallCornerDefault && currentSprite != WestHallCornerDefaultEasterEgg)
+                // Check if sprite is already displayed
+                if (currentSprite != WestHallCornerDefault && currentSprite != WestHallCornerEasterEgg)
                 {
                     if (EasterEgg(100))
                     {
-                        cameraScreen.GetComponent<Image>().sprite = WestHallCornerDefaultEasterEgg;
+                        currentSprite = WestHallCornerEasterEgg;
                     }
                     else
                     {
-                        cameraScreen.GetComponent<Image>().sprite = WestHallCornerDefault;
+                        currentSprite = WestHallCornerDefault;
                     }
                 }
             }
@@ -317,13 +382,22 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.supplycloset";
             i18nTextTranslator.UpdateText();
 
+            // Does Bonnie is at Closet
             if (WhereBonnie == 4)
             {
-                cameraScreen.GetComponent<Image>().sprite = Closet2;
+                // Check if sprite is already displayed
+                if (currentSprite != ClosetBonnieDefault)
+                {
+                    currentSprite = ClosetBonnieDefault;
+                }
             }
             else
             {
-                cameraScreen.GetComponent<Image>().sprite = Closet1;
+                // Check if sprite is already displayed
+                if (currentSprite != ClosetEmptyDefault)
+                {
+                    currentSprite = ClosetEmptyDefault;
+                }
             }
         }
 
@@ -332,23 +406,42 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.easthall";
             i18nTextTranslator.UpdateText();
 
+            // Chica at East Hall
             if (WhereChica == 5)
             {
-                cameraScreen.GetComponent<Image>().sprite = EastHall1_2;
+                // Check if sprite is already displayed
+                if (currentSprite != EastHallChicaPhase1Default)
+                {
+                    currentSprite = EastHallChicaPhase1Default;
+                }
             }
             else if (WhereChica == 6)
             {
-                cameraScreen.GetComponent<Image>().sprite = EastHall1_3;
+                // Check if sprite is already displayed
+                if (currentSprite != EastHallChicaPhase2Default)
+                {
+                    currentSprite = EastHallChicaPhase2Default;
+                }
             }
-            if(WhereFreddy == 5)
-            {
-                cameraScreen.GetComponent<Image>().sprite = EastHall1_4;
 
+            // Freddy at East Hall
+            if (WhereFreddy == 5)
+            {
+                // Check if sprite is already displayed
+                if (currentSprite != EastHallFreddyDefault)
+                {
+                    currentSprite = EastHallFreddyDefault;
+                }
             }
 
-            if(WhereChica != 5 && WhereChica != 6 && WhereFreddy != 5)
+            // East Hall empty
+            if (WhereChica != 5 && WhereChica != 6 && WhereFreddy != 5)
             {
-                cameraScreen.GetComponent<Image>().sprite = EastHall1_1;
+                // Check if sprite is already displayed
+                if (currentSprite != EastHallEmptyDefault)
+                {
+                    currentSprite = EastHallEmptyDefault;
+                }
             }
         }
 
@@ -372,15 +465,14 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
+            // East Hall Corner empty
             if (WhereChica != 7 && WhereFreddy != 6)
             {
-                cameraScreen.GetComponent<Image>().sprite = EastHall2_1;
+                if (currentSprite != EastHallCornerEmptyDefault)
+                {
+                    currentSprite = EastHallCornerEmptyDefault;
+                }
             }
-        }
-
-        if (WhichCamera == 8)
-        {
-
         }
 
         if (WhichCamera == 9)
@@ -388,26 +480,35 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.backstage";
             i18nTextTranslator.UpdateText();
 
+            // Does Bonnis is at Back Stage
             if (WhereBonnie == 3)
             {
-                if (EasterEgg(100))
+                // Check if sprite is already displayed
+                if (currentSprite != BackStageBonnieDefault && currentSprite != BackStageBonnieEasterEgg)
                 {
-                    cameraScreen.GetComponent<Image>().sprite = BackStageBonnieEasterEgg;
-                }
-                else
-                {
-                    cameraScreen.GetComponent<Image>().sprite = BackStageBonnie;
+                    if (EasterEgg(100))
+                    {
+                        currentSprite = BackStageBonnieEasterEgg;
+                    }
+                    else
+                    {
+                        currentSprite = BackStageBonnieDefault;
+                    }
                 }
             }
             else
             {
-                if (EasterEgg(100))
+                // Check if sprite is already displayed
+                if (currentSprite != BackStageEmptyDefault && currentSprite != BackStageEmptyEasterEgg)
                 {
-                    cameraScreen.GetComponent<Image>().sprite = BackStageDefaultEasterEgg;
-                }
-                else
-                {
-                    cameraScreen.GetComponent<Image>().sprite = BackStageDefault;
+                    if (EasterEgg(100))
+                    {
+                        currentSprite = BackStageEmptyEasterEgg;
+                    }
+                    else
+                    {
+                        currentSprite = BackStageEmptyDefault;
+                    }
                 }
             }
         }
@@ -421,11 +522,19 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereChica == 5)
             {
-                cameraScreen.GetComponent<Image>().sprite = Kitchen1;
+                // Check if sprite is already displayed
+                if (currentSprite != KitchenEmptyDefault)
+                {
+                    currentSprite = KitchenEmptyDefault;
+                }
             }
             else
             {
-                cameraScreen.GetComponent<Image>().sprite = Kitchen1;
+                // Check if sprite is already displayed
+                if (currentSprite != KitchenEmptyDefault)
+                {
+                    currentSprite = KitchenEmptyDefault;
+                }
             }
         }
         else
@@ -438,21 +547,42 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.restrooms";
             i18nTextTranslator.UpdateText();
 
+            // Chica is at Rest Rooms
             if (WhereChica == 3)
             {
-                cameraScreen.GetComponent<Image>().sprite = RestRooms2;
+                // Check if sprite is already displayed
+                if (currentSprite != RestRoomsChicaPhase1Default)
+                {
+                    currentSprite = RestRoomsChicaPhase1Default;
+                }
             }
             else if (WhereChica == 4)
             {
-                cameraScreen.GetComponent<Image>().sprite = RestRooms3;
+                // Check if sprite is already displayed
+                if (currentSprite != RestRoomsChicaPhase2Default)
+                {
+                    currentSprite = RestRoomsChicaPhase2Default;
+                }
             }
-            if(WhereFreddy == 3)
+
+            // Freddy is at Rest Rooms
+            if (WhereFreddy == 3)
             {
-                cameraScreen.GetComponent<Image>().sprite = RestRooms4;
+                // Check if sprite is already displayed
+                if (currentSprite != RestRoomsFreddyDefault)
+                {
+                    currentSprite = RestRoomsFreddyDefault;
+                }
             }
-            if(WhereChica !=3 && WhereChica !=4 && WhereFreddy !=3)
+
+            // Rest Rooms empty
+            if (WhereChica !=3 && WhereChica !=4 && WhereFreddy !=3)
             {
-                cameraScreen.GetComponent<Image>().sprite = RestRooms1;
+                // Check if sprite is already displayed
+                if (currentSprite != RestRoomsEmptyDefault)
+                {
+                    currentSprite = RestRoomsEmptyDefault;
+                }
             }
         }
 
