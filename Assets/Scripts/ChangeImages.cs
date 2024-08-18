@@ -151,7 +151,7 @@ public class ChangeImages : MonoBehaviour
         WhereFreddy = PlayerPrefs.GetFloat("WhereFreddy", WhereFreddy);
         WhereFoxy = PlayerPrefs.GetFloat("WhereFoxy", WhereFoxy);
 
-        // Get current sprite and asign it in a local variable
+        // Get current sprite and assign it in a local variable
         currentSprite = cameraScreen.GetComponent<Image>().sprite;
 
         if (WhichCamera == 1)

@@ -28,6 +28,9 @@ public class MenuManager : MonoBehaviour
     // List to keep track of all menu buttons
     private Dictionary<int, List<GameObject>> menuButtons = new Dictionary<int, List<GameObject>>();
 
+    // List to keep track of generated callbacks
+    private Dictionary<int, UnityEngine.Events.UnityAction> backCallbacks = new Dictionary<int, UnityEngine.Events.UnityAction>();
+
     // Store menu history
     private Stack<int> menuHistory = new Stack<int>();
 
@@ -284,12 +287,30 @@ public class MenuManager : MonoBehaviour
         isNavigatingBack = false;
     }
 
+    public void SetBackCallback(int menuId, UnityEngine.Events.UnityAction callback)
+    {
+        if (backCallbacks.ContainsKey(menuId))
+        {
+            backCallbacks[menuId] = callback;
+        }
+        else
+        {
+            backCallbacks.Add(menuId, callback);
+        }
+    }
+
     public void GoBack()
     {
         if (menuHistory.Count > 0)
         {
             // Set the navigation back flag to true
             isNavigatingBack = true;
+
+            // Execute the callback for the current menu, if it exists
+            if (backCallbacks.ContainsKey(currentMenuId) && backCallbacks[currentMenuId] != null)
+            {
+                backCallbacks[currentMenuId].Invoke();
+            }
 
             // Retrieve the previous menu ID from the history stack
             int previousMenuId = menuHistory.Pop();

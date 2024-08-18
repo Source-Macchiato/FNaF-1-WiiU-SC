@@ -1,16 +1,4 @@
-﻿/************************************************************************
- *                                                                      *
- * This script was created by Source Macchiato                          *
- * and auto-commented by ChatGPT 3.5 for better understanding.          *
- *                                                                      *
- * Feel free to modify and enhance this code,                           *
- * but please retain this notice.                                       *
- *                                                                      *
- * Visit us at: https://www.sourcemacchiato.com                         *
- *                                                                      *
- ************************************************************************/
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuSetup : MonoBehaviour
@@ -29,11 +17,14 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddButton("Language", Language, 1, "mainmenu.language");
         menuManager.AddButton("Credits", Credits, 1, "mainmenu.credits");
 
+        // Set back callbacks for specific menus
+        menuManager.SetBackCallback(2, OnBackFromLanguage);
+
         // Display main menu after loaded all buttons
         menuManager.ChangeMenu(0);
     }
 
-    // Functions for buttons
+    // Buttons functions
     void NewGame()
     {
         playerData.NightNumber = 1;
@@ -69,5 +60,11 @@ public class MenuSetup : MonoBehaviour
     void Credits()
     {
         menuManager.ChangeMenu(3);
+    }
+
+    // Callback functions
+    void OnBackFromLanguage()
+    {
+        Debug.Log("Test");
     }
 }
