@@ -10,7 +10,7 @@ public class ChangeImages : MonoBehaviour
     public GameObject KitckenAudioOnly;
     public float WhichCamera = 1;
     public GameObject WichCameraShower;
-    public GameObject black;
+    public GameObject cameraScreen;
     public GameObject CanvasGameOver;
     public GameObject GameOverScript;
 
@@ -71,11 +71,13 @@ public class ChangeImages : MonoBehaviour
 
     public Sprite Kitchen1;
 
-    //---------restRoom----------------
     public Sprite RestRooms1;
     public Sprite RestRooms2;
     public Sprite RestRooms3;
     public Sprite RestRooms4;
+
+    // Sprites display status
+    private bool WestHallCornerDisplayed = false;
 
     public double RandCamNoise;
     public bool noiseIsPlaying;
@@ -155,7 +157,7 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.showstage";
             i18nTextTranslator.UpdateText();
 
-            black.GetComponent<Image>().sprite = ShowStage1;
+            cameraScreen.GetComponent<Image>().sprite = ShowStage1;
 
             if (WhereBonnie >= 2)
             {
@@ -198,17 +200,17 @@ public class ChangeImages : MonoBehaviour
 
             if (AmountLeft == 1)
             {
-                black.GetComponent<Image>().sprite = ShowStage2;
+                cameraScreen.GetComponent<Image>().sprite = ShowStage2;
             }
 
             if (AmountLeft == 2)
             {
-                black.GetComponent<Image>().sprite = ShowStage3;
+                cameraScreen.GetComponent<Image>().sprite = ShowStage3;
             }
 
             if (AmountLeft == 3)
             {
-                black.GetComponent<Image>().sprite = ShowStage4;
+                cameraScreen.GetComponent<Image>().sprite = ShowStage4;
             }
 
 
@@ -223,22 +225,22 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereBonnie == 2)
             {
-                black.GetComponent<Image>().sprite = DiningArea2;
+                cameraScreen.GetComponent<Image>().sprite = DiningArea2;
             }
 
             if(WhereChica == 2)
             {
-                black.GetComponent<Image>().sprite = DiningArea4;
+                cameraScreen.GetComponent<Image>().sprite = DiningArea4;
             }
 
             if(WhereFreddy == 2)
             {
-                black.GetComponent<Image>().sprite = DiningArea5;
+                cameraScreen.GetComponent<Image>().sprite = DiningArea5;
 
             }
             if(WhereFreddy != 2 && WhereBonnie != 2 && WhereChica != 2)
             {
-                black.GetComponent<Image>().sprite = DiningArea1;
+                cameraScreen.GetComponent<Image>().sprite = DiningArea1;
             }
 
         }
@@ -253,17 +255,17 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereFoxy == 2)
             {
-                black.GetComponent<Image>().sprite = PirateCove2;
+                cameraScreen.GetComponent<Image>().sprite = PirateCove2;
             }
 
             if (WhereFoxy >= 3)
             {
-                black.GetComponent<Image>().sprite = PirateCove3;
+                cameraScreen.GetComponent<Image>().sprite = PirateCove3;
             }
 
             if (WhereFoxy <= 1)
             {
-                black.GetComponent<Image>().sprite = PirateCove1;
+                cameraScreen.GetComponent<Image>().sprite = PirateCove1;
             }
         }
 
@@ -274,11 +276,11 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereBonnie == 5)
             {
-                black.GetComponent<Image>().sprite = WestHall1_2;
+                cameraScreen.GetComponent<Image>().sprite = WestHall1_2;
             }
             else
             {
-                black.GetComponent<Image>().sprite = WestHall1_1;
+                cameraScreen.GetComponent<Image>().sprite = WestHall1_1;
             }
         }
 
@@ -289,17 +291,23 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereBonnie == 6)
             {
-                black.GetComponent<Image>().sprite = WestHall2_2;
+                cameraScreen.GetComponent<Image>().sprite = WestHall2_2;
             }
             else
             {
-                if (EasterEgg(100))
+                // Get current sprite and check if sprite to display is already displayed
+                Sprite currentSprite = cameraScreen.GetComponent<Image>().sprite;
+
+                if (currentSprite != WestHallCornerDefault && currentSprite != WestHallCornerDefaultEasterEgg)
                 {
-                    black.GetComponent<Image>().sprite = WestHallCornerDefaultEasterEgg;
-                }
-                else
-                {
-                    black.GetComponent<Image>().sprite = WestHallCornerDefault;
+                    if (EasterEgg(100))
+                    {
+                        cameraScreen.GetComponent<Image>().sprite = WestHallCornerDefaultEasterEgg;
+                    }
+                    else
+                    {
+                        cameraScreen.GetComponent<Image>().sprite = WestHallCornerDefault;
+                    }
                 }
             }
         }
@@ -311,11 +319,11 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereBonnie == 4)
             {
-                black.GetComponent<Image>().sprite = Closet2;
+                cameraScreen.GetComponent<Image>().sprite = Closet2;
             }
             else
             {
-                black.GetComponent<Image>().sprite = Closet1;
+                cameraScreen.GetComponent<Image>().sprite = Closet1;
             }
         }
 
@@ -326,21 +334,21 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereChica == 5)
             {
-                black.GetComponent<Image>().sprite = EastHall1_2;
+                cameraScreen.GetComponent<Image>().sprite = EastHall1_2;
             }
             else if (WhereChica == 6)
             {
-                black.GetComponent<Image>().sprite = EastHall1_3;
+                cameraScreen.GetComponent<Image>().sprite = EastHall1_3;
             }
             if(WhereFreddy == 5)
             {
-                black.GetComponent<Image>().sprite = EastHall1_4;
+                cameraScreen.GetComponent<Image>().sprite = EastHall1_4;
 
             }
 
             if(WhereChica != 5 && WhereChica != 6 && WhereFreddy != 5)
             {
-                black.GetComponent<Image>().sprite = EastHall1_1;
+                cameraScreen.GetComponent<Image>().sprite = EastHall1_1;
             }
         }
 
@@ -353,20 +361,20 @@ public class ChangeImages : MonoBehaviour
             {
                 if (WhereFreddy <= 1)
                 {
-                    black.GetComponent<Image>().sprite = EastHall2_2;
+                    cameraScreen.GetComponent<Image>().sprite = EastHall2_2;
                 }
             }
             if (WhereFreddy == 6)
             {
                 if (WhereChica <= 6)
                 {
-                    black.GetComponent<Image>().sprite = EastHall2_3;
+                    cameraScreen.GetComponent<Image>().sprite = EastHall2_3;
                 }
             }
 
             if (WhereChica != 7 && WhereFreddy != 6)
             {
-                black.GetComponent<Image>().sprite = EastHall2_1;
+                cameraScreen.GetComponent<Image>().sprite = EastHall2_1;
             }
         }
 
@@ -384,24 +392,22 @@ public class ChangeImages : MonoBehaviour
             {
                 if (EasterEgg(100))
                 {
-                    black.GetComponent<Image>().sprite = BackStageBonnieEasterEgg;
+                    cameraScreen.GetComponent<Image>().sprite = BackStageBonnieEasterEgg;
                 }
                 else
                 {
-                    black.GetComponent<Image>().sprite = BackStageBonnie;
+                    cameraScreen.GetComponent<Image>().sprite = BackStageBonnie;
                 }
             }
             else
             {
                 if (EasterEgg(100))
                 {
-                    black.GetComponent<Image>().sprite = BackStageDefaultEasterEgg;
-                    Debug.Log("true");
+                    cameraScreen.GetComponent<Image>().sprite = BackStageDefaultEasterEgg;
                 }
                 else
                 {
-                    black.GetComponent<Image>().sprite = BackStageDefault;
-                    Debug.Log("false");
+                    cameraScreen.GetComponent<Image>().sprite = BackStageDefault;
                 }
             }
         }
@@ -415,11 +421,11 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereChica == 5)
             {
-                black.GetComponent<Image>().sprite = Kitchen1;
+                cameraScreen.GetComponent<Image>().sprite = Kitchen1;
             }
             else
             {
-                black.GetComponent<Image>().sprite = Kitchen1;
+                cameraScreen.GetComponent<Image>().sprite = Kitchen1;
             }
         }
         else
@@ -434,19 +440,19 @@ public class ChangeImages : MonoBehaviour
 
             if (WhereChica == 3)
             {
-                black.GetComponent<Image>().sprite = RestRooms2;
+                cameraScreen.GetComponent<Image>().sprite = RestRooms2;
             }
             else if (WhereChica == 4)
             {
-                black.GetComponent<Image>().sprite = RestRooms3;
+                cameraScreen.GetComponent<Image>().sprite = RestRooms3;
             }
             if(WhereFreddy == 3)
             {
-                black.GetComponent<Image>().sprite = RestRooms4;
+                cameraScreen.GetComponent<Image>().sprite = RestRooms4;
             }
             if(WhereChica !=3 && WhereChica !=4 && WhereFreddy !=3)
             {
-                black.GetComponent<Image>().sprite = RestRooms1;
+                cameraScreen.GetComponent<Image>().sprite = RestRooms1;
             }
         }
 
