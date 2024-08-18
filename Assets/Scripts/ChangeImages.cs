@@ -151,6 +151,7 @@ public class ChangeImages : MonoBehaviour
         WhereFreddy = PlayerPrefs.GetFloat("WhereFreddy", WhereFreddy);
         WhereFoxy = PlayerPrefs.GetFloat("WhereFoxy", WhereFoxy);
 
+        // Get current sprite and asign it in a local variable
         currentSprite = cameraScreen.GetComponent<Image>().sprite;
 
         if (WhichCamera == 1)
@@ -158,7 +159,10 @@ public class ChangeImages : MonoBehaviour
             i18nTextTranslator.textId = "camera.showstage";
             i18nTextTranslator.UpdateText();
 
-            currentSprite = ShowStageBonnieChicaFreddyDefault;
+            if (currentSprite != ShowStageBonnieChicaFreddyDefault)
+            {
+                currentSprite = ShowStageBonnieChicaFreddyDefault;
+            }
 
             if (WhereBonnie >= 2)
             {
@@ -767,6 +771,7 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
+        // Refresh cameraScreen with currentSprite
         cameraScreen.GetComponent<Image>().sprite = currentSprite;
     }
 
