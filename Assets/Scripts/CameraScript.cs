@@ -10,7 +10,7 @@ public class CameraScript : MonoBehaviour
 
     public GameObject CamSelectPanel;
     public GameObject OfficeStuff;
-    public GameObject Black;
+    public GameObject cameraScreen;
     public AudioSource FlipOpen;
     public AudioSource FlipClose;
     public GameObject CamViewTabletOpen;
@@ -22,6 +22,7 @@ public class CameraScript : MonoBehaviour
     public GameObject Glitch;
     public GameObject Stripes;
     public Office officescript;
+
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
@@ -253,7 +254,7 @@ public class CameraScript : MonoBehaviour
                 Dot.SetActive(true);
                 Glitch.SetActive(true);
                 Stripes.SetActive(true);
-                Black.SetActive(true);
+                cameraScreen.SetActive(true);
                 OfficeControllerObject.GetComponent<Office>().enabled = false;
                 OfficeStuff.SetActive(false);
                 if (officescript.LeftLightIsOn)
@@ -319,7 +320,11 @@ public class CameraScript : MonoBehaviour
 
         if (!camIsUp)
         {
-            Black.SetActive(false);
+            cameraScreen.SetActive(false);
+
+            // Set sprite to null for refresh sprite for easter eggs when camera is up
+            cameraScreen.GetComponent<Image>().sprite = null;
+
             wait -= Time.deltaTime;
 
             if (wait <= 0)
