@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerData : MonoBehaviour
 {
     public float NightNumber;
+    public Text currentLanguageText;
 
-    // Save scripts
+    // Scripts
     SaveGameState saveGameState;
     SaveManager saveManager;
+    I18nTextTranslator[] translators;
 
     // Advertisement
     public GameObject advertisementImage;
@@ -20,6 +23,7 @@ public class PlayerData : MonoBehaviour
         // Get scripts
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
+        translators = FindObjectsOfType<I18nTextTranslator>();
 
         // Load night number from save and display it
         NightNumber = SaveManager.LoadNightNumber();
@@ -44,5 +48,17 @@ public class PlayerData : MonoBehaviour
         advertisementIsActive = true;
         startTime = Time.time;
         advertisementImage.SetActive(true);
+    }
+
+    public void SaveAndUpdateLanguage()
+    {
+        saveManager.SaveLanguage(currentLanguageText.text);
+        bool saveResult = saveGameState.DoSave();
+
+        I18n.ReloadLanguage();
+        foreach (I18nTextTranslator translator in translators)
+        {
+            translator.UpdateText();
+        }
     }
 }

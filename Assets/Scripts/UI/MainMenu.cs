@@ -162,24 +162,9 @@ public class MainMenu : MonoBehaviour {
                             }
                             else if (menuNavigation.menuId == 2)
                             {
-                                saveManager.SaveLanguage(setLanguageText.text);
-                                bool saveResult = saveGameState.DoSave();
-
-                                I18n.ReloadLanguage();
-                                foreach (I18nTextTranslator translator in translators)
-                                {
-                                    translator.UpdateText();
-                                }
-
                                 // This is the bad way because you can look up
                                 languageText.UpdateText();
                                 creditsText.UpdateText();
-
-                                AudioMenuPanel.SetActive(false);
-                                OptionsMenuNavigationPanel.SetActive(true);
-                                menuNavigation.menuId = 1;
-                                menuNavigation.selectedIndex = 0;
-                                menuNavigation.UpdateSelectionTexts();
                             }
                             else if (menuNavigation.menuId == 3)
                             {
@@ -214,24 +199,9 @@ public class MainMenu : MonoBehaviour {
                         }
                         else if (menuNavigation.menuId == 2)
                         {
-                            saveManager.SaveLanguage(setLanguageText.text);
-                            bool saveResult = saveGameState.DoSave();
-
-                            I18n.ReloadLanguage();
-                            foreach (I18nTextTranslator translator in translators)
-                            {
-                                translator.UpdateText();
-                            }
-
                             // This is the bad way because you can look up
                             languageText.UpdateText();
                             creditsText.UpdateText();
-
-                            AudioMenuPanel.SetActive(false);
-                            OptionsMenuNavigationPanel.SetActive(true);
-                            menuNavigation.menuId = 1;
-                            menuNavigation.selectedIndex = 0;
-                            menuNavigation.UpdateSelectionTexts();
                         }
                         else if (menuNavigation.menuId == 3)
                         {

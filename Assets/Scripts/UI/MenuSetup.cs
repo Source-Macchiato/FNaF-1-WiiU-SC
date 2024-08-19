@@ -65,6 +65,6 @@ public class MenuSetup : MonoBehaviour
     // Callback functions
     void OnBackFromLanguage()
     {
-        Debug.Log("Test");
+        //playerData.SaveAndUpdateLanguage();
     }
 }

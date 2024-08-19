@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NightNumber: 0
+  currentLanguageText: {fileID: 1437901696}
   advertisementImage: {fileID: 1316367838}
 --- !u!1 &31135002
 GameObject:
