@@ -107,12 +107,12 @@ public class MenuNavigation : MonoBehaviour
 
                     if (gamePadState.IsPressed(WiiU.GamePadButton.Up))
                     {
-                        ScrollCreditsUp();
+                        ScrollCredits(1);
                     }
 
                     if (gamePadState.IsPressed(WiiU.GamePadButton.Down))
                     {
-                        ScrollCreditsDown();
+                        ScrollCredits(-1);
                     }
                 }
 
@@ -134,12 +134,12 @@ public class MenuNavigation : MonoBehaviour
 
                         if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Up))
                         {
-                            ScrollCreditsUp();
+                            ScrollCredits(1);
                         }
 
                         if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Down))
                         {
-                            ScrollCreditsDown();
+                            ScrollCredits(-1);
                         }
                         break;
                     default:
@@ -157,7 +157,7 @@ public class MenuNavigation : MonoBehaviour
 
                     if (Input.GetKey(KeyCode.UpArrow))
                     {
-                        ScrollCreditsUp();
+                        ScrollCredits(1);
                     }
 
                     if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -168,7 +168,7 @@ public class MenuNavigation : MonoBehaviour
 
                     if (Input.GetKey(KeyCode.DownArrow))
                     {
-                        ScrollCreditsDown();
+                        ScrollCredits(-1);
                     }
                 }
             }
@@ -201,27 +201,12 @@ public class MenuNavigation : MonoBehaviour
         canChangeButton = true;
     }
 
-    private void ScrollCreditsUp()
+    private void ScrollCredits(int direction)
     {
-        if (CreditsMenu.activeSelf)
-        {
-            float scrollAmount = 1 * scrollSpeed * Time.deltaTime;
-            ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
-            Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
-            newPosition.y = Mathf.Clamp01(newPosition.y);
-            creditsScrollRect.normalizedPosition = newPosition;
-        }
-    }
-
-    private void ScrollCreditsDown()
-    {
-        if (CreditsMenu.activeSelf)
-        {
-            float scrollAmount = -1 * scrollSpeed * Time.deltaTime;
-            ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
-            Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
-            newPosition.y = Mathf.Clamp01(newPosition.y);
-            creditsScrollRect.normalizedPosition = newPosition;
-        }
+        float scrollAmount = direction * scrollSpeed * Time.deltaTime;
+        ScrollRect creditsScrollRect = CreditsScrollView.GetComponent<ScrollRect>();
+        Vector2 newPosition = creditsScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
+        newPosition.y = Mathf.Clamp01(newPosition.y);
+        creditsScrollRect.normalizedPosition = newPosition;
     }
 }

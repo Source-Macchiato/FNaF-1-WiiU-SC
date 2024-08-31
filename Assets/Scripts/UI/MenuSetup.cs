@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuSetup : MonoBehaviour
@@ -19,6 +20,7 @@ public class MenuSetup : MonoBehaviour
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(2, OnBackFromLanguage);
+        menuManager.SetBackCallback(3, OnBackFromCredits);
 
         // Display main menu after loaded all buttons
         menuManager.ChangeMenu(0);
@@ -60,11 +62,22 @@ public class MenuSetup : MonoBehaviour
     void Credits()
     {
         menuManager.ChangeMenu(3);
+
+        if (menuManager.GetCurrentMenu() != null)
+        {
+            Transform creditsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
+            menuManager.currentScrollRect = creditsChild.GetComponent<ScrollRect>();
+        }
     }
 
     // Callback functions
     void OnBackFromLanguage()
     {
         //playerData.SaveAndUpdateLanguage();
+    }
+
+    void OnBackFromCredits()
+    {
+        menuManager.currentScrollRect = null;
     }
 }

@@ -37,7 +37,10 @@ public class MenuManager : MonoBehaviour
     // Flag to check if the user is navigating back
     private bool isNavigatingBack = false;
 
-    int currentMenuId = 0;
+    private int currentMenuId = 0;
+
+    // Elements to keep in memory
+    public ScrollRect currentScrollRect;
 
     // References to WiiU controllers
     WiiU.GamePad gamePad;
@@ -59,13 +62,20 @@ public class MenuManager : MonoBehaviour
         // Handle GamePad input
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
+            // Is Released
             if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
             {
-                Navigate(-1, currentMenuId);
+                if (currentScrollRect == null)
+                {
+                    Navigate(-1, currentMenuId);
+                }
             }
             else if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
             {
-                Navigate(1, currentMenuId);
+                if (currentScrollRect == null)
+                {
+                    Navigate(1, currentMenuId);
+                }
             }
             else if (gamePadState.IsReleased(WiiU.GamePadButton.A))
             {
@@ -75,19 +85,42 @@ public class MenuManager : MonoBehaviour
             {
                 GoBack();
             }
+
+            // Is Pressed
+            if (gamePadState.IsPressed(WiiU.GamePadButton.Up))
+            {
+                if (currentScrollRect != null)
+                {
+                    Navigate(1, currentMenuId);
+                }
+            }
+            else if (gamePadState.IsPressed(WiiU.GamePadButton.Down))
+            {
+                if (currentScrollRect != null)
+                {
+                    Navigate(-1, currentMenuId);
+                }
+            }
         }
 
         // Handle Remote input based on the device type
         switch (remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
+                // Is Released
                 if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Up))
                 {
-                    Navigate(-1, currentMenuId);
+                    if (currentScrollRect == null)
+                    {
+                        Navigate(-1, currentMenuId);
+                    }
                 }
                 else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Down))
                 {
-                    Navigate(1, currentMenuId);
+                    if (currentScrollRect == null)
+                    {
+                        Navigate(1, currentMenuId);
+                    }
                 }
                 else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.A))
                 {
@@ -97,15 +130,38 @@ public class MenuManager : MonoBehaviour
                 {
                     GoBack();
                 }
+
+                // Is Pressed
+                if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Up))
+                {
+                    if (currentScrollRect != null)
+                    {
+                        Navigate(1, currentMenuId);
+                    }
+                }
+                else if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Down))
+                {
+                    if (currentScrollRect != null)
+                    {
+                        Navigate(-1, currentMenuId);
+                    }
+                }
                 break;
             case WiiU.RemoteDevType.Classic:
+                // Is Released
                 if (remoteState.classic.IsReleased(WiiU.ClassicButton.Up))
                 {
-                    Navigate(-1, currentMenuId);
+                    if (currentScrollRect == null)
+                    {
+                        Navigate(-1, currentMenuId);
+                    }
                 }
                 else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Down))
                 {
-                    Navigate(1, currentMenuId);
+                    if (currentScrollRect == null)
+                    {
+                        Navigate(1, currentMenuId);
+                    }
                 }
                 else if (remoteState.classic.IsReleased(WiiU.ClassicButton.A))
                 {
@@ -115,15 +171,38 @@ public class MenuManager : MonoBehaviour
                 {
                     GoBack();
                 }
+
+                // Is Pressed
+                if (remoteState.classic.IsPressed(WiiU.ClassicButton.Up))
+                {
+                    if (currentScrollRect != null)
+                    {
+                        Navigate(1, currentMenuId);
+                    }
+                }
+                else if (remoteState.classic.IsPressed(WiiU.ClassicButton.Down))
+                {
+                    if (currentScrollRect != null)
+                    {
+                        Navigate(-1, currentMenuId);
+                    }
+                }
                 break;
             default:
+                // Is Released
                 if (remoteState.IsReleased(WiiU.RemoteButton.Up))
                 {
-                    Navigate(-1, currentMenuId);
+                    if (currentScrollRect == null)
+                    {
+                        Navigate(-1, currentMenuId);
+                    }
                 }
                 else if (remoteState.IsReleased(WiiU.RemoteButton.Down))
                 {
-                    Navigate(1, currentMenuId);
+                    if (currentScrollRect == null)
+                    {
+                        Navigate(1, currentMenuId);
+                    }
                 }
                 else if (remoteState.IsReleased(WiiU.RemoteButton.A))
                 {
@@ -133,19 +212,42 @@ public class MenuManager : MonoBehaviour
                 {
                     GoBack();
                 }
+
+                // Is Pressed
+                if (remoteState.IsPressed(WiiU.RemoteButton.Up))
+                {
+                    if (currentScrollRect != null)
+                    {
+                        Navigate(1, currentMenuId);
+                    }
+                }
+                else if (remoteState.IsPressed(WiiU.RemoteButton.Down))
+                {
+                    if (currentScrollRect != null)
+                    {
+                        Navigate(-1, currentMenuId);
+                    }
+                }
                 break;
         }
 
         // Handle keyboard input, useful for testing in the editor
         if (Application.isEditor)
         {
+            // Key Down
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                Navigate(-1, currentMenuId);
+                if (currentScrollRect == null)
+                {
+                    Navigate(-1, currentMenuId);
+                }
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                Navigate(1, currentMenuId);
+                if (currentScrollRect == null)
+                {
+                    Navigate(1, currentMenuId);
+                }
             }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -154,6 +256,22 @@ public class MenuManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Backspace))
             {
                 GoBack();
+            }
+
+            // Key
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                if (currentScrollRect != null)
+                {
+                    Navigate(1, currentMenuId);
+                }
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                if (currentScrollRect != null)
+                {
+                    Navigate(-1, currentMenuId);
+                }
             }
         }
     }
@@ -196,23 +314,33 @@ public class MenuManager : MonoBehaviour
     // Navigates through the menu buttons based on the direction
     public void Navigate(int direction, int menuId)
     {
-        if (!menuButtons.ContainsKey(menuId) || menuButtons[menuId].Count == 0) return;
-
-        List<GameObject> currentMenuButtons = menuButtons[menuId];
-        GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
-        if (currentSelected == null)
+        if (currentScrollRect == null)
         {
-            currentSelected = currentMenuButtons[0];
+            if (!menuButtons.ContainsKey(menuId) || menuButtons[menuId].Count == 0) return;
+
+            List<GameObject> currentMenuButtons = menuButtons[menuId];
+            GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
+            if (currentSelected == null)
+            {
+                currentSelected = currentMenuButtons[0];
+            }
+
+            int currentIndex = currentMenuButtons.IndexOf(currentSelected);
+            int nextIndex = (currentIndex + direction + currentMenuButtons.Count) % currentMenuButtons.Count;
+
+            DisableButtonVisual(currentMenuButtons[currentIndex]);
+
+            EventSystem.current.SetSelectedGameObject(currentMenuButtons[nextIndex]);
+
+            EnableButtonVisual(currentMenuButtons[nextIndex]);
         }
-
-        int currentIndex = currentMenuButtons.IndexOf(currentSelected);
-        int nextIndex = (currentIndex + direction + currentMenuButtons.Count) % currentMenuButtons.Count;
-
-        DisableButtonVisual(currentMenuButtons[currentIndex]);
-
-        EventSystem.current.SetSelectedGameObject(currentMenuButtons[nextIndex]);
-
-        EnableButtonVisual(currentMenuButtons[nextIndex]);
+        else if (currentScrollRect != null)
+        {
+            float scrollAmount = direction * 0.5f * Time.deltaTime;
+            Vector2 newPosition = currentScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
+            newPosition.y = Mathf.Clamp01(newPosition.y);
+            currentScrollRect.normalizedPosition = newPosition;
+        }
     }
 
     // Clicks the currently selected button
@@ -318,5 +446,14 @@ public class MenuManager : MonoBehaviour
             // Change to the previous menu
             ChangeMenu(previousMenuId);
         }
+    }
+
+    public GameObject GetCurrentMenu()
+    {
+        if (currentMenuId >= 0 && currentMenuId < menus.Length)
+        {
+            return menus[currentMenuId].gameObject;
+        }
+        return null;
     }
 }
