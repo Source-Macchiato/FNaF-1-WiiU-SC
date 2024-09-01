@@ -8,12 +8,15 @@ public class MinimapNavigation : MonoBehaviour
     public Button defaultSelectedButton;
 
     // Get current selected button
-    public GameObject selectedGameObject;
+    private GameObject selectedGameObject;
     private Button selectedButton;
 
     // References to WiiU controllers
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
+
+    // Scripts
+    ChangeBackgroundButtonMinimap changeBackgroundButtonMinimap;
 
     void Start()
     {
@@ -183,5 +186,7 @@ public class MinimapNavigation : MonoBehaviour
         selectedButton = nextSelectable.GetComponent<Button>();
 
         selectedButton.onClick.Invoke();
+
+        changeBackgroundButtonMinimap.canChangeState = true;
     }
 }

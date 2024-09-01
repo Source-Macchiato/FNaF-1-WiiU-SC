@@ -2738,6 +2738,7 @@ GameObject:
   - component: {fileID: 356697114}
   - component: {fileID: 356697117}
   - component: {fileID: 356697116}
+  - component: {fileID: 356697115}
   m_Layer: 5
   m_Name: 2B-Background
   m_TagString: Untagged
@@ -2765,6 +2766,23 @@ RectTransform:
   m_AnchoredPosition: {x: -15.21, y: -38.6}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &356697115
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 356697113}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &356697116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2949,6 +2967,7 @@ GameObject:
   - component: {fileID: 404404545}
   - component: {fileID: 404404548}
   - component: {fileID: 404404547}
+  - component: {fileID: 404404546}
   m_Layer: 5
   m_Name: 1A-Background
   m_TagString: Untagged
@@ -2976,6 +2995,23 @@ RectTransform:
   m_AnchoredPosition: {x: -15.36, y: 39.47}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &404404546
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404404544}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &404404547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3197,7 +3233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701380716}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &434962845
 MonoBehaviour:
@@ -4053,6 +4089,7 @@ GameObject:
   - component: {fileID: 569234057}
   - component: {fileID: 569234060}
   - component: {fileID: 569234059}
+  - component: {fileID: 569234058}
   m_Layer: 5
   m_Name: 6-Background
   m_TagString: Untagged
@@ -4080,6 +4117,23 @@ RectTransform:
   m_AnchoredPosition: {x: 37, y: -19}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &569234058
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 569234056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &569234059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5463,6 +5517,7 @@ GameObject:
   - component: {fileID: 832747263}
   - component: {fileID: 832747266}
   - component: {fileID: 832747265}
+  - component: {fileID: 832747264}
   m_Layer: 5
   m_Name: 4A-Background
   m_TagString: Untagged
@@ -5490,6 +5545,23 @@ RectTransform:
   m_AnchoredPosition: {x: 10.42, y: -26.9}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &832747264
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832747262}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &832747265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5736,6 +5808,7 @@ GameObject:
   - component: {fileID: 899923988}
   - component: {fileID: 899923991}
   - component: {fileID: 899923990}
+  - component: {fileID: 899923989}
   m_Layer: 5
   m_Name: 1C-Background
   m_TagString: Untagged
@@ -5763,6 +5836,23 @@ RectTransform:
   m_AnchoredPosition: {x: -27.6, y: 7.9}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &899923989
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 899923987}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &899923990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5874,6 +5964,7 @@ GameObject:
   - component: {fileID: 910342323}
   - component: {fileID: 910342326}
   - component: {fileID: 910342325}
+  - component: {fileID: 910342324}
   m_Layer: 5
   m_Name: 5-Background
   m_TagString: Untagged
@@ -5901,6 +5992,23 @@ RectTransform:
   m_AnchoredPosition: {x: -44.8, y: 18}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &910342324
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910342322}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &910342325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6062,7 +6170,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701380716}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &969523384
 MonoBehaviour:
@@ -6075,22 +6183,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da783ba04e6f3a4cb212d2a403a164f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultBackgroundSprite: {fileID: 21300000, guid: 7d59230d2f48d274f8f19b7dbceb3472,
-    type: 3}
-  greenBackgroundSprite: {fileID: 21300000, guid: 27affea61d40e044c9af998d20c67685,
-    type: 3}
-  sourceImages:
-  - {fileID: 404404547}
-  - {fileID: 1302381239}
-  - {fileID: 899923990}
-  - {fileID: 1525956014}
-  - {fileID: 356697116}
-  - {fileID: 2118477136}
-  - {fileID: 832747265}
-  - {fileID: 1129389956}
-  - {fileID: 910342325}
-  - {fileID: 569234059}
-  - {fileID: 1735796343}
+  camerasBackground:
+  - {fileID: 404404544}
+  - {fileID: 1302381236}
+  - {fileID: 899923987}
+  - {fileID: 1525956011}
+  - {fileID: 356697113}
+  - {fileID: 2118477133}
+  - {fileID: 832747262}
+  - {fileID: 1129389953}
+  - {fileID: 910342322}
+  - {fileID: 569234056}
+  - {fileID: 1735796340}
   currentCameraName: 
 --- !u!1 &969611533 stripped
 GameObject:
@@ -7281,6 +7385,7 @@ GameObject:
   - component: {fileID: 1129389954}
   - component: {fileID: 1129389957}
   - component: {fileID: 1129389956}
+  - component: {fileID: 1129389955}
   m_Layer: 5
   m_Name: 4B-Background
   m_TagString: Untagged
@@ -7308,6 +7413,23 @@ RectTransform:
   m_AnchoredPosition: {x: 10.52, y: -39.1}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1129389955
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1129389953}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1129389956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8577,6 +8699,7 @@ GameObject:
   - component: {fileID: 1302381237}
   - component: {fileID: 1302381240}
   - component: {fileID: 1302381239}
+  - component: {fileID: 1302381238}
   m_Layer: 5
   m_Name: 1B-Background
   m_TagString: Untagged
@@ -8604,6 +8727,23 @@ RectTransform:
   m_AnchoredPosition: {x: -22, y: 26.1}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1302381238
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1302381236}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1302381239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10166,6 +10306,7 @@ GameObject:
   - component: {fileID: 1525956012}
   - component: {fileID: 1525956015}
   - component: {fileID: 1525956014}
+  - component: {fileID: 1525956013}
   m_Layer: 5
   m_Name: 2A-Background
   m_TagString: Untagged
@@ -10193,6 +10334,23 @@ RectTransform:
   m_AnchoredPosition: {x: -14.27, y: -23.7}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1525956013
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1525956011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1525956014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10544,7 +10702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSelectedButton: {fileID: 176067430}
-  selectedGameObject: {fileID: 0}
 --- !u!1 &1640164976
 GameObject:
   m_ObjectHideFlags: 0
@@ -11030,8 +11187,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1528391396}
-  - {fileID: 969523383}
   - {fileID: 434962844}
+  - {fileID: 969523383}
   - {fileID: 1631035631}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -11195,6 +11352,7 @@ GameObject:
   - component: {fileID: 1735796341}
   - component: {fileID: 1735796344}
   - component: {fileID: 1735796343}
+  - component: {fileID: 1735796342}
   m_Layer: 5
   m_Name: 7-Background
   m_TagString: Untagged
@@ -11222,6 +11380,23 @@ RectTransform:
   m_AnchoredPosition: {x: 36.57, y: 18.72}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1735796342
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1735796340}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1735796343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15017,6 +15192,7 @@ GameObject:
   - component: {fileID: 2118477134}
   - component: {fileID: 2118477137}
   - component: {fileID: 2118477136}
+  - component: {fileID: 2118477135}
   m_Layer: 5
   m_Name: 3-Background
   m_TagString: Untagged
@@ -15044,6 +15220,23 @@ RectTransform:
   m_AnchoredPosition: {x: -37.3, y: -20.3}
   m_SizeDelta: {x: 16.693, y: 11.836}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &2118477135
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118477133}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220adaf327e926f47bc7d57bd1965468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &2118477136
 MonoBehaviour:
   m_ObjectHideFlags: 0
