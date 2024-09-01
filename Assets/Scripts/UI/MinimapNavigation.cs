@@ -33,10 +33,10 @@ public class MinimapNavigation : MonoBehaviour
         if (minimapPanel.activeSelf)
         {
             // Set default selected button if no button is selected
-            /*if ()
+            if (EventSystem.current.currentSelectedGameObject == null)
             {
                 NavigateTo(defaultSelectedButton);
-            }*/
+            }
 
             // Check inputs and navigate
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
