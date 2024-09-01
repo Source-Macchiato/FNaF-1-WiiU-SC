@@ -9,11 +9,10 @@ public class ChangeBackgroundButtonMinimap : MonoBehaviour
     public Image[] sourceImages;
 
     private bool isBlinking = false;
-    private string currentCameraName = "";
+    public string currentCameraName;
 
     void Start()
     {
-        currentCameraName = "1A";
         StartCoroutine(BlinkBackground(currentCameraName));
     }
 
@@ -35,46 +34,49 @@ public class ChangeBackgroundButtonMinimap : MonoBehaviour
 
     IEnumerator BlinkBackground(string cameraName)
     {
-        currentCameraName = cameraName;
-
-        while (true)
+        if (currentCameraName != null)
         {
-            if (!isBlinking)
-            {
-                isBlinking = true;
+            currentCameraName = cameraName;
 
-                foreach (Image image in sourceImages)
+            while (true)
+            {
+                if (!isBlinking)
                 {
-                    if (image.gameObject.name.Contains(cameraName + "-Background"))
+                    isBlinking = true;
+
+                    foreach (Image image in sourceImages)
                     {
-                        image.sprite = greenBackgroundSprite;
+                        if (image.gameObject.name.Contains(cameraName + "-Background"))
+                        {
+                            image.sprite = greenBackgroundSprite;
+                        }
+                        else
+                        {
+                            image.sprite = defaultBackgroundSprite;
+                        }
                     }
-                    else
+
+                    yield return new WaitForSeconds(0.5f);
+
+                    foreach (Image image in sourceImages)
                     {
-                        image.sprite = defaultBackgroundSprite;
+                        if (image.gameObject.name.Contains(cameraName + "-Background"))
+                        {
+                            image.sprite = defaultBackgroundSprite;
+                        }
                     }
+
+                    isBlinking = false;
+                    yield return new WaitForSeconds(0.5f);
                 }
 
-                yield return new WaitForSeconds(0.5f);
-
-                foreach (Image image in sourceImages)
+                if (currentCameraName != cameraName)
                 {
-                    if (image.gameObject.name.Contains(cameraName + "-Background"))
-                    {
-                        image.sprite = defaultBackgroundSprite;
-                    }
+                    break;
                 }
 
-                isBlinking = false;
-                yield return new WaitForSeconds(0.5f);
+                yield return null;
             }
-
-            if (currentCameraName != cameraName)
-            {
-                break;
-            }
-
-            yield return null;
         }
     }
 }
