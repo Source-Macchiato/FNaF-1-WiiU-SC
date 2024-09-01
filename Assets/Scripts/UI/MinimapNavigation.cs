@@ -6,6 +6,7 @@ using WiiU = UnityEngine.WiiU;
 public class MinimapNavigation : MonoBehaviour
 {
     public Button defaultSelectedButton;
+    public GameObject minimapPanel;
 
     // Get current selected button
     private GameObject selectedGameObject;
@@ -20,8 +21,6 @@ public class MinimapNavigation : MonoBehaviour
         // Access the WiiU GamePad and Remote
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
-
-        NavigateTo(defaultSelectedButton);
     }
 
     void Update()
@@ -30,142 +29,152 @@ public class MinimapNavigation : MonoBehaviour
         WiiU.GamePadState gamePadState = gamePad.state;
         WiiU.RemoteState remoteState = remote.state;
 
-        // Check inputs and navigate
-        if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+        // Can navigate only when the minimap is active
+        if (minimapPanel.activeSelf)
         {
-            if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
+            // Set default selected button if no button is selected
+            /*if ()
             {
-                UpdateSelection();
+                NavigateTo(defaultSelectedButton);
+            }*/
 
-                NavigateTo(selectedButton.navigation.selectOnUp);
-            }
-            else if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
+            // Check inputs and navigate
+            if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                UpdateSelection();
-
-                NavigateTo(selectedButton.navigation.selectOnDown);
-            }
-            else if (gamePadState.IsReleased(WiiU.GamePadButton.Left))
-            {
-                UpdateSelection();
-
-                NavigateTo(selectedButton.navigation.selectOnLeft);
-            }
-            else if (gamePadState.IsReleased(WiiU.GamePadButton.Right))
-            {
-                UpdateSelection();
-
-                NavigateTo(selectedButton.navigation.selectOnRight);
-            }
-        }
-
-        switch (remoteState.devType)
-        {
-            case WiiU.RemoteDevType.ProController:
-                if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Up))
+                if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
                 {
                     UpdateSelection();
 
                     NavigateTo(selectedButton.navigation.selectOnUp);
                 }
-                else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Down))
+                else if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
                 {
                     UpdateSelection();
 
                     NavigateTo(selectedButton.navigation.selectOnDown);
                 }
-                else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Left))
+                else if (gamePadState.IsReleased(WiiU.GamePadButton.Left))
                 {
                     UpdateSelection();
 
                     NavigateTo(selectedButton.navigation.selectOnLeft);
                 }
-                else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Right))
+                else if (gamePadState.IsReleased(WiiU.GamePadButton.Right))
                 {
                     UpdateSelection();
 
                     NavigateTo(selectedButton.navigation.selectOnRight);
                 }
-                break;
-            case WiiU.RemoteDevType.Classic:
-                if (remoteState.classic.IsReleased(WiiU.ClassicButton.Up))
+            }
+
+            switch (remoteState.devType)
+            {
+                case WiiU.RemoteDevType.ProController:
+                    if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Up))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnUp);
+                    }
+                    else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Down))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnDown);
+                    }
+                    else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Left))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnLeft);
+                    }
+                    else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Right))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnRight);
+                    }
+                    break;
+                case WiiU.RemoteDevType.Classic:
+                    if (remoteState.classic.IsReleased(WiiU.ClassicButton.Up))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnUp);
+                    }
+                    else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Down))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnDown);
+                    }
+                    else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Left))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnLeft);
+                    }
+                    else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Right))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnRight);
+                    }
+                    break;
+                default:
+                    if (remoteState.IsReleased(WiiU.RemoteButton.Up))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnUp);
+                    }
+                    else if (remoteState.IsReleased(WiiU.RemoteButton.Down))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnDown);
+                    }
+                    else if (remoteState.IsReleased(WiiU.RemoteButton.Left))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnLeft);
+                    }
+                    else if (remoteState.IsReleased(WiiU.RemoteButton.Right))
+                    {
+                        UpdateSelection();
+
+                        NavigateTo(selectedButton.navigation.selectOnRight);
+                    }
+                    break;
+            }
+
+            if (Application.isEditor)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     UpdateSelection();
 
                     NavigateTo(selectedButton.navigation.selectOnUp);
                 }
-                else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Down))
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     UpdateSelection();
 
                     NavigateTo(selectedButton.navigation.selectOnDown);
                 }
-                else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Left))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     UpdateSelection();
 
                     NavigateTo(selectedButton.navigation.selectOnLeft);
                 }
-                else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Right))
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     UpdateSelection();
 
                     NavigateTo(selectedButton.navigation.selectOnRight);
                 }
-                break;
-            default:
-                if (remoteState.IsReleased(WiiU.RemoteButton.Up))
-                {
-                    UpdateSelection();
-
-                    NavigateTo(selectedButton.navigation.selectOnUp);
-                }
-                else if (remoteState.IsReleased(WiiU.RemoteButton.Down))
-                {
-                    UpdateSelection();
-
-                    NavigateTo(selectedButton.navigation.selectOnDown);
-                }
-                else if (remoteState.IsReleased(WiiU.RemoteButton.Left))
-                {
-                    UpdateSelection();
-
-                    NavigateTo(selectedButton.navigation.selectOnLeft);
-                }
-                else if (remoteState.IsReleased(WiiU.RemoteButton.Right))
-                {
-                    UpdateSelection();
-
-                    NavigateTo(selectedButton.navigation.selectOnRight);
-                }
-                break;
-        }
-
-        if (Application.isEditor)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                UpdateSelection();
-
-                NavigateTo(selectedButton.navigation.selectOnUp);
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                UpdateSelection();
-
-                NavigateTo(selectedButton.navigation.selectOnDown);
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                UpdateSelection();
-
-                NavigateTo(selectedButton.navigation.selectOnLeft);
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                UpdateSelection();
-
-                NavigateTo(selectedButton.navigation.selectOnRight);
             }
         }
     }

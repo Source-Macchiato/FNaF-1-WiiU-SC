@@ -10702,6 +10702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSelectedButton: {fileID: 176067430}
+  minimapPanel: {fileID: 2139986448}
 --- !u!1 &1640164976
 GameObject:
   m_ObjectHideFlags: 0
