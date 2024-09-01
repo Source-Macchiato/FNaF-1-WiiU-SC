@@ -6195,7 +6195,7 @@ MonoBehaviour:
   - {fileID: 910342322}
   - {fileID: 569234056}
   - {fileID: 1735796340}
-  currentCameraName: 
+  minimapPanel: {fileID: 2139986448}
 --- !u!1 &969611533 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1793344617329438, guid: 43e269f2118830447b194d4571f0778a,

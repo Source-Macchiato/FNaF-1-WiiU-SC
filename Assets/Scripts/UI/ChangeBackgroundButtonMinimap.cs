@@ -3,36 +3,26 @@
 public class ChangeBackgroundButtonMinimap : MonoBehaviour
 {
     public GameObject[] camerasBackground;
+    public GameObject minimapPanel;
     private string currentCameraName;
-    public bool canChangeState = false;
 
     void Update()
     {
         if (currentCameraName != null)
         {
-            if (canChangeState)
+            foreach (GameObject background in camerasBackground)
             {
-                foreach (GameObject background in camerasBackground)
+                Animator animator = background.GetComponent<Animator>();
+
+                if (background.name == (currentCameraName + "-Background"))
                 {
-                    Animator animator = background.GetComponent<Animator>();
-
-                    if (background.name == (currentCameraName + "-Background"))
-                    {
-                        animator.Play("Blink");
-                    }
-                    else
-                    {
-                        animator.Play("Idle");
-                    }
+                    animator.Play("Blink");
                 }
-
-                canChangeState = false;
+                else
+                {
+                    animator.Play("Idle");
+                }
             }
-
-            /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-
-            }*/
         }
     }
 
@@ -41,8 +31,6 @@ public class ChangeBackgroundButtonMinimap : MonoBehaviour
         if (currentCameraName != cameraName)
         {
             currentCameraName = cameraName;
-
-            canChangeState = true;
         }
     }
 }

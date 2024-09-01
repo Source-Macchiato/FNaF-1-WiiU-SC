@@ -15,9 +15,6 @@ public class MinimapNavigation : MonoBehaviour
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
-    // Scripts
-    ChangeBackgroundButtonMinimap changeBackgroundButtonMinimap;
-
     void Start()
     {
         // Access the WiiU GamePad and Remote
@@ -186,7 +183,5 @@ public class MinimapNavigation : MonoBehaviour
         selectedButton = nextSelectable.GetComponent<Button>();
 
         selectedButton.onClick.Invoke();
-
-        changeBackgroundButtonMinimap.canChangeState = true;
     }
 }
