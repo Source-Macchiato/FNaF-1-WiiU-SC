@@ -42,9 +42,15 @@ public class MenuManager : MonoBehaviour
     // Elements to keep in memory
     public ScrollRect currentScrollRect;
 
+    // Stick navigation
+    float stickNavigationCooldown = 0.2f;
+    float lastNavigationTime;
+
     // References to WiiU controllers
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
+
+    private float stickDeadzone = 0.19f;
 
     void Start()
     {
@@ -62,19 +68,39 @@ public class MenuManager : MonoBehaviour
         // Handle GamePad input
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
+            // Stick
+            Vector2 leftStickGamepad = gamePadState.lStick;
+
+            if (Mathf.Abs(leftStickGamepad.y) > stickDeadzone)
+            {
+                if (currentScrollRect == null)
+                {
+                    if (Time.time - lastNavigationTime > stickNavigationCooldown)
+                    {
+                        Navigate(new Vector2(0, leftStickGamepad.y), currentMenuId);
+
+                        lastNavigationTime = Time.time;
+                    }
+                }
+                else
+                {
+                    Navigate(new Vector2(0, leftStickGamepad.y), currentMenuId);
+                }
+            }
+
             // Is Released
             if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
             {
                 if (currentScrollRect == null)
                 {
-                    Navigate(-1, currentMenuId);
+                    Navigate(new Vector2(0, -1), currentMenuId);
                 }
             }
             else if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
             {
                 if (currentScrollRect == null)
                 {
-                    Navigate(1, currentMenuId);
+                    Navigate(new Vector2(0, 1), currentMenuId);
                 }
             }
             else if (gamePadState.IsReleased(WiiU.GamePadButton.A))
@@ -91,14 +117,14 @@ public class MenuManager : MonoBehaviour
             {
                 if (currentScrollRect != null)
                 {
-                    Navigate(1, currentMenuId);
+                    Navigate(new Vector2(0, 1), currentMenuId);
                 }
             }
             else if (gamePadState.IsPressed(WiiU.GamePadButton.Down))
             {
                 if (currentScrollRect != null)
                 {
-                    Navigate(-1, currentMenuId);
+                    Navigate(new Vector2(0, -1), currentMenuId);
                 }
             }
         }
@@ -107,19 +133,39 @@ public class MenuManager : MonoBehaviour
         switch (remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
+                // Stick
+                Vector2 leftStickProController = remoteState.pro.leftStick;
+
+                if (Mathf.Abs(leftStickProController.y) > stickDeadzone)
+                {
+                    if (currentScrollRect == null)
+                    {
+                        if (Time.time - lastNavigationTime > stickNavigationCooldown)
+                        {
+                            Navigate(new Vector2(0, leftStickProController.y), currentMenuId);
+
+                            lastNavigationTime = Time.time;
+                        }
+                    }
+                    else
+                    {
+                        Navigate(new Vector2(0, leftStickProController.y), currentMenuId);
+                    }
+                }
+
                 // Is Released
                 if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Up))
                 {
                     if (currentScrollRect == null)
                     {
-                        Navigate(-1, currentMenuId);
+                        Navigate(new Vector2(0, -1), currentMenuId);
                     }
                 }
                 else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Down))
                 {
                     if (currentScrollRect == null)
                     {
-                        Navigate(1, currentMenuId);
+                        Navigate(new Vector2(0, 1), currentMenuId);
                     }
                 }
                 else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.A))
@@ -136,31 +182,51 @@ public class MenuManager : MonoBehaviour
                 {
                     if (currentScrollRect != null)
                     {
-                        Navigate(1, currentMenuId);
+                        Navigate(new Vector2(0, 1), currentMenuId);
                     }
                 }
                 else if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Down))
                 {
                     if (currentScrollRect != null)
                     {
-                        Navigate(-1, currentMenuId);
+                        Navigate(new Vector2(0, -1), currentMenuId);
                     }
                 }
                 break;
             case WiiU.RemoteDevType.Classic:
+                // Stick
+                Vector2 leftStickClassicController = remoteState.classic.leftStick;
+
+                if (Mathf.Abs(leftStickClassicController.y) > stickDeadzone)
+                {
+                    if (currentScrollRect == null)
+                    {
+                        if (Time.time - lastNavigationTime > stickNavigationCooldown)
+                        {
+                            Navigate(new Vector2(0, leftStickClassicController.y), currentMenuId);
+
+                            lastNavigationTime = Time.time;
+                        }
+                    }
+                    else
+                    {
+                        Navigate(new Vector2(0, leftStickClassicController.y), currentMenuId);
+                    }
+                }
+
                 // Is Released
                 if (remoteState.classic.IsReleased(WiiU.ClassicButton.Up))
                 {
                     if (currentScrollRect == null)
                     {
-                        Navigate(-1, currentMenuId);
+                        Navigate(new Vector2(0, -1), currentMenuId);
                     }
                 }
                 else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Down))
                 {
                     if (currentScrollRect == null)
                     {
-                        Navigate(1, currentMenuId);
+                        Navigate(new Vector2(0, 1), currentMenuId);
                     }
                 }
                 else if (remoteState.classic.IsReleased(WiiU.ClassicButton.A))
@@ -177,31 +243,51 @@ public class MenuManager : MonoBehaviour
                 {
                     if (currentScrollRect != null)
                     {
-                        Navigate(1, currentMenuId);
+                        Navigate(new Vector2(0, 1), currentMenuId);
                     }
                 }
                 else if (remoteState.classic.IsPressed(WiiU.ClassicButton.Down))
                 {
                     if (currentScrollRect != null)
                     {
-                        Navigate(-1, currentMenuId);
+                        Navigate(new Vector2(0, -1), currentMenuId);
                     }
                 }
                 break;
             default:
+                // Stick
+                Vector2 stickNunchuk = remoteState.nunchuk.stick;
+
+                if (Mathf.Abs(stickNunchuk.y) > stickDeadzone)
+                {
+                    if (currentScrollRect == null)
+                    {
+                        if (Time.time - lastNavigationTime > stickNavigationCooldown)
+                        {
+                            Navigate(new Vector2(0, stickNunchuk.y), currentMenuId);
+
+                            lastNavigationTime = Time.time;
+                        }
+                    }
+                    else
+                    {
+                        Navigate(new Vector2(0, stickNunchuk.y), currentMenuId);
+                    }
+                }
+
                 // Is Released
                 if (remoteState.IsReleased(WiiU.RemoteButton.Up))
                 {
                     if (currentScrollRect == null)
                     {
-                        Navigate(-1, currentMenuId);
+                        Navigate(new Vector2(0, -1), currentMenuId);
                     }
                 }
                 else if (remoteState.IsReleased(WiiU.RemoteButton.Down))
                 {
                     if (currentScrollRect == null)
                     {
-                        Navigate(1, currentMenuId);
+                        Navigate(new Vector2(0, 1), currentMenuId);
                     }
                 }
                 else if (remoteState.IsReleased(WiiU.RemoteButton.A))
@@ -218,14 +304,14 @@ public class MenuManager : MonoBehaviour
                 {
                     if (currentScrollRect != null)
                     {
-                        Navigate(1, currentMenuId);
+                        Navigate(new Vector2(0, 1), currentMenuId);
                     }
                 }
                 else if (remoteState.IsPressed(WiiU.RemoteButton.Down))
                 {
                     if (currentScrollRect != null)
                     {
-                        Navigate(-1, currentMenuId);
+                        Navigate(new Vector2(0, -1), currentMenuId);
                     }
                 }
                 break;
@@ -239,14 +325,14 @@ public class MenuManager : MonoBehaviour
             {
                 if (currentScrollRect == null)
                 {
-                    Navigate(-1, currentMenuId);
+                    Navigate(new Vector2(0, -1), currentMenuId);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if (currentScrollRect == null)
                 {
-                    Navigate(1, currentMenuId);
+                    Navigate(new Vector2(0, 1), currentMenuId);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Return))
@@ -263,14 +349,14 @@ public class MenuManager : MonoBehaviour
             {
                 if (currentScrollRect != null)
                 {
-                    Navigate(1, currentMenuId);
+                    Navigate(new Vector2(0, 1), currentMenuId);
                 }
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
                 if (currentScrollRect != null)
                 {
-                    Navigate(-1, currentMenuId);
+                    Navigate(new Vector2(0, -1), currentMenuId);
                 }
             }
         }
@@ -312,7 +398,7 @@ public class MenuManager : MonoBehaviour
     }
 
     // Navigates through the menu buttons based on the direction
-    public void Navigate(int direction, int menuId)
+    public void Navigate(Vector2 direction, int menuId)
     {
         if (currentScrollRect == null)
         {
@@ -326,7 +412,7 @@ public class MenuManager : MonoBehaviour
             }
 
             int currentIndex = currentMenuButtons.IndexOf(currentSelected);
-            int nextIndex = (currentIndex + direction + currentMenuButtons.Count) % currentMenuButtons.Count;
+            int nextIndex = (currentIndex + (int)Mathf.Round(direction.y) + currentMenuButtons.Count) % currentMenuButtons.Count;
 
             DisableButtonVisual(currentMenuButtons[currentIndex]);
 
@@ -336,7 +422,7 @@ public class MenuManager : MonoBehaviour
         }
         else if (currentScrollRect != null)
         {
-            float scrollAmount = direction * 0.5f * Time.deltaTime;
+            float scrollAmount = direction.y * 0.5f * Time.deltaTime;
             Vector2 newPosition = currentScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
             newPosition.y = Mathf.Clamp01(newPosition.y);
             currentScrollRect.normalizedPosition = newPosition;
