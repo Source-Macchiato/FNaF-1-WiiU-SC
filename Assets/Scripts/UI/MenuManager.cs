@@ -21,6 +21,7 @@ public class MenuManager : MonoBehaviour
 {
     // Prefab for creating buttons dynamically
     public GameObject buttonPrefab;
+    public GameObject selectionPrefab;
 
     // Parent transform where menu buttons will be placed
     public Transform[] menus;
@@ -43,8 +44,8 @@ public class MenuManager : MonoBehaviour
     public ScrollRect currentScrollRect;
 
     // Stick navigation
-    float stickNavigationCooldown = 0.2f;
-    float lastNavigationTime;
+    private float stickNavigationCooldown = 0.2f;
+    public float lastNavigationTime;
 
     // References to WiiU controllers
     WiiU.GamePad gamePad;
@@ -77,7 +78,7 @@ public class MenuManager : MonoBehaviour
                 {
                     if (Time.time - lastNavigationTime > stickNavigationCooldown)
                     {
-                        Navigate(new Vector2(0, leftStickGamepad.y), currentMenuId);
+                        Navigate(new Vector2(0, -leftStickGamepad.y), currentMenuId);
 
                         lastNavigationTime = Time.time;
                     }
@@ -142,7 +143,9 @@ public class MenuManager : MonoBehaviour
                     {
                         if (Time.time - lastNavigationTime > stickNavigationCooldown)
                         {
-                            Navigate(new Vector2(0, leftStickProController.y), currentMenuId);
+                            Debug.Log(leftStickProController.y);
+
+                            Navigate(new Vector2(0, -leftStickProController.y), currentMenuId);
 
                             lastNavigationTime = Time.time;
                         }
@@ -203,7 +206,7 @@ public class MenuManager : MonoBehaviour
                     {
                         if (Time.time - lastNavigationTime > stickNavigationCooldown)
                         {
-                            Navigate(new Vector2(0, leftStickClassicController.y), currentMenuId);
+                            Navigate(new Vector2(0, -leftStickClassicController.y), currentMenuId);
 
                             lastNavigationTime = Time.time;
                         }
@@ -264,7 +267,7 @@ public class MenuManager : MonoBehaviour
                     {
                         if (Time.time - lastNavigationTime > stickNavigationCooldown)
                         {
-                            Navigate(new Vector2(0, stickNunchuk.y), currentMenuId);
+                            Navigate(new Vector2(0, -stickNunchuk.y), currentMenuId);
 
                             lastNavigationTime = Time.time;
                         }
@@ -359,7 +362,38 @@ public class MenuManager : MonoBehaviour
                     Navigate(new Vector2(0, -1), currentMenuId);
                 }
             }
+
+            float vertical = Input.GetAxis("LeftStickY");
+
+            if (Mathf.Abs(vertical) > stickDeadzone)
+            {
+                if (currentScrollRect == null)
+                {
+                    if (lastNavigationTime > stickNavigationCooldown)
+                    {
+                        Debug.Log(vertical);
+
+                        if (vertical > 0)
+                        {
+                            Navigate(new Vector2(0, 1), currentMenuId);
+                        }
+                        else
+                        {
+                            Navigate(new Vector2(0, 0), currentMenuId);
+                        }
+
+                        lastNavigationTime = 0f;
+                    }
+                }
+                else
+                {
+                    Navigate(new Vector2(0, vertical), currentMenuId);
+                }
+            }
         }
+
+        // Calculate stick last navigation time
+        lastNavigationTime += Time.deltaTime;
     }
 
     // Adds a button to the menu with the given text and click action
