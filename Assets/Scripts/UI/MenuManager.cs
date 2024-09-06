@@ -520,6 +520,10 @@ public class MenuManager : MonoBehaviour
             // Update the selectionPrefab position to the first button
             UpdateSelectionPosition(menuButtons[menuId][0]);
         }
+        else
+        {
+            DisableSelection();
+        }
 
         isNavigatingBack = false;
     }
