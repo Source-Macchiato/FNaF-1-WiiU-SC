@@ -1,17 +1,4 @@
-﻿/************************************************************************
- *                                                                      *
- * This script was created by Source Macchiato                          *
- * and auto-commented by ChatGPT 3.5 for better understanding.          *
- *                                                                      *
- * Feel free to modify and enhance this code,                           *
- * but please retain this notice.                                       *
- *                                                                      *
- * Visit us at: https://www.sourcemacchiato.com                         *
- *                                                                      *
- ************************************************************************/
-
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
@@ -421,14 +408,6 @@ public class MenuManager : MonoBehaviour
         // Add the click action to the button
         Button buttonComponent = newButton.GetComponent<Button>();
         buttonComponent.onClick.AddListener(onClickAction);
-
-        // Hide selection text initially
-        Transform selectionText = newButton.transform.Find("Selection");
-
-        if (selectionText != null)
-        {
-            selectionText.gameObject.SetActive(false);
-        }
 
         // Add the button to the correct menu list in the dictionary
         if (!menuButtons.ContainsKey(menuId))
