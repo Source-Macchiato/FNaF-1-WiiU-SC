@@ -70,11 +70,18 @@ public class MenuManager : MonoBehaviour
             {
                 if (currentScrollRect == null)
                 {
-                    if (Time.time - lastNavigationTime > stickNavigationCooldown)
+                    if (lastNavigationTime > stickNavigationCooldown)
                     {
-                        Navigate(new Vector2(0, -leftStickGamepad.y), currentMenuId);
+                        if (leftStickGamepad.y > stickDeadzone)
+                        {
+                            Navigate(new Vector2(0, 1), currentMenuId);
+                        }
+                        else if (leftStickGamepad.y < -stickDeadzone)
+                        {
+                            Navigate(new Vector2(0, 0), currentMenuId);
+                        }
 
-                        lastNavigationTime = Time.time;
+                        lastNavigationTime = 0f;
                     }
                 }
                 else
@@ -135,13 +142,18 @@ public class MenuManager : MonoBehaviour
                 {
                     if (currentScrollRect == null)
                     {
-                        if (Time.time - lastNavigationTime > stickNavigationCooldown)
+                        if (lastNavigationTime > stickNavigationCooldown)
                         {
-                            Debug.Log(leftStickProController.y);
+                            if (leftStickProController.y > stickDeadzone)
+                            {
+                                Navigate(new Vector2(0, 1), currentMenuId);
+                            }
+                            else if (leftStickProController.y < -stickDeadzone)
+                            {
+                                Navigate(new Vector2(0, 0), currentMenuId);
+                            }
 
-                            Navigate(new Vector2(0, -leftStickProController.y), currentMenuId);
-
-                            lastNavigationTime = Time.time;
+                            lastNavigationTime = 0f;
                         }
                     }
                     else
@@ -198,12 +210,20 @@ public class MenuManager : MonoBehaviour
                 {
                     if (currentScrollRect == null)
                     {
-                        if (Time.time - lastNavigationTime > stickNavigationCooldown)
+                        if (lastNavigationTime > stickNavigationCooldown)
                         {
-                            Navigate(new Vector2(0, -leftStickClassicController.y), currentMenuId);
+                            if (leftStickClassicController.y > stickDeadzone)
+                            {
+                                Navigate(new Vector2(0, 1), currentMenuId);
+                            }
+                            else if (leftStickClassicController.y < -stickDeadzone)
+                            {
+                                Navigate(new Vector2(0, 0), currentMenuId);
+                            }
 
-                            lastNavigationTime = Time.time;
+                            lastNavigationTime = 0f;
                         }
+
                     }
                     else
                     {
@@ -259,11 +279,18 @@ public class MenuManager : MonoBehaviour
                 {
                     if (currentScrollRect == null)
                     {
-                        if (Time.time - lastNavigationTime > stickNavigationCooldown)
+                        if (lastNavigationTime > stickNavigationCooldown)
                         {
-                            Navigate(new Vector2(0, -stickNunchuk.y), currentMenuId);
+                            if (stickNunchuk.y > stickDeadzone)
+                            {
+                                Navigate(new Vector2(0, 1), currentMenuId);
+                            }
+                            else if (stickNunchuk.y < -stickDeadzone)
+                            {
+                                Navigate(new Vector2(0, 0), currentMenuId);
+                            }
 
-                            lastNavigationTime = Time.time;
+                            lastNavigationTime = 0f;
                         }
                     }
                     else
@@ -357,21 +384,21 @@ public class MenuManager : MonoBehaviour
                 }
             }
 
-            float vertical = Input.GetAxis("LeftStickY");
+            float verticalAxis = Input.GetAxis("LeftStickY");
 
-            if (Mathf.Abs(vertical) > stickDeadzone)
+            if (Mathf.Abs(verticalAxis) > stickDeadzone)
             {
                 if (currentScrollRect == null)
                 {
                     if (lastNavigationTime > stickNavigationCooldown)
                     {
-                        Debug.Log(vertical);
+                        Debug.Log(verticalAxis);
 
-                        if (vertical > 0)
+                        if (verticalAxis > stickDeadzone)
                         {
                             Navigate(new Vector2(0, 1), currentMenuId);
                         }
-                        else
+                        else if (verticalAxis < -stickDeadzone)
                         {
                             Navigate(new Vector2(0, 0), currentMenuId);
                         }
@@ -381,7 +408,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else
                 {
-                    Navigate(new Vector2(0, vertical), currentMenuId);
+                    Navigate(new Vector2(0, verticalAxis), currentMenuId);
                 }
             }
         }
