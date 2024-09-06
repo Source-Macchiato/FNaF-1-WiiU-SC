@@ -40,6 +40,9 @@ public class MenuManager : MonoBehaviour
 
     private int currentMenuId = 0;
 
+    // Instantiate selection cursor
+    private GameObject currentSelection;
+
     // Elements to keep in memory
     public ScrollRect currentScrollRect;
 
@@ -58,6 +61,10 @@ public class MenuManager : MonoBehaviour
         // Access the WiiU GamePad and Remote
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
+
+        GameObject canvasTV = GameObject.Find("CanvaTV");
+        currentSelection = Instantiate(selectionPrefab, canvasTV.transform);
+        currentSelection.SetActive(false);
     }
 
     void Update()
@@ -440,6 +447,7 @@ public class MenuManager : MonoBehaviour
 
             List<GameObject> currentMenuButtons = menuButtons[menuId];
             GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
+
             if (currentSelected == null)
             {
                 currentSelected = currentMenuButtons[0];
@@ -448,11 +456,10 @@ public class MenuManager : MonoBehaviour
             int currentIndex = currentMenuButtons.IndexOf(currentSelected);
             int nextIndex = (currentIndex + (int)Mathf.Round(direction.y) + currentMenuButtons.Count) % currentMenuButtons.Count;
 
-            DisableButtonVisual(currentMenuButtons[currentIndex]);
-
             EventSystem.current.SetSelectedGameObject(currentMenuButtons[nextIndex]);
 
-            EnableButtonVisual(currentMenuButtons[nextIndex]);
+            // Update the selectionPrefab position to the left of the selected button
+            UpdateSelectionPosition(currentMenuButtons[nextIndex]);
         }
         else if (currentScrollRect != null)
         {
@@ -477,25 +484,32 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    // Enables visual elements for the selected button
-    private void EnableButtonVisual(GameObject button)
+    private void UpdateSelectionPosition(GameObject selectedButton)
     {
-        Transform selectionText = button.transform.Find("Selection");
-
-        if (selectionText != null)
+        if (currentSelection != null)
         {
-            selectionText.gameObject.SetActive(true);
+            // Activate the selectionPrefab if it was deactivated
+            if (!currentSelection.activeInHierarchy)
+            {
+                currentSelection.SetActive(true);
+            }
+
+            // Move the selectionPrefab to the left of the selected button
+            RectTransform buttonRect = selectedButton.GetComponent<RectTransform>();
+            RectTransform selectionRect = currentSelection.GetComponent<RectTransform>();
+
+            // Adjust the position to the left of the button
+            Vector2 newPos = new Vector2(buttonRect.transform.position.x - selectionRect.rect.width, buttonRect.transform.position.y);
+            currentSelection.transform.position = newPos;
         }
     }
 
     // Disables visual elements for the deselected button
-    private void DisableButtonVisual(GameObject button)
+    private void DisableSelection()
     {
-        Transform selectionText = button.transform.Find("Selection");
-
-        if (selectionText != null)
+        if (currentSelection != null)
         {
-            selectionText.gameObject.SetActive(false);
+            currentSelection.SetActive(false);
         }
     }
 
@@ -523,13 +537,9 @@ public class MenuManager : MonoBehaviour
         {
             // Enable first button visual
             EventSystem.current.SetSelectedGameObject(menuButtons[menuId][0]);
-            EnableButtonVisual(menuButtons[menuId][0]);
 
-            // Disable visual for other buttons
-            for (int i = 1; i < menuButtons[menuId].Count; i++)
-            {
-                DisableButtonVisual(menuButtons[menuId][i]);
-            }
+            // Update the selectionPrefab position to the first button
+            UpdateSelectionPosition(menuButtons[menuId][0]);
         }
 
         isNavigatingBack = false;
@@ -562,6 +572,9 @@ public class MenuManager : MonoBehaviour
 
             // Retrieve the previous menu ID from the history stack
             int previousMenuId = menuHistory.Pop();
+
+            // Hide the selection when going back
+            DisableSelection();
 
             // Change to the previous menu
             ChangeMenu(previousMenuId);
