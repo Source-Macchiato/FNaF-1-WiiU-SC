@@ -4,16 +4,15 @@ using WiiU = UnityEngine.WiiU;
 
 public class VersionCheck : MonoBehaviour
 {
-    private GameObject updatePanel;
-    private GameObject shareDataPanel;
+    public GameObject popupPrefab;
 
     private bool canChangeButton = false;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
-    MainMenu mainMenu;
-    MenuNavigation menuNavigation;
+    // Scripts
+    public MenuManager menuManager;
 
     [System.Serializable]
     public class VersionData
@@ -21,21 +20,12 @@ public class VersionCheck : MonoBehaviour
         public string version;
     }
 
-    private void Awake()
-    {
-        updatePanel = GameObject.Find("UpdatePanel");
-        shareDataPanel = GameObject.Find("ShareDataPanel");
-    }
-
     private void Start()
     {
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
 
-        updatePanel.SetActive(false);
-
-        mainMenu = FindObjectOfType<MainMenu>();
-        menuNavigation = FindObjectOfType<MenuNavigation>();
+        popupPrefab.SetActive(false);
 
         StartCoroutine(CheckVersion());
     }
@@ -45,7 +35,7 @@ public class VersionCheck : MonoBehaviour
         WiiU.GamePadState gamePadState = gamePad.state;
         WiiU.RemoteState remoteState = remote.state;
 
-        if (updatePanel.activeSelf && !shareDataPanel.activeSelf)
+        if (popupPrefab.activeSelf)
         {
             StartCoroutine(EnableButtonChangeAfterDelay());
         }
@@ -57,7 +47,8 @@ public class VersionCheck : MonoBehaviour
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
-                    updatePanel.SetActive(false);
+                    popupPrefab.SetActive(false);
+                    menuManager.currentPopup = null;
                 }
             }
 
@@ -67,7 +58,8 @@ public class VersionCheck : MonoBehaviour
                 case WiiU.RemoteDevType.ProController:
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
                     {
-                        updatePanel.SetActive(false);
+                        popupPrefab.SetActive(false);
+                        menuManager.currentPopup = null;
                     }
                     break;
 
@@ -80,7 +72,8 @@ public class VersionCheck : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    updatePanel.SetActive(false);
+                    popupPrefab.SetActive(false);
+                    menuManager.currentPopup = null;
                 }
             }
         }
@@ -104,18 +97,19 @@ public class VersionCheck : MonoBehaviour
 
                 if (onlineVersion.Trim() == localVersion.Trim())
                 {
-                    updatePanel.SetActive(false);
+                    popupPrefab.SetActive(false);
                     Debug.Log("Same version number");
                 }
                 else
                 {
-                    updatePanel.SetActive(true);
+                    popupPrefab.SetActive(true);
+                    menuManager.currentPopup = popupPrefab;
                     Debug.Log("Different version number");
                 }
             }
             else
             {
-                updatePanel.SetActive(false);
+                popupPrefab.SetActive(false);
                 Debug.Log("Network error: " + www.error);
             }
         }

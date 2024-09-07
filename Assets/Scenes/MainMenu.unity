@@ -2718,6 +2718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a976ba4df59b0af4d855d4f8640c9865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popupPrefab: {fileID: 2060722713}
+  menuManager: {fileID: 1357081283}
 --- !u!1 &764092229
 GameObject:
   m_ObjectHideFlags: 0
@@ -4556,6 +4558,7 @@ MonoBehaviour:
     type: 2}
   selectionPrefab: {fileID: 1410974210224748, guid: 7bff85ce65e522c4abf4ae2a5eee29f5,
     type: 2}
+  popupPrefab: {fileID: 0}
   gamepad: 1
   proController: 1
   classicController: 1
@@ -4566,6 +4569,7 @@ MonoBehaviour:
   - {fileID: 1912968396}
   - {fileID: 214317389}
   currentScrollRect: {fileID: 0}
+  currentPopup: {fileID: 0}
 --- !u!4 &1357081284
 Transform:
   m_ObjectHideFlags: 0
@@ -5832,7 +5836,7 @@ GameObject:
   - component: {fileID: 1884073145}
   - component: {fileID: 1884073147}
   m_Layer: 5
-  m_Name: UpdateText
+  m_Name: PopupText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6361,7 +6365,7 @@ GameObject:
   - component: {fileID: 2060722716}
   - component: {fileID: 2060722715}
   m_Layer: 5
-  m_Name: UpdatePanel
+  m_Name: PopupPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
