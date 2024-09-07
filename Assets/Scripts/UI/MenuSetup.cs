@@ -17,6 +17,7 @@ public class MenuSetup : MonoBehaviour
 
         menuManager.AddButton("Language", Language, 1, "mainmenu.language");
         menuManager.AddButton("Credits", Credits, 1, "mainmenu.credits");
+        menuManager.AddButton("Analytics", Analytics, 1, "mainmenu.analyticdata");
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(2, OnBackFromLanguage);
@@ -68,6 +69,11 @@ public class MenuSetup : MonoBehaviour
             Transform creditsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
             menuManager.currentScrollRect = creditsChild.GetComponent<ScrollRect>();
         }
+    }
+
+    void Analytics()
+    {
+
     }
 
     // Callback functions

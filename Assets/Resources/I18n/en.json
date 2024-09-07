@@ -37,6 +37,10 @@
       "value": "Credits"
     },
     {
+      "key": "mainmenu.analyticdata",
+      "value":  "Analytic Data"
+    },
+    {
       "key": "nextnight.firstnight",
       "value": "1 s t  N i g h t"
     },
