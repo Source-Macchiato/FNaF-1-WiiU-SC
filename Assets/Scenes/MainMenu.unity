@@ -4556,13 +4556,16 @@ MonoBehaviour:
     type: 2}
   selectionPrefab: {fileID: 1410974210224748, guid: 7bff85ce65e522c4abf4ae2a5eee29f5,
     type: 2}
+  gamepad: 1
+  proController: 1
+  classicController: 1
+  wiimoteAndNunchuk: 1
   menus:
   - {fileID: 959594341}
   - {fileID: 685786508}
   - {fileID: 1912968396}
   - {fileID: 214317389}
   currentScrollRect: {fileID: 0}
-  lastNavigationTime: 0
 --- !u!4 &1357081284
 Transform:
   m_ObjectHideFlags: 0
