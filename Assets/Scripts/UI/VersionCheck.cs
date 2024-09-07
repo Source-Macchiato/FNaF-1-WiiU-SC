@@ -103,7 +103,7 @@ public class VersionCheck : MonoBehaviour
                 else
                 {
                     popupPrefab.SetActive(true);
-                    menuManager.currentPopup = popupPrefab;
+                    //menuManager.currentPopup = popupPrefab;
                     Debug.Log("Different version number");
                 }
             }

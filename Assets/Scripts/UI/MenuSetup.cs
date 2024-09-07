@@ -79,7 +79,7 @@ public class MenuSetup : MonoBehaviour
     // Callback functions
     void OnBackFromLanguage()
     {
-        //playerData.SaveAndUpdateLanguage();
+        playerData.SaveAndUpdateLanguage();
     }
 
     void OnBackFromCredits()
