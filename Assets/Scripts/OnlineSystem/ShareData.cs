@@ -12,9 +12,6 @@ public class ShareData : MonoBehaviour
     private bool isSent = false;
     public bool activateShareDataPanel = false;
 
-    SaveGameState saveGameState;
-    SaveManager saveManager;
-
     private string localUsername;
     private string localVersion;
     private string localAuthKey;
@@ -26,6 +23,11 @@ public class ShareData : MonoBehaviour
         public string version;
         public string authKey;
     }
+
+    // Scripts
+    public MenuManager menuManager;
+    SaveGameState saveGameState;
+    SaveManager saveManager;
 
     void Start ()
     {

@@ -19,7 +19,6 @@ public class ShareDataNavigation : MonoBehaviour
 
     private GameObject shareDataPanel;
 
-    MainMenu mainMenu;
     ShareData shareData;
     SaveGameState saveGameState;
     SaveManager saveManager;
@@ -33,7 +32,6 @@ public class ShareDataNavigation : MonoBehaviour
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
 
-        mainMenu = FindObjectOfType<MainMenu>();
         shareData = FindObjectOfType<ShareData>();
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
