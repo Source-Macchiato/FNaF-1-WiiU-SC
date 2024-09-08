@@ -4,12 +4,24 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
 
+public class PopupData
+{
+    public GameObject popupObject;
+    public int actionType;
+
+    public PopupData(GameObject popupObject, int actionType)
+    {
+        this.popupObject = popupObject;
+        this.actionType = actionType;
+    }
+}
+
 public class MenuManager : MonoBehaviour
 {
     // Prefab for creating buttons dynamically
     public GameObject buttonPrefab;
     public GameObject selectionPrefab;
-    public GameObject popupPrefab;
+    public GameObject[] popupPrefab;
 
     [Header("Enabled controllers")]
     public bool gamepad;
@@ -27,7 +39,7 @@ public class MenuManager : MonoBehaviour
     private Dictionary<int, UnityEngine.Events.UnityAction> backCallbacks = new Dictionary<int, UnityEngine.Events.UnityAction>();
 
     // Stack to keep track of active popups
-    private Queue<GameObject> popupQueue = new Queue<GameObject>();
+    private Queue<PopupData> popupQueue = new Queue<PopupData>();
 
     // Store menu history
     private Stack<int> menuHistory = new Stack<int>();
@@ -44,7 +56,7 @@ public class MenuManager : MonoBehaviour
     [HideInInspector]
     public ScrollRect currentScrollRect;
     [HideInInspector]
-    public GameObject currentPopup;
+    public PopupData currentPopup;
 
     // Stick navigation
     private float stickNavigationCooldown = 0.2f;
@@ -128,6 +140,13 @@ public class MenuManager : MonoBehaviour
                     {
                         ClickSelectedButton();
                     }
+                    else if (currentScrollRect == null && currentPopup != null)
+                    {
+                        if (currentPopup.actionType == 0)
+                        {
+                            CloseCurrentPopup();
+                        }
+                    }
                 }
                 else if (gamePadState.IsReleased(WiiU.GamePadButton.B))
                 {
@@ -210,6 +229,13 @@ public class MenuManager : MonoBehaviour
                         {
                             ClickSelectedButton();
                         }
+                        else if (currentScrollRect == null && currentPopup != null)
+                        {
+                            if (currentPopup.actionType == 0)
+                            {
+                                CloseCurrentPopup();
+                            }
+                        }
                     }
                     else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.B))
                     {
@@ -289,6 +315,13 @@ public class MenuManager : MonoBehaviour
                         {
                             ClickSelectedButton();
                         }
+                        else if (currentScrollRect == null && currentPopup != null)
+                        {
+                            if (currentPopup.actionType == 0)
+                            {
+                                CloseCurrentPopup();
+                            }
+                        }
                     }
                     else if (remoteState.classic.IsReleased(WiiU.ClassicButton.B))
                     {
@@ -367,6 +400,13 @@ public class MenuManager : MonoBehaviour
                         {
                             ClickSelectedButton();
                         }
+                        else if (currentScrollRect == null && currentPopup != null)
+                        {
+                            if (currentPopup.actionType == 0)
+                            {
+                                CloseCurrentPopup();
+                            }
+                        }
                     }
                     else if (remoteState.IsReleased(WiiU.RemoteButton.B))
                     {
@@ -418,6 +458,13 @@ public class MenuManager : MonoBehaviour
                 if (currentScrollRect == null && currentPopup == null)
                 {
                     ClickSelectedButton();
+                }
+                else if (currentScrollRect == null && currentPopup != null)
+                {
+                    if (currentPopup.actionType == 0)
+                    {
+                        CloseCurrentPopup();
+                    }
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Backspace))
@@ -504,10 +551,10 @@ public class MenuManager : MonoBehaviour
         menuButtons[menuId].Add(newButton);
     }
 
-    public void AddPopup(string translationId)
+    public void AddPopup(string translationId, int actionType) // Action type : 0 = Press input to continue, 1 = Options
     {
         // Instantiate the popup prefab
-        GameObject newPopup = Instantiate(popupPrefab);
+        GameObject newPopup = Instantiate(popupPrefab[actionType]);
 
         // Set the translation for the popup's "PopupText" child
         GameObject popupTextComponent = newPopup.transform.Find("PopupText").gameObject;
@@ -515,7 +562,8 @@ public class MenuManager : MonoBehaviour
         translator.textId = translationId;
 
         // Add the popup to the queue
-        popupQueue.Enqueue(newPopup);
+        PopupData popupData = new PopupData(newPopup, actionType);
+        popupQueue.Enqueue(popupData);
 
         // Check if no popup is currently shown
         if (currentPopup == null)
@@ -533,11 +581,11 @@ public class MenuManager : MonoBehaviour
             currentPopup = popupQueue.Dequeue();
 
             // Activate the popup
-            currentPopup.SetActive(true);
+            currentPopup.popupObject.SetActive(true);
 
             // Set the position and parent
             GameObject popupContainer = GameObject.Find("PopupContainer");
-            currentPopup.transform.SetParent(popupContainer.transform, false);
+            currentPopup.popupObject.transform.SetParent(popupContainer.transform, false);
         }
     }
 
@@ -547,7 +595,7 @@ public class MenuManager : MonoBehaviour
         if (currentPopup != null)
         {
             // Deactivate and destroy the current popup
-            Destroy(currentPopup);
+            Destroy(currentPopup.popupObject);
             currentPopup = null;
 
             // Show the next popup if available

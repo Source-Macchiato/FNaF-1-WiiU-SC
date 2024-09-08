@@ -4226,8 +4226,8 @@ MonoBehaviour:
     type: 2}
   selectionPrefab: {fileID: 1410974210224748, guid: 7bff85ce65e522c4abf4ae2a5eee29f5,
     type: 2}
-  popupPrefab: {fileID: 1221025813320246, guid: ae034c5f896664140ab3d13f0ca7bff0,
-    type: 2}
+  popupPrefab:
+  - {fileID: 1845627007103702, guid: 7aaa92dbade525b4dba3577e8d88a0ad, type: 2}
   gamepad: 1
   proController: 1
   classicController: 1
