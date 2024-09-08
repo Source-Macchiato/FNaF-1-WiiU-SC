@@ -26,6 +26,9 @@ public class MenuManager : MonoBehaviour
     // List to keep track of generated callbacks
     private Dictionary<int, UnityEngine.Events.UnityAction> backCallbacks = new Dictionary<int, UnityEngine.Events.UnityAction>();
 
+    // Stack to keep track of active popups
+    private Queue<GameObject> popupQueue = new Queue<GameObject>();
+
     // Store menu history
     private Stack<int> menuHistory = new Stack<int>();
 
@@ -499,6 +502,60 @@ public class MenuManager : MonoBehaviour
             menuButtons[menuId] = new List<GameObject>();
         }
         menuButtons[menuId].Add(newButton);
+    }
+
+    public void AddPopup(string translationId)
+    {
+        // Instantiate the popup prefab
+        GameObject newPopup = Instantiate(popupPrefab);
+
+        // Set the translation for the popup's "PopupText" child
+        GameObject popupTextComponent = newPopup.transform.Find("PopupText").gameObject;
+        I18nTextTranslator translator = popupTextComponent.GetComponent<I18nTextTranslator>();
+        translator.textId = translationId;
+
+        // Add the popup to the queue
+        popupQueue.Enqueue(newPopup);
+
+        // Check if no popup is currently shown
+        if (currentPopup == null)
+        {
+            ShowNextPopup();
+        }
+    }
+
+    // Shows the next popup in the queue
+    private void ShowNextPopup()
+    {
+        if (popupQueue.Count > 0)
+        {
+            // Get the next popup from the queue
+            currentPopup = popupQueue.Dequeue();
+
+            // Activate the popup
+            currentPopup.SetActive(true);
+
+            // Set the position and parent
+            GameObject popupContainer = GameObject.Find("PopupContainer");
+            currentPopup.transform.SetParent(popupContainer.transform, false);
+        }
+    }
+
+    // Function to close the current popup and show the next one
+    public void CloseCurrentPopup()
+    {
+        if (currentPopup != null)
+        {
+            // Deactivate and destroy the current popup
+            Destroy(currentPopup);
+            currentPopup = null;
+
+            // Show the next popup if available
+            if (popupQueue.Count > 0)
+            {
+                ShowNextPopup();
+            }
+        }
     }
 
     // Navigates through the menu buttons based on the direction
