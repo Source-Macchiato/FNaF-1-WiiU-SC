@@ -39,7 +39,7 @@ public class VersionCheck : MonoBehaviour
                 }
                 else
                 {
-                    menuManager.AddPopup("");
+                    menuManager.AddPopup("mainmenu.update", 0);
 
                     Debug.Log("Different version number");
                 }
