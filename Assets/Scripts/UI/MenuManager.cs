@@ -490,6 +490,13 @@ public class MenuManager : MonoBehaviour
                     Navigate(new Vector2(0, -1), currentMenuId);
                 }
             }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                if (currentPopup != null && currentPopup.actionType == 1)
+                {
+
+                }
+            }
 
             float verticalAxis = Input.GetAxis("LeftStickY");
 

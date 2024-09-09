@@ -17,17 +17,10 @@ public class ShareDataNavigation : MonoBehaviour
     public Text[] shareDataSelectionTexts;
     public Button[] shareDataButtons;
 
-    private GameObject shareDataPanel;
-
     // Scripts
     ShareData shareData;
     SaveGameState saveGameState;
     SaveManager saveManager;
-
-    void Awake()
-    {
-        shareDataPanel = GameObject.Find("PopupOptions");
-    }
 
     void Start() {
         gamePad = WiiU.GamePad.access;
@@ -37,9 +30,7 @@ public class ShareDataNavigation : MonoBehaviour
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
 
-        shareDataPanel.SetActive(false);
-
-        UpdateSelectionTexts();
+        //UpdateSelectionTexts();
     }
 	
 	void Update()
@@ -47,7 +38,7 @@ public class ShareDataNavigation : MonoBehaviour
         WiiU.GamePadState gamePadState = gamePad.state;
         WiiU.RemoteState remoteState = remote.state;
 
-        if (shareDataPanel.activeSelf)
+        if (true)
         {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
@@ -55,13 +46,13 @@ public class ShareDataNavigation : MonoBehaviour
                 if (gamePadState.IsReleased(WiiU.GamePadButton.Left))
                 {
                     selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
-                    UpdateSelectionTexts();
+                    //UpdateSelectionTexts();
                 }
 
                 if (gamePadState.IsReleased(WiiU.GamePadButton.Right))
                 {
                     selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
-                    UpdateSelectionTexts();
+                    //UpdateSelectionTexts();
                 }
 
                 if (gamePadState.IsReleased(WiiU.GamePadButton.A))
@@ -72,7 +63,7 @@ public class ShareDataNavigation : MonoBehaviour
                         saveManager.SaveShareData(shareData.canShareData);
                         bool saveResult = saveGameState.DoSave();
 
-                        shareDataPanel.SetActive(false);
+                        //shareDataPanel.SetActive(false);
                     }
                     else if (selectedButtonIndex == 1)
                     {
@@ -80,7 +71,7 @@ public class ShareDataNavigation : MonoBehaviour
                         saveManager.SaveShareData(shareData.canShareData);
                         bool saveResult = saveGameState.DoSave();
 
-                        shareDataPanel.SetActive(false);
+                        //shareDataPanel.SetActive(false);
                     }
                 }
             }
@@ -92,13 +83,13 @@ public class ShareDataNavigation : MonoBehaviour
                     if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Left))
                     {
                         selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
-                        UpdateSelectionTexts();
+                        //UpdateSelectionTexts();
                     }
 
                     if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Right))
                     {
                         selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
-                        UpdateSelectionTexts();
+                        //UpdateSelectionTexts();
                     }
 
                     if (remoteState.pro.IsReleased(WiiU.ProControllerButton.A))
@@ -109,7 +100,7 @@ public class ShareDataNavigation : MonoBehaviour
                             saveManager.SaveShareData(shareData.canShareData);
                             bool saveResult = saveGameState.DoSave();
 
-                            shareDataPanel.SetActive(false);
+                            //shareDataPanel.SetActive(false);
                         }
                         else if (selectedButtonIndex == 1)
                         {
@@ -117,7 +108,7 @@ public class ShareDataNavigation : MonoBehaviour
                             saveManager.SaveShareData(shareData.canShareData);
                             bool saveResult = saveGameState.DoSave();
 
-                            shareDataPanel.SetActive(false);
+                            //shareDataPanel.SetActive(false);
                         }
                     }
                     break;
@@ -131,13 +122,13 @@ public class ShareDataNavigation : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     selectedButtonIndex = (selectedButtonIndex - 1 + shareDataButtons.Length) % shareDataButtons.Length;
-                    UpdateSelectionTexts();
+                    //UpdateSelectionTexts();
                 }
 
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     selectedButtonIndex = (selectedButtonIndex + 1) % shareDataButtons.Length;
-                    UpdateSelectionTexts();
+                    //UpdateSelectionTexts();
                 }
 
                 if (Input.GetKeyDown(KeyCode.Return))
@@ -148,7 +139,7 @@ public class ShareDataNavigation : MonoBehaviour
                         saveManager.SaveShareData(shareData.canShareData);
                         bool saveResult = saveGameState.DoSave();
 
-                        shareDataPanel.SetActive(false);
+                        //shareDataPanel.SetActive(false);
                     }
                     else if (selectedButtonIndex == 1)
                     {
@@ -156,7 +147,7 @@ public class ShareDataNavigation : MonoBehaviour
                         saveManager.SaveShareData(shareData.canShareData);
                         bool saveResult = saveGameState.DoSave();
 
-                        shareDataPanel.SetActive(false);
+                        //shareDataPanel.SetActive(false);
                     }
                 }
             }

@@ -71,7 +71,7 @@ public class ShareData : MonoBehaviour
         {
             if (!popupDisplayed)
             {
-                menuManager.AddPopup("mainmenu.sharedata", 0);
+                menuManager.AddPopup("mainmenu.sharedata", 1);
 
                 popupDisplayed = true;
             }
