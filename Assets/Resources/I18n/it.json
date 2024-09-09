@@ -37,6 +37,14 @@
       "value": "Crediti"
     },
     {
+      "key": "mainmenu.layout",
+      "value": "Disposizione"
+    },
+    {
+      "key": "mainmenu.online",
+      "value": "Online"
+    },
+    {
       "key": "mainmenu.analyticdata",
       "value": "Analisi dei dati"
     },

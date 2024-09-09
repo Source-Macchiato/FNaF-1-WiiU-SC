@@ -37,6 +37,14 @@
       "value": "Crédits"
     },
     {
+      "key": "mainmenu.layout",
+      "value": "Disposition"
+    },
+    {
+      "key": "mainmenu.online",
+      "value": "En ligne"
+    },
+    {
       "key": "mainmenu.analyticdata",
       "value": "Données Analytiques"
     },

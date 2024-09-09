@@ -37,6 +37,14 @@
       "value": "Creditos"
     },
     {
+      "key": "mainmenu.layout",
+      "value": "Disposición"
+    },
+    {
+      "key": "mainmenu.online",
+      "value": "En linea"
+    },
+    {
       "key": "mainmenu.analyticdata",
       "value": "Datos de Estadisticas"
     },
