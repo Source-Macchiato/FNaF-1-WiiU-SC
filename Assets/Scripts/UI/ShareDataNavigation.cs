@@ -26,7 +26,7 @@ public class ShareDataNavigation : MonoBehaviour
 
     void Awake()
     {
-        shareDataPanel = GameObject.Find("ShareDataPanel");
+        shareDataPanel = GameObject.Find("PopupOptions");
     }
 
     void Start() {

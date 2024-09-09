@@ -14,15 +14,17 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddButton("New Game", NewGame, 0, "mainmenu.newgame");
         menuManager.AddButton("Continue", Continue, 0, "mainmenu.continue");
         menuManager.AddButton("Options", Options, 0, "mainmenu.options");
+        menuManager.AddButton("Credits", Credits, 0, "mainmenu.credits");
 
         menuManager.AddButton("Language", Language, 1, "mainmenu.language");
-        menuManager.AddButton("Credits", Credits, 1, "mainmenu.credits");
         menuManager.AddButton("Layout", Layout, 1, "mainmenu.layout");
-        menuManager.AddButton("Analytic Data", Analytics, 1, "mainmenu.analyticdata");
+        menuManager.AddButton("Online", Online, 1, "mainmenu.online");
+
+        menuManager.AddButton("Analytic Data", Analytics, 4, "mainmenu.analyticdata");
 
         // Set back callbacks for specific menus
-        menuManager.SetBackCallback(2, OnBackFromLanguage);
         menuManager.SetBackCallback(3, OnBackFromCredits);
+        menuManager.SetBackCallback(2, OnBackFromLanguage);
 
         // Display main menu after loaded all buttons
         menuManager.ChangeMenu(0);
@@ -75,6 +77,11 @@ public class MenuSetup : MonoBehaviour
     void Layout()
     {
 
+    }
+
+    void Online()
+    {
+        menuManager.ChangeMenu(4);
     }
 
     void Analytics()
