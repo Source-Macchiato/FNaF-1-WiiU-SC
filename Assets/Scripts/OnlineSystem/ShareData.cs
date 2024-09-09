@@ -10,7 +10,7 @@ public class ShareData : MonoBehaviour
     public float canShareData = -1;
 
     private bool isSent = false;
-    public bool activateShareDataPanel = false;
+    private bool popupDisplayed = false;
 
     private string localUsername;
     private string localVersion;
@@ -69,7 +69,12 @@ public class ShareData : MonoBehaviour
 
         if (canShareData == -1)
         {
-            activateShareDataPanel = true;
+            if (!popupDisplayed)
+            {
+                menuManager.AddPopup("mainmenu.sharedata", 0);
+
+                popupDisplayed = true;
+            }
         }
         else if (canShareData == 1)
         {

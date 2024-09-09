@@ -19,6 +19,7 @@ public class ShareDataNavigation : MonoBehaviour
 
     private GameObject shareDataPanel;
 
+    // Scripts
     ShareData shareData;
     SaveGameState saveGameState;
     SaveManager saveManager;
@@ -28,7 +29,7 @@ public class ShareDataNavigation : MonoBehaviour
         shareDataPanel = GameObject.Find("ShareDataPanel");
     }
 
-    void Start () {
+    void Start() {
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
 
@@ -41,8 +42,7 @@ public class ShareDataNavigation : MonoBehaviour
         UpdateSelectionTexts();
     }
 	
-	// Update is called once per frame
-	void Update ()
+	void Update()
     {
         WiiU.GamePadState gamePadState = gamePad.state;
         WiiU.RemoteState remoteState = remote.state;
@@ -158,17 +158,6 @@ public class ShareDataNavigation : MonoBehaviour
 
                         shareDataPanel.SetActive(false);
                     }
-                }
-            }
-        }
-        else
-        {
-            if (canActivateSharepanel)
-            {
-                if (shareData.activateShareDataPanel)
-                {
-                    canActivateSharepanel = false;
-                    shareDataPanel.SetActive(true);
                 }
             }
         }

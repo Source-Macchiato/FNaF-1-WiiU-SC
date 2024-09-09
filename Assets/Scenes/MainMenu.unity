@@ -2420,7 +2420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShareData: -1
-  activateShareDataPanel: 0
+  menuManager: {fileID: 1357081283}
 --- !u!1 &722483250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4227,6 +4227,7 @@ MonoBehaviour:
   selectionPrefab: {fileID: 1410974210224748, guid: 7bff85ce65e522c4abf4ae2a5eee29f5,
     type: 2}
   popupPrefab:
+  - {fileID: 1845627007103702, guid: 7aaa92dbade525b4dba3577e8d88a0ad, type: 2}
   - {fileID: 1845627007103702, guid: 7aaa92dbade525b4dba3577e8d88a0ad, type: 2}
   gamepad: 1
   proController: 1
