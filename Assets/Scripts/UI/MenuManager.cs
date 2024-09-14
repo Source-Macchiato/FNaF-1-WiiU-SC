@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
+using UnityEditor;
 
 public class PopupData
 {
@@ -535,6 +536,10 @@ public class MenuManager : MonoBehaviour
                     {
                         CloseCurrentPopup();
                     }
+                    else if (currentPopup.actionType == 1)
+                    {
+                        CloseCurrentPopup();
+                    }
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Backspace))
@@ -657,14 +662,21 @@ public class MenuManager : MonoBehaviour
             GameObject popupContainer = GameObject.Find("PopupContainer");
             currentPopup.popupObject.transform.SetParent(popupContainer.transform, false);
 
-            // Select button
-            GameObject optionsContainer = currentPopup.popupObject.transform.Find("Options").gameObject;
-            GameObject buttonGameObject = optionsContainer.transform.GetChild(0).gameObject;
-            Button selectButton = buttonGameObject.GetComponent<Button>();
-            selectButton.Select();
-            currentButton = selectButton;
+            if (currentPopup.actionType == 1)
+            {
+                // Select button
+                GameObject optionsContainer = currentPopup.popupObject.transform.Find("Options").gameObject;
+                GameObject buttonGameObject = optionsContainer.transform.GetChild(0).gameObject;
+                Button selectButton = buttonGameObject.GetComponent<Button>();
+                selectButton.Select();
+                currentButton = selectButton;
 
-            UpdateSelectionPosition(buttonGameObject);
+                UpdateSelectionPosition(buttonGameObject);
+            }
+            else
+            {
+                DisableSelection();
+            }
         }
     }
 
@@ -684,7 +696,13 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
+                // Enable first button visual
+                EventSystem.current.SetSelectedGameObject(menuButtons[currentMenuId][0]);
 
+                // Update the selectionPrefab position to the first button
+                UpdateSelectionPosition(menuButtons[currentMenuId][0]);
+
+                currentButton = menuButtons[currentMenuId][0].GetComponent<Button>();
             }
         }
     }

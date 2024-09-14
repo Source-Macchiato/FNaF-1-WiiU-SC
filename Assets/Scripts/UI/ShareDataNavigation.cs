@@ -29,8 +29,6 @@ public class ShareDataNavigation : MonoBehaviour
         shareData = FindObjectOfType<ShareData>();
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
-
-        //UpdateSelectionTexts();
     }
 	
 	void Update()
