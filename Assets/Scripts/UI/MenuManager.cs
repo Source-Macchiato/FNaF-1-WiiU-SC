@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
-using UnityEditor;
 
 public class PopupData
 {
