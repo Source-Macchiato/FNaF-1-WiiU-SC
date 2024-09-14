@@ -734,15 +734,18 @@ public class MenuManager : MonoBehaviour
     // Navigates through the menu buttons based on the direction
     public void MenuNavigation(Selectable nextSelectable)
     {
-        // Get next button and select it
-        Button selectedButton = nextSelectable.GetComponent<Button>();
-        selectedButton.Select();
+        if (menuButtons.ContainsKey(currentMenuId) && menuButtons[currentMenuId].Count > 0)
+        {
+            // Get next button and select it
+            Button selectedButton = nextSelectable.GetComponent<Button>();
+            selectedButton.Select();
 
-        // Update cursor position
-        UpdateSelectionPosition(selectedButton.gameObject);
+            // Update cursor position
+            UpdateSelectionPosition(selectedButton.gameObject);
 
-        // Set current button
-        currentButton = selectedButton;
+            // Set current button
+            currentButton = selectedButton;
+        }
     }
 
     public void ScrollNavigation(Vector2 direction)
@@ -819,7 +822,7 @@ public class MenuManager : MonoBehaviour
 
         currentMenuId = menuId;
 
-        if (currentPopup == null)
+        if (currentScrollRect == null && currentPopup == null)
         {
             if (menuButtons.ContainsKey(menuId) && menuButtons[menuId].Count > 0)
             {
@@ -828,6 +831,8 @@ public class MenuManager : MonoBehaviour
 
                 // Update the selectionPrefab position to the first button
                 UpdateSelectionPosition(menuButtons[menuId][0]);
+
+                currentButton = menuButtons[menuId][0].GetComponent<Button>();
             }
             else
             {
