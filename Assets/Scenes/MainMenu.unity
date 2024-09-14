@@ -3683,6 +3683,8 @@ MonoBehaviour:
     type: 2}
   selectionPrefab: {fileID: 1410974210224748, guid: 7bff85ce65e522c4abf4ae2a5eee29f5,
     type: 2}
+  selectionPopupPrefab: {fileID: 1848512243439978, guid: d517231d4e2caf34f84a96636033bd7e,
+    type: 2}
   popupPrefab:
   - {fileID: 1845627007103702, guid: 7aaa92dbade525b4dba3577e8d88a0ad, type: 2}
   - {fileID: 1606905500946458, guid: 76a47870ad9edd941b8a45274a613374, type: 2}
