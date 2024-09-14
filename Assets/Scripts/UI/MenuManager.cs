@@ -734,7 +734,7 @@ public class MenuManager : MonoBehaviour
     // Navigates through the menu buttons based on the direction
     public void MenuNavigation(Selectable nextSelectable)
     {
-        if (menuButtons.ContainsKey(currentMenuId) && menuButtons[currentMenuId].Count > 0)
+        if (nextSelectable != null && menuButtons.ContainsKey(currentMenuId) && menuButtons[currentMenuId].Count > 0)
         {
             // Get next button and select it
             Button selectedButton = nextSelectable.GetComponent<Button>();
