@@ -53,6 +53,7 @@ public class MenuManager : MonoBehaviour
 
     // Instantiate selection cursor
     private GameObject currentSelection;
+    private GameObject currentPopupSelection;
 
     // Elements to keep in memory
     public ScrollRect currentScrollRect;
@@ -79,6 +80,8 @@ public class MenuManager : MonoBehaviour
         GameObject canvasTV = GameObject.Find("CanvaTV");
         currentSelection = Instantiate(selectionPrefab, canvasTV.transform);
         currentSelection.SetActive(false);
+        currentPopupSelection = Instantiate(selectionPopupPrefab, canvasTV.transform);
+        currentPopupSelection.SetActive(false);
     }
 
     void Update()
@@ -695,11 +698,13 @@ public class MenuManager : MonoBehaviour
                 selectButton.Select();
                 currentButton = selectButton;
 
-                UpdateSelectionPosition(buttonGameObject);
+                UpdateSelectionPosition(currentButton.gameObject);
+                DisableSelection(currentSelection);
             }
             else
             {
-                DisableSelection();
+                DisableSelection(currentPopupSelection);
+                DisableSelection(currentSelection);
             }
         }
     }
@@ -775,30 +780,76 @@ public class MenuManager : MonoBehaviour
 
     private void UpdateSelectionPosition(GameObject selectedButton)
     {
-        if (currentSelection != null)
+        if (currentPopup == null)
         {
-            // Activate the selectionPrefab if it was deactivated
-            if (!currentSelection.activeInHierarchy)
+            if (currentSelection != null)
             {
-                currentSelection.SetActive(true);
+                // Activate the selectionPrefab if it was deactivated
+                if (!currentSelection.activeInHierarchy)
+                {
+                    currentSelection.SetActive(true);
+                }
+
+                // Move the selectionPrefab to the left of the selected button
+                RectTransform buttonRect = selectedButton.GetComponent<RectTransform>();
+                RectTransform selectionRect = currentSelection.GetComponent<RectTransform>();
+
+                // Get the world corners of the button (bottom-left, top-left, top-right, bottom-right)
+                Vector3[] buttonCorners = new Vector3[4];
+                buttonRect.GetWorldCorners(buttonCorners);
+
+                // Calculate the new position based on the left edge of the button (buttonCorners[0] is the bottom-left corner in world space)
+                Vector3 leftEdgePosition = buttonCorners[0]; // Bottom-left corner of the button
+
+                // Convert world position of the button's left edge to local position relative to the canvas
+                Vector3 newLocalPos = currentSelection.transform.parent.InverseTransformPoint(leftEdgePosition);
+
+                // Adjust the cursor position slightly to the left (optional, if you want to add padding)
+                newLocalPos.x -= selectionRect.rect.width;
+
+                // Set the new position
+                selectionRect.localPosition = newLocalPos;
             }
+        }
+        else
+        {
+            if (currentPopupSelection != null)
+            {
+                // Activate the selectionPopupPrefab if it was deactivated
+                if (!currentPopupSelection.activeInHierarchy)
+                {
+                    currentPopupSelection.SetActive(true);
+                }
 
-            // Move the selectionPrefab to the left of the selected button
-            RectTransform buttonRect = selectedButton.GetComponent<RectTransform>();
-            RectTransform selectionRect = currentSelection.GetComponent<RectTransform>();
+                // Move the selectionPopupPreafab to the left of the selected button
+                RectTransform buttonRect = selectedButton.GetComponent<RectTransform>();
+                RectTransform selectionRect = currentPopupSelection.GetComponent<RectTransform>();
 
-            // Adjust the position to the left of the button
-            Vector2 newPos = new Vector2(buttonRect.transform.position.x - selectionRect.rect.width, buttonRect.transform.position.y);
-            currentSelection.transform.position = newPos;
+                // Get the world corners of the button (bottom-left, top-left, top-right, bottom-right)
+                Vector3[] buttonCorners = new Vector3[4];
+                buttonRect.GetWorldCorners(buttonCorners);
+
+                // Calculate the new position based on the left edge of the button (buttonCorners[0] is the bottom-left corner in world space)
+                Vector3 leftEdgePosition = buttonCorners[0]; // Bottom-left corner of the button
+
+                // Convert world position of the button's left edge to local position relative to the canvas
+                Vector3 newLocalPos = currentPopupSelection.transform.parent.InverseTransformPoint(leftEdgePosition);
+
+                // Adjust the cursor position slightly to the left (optional, if you want to add padding)
+                newLocalPos.x -= selectionRect.rect.width;
+
+                // Set the new position
+                selectionRect.localPosition = newLocalPos;
+            }
         }
     }
 
     // Disables visual elements for the deselected button
-    private void DisableSelection()
+    private void DisableSelection(GameObject cursor)
     {
-        if (currentSelection != null)
+        if (cursor != null)
         {
-            currentSelection.SetActive(false);
+            cursor.SetActive(false);
         }
     }
 
@@ -836,7 +887,7 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
-                DisableSelection();
+                DisableSelection(currentSelection);
             }
         }
 
@@ -872,7 +923,7 @@ public class MenuManager : MonoBehaviour
             int previousMenuId = menuHistory.Pop();
 
             // Hide the selection when going back
-            DisableSelection();
+            DisableSelection(currentSelection);
 
             // Change to the previous menu
             ChangeMenu(previousMenuId);
