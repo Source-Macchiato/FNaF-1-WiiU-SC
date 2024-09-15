@@ -50,13 +50,18 @@ public class MenuManager : MonoBehaviour
 
     private int currentMenuId = 0;
 
+    [HideInInspector]
+    public int currentButtonPopupId = 0;
+    public bool popupButtonSelected = false;
+
     // Instantiate selection cursor
     private GameObject currentSelection;
     private GameObject currentPopupSelection;
 
     // Elements to keep in memory
+    [HideInInspector]
     public ScrollRect currentScrollRect;
-    public PopupData currentPopup;
+    private PopupData currentPopup;
     private Button currentButton;
 
     // Stick navigation
@@ -540,7 +545,22 @@ public class MenuManager : MonoBehaviour
                     }
                     else if (currentPopup.actionType == 1)
                     {
-                        CloseCurrentPopup();
+                        GameObject optionsContainer = currentPopup.popupObject.transform.Find("Options").gameObject;
+
+                        int index = 0;
+
+                        foreach (Transform child in optionsContainer.transform)
+                        {
+                            Button button = child.GetComponent<Button>();
+
+                            if (button == currentButton)
+                            {
+                                currentButtonPopupId = index;
+                                break;
+                            }
+
+                            index++;
+                        }
                     }
                 }
             }

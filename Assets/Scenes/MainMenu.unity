@@ -271,7 +271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &17428579
 MonoBehaviour:
@@ -1366,7 +1366,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &480826102
 MonoBehaviour:
@@ -1785,7 +1785,6 @@ Transform:
   - {fileID: 1604959296}
   - {fileID: 659251409}
   - {fileID: 781059391}
-  - {fileID: 982427001}
   - {fileID: 480826101}
   - {fileID: 2069544269}
   - {fileID: 722955357}
@@ -2113,7 +2112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07564ed1707fee143bf61c7fb59a6454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canShareData: -1
   menuManager: {fileID: 1357081283}
 --- !u!1 &722955356
 GameObject:
@@ -2142,7 +2140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &722955358
 MonoBehaviour:
@@ -2872,55 +2870,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!1 &982427000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 982427001}
-  - component: {fileID: 982427002}
-  m_Layer: 0
-  m_Name: ShareDataNavigation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &982427001
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 982427000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 608784600}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &982427002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 982427000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b750fd4ebaf65c46b703586d6c69069, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystickThreshold: 0.5
-  buttonChangeDelay: 0.2
-  selectedButtonIndex: 0
-  shareDataSelectionTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  shareDataButtons:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1035931425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3698,6 +3647,8 @@ MonoBehaviour:
   - {fileID: 1912968396}
   - {fileID: 214317389}
   - {fileID: 1181553489}
+  currentButtonPopupId: 0
+  popupButtonSelected: 0
   currentScrollRect: {fileID: 0}
 --- !u!4 &1357081284
 Transform:
@@ -5185,7 +5136,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2069544270
 MonoBehaviour:
