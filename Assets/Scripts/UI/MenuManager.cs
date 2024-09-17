@@ -8,11 +8,15 @@ public class PopupData
 {
     public GameObject popupObject;
     public int actionType;
+    public string popupId;
+    public int optionId;
 
-    public PopupData(GameObject popupObject, int actionType)
+    public PopupData(GameObject popupObject, int actionType, string popupId, int optionId)
     {
         this.popupObject = popupObject;
         this.actionType = actionType;
+        this.popupId = popupId;
+        this.optionId = optionId;
     }
 }
 
@@ -50,10 +54,6 @@ public class MenuManager : MonoBehaviour
 
     private int currentMenuId = 0;
 
-    [HideInInspector]
-    public int currentButtonPopupId = 0;
-    public bool popupButtonSelected = false;
-
     // Instantiate selection cursor
     private GameObject currentSelection;
     private GameObject currentPopupSelection;
@@ -61,7 +61,7 @@ public class MenuManager : MonoBehaviour
     // Elements to keep in memory
     [HideInInspector]
     public ScrollRect currentScrollRect;
-    private PopupData currentPopup;
+    public PopupData currentPopup;
     private Button currentButton;
 
     // Stick navigation
@@ -555,7 +555,7 @@ public class MenuManager : MonoBehaviour
 
                             if (button == currentButton)
                             {
-                                currentButtonPopupId = index;
+                                currentPopup.optionId = index; // Should never be -1
                                 break;
                             }
 
@@ -672,7 +672,7 @@ public class MenuManager : MonoBehaviour
         menuButtons[menuId].Add(newButton);
     }
 
-    public void AddPopup(string translationId, int actionType) // Action type : 0 = Press input to continue, 1 = Options
+    public void AddPopup(string translationId, int actionType, string popupId) // Action type : 0 = Press input to continue, 1 = Options
     {
         // Instantiate the popup prefab
         GameObject newPopup = Instantiate(popupPrefab[actionType]);
@@ -683,7 +683,7 @@ public class MenuManager : MonoBehaviour
         translator.textId = translationId;
 
         // Add the popup to the queue
-        PopupData popupData = new PopupData(newPopup, actionType);
+        PopupData popupData = new PopupData(newPopup, actionType, popupId, -1);
         popupQueue.Enqueue(popupData);
 
         // Check if no popup is currently shown

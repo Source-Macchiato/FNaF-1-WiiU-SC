@@ -11,6 +11,7 @@ public class ShareData : MonoBehaviour
 
     private bool isSent = false;
     private bool popupDisplayed = false;
+    private bool inputPressed = false;
 
     private string localUsername;
     private string localVersion;
@@ -44,19 +45,26 @@ public class ShareData : MonoBehaviour
             CanShareData();
         }
 
-        if (menuManager.popupButtonSelected)
+        if (menuManager.currentPopup != null && menuManager.currentPopup.popupId == "sharedata" && menuManager.currentPopup.optionId != -1)
         {
-            if (menuManager.currentButtonPopupId == 0)
+            if (!inputPressed)
             {
-                canShareData = 1;
-                saveManager.SaveShareData(canShareData);
-                bool saveResult = saveGameState.DoSave();
-            }
-            else if (menuManager.currentButtonPopupId == 1)
-            {
-                canShareData = 0;
-                saveManager.SaveShareData(canShareData);
-                bool saveResult = saveGameState.DoSave();
+                if (menuManager.currentPopup.optionId == 0) // The data can be shared
+                {
+                    canShareData = 1;
+                    saveManager.SaveShareData(canShareData);
+                    bool saveResult = saveGameState.DoSave();
+                }
+                else if (menuManager.currentPopup.optionId == 1) // The data can't be shared
+                {
+                    canShareData = 0;
+                    saveManager.SaveShareData(canShareData);
+                    bool saveResult = saveGameState.DoSave();
+                }
+
+                menuManager.CloseCurrentPopup();
+
+                inputPressed = true;
             }
         }
     }
@@ -88,7 +96,7 @@ public class ShareData : MonoBehaviour
         {
             if (!popupDisplayed)
             {
-                menuManager.AddPopup("mainmenu.sharedata", 1);
+                menuManager.AddPopup("mainmenu.sharedata", 1, "sharedata");
 
                 popupDisplayed = true;
             }

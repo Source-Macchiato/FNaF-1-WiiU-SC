@@ -271,7 +271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &17428579
 MonoBehaviour:
@@ -540,66 +540,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 133706257}
---- !u!1 &147296797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 147296798}
-  - component: {fileID: 147296799}
-  m_Layer: 0
-  m_Name: MenuNavigation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &147296798
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 147296797}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 608784600}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &147296799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 147296797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b331dd1547e7fa245bfb30889b033821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedIndex: 0
-  menuId: 0
-  UpdatePanel: {fileID: 0}
-  LoginPanel: {fileID: 218098259}
-  CreditsMenu: {fileID: 214317388}
-  CreditsScrollView: {fileID: 1734938452}
-  MainMenuButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  MainMenuSelectionTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  OptionsMenuButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  OptionsMenuSelectionTexts:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &189613021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1310,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &480826102
 MonoBehaviour:
@@ -1703,8 +1643,6 @@ Transform:
   m_Children:
   - {fileID: 1357081284}
   - {fileID: 1848047507}
-  - {fileID: 147296798}
-  - {fileID: 1604959296}
   - {fileID: 659251409}
   - {fileID: 781059391}
   - {fileID: 480826101}
@@ -1850,7 +1788,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &659251410
 MonoBehaviour:
@@ -2062,7 +2000,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &722955358
 MonoBehaviour:
@@ -2238,7 +2176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &781059392
 MonoBehaviour:
@@ -3917,58 +3855,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1577297537}
---- !u!1 &1604959295
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1604959296}
-  - component: {fileID: 1604959297}
-  m_Layer: 0
-  m_Name: MainMenu
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1604959296
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1604959295}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 608784600}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1604959297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1604959295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28fc66cad39fc144f8a3af09e51ab727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  advertisementImage: {fileID: 1316367838}
-  NightNumber: 1
-  NightNumberDisplayer: {fileID: 0}
-  UpdatePanel: {fileID: 0}
-  LoginPanel: {fileID: 218098259}
-  MainMenuNavigationPanel: {fileID: 959594340}
-  OptionsMenuNavigationPanel: {fileID: 685786507}
-  AudioMenuPanel: {fileID: 1912968395}
-  CreditsMenuPanel: {fileID: 214317388}
-  setLanguageText: {fileID: 1437901696}
-  languageText: {fileID: 0}
-  creditsText: {fileID: 0}
 --- !u!1 &1623041115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4958,7 +4844,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 608784600}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2069544270
 MonoBehaviour:
