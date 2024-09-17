@@ -11,7 +11,6 @@ public class ShareData : MonoBehaviour
 
     private bool isSent = false;
     private bool popupDisplayed = false;
-    private bool inputPressed = false;
 
     private string localUsername;
     private string localVersion;
@@ -47,25 +46,22 @@ public class ShareData : MonoBehaviour
 
         if (menuManager.currentPopup != null && menuManager.currentPopup.popupId == "sharedata" && menuManager.currentPopup.optionId != -1)
         {
-            if (!inputPressed)
+            if (menuManager.currentPopup.optionId == 0) // The data can be shared
             {
-                if (menuManager.currentPopup.optionId == 0) // The data can be shared
-                {
-                    canShareData = 1;
-                    saveManager.SaveShareData(canShareData);
-                    bool saveResult = saveGameState.DoSave();
-                }
-                else if (menuManager.currentPopup.optionId == 1) // The data can't be shared
-                {
-                    canShareData = 0;
-                    saveManager.SaveShareData(canShareData);
-                    bool saveResult = saveGameState.DoSave();
-                }
-
-                menuManager.CloseCurrentPopup();
-
-                inputPressed = true;
+                canShareData = 1;
+                saveManager.SaveShareData(canShareData);
+                bool saveResult = saveGameState.DoSave();
             }
+            else if (menuManager.currentPopup.optionId == 1) // The data can't be shared
+            {
+                canShareData = 0;
+                saveManager.SaveShareData(canShareData);
+                bool saveResult = saveGameState.DoSave();
+            }
+
+            menuManager.currentPopup.optionId = -1;
+
+            menuManager.CloseCurrentPopup();
         }
     }
 
