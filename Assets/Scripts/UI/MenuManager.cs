@@ -162,11 +162,30 @@ public class MenuManager : MonoBehaviour
                     {
                         ClickSelectedButton();
                     }
-                    else if (currentScrollRect == null && currentPopup != null)
+                    else if (currentPopup != null)
                     {
                         if (currentPopup.actionType == 0)
                         {
                             CloseCurrentPopup();
+                        }
+                        else if (currentPopup.actionType == 1)
+                        {
+                            GameObject optionsContainer = currentPopup.popupObject.transform.Find("Options").gameObject;
+
+                            int index = 0;
+
+                            foreach (Transform child in optionsContainer.transform)
+                            {
+                                Button button = child.GetComponent<Button>();
+
+                                if (button == currentButton)
+                                {
+                                    currentPopup.optionId = index; // Should never be -1
+                                    break;
+                                }
+
+                                index++;
+                            }
                         }
                     }
                 }
@@ -265,11 +284,30 @@ public class MenuManager : MonoBehaviour
                         {
                             ClickSelectedButton();
                         }
-                        else if (currentScrollRect == null && currentPopup != null)
+                        else if (currentPopup != null)
                         {
                             if (currentPopup.actionType == 0)
                             {
                                 CloseCurrentPopup();
+                            }
+                            else if (currentPopup.actionType == 1)
+                            {
+                                GameObject optionsContainer = currentPopup.popupObject.transform.Find("Options").gameObject;
+
+                                int index = 0;
+
+                                foreach (Transform child in optionsContainer.transform)
+                                {
+                                    Button button = child.GetComponent<Button>();
+
+                                    if (button == currentButton)
+                                    {
+                                        currentPopup.optionId = index; // Should never be -1
+                                        break;
+                                    }
+
+                                    index++;
+                                }
                             }
                         }
                     }
@@ -365,11 +403,30 @@ public class MenuManager : MonoBehaviour
                         {
                             ClickSelectedButton();
                         }
-                        else if (currentScrollRect == null && currentPopup != null)
+                        else if (currentPopup != null)
                         {
                             if (currentPopup.actionType == 0)
                             {
                                 CloseCurrentPopup();
+                            }
+                            else if (currentPopup.actionType == 1)
+                            {
+                                GameObject optionsContainer = currentPopup.popupObject.transform.Find("Options").gameObject;
+
+                                int index = 0;
+
+                                foreach (Transform child in optionsContainer.transform)
+                                {
+                                    Button button = child.GetComponent<Button>();
+
+                                    if (button == currentButton)
+                                    {
+                                        currentPopup.optionId = index; // Should never be -1
+                                        break;
+                                    }
+
+                                    index++;
+                                }
                             }
                         }
                     }
@@ -464,11 +521,30 @@ public class MenuManager : MonoBehaviour
                         {
                             ClickSelectedButton();
                         }
-                        else if (currentScrollRect == null && currentPopup != null)
+                        else if (currentPopup != null)
                         {
                             if (currentPopup.actionType == 0)
                             {
                                 CloseCurrentPopup();
+                            }
+                            else if (currentPopup.actionType == 1)
+                            {
+                                GameObject optionsContainer = currentPopup.popupObject.transform.Find("Options").gameObject;
+
+                                int index = 0;
+
+                                foreach (Transform child in optionsContainer.transform)
+                                {
+                                    Button button = child.GetComponent<Button>();
+
+                                    if (button == currentButton)
+                                    {
+                                        currentPopup.optionId = index; // Should never be -1
+                                        break;
+                                    }
+
+                                    index++;
+                                }
                             }
                         }
                     }
@@ -537,7 +613,7 @@ public class MenuManager : MonoBehaviour
                 {
                     ClickSelectedButton();
                 }
-                else if (currentScrollRect == null && currentPopup != null)
+                else if (currentPopup != null)
                 {
                     if (currentPopup.actionType == 0)
                     {
