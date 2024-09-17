@@ -81,10 +81,10 @@ public class MenuManager : MonoBehaviour
         remote = WiiU.Remote.Access(0);
 
         // Generate cursor
-        GameObject canvasTV = GameObject.Find("CanvaTV");
-        currentSelection = Instantiate(selectionPrefab, canvasTV.transform);
+        GameObject canvasUI = GameObject.Find("CanvaUI");
+        currentSelection = Instantiate(selectionPrefab, canvasUI.transform);
         currentSelection.SetActive(false);
-        currentPopupSelection = Instantiate(selectionPopupPrefab, canvasTV.transform);
+        currentPopupSelection = Instantiate(selectionPopupPrefab, canvasUI.transform);
         currentPopupSelection.SetActive(false);
     }
 
