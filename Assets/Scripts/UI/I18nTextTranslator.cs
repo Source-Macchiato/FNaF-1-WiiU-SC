@@ -5,6 +5,7 @@ public class I18nTextTranslator : MonoBehaviour
 {
     public string textId;
     private Text textComponent;
+    private string currentLanguage;
 
     void Start()
     {
@@ -20,7 +21,24 @@ public class I18nTextTranslator : MonoBehaviour
             return;
         }
 
+        // Get language
+        currentLanguage = I18n.GetLanguage();
+
+        // Load text
         UpdateText();
+    }
+
+    void Update()
+    {
+        // Check if current language is not th I18n language
+        if (currentLanguage != I18n.GetLanguage())
+        {
+            // Reload text
+            UpdateText();
+
+            // Set I18n language as current language
+            currentLanguage = I18n.GetLanguage();
+        }
     }
 
     public void UpdateText()

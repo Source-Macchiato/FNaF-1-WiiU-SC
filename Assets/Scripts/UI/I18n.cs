@@ -24,15 +24,13 @@ public class I18n
         LoadLanguage();
     }
 
-    public static void ReloadLanguage()
-    {
-        LoadLanguage();
-    }
-
-    private static void LoadLanguage()
+    public static void LoadLanguage()
     {
         if (Texts == null)
+        {
             Texts = new Dictionary<string, string>();
+        }
+            
 
         Texts.Clear();
 

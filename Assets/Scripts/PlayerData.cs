@@ -10,7 +10,6 @@ public class PlayerData : MonoBehaviour
     // Scripts
     SaveGameState saveGameState;
     SaveManager saveManager;
-    I18nTextTranslator[] translators;
 
     // Advertisement
     public GameObject advertisementImage;
@@ -18,12 +17,13 @@ public class PlayerData : MonoBehaviour
     private float startTime;
     private float waitTime = 10f;
 
+    public bool search;
+
     void Start()
     {
         // Get scripts
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
-        translators = FindObjectsOfType<I18nTextTranslator>();
 
         // Load night number from save and display it
         NightNumber = SaveManager.LoadNightNumber();
@@ -55,10 +55,7 @@ public class PlayerData : MonoBehaviour
         saveManager.SaveLanguage(currentLanguageText.text);
         bool saveResult = saveGameState.DoSave();
 
-        I18n.ReloadLanguage();
-        foreach (I18nTextTranslator translator in translators)
-        {
-            translator.UpdateText();
-        }
+        // Reload the language
+        I18n.LoadLanguage();
     }
 }
