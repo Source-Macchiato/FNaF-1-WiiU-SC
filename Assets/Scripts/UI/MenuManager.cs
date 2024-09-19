@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
 
@@ -127,36 +127,36 @@ public class MenuManager : MonoBehaviour
                     }
                 }
 
-                // Is Released
-                if (gamePadState.IsReleased(WiiU.GamePadButton.Up))
+                // Is Triggered
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.Up))
                 {
                     if (currentScrollRect == null && currentPopup == null)
                     {
                         MenuNavigation(currentButton.navigation.selectOnUp);
                     }
                 }
-                else if (gamePadState.IsReleased(WiiU.GamePadButton.Down))
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.Down))
                 {
                     if (currentScrollRect == null && currentPopup == null)
                     {
                         MenuNavigation(currentButton.navigation.selectOnDown);
                     }
                 }
-                else if (gamePadState.IsReleased(WiiU.GamePadButton.Left))
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.Left))
                 {
                     if (currentPopup != null && currentPopup.actionType == 1)
                     {
                         MenuNavigation(currentButton.navigation.selectOnLeft);
                     }
                 }
-                else if (gamePadState.IsReleased(WiiU.GamePadButton.Right))
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.Right))
                 {
                     if (currentPopup != null && currentPopup.actionType == 1)
                     {
                         MenuNavigation(currentButton.navigation.selectOnRight);
                     }
                 }
-                else if (gamePadState.IsReleased(WiiU.GamePadButton.A))
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
                     if (currentScrollRect == null && currentPopup == null)
                     {
@@ -189,7 +189,7 @@ public class MenuManager : MonoBehaviour
                         }
                     }
                 }
-                else if (gamePadState.IsReleased(WiiU.GamePadButton.B))
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
                 {
                     if (currentPopup == null)
                     {
@@ -249,36 +249,36 @@ public class MenuManager : MonoBehaviour
                         }
                     }
 
-                    // Is Released
-                    if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Up))
+                    // Is Triggered
+                    if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
                     }
-                    else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Down))
+                    else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Down))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
                     }
-                    else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Left))
+                    else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Left))
                     {
                         if (currentPopup != null && currentPopup.actionType == 1)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }
                     }
-                    else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.Right))
+                    else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Right))
                     {
                         if (currentPopup != null && currentPopup.actionType == 1)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }
                     }
-                    else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.A))
+                    else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
@@ -311,7 +311,7 @@ public class MenuManager : MonoBehaviour
                             }
                         }
                     }
-                    else if (remoteState.pro.IsReleased(WiiU.ProControllerButton.B))
+                    else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
                     {
                         if (currentPopup == null)
                         {
@@ -369,35 +369,35 @@ public class MenuManager : MonoBehaviour
                     }
 
                     // Is Released
-                    if (remoteState.classic.IsReleased(WiiU.ClassicButton.Up))
+                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Up))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
                     }
-                    else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Down))
+                    else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Down))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
                     }
-                    else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Left))
+                    else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Left))
                     {
                         if (currentPopup != null && currentPopup.actionType == 1)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }
                     }
-                    else if (remoteState.classic.IsReleased(WiiU.ClassicButton.Right))
+                    else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Right))
                     {
                         if (currentPopup != null && currentPopup.actionType == 1)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }
                     }
-                    else if (remoteState.classic.IsReleased(WiiU.ClassicButton.A))
+                    else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.A))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
@@ -430,7 +430,7 @@ public class MenuManager : MonoBehaviour
                             }
                         }
                     }
-                    else if (remoteState.classic.IsReleased(WiiU.ClassicButton.B))
+                    else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.B))
                     {
                         if (currentPopup == null)
                         {
@@ -486,36 +486,36 @@ public class MenuManager : MonoBehaviour
                         }
                     }
 
-                    // Is Released
-                    if (remoteState.IsReleased(WiiU.RemoteButton.Up))
+                    // Is Triggered
+                    if (remoteState.IsTriggered(WiiU.RemoteButton.Up))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
                     }
-                    else if (remoteState.IsReleased(WiiU.RemoteButton.Down))
+                    else if (remoteState.IsTriggered(WiiU.RemoteButton.Down))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
                     }
-                    else if (remoteState.IsReleased(WiiU.RemoteButton.Left))
+                    else if (remoteState.IsTriggered(WiiU.RemoteButton.Left))
                     {
                         if (currentPopup != null && currentPopup.actionType == 1)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }
                     }
-                    else if (remoteState.IsReleased(WiiU.RemoteButton.Right))
+                    else if (remoteState.IsTriggered(WiiU.RemoteButton.Right))
                     {
                         if (currentPopup != null && currentPopup.actionType == 1)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }
                     }
-                    else if (remoteState.IsReleased(WiiU.RemoteButton.A))
+                    else if (remoteState.IsTriggered(WiiU.RemoteButton.A))
                     {
                         if (currentScrollRect == null && currentPopup == null)
                         {
@@ -548,7 +548,7 @@ public class MenuManager : MonoBehaviour
                             }
                         }
                     }
-                    else if (remoteState.IsReleased(WiiU.RemoteButton.B))
+                    else if (remoteState.IsTriggered(WiiU.RemoteButton.B))
                     {
                         if (currentPopup == null)
                         {

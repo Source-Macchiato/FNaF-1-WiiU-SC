@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using WiiU = UnityEngine.WiiU;
 using UnityEngine.UI;
+using WiiU = UnityEngine.WiiU;
+
 public class CameraScript : MonoBehaviour
 {
     public AudioSource Boop;
