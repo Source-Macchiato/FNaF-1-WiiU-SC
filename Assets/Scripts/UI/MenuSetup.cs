@@ -33,6 +33,8 @@ public class MenuSetup : MonoBehaviour
     // Buttons functions
     void NewGame()
     {
+        menuManager.canNavigate = false;
+
         playerData.NightNumber = 1;
         PlayerPrefs.SetFloat("NightNumber", playerData.NightNumber);
         PlayerPrefs.Save();
@@ -41,6 +43,8 @@ public class MenuSetup : MonoBehaviour
 
     void Continue()
     {
+        menuManager.canNavigate = false;
+
         playerData.NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
         if (playerData.NightNumber == 1)
