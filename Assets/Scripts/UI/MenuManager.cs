@@ -23,10 +23,15 @@ public class PopupData
 public class MenuManager : MonoBehaviour
 {
     // Prefab for creating buttons dynamically
+    [Header("Prefabs")]
     public GameObject buttonPrefab;
     public GameObject selectionPrefab;
     public GameObject selectionPopupPrefab;
     public GameObject[] popupPrefab;
+
+    // Audio
+    [Header("Audio")]
+    public AudioSource buttonAudio;
 
     [Header("Enabled controllers")]
     public bool gamepad;
@@ -849,6 +854,12 @@ public class MenuManager : MonoBehaviour
 
             // Set current button
             currentButton = selectedButton;
+
+            // Play effect
+            if (buttonAudio != null)
+            {
+                buttonAudio.Play();
+            }
         }
     }
 
@@ -983,6 +994,8 @@ public class MenuManager : MonoBehaviour
                 UpdateSelectionPosition(menuButtons[menuId][0]);
 
                 currentButton = menuButtons[menuId][0].GetComponent<Button>();
+
+                buttonAudio.Play();
             }
             else
             {
