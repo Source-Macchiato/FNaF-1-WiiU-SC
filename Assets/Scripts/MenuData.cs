@@ -65,8 +65,9 @@ public class MenuData : MonoBehaviour
     public void GenerateNightNumber()
     {
         Transform canvaUI = GameObject.Find("CanvaUI").transform;
+        Transform nightNumberContainer = canvaUI.Find("NightNumberContainer").transform;
 
-        nightNumberGameObject = Instantiate(nightNumberPrefab, canvaUI);
+        nightNumberGameObject = Instantiate(nightNumberPrefab, nightNumberContainer);
         nightNumberGameObject.transform.Find("NumberText").GetComponent<Text>().text = nightNumber.ToString();
 
         RectTransform nightNumberRect = nightNumberGameObject.GetComponent<RectTransform>();
