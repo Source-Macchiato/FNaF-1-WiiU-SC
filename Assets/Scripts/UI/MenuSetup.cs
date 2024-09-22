@@ -33,6 +33,19 @@ public class MenuSetup : MonoBehaviour
         menuData.GenerateNightNumber();
     }
 
+    void Update()
+    {
+        // Display night number if Continue button selected
+        if (menuManager.currentButton == menuManager.menuButtons[0][1].GetComponent<Button>() && !menuData.nightNumberGameObject.activeSelf)
+        {
+            menuData.nightNumberGameObject.SetActive(true);
+        }
+        else if (menuManager.currentButton != menuManager.menuButtons[0][1].GetComponent<Button>() && menuData.nightNumberGameObject.activeSelf)
+        {
+            menuData.nightNumberGameObject.SetActive(false);
+        }
+    }
+
     // Buttons functions
     void NewGame()
     {

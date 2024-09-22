@@ -74,9 +74,4 @@ public class MenuData : MonoBehaviour
 
         nightNumberGameObject.SetActive(false);
     }
-
-    public void DisplayNightNumber(bool display)
-    {
-        nightNumberGameObject.SetActive(display);
-    }
 }

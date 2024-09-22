@@ -43,7 +43,8 @@ public class MenuManager : MonoBehaviour
     public Transform[] menus;
 
     // List to keep track of all menu buttons
-    private Dictionary<int, List<GameObject>> menuButtons = new Dictionary<int, List<GameObject>>();
+    [HideInInspector]
+    public Dictionary<int, List<GameObject>> menuButtons = new Dictionary<int, List<GameObject>>();
 
     // List to keep track of generated callbacks
     private Dictionary<int, UnityEngine.Events.UnityAction> backCallbacks = new Dictionary<int, UnityEngine.Events.UnityAction>();
@@ -70,7 +71,7 @@ public class MenuManager : MonoBehaviour
     [HideInInspector]
     public ScrollRect currentScrollRect;
     public PopupData currentPopup;
-    private Button currentButton;
+    public Button currentButton;
 
     // Stick navigation
     private float stickNavigationCooldown = 0.2f;
