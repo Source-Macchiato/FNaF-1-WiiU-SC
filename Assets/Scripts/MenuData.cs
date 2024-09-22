@@ -2,10 +2,14 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerData : MonoBehaviour
+public class MenuData : MonoBehaviour
 {
-    public float NightNumber;
+    public float nightNumber;
+    public GameObject nightNumberPrefab;
     public Text currentLanguageText;
+
+    [HideInInspector]
+    public GameObject nightNumberGameObject;
 
     // Scripts
     SaveGameState saveGameState;
@@ -17,8 +21,6 @@ public class PlayerData : MonoBehaviour
     private float startTime;
     private float waitTime = 10f;
 
-    public bool search;
-
     void Start()
     {
         // Get scripts
@@ -26,7 +28,7 @@ public class PlayerData : MonoBehaviour
         saveManager = FindObjectOfType<SaveManager>();
 
         // Load night number from save and display it
-        NightNumber = SaveManager.LoadNightNumber();
+        nightNumber = SaveManager.LoadNightNumber();
 
         // Disable advertisement by default
         advertisementIsActive = false;
@@ -57,5 +59,24 @@ public class PlayerData : MonoBehaviour
 
         // Reload the language
         I18n.LoadLanguage();
+    }
+
+    // Night number system 
+    public void GenerateNightNumber()
+    {
+        Transform canvaUI = GameObject.Find("CanvaUI").transform;
+
+        nightNumberGameObject = Instantiate(nightNumberPrefab, canvaUI);
+        nightNumberGameObject.transform.Find("NumberText").GetComponent<Text>().text = nightNumber.ToString();
+
+        RectTransform nightNumberRect = nightNumberGameObject.GetComponent<RectTransform>();
+        nightNumberRect.anchoredPosition = new Vector2(-700f, -234.2f);
+
+        nightNumberGameObject.SetActive(false);
+    }
+
+    public void DisplayNightNumber(bool display)
+    {
+        nightNumberGameObject.SetActive(display);
     }
 }

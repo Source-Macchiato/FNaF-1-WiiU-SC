@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 17428578}
   - component: {fileID: 17428579}
   m_Layer: 0
-  m_Name: PlayerData
+  m_Name: MenuData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,10 +284,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7733642d966b58844acbfdbec687df89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NightNumber: 0
+  nightNumber: 0
+  nightNumberPrefab: {fileID: 1651130528948476, guid: 849d0d0f3905c28458c28472ba43866b,
+    type: 2}
   currentLanguageText: {fileID: 1437901696}
   advertisementImage: {fileID: 1316367838}
-  search: 0
 --- !u!1 &31135002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,6 +3474,7 @@ MonoBehaviour:
   - {fileID: 214317389}
   - {fileID: 1181553489}
   canNavigate: 1
+  currentMenuId: 0
   currentScrollRect: {fileID: 0}
 --- !u!4 &1357081284
 Transform:
@@ -4368,7 +4370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuManager: {fileID: 1357081283}
-  playerData: {fileID: 17428579}
+  menuData: {fileID: 17428579}
 --- !u!1 &1878505816
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class MenuSetup : MonoBehaviour
 {
     // Reference to the main and sub menus
     public MenuManager menuManager;
-    public PlayerData playerData;
+    public MenuData menuData;
 
     void Start()
     {
@@ -28,6 +28,9 @@ public class MenuSetup : MonoBehaviour
 
         // Display main menu after loaded all buttons
         menuManager.ChangeMenu(0);
+
+        // Some actions to do
+        menuData.GenerateNightNumber();
     }
 
     // Buttons functions
@@ -35,23 +38,23 @@ public class MenuSetup : MonoBehaviour
     {
         menuManager.canNavigate = false;
 
-        playerData.NightNumber = 1;
-        PlayerPrefs.SetFloat("NightNumber", playerData.NightNumber);
+        menuData.nightNumber = 1;
+        PlayerPrefs.SetFloat("NightNumber", menuData.nightNumber);
         PlayerPrefs.Save();
-        playerData.LoadAdvertisement();
+        menuData.LoadAdvertisement();
     }
 
     void Continue()
     {
         menuManager.canNavigate = false;
 
-        playerData.NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        menuData.nightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
-        if (playerData.NightNumber == 1)
+        if (menuData.nightNumber == 1)
         {
-            playerData.LoadAdvertisement();
+            menuData.LoadAdvertisement();
         }
-        else if (playerData.NightNumber > 1 && playerData.NightNumber < 6)
+        else if (menuData.nightNumber > 1 && menuData.nightNumber < 6)
         {
             SceneManager.LoadScene("NextNight");
         }
@@ -96,7 +99,7 @@ public class MenuSetup : MonoBehaviour
     // Callback functions
     void OnBackFromLanguage()
     {
-        playerData.SaveAndUpdateLanguage();
+        menuData.SaveAndUpdateLanguage();
     }
 
     void OnBackFromCredits()
