@@ -7,6 +7,7 @@ public class MenuData : MonoBehaviour
     public float nightNumber;
     public GameObject nightNumberPrefab;
     public Text currentLanguageText;
+    public int layoutId;
 
     [HideInInspector]
     public GameObject nightNumberGameObject;
@@ -27,8 +28,9 @@ public class MenuData : MonoBehaviour
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
 
-        // Load night number from save and display it
+        // Load
         nightNumber = SaveManager.LoadNightNumber();
+        layoutId = SaveManager.LoadLayoutId();
 
         // Disable advertisement by default
         advertisementIsActive = false;

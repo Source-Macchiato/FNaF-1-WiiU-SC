@@ -96,7 +96,17 @@ public class MenuSetup : MonoBehaviour
 
     void Layout()
     {
+        menuManager.ChangeMenu(5);
 
+        Button[] layoutButtons = menuManager.GetCurrentMenu().transform.GetComponentsInChildren<Button>();
+
+        Button newButton = layoutButtons[menuData.layoutId];
+
+        newButton.Select();
+
+        menuManager.currentButton = newButton;
+
+        Debug.Log(newButton.gameObject.name);
     }
 
     void Online()
@@ -105,6 +115,11 @@ public class MenuSetup : MonoBehaviour
     }
 
     void Analytics()
+    {
+
+    }
+
+    void ChangeLayout()
     {
 
     }
