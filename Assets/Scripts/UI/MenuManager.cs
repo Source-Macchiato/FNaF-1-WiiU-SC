@@ -705,7 +705,7 @@ public class MenuManager : MonoBehaviour
         // Toggle visibility for cursors
         if (currentSelection != null)
         {
-            if (currentScrollRect == null && currentPopup == null)
+            if (currentScrollRect == null && currentPopup == null && menuButtons.ContainsKey(currentMenuId) && menuButtons[currentMenuId].Count > 0)
             {
                 if (!currentSelection.activeSelf)
                 {
