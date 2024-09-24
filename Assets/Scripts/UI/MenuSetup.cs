@@ -25,6 +25,7 @@ public class MenuSetup : MonoBehaviour
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(2, OnBackFromLanguage);
+        menuManager.SetBackCallback(5, OnBackFromLayout);
 
         // Display main menu after loaded all buttons
         menuManager.ChangeMenu(0);
@@ -98,15 +99,13 @@ public class MenuSetup : MonoBehaviour
     {
         menuManager.ChangeMenu(5);
 
-        Button[] layoutButtons = menuManager.GetCurrentMenu().transform.GetComponentsInChildren<Button>();
+        menuData.layoutButtons = menuManager.GetCurrentMenu().transform.GetComponentsInChildren<Button>();
 
-        Button newButton = layoutButtons[menuData.layoutId];
+        Button newButton = menuData.layoutButtons[menuData.layoutId];
 
         newButton.Select();
 
         menuManager.currentButton = newButton;
-
-        Debug.Log(newButton.gameObject.name);
     }
 
     void Online()
@@ -115,11 +114,6 @@ public class MenuSetup : MonoBehaviour
     }
 
     void Analytics()
-    {
-
-    }
-
-    void ChangeLayout()
     {
 
     }
@@ -133,5 +127,22 @@ public class MenuSetup : MonoBehaviour
     void OnBackFromCredits()
     {
         menuManager.currentScrollRect = null;
+    }
+
+    void OnBackFromLayout()
+    {
+        int index = 0;
+
+        foreach (Button layoutButton in menuData.layoutButtons)
+        {
+            if (layoutButton == menuManager.currentButton)
+            {
+                menuData.layoutId = index;
+                menuData.SaveLayout();
+                break;
+            }
+
+            index++;
+        }
     }
 }

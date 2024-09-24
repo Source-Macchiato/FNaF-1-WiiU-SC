@@ -11,6 +11,7 @@ public class MenuData : MonoBehaviour
 
     [HideInInspector]
     public GameObject nightNumberGameObject;
+    public Button[] layoutButtons;
 
     // Scripts
     SaveGameState saveGameState;
@@ -61,6 +62,12 @@ public class MenuData : MonoBehaviour
 
         // Reload the language
         I18n.LoadLanguage();
+    }
+
+    public void SaveLayout()
+    {
+        saveManager.SaveLayoutId(layoutId);
+        bool saveResult = saveGameState.DoSave();
     }
 
     // Night number system 
