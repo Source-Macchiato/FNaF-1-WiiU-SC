@@ -139,28 +139,28 @@ public class MenuManager : MonoBehaviour
                 // Is Triggered
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.Up))
                 {
-                    if (currentScrollRect == null && currentPopup == null && canNavigate)
+                    if (currentScrollRect == null && canNavigate)
                     {
                         MenuNavigation(currentButton.navigation.selectOnUp);
                     }
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Down))
                 {
-                    if (currentScrollRect == null && currentPopup == null && canNavigate)
+                    if (currentScrollRect == null && canNavigate)
                     {
                         MenuNavigation(currentButton.navigation.selectOnDown);
                     }
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Left))
                 {
-                    if (currentPopup != null && currentPopup.actionType == 1 && canNavigate)
+                    if (currentPopup != null && canNavigate)
                     {
                         MenuNavigation(currentButton.navigation.selectOnLeft);
                     }
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Right))
                 {
-                    if (currentPopup != null && currentPopup.actionType == 1 && canNavigate)
+                    if (currentPopup != null && canNavigate)
                     {
                         MenuNavigation(currentButton.navigation.selectOnRight);
                     }
@@ -261,28 +261,28 @@ public class MenuManager : MonoBehaviour
                     // Is Triggered
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (currentScrollRect == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Down))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (currentScrollRect == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Left))
                     {
-                        if (currentPopup != null && currentPopup.actionType == 1 && canNavigate)
+                        if (currentPopup != null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Right))
                     {
-                        if (currentPopup != null && currentPopup.actionType == 1 && canNavigate)
+                        if (currentPopup != null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }
@@ -380,28 +380,28 @@ public class MenuManager : MonoBehaviour
                     // Is Released
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Up))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (currentScrollRect == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Down))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (currentScrollRect == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Left))
                     {
-                        if (currentPopup != null && currentPopup.actionType == 1 && canNavigate)
+                        if (currentPopup != null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Right))
                     {
-                        if (currentPopup != null && currentPopup.actionType == 1 && canNavigate)
+                        if (currentPopup != null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }
@@ -498,28 +498,28 @@ public class MenuManager : MonoBehaviour
                     // Is Triggered
                     if (remoteState.IsTriggered(WiiU.RemoteButton.Up))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (currentScrollRect == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Down))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (currentScrollRect == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Left))
                     {
-                        if (currentPopup != null && currentPopup.actionType == 1 && canNavigate)
+                        if (currentPopup != null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Right))
                     {
-                        if (currentPopup != null && currentPopup.actionType == 1 && canNavigate)
+                        if (currentPopup != null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }
@@ -590,14 +590,14 @@ public class MenuManager : MonoBehaviour
             // Key Down
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                if (currentScrollRect == null && currentPopup == null && canNavigate)
+                if (currentScrollRect == null && canNavigate)
                 {
                     MenuNavigation(currentButton.navigation.selectOnUp);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (currentScrollRect == null && currentPopup == null && canNavigate)
+                if (currentScrollRect == null && canNavigate)
                 {
                     MenuNavigation(currentButton.navigation.selectOnDown);
                 }
@@ -874,17 +874,20 @@ public class MenuManager : MonoBehaviour
     // Navigates through the menu buttons based on the direction
     public void MenuNavigation(Selectable nextSelectable)
     {
-        // Get next button and select it
-        Button newButton = nextSelectable.GetComponent<Button>();
-        newButton.Select();
-
-        // Set current button
-        currentButton = newButton;
-
-        // Play effect
-        if (buttonAudio != null)
+        if (nextSelectable != null)
         {
-            buttonAudio.Play();
+            // Get next button and select it
+            Button newButton = nextSelectable.GetComponent<Button>();
+            newButton.Select();
+
+            // Set current button
+            currentButton = newButton;
+
+            // Play effect
+            if (buttonAudio != null)
+            {
+                buttonAudio.Play();
+            }
         }
     }
 
