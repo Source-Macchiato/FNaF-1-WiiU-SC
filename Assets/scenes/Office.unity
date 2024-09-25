@@ -7563,6 +7563,7 @@ GameObject:
   - component: {fileID: 1152074783}
   - component: {fileID: 1152074782}
   - component: {fileID: 1152074787}
+  - component: {fileID: 1152074788}
   m_Layer: 0
   m_Name: TV Camera
   m_TagString: MainCamera
@@ -7654,6 +7655,21 @@ MonoBehaviour:
   displacementShader: {fileID: 4800000, guid: 9108a04f7c37d5f4280824ef38fed484, type: 3}
   displacementMap: {fileID: 2800000, guid: d498b2dfd0ee54446b9ac2ce8caa68a9, type: 3}
   intensity: -0.25
+--- !u!114 &1152074788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1152074781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9232e97ea4d204645b59dd1dcbfe4f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Zoom: 1
+  _ZoomMultiplier: 0.5
+  _pDir: 0
+  _noWrap: 0
 --- !u!1 &1154752742
 GameObject:
   m_ObjectHideFlags: 0
