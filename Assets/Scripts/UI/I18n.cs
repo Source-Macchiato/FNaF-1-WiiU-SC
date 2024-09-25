@@ -58,6 +58,10 @@ public class I18n
         {
             lang = "sk";
         }
+        else if (languagePlayerPrefs == "Arabic")
+        {
+            lang = "ar";
+        }
         else
         {
             lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
@@ -99,6 +103,10 @@ public class I18n
         {
             return "sk";
         }
+        else if (languagePlayerPrefs == "Arabic")
+        {
+            return "ar";
+        }
         else
         {
             return Get2LetterISOCodeFromSystemLanguage().ToLower();
@@ -116,6 +124,7 @@ public class I18n
             case SystemLanguage.Spanish: res = "ES"; break;
             case SystemLanguage.Italian: res = "IT"; break;
             case SystemLanguage.Slovak: res = "SK"; break;
+            case SystemLanguage.Arabic: res = "AR"; break;
         }
         return res;
     }
