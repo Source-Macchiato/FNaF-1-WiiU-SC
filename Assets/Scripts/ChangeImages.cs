@@ -460,14 +460,14 @@ public class ChangeImages : MonoBehaviour
             {
                 if (WhereFreddy <= 1)
                 {
-                    cameraScreen.GetComponent<Image>().sprite = EastHall2_2;
+                    currentSprite = EastHall2_2;
                 }
             }
             if (WhereFreddy == 6)
             {
                 if (WhereChica <= 6)
                 {
-                    cameraScreen.GetComponent<Image>().sprite = EastHall2_3;
+                    currentSprite = EastHall2_3;
                 }
             }
 
