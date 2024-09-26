@@ -45,7 +45,7 @@ public class Office : MonoBehaviour {
     public AudioSource DoorClose;
     public AudioSource Light;
 
-    private const float speed = 600f;
+    private const float speed = 6f;
     private const float leftEdge = 272f;
     private const float rightEdge = -208f;
 
