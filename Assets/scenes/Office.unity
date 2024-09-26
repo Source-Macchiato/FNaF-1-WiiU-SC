@@ -1127,10 +1127,10 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 1
-  far clip plane: 1.01
+  near clip plane: 0.3
+  far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -6721,6 +6721,8 @@ GameObject:
   - component: {fileID: 935168463}
   - component: {fileID: 935168462}
   - component: {fileID: 935168461}
+  - component: {fileID: 935168466}
+  - component: {fileID: 935168465}
   m_Layer: 0
   m_Name: CameraOffice
   m_TagString: Untagged
@@ -6798,6 +6800,35 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!114 &935168465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 935168459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9232e97ea4d204645b59dd1dcbfe4f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Zoom: 1
+  _ZoomMultiplier: 0.5
+  _pDir: 0
+  _noWrap: 0
+--- !u!114 &935168466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 935168459}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396a56736947d3344a2247161834a71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displacementShader: {fileID: 4800000, guid: 9108a04f7c37d5f4280824ef38fed484, type: 3}
+  displacementMap: {fileID: 2800000, guid: d498b2dfd0ee54446b9ac2ce8caa68a9, type: 3}
+  intensity: -0.25
 --- !u!1 &943347021
 GameObject:
   m_ObjectHideFlags: 0
@@ -8365,8 +8396,6 @@ GameObject:
   - component: {fileID: 1152074785}
   - component: {fileID: 1152074784}
   - component: {fileID: 1152074783}
-  - component: {fileID: 1152074787}
-  - component: {fileID: 1152074788}
   m_Layer: 0
   m_Name: CameraTV
   m_TagString: MainCamera
@@ -8404,11 +8433,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.99
-  far clip plane: 1.01
+  near clip plane: 0.3
+  far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 545.0625
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -8437,35 +8466,6 @@ Transform:
   m_Father: {fileID: 1974914105}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1152074787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1152074781}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 396a56736947d3344a2247161834a71c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displacementShader: {fileID: 4800000, guid: 9108a04f7c37d5f4280824ef38fed484, type: 3}
-  displacementMap: {fileID: 2800000, guid: d498b2dfd0ee54446b9ac2ce8caa68a9, type: 3}
-  intensity: -0.25
---- !u!114 &1152074788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1152074781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9232e97ea4d204645b59dd1dcbfe4f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Zoom: 1
-  _ZoomMultiplier: 0.5
-  _pDir: 0
-  _noWrap: 0
 --- !u!1 &1154752742
 GameObject:
   m_ObjectHideFlags: 0
@@ -9027,7 +9027,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1445693859}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10601,8 +10601,8 @@ RectTransform:
   m_Children:
   - {fileID: 911282229}
   - {fileID: 1018954062}
-  - {fileID: 1722489587}
   - {fileID: 1199724525}
+  - {fileID: 1722489587}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12515,7 +12515,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1445693859}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15588,7 +15588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 624.58, y: 293.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1969409252
@@ -16356,7 +16356,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 861070637}
+  m_Camera: {fileID: 935168464}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
