@@ -29,6 +29,14 @@ public class UserInputTextSwitcher : MonoBehaviour
         {
             currentIndex = 3;
         }
+        else if (language == "sk")
+        {
+            currentIndex = 4;
+        }
+        else if (language == "ar")
+        {
+            currentIndex = 5;
+        }
         else
         {
             currentIndex = 0;

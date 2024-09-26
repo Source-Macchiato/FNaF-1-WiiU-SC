@@ -25,9 +25,10 @@ public class MenuManager : MonoBehaviour
     // Prefab for creating buttons dynamically
     [Header("Prefabs")]
     public GameObject buttonPrefab;
+    public GameObject cardPrefab;
+    public GameObject[] popupPrefab;
     public GameObject selectionPrefab;
     public GameObject selectionPopupPrefab;
-    public GameObject[] popupPrefab;
 
     // Audio
     [Header("Audio")]
@@ -817,6 +818,59 @@ public class MenuManager : MonoBehaviour
         {
             ShowNextPopup();
         }
+    }
+
+    public void AddCard(int menuId, string cardText, Sprite cardImage = null)
+    {
+        // Instantiate the card prefab
+        GameObject newCard = Instantiate(cardPrefab, menus[menuId]);
+
+        // Get the card button
+        Button cardComponent = newCard.GetComponent<Button>();
+
+        // Set the card text
+        GameObject cardTextComponent = newCard.transform.Find("Text").gameObject;
+        Text text = cardTextComponent.GetComponent<Text>();
+        text.text = cardText;
+
+        // Set the card image
+        if (cardImage != null)
+        {
+            GameObject cardImageComponent = newCard.transform.Find("Cover").gameObject;
+            Image image = cardImageComponent.GetComponent<Image>();
+            image.sprite = cardImage;
+        }
+
+        // Add the card to the correct menu list in the dictionary
+        if (!menuButtons.ContainsKey(menuId))
+        {
+            menuButtons[menuId] = new List<GameObject>();
+        }
+
+        // Handle navigation setup
+        int cardIndex = menuButtons[menuId].Count;
+
+        if (cardIndex > 0)
+        {
+            // Get the previous button
+            GameObject previousCard = menuButtons[menuId][cardIndex - 1];
+            Button previousCardComponent = previousCard.GetComponent<Button>();
+
+            // Set navigation for the new button
+            Navigation newNav = cardComponent.navigation;
+            newNav.mode = Navigation.Mode.Explicit;
+            newNav.selectOnLeft = previousCardComponent;
+            cardComponent.navigation = newNav;
+
+            // Set navigation for the previous button
+            Navigation prevNav = previousCardComponent.navigation;
+            prevNav.mode = Navigation.Mode.Explicit;
+            prevNav.selectOnRight = cardComponent;
+            previousCardComponent.navigation = prevNav;
+        }
+
+        // Add the new button to the list
+        menuButtons[menuId].Add(newCard);
     }
 
     // Shows the next popup in the queue

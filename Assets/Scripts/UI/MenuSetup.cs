@@ -22,6 +22,11 @@ public class MenuSetup : MonoBehaviour
 
         menuManager.AddButton("Analytic Data", Analytics, 4, "mainmenu.analyticdata");
 
+        // Adding cards to the main menu
+        menuManager.AddCard(5, "TV only");
+        menuManager.AddCard(5, "TV + Gamepad");
+        menuManager.AddCard(5, "Gamepad only");
+
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(2, OnBackFromLanguage);
