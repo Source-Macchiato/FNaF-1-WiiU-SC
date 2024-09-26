@@ -6,10 +6,11 @@ public class LayoutManager : MonoBehaviour
 
     [Header("Screens")]
     public GameObject[] screenOffice;
-    public GameObject[] screenCamera;
+    public GameObject[] screenMonitor;
     public GameObject[] screenMinimap;
     public GameObject[] screenUI;
 
+    [Header("Minimap")]
     public GameObject minimap;
 
     // Scripts
@@ -48,8 +49,8 @@ public class LayoutManager : MonoBehaviour
         screenOffice[0].SetActive(true);
         screenOffice[1].SetActive(false);
 
-        screenCamera[0].SetActive(true);
-        screenCamera[1].SetActive(false);
+        screenMonitor[0].SetActive(true);
+        screenMonitor[1].SetActive(false);
 
         screenMinimap[0].SetActive(true);
         screenMinimap[1].SetActive(false);
@@ -66,8 +67,8 @@ public class LayoutManager : MonoBehaviour
         screenOffice[0].SetActive(true);
         screenOffice[1].SetActive(false);
 
-        screenCamera[0].SetActive(true);
-        screenCamera[1].SetActive(false);
+        screenMonitor[0].SetActive(true);
+        screenMonitor[1].SetActive(false);
 
         screenMinimap[0].SetActive(false);
         screenMinimap[1].SetActive(true);
@@ -84,8 +85,8 @@ public class LayoutManager : MonoBehaviour
         screenOffice[0].SetActive(false);
         screenOffice[1].SetActive(true);
 
-        screenCamera[0].SetActive(false);
-        screenCamera[1].SetActive(true);
+        screenMonitor[0].SetActive(false);
+        screenMonitor[1].SetActive(true);
 
         screenMinimap[0].SetActive(false);
         screenMinimap[1].SetActive(true);

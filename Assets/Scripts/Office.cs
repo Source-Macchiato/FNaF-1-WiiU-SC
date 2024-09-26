@@ -47,7 +47,7 @@ public class Office : MonoBehaviour {
 
     private const float speed = 6f;
     private const float leftEdge = 272f;
-    private const float rightEdge = -208f;
+    private const float rightEdge = -230f;
 
     public bool BonnieOutsideDoor = false;
     public bool ChicaOutsideDoor = false;

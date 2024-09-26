@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 15670106}
   - component: {fileID: 15670105}
   m_Layer: 0
-  m_Name: CameraCamera
+  m_Name: CameraMonitor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ RectTransform:
   - {fileID: 1983494845}
   - {fileID: 969611534}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1469,7 +1469,7 @@ RectTransform:
   m_Children:
   - {fileID: 2139986449}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3659,7 +3659,7 @@ GameObject:
   - component: {fileID: 471291978}
   - component: {fileID: 471291977}
   m_Layer: 5
-  m_Name: CanvaCamera
+  m_Name: CanvaMonitor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3743,7 +3743,7 @@ RectTransform:
   - {fileID: 113357119}
   - {fileID: 1131507112}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7241,7 +7241,7 @@ GameObject:
   - component: {fileID: 1018954064}
   - component: {fileID: 1018954063}
   m_Layer: 5
-  m_Name: ScreenCamera
+  m_Name: ScreenMonitor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9381,7 +9381,7 @@ GameObject:
   - component: {fileID: 1264102028}
   - component: {fileID: 1264102027}
   m_Layer: 5
-  m_Name: ScreenCamera
+  m_Name: ScreenMonitor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10604,7 +10604,7 @@ RectTransform:
   - {fileID: 1199724525}
   - {fileID: 1722489587}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11627,7 +11627,7 @@ MonoBehaviour:
   screenOffice:
   - {fileID: 911282228}
   - {fileID: 1951004793}
-  screenCamera:
+  screenMonitor:
   - {fileID: 1018954061}
   - {fileID: 1264102025}
   screenMinimap:
@@ -16083,7 +16083,7 @@ RectTransform:
   - {fileID: 680659461}
   - {fileID: 1265014597}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16303,7 +16303,7 @@ RectTransform:
   m_Children:
   - {fileID: 1969409251}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
