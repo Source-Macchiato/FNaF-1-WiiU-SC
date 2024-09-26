@@ -706,7 +706,7 @@ public class MenuManager : MonoBehaviour
         // Toggle visibility for cursors
         if (currentSelection != null)
         {
-            if (currentScrollRect == null && currentPopup == null)
+            if (currentScrollRect == null && currentPopup == null && menuButtons.ContainsKey(currentMenuId) && menuButtons[currentMenuId].Count > 0)
             {
                 if (!currentSelection.activeSelf)
                 {
@@ -928,7 +928,7 @@ public class MenuManager : MonoBehaviour
     // Navigates through the menu buttons based on the direction
     public void MenuNavigation(Selectable nextSelectable)
     {
-        if (nextSelectable != null)
+        if (nextSelectable != null && menuButtons.ContainsKey(currentMenuId) && menuButtons[currentMenuId].Count > 0)
         {
             // Get next button and select it
             Button newButton = nextSelectable.GetComponent<Button>();
