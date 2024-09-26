@@ -54,6 +54,10 @@ public class I18n
         {
             lang = "it";
         }
+        else if (languagePlayerPrefs == "German")
+        {
+            lang = "de";
+        }
         else if (languagePlayerPrefs == "Slovak")
         {
             lang = "sk";
@@ -99,6 +103,10 @@ public class I18n
         {
             return "it";
         }
+        else if (languagePlayerPrefs == "German")
+        {
+            return "de";
+        }
         else if (languagePlayerPrefs == "Slovak")
         {
             return "sk";
@@ -123,6 +131,7 @@ public class I18n
             case SystemLanguage.French: res = "FR"; break;
             case SystemLanguage.Spanish: res = "ES"; break;
             case SystemLanguage.Italian: res = "IT"; break;
+            case SystemLanguage.German: res = "DE"; break;
             case SystemLanguage.Slovak: res = "SK"; break;
             case SystemLanguage.Arabic: res = "AR"; break;
         }
