@@ -10,7 +10,7 @@ public class Office : MonoBehaviour {
     private bool RightScareAlrdPlayed = false;
 
     public GameObject OfficeImage;
-    public RectTransform OfficeBounds;
+    public RectTransform officeBounds;
 
     public GameObject OfficeControllerObject;
 
@@ -91,6 +91,8 @@ public class Office : MonoBehaviour {
 
         Light_L_Door_Bonnie.enabled = false;
         Light_R_Door_Chica.enabled = false;
+
+        officeBounds = OfficeImage.GetComponent<RectTransform>();
     }
 
     void Update()
@@ -248,7 +250,7 @@ public class Office : MonoBehaviour {
         }
 
         // Check position on the left for the left door
-        if (OfficeImage.transform.position.x >= (leftEdge - 100))
+        if (officeBounds.localPosition.x >= (leftEdge - 100f))
         {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
@@ -539,7 +541,7 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
 
         // Check position on the right for the right door
-        if (OfficeImage.transform.position.x <= (rightEdge + 100))
+        if (officeBounds.localPosition.x <= (rightEdge + 100))
         {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
