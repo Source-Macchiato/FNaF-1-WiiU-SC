@@ -200,7 +200,7 @@ public class Office : MonoBehaviour {
             }
         }
 
-        // Remote
+        // Remotes
         switch (remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
@@ -240,6 +240,22 @@ public class Office : MonoBehaviour {
                 }
                 break;
             default:
+                if (remoteState.IsPressed(WiiU.RemoteButton.Left) && OfficeImage.transform.localPosition.x <= leftEdge)
+                {
+                    OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                    if (OfficeImage.transform.localPosition.x >= leftEdge)
+                    {
+                        OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                    }
+                    else if (remoteState.IsPressed(WiiU.RemoteButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+                    {
+                        OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                        if (OfficeImage.transform.localPosition.x <= rightEdge)
+                        {
+                            OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                        }
+                    }
+                }
                 break;
         }
 
@@ -463,6 +479,7 @@ public class Office : MonoBehaviour {
                 RightLightSystem();
             }
         }
+
         if (!L_Door_Closed && DoorButton_L4.isActiveAndEnabled == true)
         {
             DoorButton_L4.enabled = false;
@@ -491,7 +508,7 @@ public class Office : MonoBehaviour {
             }
         }
 
-        // Remote
+        // Remotes
         switch (remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
