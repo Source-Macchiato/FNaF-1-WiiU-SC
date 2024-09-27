@@ -212,8 +212,7 @@ public class Office : MonoBehaviour {
                         OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                     }
                 }
-
-                if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+                else if (remoteState.pro.IsPressed(WiiU.ProControllerButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
                 {
                     OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
                     if (OfficeImage.transform.localPosition.x <= rightEdge)
@@ -222,7 +221,24 @@ public class Office : MonoBehaviour {
                     }
                 }
                 break;
-
+            case WiiU.RemoteDevType.Classic:
+                if (remoteState.classic.IsPressed(WiiU.ClassicButton.Left) && OfficeImage.transform.localPosition.x <= leftEdge)
+                {
+                    OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                    if (OfficeImage.transform.localPosition.x >= leftEdge)
+                    {
+                        OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                    }
+                    else if (remoteState.classic.IsPressed(WiiU.ClassicButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+                    {
+                        OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                        if (OfficeImage.transform.localPosition.x <= rightEdge)
+                        {
+                            OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+                        }
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -238,8 +254,7 @@ public class Office : MonoBehaviour {
                     OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                 }
             }
-
-            if (Input.GetKey(KeyCode.RightArrow) && OfficeImage.transform.localPosition.x >= rightEdge)
+            else if (Input.GetKey(KeyCode.RightArrow) && OfficeImage.transform.localPosition.x >= rightEdge)
             {
                 OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
                 if (OfficeImage.transform.localPosition.x <= rightEdge)
@@ -257,101 +272,30 @@ public class Office : MonoBehaviour {
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
-                    foreach (Animator anim in FindObjectsOfType<Animator>())
-                    {
-                        if (anim.gameObject.name.Contains("Door"))
-                        {
-                            anim.enabled = true;
-                        }
-                    }
-                    if (L_Door_Closed)
-                    {
-                        Door_L_closed.SetActive(false);
-                        Door_L_open.SetActive(true);
-                        L_Door_Closed = false;
-                        DoorButton_L1.enabled = true;
-                        DoorButton_L2.enabled = false;
-                        DoorButton_R4.enabled = false;
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
-                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
-
-                    }
-                    else
-                    {
-                        Door_L_closed.SetActive(true);
-                        Door_L_open.SetActive(false);
-                        L_Door_Closed = true;
-                        DoorButton_L1.enabled = false;
-                        DoorButton_L2.enabled = true;
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
-
-                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
-
-                    }
+                    LeftDoorSystem();
                 }
             }
 
-            // Remote
+            // Remotes
             switch (remoteState.devType)
             {
                 case WiiU.RemoteDevType.ProController:
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
                     {
-                        foreach (Animator anim in FindObjectsOfType<Animator>())
-                        {
-                            if (anim.gameObject.name.Contains("Door"))
-                            {
-                                anim.enabled = true;
-                            }
-                        }
-                        if (L_Door_Closed)
-                        {
-                            Door_L_closed.SetActive(false);
-                            Door_L_open.SetActive(true);
-                            L_Door_Closed = false;
-                            DoorButton_L1.enabled = true;
-                            DoorButton_L2.enabled = false;
-                            DoorButton_R4.enabled = false;
-
-                            DoorClose.Play();
-
-                            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                            OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
-                            OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
-
-                        }
-                        else
-                        {
-                            Door_L_closed.SetActive(true);
-                            Door_L_open.SetActive(false);
-                            L_Door_Closed = true;
-                            DoorButton_L1.enabled = false;
-                            DoorButton_L2.enabled = true;
-
-                            DoorClose.Play();
-
-                            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                            OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
-
-                            OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
-
-                        }
+                        LeftDoorSystem();
                     }
                     break;
-
+                case WiiU.RemoteDevType.Classic:
+                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.A))
+                    {
+                        LeftDoorSystem();
+                    }
+                    break;
                 default:
+                    if (remoteState.IsTriggered(WiiU.RemoteButton.A))
+                    {
+                        LeftDoorSystem();
+                    }
                     break;
             }
 
@@ -360,47 +304,7 @@ public class Office : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    foreach (Animator anim in FindObjectsOfType<Animator>())
-                    {
-                        if (anim.gameObject.name.Contains("Door"))
-                        {
-                            anim.enabled = true;
-                        }
-                    }
-                    if (L_Door_Closed)
-                    {
-                        Door_L_closed.SetActive(false);
-                        Door_L_open.SetActive(true);
-                        L_Door_Closed = false;
-                        DoorButton_L1.enabled = true;
-                        DoorButton_L2.enabled = false;
-                        DoorButton_R4.enabled = false;
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
-                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
-                    }
-                    else
-                    {
-                        Door_L_closed.SetActive(true);
-                        Door_L_open.SetActive(false);
-                        L_Door_Closed = true;
-                        DoorButton_L1.enabled = false;
-                        DoorButton_L2.enabled = true;
-
-                        DoorClose.Play();
-
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
-
-                        OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
-
-                    }
+                    LeftDoorSystem();
                 }
             }
 
@@ -410,42 +314,7 @@ public class Office : MonoBehaviour {
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
                 {
-                    LeftLightIsOn = true;
-
-                    if (!BonnieOutsideDoor)
-                    {
-                        Light_L_No_Door.enabled = true;
-                        Light.Play();
-                        LeftScareAlrdPlayed = false;
-                    }
-
-                    if (BonnieOutsideDoor)
-                    {
-                        Light_L_Door_Bonnie.enabled = true;
-                        Light.Play();
-
-                        if (!L_Door_Closed && LeftScareAlrdPlayed == false)
-                        {
-                            Scare.Play();
-                            LeftScareAlrdPlayed = true;
-                        }
-                    }
-                    else
-                    {
-                        LeftScareAlrdPlayed = false;
-                    }
-
-                    OriginalOfficeImage.GetComponent<Image>().enabled = false;
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                    DoorButton_L3.enabled = true;
-
-                    if (L_Door_Closed)
-                    {
-                        DoorButton_L1.enabled = false;
-                        DoorButton_L4.enabled = true;
-                    }
+                    LeftLightSystem();
                 }
             }
 
@@ -455,46 +324,20 @@ public class Office : MonoBehaviour {
                 case WiiU.RemoteDevType.ProController:
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.X))
                     {
-                        LeftLightIsOn = true;
-
-                        if (!BonnieOutsideDoor)
-                        {
-                            Light_L_No_Door.enabled = true;
-                            Light.Play();
-                            LeftScareAlrdPlayed = false;
-                        }
-
-                        if (BonnieOutsideDoor)
-                        {
-                            Light_L_Door_Bonnie.enabled = true;
-                            Light.Play();
-
-                            if (!L_Door_Closed && LeftScareAlrdPlayed == false)
-                            {
-                                Scare.Play();
-                                LeftScareAlrdPlayed = true;
-                            }
-                        }
-                        else
-                        {
-                            LeftScareAlrdPlayed = false;
-                        }
-
-                        OriginalOfficeImage.GetComponent<Image>().enabled = false;
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                        DoorButton_L3.enabled = true;
-
-                        if (L_Door_Closed)
-                        {
-                            DoorButton_L1.enabled = false;
-                            DoorButton_L4.enabled = true;
-                        }
+                        LeftLightSystem();
                     }
                     break;
-
+                case WiiU.RemoteDevType.Classic:
+                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.X))
+                    {
+                        LeftLightSystem();
+                    }
+                    break;
                 default:
+                    if (remoteState.IsTriggered(WiiU.RemoteButton.B))
+                    {
+                        LeftLightSystem();
+                    }
                     break;
             }
 
@@ -503,38 +346,7 @@ public class Office : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    LeftLightIsOn = true;
-
-                    if (!BonnieOutsideDoor)
-                    {
-                        Light_L_No_Door.enabled = true;
-                        Light.Play();
-                        LeftScareAlrdPlayed = false;
-                    }
-
-                    if (BonnieOutsideDoor)
-                    {
-                        Light_L_Door_Bonnie.enabled = true;
-                        Light.Play();
-
-                        if (!L_Door_Closed && LeftScareAlrdPlayed == false)
-                        {
-                            LeftScareAlrdPlayed = true;
-                            Scare.Play();
-                        }
-                    }
-
-                    OriginalOfficeImage.GetComponent<Image>().enabled = false;
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                    DoorButton_L3.enabled = true;
-
-                    if (L_Door_Closed)
-                    {
-                        DoorButton_L1.enabled = false;
-                        DoorButton_L4.enabled = true;
-                    }
+                    LeftLightSystem();
                 }
             }
         }
@@ -548,72 +360,12 @@ public class Office : MonoBehaviour {
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
-                    if (R_Door_Closed)
-                    {
-                        Door_R_closed.SetActive(false);
-                        Door_R_open.SetActive(true);
-                        R_Door_Closed = false;
-                        DoorButton_R1.enabled = true;
-                        DoorButton_R2.enabled = false;
-                        DoorButton_R4.enabled = false;
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
-                    }
-                    else
-                    {
-                        Door_R_closed.SetActive(true);
-                        Door_R_open.SetActive(false);
-                        R_Door_Closed = true;
-                        DoorButton_R1.enabled = false;
-                        DoorButton_R2.enabled = true;
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
-
-                    }
+                    RightDoorSystem();
                 }
-                bool camIsUp = movementScript.camIsUp;
 
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
                 {
-                    RightLightIsOn = true;
-
-                    if (!ChicaOutsideDoor)
-                    {
-                        Light_R_No_Door.enabled = true;
-                        Light.Play();
-                        RightScareAlrdPlayed = false;
-                    }
-
-                    if (ChicaOutsideDoor)
-                    {
-                        Light_R_Door_Chica.enabled = true;
-                        Light.Play();
-
-                        if (!R_Door_Closed && RightScareAlrdPlayed == false)
-                        {
-                            RightScareAlrdPlayed = true;
-                            Scare.Play();
-                        }
-
-                    }
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                    DoorButton_R3.enabled = true;
-
-                    if (R_Door_Closed)
-                    {
-                        DoorButton_R1.enabled = false;
-                        DoorButton_R4.enabled = true;
-                    }
+                    RightDoorAndLightManager();
                 }
             }
 
@@ -623,76 +375,35 @@ public class Office : MonoBehaviour {
                 case WiiU.RemoteDevType.ProController:
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
                     {
-                        if (R_Door_Closed)
-                        {
-                            Door_R_closed.SetActive(false);
-                            Door_R_open.SetActive(true);
-                            R_Door_Closed = false;
-                            DoorButton_R1.enabled = true;
-                            DoorButton_R2.enabled = false;
-                            DoorButton_R4.enabled = false;
-
-                            DoorClose.Play();
-
-                            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                            OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
-                        }
-                        else
-                        {
-                            Door_R_closed.SetActive(true);
-                            Door_R_open.SetActive(false);
-                            R_Door_Closed = true;
-                            DoorButton_R1.enabled = false;
-                            DoorButton_R2.enabled = true;
-
-                            DoorClose.Play();
-
-                            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                            OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
-
-                        }
+                        RightDoorSystem();
                     }
-                    bool camIsUp = movementScript.camIsUp;
 
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.X))
                     {
-                        RightLightIsOn = true;
-
-                        if (!ChicaOutsideDoor)
-                        {
-                            Light_R_No_Door.enabled = true;
-                            Light.Play();
-                            RightScareAlrdPlayed = false;
-                        }
-
-                        if (ChicaOutsideDoor)
-                        {
-                            Light_R_Door_Chica.enabled = true;
-                            Light.Play();
-
-                            if (!R_Door_Closed && RightScareAlrdPlayed == false)
-                            {
-                                RightScareAlrdPlayed = true;
-                                Scare.Play();
-                            }
-
-                        }
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                        DoorButton_R3.enabled = true;
-
-                        if (R_Door_Closed)
-                        {
-                            DoorButton_R1.enabled = false;
-                            DoorButton_R4.enabled = true;
-                        }
+                        RightDoorAndLightManager();
                     }
                     break;
+                case WiiU.RemoteDevType.Classic:
+                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.A))
+                    {
+                        RightDoorSystem();
+                    }
 
+                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.X))
+                    {
+                        RightDoorAndLightManager();
+                    }
+                    break;
                 default:
+                    if (remoteState.IsTriggered(WiiU.RemoteButton.A))
+                    {
+                        RightDoorSystem();
+                    }
+
+                    if (remoteState.IsTriggered(WiiU.RemoteButton.B))
+                    {
+                        RightDoorAndLightManager();
+                    }
                     break;
             }
 
@@ -701,68 +412,12 @@ public class Office : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    if (R_Door_Closed)
-                    {
-                        Door_R_closed.SetActive(false);
-                        Door_R_open.SetActive(true);
-                        R_Door_Closed = false;
-                        DoorButton_R1.enabled = true;
-                        DoorButton_R2.enabled = false;
-                        DoorButton_R4.enabled = false;
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
-                    }
-                    else
-                    {
-                        Door_R_closed.SetActive(true);
-                        Door_R_open.SetActive(false);
-                        R_Door_Closed = true;
-                        DoorButton_R1.enabled = false;
-                        DoorButton_R2.enabled = true;
-
-                        DoorClose.Play();
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                        OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
-                    }
+                    RightDoorSystem();
                 }
 
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    RightLightIsOn = true;
-
-                    if (!ChicaOutsideDoor)
-                    {
-                        Light_R_No_Door.enabled = true;
-                        Light.Play();
-                        RightScareAlrdPlayed = false;
-                    }
-
-                    if (ChicaOutsideDoor)
-                    {
-                        Light_R_Door_Chica.enabled = true;
-                        Light.Play();
-
-                        if (!R_Door_Closed && RightScareAlrdPlayed == false)
-                        {
-                            RightScareAlrdPlayed = true;
-                            Scare.Play();
-                        }
-                    }
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-                    DoorButton_R3.enabled = true;
-
-                    if (R_Door_Closed)
-                    {
-                        DoorButton_R1.enabled = false;
-                        DoorButton_R4.enabled = true;
-                    }
+                    RightDoorAndLightManager();
                 }
             }
         }
@@ -773,135 +428,30 @@ public class Office : MonoBehaviour {
         {
             if (gamePadState.IsReleased(WiiU.GamePadButton.X))
             {
-                if (LeftLightIsOn)
-                {
-                    if (!BonnieOutsideDoor)
-                    {
-                        Light_L_No_Door.enabled = false;
-                        Light.Pause();
-                    }
-
-                    if (BonnieOutsideDoor)
-                    {
-                        Light_L_Door_Bonnie.enabled = false;
-                        Light.Pause();
-                    }
-
-                    OriginalOfficeImage.GetComponent<Image>().enabled = true;
-
-                    DoorButton_L3.enabled = false;
-
-                    if (L_Door_Closed)
-                    {
-                        DoorButton_L1.enabled = true;
-                        DoorButton_L4.enabled = false;
-                    }
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                    LeftLightIsOn = false;
-                }
-
-
-                if (RightLightIsOn)
-                {
-                    if (!ChicaOutsideDoor)
-                    {
-                        Light_R_No_Door.enabled = false;
-                        Light.Pause();
-                    }
-
-                    if (ChicaOutsideDoor)
-                    {
-                        Light_R_Door_Chica.enabled = false;
-                        Light.Pause();
-                    }
-
-                    OriginalOfficeImage.GetComponent<Image>().enabled = true;
-
-                    DoorButton_R3.enabled = false;
-
-                    if (R_Door_Closed)
-                    {
-                        DoorButton_R1.enabled = true;
-                        DoorButton_R4.enabled = false;
-                    }
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                    RightLightIsOn = false;
-                }
+                RightLightSystem();
             }
         }
 
-        // Remote
+        // Remotes
         switch (remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
                 if (remoteState.pro.IsReleased(WiiU.ProControllerButton.X))
                 {
-                    if (LeftLightIsOn)
-                    {
-                        if (!BonnieOutsideDoor)
-                        {
-                            Light_L_No_Door.enabled = false;
-                            Light.Pause();
-                        }
-
-                        if (BonnieOutsideDoor)
-                        {
-                            Light_L_Door_Bonnie.enabled = false;
-                            Light.Pause();
-                        }
-
-                        OriginalOfficeImage.GetComponent<Image>().enabled = true;
-
-                        DoorButton_L3.enabled = false;
-
-                        if (L_Door_Closed)
-                        {
-                            DoorButton_L1.enabled = true;
-                            DoorButton_L4.enabled = false;
-                        }
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        LeftLightIsOn = false;
-                    }
-
-
-                    if (RightLightIsOn)
-                    {
-                        if (!ChicaOutsideDoor)
-                        {
-                            Light_R_No_Door.enabled = false;
-                            Light.Pause();
-                        }
-
-                        if (ChicaOutsideDoor)
-                        {
-                            Light_R_Door_Chica.enabled = false;
-                            Light.Pause();
-                        }
-
-                        OriginalOfficeImage.GetComponent<Image>().enabled = true;
-
-                        DoorButton_R3.enabled = false;
-
-                        if (R_Door_Closed)
-                        {
-                            DoorButton_R1.enabled = true;
-                            DoorButton_R4.enabled = false;
-                        }
-
-                        OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                        RightLightIsOn = false;
-                    }
+                    RightLightSystem();
                 }
                 break;
-
+            case WiiU.RemoteDevType.Classic:
+                if (remoteState.classic.IsReleased(WiiU.ClassicButton.X))
+                {
+                    RightLightSystem();
+                }
+                break;
             default:
+                if (remoteState.IsReleased(WiiU.RemoteButton.B))
+                {
+                    RightLightSystem();
+                }
                 break;
         }
 
@@ -910,64 +460,7 @@ public class Office : MonoBehaviour {
         {
             if (Input.GetKeyUp(KeyCode.X))
             {
-                if (LeftLightIsOn)
-                {
-                    if (!BonnieOutsideDoor)
-                    {
-                        Light_L_No_Door.enabled = false;
-                        Light.Pause();
-                    }
-
-                    if (BonnieOutsideDoor)
-                    {
-                        Light_L_Door_Bonnie.enabled = false;
-                        Light.Pause();
-                    }
-
-                    OriginalOfficeImage.GetComponent<Image>().enabled = true;
-
-                    DoorButton_L3.enabled = false;
-
-                    if (L_Door_Closed)
-                    {
-                        DoorButton_L1.enabled = true;
-                        DoorButton_L4.enabled = false;
-                    }
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                    LeftLightIsOn = false;
-                }
-
-
-                if (RightLightIsOn)
-                {
-                    if (!ChicaOutsideDoor)
-                    {
-                        Light_R_No_Door.enabled = false;
-                        Light.Pause();
-                    }
-
-                    if (ChicaOutsideDoor)
-                    {
-                        Light_R_Door_Chica.enabled = false;
-                        Light.Pause();
-                    }
-
-                    OriginalOfficeImage.GetComponent<Image>().enabled = true;
-
-                    DoorButton_R3.enabled = false;
-
-                    if (R_Door_Closed)
-                    {
-                        DoorButton_R1.enabled = true;
-                        DoorButton_R4.enabled = false;
-                    }
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-                    RightLightIsOn = false;
-                }
+                RightLightSystem();
             }
         }
         if (!L_Door_Closed && DoorButton_L4.isActiveAndEnabled == true)
@@ -994,29 +487,7 @@ public class Office : MonoBehaviour {
         {
             if (gamePadState.IsPressed(WiiU.GamePadButton.X))
             {
-                if (BonnieOutsideDoor)
-                {
-                    if (OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime <= 2)
-                    {
-                        OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime = 1;
-                    }
-                }
-
-                if (ChicaOutsideDoor)
-                {
-                    if (OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime <= 2)
-                    {
-                        OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime = 1;
-                    }
-                }
-
-                if (FreddyOutsideDoor)
-                {
-                    if (OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime <= 2)
-                    {
-                        OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime = 1;
-                    }
-                }
+                CharactersMovement();
             }
         }
 
@@ -1026,64 +497,29 @@ public class Office : MonoBehaviour {
             case WiiU.RemoteDevType.ProController:
                 if (remoteState.pro.IsPressed(WiiU.ProControllerButton.X))
                 {
-                    if (BonnieOutsideDoor)
-                    {
-                        if (OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime <= 2)
-                        {
-                            OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime = 1;
-                        }
-                    }
-
-                    if (ChicaOutsideDoor)
-                    {
-                        if (OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime <= 2)
-                        {
-                            OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime = 1;
-                        }
-                    }
-
-                    if (FreddyOutsideDoor)
-                    {
-                        if (OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime <= 2)
-                        {
-                            OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime = 1;
-                        }
-                    }
+                    CharactersMovement();
                 }
                 break;
-
+            case WiiU.RemoteDevType.Classic:
+                if (remoteState.classic.IsPressed(WiiU.ClassicButton.X))
+                {
+                    CharactersMovement();
+                }
+                break;
             default:
+                if (remoteState.IsPressed(WiiU.RemoteButton.B))
+                {
+                    CharactersMovement();
+                }
                 break;
         }
 
         // Keyboard
         if (Application.isEditor)
         {
-            if (Input.GetKey(KeyCode.B))
+            if (Input.GetKey(KeyCode.X))
             {
-                if (BonnieOutsideDoor)
-                {
-                    if (OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime <= 2)
-                    {
-                        OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime = 1;
-                    }
-                }
-
-                if (ChicaOutsideDoor)
-                {
-                    if (OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime <= 2)
-                    {
-                        OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime = 1;
-                    }
-                }
-
-                if (FreddyOutsideDoor)
-                {
-                    if (OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime <= 2)
-                    {
-                        OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime = 1;
-                    }
-                }
+                CharactersMovement();
             }
         }
         //-------------------------------------------------
@@ -1112,6 +548,249 @@ public class Office : MonoBehaviour {
             {
                 OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoor = true;
                 OfficeControllerObject.GetComponent<ChangeImages>().WhereFreddy = 1;
+            }
+        }
+    }
+
+    void LeftDoorSystem()
+    {
+        foreach (Animator anim in FindObjectsOfType<Animator>())
+        {
+            if (anim.gameObject.name.Contains("Door"))
+            {
+                anim.enabled = true;
+            }
+        }
+        if (L_Door_Closed)
+        {
+            Door_L_closed.SetActive(false);
+            Door_L_open.SetActive(true);
+            L_Door_Closed = false;
+            DoorButton_L1.enabled = true;
+            DoorButton_L2.enabled = false;
+            DoorButton_R4.enabled = false;
+
+            DoorClose.Play();
+
+            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+            OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
+            OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
+
+        }
+        else
+        {
+            Door_L_closed.SetActive(true);
+            Door_L_open.SetActive(false);
+            L_Door_Closed = true;
+            DoorButton_L1.enabled = false;
+            DoorButton_L2.enabled = true;
+
+            DoorClose.Play();
+
+            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+            OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
+
+            OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
+
+        }
+    }
+
+    void RightDoorSystem()
+    {
+        if (R_Door_Closed)
+        {
+            Door_R_closed.SetActive(false);
+            Door_R_open.SetActive(true);
+            R_Door_Closed = false;
+            DoorButton_R1.enabled = true;
+            DoorButton_R2.enabled = false;
+            DoorButton_R4.enabled = false;
+
+            DoorClose.Play();
+
+            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+            OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
+        }
+        else
+        {
+            Door_R_closed.SetActive(true);
+            Door_R_open.SetActive(false);
+            R_Door_Closed = true;
+            DoorButton_R1.enabled = false;
+            DoorButton_R2.enabled = true;
+
+            DoorClose.Play();
+
+            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+            OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
+
+        }
+    }
+
+    void LeftLightSystem()
+    {
+        LeftLightIsOn = true;
+
+        if (!BonnieOutsideDoor)
+        {
+            Light_L_No_Door.enabled = true;
+            Light.Play();
+            LeftScareAlrdPlayed = false;
+        }
+
+        if (BonnieOutsideDoor)
+        {
+            Light_L_Door_Bonnie.enabled = true;
+            Light.Play();
+
+            if (!L_Door_Closed && LeftScareAlrdPlayed == false)
+            {
+                Scare.Play();
+                LeftScareAlrdPlayed = true;
+            }
+        }
+        else
+        {
+            LeftScareAlrdPlayed = false;
+        }
+
+        OriginalOfficeImage.GetComponent<Image>().enabled = false;
+
+        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+        DoorButton_L3.enabled = true;
+
+        if (L_Door_Closed)
+        {
+            DoorButton_L1.enabled = false;
+            DoorButton_L4.enabled = true;
+        }
+    }
+
+    void RightLightSystem()
+    {
+        if (LeftLightIsOn)
+        {
+            if (!BonnieOutsideDoor)
+            {
+                Light_L_No_Door.enabled = false;
+                Light.Pause();
+            }
+
+            if (BonnieOutsideDoor)
+            {
+                Light_L_Door_Bonnie.enabled = false;
+                Light.Pause();
+            }
+
+            OriginalOfficeImage.GetComponent<Image>().enabled = true;
+
+            DoorButton_L3.enabled = false;
+
+            if (L_Door_Closed)
+            {
+                DoorButton_L1.enabled = true;
+                DoorButton_L4.enabled = false;
+            }
+
+            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+            LeftLightIsOn = false;
+        }
+
+
+        if (RightLightIsOn)
+        {
+            if (!ChicaOutsideDoor)
+            {
+                Light_R_No_Door.enabled = false;
+                Light.Pause();
+            }
+
+            if (ChicaOutsideDoor)
+            {
+                Light_R_Door_Chica.enabled = false;
+                Light.Pause();
+            }
+
+            OriginalOfficeImage.GetComponent<Image>().enabled = true;
+
+            DoorButton_R3.enabled = false;
+
+            if (R_Door_Closed)
+            {
+                DoorButton_R1.enabled = true;
+                DoorButton_R4.enabled = false;
+            }
+
+            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+
+            RightLightIsOn = false;
+        }
+    }
+
+    void RightDoorAndLightManager()
+    {
+        RightLightIsOn = true;
+
+        if (!ChicaOutsideDoor)
+        {
+            Light_R_No_Door.enabled = true;
+            Light.Play();
+            RightScareAlrdPlayed = false;
+        }
+
+        if (ChicaOutsideDoor)
+        {
+            Light_R_Door_Chica.enabled = true;
+            Light.Play();
+
+            if (!R_Door_Closed && RightScareAlrdPlayed == false)
+            {
+                RightScareAlrdPlayed = true;
+                Scare.Play();
+            }
+
+        }
+
+        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+
+        DoorButton_R3.enabled = true;
+
+        if (R_Door_Closed)
+        {
+            DoorButton_R1.enabled = false;
+            DoorButton_R4.enabled = true;
+        }
+    }
+
+    void CharactersMovement()
+    {
+        if (BonnieOutsideDoor)
+        {
+            if (OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime <= 2)
+            {
+                OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoorTime = 1;
+            }
+        }
+
+        if (ChicaOutsideDoor)
+        {
+            if (OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime <= 2)
+            {
+                OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoorTime = 1;
+            }
+        }
+
+        if (FreddyOutsideDoor)
+        {
+            if (OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime <= 2)
+            {
+                OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoorTime = 1;
             }
         }
     }
