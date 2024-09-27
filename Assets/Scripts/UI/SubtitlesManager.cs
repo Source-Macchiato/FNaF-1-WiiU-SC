@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SubtitleManager : MonoBehaviour
+public class SubtitlesManager : MonoBehaviour
 {
-    public Text subtitleText;
+    public Text[] subtitlesText;
 
     private List<string> subtitleIdentifiers;
     private List<float> displayDurations;
@@ -45,7 +45,13 @@ public class SubtitleManager : MonoBehaviour
 
         if (NightNumber == 5)
         {
-            subtitleText.gameObject.transform.Rotate(0f, 180f, 0f);
+            foreach (Text subtitleText in subtitlesText)
+            {
+                if (subtitleText.gameObject.activeSelf)
+                {
+                    subtitleText.gameObject.transform.Rotate(0f, 180f, 0f);
+                }
+            }
         }
 
         displayStartTime = Time.timeSinceLevelLoad;
@@ -78,8 +84,14 @@ public class SubtitleManager : MonoBehaviour
             }
             else
             {
-                subtitleText.text = "";
-                subtitleText.gameObject.SetActive(false);
+                foreach (Text subtitleText in subtitlesText)
+                {
+                    if (subtitleText.gameObject.activeSelf)
+                    {
+                        subtitleText.text = "";
+                        subtitleText.gameObject.SetActive(false);
+                    }
+                }
             }
         }
     }
@@ -88,7 +100,13 @@ public class SubtitleManager : MonoBehaviour
     {
         string translatedText = GetTranslatedText(subtitleIdentifiers[currentIndex]);
 
-        subtitleText.text = translatedText;
+        foreach (Text subtitleText in subtitlesText)
+        {
+            if (subtitleText.gameObject.activeSelf)
+            {
+                subtitleText.text = translatedText;
+            }
+        }
 
         displayStartTime = Time.timeSinceLevelLoad;
     }

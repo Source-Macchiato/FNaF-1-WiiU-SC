@@ -4,24 +4,27 @@ public class LayoutManager : MonoBehaviour
 {
 	private int layoutId;
 
+    public GameObject minimap;
+    public GameObject[] subtitles;
+
     [Header("Screens")]
     public GameObject[] screenOffice;
     public GameObject[] screenMonitor;
-    public GameObject[] screenMinimap;
     public GameObject[] screenUI;
-
-    [Header("Minimap")]
-    public GameObject minimap;
+    public GameObject[] screenMinimap;
+    public GameObject[] screenSubtitles;
 
     // Scripts
     SaveGameState saveGameState;
     SaveManager saveManager;
+    Movement movement;
 
     void Start()
 	{
         // Get scripts
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
+        movement = FindObjectOfType<Movement>();
 
         layoutId = SaveManager.LoadLayoutId();
 
@@ -41,7 +44,10 @@ public class LayoutManager : MonoBehaviour
 	
 	void Update()
 	{
-		
+		if (layoutId == 0 || layoutId == 2)
+        {
+            ChangeSubtitlePosition(movement.camIsUp);
+        }
 	}
 
     private void TVOnly()
@@ -52,11 +58,14 @@ public class LayoutManager : MonoBehaviour
         screenMonitor[0].SetActive(true);
         screenMonitor[1].SetActive(false);
 
+        screenUI[0].SetActive(true);
+        screenUI[1].SetActive(false);
+
         screenMinimap[0].SetActive(true);
         screenMinimap[1].SetActive(false);
 
-        screenUI[0].SetActive(true);
-        screenUI[1].SetActive(false);
+        screenSubtitles[0].SetActive(true);
+        screenSubtitles[1].SetActive(false);
 
         minimap.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
         minimap.transform.localPosition = new Vector3(611.3f, -230.3f, 0);
@@ -70,14 +79,21 @@ public class LayoutManager : MonoBehaviour
         screenMonitor[0].SetActive(true);
         screenMonitor[1].SetActive(false);
 
-        screenMinimap[0].SetActive(false);
-        screenMinimap[1].SetActive(true);
-
         screenUI[0].SetActive(true);
         screenUI[1].SetActive(false);
 
+        screenMinimap[0].SetActive(false);
+        screenMinimap[1].SetActive(true);
+
+        screenSubtitles[0].SetActive(false);
+        screenSubtitles[1].SetActive(true);
+
         minimap.transform.localScale = new Vector3(2f, 2f, 1f);
         minimap.transform.localPosition = Vector3.zero;
+
+        subtitles[0].SetActive(true);
+        subtitles[1].SetActive(false);
+        subtitles[2].SetActive(false);
     }
 
     private void GamepadOnly()
@@ -88,13 +104,32 @@ public class LayoutManager : MonoBehaviour
         screenMonitor[0].SetActive(false);
         screenMonitor[1].SetActive(true);
 
-        screenMinimap[0].SetActive(false);
-        screenMinimap[1].SetActive(true);
-
         screenUI[0].SetActive(false);
         screenUI[1].SetActive(true);
 
+        screenMinimap[0].SetActive(false);
+        screenMinimap[1].SetActive(true);
+
+        screenSubtitles[0].SetActive(false);
+        screenSubtitles[1].SetActive(true);
+
         minimap.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
         minimap.transform.localPosition = new Vector3(611.3f, -230.3f, 0);
+    }
+
+    private void ChangeSubtitlePosition(bool cameraStatus)
+    {
+        if (cameraStatus)
+        {
+            subtitles[0].SetActive(false);
+            subtitles[1].SetActive(false);
+            subtitles[2].SetActive(true);
+        }
+        else
+        {
+            subtitles[0].SetActive(false);
+            subtitles[1].SetActive(true);
+            subtitles[2].SetActive(false);
+        }
     }
 }
