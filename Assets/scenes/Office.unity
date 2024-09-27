@@ -6890,7 +6890,7 @@ GameObject:
   - component: {fileID: 935168465}
   m_Layer: 0
   m_Name: CameraOffice
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8563,7 +8563,7 @@ GameObject:
   - component: {fileID: 1152074784}
   m_Layer: 0
   m_Name: CameraTV
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
