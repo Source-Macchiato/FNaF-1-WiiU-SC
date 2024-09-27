@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 1999164661}
   - component: {fileID: 1999164662}
   m_Layer: 0
-  m_Name: TheEnd
+  m_Name: EndScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1113,6 +1113,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1999164660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2f8f0e172b9054693716ade7363af4, type: 3}
+  m_Script: {fileID: 11500000, guid: 79494d964ae063e4d9a39bbab256f591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

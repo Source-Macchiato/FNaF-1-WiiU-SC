@@ -15,7 +15,7 @@ public class EndScript : MonoBehaviour
         remote = WiiU.Remote.Access(0);
     }
 	
-	void Update ()
+	void Update()
 	{
         // Get the current state of the GamePad and Remote
         WiiU.GamePadState gamePadState = gamePad.state;
