@@ -1,0 +1,400 @@
+{
+  "items": [
+    {
+      "key": "none",
+      "value": ""
+    },
+    {
+      "key": "mainmenu.update",
+      "value": "Eine neue Version ist verfügbar! Lade sie auf itch.io herunter!"
+    },
+    {
+      "key": "mainmenu.sharedata",
+      "value": "Akzeptierst du die Weitergabe statistischer Information an Source Macchiato, beispielsweise der Häufigkeit, mit der das Spiel gestartet wird?"
+    },
+    {
+      "key": "mainmenu.newgame",
+      "value": "Neues Spiel"
+    },
+    {
+      "key": "mainmenu.continue",
+      "value": "Fortsetzen"
+    },
+    {
+      "key": "mainmenu.night",
+      "value": "Nacht"
+    },
+    {
+      "key": "mainmenu.options",
+      "value": "Optionen"
+    },
+    {
+      "key": "mainmenu.language",
+      "value": "Sprache"
+    },
+    {
+      "key": "mainmenu.credits",
+      "value": "Credits"
+    },
+    {
+      "key": "mainmenu.layout",
+      "value": "Layout"
+    },
+    {
+      "key": "mainmenu.online",
+      "value": "Online"
+    },
+    {
+      "key": "mainmenu.analyticdata",
+      "value": "Analytische Daten"
+    },
+    {
+      "key": "nextnight.firstnight",
+      "value": "Nacht 1"
+    },
+    {
+      "key": "nextnight.secondnight",
+      "value": "Nacht 2"
+    },
+    {
+      "key": "nextnight.thirdnight",
+      "value": "Nacht 3"
+    },
+    {
+      "key": "nextnight.fourthnight",
+      "value": "Nacht 4"
+    },
+    {
+      "key": "nextnight.fifthnight",
+      "value": "Nacht 5"
+    },
+    {
+      "key": "office.night",
+      "value": "Nacht"
+    },
+    {
+      "key": "office.usage",
+      "value": "Verwendung:"
+    },
+    {
+      "key": "office.power",
+      "value": "Strom übrig:"
+    },
+    {
+      "key": "camera.showstage",
+      "value": "Bühne"
+    },
+    {
+      "key": "camera.diningarea",
+      "value": "Essbereich"
+    },
+    {
+      "key": "camera.piratecove",
+      "value": "Piratenbucht"
+    },
+    {
+      "key": "camera.westhall",
+      "value": "Westflur"
+    },
+    {
+      "key": "camera.westhallcorner",
+      "value": "Ecke Westflur"
+    },
+    {
+      "key": "camera.supplycloset",
+      "value": "Versorgungsschrank"
+    },
+    {
+      "key": "camera.easthall",
+      "value": "Ostflur"
+    },
+    {
+      "key": "camera.easthallcorner",
+      "value": "Ecke Ostflur"
+    },
+    {
+      "key": "camera.backstage",
+      "value": "Hinter der Bühne"
+    },
+    {
+      "key": "camera.kitchen",
+      "value": "Küche"
+    },
+    {
+      "key": "camera.restrooms",
+      "value": "Toiletten"
+    },
+    {
+      "key": "nightone.phoneguy.lineone",
+      "value": "Hallo? Hallo, hallo? Ähhm, Ich wollte eine Nachricht aufnehmen um dir zu helfen dich in der ersten Nacht einzuleben."
+    },
+    {
+      "key": "nightone.phoneguy.linetwo",
+      "value": "Ähhm, Ich habe tatsächlich vor dir in diesem Büro gearbeitet. Ich beende hier gerade meine letzte Woche. Also,"
+    },
+    {
+      "key": "nightone.phoneguy.linethree",
+      "value": "Ich weiß es kann ein bisschen überwältigend sein, aber ich bin hier um dir zu sagen dass du dir keine Sorgen machen musst."
+    },
+    {
+      "key": "nightone.phoneguy.linefour",
+      "value": "Ähhm, du wirst es schaffen. Also, lass uns drauf fokussieren dich durch deine erste Woche zu bringen, okay?"
+    },
+    {
+      "key": "nightone.phoneguy.linefive",
+      "value": "Ähhm, lass mal sehen, Zuerst gibt es ein einleitendes Grußwort des Unternehmens, welches ich vorlesen soll."
+    },
+    {
+      "key": "nightone.phoneguy.linesix",
+      "value": "Ähhm, es ist eine Art legale Sache, weißt du. Ähhm, \"Willkommen bei Freddy Fazbear's Pizza."
+    },
+    {
+      "key": "nightone.phoneguy.lineseven",
+      "value": "Ein magischer Ort für Kinder und Erwachsene, wo Fantasien und Spaß zum Leben erweckt werden."
+    },
+    {
+      "key": "nightone.phoneguy.lineheight",
+      "value": "Fazbear Entertainment ist nicht verantwortlich für Schaden an Eigentum oder Personen."
+    },
+    {
+      "key": "nightone.phoneguy.linenine",
+      "value": "Wenn festgestellt wird, dass ein Schaden oder ein Todesfall eingetreten ist, wird innerhalb von 90 Tagen oder so bald wie möglich eine Vermisstenanzeige eingereicht"
+    },
+    {
+      "key": "nightone.phoneguy.lineten",
+      "value": "oder sobald das Eigentum und die Räumlichkeiten gründlich gereinigt, gebleicht und die Teppiche ausgetauscht wurden.\""
+    },
+    {
+      "key": "nightone.phoneguy.lineeleven",
+      "value": "Blah, blah, blah. Nun das könnte schlecht klingen, aber ich weiß, es gibt wirklich Nichts worüber man sich sorgen machen muss."
+    },
+    {
+      "key": "nightone.phoneguy.linetwelve",
+      "value": "Ähhm, die animatronischen Figuren hier werden Nachts ein bisschen skurril, aber gib ich denen die Schuld? Nein."
+    },
+    {
+      "key": "nightone.phoneguy.linethirteen",
+      "value": "Wenn ich gezwungen werde die selben dummen Songs 20 Jahre zu singen und ich bekäme nie ein Bad?"
+    },
+    {
+      "key": "nightone.phoneguy.linefourteen",
+      "value": "Dann wäre ich Nachts auch ein bisschen reizbar. Also, denk dran, diese Figuren halten einen"
+    },
+    {
+      "key": "nightone.phoneguy.linefifteen",
+      "value": "speziellen Platz im Herzen der Kinder und wir müssen denen ein bisschen Respekt zeigen, richtig? Okay."
+    },
+    {
+      "key": "nightone.phoneguy.linesixteen",
+      "value": "Also, nur um dessen bewusst zu sein, die Figuren neigen schon ein bisschen herumzuwandern. Ähhm, Sie werden nachts in einer Art"
+    },
+    {
+      "key": "nightone.phoneguy.lineseventeen",
+      "value": "free roaming-Modus gelassen. Ähhm... Irgendetwas mit dem Blockieren ihrer Servos"
+    },
+    {
+      "key": "nightone.phoneguy.lineeighteen",
+      "value": "wenn sie zu lange ausgeschaltet werden. Ähhm, früher wurden sie erlaubt auch während des Tages herumzulaufen."
+    },
+    {
+      "key": "nightone.phoneguy.linenineteen",
+      "value": "Aber dann kam der Bite of '87. Jaaa. E-Es ist erstaunlich, dass der menschliche Körper ohne den Frontallappen leben kann, weißt du?"
+    },
+    {
+      "key": "nightone.phoneguy.linetwenty",
+      "value": "Ähhm, nun zu deiner Sicherheit, das einzig wahre Risiko hier für dich als Nachtwächter, wenn überhaupt,"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyone",
+      "value": "ist der Fakt dass diese Figuren, ähhm, wenn sie dich nach Feierabend sehen, werden sie dich wahrscheinlich nicht als Person erkennen."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentytwo",
+      "value": "Sie werden vi- sie werden dich sehr wahrscheinlich als Metall-Endoskelett ohne seinen Anzug sehen."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentythree",
+      "value": "Jetzt, da dies hier in Freddy Fazbear's Pizza gegen den Regeln ist, werden sie wahrscheinlich versuchen..."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyfour",
+      "value": "dich gewaltsam in einen Freddy Fazbear Anzug zu stopfen. Ähhm, nun, das wäre nicht so schlimm"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyfive",
+      "value": "wenn die Anzüge selbst nicht mit Traversen, Drähte und animatronischen Geräten,"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentysix",
+      "value": "vor allem um den Gesichtsbereich gefüllt wären. Also, du könntest dir vorstellen dass das gewaltsame Reindrücken"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyseven",
+      "value": "von deinem Kopf in einen von diesen Dingern ein bisschen unangenehm sein könnte... und den Tod verursachen könnte."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyheight",
+      "value": "Ähhm, die einzigen deiner Teile die höchstwahrscheinlich wieder das Licht der Welt sehen könnten, wären deine Augäpfel"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentynine",
+      "value": "und Zähne wenn sie vorne an der Maske herausspringen, heh."
+    },
+    {
+      "key": "nightone.phoneguy.linethirty",
+      "value": "J-Jaaa, sie erzählen einem nicht von diesen Sachen wenn Jemand sich anmeldet. Aber hey, der erste Tag sollte ein Kinderspiel sein."
+    },
+    {
+      "key": "nightone.phoneguy.linethirtyone",
+      "value": "Ich werde morgen mit dir plaudern. Ähhm, checke diese Kameras, und denk dran die Türen nur zu schließen"
+    },
+    {
+      "key": "nightone.phoneguy.linethirtytwo",
+      "value": "wenn es absolut notwendig ist. Muss Strom sparen. Alles klar, gute Nacht."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineone",
+      "value": "Ähhm, Hallo? Hallo? Ähhm, nun, wenn du das hier hörst und es zum zweiten Tag geschafft hast, Ähhm, Glückwunsch!"
+    },
+    {
+      "key": "nighttwo.phoneguy.linetwo",
+      "value": "I-Ich werde diesmal nicht so lange reden weil Freddy und seine Freunde dazu tendieren während der Woche aktiver zu werden."
+    },
+    {
+      "key": "nighttwo.phoneguy.linethree",
+      "value": "Ähhm, es wäre eine gute Idee einen Blick auf den Kameras zu werfen während ich rede"
+    },
+    {
+      "key": "nighttwo.phoneguy.linefour",
+      "value": "einfach nur um sicher zu sein, dass jeder an seinem richtigen Ort ist. Weißte..."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefive",
+      "value": "Ähhm... interessanterweise kommt Freddy selbst nicht sehr oft von der Bühne."
+    },
+    {
+      "key": "nighttwo.phoneguy.linesix",
+      "value": "Ich habe gehört dass er sehr viel aktiver wird wenn es dunkel wird, also, hey,"
+    },
+    {
+      "key": "nighttwo.phoneguy.lineseven",
+      "value": "Denke mal dass dies noch ein Grund ist dass der Strom nicht auslaufen sollte, richtig?"
+    },
+    {
+      "key": "nighttwo.phoneguy.lineheight",
+      "value": "I-Ich wollte auch die Wichtigkeit der Benutzung deiner Türleuchten betonen."
+    },
+    {
+      "key": "nighttwo.phoneguy.linenine",
+      "value": "Es gibt tote Winkel in deinen Kameraansichten, und diese toten Winkel befinden sich direkt vor deinen Türen."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineten",
+      "value": "Also we-wenn du irgendetwas, oder irgendjemanden auf deinen Kameras nicht finden kannst, dann solltest du sicher mal deine Türleuchten checken."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineeleven",
+      "value": "Ähhm, du könntest nur ein paar Sekunden zum Reagieren haben... Ähhm, nicht dass du in irgendeiner Gefahr wärst, natürlich."
+    },
+    {
+      "key": "nighttwo.phoneguy.linetwelve",
+      "value": "Das unterstelle ich nicht. Ach ja, checke ab und zu den Vorhang in der Piratenbucht."
+    },
+    {
+      "key": "nighttwo.phoneguy.linethirteen",
+      "value": "Die Figur dort drinnen scheint besonders zu sein. Er wird aktiver wenn die Kameras für längere Zeiten ausgeschaltet sind."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefourteen",
+      "value": "Ich denke mal dass er es nicht mag, angesehen zu werden. Ich weiß nicht."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefifteen",
+      "value": "Jedenfalls, Ich bin mir sicher dass du alles unter Kontrolle hast! Ähhm, bis bald."
+    },
+    {
+      "key": "nighthree.phoneguy.lineone",
+      "value": "Hallo, hallo? Hey, du bist Großartig! Die meisten Leute schaffen es nicht so weit."
+    },
+    {
+      "key": "nighthree.phoneguy.linetwo",
+      "value": "Ich meine, du weißt, sie gehen normalerweise zu größeren Dingen. Ich behaupte nicht, dass sie gestorben sind."
+    },
+    {
+      "key": "nighthree.phoneguy.linethree",
+      "value": "Da-Da-Das ist nicht was ich gemeint habe. Ähhm, jedenfalls ist es besser wenn ich nicht so viel Zeit von dir raube."
+    },
+    {
+      "key": "nighthree.phoneguy.linefour",
+      "value": "Heut Nacht wird es Krank. Ähhm... hey, hör mal zu, ich habe eine Idee: Wenn du geschnappt wirst"
+    },
+    {
+      "key": "nighthree.phoneguy.linefive",
+      "value": "und du vermeiden möchtest in einen Freddy-Anzug gesteckt zu werden, ähhm, versuch Tod zu spielen! Du weißt, geh schlaff."
+    },
+    {
+      "key": "nighthree.phoneguy.linesix",
+      "value": "Dann gibt es eine Chance dass, ähhm, vielleicht denken sie dass du ein leerer Anzug bist."
+    },
+    {
+      "key": "nighthree.phoneguy.lineseven",
+      "value": "Dann warte, wenn sie denken dass du ein leerer Anzug bist, dann würden sie möglicherweise versuchen... Einen Metall-Endoskelett in dir reinzustopfen. "
+    },
+    {
+      "key": "nighthree.phoneguy.lineheight",
+      "value": "Ich frag mich wie das funktionieren würde. Jaaa, vergiss es, lösch das. Am besten ist es einfach nicht geschnappt zu werden."
+    },
+    {
+      "key": "nighthree.phoneguy.linenine",
+      "value": "Ähhm... okay. Ich überlass das dir. Wir sehen uns auf der anderen Seite!"
+    },
+    {
+      "key": "nightfour.phoneguy.lineone",
+      "value": "Hallo, hallo? Hey! Hey, wow, Tag 4. Ich wusste du kannst es. Ähhm, hey, hör zu,"
+    },
+    {
+      "key": "nightfour.phoneguy.linetwo",
+      "value": "Morgen werde ich vielleicht nicht da sein um eine Nachricht zu senden. *Klopfen* Es ist-Es ist bisher eine schlechte Nacht hier für mich."
+    },
+    {
+      "key": "nightfour.phoneguy.linethree",
+      "value": "Ähhm, I-Ich bin ganz schön froh dass ich meine Nachrichten für dich aufgenommen habe *räuspern* ähhm, als ich es getan habe."
+    },
+    {
+      "key": "nightfour.phoneguy.linefour",
+      "value": "Ähhm, hey, mach mir einen Gefallen. *Klopfen* Irgendwann mal vielleicht, ähhm, könntest du die Anzüge im Hinterzimmer prüfen?"
+    },
+    {
+      "key": "nightfour.phoneguy.linefive",
+      "value": "*Klopfen* Ich werde versuchen es auszuhalten bis irgendjemand checkt. Vielleicht wird es nicht so schlimm."
+    },
+    {
+      "key": "nightfour.phoneguy.linesix",
+      "value": "*Klopf Klopf* Ähhm, I-I-I-Ich hab mich schon immer gewundert was in all diesen leeren Köpfen dort hinten ist.*Glockenspiel spielt*"
+    },
+    {
+      "key": "nightfour.phoneguy.lineseven",
+      "value": "Du weißt... *Tiefes Stöhnen* oh, nein - *Geräusche, gefolgt von einem lauten Kreischen und Rauschen*"
+    },
+    {
+      "key": "nightfive.phoneguy.lineone",
+      "value": "erntet nur selten (Omitted: Lohn; Ihm genügt die) Freude, schöpferisch (Omitted: dienen.)"
+    },
+    {
+      "key": "nightfive.phoneguy.linetwo",
+      "value": "größeren Nutzen (Omitted: den Bose-Instrumenten) Künftige Gener- werden (Omitted: ationen. Der Wissenschaftler)"
+    },
+    {
+      "key": "nightfive.phoneguy.linethree",
+      "value": "was für eine Wirkung die verschiedenen Düngemittel auf das Wachstum der Pflanzen haben? Du hast ganz recht."
+    },
+    {
+      "key": "nightfive.phoneguy.linefour",
+      "value": "Könnte man nicht mit einigen Apparaten Laborversuche machen,"
+    },
+    {
+      "key": "nightfive.phoneguy.linefive",
+      "value": "(Omitted: Sir,) es ist schade, daß Eure wunderbaren Erfindungen (Omitted: nicht) vermehrt in der Landwirtschaft ausgewertet werden."
+    }
+  ]
+}
