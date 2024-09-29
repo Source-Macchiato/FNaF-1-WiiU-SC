@@ -983,6 +983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 359768160}
   - component: {fileID: 359768159}
+  - component: {fileID: 359768161}
   m_Layer: 0
   m_Name: main menu theme
   m_TagString: Untagged
@@ -998,7 +999,8 @@ AudioSource:
   m_GameObject: {fileID: 359768158}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243317021141425856, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 72eea74e344a50c40bc149dc3d7e2cfd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1083,6 +1085,17 @@ Transform:
   m_Father: {fileID: 1265432914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &359768161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359768158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &370057048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,6 +1741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644934514}
   - component: {fileID: 644934513}
+  - component: {fileID: 644934515}
   m_Layer: 0
   m_Name: eerie soud mm
   m_TagString: Untagged
@@ -1743,7 +1757,8 @@ AudioSource:
   m_GameObject: {fileID: 644934512}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 6f9055c998f8f1542b1aba424f85c5c4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1828,6 +1843,17 @@ Transform:
   m_Father: {fileID: 1265432914}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644934515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 644934512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &659251408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3900,6 +3926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1567224251}
   - component: {fileID: 1567224252}
+  - component: {fileID: 1567224253}
   m_Layer: 0
   m_Name: ButtonAudio
   m_TagString: Untagged
@@ -4001,6 +4028,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1567224253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1567224250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1577297537
 GameObject:
   m_ObjectHideFlags: 0

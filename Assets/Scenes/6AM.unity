@@ -742,6 +742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 627522482}
   - component: {fileID: 627522481}
+  - component: {fileID: 627522483}
   m_Layer: 0
   m_Name: children
   m_TagString: Untagged
@@ -757,7 +758,8 @@ AudioSource:
   m_GameObject: {fileID: 627522480}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: f6fc13418c86a1e4a81542c7cc94c71d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -842,6 +844,17 @@ Transform:
   m_Father: {fileID: 1666465549}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &627522483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627522480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &923502375
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 923502377}
   - component: {fileID: 923502376}
+  - component: {fileID: 923502378}
   m_Layer: 0
   m_Name: ring
   m_TagString: Untagged
@@ -866,7 +880,8 @@ AudioSource:
   m_GameObject: {fileID: 923502375}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 67ef257a7b8c79d47b8e93802a6ced75, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -951,6 +966,17 @@ Transform:
   m_Father: {fileID: 1666465549}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &923502378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 923502375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &932097132
 GameObject:
   m_ObjectHideFlags: 0
