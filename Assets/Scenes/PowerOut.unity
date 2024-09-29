@@ -643,7 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1020180986}
   m_Layer: 5
-  m_Name: Audio
+  m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1159,6 +1159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964938904}
   - component: {fileID: 1964938905}
+  - component: {fileID: 1964938906}
   m_Layer: 5
   m_Name: music box
   m_TagString: Untagged
@@ -1187,7 +1188,8 @@ AudioSource:
   m_GameObject: {fileID: 1964938903}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 78bd575d06220a4419389eeb11f2f833, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1259,6 +1261,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1964938906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964938903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2019271039
 GameObject:
   m_ObjectHideFlags: 0

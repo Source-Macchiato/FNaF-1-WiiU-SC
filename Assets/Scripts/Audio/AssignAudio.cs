@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using WiiU = UnityEngine.WiiU;
 
+[RequireComponent(typeof(AudioSource))]
 public class AssignAudio : MonoBehaviour
 {
 	private AudioSource audioSource;

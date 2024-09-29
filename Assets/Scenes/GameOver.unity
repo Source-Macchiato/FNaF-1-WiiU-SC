@@ -260,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 649663048}
   - component: {fileID: 649663049}
+  - component: {fileID: 649663050}
   m_Layer: 0
   m_Name: Eerie_sound2
   m_TagString: Untagged
@@ -288,7 +289,8 @@ AudioSource:
   m_GameObject: {fileID: 649663047}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 29dcf63d77dde724bb526b018907900d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -360,6 +362,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &649663050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 649663047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &804477311
 GameObject:
   m_ObjectHideFlags: 0
