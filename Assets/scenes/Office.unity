@@ -6886,8 +6886,6 @@ GameObject:
   - component: {fileID: 935168463}
   - component: {fileID: 935168462}
   - component: {fileID: 935168461}
-  - component: {fileID: 935168466}
-  - component: {fileID: 935168465}
   m_Layer: 0
   m_Name: CameraOffice
   m_TagString: MainCamera
@@ -6965,35 +6963,6 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
---- !u!114 &935168465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 935168459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9232e97ea4d204645b59dd1dcbfe4f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Zoom: 1
-  _ZoomMultiplier: 0.5
-  _pDir: 0
-  _noWrap: 0
---- !u!114 &935168466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 935168459}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 396a56736947d3344a2247161834a71c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displacementShader: {fileID: 4800000, guid: 9108a04f7c37d5f4280824ef38fed484, type: 3}
-  displacementMap: {fileID: 2800000, guid: d498b2dfd0ee54446b9ac2ce8caa68a9, type: 3}
-  intensity: -0.25
 --- !u!1 &943347021
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,15 +5,10 @@ using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
-    public bool requireVerification = true;
-    public Canvas canvasTV;
-    public Canvas canvasGamepad;
-
-    public GameObject loadingScreenTV;
-    public GameObject loadingScreenGamepad;
-
-    public Slider sliderTV;
-    public Slider sliderGamepad;
+    public Canvas canvaUI;
+    public GameObject loadingScreen;
+    public Slider slider;
+    public Text progression;
 
     public void LoadLevel(string sceneName)
     {
@@ -24,41 +19,14 @@ public class LevelLoader : MonoBehaviour
     {
         AsyncOperation operationLoadLevel = SceneManager.LoadSceneAsync(sceneName);
 
-        if (requireVerification)
-        {
-            if (canvasTV.isActiveAndEnabled)
-            {
-                loadingScreenTV.SetActive(true);
-            }
-            else
-            {
-                loadingScreenGamepad.SetActive(true);
-            }
-        }
-        else
-        {
-            sliderGamepad.gameObject.SetActive(true);
-        }
+        loadingScreen.SetActive(true);
 
         while (!operationLoadLevel.isDone)
         {
             float progress = Mathf.Clamp01(operationLoadLevel.progress / 0.9f);
 
-            if (requireVerification)
-            {
-                if (canvasTV.isActiveAndEnabled)
-                {
-                    sliderTV.value = progress;
-                }
-                else
-                {
-                    sliderGamepad.value = progress;
-                }
-            }
-            else
-            {
-                sliderGamepad.value = progress;
-            }
+            slider.value = progress;
+            progression.text = (progress * 100).ToString() + "%";
 
             yield return null;
         }
