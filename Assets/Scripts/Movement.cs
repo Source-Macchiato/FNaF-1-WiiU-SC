@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 public class Movement : MonoBehaviour {
+    
     public ChangeImages changeImages;
     public GameScript GameScript;
 
@@ -63,7 +64,9 @@ public class Movement : MonoBehaviour {
 
     void Start()
     {
-        
+        //randMovement
+        RandMovement randMovement = GetComponent<RandMovement>();
+        randMovement.BonnieRandMove();
 
         ChicaInKitchen.SetActive(false);
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
@@ -411,6 +414,7 @@ public class Movement : MonoBehaviour {
 
 	void Update ()
     {
+        RandMovement randMovement = GetComponent<RandMovement>();
         PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
         PlayerPrefs.Save();
         PlayerPrefs.SetFloat("WhereChica", WhereChica);
@@ -485,10 +489,10 @@ if(GameScript.Time <= 267.0f)
                 WhereBonnie += 1;
                 bonnieInCount = false;
                 
-                    MoveGlitchUp = 0.5f;
-                    MoveGlitch.SetActive(true);
-                    GlitchActive = true;
-                    LongGlitch = false;
+                MoveGlitchUp = 0.5f;
+                MoveGlitch.SetActive(true);
+                GlitchActive = true;
+                LongGlitch = false;
                 
 
                 if (!camIsUp)
@@ -496,8 +500,14 @@ if(GameScript.Time <= 267.0f)
                     GlitchActive = false;
                     MoveGlitch.SetActive(false);
                 }
-
                 GenNumber();
+            }
+            else if (WhereBonnie == 2)
+            {
+                if (randMovement.BonnieRandNumb == 1)
+                {
+
+                }
             }
             else
             {
