@@ -2165,6 +2165,7 @@ GameObject:
   - component: {fileID: 217767948}
   - component: {fileID: 217767950}
   - component: {fileID: 217767949}
+  - component: {fileID: 217767951}
   m_Layer: 5
   m_Name: Right_officeLightOnNoDoor
   m_TagString: Untagged
@@ -2223,6 +2224,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 217767947}
+--- !u!95 &217767951
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 217767947}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b72c12c4c73e5f44ba3f735c407c08cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &229030720
 GameObject:
   m_ObjectHideFlags: 0
@@ -6271,6 +6289,7 @@ GameObject:
   - component: {fileID: 836525057}
   - component: {fileID: 836525059}
   - component: {fileID: 836525058}
+  - component: {fileID: 836525060}
   m_Layer: 5
   m_Name: Left_officeLightOnNoDoor
   m_TagString: Untagged
@@ -6329,6 +6348,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 836525056}
+--- !u!95 &836525060
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 836525056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82f7c55bb3532bb4ba77471db9fc727e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &861070632
 GameObject:
   m_ObjectHideFlags: 0
@@ -7445,6 +7481,7 @@ GameObject:
   - component: {fileID: 1014525240}
   - component: {fileID: 1014525242}
   - component: {fileID: 1014525241}
+  - component: {fileID: 1014525243}
   m_Layer: 5
   m_Name: L_OfficeBonnie
   m_TagString: Untagged
@@ -7503,6 +7540,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1014525239}
+--- !u!95 &1014525243
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1014525239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e4a07926a3f34094da0b1ea00f96a593, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1030642246
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,7 +8233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1097015882
 Animator:
   serializedVersion: 3
