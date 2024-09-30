@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   log: 1
-  warning: 1
+  warning: 0
   error: 1
   exception: 1
 --- !u!1 &373869701
