@@ -15984,6 +15984,7 @@ GameObject:
   - component: {fileID: 1959479701}
   - component: {fileID: 1959479702}
   - component: {fileID: 1959479703}
+  - component: {fileID: 1959479706}
   m_Layer: 0
   m_Name: Office Param
   m_TagString: Untagged
@@ -16345,6 +16346,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab02c47b8c496f4e92878432079c7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1959479706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1959479695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c524c8a06e86d04faca69e64465508a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonnieRandNumb: 0
+  ChicaRandNumb: 0
 --- !u!1 &1969409250
 GameObject:
   m_ObjectHideFlags: 0
