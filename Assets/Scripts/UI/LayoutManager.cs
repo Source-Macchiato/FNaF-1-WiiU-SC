@@ -63,8 +63,8 @@ public class LayoutManager : MonoBehaviour
         screenSubtitles[0].SetActive(true);
         screenSubtitles[1].SetActive(false);
 
-        minimap.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
-        minimap.transform.localPosition = new Vector3(611.3f, -230.3f, 0);
+        minimap.transform.localScale = new Vector3(1f, 1f, 1f);
+        minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
     }
 
     private void TVGamepad()
@@ -81,7 +81,7 @@ public class LayoutManager : MonoBehaviour
         screenSubtitles[0].SetActive(false);
         screenSubtitles[1].SetActive(true);
 
-        minimap.transform.localScale = new Vector3(2f, 2f, 1f);
+        minimap.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
         minimap.transform.localPosition = Vector3.zero;
 
         subtitles[0].SetActive(true);
@@ -103,8 +103,8 @@ public class LayoutManager : MonoBehaviour
         screenSubtitles[0].SetActive(false);
         screenSubtitles[1].SetActive(true);
 
-        minimap.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
-        minimap.transform.localPosition = new Vector3(611.3f, -230.3f, 0);
+        minimap.transform.localScale = new Vector3(1f, 1f, 1f);
+        minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
     }
 
     private void ChangeSubtitlePosition(bool cameraStatus)
