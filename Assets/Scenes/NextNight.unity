@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 92812525}
   - component: {fileID: 92812524}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: BackgroundColor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,15 +266,15 @@ RectTransform:
   m_GameObject: {fileID: 92812522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2758584, y: 2.2758596, z: 2.2758596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 52607039}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000017166, y: 4.4177}
-  m_SizeDelta: {x: 860.34, y: 491.29}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92812524
 MonoBehaviour:
@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 337335524}
   - component: {fileID: 337335526}
   - component: {fileID: 337335525}
+  - component: {fileID: 337335527}
   m_Layer: 5
   m_Name: Night6
   m_TagString: Untagged
@@ -485,7 +486,7 @@ RectTransform:
   m_GameObject: {fileID: 337335523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.84685, y: 1.41159, z: 1.41159}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1648183666}
   m_RootOrder: 6
@@ -493,7 +494,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 202, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &337335525
 MonoBehaviour:
@@ -503,7 +504,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 337335523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -514,19 +515,39 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 1d023d79b7954204f969ac8ec670e65c, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 385d166f8ff6f454eaa0cc6136f169e2, type: 3}
+    m_FontSize: 69
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 6
+    m_MaxSize: 104
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 6th Night
 --- !u!222 &337335526
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 337335523}
+--- !u!114 &337335527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337335523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &375800643
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +765,7 @@ GameObject:
   - component: {fileID: 527609499}
   - component: {fileID: 527609498}
   - component: {fileID: 527609500}
+  - component: {fileID: 527609501}
   m_Layer: 5
   m_Name: Night1
   m_TagString: Untagged
@@ -766,8 +788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 655.62, y: 85}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 193, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &527609498
 MonoBehaviour:
@@ -790,7 +812,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 385d166f8ff6f454eaa0cc6136f169e2, type: 3}
-    m_FontSize: 104
+    m_FontSize: 69
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
@@ -801,7 +823,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 1 s t  N i g h t
+  m_Text: 1st Night
 --- !u!222 &527609499
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -820,6 +842,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.firstnight
+--- !u!114 &527609501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 527609496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &538648140
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &627976658
 RectTransform:
   m_ObjectHideFlags: 0
@@ -917,10 +952,10 @@ RectTransform:
   m_Father: {fileID: 1648183666}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 24.099998}
-  m_SizeDelta: {x: 0, y: 281.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 121.75}
+  m_SizeDelta: {x: 0, y: -243.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &627976659
 MonoBehaviour:
@@ -965,6 +1000,7 @@ GameObject:
   - component: {fileID: 657038148}
   - component: {fileID: 657038147}
   - component: {fileID: 657038149}
+  - component: {fileID: 657038150}
   m_Layer: 5
   m_Name: Night3
   m_TagString: Untagged
@@ -987,8 +1023,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 655.62, y: 85}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 202, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657038147
 MonoBehaviour:
@@ -1011,10 +1047,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 385d166f8ff6f454eaa0cc6136f169e2, type: 3}
-    m_FontSize: 104
+    m_FontSize: 69
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 6
     m_MaxSize: 104
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1022,7 +1058,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 3 r d  N i g h t
+  m_Text: 3rd Night
 --- !u!222 &657038148
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1041,6 +1077,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.thirdnight
+--- !u!114 &657038150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 657038145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &708911128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,16 +1115,16 @@ RectTransform:
   m_GameObject: {fileID: 708911128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6758573, y: 0.6758573, z: 0.6758573}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1648183666}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 884, y: -473}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -34.2, y: 22.7}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &708911130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,6 +1461,7 @@ GameObject:
   - component: {fileID: 989091976}
   - component: {fileID: 989091978}
   - component: {fileID: 989091977}
+  - component: {fileID: 989091979}
   m_Layer: 5
   m_Name: 12AM
   m_TagString: Untagged
@@ -1434,8 +1484,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 32.5}
-  m_SizeDelta: {x: 345, y: 85}
+  m_AnchoredPosition: {x: 0, y: 65.99}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989091977
 MonoBehaviour:
@@ -1458,24 +1508,37 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 385d166f8ff6f454eaa0cc6136f169e2, type: 3}
-    m_FontSize: 104
+    m_FontSize: 69
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 104
     m_Alignment: 4
-    m_AlignByGeometry: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1 2 : 0 0  A M'
+  m_Text: 12:00 AM
 --- !u!222 &989091978
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 989091975}
+--- !u!114 &989091979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 989091975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &1149655867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,6 +1550,7 @@ GameObject:
   - component: {fileID: 1149655870}
   - component: {fileID: 1149655871}
   - component: {fileID: 1149655869}
+  - component: {fileID: 1149655872}
   m_Layer: 5
   m_Name: Night5
   m_TagString: Untagged
@@ -1509,8 +1573,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 655.62, y: 85}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 202, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1149655869
 MonoBehaviour:
@@ -1551,10 +1615,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 385d166f8ff6f454eaa0cc6136f169e2, type: 3}
-    m_FontSize: 104
+    m_FontSize: 69
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 6
     m_MaxSize: 104
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1562,7 +1626,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 5 t h  N i g h t
+  m_Text: 5th Night
+--- !u!114 &1149655872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1149655867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &1166567662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,6 +2027,7 @@ GameObject:
   - component: {fileID: 1487209582}
   - component: {fileID: 1487209581}
   - component: {fileID: 1487209583}
+  - component: {fileID: 1487209584}
   m_Layer: 5
   m_Name: Night4
   m_TagString: Untagged
@@ -1972,8 +2050,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 655.62, y: 85}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 202, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1487209581
 MonoBehaviour:
@@ -1996,10 +2074,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 385d166f8ff6f454eaa0cc6136f169e2, type: 3}
-    m_FontSize: 104
+    m_FontSize: 69
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 6
     m_MaxSize: 104
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2007,7 +2085,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 4 t h  N i g h t
+  m_Text: 4th Night
 --- !u!222 &1487209582
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2026,6 +2104,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.fourthnight
+--- !u!114 &1487209584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1487209579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &1558529067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,47 +2191,47 @@ Prefab:
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000091552734
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.011729002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 1920
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 162.38
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
@@ -2151,10 +2242,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1793344617329438, guid: 43e269f2118830447b194d4571f0778a, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43e269f2118830447b194d4571f0778a, type: 2}
@@ -2292,6 +2379,7 @@ GameObject:
   - component: {fileID: 1767599886}
   - component: {fileID: 1767599885}
   - component: {fileID: 1767599887}
+  - component: {fileID: 1767599888}
   m_Layer: 5
   m_Name: Night2
   m_TagString: Untagged
@@ -2314,8 +2402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 655.62, y: 85}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 202, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767599885
 MonoBehaviour:
@@ -2338,10 +2426,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 385d166f8ff6f454eaa0cc6136f169e2, type: 3}
-    m_FontSize: 104
+    m_FontSize: 69
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 6
     m_MaxSize: 104
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2349,7 +2437,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 2 n d  N i g h t
+  m_Text: 2nd Night
 --- !u!222 &1767599886
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2368,6 +2456,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.secondnight
+--- !u!114 &1767599888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1767599883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &1967288192
 GameObject:
   m_ObjectHideFlags: 0
