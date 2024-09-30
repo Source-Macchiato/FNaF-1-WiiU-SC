@@ -506,7 +506,7 @@ if(GameScript.Time <= 267.0f)
             {
                 if (randMovement.BonnieRandNumb == 1)
                 {
-
+                    //kill myself
                 }
             }
             else
