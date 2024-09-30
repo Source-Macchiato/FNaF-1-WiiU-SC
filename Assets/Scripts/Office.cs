@@ -45,9 +45,9 @@ public class Office : MonoBehaviour {
     public AudioSource DoorClose;
     public AudioSource Light;
 
-    private const float speed = 6f;
-    private const float leftEdge = 272f;
-    private const float rightEdge = -230f;
+    private const float speed = 5f;
+    private const float leftEdge = 160f;
+    private const float rightEdge = -130f;
 
     public bool BonnieOutsideDoor = false;
     public bool ChicaOutsideDoor = false;
@@ -281,7 +281,7 @@ public class Office : MonoBehaviour {
         }
 
         // Check position on the left for the left door
-        if (officeBounds.localPosition.x >= (leftEdge - 100f))
+        if (officeBounds.localPosition.x >= (leftEdge - 70f))
         {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
@@ -369,7 +369,7 @@ public class Office : MonoBehaviour {
         //-----------------------------------------------
 
         // Check position on the right for the right door
-        if (officeBounds.localPosition.x <= (rightEdge + 100))
+        if (officeBounds.localPosition.x <= (rightEdge + 70f))
         {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
