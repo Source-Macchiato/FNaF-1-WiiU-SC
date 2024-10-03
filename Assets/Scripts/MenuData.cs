@@ -9,6 +9,11 @@ public class MenuData : MonoBehaviour
     public Text currentLanguageText;
     public int layoutId;
 
+    [Header("Layout images")]
+    public Sprite tvOnly;
+    public Sprite tvGamepad;
+    public Sprite gamepadOnly;
+
     [HideInInspector]
     public GameObject nightNumberGameObject;
     public Button[] layoutButtons;
