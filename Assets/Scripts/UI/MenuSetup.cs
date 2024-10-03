@@ -111,6 +111,8 @@ public class MenuSetup : MonoBehaviour
         newButton.Select();
 
         menuManager.currentButton = newButton;
+
+        menuData.UpdateCursorSize(false, menuManager.currentSelection);
     }
 
     void Online()
@@ -149,5 +151,7 @@ public class MenuSetup : MonoBehaviour
 
             index++;
         }
+
+        menuData.UpdateCursorSize(true, menuManager.currentSelection);
     }
 }

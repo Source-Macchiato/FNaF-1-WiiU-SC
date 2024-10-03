@@ -65,8 +65,9 @@ public class MenuManager : MonoBehaviour
     private int currentMenuId = 0;
 
     // Instantiate selection cursor
-    private GameObject currentSelection;
-    private GameObject currentPopupSelection;
+    [HideInInspector]
+    public GameObject currentSelection;
+    public GameObject currentPopupSelection;
 
     // Elements to keep in memory
     [HideInInspector]

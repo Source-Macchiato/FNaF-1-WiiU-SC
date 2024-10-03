@@ -89,4 +89,21 @@ public class MenuData : MonoBehaviour
 
         nightNumberGameObject.SetActive(false);
     }
+
+    public void UpdateCursorSize(bool isOriginalSize, GameObject cursor)
+    {
+        Text text = cursor.GetComponent<Text>();
+        RectTransform rect = cursor.GetComponent<RectTransform>();
+
+        if (isOriginalSize)
+        {
+            text.fontSize = 72;
+            rect.sizeDelta = new Vector2(110f, 110f);
+        }
+        else
+        {
+            text.fontSize = 60;
+            rect.sizeDelta = new Vector2(80f, 80f);
+        }
+    }
 }
