@@ -117,10 +117,42 @@ public class CameraScript : MonoBehaviour
                 {
                     CameraSystem();
                 }
+
+                if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.X))
+                {
+                    if (!camIsUp)
+                    {
+                        Boop.Play();
+                    }
+                }
                 break;
             case WiiU.RemoteDevType.Classic:
+                if (remoteState.classic.IsTriggered(WiiU.ClassicButton.L))
+                {
+                    CameraSystem();
+                }
+
+                if (remoteState.classic.IsTriggered(WiiU.ClassicButton.X))
+                {
+                    if (!camIsUp)
+                    {
+                        Boop.Play();
+                    }
+                }
                 break;
             default:
+                if (remoteState.IsTriggered(WiiU.RemoteButton.One))
+                {
+                    CameraSystem();
+                }
+
+                if (remoteState.IsTriggered(WiiU.RemoteButton.Two))
+                {
+                    if (!camIsUp)
+                    {
+                        Boop.Play();
+                    }
+                }
                 break;
         }
 
@@ -129,61 +161,7 @@ public class CameraScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
-                if (camIsUp)
-                {
-                    CamSelectPanel.SetActive(false);
-                    OfficeStuff.SetActive(true);
-                    foreach (Animator anim in FindObjectsOfType<Animator>())
-                    {
-                        if (anim.gameObject.name.Contains("Door"))
-                        {
-                            anim.enabled = false;
-                        }
-                    }
-                    FlipClose.Play();
-
-                    CamViewTabletClose.SetActive(true);
-                    CamViewTabletOpen.SetActive(false);
-
-                    Dot.SetActive(false);
-                    Glitch.SetActive(false);
-                    Stripes.SetActive(false);
-
-                    camIsUp = false;
-
-                    wait = 0.2f;
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-                    OfficeControllerObject.GetComponent<Office>().enabled = true;
-                    OfficeControllerObject.GetComponent<Movement>().camIsUp = false;
-                    OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = false;
-                    OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = false;
-                    OfficeControllerObject.GetComponent<ChangeImages>().enabled = false;
-
-                }
-                else
-                {
-                    CamSelectPanel.SetActive(true);
-                    //OfficeStuff.SetActive(false);
-
-                    FlipOpen.Play();
-                    CamViewTabletOpen.SetActive(true);
-                    CamViewTabletClose.SetActive(false);
-
-                    camIsUp = true;
-
-                    wait = 0.2f;
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-                    //OfficeControllerObject.GetComponent<Office>().enabled = false;
-                    OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
-                    OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
-
-                    //OfficeStuff.transform.position = ResetPoint.transform.position; wth was the point of this line of code anyways??????
-                }
+                CameraSystem();
             }
 
             if (Input.GetKeyDown(KeyCode.X))
@@ -290,8 +268,6 @@ public class CameraScript : MonoBehaviour
                 //Black.SetActive(false);
             }
         }
-
-
     }
 
     void RemoveAnimator()

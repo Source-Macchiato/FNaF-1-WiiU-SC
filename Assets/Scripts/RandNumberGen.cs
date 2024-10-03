@@ -23,7 +23,7 @@ public class RandNumberGen : MonoBehaviour {
 
 	void GenRandomNumber ()
     {
-        CountDown = System.Math.Round(UnityEngine.Random.Range(30f, 40f), 0);
+        CountDown = System.Math.Round(Random.Range(30f, 40f), 0);
 
         if (WhichNight >= 1)
         {
