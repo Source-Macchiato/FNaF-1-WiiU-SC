@@ -328,7 +328,7 @@ public class Office : MonoBehaviour {
             // Gamepad
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
-                if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
                 {
                     LeftLightSystem();
                 }
@@ -338,13 +338,13 @@ public class Office : MonoBehaviour {
             switch (remoteState.devType)
             {
                 case WiiU.RemoteDevType.ProController:
-                    if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.X))
+                    if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
                     {
                         LeftLightSystem();
                     }
                     break;
                 case WiiU.RemoteDevType.Classic:
-                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.X))
+                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.B))
                     {
                         LeftLightSystem();
                     }
@@ -360,7 +360,7 @@ public class Office : MonoBehaviour {
             // Keyboard
             if (Application.isEditor)
             {
-                if (Input.GetKeyDown(KeyCode.X))
+                if (Input.GetKeyDown(KeyCode.B))
                 {
                     LeftLightSystem();
                 }
@@ -379,7 +379,7 @@ public class Office : MonoBehaviour {
                     RightDoorSystem();
                 }
 
-                if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
+                if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
                 {
                     RightDoorAndLightManager();
                 }
@@ -394,7 +394,7 @@ public class Office : MonoBehaviour {
                         RightDoorSystem();
                     }
 
-                    if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.X))
+                    if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
                     {
                         RightDoorAndLightManager();
                     }
@@ -405,7 +405,7 @@ public class Office : MonoBehaviour {
                         RightDoorSystem();
                     }
 
-                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.X))
+                    if (remoteState.classic.IsTriggered(WiiU.ClassicButton.B))
                     {
                         RightDoorAndLightManager();
                     }
@@ -431,7 +431,7 @@ public class Office : MonoBehaviour {
                     RightDoorSystem();
                 }
 
-                if (Input.GetKeyDown(KeyCode.X))
+                if (Input.GetKeyDown(KeyCode.B))
                 {
                     RightDoorAndLightManager();
                 }
@@ -442,7 +442,7 @@ public class Office : MonoBehaviour {
         // Gamepad
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsReleased(WiiU.GamePadButton.X))
+            if (gamePadState.IsReleased(WiiU.GamePadButton.B))
             {
                 RightLightSystem();
             }
@@ -452,13 +452,13 @@ public class Office : MonoBehaviour {
         switch (remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
-                if (remoteState.pro.IsReleased(WiiU.ProControllerButton.X))
+                if (remoteState.pro.IsReleased(WiiU.ProControllerButton.B))
                 {
                     RightLightSystem();
                 }
                 break;
             case WiiU.RemoteDevType.Classic:
-                if (remoteState.classic.IsReleased(WiiU.ClassicButton.X))
+                if (remoteState.classic.IsReleased(WiiU.ClassicButton.B))
                 {
                     RightLightSystem();
                 }
@@ -474,7 +474,7 @@ public class Office : MonoBehaviour {
         // Keyboard
         if (Application.isEditor)
         {
-            if (Input.GetKeyUp(KeyCode.X))
+            if (Input.GetKeyUp(KeyCode.B))
             {
                 RightLightSystem();
             }
@@ -502,7 +502,7 @@ public class Office : MonoBehaviour {
         // Gamepad
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
-            if (gamePadState.IsPressed(WiiU.GamePadButton.X))
+            if (gamePadState.IsPressed(WiiU.GamePadButton.B))
             {
                 CharactersMovement();
             }
@@ -512,13 +512,13 @@ public class Office : MonoBehaviour {
         switch (remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
-                if (remoteState.pro.IsPressed(WiiU.ProControllerButton.X))
+                if (remoteState.pro.IsPressed(WiiU.ProControllerButton.B))
                 {
                     CharactersMovement();
                 }
                 break;
             case WiiU.RemoteDevType.Classic:
-                if (remoteState.classic.IsPressed(WiiU.ClassicButton.X))
+                if (remoteState.classic.IsPressed(WiiU.ClassicButton.B))
                 {
                     CharactersMovement();
                 }
@@ -534,7 +534,7 @@ public class Office : MonoBehaviour {
         // Keyboard
         if (Application.isEditor)
         {
-            if (Input.GetKey(KeyCode.X))
+            if (Input.GetKey(KeyCode.B))
             {
                 CharactersMovement();
             }

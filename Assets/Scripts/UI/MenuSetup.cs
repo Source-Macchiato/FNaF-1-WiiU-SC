@@ -122,7 +122,7 @@ public class MenuSetup : MonoBehaviour
 
     void Analytics()
     {
-
+        menuManager.ChangeMenu(6);
     }
 
     // Callback functions
