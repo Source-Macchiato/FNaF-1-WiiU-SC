@@ -156,16 +156,24 @@ public class MenuManager : MonoBehaviour
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Left))
                 {
-                    if (currentScrollRect == null && canNavigate)
+                    if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                     {
                         MenuNavigation(currentButton.navigation.selectOnLeft);
+                    }
+                    else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                    {
+                        SwitcherNavigation(Vector2.left);
                     }
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Right))
                 {
-                    if (currentScrollRect == null && canNavigate)
+                    if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                     {
                         MenuNavigation(currentButton.navigation.selectOnRight);
+                    }
+                    else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                    {
+                        SwitcherNavigation(Vector2.right);
                     }
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
@@ -278,16 +286,24 @@ public class MenuManager : MonoBehaviour
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Left))
                     {
-                        if (currentScrollRect == null && canNavigate)
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            SwitcherNavigation(Vector2.left);
                         }
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Right))
                     {
-                        if (currentScrollRect == null && canNavigate)
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            SwitcherNavigation(Vector2.right);
                         }
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
@@ -397,16 +413,24 @@ public class MenuManager : MonoBehaviour
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Left))
                     {
-                        if (currentScrollRect == null && canNavigate)
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            SwitcherNavigation(Vector2.left);
                         }
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Right))
                     {
-                        if (currentScrollRect == null && canNavigate)
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            SwitcherNavigation(Vector2.right);
                         }
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.A))
@@ -515,16 +539,24 @@ public class MenuManager : MonoBehaviour
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Left))
                     {
-                        if (currentScrollRect == null && canNavigate)
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            SwitcherNavigation(Vector2.left);
                         }
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Right))
                     {
-                        if (currentScrollRect == null && canNavigate)
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            SwitcherNavigation(Vector2.right);
                         }
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.A))
@@ -607,16 +639,24 @@ public class MenuManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                if (currentScrollRect == null && canNavigate)
+                if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                 {
                     MenuNavigation(currentButton.navigation.selectOnLeft);
+                }
+                else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                {
+                    SwitcherNavigation(Vector2.left);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                if (currentScrollRect == null && canNavigate)
+                if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
                 {
                     MenuNavigation(currentButton.navigation.selectOnRight);
+                }
+                else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                {
+                    SwitcherNavigation(Vector2.right);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Return))
@@ -977,6 +1017,26 @@ public class MenuManager : MonoBehaviour
             Vector2 newPosition = currentScrollRect.normalizedPosition + new Vector2(0f, scrollAmount);
             newPosition.y = Mathf.Clamp01(newPosition.y);
             currentScrollRect.normalizedPosition = newPosition;
+        }
+    }
+
+    public void SwitcherNavigation(Vector2 direction)
+    {
+        SwitcherData switcherData = currentButton.GetComponent<SwitcherData>();
+
+        if (direction == Vector2.left)
+        {
+            if (switcherData.currentOptionId > 0)
+            {
+                switcherData.currentOptionId--;
+            }
+        }
+        else if (direction == Vector2.right)
+        {
+            if (switcherData.currentOptionId < (switcherData.optionsName.Length - 1))
+            {
+                switcherData.currentOptionId++;
+            }
         }
     }
 

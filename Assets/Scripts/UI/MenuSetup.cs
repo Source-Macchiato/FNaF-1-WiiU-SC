@@ -27,6 +27,10 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddCard(5, "TV + Gamepad", menuData.tvGamepad);
         menuManager.AddCard(5, "Gamepad only", menuData.gamepadOnly);
 
+        // Adding switchers to the main menu
+        menuManager.AddSwitcher(3, new string[] { "English", "French", "Spanish", "Italian", "German", "Slovak", "Arabic" });
+        menuManager.AddSwitcher(6, new string[] { "No", "Yes" });
+
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(2, OnBackFromLanguage);
