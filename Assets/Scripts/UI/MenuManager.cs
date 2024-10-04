@@ -26,6 +26,7 @@ public class MenuManager : MonoBehaviour
     [Header("Prefabs")]
     public GameObject buttonPrefab;
     public GameObject cardPrefab;
+    public GameObject switcherPrefab;
     public GameObject[] popupPrefab;
     public GameObject selectionPrefab;
     public GameObject selectionPopupPrefab;
@@ -872,6 +873,28 @@ public class MenuManager : MonoBehaviour
 
         // Add the new button to the list
         menuButtons[menuId].Add(newCard);
+    }
+
+    public void AddSwitcher(int menuId, string[] optionsName)
+    {
+        // Instantiate the switcher prefab
+        GameObject newSwitcher = Instantiate(switcherPrefab, menus[menuId]);
+
+        // Get the switcher button
+        Button switcherComponent = newSwitcher.GetComponent<Button>();
+
+        // Get SwitcherData script
+        SwitcherData switcherData = newSwitcher.GetComponent<SwitcherData>();
+        switcherData.optionsName = optionsName;
+
+        // Add the switcher to the correct menu list in the dictionary
+        if (!menuButtons.ContainsKey(menuId))
+        {
+            menuButtons[menuId] = new List<GameObject>();
+        }
+
+        // Add the new button to the list
+        menuButtons[menuId].Add(newSwitcher);
     }
 
     // Shows the next popup in the queue
