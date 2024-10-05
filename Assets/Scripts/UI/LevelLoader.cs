@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,7 +9,16 @@ public class LevelLoader : MonoBehaviour
     public Canvas canvaUI;
     public GameObject loadingScreen;
     public Slider slider;
-    public Text progression;
+    public GameObject progression;
+
+    private Text textComponent;
+    private TMP_Text tmpTextComponent;
+
+    void Start()
+    {
+        textComponent = progression.GetComponent<Text>();
+        tmpTextComponent = progression.GetComponent<TextMeshProUGUI>();
+    }
 
     public void LoadLevel(string sceneName)
     {
@@ -26,7 +36,16 @@ public class LevelLoader : MonoBehaviour
             float progress = Mathf.Clamp01(operationLoadLevel.progress / 0.9f);
 
             slider.value = progress;
-            progression.text = (progress * 100).ToString() + "%";
+
+            if (textComponent != null)
+            {
+                textComponent.text = (progress * 100).ToString() + "%";
+            }
+            
+            if (tmpTextComponent != null)
+            {
+                tmpTextComponent.text = (progress * 100).ToString() + "%";
+            }
 
             yield return null;
         }

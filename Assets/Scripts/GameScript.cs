@@ -1,20 +1,22 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour {
 
-    private float NightNumber;
+    private float nightNumber;
     public float Time = 535; //fixed i hope -- who wrote this ? who are you ?
     public float Usage = 1;
 
-    public Text NightNumberDisplayer;
-    public GameObject TimeShower;
+    public GameObject nightNumberDisplayer;
+    public GameObject powerDisplayer;
+    public GameObject timeDisplayer;
 
     public float PowerUsage = 1;
     public float PowerDrain = 1;
     public float PowerLeft = 100;
-    public GameObject PowerShower;
+    
     public GameObject Bar1, Bar2, Bar3, Bar4, Bar5;
 
     public AudioSource Call1;
@@ -23,39 +25,62 @@ public class GameScript : MonoBehaviour {
     public AudioSource Call4;
     public AudioSource Call5;
 
+    private Text textNightNumber;
+    private Text textPowerDisplayer;
+    private Text textTimeDisplayer;
+    private TMP_Text tmpTextNightNumber;
+    private TMP_Text tmpTextPowerDisplayer;
+    private TMP_Text tmpTextTimeDisplayer;
+
     SaveGameState saveGameState;
     SaveManager saveManager;
 
-    void Start ()
+    void Start()
     {
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
-        NightNumberDisplayer.text = NightNumber.ToString();
+        textNightNumber = nightNumberDisplayer.GetComponent<Text>();
+        textPowerDisplayer = powerDisplayer.GetComponent<Text>();
+        textTimeDisplayer = timeDisplayer.GetComponent<Text>();
+        tmpTextNightNumber = nightNumberDisplayer.GetComponent<TextMeshProUGUI>();
+        tmpTextPowerDisplayer = powerDisplayer.GetComponent<TextMeshProUGUI>();
+        tmpTextTimeDisplayer = timeDisplayer.GetComponent<TextMeshProUGUI>();
+
+        nightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+
+        if (textNightNumber != null)
+        {
+            textNightNumber.text = nightNumber.ToString();
+        }
+
+        if (tmpTextNightNumber != null)
+        {
+            tmpTextNightNumber.text = nightNumber.ToString();
+        }
 
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
 
         //--------------------------------------CallAndNight----------------------//
-        if (NightNumber == 1)
+        if (nightNumber == 1)
         {
             Call1.Play();
         }
 
-        if (NightNumber == 2)
+        if (nightNumber == 2)
         {
             Call2.Play();
         }
 
-        if (NightNumber == 3)
+        if (nightNumber == 3)
         {
             Call3.Play();
         }
 
-        if (NightNumber == 4)
+        if (nightNumber == 4)
         {
             Call4.Play();
         }
 
-        if (NightNumber == 5)
+        if (nightNumber == 5)
         {
             Call5.Play();
         }
@@ -98,36 +123,92 @@ public class GameScript : MonoBehaviour {
         switch((int)Time)
         {
             case 535:
-                TimeShower.GetComponent<Text>().text = "12 AM";
+                if (textTimeDisplayer != null)
+                {
+                    textTimeDisplayer.text = "12 AM";
+                }
+
+                if (tmpTextTimeDisplayer != null)
+                {
+                    tmpTextTimeDisplayer.text = "12 AM";
+                }
             break;
                 
             case 445:
-                TimeShower.GetComponent<Text>().text = "1 AM";
-            break;
+                if (textTimeDisplayer != null)
+                {
+                    textTimeDisplayer.text = "1 AM";
+                }
+
+                if (tmpTextTimeDisplayer != null)
+                {
+                    tmpTextTimeDisplayer.text = "1 AM";
+                }
+                break;
 
             case 354:
-                TimeShower.GetComponent<Text>().text = "2 AM";
-            break;
+                if (textTimeDisplayer != null)
+                {
+                    textTimeDisplayer.text = "2 AM";
+                }
+
+                if (tmpTextTimeDisplayer != null)
+                {
+                    tmpTextTimeDisplayer.text = "2 AM";
+                }
+                break;
             
             case 267:
-                TimeShower.GetComponent<Text>().text = "3 AM";
-            break;
+                if (textTimeDisplayer != null)
+                {
+                    textTimeDisplayer.text = "3 AM";
+                }
+
+                if (tmpTextTimeDisplayer != null)
+                {
+                    tmpTextTimeDisplayer.text = "3 AM";
+                }
+                break;
 
             case 178:
-                TimeShower.GetComponent<Text>().text = "4 AM";
-            break;
+                if (textTimeDisplayer != null)
+                {
+                    textTimeDisplayer.text = "4 AM";
+                }
+
+                if (tmpTextTimeDisplayer != null)
+                {
+                    tmpTextTimeDisplayer.text = "4 AM";
+                }
+                break;
 
             case 89:
-                TimeShower.GetComponent<Text>().text = "5 AM";
-            break;
+                if (textTimeDisplayer != null)
+                {
+                    textTimeDisplayer.text = "5 AM";
+                }
+
+                if (tmpTextTimeDisplayer != null)
+                {
+                    tmpTextTimeDisplayer.text = "5 AM";
+                }
+                break;
             
             case 0:
-            TimeShower.GetComponent<Text>().text = "6 AM";
+                if (textTimeDisplayer != null)
+                {
+                    textTimeDisplayer.text = "6 AM";
+                }
 
-            saveManager.SaveNightNumber(NightNumber + 1);
-            bool saveResult = saveGameState.DoSave();
+                if (tmpTextTimeDisplayer != null)
+                {
+                    tmpTextTimeDisplayer.text = "6 AM";
+                }
 
-            SceneManager.LoadScene("6AM");
+                saveManager.SaveNightNumber(nightNumber + 1);
+                bool saveResult = saveGameState.DoSave();
+
+                SceneManager.LoadScene("6AM");
             break;
         }
         //--------------------------------------TIME------------------------------//
@@ -150,7 +231,17 @@ public class GameScript : MonoBehaviour {
             if (PowerDrain <= 0)
             {
                 PowerLeft -= 1;
-                PowerShower.GetComponent<Text>().text = PowerLeft.ToString();
+               
+                if (textPowerDisplayer != null)
+                {
+                    textPowerDisplayer.text = PowerLeft.ToString();
+                }
+
+                if (tmpTextPowerDisplayer != null)
+                {
+                    tmpTextPowerDisplayer.text = PowerLeft.ToString();
+                }
+
                 PowerDrain = 10;
             }
 
@@ -168,7 +259,17 @@ public class GameScript : MonoBehaviour {
             if (PowerDrain <= 0)
             {
                 PowerLeft -= 1;
-                PowerShower.GetComponent<Text>().text = PowerLeft.ToString();
+
+                if (textPowerDisplayer != null)
+                {
+                    textPowerDisplayer.text = PowerLeft.ToString();
+                }
+
+                if (tmpTextPowerDisplayer != null)
+                {
+                    tmpTextPowerDisplayer.text = PowerLeft.ToString();
+                }
+
                 PowerDrain = 4.5f;
             }
 
@@ -186,7 +287,17 @@ public class GameScript : MonoBehaviour {
             if (PowerDrain <= 0)
             {
                 PowerLeft -= 1;
-                PowerShower.GetComponent<Text>().text = PowerLeft.ToString();
+
+                if (textPowerDisplayer != null)
+                {
+                    textPowerDisplayer.text = PowerLeft.ToString();
+                }
+
+                if (tmpTextPowerDisplayer != null)
+                {
+                    tmpTextPowerDisplayer.text = PowerLeft.ToString();
+                }
+
                 PowerDrain = 2.3f;
             }
 
@@ -204,7 +315,17 @@ public class GameScript : MonoBehaviour {
             if (PowerDrain <= 0)
             {
                 PowerLeft -= 1;
-                PowerShower.GetComponent<Text>().text = PowerLeft.ToString();
+
+                if (textPowerDisplayer != null)
+                {
+                    textPowerDisplayer.text = PowerLeft.ToString();
+                }
+
+                if (tmpTextPowerDisplayer != null)
+                {
+                    tmpTextPowerDisplayer.text = PowerLeft.ToString();
+                }
+
                 PowerDrain = 1.1f;
             }
 
@@ -222,7 +343,17 @@ public class GameScript : MonoBehaviour {
             if (PowerDrain <= 0)
             {
                 PowerLeft -= 1;
-                PowerShower.GetComponent<Text>().text = PowerLeft.ToString();
+
+                if (textPowerDisplayer != null)
+                {
+                    textPowerDisplayer.text = PowerLeft.ToString();
+                }
+
+                if (tmpTextPowerDisplayer != null)
+                {
+                    tmpTextPowerDisplayer.text = PowerLeft.ToString();
+                }
+
                 PowerDrain = 0.6f;
             }
 
