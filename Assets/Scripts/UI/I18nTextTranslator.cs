@@ -1,17 +1,20 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class I18nTextTranslator : MonoBehaviour
 {
     public string textId;
     private Text textComponent;
+    private TMP_Text tmpTextComponent;
     private string currentLanguage;
 
     void Start()
     {
         textComponent = GetComponent<Text>();
+        tmpTextComponent = GetComponent<TextMeshProUGUI>();
 
-        if (textComponent == null)
+        if (textComponent == null && tmpTextComponent == null)
         {
             return;
         }
@@ -49,7 +52,16 @@ public class I18nTextTranslator : MonoBehaviour
         }
 
         string translatedText = GetTranslatedText();
-        textComponent.text = translatedText;
+
+        if (textComponent != null)
+        {
+            textComponent.text = translatedText;
+        }
+        
+        if (tmpTextComponent != null)
+        {
+            tmpTextComponent.text = translatedText;
+        }
     }
 
     string GetTranslatedText()

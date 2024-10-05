@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
+using TMPro;
 
 public class PopupData
 {
@@ -798,8 +799,18 @@ public class MenuManager : MonoBehaviour
 
         // Set the button text
         GameObject buttonTextComponent = newButton.transform.Find("Text").gameObject;
-        Text text = buttonTextComponent.GetComponent<Text>();
-        text.text = buttonText;
+        Text textComponent = buttonTextComponent.GetComponent<Text>();
+        TMP_Text tmpTextComponent = buttonTextComponent.GetComponent<TextMeshProUGUI>();
+
+        if (textComponent != null)
+        {
+            textComponent.text = buttonText;
+        }
+
+        if (tmpTextComponent != null)
+        {
+            tmpTextComponent.text = buttonText;
+        }
 
         // Translate button text
         I18nTextTranslator translator = buttonTextComponent.GetComponent<I18nTextTranslator>();
@@ -872,8 +883,18 @@ public class MenuManager : MonoBehaviour
 
         // Set the card text
         GameObject cardTextComponent = newCard.transform.Find("Text").gameObject;
-        Text text = cardTextComponent.GetComponent<Text>();
-        text.text = cardText;
+        Text textComponent = cardTextComponent.GetComponent<Text>();
+        TMP_Text tmpTextComponent = cardTextComponent.GetComponent<TextMeshProUGUI>();
+        
+        if (textComponent != null)
+        {
+            textComponent.text = cardText;
+        }
+
+        if (tmpTextComponent != null)
+        {
+            tmpTextComponent.text = cardText;
+        }
 
         // Set the card image
         if (cardImage != null)

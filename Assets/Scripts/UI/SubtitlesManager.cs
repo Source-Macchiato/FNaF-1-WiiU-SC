@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SubtitlesManager : MonoBehaviour
 {
-    public Text[] subtitlesText;
+    public GameObject[] subtitlesContainers;
 
     private List<string> subtitleIdentifiers;
     private List<float> displayDurations;
@@ -45,11 +46,11 @@ public class SubtitlesManager : MonoBehaviour
 
         if (NightNumber == 5)
         {
-            foreach (Text subtitleText in subtitlesText)
+            foreach (GameObject subtitleContainer in subtitlesContainers)
             {
-                if (subtitleText.gameObject.activeSelf)
+                if (subtitleContainer.activeSelf)
                 {
-                    subtitleText.gameObject.transform.Rotate(0f, 180f, 0f);
+                    subtitleContainer.transform.Rotate(0f, 180f, 0f);
                 }
             }
         }
@@ -84,12 +85,27 @@ public class SubtitlesManager : MonoBehaviour
             }
             else
             {
-                foreach (Text subtitleText in subtitlesText)
+                foreach (GameObject subtitleContainer in subtitlesContainers)
                 {
-                    if (subtitleText.gameObject.activeSelf)
+                    Text textComponent = subtitleContainer.GetComponent<Text>();
+                    TMP_Text tmpTextComponent = subtitleContainer.GetComponent<TextMeshProUGUI>();
+
+                    if (textComponent != null)
                     {
-                        subtitleText.text = "";
-                        subtitleText.gameObject.SetActive(false);
+                        if (subtitleContainer.activeSelf)
+                        {
+                            textComponent.text = "";
+                            subtitleContainer.SetActive(false);
+                        }
+                    }
+
+                    if (tmpTextComponent != null)
+                    {
+                        if (subtitleContainer.activeSelf)
+                        {
+                            tmpTextComponent.text = "";
+                            subtitleContainer.SetActive(false);
+                        }
                     }
                 }
             }
@@ -100,11 +116,25 @@ public class SubtitlesManager : MonoBehaviour
     {
         string translatedText = GetTranslatedText(subtitleIdentifiers[currentIndex]);
 
-        foreach (Text subtitleText in subtitlesText)
+        foreach (GameObject subtitleContainer in subtitlesContainers)
         {
-            if (subtitleText.gameObject.activeSelf)
+            Text textComponent = subtitleContainer.GetComponent<Text>();
+            TMP_Text tmpTextComponent = subtitleContainer.GetComponent<TextMeshProUGUI>();
+
+            if (textComponent != null)
             {
-                subtitleText.text = translatedText;
+                if (subtitleContainer.activeSelf)
+                {
+                    textComponent.text = translatedText;
+                }
+            }
+
+            if (tmpTextComponent != null)
+            {
+                if (subtitleContainer.activeSelf)
+                {
+                    tmpTextComponent.text = translatedText;
+                }
             }
         }
 

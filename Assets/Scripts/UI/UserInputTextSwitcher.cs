@@ -42,7 +42,7 @@ public class UserInputTextSwitcher : MonoBehaviour
             currentIndex = 0;
         }
 
-        setLanguageText.text = setLanguageTextList[currentIndex];
+        //setLanguageText.text = setLanguageTextList[currentIndex];
 
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);

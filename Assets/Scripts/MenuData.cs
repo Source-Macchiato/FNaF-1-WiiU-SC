@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuData : MonoBehaviour
 {
@@ -82,7 +83,19 @@ public class MenuData : MonoBehaviour
         Transform nightNumberContainer = canvaUI.Find("NightNumberContainer").transform;
 
         nightNumberGameObject = Instantiate(nightNumberPrefab, nightNumberContainer);
-        nightNumberGameObject.transform.Find("NumberText").GetComponent<Text>().text = nightNumber.ToString();
+
+        Text textNightNumber = nightNumberGameObject.transform.Find("NumberText").GetComponent<Text>();
+        TMP_Text tmpTextNightNumber = nightNumberGameObject.transform.Find("NumberText").GetComponent<TextMeshProUGUI>();
+
+        if (textNightNumber != null)
+        {
+            textNightNumber.text = nightNumber.ToString();
+        }
+
+        if (tmpTextNightNumber != null)
+        {
+            tmpTextNightNumber.text = nightNumber.ToString();
+        }
 
         RectTransform nightNumberRect = nightNumberGameObject.GetComponent<RectTransform>();
         nightNumberRect.anchoredPosition = new Vector2(-700f, -234.2f);
@@ -92,17 +105,36 @@ public class MenuData : MonoBehaviour
 
     public void UpdateCursorSize(bool isOriginalSize, GameObject cursor)
     {
-        Text text = cursor.GetComponent<Text>();
+        Text textComponent = cursor.GetComponent<Text>();
+        TMP_Text tmpTextComponent = cursor.GetComponent<TextMeshProUGUI>();
         RectTransform rect = cursor.GetComponent<RectTransform>();
 
         if (isOriginalSize)
         {
-            text.fontSize = 72;
+            if (textComponent != null)
+            {
+                textComponent.fontSize = 72;
+            }
+
+            if (tmpTextComponent != null)
+            {
+                tmpTextComponent.fontSize = 72;
+            }
+
             rect.sizeDelta = new Vector2(110f, 110f);
         }
         else
         {
-            text.fontSize = 60;
+            if (textComponent != null)
+            {
+                textComponent.fontSize = 60;
+            }
+
+            if (tmpTextComponent != null)
+            {
+                tmpTextComponent.fontSize = 60;
+            }
+
             rect.sizeDelta = new Vector2(80f, 80f);
         }
     }
