@@ -60,6 +60,50 @@ public class MenuData : MonoBehaviour
         advertisementImage.SetActive(true);
     }
 
+    public void LoadLanguageAndUpdateSwitcher()
+    {
+        // Get SwitcherData scripts
+        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+
+        // Get language
+        string language = I18n.GetLanguage();
+
+        foreach (SwitcherData switcher in switchers)
+        {
+            if (switcher.switcherId == "switcher.translation")
+            {
+                if (language == "fr")
+                {
+                    switcher.currentOptionId = 1;
+                }
+                else if (language == "es")
+                {
+                    switcher.currentOptionId = 2;
+                }
+                else if (language == "it")
+                {
+                    switcher.currentOptionId = 3;
+                }
+                else if (language == "de")
+                {
+                    switcher.currentOptionId = 4;
+                }
+                else if (language == "sk")
+                {
+                    switcher.currentOptionId = 5;
+                }
+                else if (language == "ar")
+                {
+                    switcher.currentOptionId = 6;
+                }
+                else
+                {
+                    switcher.currentOptionId = 0;
+                }
+            }
+        }
+    }
+
     public void SaveAndUpdateLanguage()
     {
         // Get SwitcherData scripts
@@ -74,6 +118,30 @@ public class MenuData : MonoBehaviour
 
                 // Reload the language
                 I18n.LoadLanguage();
+            }
+        }
+    }
+
+    public void LoadShareDataAndUpdateSwitcher()
+    {
+        // Get SwitcherData scripts
+        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+
+        // Get share data value
+        float shareDataId = SaveManager.LoadShareData();
+
+        foreach (SwitcherData switcher in switchers)
+        {
+            if (switcher.switcherId == "switcher.analyticdata")
+            {
+                if (shareDataId == 1f)
+                {
+                    switcher.currentOptionId = 1;
+                }
+                else
+                {
+                    switcher.currentOptionId = 0;
+                }
             }
         }
     }
