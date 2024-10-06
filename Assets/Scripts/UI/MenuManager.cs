@@ -936,7 +936,7 @@ public class MenuManager : MonoBehaviour
         menuButtons[menuId].Add(newCard);
     }
 
-    public void AddSwitcher(int menuId, string[] optionsName)
+    public void AddSwitcher(int menuId, string[] optionsName, string switcherId)
     {
         // Instantiate the switcher prefab
         GameObject newSwitcher = Instantiate(switcherPrefab, menus[menuId]);
@@ -947,6 +947,9 @@ public class MenuManager : MonoBehaviour
         // Get SwitcherData script
         SwitcherData switcherData = newSwitcher.GetComponent<SwitcherData>();
         switcherData.optionsName = optionsName;
+
+        // Set switcher ID
+        switcherData.switcherId = switcherId;
 
         // Add the switcher to the correct menu list in the dictionary
         if (!menuButtons.ContainsKey(menuId))

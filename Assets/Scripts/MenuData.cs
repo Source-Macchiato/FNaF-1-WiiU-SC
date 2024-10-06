@@ -7,7 +7,6 @@ public class MenuData : MonoBehaviour
 {
     public float nightNumber;
     public GameObject nightNumberPrefab;
-    public Text currentLanguageText;
     public int layoutId;
 
     [Header("Layout images")]
@@ -63,11 +62,20 @@ public class MenuData : MonoBehaviour
 
     public void SaveAndUpdateLanguage()
     {
-        saveManager.SaveLanguage(currentLanguageText.text);
-        bool saveResult = saveGameState.DoSave();
+        // Get SwitcherData scripts
+        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
 
-        // Reload the language
-        I18n.LoadLanguage();
+        foreach (SwitcherData switcher in switchers)
+        {
+            if (switcher.switcherId == "switcher.translation")
+            {
+                saveManager.SaveLanguage(switcher.optionsName[switcher.currentOptionId]);
+                bool saveResult = saveGameState.DoSave();
+
+                // Reload the language
+                I18n.LoadLanguage();
+            }
+        }
     }
 
     public void SaveLayout()

@@ -28,8 +28,8 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddCard(5, "Gamepad only", menuData.gamepadOnly);
 
         // Adding switchers to the main menu
-        menuManager.AddSwitcher(2, new string[] { "English", "French", "Spanish", "Italian", "German", "Slovak", "Arabic" });
-        menuManager.AddSwitcher(6, new string[] { "No", "Yes" });
+        menuManager.AddSwitcher(2, new string[] { "English", "French", "Spanish", "Italian", "German", "Slovak", "Arabic" }, "switcher.translation");
+        menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
@@ -90,6 +90,8 @@ public class MenuSetup : MonoBehaviour
 
     void Language()
     {
+
+
         menuManager.ChangeMenu(2);
     }
 

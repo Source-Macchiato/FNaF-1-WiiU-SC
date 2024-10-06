@@ -287,7 +287,6 @@ MonoBehaviour:
   nightNumber: 0
   nightNumberPrefab: {fileID: 1651130528948476, guid: 849d0d0f3905c28458c28472ba43866b,
     type: 2}
-  currentLanguageText: {fileID: 0}
   layoutId: 0
   tvOnly: {fileID: 21300000, guid: 636e7d7f2a512ef45a8be32e8fc850b1, type: 3}
   tvGamepad: {fileID: 21300000, guid: 943cb8d683cc8e04c9e5d6887edf28b1, type: 3}
@@ -2101,7 +2100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &659251409
 Transform:
   m_ObjectHideFlags: 0
