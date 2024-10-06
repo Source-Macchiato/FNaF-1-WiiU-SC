@@ -90,9 +90,44 @@ public class MenuSetup : MonoBehaviour
 
     void Language()
     {
-
-
         menuManager.ChangeMenu(2);
+
+        // Get SwitcherData scripts
+        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+
+        // Get language
+        string language = I18n.GetLanguage();
+
+        foreach (SwitcherData switcher in switchers)
+        {
+            if (switcher.switcherId == "switcher.translation")
+            {
+                if (language == "fr")
+                {
+                    switcher.currentOptionId = 1;
+                }
+                else if (language == "es")
+                {
+                    switcher.currentOptionId = 2;
+                }
+                else if (language == "it")
+                {
+                    switcher.currentOptionId = 3;
+                }
+                else if (language == "sk")
+                {
+                    switcher.currentOptionId = 4;
+                }
+                else if (language == "ar")
+                {
+                    switcher.currentOptionId = 5;
+                }
+                else
+                {
+                    switcher.currentOptionId = 0;
+                }
+            }
+        }
     }
 
     void Credits()
