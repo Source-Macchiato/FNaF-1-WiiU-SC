@@ -9,10 +9,13 @@ public class I18nTextTranslator : MonoBehaviour
     private TMP_Text tmpTextComponent;
     private string currentLanguage;
 
+    private ArabicFixerTMPRO arabicFixer;
+
     void Start()
     {
         textComponent = GetComponent<Text>();
         tmpTextComponent = GetComponent<TextMeshProUGUI>();
+        arabicFixer = GetComponent<ArabicFixerTMPRO>();
 
         if (textComponent == null && tmpTextComponent == null)
         {
