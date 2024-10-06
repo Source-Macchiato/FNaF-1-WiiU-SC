@@ -146,6 +146,21 @@ public class MenuData : MonoBehaviour
         }
     }
 
+    public void SaveShareData()
+    {
+        // Get SwitcherData scripts
+        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+
+        foreach (SwitcherData switcher in switchers)
+        {
+            if (switcher.switcherId == "switcher.analyticdata")
+            {
+                saveManager.SaveShareData(switcher.currentOptionId);
+                bool saveResult = saveGameState.DoSave();
+            }
+        }
+    }
+
     public void SaveLayout()
     {
         saveManager.SaveLayoutId(layoutId);

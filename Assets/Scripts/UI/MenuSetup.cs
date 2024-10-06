@@ -35,6 +35,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(2, OnBackFromLanguage);
         menuManager.SetBackCallback(5, OnBackFromLayout);
+        menuManager.SetBackCallback(6, OnBackFromAnalyticData);
 
         // Display main menu after loaded all buttons
         menuManager.ChangeMenu(0);
@@ -161,5 +162,10 @@ public class MenuSetup : MonoBehaviour
         }
 
         menuData.UpdateCursorSize(true, menuManager.currentSelection);
+    }
+
+    void OnBackFromAnalyticData()
+    {
+        menuData.SaveShareData();
     }
 }
