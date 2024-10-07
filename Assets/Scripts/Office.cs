@@ -43,7 +43,7 @@ public class Office : MonoBehaviour {
     public Image OriginalOfficeImage;
 
     public AudioSource DoorClose;
-    public AudioSource Light;
+    public AudioSource lightSound;
 
     private const float speed = 5f;
     private const float leftEdge = 160f;
@@ -295,7 +295,7 @@ public class Office : MonoBehaviour {
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
                 {
-                    LeftDoorAndLightManager();
+                    LeftLightSystem();
                 }
             }
 
@@ -305,19 +305,19 @@ public class Office : MonoBehaviour {
                 case WiiU.RemoteDevType.ProController:
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
                     {
-                        LeftDoorAndLightManager();
+                        LeftLightSystem();
                     }
                     break;
                 case WiiU.RemoteDevType.Classic:
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.B))
                     {
-                        LeftDoorAndLightManager();
+                        LeftLightSystem();
                     }
                     break;
                 default:
                     if (remoteState.IsTriggered(WiiU.RemoteButton.B))
                     {
-                        LeftDoorAndLightManager();
+                        LeftLightSystem();
                     }
                     break;
             }
@@ -327,7 +327,7 @@ public class Office : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    LeftDoorAndLightManager();
+                    LeftLightSystem();
                 }
             }
         }
@@ -346,7 +346,7 @@ public class Office : MonoBehaviour {
 
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
                 {
-                    RightDoorAndLightManager();
+                    RightLightSystem();
                 }
             }
 
@@ -361,7 +361,7 @@ public class Office : MonoBehaviour {
 
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
                     {
-                        RightDoorAndLightManager();
+                        RightLightSystem();
                     }
                     break;
                 case WiiU.RemoteDevType.Classic:
@@ -372,7 +372,7 @@ public class Office : MonoBehaviour {
 
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.B))
                     {
-                        RightDoorAndLightManager();
+                        RightLightSystem();
                     }
                     break;
                 default:
@@ -383,7 +383,7 @@ public class Office : MonoBehaviour {
 
                     if (remoteState.IsTriggered(WiiU.RemoteButton.B))
                     {
-                        RightDoorAndLightManager();
+                        RightLightSystem();
                     }
                     break;
             }
@@ -398,7 +398,7 @@ public class Office : MonoBehaviour {
 
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    RightDoorAndLightManager();
+                    RightLightSystem();
                 }
             }
         }
@@ -620,7 +620,7 @@ public class Office : MonoBehaviour {
         }
     }
 
-    void LeftDoorAndLightManager()
+    void LeftLightSystem()
     {
         if (LeftLightIsOn)
         {
@@ -632,7 +632,7 @@ public class Office : MonoBehaviour {
                     Light_L_No_Door.enabled = false;
                 }
 
-                Light.Pause();
+                lightSound.Pause();
             }
 
             if (BonnieOutsideDoor)
@@ -643,7 +643,7 @@ public class Office : MonoBehaviour {
                     Light_L_Door_Bonnie.enabled = false;
                 }
 
-                Light.Pause();
+                lightSound.Pause();
             }
 
             // Check if already displayed
@@ -679,6 +679,13 @@ public class Office : MonoBehaviour {
         }
         else
         {
+            // Disable right light
+            if (RightLightIsOn)
+            {
+                RightLightSystem();
+            }
+
+            // The left light system
             if (!BonnieOutsideDoor)
             {
                 // Check if already displayed
@@ -687,7 +694,7 @@ public class Office : MonoBehaviour {
                     Light_L_No_Door.enabled = true;
                 }
 
-                Light.Play();
+                lightSound.Play();
                 LeftScareAlrdPlayed = false;
             }
 
@@ -699,7 +706,7 @@ public class Office : MonoBehaviour {
                     Light_L_Door_Bonnie.enabled = true;
                 }
 
-                Light.Play();
+                lightSound.Play();
 
                 if (!L_Door_Closed && LeftScareAlrdPlayed == false)
                 {
@@ -745,7 +752,7 @@ public class Office : MonoBehaviour {
         }
     }
 
-    void RightDoorAndLightManager()
+    void RightLightSystem()
     {
         if (RightLightIsOn)
         {
@@ -757,7 +764,7 @@ public class Office : MonoBehaviour {
                     Light_R_No_Door.enabled = false;
                 }
 
-                Light.Pause();
+                lightSound.Pause();
             }
 
             if (ChicaOutsideDoor)
@@ -768,7 +775,7 @@ public class Office : MonoBehaviour {
                     Light_R_Door_Chica.enabled = false;
                 }
 
-                Light.Pause();
+                lightSound.Pause();
             }
 
             // Check if already displayed
@@ -804,6 +811,13 @@ public class Office : MonoBehaviour {
         }
         else
         {
+            // Disable left light
+            if (LeftLightIsOn)
+            {
+                LeftLightSystem();
+            }
+
+            // The right light system
             if (!ChicaOutsideDoor)
             {
                 // Check if already displayed
@@ -812,7 +826,7 @@ public class Office : MonoBehaviour {
                     Light_R_No_Door.enabled = true;
                 }
 
-                Light.Play();
+                lightSound.Play();
                 RightScareAlrdPlayed = false;
             }
 
@@ -824,7 +838,7 @@ public class Office : MonoBehaviour {
                     Light_R_Door_Chica.enabled = true;
                 }
 
-                Light.Play();
+                lightSound.Play();
 
                 if (!R_Door_Closed && RightScareAlrdPlayed == false)
                 {

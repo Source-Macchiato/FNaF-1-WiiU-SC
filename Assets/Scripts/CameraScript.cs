@@ -194,13 +194,13 @@ public class CameraScript : MonoBehaviour
                     if (!officescript.BonnieOutsideDoor)
                     {
                         officescript.Light_L_No_Door.enabled = false;
-                        officescript.Light.Pause();
+                        officescript.lightSound.Pause();
                     }
 
                     if (officescript.BonnieOutsideDoor)
                     {
                         officescript.Light_L_Door_Bonnie.enabled = false;
-                        officescript.Light.Pause();
+                        officescript.lightSound.Pause();
                     }
 
                     officescript.OriginalOfficeImage.GetComponent<Image>().enabled = true;
@@ -224,13 +224,13 @@ public class CameraScript : MonoBehaviour
                     if (!officescript.ChicaOutsideDoor)
                     {
                         officescript.Light_R_No_Door.enabled = false;
-                        officescript.Light.Pause();
+                        officescript.lightSound.Pause();
                     }
 
                     if (officescript.ChicaOutsideDoor)
                     {
                         officescript.Light_R_Door_Chica.enabled = false;
-                        officescript.Light.Pause();
+                        officescript.lightSound.Pause();
                     }
 
                     officescript.OriginalOfficeImage.GetComponent<Image>().enabled = true;

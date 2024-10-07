@@ -16972,7 +16972,7 @@ MonoBehaviour:
   R_Door_Closed: 0
   OriginalOfficeImage: {fileID: 1969409252}
   DoorClose: {fileID: 616761960}
-  Light: {fileID: 355252805}
+  lightSound: {fileID: 355252805}
   BonnieOutsideDoor: 0
   ChicaOutsideDoor: 0
   FreddyOutsideDoor: 0
