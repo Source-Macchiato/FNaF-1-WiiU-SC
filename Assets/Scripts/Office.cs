@@ -40,7 +40,7 @@ public class Office : MonoBehaviour {
     public bool L_Door_Closed = false;
     public bool R_Door_Closed = false;
 
-    public GameObject OriginalOfficeImage;
+    public Image OriginalOfficeImage;
 
     public AudioSource DoorClose;
     public AudioSource Light;
@@ -102,44 +102,7 @@ public class Office : MonoBehaviour {
 
         Resources.UnloadUnusedAssets();
 
-        // Gamepad
-        /* if (gamePadState.gamePadErr == WiiU.GamePadError.None)
-        {
-            if (gamePadState.IsTriggered(WiiU.GamePadButton.Up) && gamePadState.IsTriggered(WiiU.GamePadButton.R))
-            {
-                if (CheatPanel.activeSelf)
-                {
-                    CheatPanel.SetActive(false);
-                }
-                else
-                {
-                    CheatPanel.SetActive(true);
-                }
-            }
-        } */
-
-        // Remote
-        /* switch (remoteState.devType)
-        {
-            case WiiU.RemoteDevType.ProController:
-                if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up) && remoteState.pro.IsTriggered(WiiU.ProControllerButton.R))
-                {
-                    if (CheatPanel.activeSelf)
-                    {
-                        CheatPanel.SetActive(false);
-                    }
-                    else
-                    {
-                        CheatPanel.SetActive(true);
-                    }
-                }
-                break;
-
-            default:
-                break;
-        } */
-
-        // Keyboard
+        // Display cheat panel
         if (Application.isEditor)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -155,6 +118,7 @@ public class Office : MonoBehaviour {
             }
         }
 
+        // Navigation is office
         float leftHorizontalInput = Input.GetAxis("LeftStickX");
 
         if (Mathf.Abs(leftHorizontalInput) > joystickThreshold)
@@ -178,6 +142,7 @@ public class Office : MonoBehaviour {
                 }
             }
         }
+
         // Gamepad
         else if (gamePadState.gamePadErr == WiiU.GamePadError.None) // (max here) i think if i didnt make this a else if then you could move faster if you use joystick and dpad at the same time, but look at this code it seems the french dont like else ifs
         {
@@ -480,19 +445,19 @@ public class Office : MonoBehaviour {
             }
         }
 
-        if (!L_Door_Closed && DoorButton_L4.isActiveAndEnabled == true)
+        if (!L_Door_Closed && DoorButton_L4.isActiveAndEnabled)
         {
             DoorButton_L4.enabled = false;
         }
-        if (!R_Door_Closed && DoorButton_R4.isActiveAndEnabled == true)
+        if (!R_Door_Closed && DoorButton_R4.isActiveAndEnabled)
         {
             DoorButton_R4.enabled = false;
         }
-        if (DoorButton_L2.isActiveAndEnabled == true && DoorButton_L3.isActiveAndEnabled == true)
+        if (DoorButton_L2.isActiveAndEnabled && DoorButton_L3.isActiveAndEnabled && !DoorButton_L4.isActiveAndEnabled)
         {
             DoorButton_L4.enabled = true;
         }
-        if (DoorButton_R2.isActiveAndEnabled == true && DoorButton_R3.isActiveAndEnabled == true)
+        if (DoorButton_R2.isActiveAndEnabled && DoorButton_R3.isActiveAndEnabled && !DoorButton_L4.isActiveAndEnabled)
         {
             DoorButton_R4.enabled = true;
         }
@@ -583,9 +548,24 @@ public class Office : MonoBehaviour {
             Door_L_closed.SetActive(false);
             Door_L_open.SetActive(true);
             L_Door_Closed = false;
-            DoorButton_L1.enabled = true;
-            DoorButton_L2.enabled = false;
-            DoorButton_R4.enabled = false;
+
+            // Check if already displayed
+            if (!DoorButton_L1.isActiveAndEnabled)
+            {
+                DoorButton_L1.enabled = true;
+            }
+            
+            // Check if already displayed
+            if (DoorButton_L2.isActiveAndEnabled)
+            {
+                DoorButton_L2.enabled = false;
+            }
+            
+            // Check if already displayed
+            if (DoorButton_R4.isActiveAndEnabled)
+            {
+                DoorButton_R4.enabled = false;
+            }
 
             DoorClose.Play();
 
@@ -593,15 +573,24 @@ public class Office : MonoBehaviour {
 
             OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
             OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
-
         }
         else
         {
             Door_L_closed.SetActive(true);
             Door_L_open.SetActive(false);
             L_Door_Closed = true;
-            DoorButton_L1.enabled = false;
-            DoorButton_L2.enabled = true;
+
+            // Check if already displayed
+            if (DoorButton_L1.isActiveAndEnabled)
+            {
+                DoorButton_L1.enabled = false;
+            }
+            
+            // Check if already displayed
+            if (!DoorButton_L2.isActiveAndEnabled)
+            {
+                DoorButton_L2.enabled = true;
+            }
 
             DoorClose.Play();
 
@@ -621,9 +610,24 @@ public class Office : MonoBehaviour {
             Door_R_closed.SetActive(false);
             Door_R_open.SetActive(true);
             R_Door_Closed = false;
-            DoorButton_R1.enabled = true;
-            DoorButton_R2.enabled = false;
-            DoorButton_R4.enabled = false;
+
+            // Check if already displayed
+            if (!DoorButton_R1.isActiveAndEnabled)
+            {
+                DoorButton_R1.enabled = true;
+            }
+            
+            // Check if already displayed
+            if (DoorButton_R2.isActiveAndEnabled)
+            {
+                DoorButton_R2.enabled = false;
+            }
+
+            // Check if already displayed
+            if (DoorButton_R4.isActiveAndEnabled)
+            {
+                DoorButton_R4.enabled = false;
+            }
 
             DoorClose.Play();
 
@@ -636,8 +640,18 @@ public class Office : MonoBehaviour {
             Door_R_closed.SetActive(true);
             Door_R_open.SetActive(false);
             R_Door_Closed = true;
-            DoorButton_R1.enabled = false;
-            DoorButton_R2.enabled = true;
+            
+            // Check if already displayed
+            if (DoorButton_R1.isActiveAndEnabled)
+            {
+                DoorButton_R1.enabled = false;
+            }
+
+            // Check if already displayed
+            if (!DoorButton_R2.isActiveAndEnabled)
+            {
+                DoorButton_R2.enabled = true;
+            }
 
             DoorClose.Play();
 
@@ -654,14 +668,24 @@ public class Office : MonoBehaviour {
 
         if (!BonnieOutsideDoor)
         {
-            Light_L_No_Door.enabled = true;
+            // Check if already displayed
+            if (!Light_L_No_Door.isActiveAndEnabled)
+            {
+                Light_L_No_Door.enabled = true;
+            }
+
             Light.Play();
             LeftScareAlrdPlayed = false;
         }
 
         if (BonnieOutsideDoor)
         {
-            Light_L_Door_Bonnie.enabled = true;
+            // Check if already displayed
+            if (!Light_L_Door_Bonnie.isActiveAndEnabled)
+            {
+                Light_L_Door_Bonnie.enabled = true;
+            }
+
             Light.Play();
 
             if (!L_Door_Closed && LeftScareAlrdPlayed == false)
@@ -675,16 +699,33 @@ public class Office : MonoBehaviour {
             LeftScareAlrdPlayed = false;
         }
 
-        OriginalOfficeImage.GetComponent<Image>().enabled = false;
+        // Check if already displayed
+        if (OriginalOfficeImage.isActiveAndEnabled)
+        {
+            OriginalOfficeImage.enabled = false;
+        }
 
         OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-        DoorButton_L3.enabled = true;
+        // Check if already displayed
+        if (!DoorButton_L3.isActiveAndEnabled)
+        {
+            DoorButton_L3.enabled = true;
+        }
 
         if (L_Door_Closed)
         {
-            DoorButton_L1.enabled = false;
-            DoorButton_L4.enabled = true;
+            // Check if already displayed
+            if (DoorButton_L1.isActiveAndEnabled)
+            {
+                DoorButton_L1.enabled = false;
+            }
+
+            // Check if already displayed
+            if (!DoorButton_L4.isActiveAndEnabled)
+            {
+                DoorButton_L4.enabled = true;
+            }
         }
     }
 
@@ -694,24 +735,51 @@ public class Office : MonoBehaviour {
         {
             if (!BonnieOutsideDoor)
             {
-                Light_L_No_Door.enabled = false;
+                // Check if already displayed
+                if (Light_L_No_Door.isActiveAndEnabled)
+                {
+                    Light_L_No_Door.enabled = false;
+                }
+
                 Light.Pause();
             }
 
             if (BonnieOutsideDoor)
             {
-                Light_L_Door_Bonnie.enabled = false;
+                // Check if already displayed
+                if (Light_L_Door_Bonnie.isActiveAndEnabled)
+                {
+                    Light_L_Door_Bonnie.enabled = false;
+                }
+
                 Light.Pause();
             }
 
-            OriginalOfficeImage.GetComponent<Image>().enabled = true;
+            // Check if already displayed
+            if (!OriginalOfficeImage.isActiveAndEnabled)
+            {
+                OriginalOfficeImage.enabled = true;
+            }
 
-            DoorButton_L3.enabled = false;
+            // Check if already displayed
+            if (DoorButton_L3.isActiveAndEnabled)
+            {
+                DoorButton_L3.enabled = false;
+            }
 
             if (L_Door_Closed)
             {
-                DoorButton_L1.enabled = true;
-                DoorButton_L4.enabled = false;
+                // Check if already displayed
+                if (!DoorButton_L1.isActiveAndEnabled)
+                {
+                    DoorButton_L1.enabled = true;
+                }
+
+                // Check if already displayed
+                if (DoorButton_L4.isActiveAndEnabled)
+                {
+                    DoorButton_L4.enabled = false;
+                }
             }
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -724,24 +792,51 @@ public class Office : MonoBehaviour {
         {
             if (!ChicaOutsideDoor)
             {
-                Light_R_No_Door.enabled = false;
+                // Check if already displayed
+                if (Light_R_No_Door.isActiveAndEnabled)
+                {
+                    Light_R_No_Door.enabled = false;
+                }
+
                 Light.Pause();
             }
 
             if (ChicaOutsideDoor)
             {
-                Light_R_Door_Chica.enabled = false;
+                // Check if already displayed
+                if (Light_R_Door_Chica.isActiveAndEnabled)
+                {
+                    Light_R_Door_Chica.enabled = false;
+                }
+
                 Light.Pause();
             }
 
-            OriginalOfficeImage.GetComponent<Image>().enabled = true;
+            // Check if already displayed
+            if (!OriginalOfficeImage.isActiveAndEnabled)
+            {
+                OriginalOfficeImage.enabled = true;
+            }
 
-            DoorButton_R3.enabled = false;
+            // Check if already displayed
+            if (DoorButton_R3.isActiveAndEnabled)
+            {
+                DoorButton_R3.enabled = false;
+            }
 
             if (R_Door_Closed)
             {
-                DoorButton_R1.enabled = true;
-                DoorButton_R4.enabled = false;
+                // Check if already displayed
+                if (!DoorButton_R1.isActiveAndEnabled)
+                {
+                    DoorButton_R1.enabled = true;
+                }
+
+                // Check if already displayed
+                if (DoorButton_R4.isActiveAndEnabled)
+                {
+                    DoorButton_R4.enabled = false;
+                }
             }
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
@@ -756,14 +851,24 @@ public class Office : MonoBehaviour {
 
         if (!ChicaOutsideDoor)
         {
-            Light_R_No_Door.enabled = true;
+            // Check if already displayed
+            if (!Light_R_No_Door.isActiveAndEnabled)
+            {
+                Light_R_No_Door.enabled = true;
+            }
+
             Light.Play();
             RightScareAlrdPlayed = false;
         }
 
         if (ChicaOutsideDoor)
         {
-            Light_R_Door_Chica.enabled = true;
+            // Check if already displayed
+            if (!Light_R_Door_Chica.isActiveAndEnabled)
+            {
+                Light_R_Door_Chica.enabled = true;
+            }
+
             Light.Play();
 
             if (!R_Door_Closed && RightScareAlrdPlayed == false)
@@ -776,12 +881,25 @@ public class Office : MonoBehaviour {
 
         OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
 
-        DoorButton_R3.enabled = true;
+        // Check if already displayed
+        if (!DoorButton_R3.isActiveAndEnabled)
+        {
+            DoorButton_R3.enabled = true;
+        }
 
         if (R_Door_Closed)
         {
-            DoorButton_R1.enabled = false;
-            DoorButton_R4.enabled = true;
+            // Check if already displayed
+            if (DoorButton_R1.isActiveAndEnabled)
+            {
+                DoorButton_R1.enabled = false;
+            }
+
+            // Check if already displayed
+            if (!DoorButton_R4.isActiveAndEnabled)
+            {
+                DoorButton_R4.enabled = true;
+            }
         }
     }
 

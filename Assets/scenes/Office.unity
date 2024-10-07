@@ -16970,7 +16970,7 @@ MonoBehaviour:
   Light_R_Door_Chica: {fileID: 1894411169}
   L_Door_Closed: 0
   R_Door_Closed: 0
-  OriginalOfficeImage: {fileID: 1969409250}
+  OriginalOfficeImage: {fileID: 1969409252}
   DoorClose: {fileID: 616761960}
   Light: {fileID: 355252805}
   BonnieOutsideDoor: 0
