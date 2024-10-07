@@ -10,6 +10,8 @@ public class Office : MonoBehaviour {
     private bool RightScareAlrdPlayed = false;
 
     public GameObject OfficeImage;
+
+    [HideInInspector]
     public RectTransform officeBounds;
 
     public GameObject OfficeControllerObject;
@@ -20,7 +22,7 @@ public class Office : MonoBehaviour {
     public GameObject Door_R_closed;
     public GameObject Door_R_open;
 
-    // Buttons textures
+    [Header("Images")]
     public Image DoorButton_L1;
     public Image DoorButton_L2;
     public Image DoorButton_L3;
@@ -42,8 +44,10 @@ public class Office : MonoBehaviour {
 
     public Image OriginalOfficeImage;
 
+    [Header("Audios")]
     public AudioSource DoorClose;
     public AudioSource lightSound;
+    public AudioSource Scare;
 
     private const float speed = 5f;
     private const float leftEdge = 160f;
@@ -56,8 +60,6 @@ public class Office : MonoBehaviour {
 
     public bool LeftLightIsOn = false;
     public bool RightLightIsOn = false;
-
-    public AudioSource Scare;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;

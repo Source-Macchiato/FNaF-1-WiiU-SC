@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 616761960}
   - component: {fileID: 616761962}
   m_Layer: 0
-  m_Name: Door_Close_Sound
+  m_Name: DoorCloseSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7069,6 +7069,47 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 911282228}
+--- !u!1 &919140371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 919140372}
+  - component: {fileID: 919140373}
+  m_Layer: 0
+  m_Name: HomeMenuStatus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &919140372
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 919140371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1701380716}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &919140373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 919140371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf93f009c4b1934199e7a92511039b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableHomeMenu: 1
 --- !u!1 &923203650
 GameObject:
   m_ObjectHideFlags: 0
@@ -13523,6 +13564,7 @@ Transform:
   - {fileID: 969523383}
   - {fileID: 1631035631}
   - {fileID: 1534266627}
+  - {fileID: 919140372}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16973,13 +17015,13 @@ MonoBehaviour:
   OriginalOfficeImage: {fileID: 1969409252}
   DoorClose: {fileID: 616761960}
   lightSound: {fileID: 355252805}
+  Scare: {fileID: 2026916158}
   BonnieOutsideDoor: 0
   ChicaOutsideDoor: 0
   FreddyOutsideDoor: 0
   FoxyRunningHallway: 0
   LeftLightIsOn: 0
   RightLightIsOn: 0
-  Scare: {fileID: 2026916158}
   centerPosition: 65
 --- !u!4 &1959479697
 Transform:
