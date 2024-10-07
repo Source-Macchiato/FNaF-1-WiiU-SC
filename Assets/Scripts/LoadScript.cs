@@ -18,8 +18,6 @@ public class LoadScript : MonoBehaviour {
 
     void Start()
     {
-        Resources.UnloadUnusedAssets();
-
         Minimap.SetActive(false);
 
         StartCoroutine(InitCoroutine());

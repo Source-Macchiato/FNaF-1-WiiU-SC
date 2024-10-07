@@ -16,15 +16,11 @@ public class Power : MonoBehaviour {
 
     void Start()
     {
-        //SceneManager.UnloadSceneAsync("Office"); causes errors since scene is already unloaded
-
         controllersRumble = FindObjectOfType<ControllersRumble>();
     }
 
     void Update()
     {
-        Resources.UnloadUnusedAssets();
-
         WaitBeforeStart -= Time.deltaTime;
 
         if (WaitBeforeStart <= 0)

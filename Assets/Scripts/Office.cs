@@ -102,8 +102,6 @@ public class Office : MonoBehaviour {
         WiiU.GamePadState gamePadState = gamePad.state;
         WiiU.RemoteState remoteState = remote.state;
 
-        Resources.UnloadUnusedAssets();
-
         // Display cheat panel
         if (Application.isEditor)
         {

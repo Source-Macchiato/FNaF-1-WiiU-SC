@@ -9,24 +9,12 @@ public class Exit : MonoBehaviour {
 
     void Start()
     {
-        SceneManager.UnloadSceneAsync("MainMenu");
-        SceneManager.UnloadSceneAsync("GameOver");
-        SceneManager.UnloadSceneAsync("6AM");
-        SceneManager.UnloadSceneAsync("NextNight");
-        SceneManager.UnloadSceneAsync("Controlls");
-        SceneManager.UnloadSceneAsync("Office");
-        SceneManager.UnloadSceneAsync("Advertisement");
-        SceneManager.UnloadSceneAsync("PowerOut");
-        SceneManager.UnloadSceneAsync("CostumNight");
-
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
     }
 
     void Update ()
     {
-        Resources.UnloadUnusedAssets();
-
         WiiU.GamePadState gamePadState = gamePad.state;
         WiiU.RemoteState remoteState = remote.state;
 
