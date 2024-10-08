@@ -128,6 +128,7 @@ public class CameraScript : MonoBehaviour
             {
                 RemoveAnimator();
 
+                // Reset wait delay
                 wait = 0.2f;
 
                 // UI to enable and disable
@@ -245,6 +246,7 @@ public class CameraScript : MonoBehaviour
         {
             minimapGameObject.SetActive(false);
             OfficeStuff.SetActive(true);
+
             foreach (Animator anim in FindObjectsOfType<Animator>())
             {
                 if (anim.gameObject.name.Contains("Door"))
@@ -252,6 +254,7 @@ public class CameraScript : MonoBehaviour
                     anim.enabled = false;
                 }
             }
+
             FlipClose.Play();
 
             CamViewTabletClose.SetActive(true);
@@ -284,14 +287,14 @@ public class CameraScript : MonoBehaviour
             wait = 0.2f;
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-            //OfficeControllerObject.GetComponent<Office>().enabled = false;
+            //OfficeControllerObject.GetComponent<Office>().enabled = false; why this script isn't used ?
             OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
             OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
             OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
             OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
             OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
 
-            //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for -- for real idk it's really dumb
+            //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for -- for real idk it's really dumb, use Vector3.zero is a better way
         }
     }
 }

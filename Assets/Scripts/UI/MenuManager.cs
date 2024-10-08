@@ -140,6 +140,42 @@ public class MenuManager : MonoBehaviour
                     }
                 }
 
+                if (Mathf.Abs(leftStickGamepad.x) > stickDeadzone)
+                {
+                    if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
+                    {
+                        if (lastNavigationTime > stickNavigationCooldown)
+                        {
+                            if (leftStickGamepad.x > stickDeadzone)
+                            {
+                                MenuNavigation(currentButton.navigation.selectOnLeft);
+                            }
+                            else if (leftStickGamepad.x < -stickDeadzone)
+                            {
+                                MenuNavigation(currentButton.navigation.selectOnRight);
+                            }
+
+                            lastNavigationTime = 0f;
+                        }
+                    }
+                    else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                    {
+                        if (lastNavigationTime > stickNavigationCooldown)
+                        {
+                            if (leftStickGamepad.x > stickDeadzone)
+                            {
+                                SwitcherNavigation(Vector2.left);
+                            }
+                            else if (leftStickGamepad.x < -stickDeadzone)
+                            {
+                                SwitcherNavigation(Vector2.right);
+                            }
+
+                            lastNavigationTime = 0f;
+                        }
+                    }
+                }
+
                 // Is Triggered
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.Up))
                 {
@@ -270,6 +306,42 @@ public class MenuManager : MonoBehaviour
                         }
                     }
 
+                    if (Mathf.Abs(leftStickProController.x) > stickDeadzone)
+                    {
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
+                        {
+                            if (lastNavigationTime > stickNavigationCooldown)
+                            {
+                                if (leftStickProController.x > stickDeadzone)
+                                {
+                                    MenuNavigation(currentButton.navigation.selectOnLeft);
+                                }
+                                else if (leftStickProController.x < -stickDeadzone)
+                                {
+                                    MenuNavigation(currentButton.navigation.selectOnRight);
+                                }
+
+                                lastNavigationTime = 0f;
+                            }
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            if (lastNavigationTime > stickNavigationCooldown)
+                            {
+                                if (leftStickProController.x > stickDeadzone)
+                                {
+                                    SwitcherNavigation(Vector2.left);
+                                }
+                                else if (leftStickProController.x < -stickDeadzone)
+                                {
+                                    SwitcherNavigation(Vector2.right);
+                                }
+
+                                lastNavigationTime = 0f;
+                            }
+                        }
+                    }
+
                     // Is Triggered
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up))
                     {
@@ -397,6 +469,42 @@ public class MenuManager : MonoBehaviour
                         }
                     }
 
+                    if (Mathf.Abs(leftStickClassicController.x) > stickDeadzone)
+                    {
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
+                        {
+                            if (lastNavigationTime > stickNavigationCooldown)
+                            {
+                                if (leftStickClassicController.x > stickDeadzone)
+                                {
+                                    MenuNavigation(currentButton.navigation.selectOnLeft);
+                                }
+                                else if (leftStickClassicController.x < -stickDeadzone)
+                                {
+                                    MenuNavigation(currentButton.navigation.selectOnRight);
+                                }
+
+                                lastNavigationTime = 0f;
+                            }
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            if (lastNavigationTime > stickNavigationCooldown)
+                            {
+                                if (leftStickClassicController.x > stickDeadzone)
+                                {
+                                    SwitcherNavigation(Vector2.left);
+                                }
+                                else if (leftStickClassicController.x < -stickDeadzone)
+                                {
+                                    SwitcherNavigation(Vector2.right);
+                                }
+
+                                lastNavigationTime = 0f;
+                            }
+                        }
+                    }
+
                     // Is Triggered
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Up))
                     {
@@ -520,6 +628,42 @@ public class MenuManager : MonoBehaviour
                         else if (currentScrollRect != null && currentPopup == null && canNavigate)
                         {
                             ScrollNavigation(new Vector2(0, stickNunchuk.y));
+                        }
+                    }
+
+                    if (Mathf.Abs(stickNunchuk.x) > stickDeadzone)
+                    {
+                        if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && canNavigate)
+                        {
+                            if (lastNavigationTime > stickNavigationCooldown)
+                            {
+                                if (stickNunchuk.x > stickDeadzone)
+                                {
+                                    MenuNavigation(currentButton.navigation.selectOnLeft);
+                                }
+                                else if (stickNunchuk.x < -stickDeadzone)
+                                {
+                                    MenuNavigation(currentButton.navigation.selectOnRight);
+                                }
+
+                                lastNavigationTime = 0f;
+                            }
+                        }
+                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
+                        {
+                            if (lastNavigationTime > stickNavigationCooldown)
+                            {
+                                if (stickNunchuk.x > stickDeadzone)
+                                {
+                                    SwitcherNavigation(Vector2.left);
+                                }
+                                else if (stickNunchuk.x < -stickDeadzone)
+                                {
+                                    SwitcherNavigation(Vector2.right);
+                                }
+
+                                lastNavigationTime = 0f;
+                            }
                         }
                     }
 
@@ -714,34 +858,6 @@ public class MenuManager : MonoBehaviour
                 if (currentScrollRect != null && currentPopup == null && canNavigate)
                 {
                     ScrollNavigation(new Vector2(0, -1));
-                }
-            }
-
-            float verticalAxis = Input.GetAxis("LeftStickY");
-
-            if (Mathf.Abs(verticalAxis) > stickDeadzone)
-            {
-                if (currentScrollRect == null && currentPopup == null && canNavigate)
-                {
-                    if (lastNavigationTime > stickNavigationCooldown)
-                    {
-                        Debug.Log(verticalAxis);
-
-                        if (verticalAxis > stickDeadzone)
-                        {
-                            MenuNavigation(currentButton.navigation.selectOnUp);
-                        }
-                        else if (verticalAxis < -stickDeadzone)
-                        {
-                            MenuNavigation(currentButton.navigation.selectOnDown);
-                        }
-
-                        lastNavigationTime = 0f;
-                    }
-                }
-                else if (currentScrollRect != null && currentPopup == null && canNavigate)
-                {
-                    ScrollNavigation(new Vector2(0, verticalAxis));
                 }
             }
         }
@@ -1079,14 +1195,9 @@ public class MenuManager : MonoBehaviour
     // Clicks the currently selected button
     private void ClickSelectedButton()
     {
-        GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
-        if (currentSelected != null)
+        if (currentButton != null)
         {
-            Button buttonComponent = currentSelected.GetComponent<Button>();
-            if (buttonComponent != null)
-            {
-                buttonComponent.onClick.Invoke();
-            }
+            currentButton.onClick.Invoke();
         }
     }
 
