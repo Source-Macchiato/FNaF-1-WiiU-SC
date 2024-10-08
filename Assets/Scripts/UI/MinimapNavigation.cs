@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
 
 public class MinimapNavigation : MonoBehaviour
@@ -10,7 +11,6 @@ public class MinimapNavigation : MonoBehaviour
     // Get current selected button
     private GameObject selectedGameObject;
     private Button selectedButton;
-    private Button blinkingButton;
 
     // References to WiiU controllers
     WiiU.GamePad gamePad;
@@ -43,18 +43,26 @@ public class MinimapNavigation : MonoBehaviour
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.Up))
                 {
+                    UpdateSelection();
+
                     NavigateTo(selectedButton.navigation.selectOnUp);
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Down))
                 {
+                    UpdateSelection();
+
                     NavigateTo(selectedButton.navigation.selectOnDown);
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Left))
                 {
+                    UpdateSelection();
+
                     NavigateTo(selectedButton.navigation.selectOnLeft);
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Right))
                 {
+                    UpdateSelection();
+
                     NavigateTo(selectedButton.navigation.selectOnRight);
                 }
             }
@@ -64,54 +72,78 @@ public class MinimapNavigation : MonoBehaviour
                 case WiiU.RemoteDevType.ProController:
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnUp);
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Down))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnDown);
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Left))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnLeft);
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Right))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnRight);
                     }
                     break;
                 case WiiU.RemoteDevType.Classic:
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Up))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnUp);
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Down))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnDown);
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Left))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnLeft);
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Right))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnRight);
                     }
                     break;
                 default:
                     if (remoteState.IsTriggered(WiiU.RemoteButton.Up))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnUp);
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Down))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnDown);
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Left))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnLeft);
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Right))
                     {
+                        UpdateSelection();
+
                         NavigateTo(selectedButton.navigation.selectOnRight);
                     }
                     break;
@@ -121,22 +153,36 @@ public class MinimapNavigation : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
+                    UpdateSelection();
+
                     NavigateTo(selectedButton.navigation.selectOnUp);
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
+                    UpdateSelection();
+
                     NavigateTo(selectedButton.navigation.selectOnDown);
                 }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
+                    UpdateSelection();
+
                     NavigateTo(selectedButton.navigation.selectOnLeft);
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
+                    UpdateSelection();
+
                     NavigateTo(selectedButton.navigation.selectOnRight);
                 }
             }
         }
+    }
+
+    void UpdateSelection()
+    {
+        selectedGameObject = EventSystem.current.currentSelectedGameObject;
+        selectedButton = selectedGameObject.GetComponent<Button>();
     }
 
     void NavigateTo(Selectable nextSelectable)
