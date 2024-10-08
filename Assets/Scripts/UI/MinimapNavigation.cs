@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using WiiU = UnityEngine.WiiU;
 
 public class MinimapNavigation : MonoBehaviour
