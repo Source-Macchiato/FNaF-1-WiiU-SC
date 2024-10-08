@@ -12,6 +12,11 @@ public class MinimapNavigation : MonoBehaviour
     private GameObject selectedGameObject;
     private Button selectedButton;
 
+    // Stick navigation
+    private float stickNavigationCooldown = 0.2f;
+    private float lastNavigationTime;
+    private float stickDeadzone = 0.19f;
+
     // References to WiiU controllers
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -41,6 +46,46 @@ public class MinimapNavigation : MonoBehaviour
             // Check inputs and navigate
             if (gamePadState.gamePadErr == WiiU.GamePadError.None)
             {
+                Vector2 leftStickGamepad = gamePadState.lStick;
+
+                if (Mathf.Abs(leftStickGamepad.y) > stickDeadzone)
+                {
+                    if (lastNavigationTime > stickNavigationCooldown)
+                    {
+                        if (leftStickGamepad.y > stickDeadzone)
+                        {
+                            UpdateSelection();
+
+                            NavigateTo(selectedButton.navigation.selectOnUp);
+                        }
+                        else if (leftStickGamepad.y < -stickDeadzone)
+                        {
+                            UpdateSelection();
+
+                            NavigateTo(selectedButton.navigation.selectOnDown);
+                        }
+
+                        lastNavigationTime = 0f;
+                    }
+                }
+
+                if (Mathf.Abs(leftStickGamepad.x) > stickDeadzone)
+                {
+                    if (lastNavigationTime > stickNavigationCooldown)
+                    {
+                        if (leftStickGamepad.x > stickDeadzone)
+                        {
+                            NavigateTo(selectedButton.navigation.selectOnLeft);
+                        }
+                        else if (leftStickGamepad.x < -stickDeadzone)
+                        {
+                            NavigateTo(selectedButton.navigation.selectOnRight);
+                        }
+
+                        lastNavigationTime = 0f;
+                    }
+                }
+
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.Up))
                 {
                     UpdateSelection();
@@ -70,6 +115,46 @@ public class MinimapNavigation : MonoBehaviour
             switch (remoteState.devType)
             {
                 case WiiU.RemoteDevType.ProController:
+                    Vector2 leftStickProController = remoteState.pro.leftStick;
+
+                    if (Mathf.Abs(leftStickProController.y) > stickDeadzone)
+                    {
+                        if (lastNavigationTime > stickNavigationCooldown)
+                        {
+                            if (leftStickProController.y > stickDeadzone)
+                            {
+                                UpdateSelection();
+
+                                NavigateTo(selectedButton.navigation.selectOnUp);
+                            }
+                            else if (leftStickProController.y < -stickDeadzone)
+                            {
+                                UpdateSelection();
+
+                                NavigateTo(selectedButton.navigation.selectOnDown);
+                            }
+
+                            lastNavigationTime = 0f;
+                        }
+                    }
+
+                    if (Mathf.Abs(leftStickProController.x) > stickDeadzone)
+                    {
+                        if (lastNavigationTime > stickNavigationCooldown)
+                        {
+                            if (leftStickProController.x > stickDeadzone)
+                            {
+                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                            }
+                            else if (leftStickProController.x < -stickDeadzone)
+                            {
+                                NavigateTo(selectedButton.navigation.selectOnRight);
+                            }
+
+                            lastNavigationTime = 0f;
+                        }
+                    }
+
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up))
                     {
                         UpdateSelection();
@@ -96,6 +181,46 @@ public class MinimapNavigation : MonoBehaviour
                     }
                     break;
                 case WiiU.RemoteDevType.Classic:
+                    Vector2 leftStickClassicController = remoteState.classic.leftStick;
+
+                    if (Mathf.Abs(leftStickClassicController.y) > stickDeadzone)
+                    {
+                        if (lastNavigationTime > stickNavigationCooldown)
+                        {
+                            if (leftStickClassicController.y > stickDeadzone)
+                            {
+                                UpdateSelection();
+
+                                NavigateTo(selectedButton.navigation.selectOnUp);
+                            }
+                            else if (leftStickClassicController.y < -stickDeadzone)
+                            {
+                                UpdateSelection();
+
+                                NavigateTo(selectedButton.navigation.selectOnDown);
+                            }
+
+                            lastNavigationTime = 0f;
+                        }
+                    }
+
+                    if (Mathf.Abs(leftStickClassicController.x) > stickDeadzone)
+                    {
+                        if (lastNavigationTime > stickNavigationCooldown)
+                        {
+                            if (leftStickClassicController.x > stickDeadzone)
+                            {
+                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                            }
+                            else if (leftStickClassicController.x < -stickDeadzone)
+                            {
+                                NavigateTo(selectedButton.navigation.selectOnRight);
+                            }
+
+                            lastNavigationTime = 0f;
+                        }
+                    }
+
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Up))
                     {
                         UpdateSelection();
@@ -122,6 +247,46 @@ public class MinimapNavigation : MonoBehaviour
                     }
                     break;
                 default:
+                    Vector2 stickNunchuk = remoteState.nunchuk.stick;
+
+                    if (Mathf.Abs(stickNunchuk.y) > stickDeadzone)
+                    {
+                        if (lastNavigationTime > stickNavigationCooldown)
+                        {
+                            if (stickNunchuk.y > stickDeadzone)
+                            {
+                                UpdateSelection();
+
+                                NavigateTo(selectedButton.navigation.selectOnUp);
+                            }
+                            else if (stickNunchuk.y < -stickDeadzone)
+                            {
+                                UpdateSelection();
+
+                                NavigateTo(selectedButton.navigation.selectOnDown);
+                            }
+
+                            lastNavigationTime = 0f;
+                        }
+                    }
+
+                    if (Mathf.Abs(stickNunchuk.x) > stickDeadzone)
+                    {
+                        if (lastNavigationTime > stickNavigationCooldown)
+                        {
+                            if (stickNunchuk.x > stickDeadzone)
+                            {
+                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                            }
+                            else if (stickNunchuk.x < -stickDeadzone)
+                            {
+                                NavigateTo(selectedButton.navigation.selectOnRight);
+                            }
+
+                            lastNavigationTime = 0f;
+                        }
+                    }
+
                     if (remoteState.IsTriggered(WiiU.RemoteButton.Up))
                     {
                         UpdateSelection();

@@ -80,12 +80,11 @@ public class MenuManager : MonoBehaviour
     // Stick navigation
     private float stickNavigationCooldown = 0.2f;
     private float lastNavigationTime;
+    private float stickDeadzone = 0.19f;
 
     // References to WiiU controllers
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
-
-    private float stickDeadzone = 0.19f;
 
     void Start()
     {
