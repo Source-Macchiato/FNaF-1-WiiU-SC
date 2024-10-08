@@ -1053,6 +1053,12 @@ public class MenuManager : MonoBehaviour
             if (switcherData.currentOptionId > 0)
             {
                 switcherData.currentOptionId--;
+
+                // Play effect
+                if (buttonAudio != null)
+                {
+                    buttonAudio.Play();
+                }
             }
         }
         else if (direction == Vector2.right)
@@ -1060,6 +1066,12 @@ public class MenuManager : MonoBehaviour
             if (switcherData.currentOptionId < (switcherData.optionsName.Length - 1))
             {
                 switcherData.currentOptionId++;
+
+                // Play effect
+                if (buttonAudio != null)
+                {
+                    buttonAudio.Play();
+                }
             }
         }
     }
