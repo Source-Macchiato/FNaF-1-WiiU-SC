@@ -9,7 +9,7 @@ public class CameraScript : MonoBehaviour
 
     public float wait = 0.2f;
 
-    public GameObject CamSelectPanel;
+    public GameObject minimapGameObject;
     public GameObject OfficeStuff;
     public GameObject cameraScreen;
     public AudioSource FlipOpen;
@@ -43,64 +43,10 @@ public class CameraScript : MonoBehaviour
         {
             if (gamePadState.IsTriggered(WiiU.GamePadButton.L))
             {
-                if (camIsUp)
-                {
-                    CamSelectPanel.SetActive(false);
-                    OfficeStuff.SetActive(true);
-                    foreach (Animator anim in FindObjectsOfType<Animator>())
-                    {
-                        if (anim.gameObject.name.Contains("Door"))
-                        {
-                            anim.enabled = false;
-                        }
-                    }
-                    FlipClose.Play();
-
-                    CamViewTabletClose.SetActive(true);
-                    CamViewTabletOpen.SetActive(false);
-
-                    Dot.SetActive(false);
-                    Glitch.SetActive(false);
-                    Stripes.SetActive(false);
-
-                    camIsUp = false;
-
-                    wait = 0.2f;
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-                    OfficeControllerObject.GetComponent<Office>().enabled = true;
-                    OfficeControllerObject.GetComponent<Movement>().camIsUp = false;
-                    OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = false;
-                    OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = false;
-                    OfficeControllerObject.GetComponent<ChangeImages>().enabled = false;
-
-                }
-                else
-                {
-                    CamSelectPanel.SetActive(true);
-                    //OfficeStuff.SetActive(false);
-
-                    FlipOpen.Play();
-                    CamViewTabletOpen.SetActive(true);
-                    CamViewTabletClose.SetActive(false);
-
-                    camIsUp = true;
-
-                    wait = 0.2f;
-
-                    OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-                    //OfficeControllerObject.GetComponent<Office>().enabled = false;
-                    OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
-                    OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
-                    OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
-
-                    //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for
-                }
+                CameraSystem();
             }
 
-            if (gamePadState.IsTriggered(WiiU.GamePadButton.X) && !camIsUp)
+            if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
             {
                 if (!camIsUp)
                 {
@@ -183,12 +129,16 @@ public class CameraScript : MonoBehaviour
                 RemoveAnimator();
 
                 wait = 0.2f;
+
+                // UI to enable and disable
                 Dot.SetActive(true);
                 Glitch.SetActive(true);
                 Stripes.SetActive(true);
                 cameraScreen.SetActive(true);
                 OfficeControllerObject.GetComponent<Office>().enabled = false;
                 OfficeStuff.SetActive(false);
+                minimapGameObject.SetActive(true);
+
                 if (officescript.LeftLightIsOn)
                 {
                     if (!officescript.BonnieOutsideDoor)
@@ -293,7 +243,7 @@ public class CameraScript : MonoBehaviour
     {
         if (camIsUp)
         {
-            CamSelectPanel.SetActive(false);
+            minimapGameObject.SetActive(false);
             OfficeStuff.SetActive(true);
             foreach (Animator anim in FindObjectsOfType<Animator>())
             {
@@ -325,9 +275,6 @@ public class CameraScript : MonoBehaviour
         }
         else
         {
-            CamSelectPanel.SetActive(true);
-            //OfficeStuff.SetActive(false);
-
             FlipOpen.Play();
             CamViewTabletOpen.SetActive(true);
             CamViewTabletClose.SetActive(false);
@@ -344,7 +291,7 @@ public class CameraScript : MonoBehaviour
             OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
             OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
 
-            //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for
+            //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for -- for real idk it's really dumb
         }
     }
 }

@@ -17202,7 +17202,7 @@ MonoBehaviour:
   Boop: {fileID: 327504710}
   camIsUp: 0
   wait: 0.2
-  CamSelectPanel: {fileID: 2139986448}
+  minimapGameObject: {fileID: 2139986448}
   OfficeStuff: {fileID: 1969409250}
   cameraScreen: {fileID: 1097015881}
   FlipOpen: {fileID: 284829986}
