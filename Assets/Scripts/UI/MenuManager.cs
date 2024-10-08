@@ -164,11 +164,11 @@ public class MenuManager : MonoBehaviour
                         {
                             if (leftStickGamepad.x > stickDeadzone)
                             {
-                                SwitcherNavigation(Vector2.left);
+                                SwitcherNavigation(Vector2.right);
                             }
                             else if (leftStickGamepad.x < -stickDeadzone)
                             {
-                                SwitcherNavigation(Vector2.right);
+                                SwitcherNavigation(Vector2.left);
                             }
 
                             lastNavigationTime = 0f;
@@ -330,11 +330,11 @@ public class MenuManager : MonoBehaviour
                             {
                                 if (leftStickProController.x > stickDeadzone)
                                 {
-                                    SwitcherNavigation(Vector2.left);
+                                    SwitcherNavigation(Vector2.right);
                                 }
                                 else if (leftStickProController.x < -stickDeadzone)
                                 {
-                                    SwitcherNavigation(Vector2.right);
+                                    SwitcherNavigation(Vector2.left);
                                 }
 
                                 lastNavigationTime = 0f;
@@ -493,11 +493,11 @@ public class MenuManager : MonoBehaviour
                             {
                                 if (leftStickClassicController.x > stickDeadzone)
                                 {
-                                    SwitcherNavigation(Vector2.left);
+                                    SwitcherNavigation(Vector2.right);
                                 }
                                 else if (leftStickClassicController.x < -stickDeadzone)
                                 {
-                                    SwitcherNavigation(Vector2.right);
+                                    SwitcherNavigation(Vector2.left);
                                 }
 
                                 lastNavigationTime = 0f;
@@ -655,11 +655,11 @@ public class MenuManager : MonoBehaviour
                             {
                                 if (stickNunchuk.x > stickDeadzone)
                                 {
-                                    SwitcherNavigation(Vector2.left);
+                                    SwitcherNavigation(Vector2.right);
                                 }
                                 else if (stickNunchuk.x < -stickDeadzone)
                                 {
-                                    SwitcherNavigation(Vector2.right);
+                                    SwitcherNavigation(Vector2.left);
                                 }
 
                                 lastNavigationTime = 0f;
