@@ -13070,6 +13070,7 @@ GameObject:
   - component: {fileID: 1640164977}
   - component: {fileID: 1640164979}
   - component: {fileID: 1640164978}
+  - component: {fileID: 1640164980}
   m_Layer: 5
   m_Name: PowerLeftText
   m_TagString: Untagged
@@ -13214,6 +13215,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1640164976}
+--- !u!114 &1640164980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1640164976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: office.power
 --- !u!1 &1664183764
 GameObject:
   m_ObjectHideFlags: 0
@@ -15070,7 +15083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textId: mainmenu.night
+  textId: office.night
 --- !u!1 &1800503524
 GameObject:
   m_ObjectHideFlags: 0

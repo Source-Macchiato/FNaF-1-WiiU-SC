@@ -22,7 +22,7 @@
     },
     {
       "key": "mainmenu.night",
-      "value": "NOTTE"
+      "value": "Notte"
     },
     {
       "key": "mainmenu.options",
@@ -50,23 +50,23 @@
     },
     {
       "key": "nextnight.firstnight",
-      "value": "P r i m a  N o t t e"
+      "value": "Prima Notte"
     },
     {
       "key": "nextnight.secondnight",
-      "value": "S e c o n d a  N o t t e"
+      "value": "Seconda Notte"
     },
     {
       "key": "nextnight.thirdnight",
-      "value": "T e r z a  N o t t e"
+      "value": "Terza Notte"
     },
     {
       "key": "nextnight.fourthnight",
-      "value": "Q u a r t a  N o t t e"
+      "value": "Quarta Notte"
     },
     {
       "key": "nextnight.fifthnight",
-      "value": "Q u i n t a  N o t t e"
+      "value": "Quinta Notte"
     },
     {
       "key": "office.night",
