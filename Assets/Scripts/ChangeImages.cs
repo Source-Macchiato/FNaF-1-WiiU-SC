@@ -104,7 +104,6 @@ public class ChangeImages : MonoBehaviour
     public bool camIsUp = false;
 
     public GameObject LowerCanvas;
-    public GameObject ResetPoint;
     public GameObject Phonecalls;
     public GameObject AudioSources;
     public GameObject CamViewTabletOpen;
@@ -154,393 +153,397 @@ public class ChangeImages : MonoBehaviour
         // Get current sprite and assign it in a local variable
         currentSprite = cameraScreen.GetComponent<Image>().sprite;
 
-        if (WhichCamera == 1)
+        if (camIsUp)
         {
-            i18nTextTranslator.textId = "camera.showstage";
-            i18nTextTranslator.UpdateText();
-
-            if (currentSprite != ShowStageBonnieChicaFreddyDefault)
+            if (WhichCamera == 1)
             {
-                currentSprite = ShowStageBonnieChicaFreddyDefault;
-            }
+                i18nTextTranslator.textId = "camera.showstage";
+                i18nTextTranslator.UpdateText();
 
-            if (WhereBonnie >= 2)
-            {
-                if (!BonnieLeft)
+                if (currentSprite != ShowStageBonnieChicaFreddyDefault)
                 {
-                    AmountLeft += 1;
-
-                    BonnieLeft = true;
+                    currentSprite = ShowStageBonnieChicaFreddyDefault;
                 }
-            }
 
-            if (WhereChica >= 2)
-            {
-                if (BonnieLeft)
+                if (WhereBonnie >= 2)
                 {
-                    if (!ChicaLeft)
+                    if (!BonnieLeft)
                     {
                         AmountLeft += 1;
 
-                        ChicaLeft = true;
+                        BonnieLeft = true;
+                    }
+                }
+
+                if (WhereChica >= 2)
+                {
+                    if (BonnieLeft)
+                    {
+                        if (!ChicaLeft)
+                        {
+                            AmountLeft += 1;
+
+                            ChicaLeft = true;
+                        }
+                    }
+                }
+
+                if (WhereFreddy >= 2)
+                {
+                    if (BonnieLeft)
+                    {
+                        if (ChicaLeft)
+                        {
+                            if (!FreddyLeft)
+                            {
+                                AmountLeft += 1;
+
+                                FreddyLeft = true;
+                            }
+                        }
+                    }
+                }
+
+                // Chica and Freddy at Show Stage
+                if (AmountLeft == 1)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != ShowStageChicaFreddyDefault)
+                    {
+                        currentSprite = ShowStageChicaFreddyDefault;
+                    }
+                }
+
+                // Freddy at Show Stage
+                if (AmountLeft == 2)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != ShowStageFreddyDefault && currentSprite != ShowStageFreddyEasterEgg)
+                    {
+                        if (EasterEgg(100))
+                        {
+                            currentSprite = ShowStageFreddyEasterEgg;
+                        }
+                        else
+                        {
+                            currentSprite = ShowStageFreddyDefault;
+                        }
+                    }
+                }
+
+                // Empty Show Stage
+                if (AmountLeft == 3)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != ShowStageEmptyDefault)
+                    {
+                        currentSprite = ShowStageEmptyDefault;
                     }
                 }
             }
 
-            if (WhereFreddy >= 2)
+            //-----------------dining Area-------------------
+            if (WhichCamera == 2)
             {
-                if (BonnieLeft)
-                {
-                    if (ChicaLeft)
-                    {
-                        if (!FreddyLeft)
-                        {
-                            AmountLeft += 1;
+                i18nTextTranslator.textId = "camera.diningarea";
+                i18nTextTranslator.UpdateText();
 
-                            FreddyLeft = true;
+                // Bonnie at Dining Area
+                if (WhereBonnie == 2)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != DiningAreaBonnieDefault)
+                    {
+                        currentSprite = DiningAreaBonnieDefault;
+                    }
+                }
+
+                // Chica at Dining Area
+                if (WhereChica == 2)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != DiningAreaChicaDefault)
+                    {
+                        currentSprite = DiningAreaChicaDefault;
+                    }
+                }
+
+                // Freddy at Dining Area
+                if (WhereFreddy == 2)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != DiningAreaFreddyDefault)
+                    {
+                        currentSprite = DiningAreaFreddyDefault;
+                    }
+
+                }
+
+                // Empty Dining Area
+                if (WhereFreddy != 2 && WhereBonnie != 2 && WhereChica != 2)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != DiningAreaEmptyDefault)
+                    {
+                        currentSprite = DiningAreaEmptyDefault;
+                    }
+                }
+
+            }
+
+            if (WhichCamera == 3)
+            {
+                i18nTextTranslator.textId = "camera.piratecove";
+                i18nTextTranslator.UpdateText();
+
+                // Foxy phase 1
+                if (WhereFoxy <= 1)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != PirateCovePhase1Default)
+                    {
+                        currentSprite = PirateCovePhase1Default;
+                    }
+                }
+
+                // Foxy phase 2
+                if (WhereFoxy == 2)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != PirateCovePhase2Default)
+                    {
+                        currentSprite = PirateCovePhase2Default;
+                    }
+                }
+
+                // Foxy phase 3
+                if (WhereFoxy >= 3)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != PirateCovePhase3Default)
+                    {
+                        currentSprite = PirateCovePhase3Default;
+                    }
+                }
+            }
+
+            if (WhichCamera == 4)
+            {
+                i18nTextTranslator.textId = "camera.westhall";
+                i18nTextTranslator.UpdateText();
+
+                // Does Bonnie is at West Hall
+                if (WhereBonnie == 5)
+                {
+                    // Check if sprite is alrady displayed
+                    if (currentSprite != WestHallBonnieDefault)
+                    {
+                        currentSprite = WestHallBonnieDefault;
+                    }
+                }
+                else
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != WestHallDefault)
+                    {
+                        currentSprite = WestHallDefault;
+                    }
+                }
+            }
+
+            if (WhichCamera == 5)
+            {
+                i18nTextTranslator.textId = "camera.westhallcorner";
+                i18nTextTranslator.UpdateText();
+
+                if (WhereBonnie == 6)
+                {
+                    // Check if sprite is alraedy displayed
+                    if (currentSprite != WestHallCornerBonnieDefault)
+                    {
+                        currentSprite = WestHallCornerBonnieDefault;
+                    }
+                }
+                else
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != WestHallCornerDefault && currentSprite != WestHallCornerEasterEgg)
+                    {
+                        if (EasterEgg(100))
+                        {
+                            currentSprite = WestHallCornerEasterEgg;
+                        }
+                        else
+                        {
+                            currentSprite = WestHallCornerDefault;
                         }
                     }
                 }
             }
 
-            // Chica and Freddy at Show Stage
-            if (AmountLeft == 1)
+            if (WhichCamera == 6)
             {
-                // Check if sprite is already displayed
-                if (currentSprite != ShowStageChicaFreddyDefault)
-                {
-                    currentSprite = ShowStageChicaFreddyDefault;
-                }
-            }
+                i18nTextTranslator.textId = "camera.supplycloset";
+                i18nTextTranslator.UpdateText();
 
-            // Freddy at Show Stage
-            if (AmountLeft == 2)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != ShowStageFreddyDefault && currentSprite != ShowStageFreddyEasterEgg)
+                // Does Bonnie is at Closet
+                if (WhereBonnie == 4)
                 {
-                    if (EasterEgg(100))
+                    // Check if sprite is already displayed
+                    if (currentSprite != ClosetBonnieDefault)
                     {
-                        currentSprite = ShowStageFreddyEasterEgg;
+                        currentSprite = ClosetBonnieDefault;
                     }
-                    else
+                }
+                else
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != ClosetEmptyDefault)
                     {
-                        currentSprite = ShowStageFreddyDefault;
+                        currentSprite = ClosetEmptyDefault;
                     }
                 }
             }
 
-            // Empty Show Stage
-            if (AmountLeft == 3)
+            if (WhichCamera == 7)
             {
-                // Check if sprite is already displayed
-                if (currentSprite != ShowStageEmptyDefault)
+                i18nTextTranslator.textId = "camera.easthall";
+                i18nTextTranslator.UpdateText();
+
+                // Chica at East Hall
+                if (WhereChica == 5)
                 {
-                    currentSprite = ShowStageEmptyDefault;
-                }
-            }
-        }
-        
-        //-----------------dining Area-------------------
-        if (WhichCamera == 2)
-        {
-            i18nTextTranslator.textId = "camera.diningarea";
-            i18nTextTranslator.UpdateText();
-
-            // Bonnie at Dining Area
-            if (WhereBonnie == 2)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != DiningAreaBonnieDefault)
-                {
-                    currentSprite = DiningAreaBonnieDefault;
-                }
-            }
-
-            // Chica at Dining Area
-            if (WhereChica == 2)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != DiningAreaChicaDefault)
-                {
-                    currentSprite = DiningAreaChicaDefault;
-                }
-            }
-
-            // Freddy at Dining Area
-            if (WhereFreddy == 2)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != DiningAreaFreddyDefault)
-                {
-                    currentSprite = DiningAreaFreddyDefault;
-                }
-
-            }
-
-            // Empty Dining Area
-            if (WhereFreddy != 2 && WhereBonnie != 2 && WhereChica != 2)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != DiningAreaEmptyDefault)
-                {
-                    currentSprite = DiningAreaEmptyDefault;
-                }
-            }
-
-        }
-
-        //--------------------------------------------------
-        
-
-        if (WhichCamera == 3)
-        {
-            i18nTextTranslator.textId = "camera.piratecove";
-            i18nTextTranslator.UpdateText();
-
-            // Foxy phase 1
-            if (WhereFoxy <= 1)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != PirateCovePhase1Default)
-                {
-                    currentSprite = PirateCovePhase1Default;
-                }
-            }
-
-            // Foxy phase 2
-            if (WhereFoxy == 2)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != PirateCovePhase2Default)
-                {
-                    currentSprite = PirateCovePhase2Default;
-                }
-            }
-
-            // Foxy phase 3
-            if (WhereFoxy >= 3)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != PirateCovePhase3Default)
-                {
-                    currentSprite = PirateCovePhase3Default;
-                }
-            }
-        }
-
-        if (WhichCamera == 4)
-        {
-            i18nTextTranslator.textId = "camera.westhall";
-            i18nTextTranslator.UpdateText();
-
-            // Does Bonnie is at West Hall
-            if (WhereBonnie == 5)
-            {
-                // Check if sprite is alrady displayed
-                if (currentSprite != WestHallBonnieDefault)
-                {
-                    currentSprite = WestHallBonnieDefault;
-                }
-            }
-            else
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != WestHallDefault)
-                {
-                    currentSprite = WestHallDefault;
-                }
-            }
-        }
-
-        if (WhichCamera == 5)
-        {
-            i18nTextTranslator.textId = "camera.westhallcorner";
-            i18nTextTranslator.UpdateText();
-
-            if (WhereBonnie == 6)
-            {
-                // Check if sprite is alraedy displayed
-                if (currentSprite != WestHallCornerBonnieDefault)
-                {
-                    currentSprite = WestHallCornerBonnieDefault;
-                }
-            }
-            else
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != WestHallCornerDefault && currentSprite != WestHallCornerEasterEgg)
-                {
-                    if (EasterEgg(100))
+                    // Check if sprite is already displayed
+                    if (currentSprite != EastHallChicaPhase1Default)
                     {
-                        currentSprite = WestHallCornerEasterEgg;
+                        currentSprite = EastHallChicaPhase1Default;
                     }
-                    else
+                }
+                else if (WhereChica == 6)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != EastHallChicaPhase2Default)
                     {
-                        currentSprite = WestHallCornerDefault;
+                        currentSprite = EastHallChicaPhase2Default;
+                    }
+                }
+
+                // Freddy at East Hall
+                if (WhereFreddy == 5)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != EastHallFreddyDefault)
+                    {
+                        currentSprite = EastHallFreddyDefault;
+                    }
+                }
+
+                // East Hall empty
+                if (WhereChica != 5 && WhereChica != 6 && WhereFreddy != 5)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != EastHallEmptyDefault)
+                    {
+                        currentSprite = EastHallEmptyDefault;
                     }
                 }
             }
-        }
 
-        if (WhichCamera == 6)
-        {
-            i18nTextTranslator.textId = "camera.supplycloset";
-            i18nTextTranslator.UpdateText();
-
-            // Does Bonnie is at Closet
-            if (WhereBonnie == 4)
+            if (WhichCamera == 8)
             {
-                // Check if sprite is already displayed
-                if (currentSprite != ClosetBonnieDefault)
-                {
-                    currentSprite = ClosetBonnieDefault;
-                }
-            }
-            else
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != ClosetEmptyDefault)
-                {
-                    currentSprite = ClosetEmptyDefault;
-                }
-            }
-        }
+                i18nTextTranslator.textId = "camera.easthallcorner";
+                i18nTextTranslator.UpdateText();
 
-        if (WhichCamera == 7)
-        {
-            i18nTextTranslator.textId = "camera.easthall";
-            i18nTextTranslator.UpdateText();
-
-            // Chica at East Hall
-            if (WhereChica == 5)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != EastHallChicaPhase1Default)
+                if (WhereChica == 7)
                 {
-                    currentSprite = EastHallChicaPhase1Default;
-                }
-            }
-            else if (WhereChica == 6)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != EastHallChicaPhase2Default)
-                {
-                    currentSprite = EastHallChicaPhase2Default;
-                }
-            }
-
-            // Freddy at East Hall
-            if (WhereFreddy == 5)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != EastHallFreddyDefault)
-                {
-                    currentSprite = EastHallFreddyDefault;
-                }
-            }
-
-            // East Hall empty
-            if (WhereChica != 5 && WhereChica != 6 && WhereFreddy != 5)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != EastHallEmptyDefault)
-                {
-                    currentSprite = EastHallEmptyDefault;
-                }
-            }
-        }
-
-        if (WhichCamera == 8)
-        {
-            i18nTextTranslator.textId = "camera.easthallcorner";
-            i18nTextTranslator.UpdateText();
-
-            if (WhereChica == 7)
-            {
-                if (WhereFreddy <= 1)
-                {
-                    currentSprite = EastHall2_2;
-                }
-            }
-            if (WhereFreddy == 6)
-            {
-                if (WhereChica <= 6)
-                {
-                    currentSprite = EastHall2_3;
-                }
-            }
-
-            // East Hall Corner empty
-            if (WhereChica != 7 && WhereFreddy != 6)
-            {
-                if (currentSprite != EastHallCornerEmptyDefault)
-                {
-                    currentSprite = EastHallCornerEmptyDefault;
-                }
-            }
-        }
-
-        if (WhichCamera == 9)
-        {
-            i18nTextTranslator.textId = "camera.backstage";
-            i18nTextTranslator.UpdateText();
-
-            // Does Bonnis is at Back Stage
-            if (WhereBonnie == 3)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != BackStageBonnieDefault && currentSprite != BackStageBonnieEasterEgg)
-                {
-                    if (EasterEgg(100))
+                    if (WhereFreddy <= 1)
                     {
-                        currentSprite = BackStageBonnieEasterEgg;
+                        currentSprite = EastHall2_2;
                     }
-                    else
+                }
+                if (WhereFreddy == 6)
+                {
+                    if (WhereChica <= 6)
                     {
-                        currentSprite = BackStageBonnieDefault;
+                        currentSprite = EastHall2_3;
+                    }
+                }
+
+                // East Hall Corner empty
+                if (WhereChica != 7 && WhereFreddy != 6)
+                {
+                    if (currentSprite != EastHallCornerEmptyDefault)
+                    {
+                        currentSprite = EastHallCornerEmptyDefault;
+                    }
+                }
+            }
+
+            if (WhichCamera == 9)
+            {
+                i18nTextTranslator.textId = "camera.backstage";
+                i18nTextTranslator.UpdateText();
+
+                // Does Bonnis is at Back Stage
+                if (WhereBonnie == 3)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != BackStageBonnieDefault && currentSprite != BackStageBonnieEasterEgg)
+                    {
+                        if (EasterEgg(100))
+                        {
+                            currentSprite = BackStageBonnieEasterEgg;
+                        }
+                        else
+                        {
+                            currentSprite = BackStageBonnieDefault;
+                        }
+                    }
+                }
+                else
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != BackStageEmptyDefault && currentSprite != BackStageEmptyEasterEgg)
+                    {
+                        if (EasterEgg(100))
+                        {
+                            currentSprite = BackStageEmptyEasterEgg;
+                        }
+                        else
+                        {
+                            currentSprite = BackStageEmptyDefault;
+                        }
+                    }
+                }
+            }
+
+            if (WhichCamera == 10)
+            {
+                i18nTextTranslator.textId = "camera.kitchen";
+                i18nTextTranslator.UpdateText();
+
+                KitckenAudioOnly.SetActive(true);
+
+                if (WhereChica == 5)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != KitchenEmptyDefault)
+                    {
+                        currentSprite = KitchenEmptyDefault;
+                    }
+                }
+                else
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != KitchenEmptyDefault)
+                    {
+                        currentSprite = KitchenEmptyDefault;
                     }
                 }
             }
             else
             {
-                // Check if sprite is already displayed
-                if (currentSprite != BackStageEmptyDefault && currentSprite != BackStageEmptyEasterEgg)
-                {
-                    if (EasterEgg(100))
-                    {
-                        currentSprite = BackStageEmptyEasterEgg;
-                    }
-                    else
-                    {
-                        currentSprite = BackStageEmptyDefault;
-                    }
-                }
-            }
-        }
-
-        if (WhichCamera == 10)
-        {
-            i18nTextTranslator.textId = "camera.kitchen";
-            i18nTextTranslator.UpdateText();
-
-            KitckenAudioOnly.SetActive(true);
-
-            if (WhereChica == 5)
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != KitchenEmptyDefault)
-                {
-                    currentSprite = KitchenEmptyDefault;
-                }
-            }
-            else
-            {
-                // Check if sprite is already displayed
-                if (currentSprite != KitchenEmptyDefault)
-                {
-                    currentSprite = KitchenEmptyDefault;
-                }
+                KitckenAudioOnly.SetActive(false);
             }
         }
         else
@@ -716,7 +719,6 @@ public class ChangeImages : MonoBehaviour
                             FoxyRunDownHall.SetActive(false);
 
                             LowerCanvas.SetActive(false);
-                            ResetPoint.SetActive(false);
                             Phonecalls.SetActive(false);
                             AudioSources.SetActive(false);
                             CamViewTabletClose.SetActive(false);

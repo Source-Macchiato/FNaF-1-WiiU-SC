@@ -17021,7 +17021,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1959479695}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b14b969827bf164f85fdf34ab3f2418, type: 3}
   m_Name: 
@@ -17119,7 +17119,6 @@ MonoBehaviour:
   AmountLeft: 0
   camIsUp: 0
   LowerCanvas: {fileID: 2018316003}
-  ResetPoint: {fileID: 0}
   Phonecalls: {fileID: 930409630}
   AudioSources: {fileID: 638302269}
   CamViewTabletOpen: {fileID: 1743620086}
@@ -17198,7 +17197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998d6286e8193a84e9fe68e04c8e85b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeImages: {fileID: 1959479699}
   GameScript: {fileID: 1959479698}
   LongGlitch: 0
   ChicaInKitchen: {fileID: 1524675008}

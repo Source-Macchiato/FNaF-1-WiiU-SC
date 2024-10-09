@@ -2,7 +2,7 @@
 
 public class Movement : MonoBehaviour {
     
-    public ChangeImages changeImages;
+    //public ChangeImages changeImages;
     public GameScript GameScript;
 
     public bool LongGlitch = false;

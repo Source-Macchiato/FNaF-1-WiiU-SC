@@ -273,7 +273,7 @@ public class CameraScript : MonoBehaviour
             OfficeControllerObject.GetComponent<Movement>().camIsUp = false;
             OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = false;
             OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = false;
-            OfficeControllerObject.GetComponent<ChangeImages>().enabled = false;
+            //OfficeControllerObject.GetComponent<ChangeImages>().enabled = false;
 
         }
         else
@@ -292,7 +292,7 @@ public class CameraScript : MonoBehaviour
             OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
             OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
             OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
-            OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
+            //OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
 
             //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for -- for real idk it's really dumb, use Vector3.zero is a better way
         }
