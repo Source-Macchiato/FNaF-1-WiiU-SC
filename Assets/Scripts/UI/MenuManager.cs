@@ -147,11 +147,11 @@ public class MenuManager : MonoBehaviour
                         {
                             if (leftStickGamepad.x > stickDeadzone)
                             {
-                                MenuNavigation(currentButton.navigation.selectOnLeft);
+                                MenuNavigation(currentButton.navigation.selectOnRight);
                             }
                             else if (leftStickGamepad.x < -stickDeadzone)
                             {
-                                MenuNavigation(currentButton.navigation.selectOnRight);
+                                MenuNavigation(currentButton.navigation.selectOnLeft);
                             }
 
                             lastNavigationTime = 0f;
@@ -313,11 +313,11 @@ public class MenuManager : MonoBehaviour
                             {
                                 if (leftStickProController.x > stickDeadzone)
                                 {
-                                    MenuNavigation(currentButton.navigation.selectOnLeft);
+                                    MenuNavigation(currentButton.navigation.selectOnRight);
                                 }
                                 else if (leftStickProController.x < -stickDeadzone)
                                 {
-                                    MenuNavigation(currentButton.navigation.selectOnRight);
+                                    MenuNavigation(currentButton.navigation.selectOnLeft);
                                 }
 
                                 lastNavigationTime = 0f;
@@ -476,11 +476,11 @@ public class MenuManager : MonoBehaviour
                             {
                                 if (leftStickClassicController.x > stickDeadzone)
                                 {
-                                    MenuNavigation(currentButton.navigation.selectOnLeft);
+                                    MenuNavigation(currentButton.navigation.selectOnRight);
                                 }
                                 else if (leftStickClassicController.x < -stickDeadzone)
                                 {
-                                    MenuNavigation(currentButton.navigation.selectOnRight);
+                                    MenuNavigation(currentButton.navigation.selectOnLeft);
                                 }
 
                                 lastNavigationTime = 0f;
@@ -638,11 +638,11 @@ public class MenuManager : MonoBehaviour
                             {
                                 if (stickNunchuk.x > stickDeadzone)
                                 {
-                                    MenuNavigation(currentButton.navigation.selectOnLeft);
+                                    MenuNavigation(currentButton.navigation.selectOnRight);
                                 }
                                 else if (stickNunchuk.x < -stickDeadzone)
                                 {
-                                    MenuNavigation(currentButton.navigation.selectOnRight);
+                                    MenuNavigation(currentButton.navigation.selectOnLeft);
                                 }
 
                                 lastNavigationTime = 0f;

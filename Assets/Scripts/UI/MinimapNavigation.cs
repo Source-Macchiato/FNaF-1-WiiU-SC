@@ -9,7 +9,7 @@ public class MinimapNavigation : MonoBehaviour
 
     // Get current selected button
     private GameObject selectedGameObject;
-    public Button selectedButton;
+    private Button selectedButton;
 
     // Stick navigation
     private float stickNavigationCooldown = 0.2f;
