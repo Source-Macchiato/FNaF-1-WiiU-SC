@@ -70,11 +70,11 @@ public class MinimapNavigation : MonoBehaviour
                     {
                         if (leftStickGamepad.x > stickDeadzone)
                         {
-                            NavigateTo(selectedButton.navigation.selectOnLeft);
+                            NavigateTo(selectedButton.navigation.selectOnRight);
                         }
                         else if (leftStickGamepad.x < -stickDeadzone)
                         {
-                            NavigateTo(selectedButton.navigation.selectOnRight);
+                            NavigateTo(selectedButton.navigation.selectOnLeft);
                         }
 
                         lastNavigationTime = 0f;
@@ -127,11 +127,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (leftStickProController.x > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                                NavigateTo(selectedButton.navigation.selectOnRight);
                             }
                             else if (leftStickProController.x < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnRight);
+                                NavigateTo(selectedButton.navigation.selectOnLeft);
                             }
 
                             lastNavigationTime = 0f;
@@ -181,11 +181,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (leftStickClassicController.x > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                                NavigateTo(selectedButton.navigation.selectOnRight);
                             }
                             else if (leftStickClassicController.x < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnRight);
+                                NavigateTo(selectedButton.navigation.selectOnLeft);
                             }
 
                             lastNavigationTime = 0f;
@@ -235,11 +235,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (stickNunchuk.x > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                                NavigateTo(selectedButton.navigation.selectOnRight);
                             }
                             else if (stickNunchuk.x < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnRight);
+                                NavigateTo(selectedButton.navigation.selectOnLeft);
                             }
 
                             lastNavigationTime = 0f;
