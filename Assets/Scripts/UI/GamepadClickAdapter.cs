@@ -66,8 +66,11 @@ public class GamepadClickAdapter : MonoBehaviour
                 {
                     Debug.Log("UI Element clicked with mouse: " + mouseRaycastResults[0].gameObject.name);
 
-                    // Simulate a click on the UI element
-                    ExecuteEvents.Execute(mouseRaycastResults[0].gameObject, mousePointerData, ExecuteEvents.pointerClickHandler);
+                    if (mouseRaycastResults[0].gameObject != EventSystem.current.currentSelectedGameObject)
+                    {
+                        // Simulate a click on the UI element
+                        ExecuteEvents.Execute(mouseRaycastResults[0].gameObject, mousePointerData, ExecuteEvents.pointerClickHandler);
+                    }
                 }
             }
         }
@@ -107,8 +110,11 @@ public class GamepadClickAdapter : MonoBehaviour
                 {
                     Debug.Log("UI Element clicked: " + raycastResults[0].gameObject.name);
 
-                    // Simulate a click on the UI element
-                    ExecuteEvents.Execute(raycastResults[0].gameObject, pointerData, ExecuteEvents.pointerClickHandler);
+                    if (raycastResults[0].gameObject != EventSystem.current.currentSelectedGameObject)
+                    {
+                        // Simulate a click on the UI element
+                        ExecuteEvents.Execute(raycastResults[0].gameObject, pointerData, ExecuteEvents.pointerClickHandler);
+                    }  
                 }
             }
         }
