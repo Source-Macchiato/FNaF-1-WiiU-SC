@@ -12,7 +12,7 @@ public class MinimapNavigation : MonoBehaviour
     private Button selectedButton;
 
     // Stick navigation
-    private float stickNavigationCooldown = 0.2f;
+    private float stickNavigationCooldown = 0.3f;
     private float lastNavigationTime;
     private float stickDeadzone = 0.19f;
 
@@ -285,6 +285,9 @@ public class MinimapNavigation : MonoBehaviour
                 }
             }
         }
+
+        // Calculate stick last navigation time
+        lastNavigationTime += Time.deltaTime;
     }
 
     void NavigateTo(Selectable nextSelectable)
