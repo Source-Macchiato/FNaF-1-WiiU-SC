@@ -50,6 +50,9 @@ public class Console : MonoBehaviour
                 logMessages.Add(logString);
             }
         }
+
+        // Scroll to the bottom when a new message is added
+        scrollPosition.y = Mathf.Infinity;
     }
 
     void OnGUI()

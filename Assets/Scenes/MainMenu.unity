@@ -3685,7 +3685,7 @@ MonoBehaviour:
   selectionPopupPrefab: {fileID: 1848512243439978, guid: d517231d4e2caf34f84a96636033bd7e,
     type: 2}
   buttonAudio: {fileID: 1567224252}
-  gamepad: 1
+  gamepadController: 1
   proController: 1
   classicController: 1
   wiimoteAndNunchuk: 1

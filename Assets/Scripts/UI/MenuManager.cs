@@ -37,7 +37,7 @@ public class MenuManager : MonoBehaviour
     public AudioSource buttonAudio;
 
     [Header("Enabled controllers")]
-    public bool gamepad;
+    public bool gamepadController;
     public bool proController;
     public bool classicController;
     public bool wiimoteAndNunchuk;
@@ -110,7 +110,7 @@ public class MenuManager : MonoBehaviour
         if (gamePadState.gamePadErr == WiiU.GamePadError.None)
         {
             // If can navigate with gamepad
-            if (gamepad)
+            if (gamepadController)
             {
                 // Stick
                 Vector2 leftStickGamepad = gamePadState.lStick;
