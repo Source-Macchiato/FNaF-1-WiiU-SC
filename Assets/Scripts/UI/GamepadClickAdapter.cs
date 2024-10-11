@@ -35,38 +35,38 @@ public class GamepadClickAdapter : MonoBehaviour
 
         if (Application.isEditor)
         {
-            // Check for mouse click (left button)
+            // Check if click on screen
             if (Input.GetMouseButtonDown(0))
             {
-                // Récupérer la position de la souris
+                // Get mouse position
                 Vector2 mousePos = Input.mousePosition;
 
-                // Calculer les ratios de résolution de la souris
+                // Calculate ratio resolution
                 float mouseRatioX = canvasWidth / Screen.width;
                 float mouseRatioY = canvasHeight / Screen.height;
 
-                // Adapter la position de la souris pour correspondre à la résolution du canvas
+                // Adapt mouse position for resolution
                 Vector2 adaptedMousePos = new Vector2(
                     mousePos.x * mouseRatioX,
                     mousePos.y * mouseRatioY
                 );
 
-                // Convertir les coordonnées de la souris en Raycast pour interaction UI
+                // Convert click coordinates to Raycast for UI interaction
                 PointerEventData mousePointerData = new PointerEventData(EventSystem.current);
                 mousePointerData.position = adaptedMousePos;
 
-                // Créer une liste pour les résultats du Raycast
+                // Create a list for Raycast results
                 List<RaycastResult> mouseRaycastResults = new List<RaycastResult>();
 
-                // Effectuer le raycast UI
+                // Create Raycast UI
                 EventSystem.current.RaycastAll(mousePointerData, mouseRaycastResults);
 
-                // Si un élément UI est touché
+                // If an element is detected
                 if (mouseRaycastResults.Count > 0)
                 {
                     Debug.Log("UI Element clicked with mouse: " + mouseRaycastResults[0].gameObject.name);
 
-                    // Simuler un clic sur l'élément UI avec la souris
+                    // Simulate a click on the UI element
                     ExecuteEvents.Execute(mouseRaycastResults[0].gameObject, mousePointerData, ExecuteEvents.pointerClickHandler);
                 }
             }
@@ -76,35 +76,38 @@ public class GamepadClickAdapter : MonoBehaviour
             // Check if is touching screen
             if (gamePadState.touch.touch == 1)
             {
-                // Récupérer la position du clic à partir de gamePadState
+                // Get touch position
                 Vector2 touchPos = new Vector2(gamePadState.touch.x, gamePadState.touch.y);
 
-                // Calculer les ratios de résolution
+                // Calculate ratio resolution
                 float ratioX = canvasWidth / gamepadWidth;
                 float ratioY = canvasHeight / gamepadHeight;
 
-                // Adapter la position du clic pour correspondre à la résolution du canvas
+                // Reverse Y axis
+                float adjustedY = gamepadHeight - touchPos.y;
+
+                // Adapt touch position for resolution
                 Vector2 adaptedTouchPos = new Vector2(
                     touchPos.x * ratioX,
-                    touchPos.y * ratioY
+                    adjustedY * ratioY
                 );
 
-                // Convertir les coordonnées du clic en Raycast pour interaction UI
+                // Convert touch coordinates to Raycast for UI interaction
                 PointerEventData pointerData = new PointerEventData(EventSystem.current);
                 pointerData.position = adaptedTouchPos;
 
-                // Créer une liste pour les résultats du Raycast
+                // Create a list for Raycast results
                 List<RaycastResult> raycastResults = new List<RaycastResult>();
 
-                // Effectuer le raycast UI
+                // Create Raycast UI
                 EventSystem.current.RaycastAll(pointerData, raycastResults);
 
-                // Si un élément UI est touché
+                // If an element is detected
                 if (raycastResults.Count > 0)
                 {
                     Debug.Log("UI Element clicked: " + raycastResults[0].gameObject.name);
 
-                    // Simuler un clic sur l'élément UI
+                    // Simulate a click on the UI element
                     ExecuteEvents.Execute(raycastResults[0].gameObject, pointerData, ExecuteEvents.pointerClickHandler);
                 }
             }
