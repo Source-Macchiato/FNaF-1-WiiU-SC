@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using WiiU = UnityEngine.WiiU;
 
@@ -6,10 +7,6 @@ public class MinimapNavigation : MonoBehaviour
 {
     public Button defaultSelectedButton;
     public GameObject minimapPanel;
-
-    // Get current selected button
-    private GameObject selectedGameObject;
-    private Button selectedButton;
 
     // Stick navigation
     private float stickNavigationCooldown = 0.3f;
@@ -36,8 +33,8 @@ public class MinimapNavigation : MonoBehaviour
         // Can navigate only when the minimap is active
         if (minimapPanel.activeSelf)
         {
-            // Set default selected button if no button is selected
-            if (selectedButton == null)
+            // Set default selected gameobject if no gameobject is selected
+            if (EventSystem.current.currentSelectedGameObject == null)
             {
                 NavigateTo(defaultSelectedButton);
             }
@@ -53,11 +50,11 @@ public class MinimapNavigation : MonoBehaviour
                     {
                         if (leftStickGamepad.y > stickDeadzone)
                         {
-                            NavigateTo(selectedButton.navigation.selectOnUp);
+                            NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                         }
                         else if (leftStickGamepad.y < -stickDeadzone)
                         {
-                            NavigateTo(selectedButton.navigation.selectOnDown);
+                            NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                         }
 
                         lastNavigationTime = 0f;
@@ -70,11 +67,11 @@ public class MinimapNavigation : MonoBehaviour
                     {
                         if (leftStickGamepad.x > stickDeadzone)
                         {
-                            NavigateTo(selectedButton.navigation.selectOnRight);
+                            NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                         }
                         else if (leftStickGamepad.x < -stickDeadzone)
                         {
-                            NavigateTo(selectedButton.navigation.selectOnLeft);
+                            NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                         }
 
                         lastNavigationTime = 0f;
@@ -83,19 +80,19 @@ public class MinimapNavigation : MonoBehaviour
 
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.Up))
                 {
-                    NavigateTo(selectedButton.navigation.selectOnUp);
+                    NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Down))
                 {
-                    NavigateTo(selectedButton.navigation.selectOnDown);
+                    NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Left))
                 {
-                    NavigateTo(selectedButton.navigation.selectOnLeft);
+                    NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.Right))
                 {
-                    NavigateTo(selectedButton.navigation.selectOnRight);
+                    NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                 }
             }
 
@@ -110,11 +107,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (leftStickProController.y > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnUp);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                             }
                             else if (leftStickProController.y < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnDown);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                             }
 
                             lastNavigationTime = 0f;
@@ -127,11 +124,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (leftStickProController.x > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnRight);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                             }
                             else if (leftStickProController.x < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                             }
 
                             lastNavigationTime = 0f;
@@ -140,19 +137,19 @@ public class MinimapNavigation : MonoBehaviour
 
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Up))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnUp);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Down))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnDown);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Left))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnLeft);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Right))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnRight);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                     }
                     break;
                 case WiiU.RemoteDevType.Classic:
@@ -164,11 +161,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (leftStickClassicController.y > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnUp);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                             }
                             else if (leftStickClassicController.y < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnDown);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                             }
 
                             lastNavigationTime = 0f;
@@ -181,11 +178,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (leftStickClassicController.x > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnRight);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                             }
                             else if (leftStickClassicController.x < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                             }
 
                             lastNavigationTime = 0f;
@@ -194,19 +191,19 @@ public class MinimapNavigation : MonoBehaviour
 
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Up))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnUp);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Down))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnDown);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Left))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnLeft);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Right))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnRight);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                     }
                     break;
                 default:
@@ -218,11 +215,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (stickNunchuk.y > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnUp);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                             }
                             else if (stickNunchuk.y < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnDown);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                             }
 
                             lastNavigationTime = 0f;
@@ -235,11 +232,11 @@ public class MinimapNavigation : MonoBehaviour
                         {
                             if (stickNunchuk.x > stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnRight);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                             }
                             else if (stickNunchuk.x < -stickDeadzone)
                             {
-                                NavigateTo(selectedButton.navigation.selectOnLeft);
+                                NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                             }
 
                             lastNavigationTime = 0f;
@@ -248,19 +245,19 @@ public class MinimapNavigation : MonoBehaviour
 
                     if (remoteState.IsTriggered(WiiU.RemoteButton.Up))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnUp);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Down))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnDown);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Left))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnLeft);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.Right))
                     {
-                        NavigateTo(selectedButton.navigation.selectOnRight);
+                        NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                     }
                     break;
             }
@@ -269,19 +266,19 @@ public class MinimapNavigation : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    NavigateTo(selectedButton.navigation.selectOnUp);
+                    NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    NavigateTo(selectedButton.navigation.selectOnDown);
+                    NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
                 }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    NavigateTo(selectedButton.navigation.selectOnLeft);
+                    NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    NavigateTo(selectedButton.navigation.selectOnRight);
+                    NavigateTo(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
                 }
             }
         }
@@ -294,13 +291,13 @@ public class MinimapNavigation : MonoBehaviour
     {
         nextSelectable.Select();
 
-        selectedButton = nextSelectable.GetComponent<Button>();
+        EventSystem.current.SetSelectedGameObject(nextSelectable.gameObject);
 
-        selectedButton.onClick.Invoke();
+        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().onClick.Invoke();
     }
 
     public void ButtonUpdateSelection(Button button)
     {
-        selectedButton = button;
+        EventSystem.current.SetSelectedGameObject(button.gameObject);
     }
 }

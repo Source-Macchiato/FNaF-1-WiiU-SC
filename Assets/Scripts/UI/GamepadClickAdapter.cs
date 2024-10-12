@@ -62,8 +62,6 @@ public class GamepadClickAdapter : MonoBehaviour
                 // If an element is detected
                 if (mouseRaycastResults.Count > 0)
                 {
-                    Debug.Log("UI Element clicked with mouse: " + mouseRaycastResults[0].gameObject.name);
-
                     if (mouseRaycastResults[0].gameObject != EventSystem.current.currentSelectedGameObject)
                     {
                         // Simulate a click on the UI element
