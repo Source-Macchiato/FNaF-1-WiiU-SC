@@ -5,13 +5,11 @@ using WiiU = UnityEngine.WiiU;
 
 public class GamepadClickAdapter : MonoBehaviour
 {
-    // Résolution des canvas
-    private float canvasWidth = 1280f;
-    private float canvasHeight = 720f;
+    // Canvas resolution
+    public Vector2 canvasResolution = new Vector2(1280f, 720f);
 
-    // Résolution du gamepad
-    private float gamepadWidth = 854f;
-    private float gamepadHeight = 480f;
+    // Gamepad resolution
+    public Vector2 gamepadResolution = new Vector2(854f, 480f);
 
     // References to WiiU controllers
     WiiU.GamePad gamePad;
@@ -42,8 +40,8 @@ public class GamepadClickAdapter : MonoBehaviour
                 Vector2 mousePos = Input.mousePosition;
 
                 // Calculate ratio resolution
-                float mouseRatioX = canvasWidth / Screen.width;
-                float mouseRatioY = canvasHeight / Screen.height;
+                float mouseRatioX = canvasResolution.x / Screen.width;
+                float mouseRatioY = canvasResolution.y / Screen.height;
 
                 // Adapt mouse position for resolution
                 Vector2 adaptedMousePos = new Vector2(
@@ -83,11 +81,11 @@ public class GamepadClickAdapter : MonoBehaviour
                 Vector2 touchPos = new Vector2(gamePadState.touch.x, gamePadState.touch.y);
 
                 // Calculate ratio resolution
-                float ratioX = canvasWidth / gamepadWidth;
-                float ratioY = canvasHeight / gamepadHeight;
+                float ratioX = canvasResolution.x / gamepadResolution.x;
+                float ratioY = canvasResolution.y / gamepadResolution.y;
 
                 // Reverse Y axis
-                float adjustedY = gamepadHeight - touchPos.y;
+                float adjustedY = gamepadResolution.y - touchPos.y;
 
                 // Adapt touch position for resolution
                 Vector2 adaptedTouchPos = new Vector2(

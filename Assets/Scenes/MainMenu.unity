@@ -808,6 +808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5d6f410f4112647926cc9b26ec8803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasResolution: {x: 1920, y: 1080}
+  gamepadResolution: {x: 854, y: 480}
 --- !u!1 &189613021
 GameObject:
   m_ObjectHideFlags: 0
