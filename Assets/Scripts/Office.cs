@@ -154,8 +154,7 @@ public class Office : MonoBehaviour {
                     OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                 }
             }
-
-            if (gamePadState.IsPressed(WiiU.GamePadButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+            else if (gamePadState.IsPressed(WiiU.GamePadButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
             {
                 OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
                 if (OfficeImage.transform.localPosition.x <= rightEdge)
@@ -194,13 +193,13 @@ public class Office : MonoBehaviour {
                     {
                         OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                     }
-                    else if (remoteState.classic.IsPressed(WiiU.ClassicButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+                }
+                else if (remoteState.classic.IsPressed(WiiU.ClassicButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+                {
+                    OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                    if (OfficeImage.transform.localPosition.x <= rightEdge)
                     {
-                        OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
-                        if (OfficeImage.transform.localPosition.x <= rightEdge)
-                        {
-                            OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
-                        }
+                        OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                     }
                 }
                 break;
@@ -212,13 +211,13 @@ public class Office : MonoBehaviour {
                     {
                         OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                     }
-                    else if (remoteState.IsPressed(WiiU.RemoteButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+                }
+                else if (remoteState.IsPressed(WiiU.RemoteButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+                {
+                    OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                    if (OfficeImage.transform.localPosition.x <= rightEdge)
                     {
-                        OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
-                        if (OfficeImage.transform.localPosition.x <= rightEdge)
-                        {
-                            OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
-                        }
+                        OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                     }
                 }
                 break;
