@@ -44,8 +44,6 @@ public class Office : MonoBehaviour {
 
     public Image OriginalOfficeImage;
 
-    public RectTransform cursor;
-
     [Header("Audios")]
     public AudioSource DoorClose;
     public AudioSource lightSound;
@@ -206,7 +204,11 @@ public class Office : MonoBehaviour {
                 }
                 break;
             default:
-                if (remoteState.IsPressed(WiiU.RemoteButton.Left) && OfficeImage.transform.localPosition.x <= leftEdge)
+                // Pointer
+                Vector2 pointerPosition = remoteState.pos;
+                pointerPosition.x = ((pointerPosition.x + 1.0f) / 2.0f) * WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV);
+
+                if (remoteState.IsPressed(WiiU.RemoteButton.Left) && OfficeImage.transform.localPosition.x <= leftEdge || pointerPosition.x < 300f)
                 {
                     OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
                     if (OfficeImage.transform.localPosition.x >= leftEdge)
@@ -214,7 +216,7 @@ public class Office : MonoBehaviour {
                         OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                     }
                 }
-                else if (remoteState.IsPressed(WiiU.RemoteButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge)
+                else if (remoteState.IsPressed(WiiU.RemoteButton.Right) && OfficeImage.transform.localPosition.x >= rightEdge || pointerPosition.x > WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV) - 300f)
                 {
                     OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
                     if (OfficeImage.transform.localPosition.x <= rightEdge)
@@ -222,20 +224,13 @@ public class Office : MonoBehaviour {
                         OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                     }
                 }
-
-                // Pointer
-                Vector2 pointerPosition = remoteState.pos;
-                pointerPosition.x = ((pointerPosition.x + 1.0f) / 2.0f) * WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV);
-                pointerPosition.y = WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV) - ((pointerPosition.y + 1.0f) / 2.0f) * WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV);
-
-                cursor.anchoredPosition = pointerPosition;
                 break;
         }
 
         // Keyboard
         if (Application.isEditor)
         {
-            if (Input.GetKey(KeyCode.LeftArrow) && OfficeImage.transform.localPosition.x <= leftEdge)
+            if (Input.GetKey(KeyCode.LeftArrow) && OfficeImage.transform.localPosition.x <= leftEdge || Input.mousePosition.x < 300f)
             {
                 OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
                 if (OfficeImage.transform.localPosition.x >= leftEdge)
@@ -243,7 +238,7 @@ public class Office : MonoBehaviour {
                     OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                 }
             }
-            else if (Input.GetKey(KeyCode.RightArrow) && OfficeImage.transform.localPosition.x >= rightEdge)
+            else if (Input.GetKey(KeyCode.RightArrow) && OfficeImage.transform.localPosition.x >= rightEdge || Input.mousePosition.x > WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV) - 300f)
             {
                 OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
                 if (OfficeImage.transform.localPosition.x <= rightEdge)
@@ -251,8 +246,6 @@ public class Office : MonoBehaviour {
                     OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                 }
             }
-
-            cursor.anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         }
 
         // Check position on the left for the left door
