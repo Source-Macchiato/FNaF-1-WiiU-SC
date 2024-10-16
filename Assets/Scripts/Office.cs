@@ -44,6 +44,8 @@ public class Office : MonoBehaviour {
 
     public Image OriginalOfficeImage;
 
+    public RectTransform cursor;
+
     [Header("Audios")]
     public AudioSource DoorClose;
     public AudioSource lightSound;
@@ -220,6 +222,13 @@ public class Office : MonoBehaviour {
                         OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                     }
                 }
+
+                // Pointer
+                Vector2 pointerPosition = remoteState.pos;
+                pointerPosition.x = ((pointerPosition.x + 1.0f) / 2.0f) * WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV);
+                pointerPosition.y = WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV) - ((pointerPosition.y + 1.0f) / 2.0f) * WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV);
+
+                cursor.anchoredPosition = pointerPosition;
                 break;
         }
 
@@ -242,6 +251,8 @@ public class Office : MonoBehaviour {
                     OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
                 }
             }
+
+            cursor.anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         }
 
         // Check position on the left for the left door
