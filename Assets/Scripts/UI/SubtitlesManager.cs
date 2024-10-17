@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RTLTMPro;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,10 @@ public class SubtitlesManager : MonoBehaviour
     private float NightNumber;
 
     private TextAsset subtitleFile;
+
+    [Header("Fonts")]
+    public TMP_FontAsset mainFont;
+    public TMP_FontAsset arabicFont;
 
     void Start()
     {
@@ -88,7 +93,7 @@ public class SubtitlesManager : MonoBehaviour
                 foreach (GameObject subtitleContainer in subtitlesContainers)
                 {
                     Text textComponent = subtitleContainer.GetComponent<Text>();
-                    TMP_Text tmpTextComponent = subtitleContainer.GetComponent<TextMeshProUGUI>();
+                    RTLTextMeshPro tmpTextComponent = subtitleContainer.GetComponent<RTLTextMeshPro>();
 
                     if (textComponent != null)
                     {
@@ -119,7 +124,7 @@ public class SubtitlesManager : MonoBehaviour
         foreach (GameObject subtitleContainer in subtitlesContainers)
         {
             Text textComponent = subtitleContainer.GetComponent<Text>();
-            TMP_Text tmpTextComponent = subtitleContainer.GetComponent<TextMeshProUGUI>();
+            RTLTextMeshPro tmpTextComponent = subtitleContainer.GetComponent<RTLTextMeshPro>();
 
             if (textComponent != null)
             {
@@ -134,6 +139,21 @@ public class SubtitlesManager : MonoBehaviour
                 if (subtitleContainer.activeSelf)
                 {
                     tmpTextComponent.text = translatedText;
+
+                    if (I18n.GetLanguage() == "ar")
+                    {
+                        if (arabicFont != null)
+                        {
+                            tmpTextComponent.font = arabicFont;
+                        }
+                    }
+                    else
+                    {
+                        if (mainFont != null)
+                        {
+                            tmpTextComponent.font = mainFont;
+                        }
+                    }
                 }
             }
         }

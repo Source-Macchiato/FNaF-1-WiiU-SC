@@ -9790,7 +9790,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1181396066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -9895,6 +9895,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &1181396069
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10577,7 +10582,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1265514370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -10682,6 +10687,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: Show Stage
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &1265514372
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10718,6 +10728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: 
+  mainFont: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!114 &1265514375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12734,6 +12746,8 @@ MonoBehaviour:
   - {fileID: 1779849355}
   - {fileID: 2001553328}
   - {fileID: 1181396066}
+  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &1530994528
 GameObject:
   m_ObjectHideFlags: 0
@@ -13145,7 +13159,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640164976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -13156,7 +13170,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Power left:'
+  m_text: 'Power Left:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
   m_sharedMaterial: {fileID: 21180882302018146, guid: decdc146e146f924bb655e1aa81a9738,
@@ -13250,6 +13264,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 'Power Left:'
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &1640164979
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13268,6 +13287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: office.power
+  mainFont: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &1664183764
 GameObject:
   m_ObjectHideFlags: 0
@@ -14848,7 +14869,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1779849355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -14953,6 +14974,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &1779849358
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15003,7 +15029,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1789568491}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -15108,6 +15134,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: Night
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &1789568494
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15126,6 +15157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: office.night
+  mainFont: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &1800503524
 GameObject:
   m_ObjectHideFlags: 0
@@ -17917,7 +17950,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2001553328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -18022,6 +18055,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &2001553331
 CanvasRenderer:
   m_ObjectHideFlags: 0

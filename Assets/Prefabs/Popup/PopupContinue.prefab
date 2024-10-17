@@ -605,8 +605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: mainmenu.update
-  consolasFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
-  cairoFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
+  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!222 &222181046220160654
 CanvasRenderer:
   m_ObjectHideFlags: 1

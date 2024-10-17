@@ -11,8 +11,8 @@ public class I18nTextTranslator : MonoBehaviour
     private string currentLanguage;
 
     [Header("Fonts")]
-    public TMP_FontAsset consolasFont;
-    public TMP_FontAsset cairoFont;
+    public TMP_FontAsset mainFont;
+    public TMP_FontAsset arabicFont;
 
     void Start()
     {
@@ -69,16 +69,16 @@ public class I18nTextTranslator : MonoBehaviour
 
             if (I18n.GetLanguage() == "ar")
             {
-                if (cairoFont != null)
+                if (arabicFont != null)
                 {
-                    tmpTextComponent.font = cairoFont;
+                    tmpTextComponent.font = arabicFont;
                 }
             }
             else
             {
-                if (consolasFont != null)
+                if (mainFont != null)
                 {
-                    tmpTextComponent.font = consolasFont;
+                    tmpTextComponent.font = mainFont;
                 }
             }
         }
