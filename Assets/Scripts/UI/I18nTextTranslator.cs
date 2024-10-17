@@ -10,6 +10,10 @@ public class I18nTextTranslator : MonoBehaviour
     private RTLTextMeshPro tmpTextComponent;
     private string currentLanguage;
 
+    [Header("Fonts")]
+    public TMP_FontAsset consolasFont;
+    public TMP_FontAsset cairoFont;
+
     void Start()
     {
         textComponent = GetComponent<Text>();
@@ -62,6 +66,21 @@ public class I18nTextTranslator : MonoBehaviour
         if (tmpTextComponent != null)
         {
             tmpTextComponent.text = translatedText;
+
+            if (I18n.GetLanguage() == "ar")
+            {
+                if (cairoFont != null)
+                {
+                    tmpTextComponent.font = cairoFont;
+                }
+            }
+            else
+            {
+                if (consolasFont != null)
+                {
+                    tmpTextComponent.font = consolasFont;
+                }
+            }
         }
     }
 

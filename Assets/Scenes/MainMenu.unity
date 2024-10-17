@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_material: {fileID: 0}
   m_sharedMaterial: {fileID: 0}
   m_isDefaultMaterial: 0
-  m_padding: 0.5
+  m_padding: 0
   m_canvasRenderer: {fileID: 551317286}
   m_TextComponent: {fileID: 1910286345}
   m_materialReferenceIndex: 1
