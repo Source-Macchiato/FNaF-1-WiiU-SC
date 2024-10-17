@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224198566428674326}
   - component: {fileID: 222323126496027130}
-  - component: {fileID: 114300329199761346}
+  - component: {fileID: 114194893131427366}
   - component: {fileID: 114416524932451562}
   - component: {fileID: 114096722155754264}
   m_Layer: 5
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: 
---- !u!114 &114300329199761346
+--- !u!114 &114194893131427366
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1744544605298176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
-    textComponent: {fileID: 114300329199761346}
+    textComponent: {fileID: 114194893131427366}
     characterCount: 6
     spriteCount: 0
     spaceCount: 0
@@ -214,22 +214,27 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: Button
+  fixTags: 1
+  forceFix: 0
 --- !u!114 &114416524932451562
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744544605298176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fixedText: 
   ShowTashkeel: 1
   UseHinduNumbers: 0
   isArabicEnabled: 0
-  consolasFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
-  cairoFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
+  isInitialized: 0
 --- !u!114 &114490571940970886
 MonoBehaviour:
   m_ObjectHideFlags: 1

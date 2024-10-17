@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using RTLTMPro;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,16 +7,13 @@ public class I18nTextTranslator : MonoBehaviour
 {
     public string textId;
     private Text textComponent;
-    private TMP_Text tmpTextComponent;
+    private RTLTextMeshPro tmpTextComponent;
     private string currentLanguage;
-
-    private ArabicFixerTMPRO arabicFixer;
 
     void Start()
     {
         textComponent = GetComponent<Text>();
-        tmpTextComponent = GetComponent<TextMeshProUGUI>();
-        arabicFixer = GetComponent<ArabicFixerTMPRO>();
+        tmpTextComponent = GetComponent<RTLTextMeshPro>();
 
         if (textComponent == null && tmpTextComponent == null)
         {
@@ -64,18 +62,6 @@ public class I18nTextTranslator : MonoBehaviour
         if (tmpTextComponent != null)
         {
             tmpTextComponent.text = translatedText;
-        }
-
-        if (arabicFixer != null)
-        {
-            if (I18n.GetLanguage() == "ar")
-            {
-                arabicFixer.SetArabicCorrection(true);
-            }
-            else
-            {
-                arabicFixer.SetArabicCorrection(false);
-            }
         }
     }
 
