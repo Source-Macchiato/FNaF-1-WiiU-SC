@@ -921,7 +921,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 527609496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -932,7 +932,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 1st night
+  m_text: 1st Night
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
   m_sharedMaterial: {fileID: 21180882302018146, guid: decdc146e146f924bb655e1aa81a9738,
@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 1
-  m_inputSource: 0
+  m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -1026,6 +1026,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 1st Night
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &527609499
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1044,6 +1049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.firstnight
+  mainFont: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!114 &527609501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,7 +1243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 657038145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1328,7 +1335,7 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 1
-  m_inputSource: 0
+  m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -1341,6 +1348,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 3rd Night
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &657038148
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1359,6 +1371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.thirdnight
+  mainFont: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!114 &657038150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2030,6 +2044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.fifthnight
+  mainFont: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!222 &1149655870
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2044,7 +2060,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1149655867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -2136,7 +2152,7 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 1
-  m_inputSource: 0
+  m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -2149,6 +2165,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 5th Night
+  fixTags: 1
+  forceFix: 0
 --- !u!114 &1149655872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,7 +2604,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1487209579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -2626,8 +2647,8 @@ MonoBehaviour:
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 0
+  m_fontSizeMax: 0
   m_fontStyle: 0
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
@@ -2637,13 +2658,13 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
-  m_enableKerning: 1
+  m_enableKerning: 0
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2661,7 +2682,7 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
-    textComponent: {fileID: 1487209581}
+    textComponent: {fileID: 0}
     characterCount: 9
     spriteCount: 0
     spaceCount: 1
@@ -2675,7 +2696,7 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 1
-  m_inputSource: 0
+  m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -2688,6 +2709,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 4th Night
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &1487209582
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2706,6 +2732,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.fourthnight
+  mainFont: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!114 &1487209584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3015,7 +3043,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1767599883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -3026,7 +3054,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 2nd night
+  m_text: 2nd Night
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
   m_sharedMaterial: {fileID: 21180882302018146, guid: decdc146e146f924bb655e1aa81a9738,
@@ -3058,8 +3086,8 @@ MonoBehaviour:
   m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
@@ -3069,13 +3097,13 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
-  m_enableKerning: 0
+  m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3093,7 +3121,7 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
-    textComponent: {fileID: 0}
+    textComponent: {fileID: 1767599885}
     characterCount: 9
     spriteCount: 0
     spaceCount: 1
@@ -3107,7 +3135,7 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 1
-  m_inputSource: 0
+  m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -3120,6 +3148,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  preserveNumbers: 0
+  farsi: 1
+  originalText: 2nd Night
+  fixTags: 1
+  forceFix: 0
 --- !u!222 &1767599886
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3138,6 +3171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textId: nextnight.secondnight
+  mainFont: {fileID: 11400000, guid: decdc146e146f924bb655e1aa81a9738, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!114 &1767599888
 MonoBehaviour:
   m_ObjectHideFlags: 0
