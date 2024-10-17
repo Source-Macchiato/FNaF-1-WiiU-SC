@@ -65,6 +65,18 @@ public class I18nTextTranslator : MonoBehaviour
         {
             tmpTextComponent.text = translatedText;
         }
+
+        if (arabicFixer != null)
+        {
+            if (I18n.GetLanguage() == "ar")
+            {
+                arabicFixer.SetArabicCorrection(true);
+            }
+            else
+            {
+                arabicFixer.SetArabicCorrection(false);
+            }
+        }
     }
 
     string GetTranslatedText()
