@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3215588905
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: vf-language-pack
+      Dependencies: {}

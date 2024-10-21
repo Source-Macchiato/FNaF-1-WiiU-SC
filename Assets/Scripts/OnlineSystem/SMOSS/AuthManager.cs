@@ -217,7 +217,7 @@ public class AuthManager : MonoBehaviour
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     private class AuthenticationResponse
     {
         public string message;

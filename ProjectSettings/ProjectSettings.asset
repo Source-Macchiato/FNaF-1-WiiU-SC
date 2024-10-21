@@ -255,7 +255,7 @@ PlayerSettings:
   wiiUCommonBossSize: 0
   wiiUAccountBossSize: 0
   wiiUAddOnUniqueIDs:
-  - 00000000
+  - 000026F4
   wiiUMainThreadStackSize: 3072
   wiiULoaderThreadStackSize: 1024
   wiiUSystemHeapSize: 128
