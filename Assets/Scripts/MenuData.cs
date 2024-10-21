@@ -88,13 +88,9 @@ public class MenuData : MonoBehaviour
                 {
                     switcher.currentOptionId = 4;
                 }
-                else if (language == "sk")
-                {
-                    switcher.currentOptionId = 5;
-                }
                 else if (language == "ar")
                 {
-                    switcher.currentOptionId = 6;
+                    switcher.currentOptionId = 5;
                 }
                 else
                 {
