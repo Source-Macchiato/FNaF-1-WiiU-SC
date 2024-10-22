@@ -19,18 +19,14 @@ public class GameScript : MonoBehaviour {
     
     public GameObject Bar1, Bar2, Bar3, Bar4, Bar5;
 
-    public AudioSource Call1;
-    public AudioSource Call2;
-    public AudioSource Call3;
-    public AudioSource Call4;
-    public AudioSource Call5;
-
     private Text textNightNumber;
     private Text textPowerDisplayer;
     private Text textTimeDisplayer;
     private TMP_Text tmpTextNightNumber;
     private TMP_Text tmpTextPowerDisplayer;
     private TMP_Text tmpTextTimeDisplayer;
+
+    private bool audioPlayed;
 
     SaveGameState saveGameState;
     SaveManager saveManager;
@@ -58,32 +54,7 @@ public class GameScript : MonoBehaviour {
 
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
-
-        //--------------------------------------CallAndNight----------------------//
-        if (nightNumber == 1)
-        {
-            Call1.Play();
-        }
-
-        if (nightNumber == 2)
-        {
-            Call2.Play();
-        }
-
-        if (nightNumber == 3)
-        {
-            Call3.Play();
-        }
-
-        if (nightNumber == 4)
-        {
-            Call4.Play();
-        }
-
-        if (nightNumber == 5)
-        {
-            Call5.Play();
-        }
+        
         //-------------------------------CallAndNight-----------------------------//
     }
 

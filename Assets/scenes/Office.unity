@@ -1574,6 +1574,7 @@ GameObject:
   - component: {fileID: 155843492}
   - component: {fileID: 155843493}
   - component: {fileID: 155843494}
+  - component: {fileID: 155843495}
   m_Layer: 0
   m_Name: Call2
   m_TagString: Untagged
@@ -1686,6 +1687,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &155843495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155843491}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df50262b4a6c5d94b81e45308a798448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectNameToLoad: 
+  nightNumber: 2
 --- !u!1 &170545077
 GameObject:
   m_ObjectHideFlags: 0
@@ -4175,6 +4189,7 @@ GameObject:
   - component: {fileID: 509155209}
   - component: {fileID: 509155210}
   - component: {fileID: 509155211}
+  - component: {fileID: 509155212}
   m_Layer: 0
   m_Name: Call4
   m_TagString: Untagged
@@ -4287,6 +4302,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &509155212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509155208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df50262b4a6c5d94b81e45308a798448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectNameToLoad: 
+  nightNumber: 4
 --- !u!1 &529743622
 GameObject:
   m_ObjectHideFlags: 0
@@ -8752,6 +8780,7 @@ GameObject:
   - component: {fileID: 1098676638}
   - component: {fileID: 1098676639}
   - component: {fileID: 1098676640}
+  - component: {fileID: 1098676641}
   m_Layer: 0
   m_Name: Call5
   m_TagString: Untagged
@@ -8864,6 +8893,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1098676641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098676637}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df50262b4a6c5d94b81e45308a798448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectNameToLoad: 
+  nightNumber: 5
 --- !u!1 &1119444152
 GameObject:
   m_ObjectHideFlags: 0
@@ -11255,6 +11297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectNameToLoad: VF-Call1
+  nightNumber: 1
 --- !u!1 &1379711171
 GameObject:
   m_ObjectHideFlags: 0
@@ -16868,6 +16911,7 @@ GameObject:
   - component: {fileID: 1932182868}
   - component: {fileID: 1932182869}
   - component: {fileID: 1932182870}
+  - component: {fileID: 1932182871}
   m_Layer: 0
   m_Name: Call3
   m_TagString: Untagged
@@ -16980,6 +17024,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1932182871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1932182867}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df50262b4a6c5d94b81e45308a798448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectNameToLoad: 
+  nightNumber: 3
 --- !u!1 &1942418458
 GameObject:
   m_ObjectHideFlags: 0
@@ -17222,11 +17279,6 @@ MonoBehaviour:
   Bar3: {fileID: 232236410}
   Bar4: {fileID: 107118481}
   Bar5: {fileID: 554777308}
-  Call1: {fileID: 1365021205}
-  Call2: {fileID: 155843493}
-  Call3: {fileID: 1932182869}
-  Call4: {fileID: 509155210}
-  Call5: {fileID: 1098676639}
 --- !u!114 &1959479699
 MonoBehaviour:
   m_ObjectHideFlags: 0

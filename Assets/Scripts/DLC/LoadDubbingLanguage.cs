@@ -5,12 +5,21 @@ public class LoadDubbingLanguage : MonoBehaviour
 {
     private AudioSource phoneCallAudio;
     public string objectNameToLoad;
+    public float nightNumber;
+    private float currentNightNumber;
 
 	void Start()
 	{
         phoneCallAudio = GetComponent<AudioSource>();
 
+        currentNightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+
         StartCoroutine(LoadAsset("vf-language-pack", objectNameToLoad));
+
+        if (currentNightNumber == nightNumber)
+        {
+            phoneCallAudio.Play();
+        }
     }
 
     IEnumerator LoadAsset(string assetBundleName, string objectNameToLoad)
@@ -21,16 +30,16 @@ public class LoadDubbingLanguage : MonoBehaviour
         var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(filePath);
         yield return assetBundleCreateRequest;
 
-        AssetBundle asseBundle = assetBundleCreateRequest.assetBundle;
+        AssetBundle assetBundle = assetBundleCreateRequest.assetBundle;
 
         // Load asset
-        AssetBundleRequest asset = asseBundle.LoadAssetAsync<AudioSource>(objectNameToLoad);
+        AssetBundleRequest asset = assetBundle.LoadAssetAsync<AudioClip>(objectNameToLoad);
         yield return asset;
 
         // Get asset
-        AudioSource loadedAsset = asset.asset as AudioSource;
+        AudioClip loadedAsset = asset.asset as AudioClip;
 
         // Assign asset
-        phoneCallAudio.clip = loadedAsset.clip;
+        phoneCallAudio.clip = loadedAsset;
     }
 }
