@@ -3,23 +3,17 @@ using UnityEngine;
 
 public class LoadDubbingLanguage : MonoBehaviour
 {
-    private AudioSource phoneCallAudio;
+    public AudioSource phoneCallAudio;
     public string objectNameToLoad;
-    public float nightNumber;
-    private float currentNightNumber;
+    private float nightNumber;
 
 	void Start()
 	{
-        phoneCallAudio = GetComponent<AudioSource>();
-
-        currentNightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        nightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
         StartCoroutine(LoadAsset("vf-language-pack", objectNameToLoad));
 
-        if (currentNightNumber == nightNumber)
-        {
-            phoneCallAudio.Play();
-        }
+        phoneCallAudio.Play();
     }
 
     IEnumerator LoadAsset(string assetBundleName, string objectNameToLoad)
@@ -32,14 +26,17 @@ public class LoadDubbingLanguage : MonoBehaviour
 
         AssetBundle assetBundle = assetBundleCreateRequest.assetBundle;
 
-        // Load asset
-        AssetBundleRequest asset = assetBundle.LoadAssetAsync<AudioClip>(objectNameToLoad);
-        yield return asset;
+        if (assetBundle != null)
+        {
+            // Load asset
+            AssetBundleRequest asset = assetBundle.LoadAssetAsync<AudioClip>(objectNameToLoad);
+            yield return asset;
 
-        // Get asset
-        AudioClip loadedAsset = asset.asset as AudioClip;
+            // Get asset
+            AudioClip loadedAsset = asset.asset as AudioClip;
 
-        // Assign asset
-        phoneCallAudio.clip = loadedAsset;
+            // Assign asset
+            phoneCallAudio.clip = loadedAsset;
+        }
     }
 }
