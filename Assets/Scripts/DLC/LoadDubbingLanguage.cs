@@ -4,17 +4,38 @@ using UnityEngine;
 public class LoadDubbingLanguage : MonoBehaviour
 {
     public AudioSource phoneCallAudio;
-    public string objectNameToLoad;
+    private string bundleName;
+    private string audioName;
     private float nightNumber;
+    private string dubbingLanguage;
 
 	void Start()
 	{
         nightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
-        StartCoroutine(LoadAsset("vo-language-pack", objectNameToLoad));
+        // Get dubbing language
+        dubbingLanguage = SaveManager.LoadDubbingLanguage();
+
+        if (nightNumber >= 1 && nightNumber <= 5)
+        {
+            if (dubbingLanguage == null || dubbingLanguage == "en")
+            {
+                bundleName = "vo-language-pack";
+
+                audioName = "VO-Call" + nightNumber;
+            }
+            else
+            {
+                bundleName = dubbingLanguage + "-language-pack";
+
+                audioName = dubbingLanguage.ToUpper() + "-Call" + nightNumber;
+            }
+
+            StartCoroutine(LoadAndPlayAudio(bundleName, audioName));
+        } 
     }
 
-    IEnumerator LoadAsset(string assetBundleName, string objectNameToLoad)
+    IEnumerator LoadAndPlayAudio(string assetBundleName, string objectNameToLoad)
     {
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "AssetBundles");
         filePath = System.IO.Path.Combine(filePath, assetBundleName);

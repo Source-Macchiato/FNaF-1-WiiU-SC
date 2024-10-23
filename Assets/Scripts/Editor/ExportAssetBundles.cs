@@ -10,10 +10,10 @@ public class ExportAssetBundles
         string folderName = "AssetBundles";
         string filePath = Path.Combine(Application.streamingAssetsPath, folderName);
 
-        //Build for Windows platform
+        // Build for Wii U
         BuildPipeline.BuildAssetBundles(filePath, BuildAssetBundleOptions.None, BuildTarget.WiiU);
 
-        //Refresh the Project folder
+        // Refresh the Project folder
         AssetDatabase.Refresh();
     }
 }

@@ -27,6 +27,12 @@ public class SaveManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
+    public void SaveDubbingLanguage(string language)
+    {
+        PlayerPrefs.SetString("DubbingLanguage", language);
+        PlayerPrefs.Save();
+    }
+
     // Load
     public static string LoadLanguage()
 	{
@@ -85,6 +91,18 @@ public class SaveManager : MonoBehaviour {
         else
         {
             return 1;
+        }
+    }
+
+    public static string LoadDubbingLanguage()
+    {
+        if (PlayerPrefs.HasKey("DubbingLanguage"))
+        {
+            return PlayerPrefs.GetString("DubbingLanguage");
+        }
+        else
+        {
+            return null;
         }
     }
 }
