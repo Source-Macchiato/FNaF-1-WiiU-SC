@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 3215588905
+CRC: 1318971434
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: vf-language-pack
+      Dependencies: {}
+    Info_1:
+      Name: vo-language-pack
       Dependencies: {}

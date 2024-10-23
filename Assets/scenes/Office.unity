@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phoneCallAudio: {fileID: 930409633}
-  objectNameToLoad: VF-Call1
+  objectNameToLoad: VO-Call1
 --- !u!1 &80361502
 GameObject:
   m_ObjectHideFlags: 0
