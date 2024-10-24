@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameScript : MonoBehaviour {
-
+public class GameScript : MonoBehaviour
+{
     private float nightNumber;
-    public float Time = 535; //fixed i hope -- who wrote this ? who are you ?
+    public float timeRemaining = 535; //fixed i hope -- who wrote this ? who are you ?
     public float Usage = 1;
 
     public GameObject nightNumberDisplayer;
@@ -18,6 +18,9 @@ public class GameScript : MonoBehaviour {
     public float PowerLeft = 100;
     
     public GameObject Bar1, Bar2, Bar3, Bar4, Bar5;
+    public GameObject officeContainer;
+
+    private RectTransform officeRect;
 
     private Text textNightNumber;
     private Text textPowerDisplayer;
@@ -40,6 +43,8 @@ public class GameScript : MonoBehaviour {
         tmpTextPowerDisplayer = powerDisplayer.GetComponent<TextMeshProUGUI>();
         tmpTextTimeDisplayer = timeDisplayer.GetComponent<TextMeshProUGUI>();
 
+        officeRect = officeContainer.GetComponent<RectTransform>();
+
         nightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
         if (textNightNumber != null)
@@ -60,38 +65,39 @@ public class GameScript : MonoBehaviour {
 
     public void DebugTwelveAMButton()
     {
-        Time = 536;
+        timeRemaining = 536;
     }
     public void DebugOneAMButton()
     {
-        Time = 446;
+        timeRemaining = 446;
     }
     public void DebugTwoAMButton()
     {
-        Time = 355;
+        timeRemaining = 355;
     }
     public void DebugThreeAMButton()
     {
-        Time = 268;
+        timeRemaining = 268;
     }
     public void DebugFourAMButton()
     {
-        Time = 179;
+        timeRemaining = 179;
     }
     public void DebugFiveAMButton()
     {
-        Time = 90;
+        timeRemaining = 90;
     }
     public void DebugSixAMButton()
     {
-        Time = 1;
+        timeRemaining = 1;
     }
-    void Update () //(max) wow this function proves how much you hate else ifs
+
+    void Update() //(max) wow this function proves how much you hate else ifs
     {
         //---------------------------------------TIME-------------------------------------//
-        Time -= UnityEngine.Time.deltaTime;
+        timeRemaining -= Time.deltaTime;
 
-        switch((int)Time)
+        switch((int)timeRemaining)
         {
             case 535:
                 if (textTimeDisplayer != null)
@@ -225,7 +231,7 @@ public class GameScript : MonoBehaviour {
 
         if (PowerUsage == 2)
         {
-            PowerDrain -= UnityEngine.Time.deltaTime;
+            PowerDrain -= Time.deltaTime;
 
             if (PowerDrain <= 0)
             {
@@ -253,7 +259,7 @@ public class GameScript : MonoBehaviour {
 
         if (PowerUsage == 3)
         {
-            PowerDrain -= UnityEngine.Time.deltaTime;
+            PowerDrain -= Time.deltaTime;
 
             if (PowerDrain <= 0)
             {
@@ -281,7 +287,7 @@ public class GameScript : MonoBehaviour {
 
         if (PowerUsage == 4)
         {
-            PowerDrain -= UnityEngine.Time.deltaTime;
+            PowerDrain -= Time.deltaTime;
 
             if (PowerDrain <= 0)
             {
@@ -309,7 +315,7 @@ public class GameScript : MonoBehaviour {
 
         if (PowerUsage == 5)
         {
-            PowerDrain -= UnityEngine.Time.deltaTime;
+            PowerDrain -= Time.deltaTime;
 
             if (PowerDrain <= 0)
             {
@@ -337,9 +343,9 @@ public class GameScript : MonoBehaviour {
 
         if (PowerLeft <= 0)
         {
+
+
             SceneManager.LoadScene("PowerOut");
         }
-        //--------------------------------PowerUsage---------------------------//
-
     }
 }

@@ -471,7 +471,7 @@ public class Movement : MonoBehaviour {
         //------------------------AI param depend of nights----------------------------------------
 
 //wait 240 seconds
-if(GameScript.Time <= 267.0f)
+if(GameScript.timeRemaining <= 267.0f)
 {
     if (NightNumber == 1)
 {
@@ -590,7 +590,7 @@ if(GameScript.Time <= 267.0f)
 
 }
 // ---------------Night 2 param------------------
-if(GameScript.Time <= 300.0f)
+if(GameScript.timeRemaining <= 300.0f)
 {
     if (NightNumber == 2)
 {
