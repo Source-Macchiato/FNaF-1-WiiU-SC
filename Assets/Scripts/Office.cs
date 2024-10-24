@@ -434,8 +434,17 @@ public class Office : MonoBehaviour {
         }
     }
 
+
+
     void RightDoorSystem()
     {
+        foreach (Animator anim in FindObjectsOfType<Animator>())
+        {
+            if (anim.gameObject.name.Contains("Door"))
+            {
+                anim.enabled = true;
+            }
+        }
         if (R_Door_Closed)
         {
             Door_R_closed.SetActive(false);
@@ -447,51 +456,47 @@ public class Office : MonoBehaviour {
             {
                 DoorButton_R1.enabled = true;
             }
-            
+        
             // Check if already displayed
             if (DoorButton_R2.isActiveAndEnabled)
             {
                 DoorButton_R2.enabled = false;
             }
-
+        
             // Check if already displayed
-            if (DoorButton_R4.isActiveAndEnabled)
+            if (DoorButton_L4.isActiveAndEnabled)
             {
-                DoorButton_R4.enabled = false;
+                DoorButton_L4.enabled = false;
             }
 
             DoorClose.Play();
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-            OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = false;
-        }
-        else
-        {
-            Door_R_closed.SetActive(true);
-            Door_R_open.SetActive(false);
-            R_Door_Closed = true;
-            
-            // Check if already displayed
-            if (DoorButton_R1.isActiveAndEnabled)
-            {
-                DoorButton_R1.enabled = false;
-            }
-
-            // Check if already displayed
-            if (!DoorButton_R2.isActiveAndEnabled)
-            {
-                DoorButton_R2.enabled = true;
-            }
-
-            DoorClose.Play();
-
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-            OfficeControllerObject.GetComponent<Movement>().RightDoorClosed = true;
-
-        }
     }
+    else
+    {
+        Door_R_closed.SetActive(true);
+        Door_R_open.SetActive(false);
+        R_Door_Closed = true;
+
+        // Check if already displayed
+        if (DoorButton_R1.isActiveAndEnabled)
+        {
+            DoorButton_R1.enabled = false;
+        }
+        
+        // Check if already displayed
+        if (!DoorButton_R2.isActiveAndEnabled)
+        {
+            DoorButton_R2.enabled = true;
+        }
+
+        DoorClose.Play();
+
+        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+    }
+}
+
 
     void LeftLightSystem()
     {
