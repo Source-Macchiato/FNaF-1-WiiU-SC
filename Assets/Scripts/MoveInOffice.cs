@@ -4,7 +4,6 @@ using WiiU = UnityEngine.WiiU;
 public class MoveInOffice : MonoBehaviour
 {
     public GameObject OfficeImage;
-    private RectTransform officeBounds;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -18,8 +17,6 @@ public class MoveInOffice : MonoBehaviour
 	{
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
-
-        officeBounds = OfficeImage.GetComponent<RectTransform>();
     }
 	
 	void Update()
