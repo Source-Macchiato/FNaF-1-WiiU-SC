@@ -29,3 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PowerOut.unity
     guid: b918c75c54273b846b658ed4674b7900
+  - enabled: 1
+    path: Assets/Scenes/EasterEggScene.unity
+    guid: f1c37120d10f18648811308b20dffb92
+  - enabled: 1
+    path: Assets/Scenes/CustomNight.unity
+    guid: 1bb64a942a5aba640a8ee0e902e3ddb3
