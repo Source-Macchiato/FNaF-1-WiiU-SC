@@ -21,6 +21,7 @@ public class GameScript : MonoBehaviour
     public GameObject officeContainer;
 
     private RectTransform officeRect;
+    public static float officePositionX;
 
     private Text textNightNumber;
     private Text textPowerDisplayer;
@@ -343,7 +344,7 @@ public class GameScript : MonoBehaviour
 
         if (PowerLeft <= 0)
         {
-
+            officePositionX = officeRect.anchoredPosition.x;
 
             SceneManager.LoadScene("PowerOut");
         }

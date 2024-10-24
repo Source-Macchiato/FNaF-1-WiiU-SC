@@ -16411,7 +16411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1918397df068ec74b9ddccec874d07d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OfficeImage: {fileID: 1969409250}
+  OfficeContainer: {fileID: 1969409250}
 --- !u!1 &1928386306
 GameObject:
   m_ObjectHideFlags: 0
@@ -16722,7 +16722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9758e248abfaa464990cb00afa6fbaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Time: 535
+  timeRemaining: 535
   Usage: 1
   nightNumberDisplayer: {fileID: 1398303399}
   powerDisplayer: {fileID: 1819803410}
@@ -16735,6 +16735,7 @@ MonoBehaviour:
   Bar3: {fileID: 232236410}
   Bar4: {fileID: 107118481}
   Bar5: {fileID: 554777308}
+  officeContainer: {fileID: 1969409250}
 --- !u!114 &1959479699
 MonoBehaviour:
   m_ObjectHideFlags: 0

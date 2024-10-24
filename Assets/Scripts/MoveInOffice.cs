@@ -3,7 +3,8 @@ using WiiU = UnityEngine.WiiU;
 
 public class MoveInOffice : MonoBehaviour
 {
-    public GameObject OfficeImage;
+    public GameObject OfficeContainer;
+    private RectTransform officeRect;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -17,6 +18,9 @@ public class MoveInOffice : MonoBehaviour
 	{
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
+
+        officeRect = OfficeContainer.GetComponent<RectTransform>();
+        officeRect.anchoredPosition = new Vector2(GameScript.officePositionX, officeRect.anchoredPosition.y);
     }
 	
 	void Update()
@@ -148,19 +152,19 @@ public class MoveInOffice : MonoBehaviour
 
     private void MoveLeft()
     {
-        OfficeImage.transform.Translate(Vector3.right * speed * Time.deltaTime);
-        if (OfficeImage.transform.localPosition.x >= leftEdge)
+        OfficeContainer.transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if (OfficeContainer.transform.localPosition.x >= leftEdge)
         {
-            OfficeImage.transform.localPosition = new Vector3(leftEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+            OfficeContainer.transform.localPosition = new Vector3(leftEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
         }
     }
 
     private void MoveRight()
     {
-        OfficeImage.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        if (OfficeImage.transform.localPosition.x <= rightEdge)
+        OfficeContainer.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if (OfficeContainer.transform.localPosition.x <= rightEdge)
         {
-            OfficeImage.transform.localPosition = new Vector3(rightEdge, OfficeImage.transform.localPosition.y, OfficeImage.transform.localPosition.z);
+            OfficeContainer.transform.localPosition = new Vector3(rightEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
         }
     }
 }
