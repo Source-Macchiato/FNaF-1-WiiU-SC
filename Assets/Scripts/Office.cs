@@ -101,6 +101,13 @@ public class Office : MonoBehaviour {
     {
         WiiU.GamePadState gamePadState = gamePad.state;
         WiiU.RemoteState remoteState = remote.state;
+        foreach (Animator anim in FindObjectsOfType<Animator>())
+        {
+            if (anim.gameObject.name.Contains("Office") || anim.gameObject.name.Contains("office"))
+            {
+                anim.enabled = true;
+            }
+        }
 
         // Display cheat panel
         if (Application.isEditor)
@@ -500,6 +507,13 @@ public class Office : MonoBehaviour {
 
     void LeftLightSystem()
     {
+        foreach (Animator anim in FindObjectsOfType<Animator>())
+        {
+            if (anim.gameObject.name.Contains("Office"))
+            {
+                anim.enabled = true;
+            }
+        }
         if (LeftLightIsOn)
         {
             if (!BonnieOutsideDoor)
