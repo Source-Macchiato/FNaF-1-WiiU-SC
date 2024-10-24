@@ -14,6 +14,11 @@ public class SaveManager : MonoBehaviour {
         PlayerPrefs.SetFloat("NightNumber", nightNumber);
         PlayerPrefs.Save();
     }
+    public void SaveStars(int starsNumb)
+    {
+        PlayerPrefs.SetInt("SaveStars", starsNumb);
+        PlayerPrefs.Save();
+    }
 
     public void SaveShareData(float shareData)
     {
