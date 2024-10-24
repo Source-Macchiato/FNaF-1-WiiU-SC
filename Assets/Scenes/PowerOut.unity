@@ -1629,7 +1629,7 @@ MonoBehaviour:
   WaitBeforeStart: 20
   PlayTime: 15
   DarkTime: 0
-  JumpscarePlayTime: 0.4
+  JumpscarePlayTime: 0.5
 --- !u!4 &2084075601
 Transform:
   m_ObjectHideFlags: 0
