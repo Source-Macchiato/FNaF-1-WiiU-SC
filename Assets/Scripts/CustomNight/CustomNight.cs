@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WiiU = UnityEngine.WiiU;
 
-public class CostumNight : MonoBehaviour {
+public class CustomNight : MonoBehaviour {
 
     public float FreddyAmount;
     public float BonnieAmount;
@@ -13,16 +13,9 @@ public class CostumNight : MonoBehaviour {
     public float WhichNight;
 
     public GameObject FreddyShowerTop;
-    public GameObject FreddyShowerBottom;
-
     public GameObject BonnieShowerTop;
-    public GameObject BonnieShowerBottom;
-
     public GameObject ChicaShowerTop;
-    public GameObject ChicaShowerBottom;
-
     public GameObject FoxyShowerTop;
-    public GameObject FoxyShowerBottom;
 
     WiiU.GamePad gamePad;
 
@@ -32,17 +25,6 @@ public class CostumNight : MonoBehaviour {
         BonnieAmount = 1;
         ChicaAmount = 1;
         FoxyAmount = 1;
-
-        SceneManager.UnloadSceneAsync("MainMenu");
-        SceneManager.UnloadSceneAsync("GameOver");
-        SceneManager.UnloadSceneAsync("6AM");
-        SceneManager.UnloadSceneAsync("NextNight");
-        SceneManager.UnloadSceneAsync("Controlls");
-        SceneManager.UnloadSceneAsync("Office");
-        SceneManager.UnloadSceneAsync("Advertisement");
-        SceneManager.UnloadSceneAsync("PowerOut");
-        SceneManager.UnloadSceneAsync("TheEnd");
-
         gamePad = WiiU.GamePad.access;
     }
 	
@@ -60,11 +42,6 @@ public class CostumNight : MonoBehaviour {
         BonnieShowerTop.GetComponent<Text>().text = BonnieAmount.ToString();
         ChicaShowerTop.GetComponent<Text>().text = ChicaAmount.ToString();
         FoxyShowerTop.GetComponent<Text>().text = FoxyAmount.ToString();
-
-        FreddyShowerBottom.GetComponent<Text>().text = FreddyAmount.ToString();
-        BonnieShowerBottom.GetComponent<Text>().text = BonnieAmount.ToString();
-        ChicaShowerBottom.GetComponent<Text>().text = ChicaAmount.ToString();
-        FoxyShowerBottom.GetComponent<Text>().text = FoxyAmount.ToString();
 
         if (FreddyAmount >= 20)
         {
@@ -144,9 +121,9 @@ public class CostumNight : MonoBehaviour {
         FreddyAmount -= 1;
     }
 
-
     public void PlusBonnie()
     {
+        Debug.Log("zeferge");
         BonnieAmount += 1;
     }
 
@@ -154,7 +131,6 @@ public class CostumNight : MonoBehaviour {
     {
         BonnieAmount -= 1;
     }
-
 
     public void PlusChica()
     {
@@ -165,7 +141,6 @@ public class CostumNight : MonoBehaviour {
     {
         ChicaAmount -= 1;
     }
-
 
     public void PlusFoxy()
     {
