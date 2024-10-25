@@ -5,24 +5,39 @@ using UnityEngine.SceneManagement;
 public class EndOfNight : MonoBehaviour {
 
     public GameObject Children;
-    public float NightNumber;
+    public float nightNumber;
 
-    void Start () {
+    SaveGameState saveGameState;
+    SaveManager saveManager;
+
+    void Start()
+    {
+        saveGameState = FindObjectOfType<SaveGameState>();
+        saveManager = FindObjectOfType<SaveManager>();
+
+        nightNumber = SaveManager.LoadNightNumber();
+
         StartCoroutine(InitCoroutine());
-
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
     }
 
-    IEnumerator InitCoroutine() {
+    IEnumerator InitCoroutine()
+    {
         yield return new WaitForSeconds(6);
 
         Children.SetActive(true);
 
         yield return new WaitForSeconds(5);
 
-        if (NightNumber <= 5) {
+        if (nightNumber >= 0 && nightNumber <= 4) // Current night is between 1 and 4
+        {
             SceneManager.LoadScene("NextNight");
-        } else if (NightNumber == 6) {
+        }
+        else if (nightNumber == 5) // Current night is 5
+        {
+            // When night 5 is finished enable the first star
+            saveManager.SaveStars(1);
+            bool saveResult = saveGameState.DoSave();
+
             SceneManager.LoadScene("TheEnd");
         }
     }

@@ -60,8 +60,6 @@ public class GameScript : MonoBehaviour
 
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
-        
-        //-------------------------------CallAndNight-----------------------------//
     }
 
     public void DebugTwelveAMButton()
@@ -204,7 +202,7 @@ public class GameScript : MonoBehaviour
 
         if (PowerUsage == 1)
         {
-            PowerDrain -= UnityEngine.Time.deltaTime;
+            PowerDrain -= Time.deltaTime;
 
             if (PowerDrain <= 0)
             {
@@ -344,6 +342,7 @@ public class GameScript : MonoBehaviour
 
         if (PowerLeft <= 0)
         {
+            // Save the current X position in the office
             officePositionX = officeRect.anchoredPosition.x;
 
             SceneManager.LoadScene("PowerOut");
