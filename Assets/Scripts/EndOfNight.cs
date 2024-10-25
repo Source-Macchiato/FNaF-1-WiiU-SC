@@ -40,5 +40,13 @@ public class EndOfNight : MonoBehaviour {
 
             SceneManager.LoadScene("TheEnd");
         }
+        else if (nightNumber == 6)
+        {
+            // When night 6 is finished enable the second star
+            saveManager.SaveStars(2);
+            bool saveResult = saveGameState.DoSave();
+
+            SceneManager.LoadScene("TheEnd");
+        }
     }
 }
