@@ -17,9 +17,6 @@ Alyx Lihoreau
 ## Video editing
 Alexis L.
 
-## Beta tester
-TeraByte38
-
 ## Translations
 ### French
 Alexis L.
@@ -38,6 +35,12 @@ Daniel Jödecke
 
 ### Arabic
 EzNothing
+
+## Beta tester
+TeraByte38
+
+## Closed beta
+Gato-kun
 
 ## Donators
 Branzon200
