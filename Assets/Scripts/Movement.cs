@@ -4,6 +4,7 @@ public class Movement : MonoBehaviour {
     
     //public ChangeImages changeImages;
     public GameScript GameScript;
+    private GameScript gameScript;
 
     public bool LongGlitch = false;
 
@@ -12,6 +13,7 @@ public class Movement : MonoBehaviour {
     public double ChicaMovementTime;
     public double FreddyMovementTime;
     public double FoxyMovementTime;
+    
 
     public float WhereBonnie = 1;
     public float WhereChica = 1;
@@ -61,9 +63,46 @@ public class Movement : MonoBehaviour {
 
     public AudioSource FreddyLaugh1;
 
+    private float[,] bonnieDifficulties = {
+    {11, 0, 1, 0, 0, 0}, // Night 1
+    {0, 0, 0, 0, 0, 0}, // Night 2
+    {0, 0, 0, 0, 0, 0}, // Night 3
+    {0, 0, 0, 0, 0, 0}, // Night 4
+    {0, 0, 0, 0, 0, 0}, // Night 5
+    {0, 0, 0, 0, 0, 0}  // Night 6
+};
+
+// Repeat for each character (Chica, Freddy, Foxy)
+private float[,] chicaDifficulties = {
+    {11, 0, 1, 0, 0, 0}, // Night 1
+    {0, 0, 0, 0, 0, 0}, // Night 2
+    {0, 0, 0, 0, 0, 0}, // Night 3
+    {0, 0, 0, 0, 0, 0}, // Night 4
+    {0, 0, 0, 0, 0, 0}, // Night 5
+    {0, 0, 0, 0, 0, 0}  // Night 6
+};
+private float[,] freddyDifficulties = {
+    {11, 0, 1, 0, 0, 0}, // Night 1
+    {0, 0, 0, 0, 0, 0}, // Night 2
+    {0, 0, 0, 0, 0, 0}, // Night 3
+    {0, 0, 0, 0, 0, 0}, // Night 4
+    {0, 0, 0, 0, 0, 0}, // Night 5
+    {0, 0, 0, 0, 0, 0}  // Night 6
+};
+private float[,] foxyDifficulties = {
+    {0, 0, 1, 0, 0, 0}, // Night 1
+    {0, 0, 0, 0, 0, 0}, // Night 2
+    {0, 0, 0, 0, 0, 0}, // Night 3
+    {0, 0, 0, 0, 0, 0}, // Night 4
+    {0, 0, 0, 0, 0, 0}, // Night 5
+    {0, 0, 0, 0, 0, 0}  // Night 6
+};
+
 
     void Start()
     {
+        //to get variable "hour"
+        gameScript = GetComponent<GameScript>();
         //randMovement
         RandMovement randMovement = GetComponent<RandMovement>();
         randMovement.BonnieRandMove();
@@ -71,348 +110,49 @@ public class Movement : MonoBehaviour {
         ChicaInKitchen.SetActive(false);
         NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
-        GenNumber();
+        
     }
 
-    public void GenNumber()
+    // instead of copy and paste the same damn thing in GenNumber
+    void SaveDifficulty()
     {
-
-        if (NightNumber == 1)
-        {
-            BonnieDifficulty = 1;
-            ChicaDifficulty = 1;
-            FreddyDifficulty = 0;
-            FoxyDifficulty = 0;
-
-            PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
-            PlayerPrefs.SetFloat("ChicaDifficulty", ChicaDifficulty);
-            PlayerPrefs.SetFloat("FreddyDifficulty", FreddyDifficulty);
-            PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
-            PlayerPrefs.Save();
-        }
-
-        if (NightNumber == 2)
-        {
-            BonnieDifficulty = 6;
-            ChicaDifficulty = 6;
-            FreddyDifficulty = 5;
-            FoxyDifficulty = 0;
-
-            PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
-            PlayerPrefs.SetFloat("ChicaDifficulty", ChicaDifficulty);
-            PlayerPrefs.SetFloat("FreddyDifficulty", FreddyDifficulty);
-            PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
-            PlayerPrefs.Save();
-        }
-
-        if (NightNumber == 3)
-        {
-            BonnieDifficulty = 11;
-            ChicaDifficulty = 11;
-            FreddyDifficulty = 10;
-            FoxyDifficulty = 8;
-
-            PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
-            PlayerPrefs.SetFloat("ChicaDifficulty", ChicaDifficulty);
-            PlayerPrefs.SetFloat("FreddyDifficulty", FreddyDifficulty);
-            PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
-            PlayerPrefs.Save();
-        }
-
-        if (NightNumber == 4)
-        {
-            BonnieDifficulty = 15;
-            ChicaDifficulty = 15;
-            FreddyDifficulty = 15;
-            FoxyDifficulty = 14;
-
-            PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
-            PlayerPrefs.SetFloat("ChicaDifficulty", ChicaDifficulty);
-            PlayerPrefs.SetFloat("FreddyDifficulty", FreddyDifficulty);
-            PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
-            PlayerPrefs.Save();
-        }
-
-        if (NightNumber == 5)
-        {
-            BonnieDifficulty = 16;
-            ChicaDifficulty = 16;
-            FreddyDifficulty = 16;
-            FoxyDifficulty = 16;
-
-            PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
-            PlayerPrefs.SetFloat("ChicaDifficulty", ChicaDifficulty);
-            PlayerPrefs.SetFloat("FreddyDifficulty", FreddyDifficulty);
-            PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
-            PlayerPrefs.Save();
-        }
-
-        if (NightNumber == 6)
-        {
-            BonnieDifficulty = 17;
-            ChicaDifficulty = 16;
-            FreddyDifficulty = 16;
-            FoxyDifficulty = 18;
-
-            PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
-            PlayerPrefs.SetFloat("ChicaDifficulty", ChicaDifficulty);
-            PlayerPrefs.SetFloat("FreddyDifficulty", FreddyDifficulty);
-            PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
-            PlayerPrefs.Save();
-        }
-
-        if (NightNumber == 7)
-        {
-            BonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", BonnieDifficulty);
-            ChicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", ChicaDifficulty);
-            FreddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", FreddyDifficulty);
-            FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
-        }
-
-        //-------------------------------Night 1 param ----------------------------------------
-        if (NightNumber == 1)
-        {
-            
-            BonnieActive = true;
-
-            if (!bonnieInCount)
-            {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 60f), 0);
-                BonnieMovementTime -= BonnieDifficulty;
-
-
-                bonnieInCount = true;
-            }
-
-            ChicaActive = true;
-
-            if (!chicaInCount)
-            {
-                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(60f, 90f), 0);
-                ChicaMovementTime -= ChicaDifficulty;
-
-
-                chicaInCount = true;
-            }
-            
-
-
-        //-------------------------night 2 param -------------------------------------------
-
-        }
-
-        if (NightNumber == 2)
-        {
-            BonnieActive = true;
-
-            if (!bonnieInCount)
-            {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 60f), 0);
-                BonnieMovementTime -= BonnieDifficulty;
-
-
-                bonnieInCount = true;
-            }
-            ChicaActive = true;
-
-            if (!chicaInCount)
-            {
-                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 70f), 0);
-                ChicaMovementTime -= ChicaDifficulty;
-
-
-                chicaInCount = true;
-            }
-
-            FoxyActive = true;
-
-            if (!foxyInCount)
-            {
-                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(130f, 190f), 0);
-                FoxyMovementTime -= FoxyDifficulty;
-
-
-                foxyInCount = true;
-            }
-        }
-
-        //-----------------------night >=3 param --------------------------------------------
-
-        if (NightNumber == 3)
-        {
-
-            BonnieActive = true;
-
-            if (!bonnieInCount)
-            {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 60f), 0);
-                BonnieMovementTime -= BonnieDifficulty;
-
-
-                bonnieInCount = true;
-            }
-            ChicaActive = true;
-
-            if (!chicaInCount)
-            {
-                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 70f), 0);
-                ChicaMovementTime -= ChicaDifficulty;
-
-
-                chicaInCount = true;
-            }
-
-            FoxyActive = true;
-
-            if (!foxyInCount)
-            {
-                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(140f, 180f), 0);
-                FoxyMovementTime -= FoxyDifficulty;
-
-
-                foxyInCount = true;
-            }
-
-            FreddyActive = true;
-
-            if (!freddyInCount)
-            {
-                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(140f, 180f));
-                FreddyMovementTime -= FreddyDifficulty;
-
-                freddyInCount = true;
-            }
-        }
-        //--------------------------------------------------------------------------------------------------
-
-        //-------------------------night 4 param ----------------------------------------------------------
-        if (NightNumber == 4)
-        {
-
-            BonnieActive = true;
-
-            if (!bonnieInCount)
-            {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 40f), 0);
-                BonnieMovementTime -= BonnieDifficulty;
-
-
-                bonnieInCount = true;
-            }
-            ChicaActive = true;
-
-            if (!chicaInCount)
-            {
-                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 50f), 0);
-                ChicaMovementTime -= ChicaDifficulty;
-
-
-                chicaInCount = true;
-            }
-
-            FoxyActive = true;
-
-            if (!foxyInCount)
-            {
-                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(140f, 180f), 0);
-                FoxyMovementTime -= FoxyDifficulty;
-
-
-                foxyInCount = true;
-            }
-
-            FreddyActive = true;
-
-            if (!freddyInCount)
-            {
-                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(100f, 120f));
-                FreddyMovementTime -= FreddyDifficulty;
-
-                freddyInCount = true;
-            }
-        }
-
-        //-------------------------------------------------------------------------------------
-
-        //-------------------------night 5 ---------------------------------------------------------
-                if (NightNumber == 5)
-        {
-
-            BonnieActive = true;
-
-            if (!bonnieInCount)
-            {
-                BonnieMovementTime = System.Math.Round(UnityEngine.Random.Range(18f, 30f), 0);
-                BonnieMovementTime -= BonnieDifficulty;
-
-
-                bonnieInCount = true;
-            }
-            ChicaActive = true;
-
-            if (!chicaInCount)
-            {
-                ChicaMovementTime = System.Math.Round(UnityEngine.Random.Range(20f, 30f), 0);
-                ChicaMovementTime -= ChicaDifficulty;
-
-
-                chicaInCount = true;
-            }
-
-            FoxyActive = true;
-
-            if (!foxyInCount)
-            {
-                FoxyMovementTime = System.Math.Round(UnityEngine.Random.Range(140f, 180f), 0);
-                FoxyMovementTime -= FoxyDifficulty;
-
-
-                foxyInCount = true;
-            }
-
-            FreddyActive = true;
-
-            if (!freddyInCount)
-            {
-                FreddyMovementTime = System.Math.Round(UnityEngine.Random.Range(40f, 100f));
-                FreddyMovementTime -= FreddyDifficulty;
-
-                freddyInCount = true;
-            }
-        }
+        PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
+        PlayerPrefs.SetFloat("ChicaDifficulty", ChicaDifficulty);
+        PlayerPrefs.SetFloat("FreddyDifficulty", FreddyDifficulty);
+        PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
+        PlayerPrefs.Save();
     }
-
-    void MoveFromDoorBonnie()
-    {
-        if (!WaitForMovingFromDoorBonnie)
-        {
-            BonnieOutsideDoorTime += BonnieDifficulty;
-            WaitForMovingFromDoorBonnie = true;
-        }
-    }
-
-    void MoveFromDoorChica()
-    {
-
-        if (!WaitForMovingFromDoorChica)
-        {
-            ChicaOutsideDoorTime += ChicaDifficulty;
-            WaitForMovingFromDoorChica = true;
-        }
-    }
-
-    void MoveFromDoorFreddy()
-    {
-        if (!WaitForMovingFromDoorFreddy)
-        {
-            FreddyOutsideDoorTime += FreddyDifficulty;
-            WaitForMovingFromDoorFreddy = true;
-        }
-    }
-	
-
 	void Update ()
     {
+    
+    int hourIndex = gameScript.Hour - 12; // Shift hour to index range (0 to 5)
+
+    if (NightNumber >= 0 && NightNumber <= 5 && hourIndex >= 0 && hourIndex <= 5)
+    {
+        BonnieDifficulty = bonnieDifficulties[(int)NightNumber, (int)hourIndex];
+        ChicaDifficulty = chicaDifficulties[(int)NightNumber, (int)hourIndex];
+        FreddyDifficulty = freddyDifficulties[(int)NightNumber, (int)hourIndex];
+        FoxyDifficulty = foxyDifficulties[(int)NightNumber, (int)hourIndex];
+
+        SaveDifficulty();
+    }
+
+    else if (NightNumber == 7)
+    {
+        // Custom night: retrieve saved difficulties
+        BonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", BonnieDifficulty);
+        ChicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", ChicaDifficulty);
+        FreddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", FreddyDifficulty);
+        FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
+    }
+
+    Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
+    Debug.Log("Saved: Bonnie=" + BonnieDifficulty + ", Chica=" + ChicaDifficulty + ", Freddy=" + FreddyDifficulty + ", Foxy=" + FoxyDifficulty);
+    Debug.Log("Bonnie Difficulty (Array): " + bonnieDifficulties[(int)NightNumber - 1, (int)hourIndex]);
+
+
+
+
         RandMovement randMovement = GetComponent<RandMovement>();
         PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
         PlayerPrefs.Save();
@@ -499,7 +239,7 @@ if(GameScript.timeRemaining <= 267.0f)
                     GlitchActive = false;
                     MoveGlitch.SetActive(false);
                 }
-                GenNumber();
+                
             }
             else
             {
@@ -515,7 +255,7 @@ if(GameScript.timeRemaining <= 267.0f)
                     MoveGlitch.SetActive(false);
                 }
 
-                GenNumber();
+                
             }
         }
     }
@@ -549,7 +289,7 @@ if(GameScript.timeRemaining <= 267.0f)
                     MoveGlitch.SetActive(false);
                 }
 
-                GenNumber();
+                
             }
             else // if bonnie isn't at Dining Area 
             {
@@ -565,7 +305,7 @@ if(GameScript.timeRemaining <= 267.0f)
                     MoveGlitch.SetActive(false);
                 }
 
-                GenNumber();
+                
             }
 
             }
@@ -610,7 +350,7 @@ if(GameScript.timeRemaining <= 300.0f)
                     MoveGlitch.SetActive(false);
                 }
 
-                GenNumber();
+                
             }
             else
             {
@@ -626,7 +366,7 @@ if(GameScript.timeRemaining <= 300.0f)
                     MoveGlitch.SetActive(false);
                 }
 
-                GenNumber();
+                
             }
         }
     }
@@ -658,7 +398,7 @@ if(GameScript.timeRemaining <= 300.0f)
                     MoveGlitch.SetActive(false);
                 }
 
-                GenNumber();
+                
             }
             else // if bonnie isn't at Dining Area 
             {
@@ -674,7 +414,7 @@ if(GameScript.timeRemaining <= 300.0f)
                     MoveGlitch.SetActive(false);
                 }
 
-                GenNumber();
+                
             }
 
             }
@@ -703,7 +443,7 @@ if(GameScript.timeRemaining <= 300.0f)
                 GlitchActive = false;
                 MoveGlitch.SetActive(false);
                }
-            GenNumber();
+            
                 }
             }
 
@@ -735,7 +475,7 @@ if(GameScript.timeRemaining <= 300.0f)
               MoveGlitch.SetActive(false);
             }
 
-            GenNumber();
+            
           } else {
 
             WhereBonnie += 1;
@@ -748,7 +488,8 @@ if(GameScript.timeRemaining <= 300.0f)
               MoveGlitch.SetActive(false);
             }
 
-            GenNumber();
+            
+        
           }
         }
       }
@@ -777,7 +518,7 @@ if(GameScript.timeRemaining <= 300.0f)
                 MoveGlitch.SetActive(false);
               }
 
-              GenNumber();
+              
             } else // if bonnie isn't at Dining Area 
             {
 
@@ -791,7 +532,8 @@ if(GameScript.timeRemaining <= 300.0f)
                 MoveGlitch.SetActive(false);
               }
 
-              GenNumber();
+              
+            
             }
 
           }
@@ -816,7 +558,7 @@ if(GameScript.timeRemaining <= 300.0f)
             GlitchActive = false;
             MoveGlitch.SetActive(false);
           }
-          GenNumber();
+          
         }
       }
       
@@ -846,7 +588,7 @@ if(GameScript.timeRemaining <= 300.0f)
                         MoveGlitch.SetActive(false);
                     }
 
-                     GenNumber();
+                     
 
 
                 }
@@ -972,6 +714,37 @@ if(GameScript.timeRemaining <= 300.0f)
         }
     }
 
+    // Move From Door
+    void MoveFromDoorBonnie()
+    {
+        if (!WaitForMovingFromDoorBonnie)
+        {
+            BonnieOutsideDoorTime += BonnieDifficulty;
+            WaitForMovingFromDoorBonnie = true;
+        }
+    }
+
+    void MoveFromDoorChica()
+    {
+
+        if (!WaitForMovingFromDoorChica)
+        {
+            ChicaOutsideDoorTime += ChicaDifficulty;
+            WaitForMovingFromDoorChica = true;
+        }
+    }
+
+    void MoveFromDoorFreddy()
+    {
+        if (!WaitForMovingFromDoorFreddy)
+        {
+            FreddyOutsideDoorTime += FreddyDifficulty;
+            WaitForMovingFromDoorFreddy = true;
+        }
+    }
+
+
+    //Debug garbage
     public void DebugWhereBonnieIncrease()
     {
         WhereBonnie += 1;

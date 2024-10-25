@@ -741,7 +741,7 @@ public class ChangeImages : MonoBehaviour
                             DoorBang.Play();
                             OfficeObject.GetComponent<Movement>().WhereFoxy = 1;
                             OfficeObject.GetComponent<Movement>().foxyInCount = false;
-                            OfficeObject.GetComponent<Movement>().GenNumber();
+                            //OfficeObject.GetComponent<Movement>().GenNumber();
                             OriginalOfficeImage.GetComponent<Image>().enabled = true;
                             FoxyRunDownHall.SetActive(false);
 
