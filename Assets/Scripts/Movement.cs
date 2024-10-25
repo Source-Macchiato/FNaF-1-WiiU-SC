@@ -63,6 +63,8 @@ public class Movement : MonoBehaviour {
 
     public AudioSource FreddyLaugh1;
 
+    //these 4 variables is used for the Difficulties of animatronics depend of what hour it is
+    //each column represent a night (night 1, night 2 etc...), and each row represent an Hour "12 AM to 5AM"
     private float[,] bonnieDifficulties = {
     {11, 0, 1, 0, 0, 0}, // Night 1
     {0, 0, 0, 0, 0, 0}, // Night 2
@@ -101,19 +103,21 @@ private float[,] foxyDifficulties = {
 
     void Start()
     {
-        //to get variable "hour"
+        // Used for to get the "Hour" variable
         gameScript = GetComponent<GameScript>();
-        //randMovement
+
+        //Random Generated number the animatronics (random int number 1-20)
         RandMovement randMovement = GetComponent<RandMovement>();
         randMovement.BonnieRandMove();
 
+        //Disable Chica sounds when she is in the kitchen
         ChicaInKitchen.SetActive(false);
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
 
-        
+        //Get the current NightNumber at the start of the game
+        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
     }
 
-    // instead of copy and paste the same damn thing in GenNumber
+    // Function to save the difficulty of each animatronic
     void SaveDifficulty()
     {
         PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
@@ -127,16 +131,20 @@ private float[,] foxyDifficulties = {
     
     int hourIndex = gameScript.Hour - 12; // Shift hour to index range (0 to 5)
 
+    //Check if the night is valid (between 0 to 5) and hour (between 0 and 5)
     if (NightNumber >= 0 && NightNumber <= 5 && hourIndex >= 0 && hourIndex <= 5)
     {
+        // Set difficulties based on the current night and hour
         BonnieDifficulty = bonnieDifficulties[(int)NightNumber, (int)hourIndex];
         ChicaDifficulty = chicaDifficulties[(int)NightNumber, (int)hourIndex];
         FreddyDifficulty = freddyDifficulties[(int)NightNumber, (int)hourIndex];
         FoxyDifficulty = foxyDifficulties[(int)NightNumber, (int)hourIndex];
 
+        //call the function to save the difficulty of the AI
         SaveDifficulty();
     }
 
+    //Night 7 (custom night) depend on the player's choice.
     else if (NightNumber == 7)
     {
         // Custom night: retrieve saved difficulties
@@ -145,10 +153,14 @@ private float[,] foxyDifficulties = {
         FreddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", FreddyDifficulty);
         FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
     }
-
-    Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
+    
+    //Press P to have the current state of the Hour, the night Number, the saved difficulties, and the Bonnie difficulty for test
+    if (Input.GetKeyDown(KeyCode.P))
+    {
+     Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
     Debug.Log("Saved: Bonnie=" + BonnieDifficulty + ", Chica=" + ChicaDifficulty + ", Freddy=" + FreddyDifficulty + ", Foxy=" + FoxyDifficulty);
     Debug.Log("Bonnie Difficulty (Array): " + bonnieDifficulties[(int)NightNumber - 1, (int)hourIndex]);
+    }
 
 
 
