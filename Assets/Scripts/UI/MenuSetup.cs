@@ -62,9 +62,8 @@ public class MenuSetup : MonoBehaviour
     {
         menuManager.canNavigate = false;
 
+        // Reset night number and save it
         menuData.nightNumber = 0;
-
-        // Save night number
         menuData.SaveNightNumber();
 
         menuData.LoadAdvertisement();
@@ -84,6 +83,7 @@ public class MenuSetup : MonoBehaviour
         }
         else if (menuData.nightNumber >= 5)
         {
+            // Reset night number to 4 and save it
             menuData.nightNumber = 4;
             menuData.SaveNightNumber();
 

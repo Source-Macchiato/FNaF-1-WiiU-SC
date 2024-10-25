@@ -9,9 +9,13 @@ public class LoadDubbingLanguage : MonoBehaviour
     private float nightNumber;
     private string dubbingLanguage;
 
+    AssetBundleManager assetBundleManager;
+
 	void Start()
 	{
-        nightNumber = SaveManager.LoadNightNumber();        
+        nightNumber = SaveManager.LoadNightNumber();
+
+        assetBundleManager = FindObjectOfType<AssetBundleManager>();
 
         if (nightNumber >= 0 && nightNumber <= 4)
         {
@@ -32,21 +36,16 @@ public class LoadDubbingLanguage : MonoBehaviour
                 audioName = dubbingLanguage.ToUpper() + "-Call" + (nightNumber + 1);
             }
 
-            // Load and play the dubbing
-            StartCoroutine(LoadAndPlayAudio(bundleName, audioName));
+            // Play the dubbing
+            if (assetBundleManager != null)
+            {
+                StartCoroutine(PlayAudio(assetBundleManager.GetAssetBundle(bundleName), audioName));
+            }
         } 
     }
 
-    IEnumerator LoadAndPlayAudio(string assetBundleName, string objectNameToLoad)
+    private IEnumerator PlayAudio(AssetBundle assetBundle, string objectNameToLoad)
     {
-        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "AssetBundles");
-        filePath = System.IO.Path.Combine(filePath, assetBundleName);
-
-        var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(filePath);
-        yield return assetBundleCreateRequest;
-
-        AssetBundle assetBundle = assetBundleCreateRequest.assetBundle;
-
         if (assetBundle != null)
         {
             // Load asset
