@@ -14,11 +14,6 @@ public class SaveManager : MonoBehaviour {
         PlayerPrefs.SetFloat("NightNumber", nightNumber);
         PlayerPrefs.Save();
     }
-    public void SaveStars(int starsNumb)
-    {
-        PlayerPrefs.SetInt("SaveStars", starsNumb);
-        PlayerPrefs.Save();
-    }
 
     public void SaveShareData(float shareData)
     {
@@ -35,6 +30,12 @@ public class SaveManager : MonoBehaviour {
     public void SaveDubbingLanguage(string language)
     {
         PlayerPrefs.SetString("DubbingLanguage", language);
+        PlayerPrefs.Save();
+    }
+
+    public void SaveStars(int starsId)
+    {
+        PlayerPrefs.SetInt("Stars", starsId);
         PlayerPrefs.Save();
     }
 
@@ -108,6 +109,18 @@ public class SaveManager : MonoBehaviour {
         else
         {
             return null;
+        }
+    }
+
+    public static int LoadStarsId()
+    {
+        if (PlayerPrefs.HasKey("Stars"))
+        {
+            return PlayerPrefs.GetInt("Stars");
+        }
+        else
+        {
+            return 0;
         }
     }
 }
