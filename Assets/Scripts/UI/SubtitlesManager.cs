@@ -15,7 +15,7 @@ public class SubtitlesManager : MonoBehaviour
     private int currentIndex = 0;
     private bool isDelayOver = false;
 
-    private float NightNumber;
+    private float nightNumber;
 
     private TextAsset subtitleFile;
 
@@ -28,11 +28,11 @@ public class SubtitlesManager : MonoBehaviour
         subtitleIdentifiers = new List<string>();
         displayDurations = new List<float>();
 
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        nightNumber = SaveManager.LoadNightNumber();
 
-        if (NightNumber == 1 || NightNumber == 2 || NightNumber == 3 || NightNumber == 4 || NightNumber == 5)
+        if (nightNumber >= 0 && nightNumber <= 4)
         {
-            subtitleFile = Resources.Load<TextAsset>("Data/night" + NightNumber);
+            subtitleFile = Resources.Load<TextAsset>("Data/night" + (nightNumber + 1));
 
             string[] lines = subtitleFile.text.Split('\n');
             for (int i = 0; i < lines.Length; i++)
@@ -49,7 +49,7 @@ public class SubtitlesManager : MonoBehaviour
             displayStartTime = Time.timeSinceLevelLoad;
         }
 
-        if (NightNumber == 5)
+        if (nightNumber == 4)
         {
             foreach (GameObject subtitleContainer in subtitlesContainers)
             {

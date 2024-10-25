@@ -28,11 +28,11 @@ public class EndOfNight : MonoBehaviour {
 
         yield return new WaitForSeconds(5);
 
-        if (nightNumber >= 0 && nightNumber <= 4) // Current night is between 1 and 4
+        if (nightNumber >= 1 && nightNumber <= 4)
         {
             SceneManager.LoadScene("NextNight");
         }
-        else if (nightNumber == 5) // Current night is 5
+        else if (nightNumber == 5)
         {
             // When night 5 is finished enable the first star
             saveManager.SaveStars(1);

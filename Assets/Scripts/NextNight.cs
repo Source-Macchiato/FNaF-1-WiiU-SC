@@ -12,13 +12,13 @@ public class NextNight : MonoBehaviour {
     public GameObject Night4;
     public GameObject Night5;
     public GameObject Night6;
-    private float NightNumber;
+    private float nightNumber;
     public Text NightNumberDisplayer;
     public GameObject loadingScreenPanel;
 
     void Start () {
         loadingScreenPanel.SetActive(false);
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        nightNumber = SaveManager.LoadNightNumber();
         LoadingSprite.SetActive(false);
         Night1.SetActive(false);
         Night2.SetActive(false);
@@ -26,19 +26,32 @@ public class NextNight : MonoBehaviour {
         Night4.SetActive(false);
         Night5.SetActive(false);
         Night6.SetActive(false);
-    if (NightNumber == 1) {
-        Night1.SetActive(true);
-    } else if (NightNumber == 2) {
-        Night2.SetActive(true);
-    } else if (NightNumber == 3) {
-        Night3.SetActive(true);
-    } else if (NightNumber == 4) {
-        Night4.SetActive(true);
-    } else if (NightNumber == 5) {
-        Night5.SetActive(true);
-    } else if (NightNumber == 6) {
-        Night6.SetActive(true);
-    }
+    
+        if (nightNumber == 0)
+        {
+            Night1.SetActive(true);
+        }
+        else if (nightNumber == 1)
+        {
+            Night2.SetActive(true);
+        }
+        else if (nightNumber == 2)
+        {
+            Night3.SetActive(true);
+        }
+        else if (nightNumber == 3)
+        {
+            Night4.SetActive(true);
+        }
+        else if (nightNumber == 4)
+        {
+            Night5.SetActive(true);
+        }
+        else if (nightNumber == 5)
+        {
+            Night6.SetActive(true);
+        }
+
         StartCoroutine(InitCoroutine());
     }
 

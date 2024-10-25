@@ -11,9 +11,9 @@ public class LoadDubbingLanguage : MonoBehaviour
 
 	void Start()
 	{
-        nightNumber = PlayerPrefs.GetFloat("NightNumber", 1);        
+        nightNumber = SaveManager.LoadNightNumber();        
 
-        if (nightNumber >= 1 && nightNumber <= 5)
+        if (nightNumber >= 0 && nightNumber <= 4)
         {
             // Get dubbing language
             dubbingLanguage = SaveManager.LoadDubbingLanguage();
@@ -23,13 +23,13 @@ public class LoadDubbingLanguage : MonoBehaviour
             {
                 bundleName = "vo-language-pack";
 
-                audioName = "VO-Call" + nightNumber;
+                audioName = "VO-Call" + (nightNumber + 1);
             }
             else
             {
                 bundleName = dubbingLanguage + "-language-pack";
 
-                audioName = dubbingLanguage.ToUpper() + "-Call" + nightNumber;
+                audioName = dubbingLanguage.ToUpper() + "-Call" + (nightNumber + 1);
             }
 
             // Load and play the dubbing

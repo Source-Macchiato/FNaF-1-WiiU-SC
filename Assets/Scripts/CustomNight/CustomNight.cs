@@ -10,7 +10,7 @@ public class CustomNight : MonoBehaviour {
     public float ChicaAmount;
     public float FoxyAmount;
 
-    public float WhichNight;
+    public float nightNumber;
 
     public GameObject FreddyShowerTop;
     public GameObject BonnieShowerTop;
@@ -19,8 +19,14 @@ public class CustomNight : MonoBehaviour {
 
     WiiU.GamePad gamePad;
 
-    void Start ()
+    SaveGameState saveGameState;
+    SaveManager saveManager;
+
+    void Start()
     {
+        saveGameState = FindObjectOfType<SaveGameState>();
+        saveManager = FindObjectOfType<SaveManager>();
+
         FreddyAmount = 1;
         BonnieAmount = 1;
         ChicaAmount = 1;
@@ -28,7 +34,7 @@ public class CustomNight : MonoBehaviour {
         gamePad = WiiU.GamePad.access;
     }
 	
-	void Update ()
+	void Update()
     {
         WiiU.GamePadState gamePadState = gamePad.state;
 
@@ -83,7 +89,7 @@ public class CustomNight : MonoBehaviour {
         {
             if (gamePadState.IsPressed(WiiU.GamePadButton.A))
             {
-                WhichNight = 7;
+                nightNumber = 6;
                 SceneManager.LoadScene("Office");
             }
 
@@ -97,7 +103,7 @@ public class CustomNight : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                WhichNight = 7;
+                nightNumber = 6;
                 SceneManager.LoadScene("Office");
             }
 
@@ -107,8 +113,8 @@ public class CustomNight : MonoBehaviour {
             }
         }
 
-        PlayerPrefs.SetFloat("WhichNight", WhichNight);
-        PlayerPrefs.Save();
+        saveManager.SaveNightNumber(nightNumber);
+        bool saveResult = saveGameState.DoSave();
     }
 
     public void PlusFreddy()

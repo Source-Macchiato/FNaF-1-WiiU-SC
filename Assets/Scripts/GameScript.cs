@@ -37,6 +37,9 @@ public class GameScript : MonoBehaviour
 
     void Start()
     {
+        saveGameState = FindObjectOfType<SaveGameState>();
+        saveManager = FindObjectOfType<SaveManager>();
+
         textNightNumber = nightNumberDisplayer.GetComponent<Text>();
         textPowerDisplayer = powerDisplayer.GetComponent<Text>();
         textTimeDisplayer = timeDisplayer.GetComponent<Text>();
@@ -46,7 +49,7 @@ public class GameScript : MonoBehaviour
 
         officeRect = officeContainer.GetComponent<RectTransform>();
 
-        nightNumber = PlayerPrefs.GetFloat("NightNumber", 0);
+        nightNumber = SaveManager.LoadNightNumber();
 
         if (textNightNumber != null)
         {
@@ -57,9 +60,6 @@ public class GameScript : MonoBehaviour
         {
             tmpTextNightNumber.text = (nightNumber + 1).ToString();
         }
-
-        saveGameState = FindObjectOfType<SaveGameState>();
-        saveManager = FindObjectOfType<SaveManager>();
     }
 
     public void DebugTwelveAMButton()

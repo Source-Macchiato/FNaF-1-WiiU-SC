@@ -2,18 +2,26 @@
 
 public class DebugFunctions : MonoBehaviour
 {
-    private float NightNumber;
+    private float nightNumber;
+
+    SaveGameState saveGameState;
+    SaveManager saveManager;
 
     void Start()
     {
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        saveGameState = FindObjectOfType<SaveGameState>();
+        saveManager = FindObjectOfType<SaveManager>();
+
+        nightNumber = SaveManager.LoadNightNumber();
     }
 
     public void NightAdd()
     {
-        NightNumber++;
-        PlayerPrefs.SetFloat("NightNumber", NightNumber);
-        PlayerPrefs.Save();
-        Debug.Log("Night number = " + NightNumber);
+        nightNumber++;
+
+        saveManager.SaveNightNumber(nightNumber);
+        bool saveResult = saveGameState.DoSave();
+
+        Debug.Log("Night number: " + nightNumber);
     }
 }
