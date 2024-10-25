@@ -4,64 +4,114 @@ using UnityEngine.SceneManagement;
 
 public class KonamiCode : MonoBehaviour
 {
+    // References to WiiU controllers
     WiiU.GamePad gamePad;
+    WiiU.Remote remote;
 
-    private WiiU.GamePadButton[] KonamiCodeWiiU = {
+    private WiiU.GamePadButton[] KonamiCodeGamepad =
+    {
         WiiU.GamePadButton.Up, WiiU.GamePadButton.Up, WiiU.GamePadButton.Down, WiiU.GamePadButton.Down,
-        WiiU.GamePadButton.Left, WiiU.GamePadButton.Right, WiiU.GamePadButton.Left, WiiU.GamePadButton.Right
+        WiiU.GamePadButton.Left, WiiU.GamePadButton.Right, WiiU.GamePadButton.Left, WiiU.GamePadButton.Right,
+        WiiU.GamePadButton.B, WiiU.GamePadButton.A
     };
 
-    private KeyCode[] konamiCodePC = {
-        KeyCode.UpArrow, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.DownArrow,
-        KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.RightArrow
+    private WiiU.ProControllerButton[] KonamiCodeProController =
+    {
+        WiiU.ProControllerButton.Up, WiiU.ProControllerButton.Up, WiiU.ProControllerButton.Down, WiiU.ProControllerButton.Down,
+        WiiU.ProControllerButton.Left, WiiU.ProControllerButton.Right, WiiU.ProControllerButton.Left,
+        WiiU.ProControllerButton.Right, WiiU.ProControllerButton.B, WiiU.ProControllerButton.A
     };
 
-    private int konamiIndexWiiU = 0;
+    private KeyCode[] konamiCodePC =
+    {
+        KeyCode.UpArrow, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.DownArrow, KeyCode.LeftArrow,
+        KeyCode.RightArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.B, KeyCode.A
+    };
+
+    private int konamiIndexGamepad = 0;
+    private int konamiIndexProController = 0;
     private int konamiIndexPC = 0;
 
     void Start()
     {
+        // Access the WiiU GamePad and Remote
         gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
     }
 
     void Update()
     {
+        // Get the current state of the GamePad and Remote
         WiiU.GamePadState gamePadState = gamePad.state;
+        WiiU.RemoteState remoteState = remote.state;
 
-        if (gamePadState.IsPressed(KonamiCodeWiiU[konamiIndexWiiU]))
+        // Gamepad Konami code combo
+        if (gamePadState.IsTriggered(KonamiCodeGamepad[konamiIndexGamepad]))
         {
-            konamiIndexWiiU++;
+            konamiIndexGamepad++;
 
-            if (konamiIndexWiiU == KonamiCodeWiiU.Length)
+            if (konamiIndexGamepad == KonamiCodeGamepad.Length)
             {
-                Debug.Log("Konami Code activé sur WiiU!");
-                LoadEasterEggScene();
-                konamiIndexWiiU = 0;
-            }
-        }
-        else if (AnyWrongButtonPressed(gamePadState))
-        {
-            konamiIndexWiiU = 0;
-        }
+                Debug.Log("Konami code activated with Gamepad !");
 
-        if (Input.GetKeyDown(konamiCodePC[konamiIndexPC]))
-        {
-            konamiIndexPC++;
-
-            if (konamiIndexPC == konamiCodePC.Length)
-            {
-                Debug.Log("Konami Code activé sur PC!");
                 LoadEasterEggScene();
-                konamiIndexPC = 0;
             }
         }
         else if (Input.anyKeyDown)
         {
-            konamiIndexPC = 0;
+            Debug.Log("Error in Konami code");
+
+            konamiIndexGamepad = 0;
+        }
+
+        // Remote Konami code combo
+        switch(remoteState.devType)
+        {
+            case WiiU.RemoteDevType.ProController:
+                if (remoteState.pro.IsTriggered(KonamiCodeProController[konamiIndexProController]))
+                {
+                    konamiIndexProController++;
+
+                    if (konamiIndexProController == KonamiCodeProController.Length)
+                    {
+                        Debug.Log("Konami code activated with Pro Controller !");
+
+                        LoadEasterEggScene();
+                    }
+                }
+                else if (Input.anyKeyDown)
+                {
+                    Debug.Log("Error in Konami code");
+
+                    konamiIndexProController = 0;
+                }
+                break;
+        }
+
+        // Keyboard Konami code combo
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyDown(konamiCodePC[konamiIndexPC]))
+            {
+                konamiIndexPC++;
+
+                if (konamiIndexPC == konamiCodePC.Length)
+                {
+                    Debug.Log("Konami code activated with keyboard !");
+
+                    LoadEasterEggScene();
+                }
+            }
+            else if (Input.anyKeyDown)
+            {
+                Debug.Log("Error in Konami code");
+
+                konamiIndexPC = 0;
+            }
         }
     }
 
-    private bool AnyWrongButtonPressed(WiiU.GamePadState gamePadState)
+    /*private bool AnyWrongButtonPressed(WiiU.GamePadState gamePadState)
     {
         WiiU.GamePadButton[] allButtons = {
             WiiU.GamePadButton.Up, WiiU.GamePadButton.Down, WiiU.GamePadButton.Left, WiiU.GamePadButton.Right,
@@ -72,16 +122,16 @@ public class KonamiCode : MonoBehaviour
 
         foreach (WiiU.GamePadButton button in allButtons)
         {
-            if (gamePadState.IsPressed(button) && button != KonamiCodeWiiU[konamiIndexWiiU])
+            if (gamePadState.IsPressed(button) && button != KonamiCodeGamepad[konamiIndexGamepad])
             {
                 return true;
             }
         }
         return false;
-    }
+    }*/
 
     void LoadEasterEggScene()
     {
-        SceneManager.LoadScene("EasterEggScene");
+        SceneManager.LoadScene("EasterEgg");
     }
 }
