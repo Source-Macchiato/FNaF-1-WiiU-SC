@@ -182,12 +182,26 @@ public class MenuData : MonoBehaviour
 
         if (textNightNumber != null)
         {
-            textNightNumber.text = (nightNumber + 1).ToString();
+            if (nightNumber < 5)
+            {
+                textNightNumber.text = (nightNumber + 1).ToString();
+            }
+            else
+            {
+                textNightNumber.text = "5";
+            }
         }
 
         if (tmpTextNightNumber != null)
         {
-            tmpTextNightNumber.text = (nightNumber + 1).ToString();
+            if (nightNumber < 5)
+            {
+                tmpTextNightNumber.text = (nightNumber + 1).ToString();
+            }
+            else
+            {
+                tmpTextNightNumber.text = "5";
+            }
         }
 
         RectTransform nightNumberRect = nightNumberGameObject.GetComponent<RectTransform>();
