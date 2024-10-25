@@ -9,21 +9,22 @@ public class Movement : MonoBehaviour {
     public bool LongGlitch = false;
 
     public GameObject ChicaInKitchen;
-    public double BonnieMovementTime;
-    public double ChicaMovementTime;
-    public double FreddyMovementTime;
-    public double FoxyMovementTime;
+
+    public float BonnieMovementTime = 5f;
+    public float ChicaMovementTime = 5f; 
+    public float FreddyMovementTime = 5f;
+    public float FoxyMovementTime = 5f; 
     
 
-    public float WhereBonnie = 1;
-    public float WhereChica = 1;
-    public float WhereFreddy = 1;
-    public float WhereFoxy = 1;
+    public float WhereBonnie = 1; //done
+    public float WhereChica = 1; //done
+    public float WhereFreddy = 1; //done
+    public float WhereFoxy = 1; //done
 
-    public float BonnieDifficulty;
-    public float ChicaDifficulty;
-    public float FreddyDifficulty;
-    public float FoxyDifficulty;
+    public float BonnieDifficulty; //done
+    public float ChicaDifficulty; //done
+    public float FreddyDifficulty; //done
+    public float FoxyDifficulty; //done
 
     public bool bonnieInCount;
     public bool chicaInCount;
@@ -32,13 +33,13 @@ public class Movement : MonoBehaviour {
 
     public bool camIsUp = false;
 
-    public float NightNumber;
+    public float NightNumber; //done
 
     public GameObject MoveGlitch;
     public bool GlitchActive = false;
     public float MoveGlitchUp = 9.0f;
 
-    public bool ChicaActive = false;
+    public bool ChicaActive = false; 
     public bool BonnieActive = false;
     public bool FreddyActive = false;
     public bool FoxyActive = false;
@@ -100,17 +101,27 @@ public class Movement : MonoBehaviour {
     {5, 5, 6, 7, 7, 19}, // Night 5
     {16, 16, 17, 18, 19, 20}  // Night 6
 };
-
-
-
+    //check if AI is active
+    bool IsAIActive(float[,] difficulties, int nightNumber, int hourIndex)
+    {
+        return difficulties[nightNumber, hourIndex] <= 1;
+    }
     void Start()
     {
         // Used for to get the "Hour" variable
         gameScript = GetComponent<GameScript>();
 
+        //set movement time Z
+        public float BonnieMovementTime = 5f;
+        public float ChicaMovementTime = 5f; 
+        public float FreddyMovementTime = 5f;
+        public float FoxyMovementTime = 5f;
         //Random Generated number the animatronics (random int number 1-20)
         RandMovement randMovement = GetComponent<RandMovement>();
         randMovement.BonnieRandMove();
+        randMovement.ChicaRandMove();
+        randMovement.FreddyRandMove();
+        randMovement.FoxyRandMove();
 
         //Disable Chica sounds when she is in the kitchen
         ChicaInKitchen.SetActive(false);
@@ -128,6 +139,7 @@ public class Movement : MonoBehaviour {
         PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
         PlayerPrefs.Save();
     }
+    
 	void Update ()
     {
     
@@ -136,11 +148,11 @@ public class Movement : MonoBehaviour {
     //Check if the night is valid (between 0 to 5) and hour (between 0 and 5)
     if (NightNumber >= 0 && NightNumber <= 5 && hourIndex >= 0 && hourIndex <= 5)
     {
-        // Set difficulties based on the current night and hour
-        BonnieDifficulty = bonnieDifficulties[(int)NightNumber, (int)hourIndex];
-        ChicaDifficulty = chicaDifficulties[(int)NightNumber, (int)hourIndex];
-        FreddyDifficulty = freddyDifficulties[(int)NightNumber, (int)hourIndex];
-        FoxyDifficulty = foxyDifficulties[(int)NightNumber, (int)hourIndex];
+        // Set difficulties based on the current night and hour. multiplied by 5 to make a %.
+        BonnieDifficulty = bonnieDifficulties[(int)NightNumber, (int)hourIndex]*5;
+        ChicaDifficulty = chicaDifficulties[(int)NightNumber, (int)hourIndex]*5;
+        FreddyDifficulty = freddyDifficulties[(int)NightNumber, (int)hourIndex]*5;
+        FoxyDifficulty = foxyDifficulties[(int)NightNumber, (int)hourIndex]*5;
 
         //call the function to save the difficulty of the AI
         SaveDifficulty();
@@ -164,59 +176,118 @@ public class Movement : MonoBehaviour {
         Debug.Log("Bonnie Difficulty (Array): " + bonnieDifficulties[(int)NightNumber - 1, (int)hourIndex]);
     }
 
+    //check is AI is active
+    BonnieActive = IsAIActive(bonnieDifficulties, (int)NightNumber, (int)hourIndex);
+    ChicaActive = IsAIActive(chicaDifficulties, (int)NightNumber, (int)hourIndex);
+    FreddyActive = IsAIActive(freddyDifficulties, (int)NightNumber, (int)hourIndex);
+    FoxyActive = IsAIActive(foxyDifficulties, (int)NightNumber, (int)hourIndex);
 
 
+    RandMovement randMovement = GetComponent<RandMovement>();
+    PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
+    PlayerPrefs.Save();
+    PlayerPrefs.SetFloat("WhereChica", WhereChica);
+    PlayerPrefs.Save();
+    PlayerPrefs.SetFloat("WhereFoxy", WhereFoxy);
+    PlayerPrefs.Save();
+    PlayerPrefs.SetFloat("WhereFreddy", WhereFreddy);
+    PlayerPrefs.Save();
+    //Get the references RandNumberGen (the other code was spaghetti asf)
+    RandNumberGen randNumberGen = OfficeObject.GetComponent<RandNumberGen>();
+    Office office = OfficeObject.GetComponent<Office>();
+    //Check if somebody left the stage by checking if an Where<name> is higher than 2 or equal
+    if (WhereBonnie >= 2)
+    {
+        randNumberGen.BonnieLeftStage = true;
+    }
+    if (WhereChica >= 2)
+    {
+        randNumberGen.ChicaLeftStage = true;
+    }
+    if (WhereFreddy >= 2)
+    {
+        randNumberGen.FreddyLeftStage = true;
+    }
+    // Update the current stat of the AI at the door
+    if (BonnieOutsideDoor)
+    {
+        office.BonnieOutsideDoor = true;
+    }
+    if (ChicaOutsideDoor && !BonnieOutsideDoor)
+    {
+        office.ChicaOutsideDoor = true;
+    }
+    if (FreddyOutsideDoor && !ChicaOutsideDoor)
+    {
+        office.FreddyOutsideDoor = true;
+    }
+    if (FoxyRunningHallway && !BonnieOutsideDoor)
+    {
+        office.FoxyRunningHallway = true;
+    }
 
-        RandMovement randMovement = GetComponent<RandMovement>();
-        PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
-        PlayerPrefs.Save();
-        PlayerPrefs.SetFloat("WhereChica", WhereChica);
-        PlayerPrefs.Save();
-        PlayerPrefs.SetFloat("WhereFoxy", WhereFoxy);
-        PlayerPrefs.Save();
-        PlayerPrefs.SetFloat("WhereFreddy", WhereFreddy);
-        PlayerPrefs.Save();
+    //start Countdown
 
-        //Get the references RandNumberGen (the other code was spaghetti asf)
-        RandNumberGen randNumberGen = OfficeObject.GetComponent<RandNumberGen>();
-        Office office = OfficeObject.GetComponent<Office>();
+    while(BonnieActive)
+    {
+        BonnieMovementTime -= Time.deltaTime;
+    }
+    if(BonnieActive)
+    {
+        BonnieMovementTime -= Time.deltaTime;
+    }
+    if(ChicaActive)
+    {
+        ChicaMovementTime -= Time.deltaTime;
+    }
+    if(FreddyActive)
+    {
+        FreddyMovementTime -= Time.deltaTime;
+    }
+    if(FoxyActive)
+    {
+        FoxyMovementTime -= Time.deltaTime;
+    }
 
-        //Check if somebody left the stage by checking if an Where<name> is higher than 2 or equal
-        if (WhereBonnie >= 2)
+
+    // BonnieMovementTime*5 == ChanceToMove
+
+    
+    
+    /** MovementTime dev
+    BonnieMovementTime -= Time.deltaTime;
+
+      if (BonnieMovementTime <= 0) 
+      {
+        if (BonnieActive) 
         {
-            randNumberGen.BonnieLeftStage = true;
-        }
-
-        if (WhereChica >= 2)
+        if (WhereBonnie == WhereChica) 
         {
-            randNumberGen.ChicaLeftStage = true;
-        }
+            WhereBonnie += 1;
+            bonnieInCount = false;
+            GlitchActive = true;
+            MoveGlitch.SetActive(true);
+    
+          if (!camIsUp) 
+              {
+              GlitchActive = false;
+              MoveGlitch.SetActive(false);
+          }
+          } 
+          else 
+          {
+            WhereBonnie += 1;
+            bonnieInCount = false;
+            GlitchActive = true;
+            MoveGlitch.SetActive(true);
 
-        if (WhereFreddy >= 2)
-        {
-            randNumberGen.FreddyLeftStage = true;
+            if (!camIsUp) {
+              GlitchActive = false;
+              MoveGlitch.SetActive(false);
+            }
+          }
         }
-
-        // Update the current stat of the AI at the door
-        if (BonnieOutsideDoor)
-        {
-            office.BonnieOutsideDoor = true;
-        }
-
-        if (ChicaOutsideDoor && !BonnieOutsideDoor)
-        {
-            office.ChicaOutsideDoor = true;
-        }
-
-        if (FreddyOutsideDoor && !ChicaOutsideDoor)
-        {
-            office.FreddyOutsideDoor = true;
-        }
-
-        if (FoxyRunningHallway && !BonnieOutsideDoor)
-        {
-            office.FoxyRunningHallway = true;
-        }
+    /**
 
 
 /**
