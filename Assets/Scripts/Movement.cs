@@ -173,7 +173,6 @@ public class Movement : MonoBehaviour {
         if (NightNumber == 1)
         {
             
-            
             BonnieActive = true;
 
             if (!bonnieInCount)
@@ -501,13 +500,6 @@ if(GameScript.timeRemaining <= 267.0f)
                     MoveGlitch.SetActive(false);
                 }
                 GenNumber();
-            }
-            else if (WhereBonnie == 2)
-            {
-                if (randMovement.BonnieRandNumb == 1)
-                {
-                    //kill myself
-                }
             }
             else
             {

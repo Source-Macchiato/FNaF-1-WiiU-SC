@@ -123,7 +123,6 @@ public class CustomNight : MonoBehaviour {
 
     public void PlusBonnie()
     {
-        Debug.Log("zeferge");
         BonnieAmount += 1;
     }
 
