@@ -8,28 +8,28 @@ public class KonamiCode : MonoBehaviour
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
-    private WiiU.GamePadButton[] KonamiCodeGamepad =
+    private WiiU.GamePadButton[] konamiCodeGamepad =
     {
         WiiU.GamePadButton.Up, WiiU.GamePadButton.Up, WiiU.GamePadButton.Down, WiiU.GamePadButton.Down,
         WiiU.GamePadButton.Left, WiiU.GamePadButton.Right, WiiU.GamePadButton.Left, WiiU.GamePadButton.Right,
         WiiU.GamePadButton.B, WiiU.GamePadButton.A
     };
 
-    private WiiU.ProControllerButton[] KonamiCodeProController =
+    private WiiU.ProControllerButton[] konamiCodeProController =
     {
         WiiU.ProControllerButton.Up, WiiU.ProControllerButton.Up, WiiU.ProControllerButton.Down, WiiU.ProControllerButton.Down,
         WiiU.ProControllerButton.Left, WiiU.ProControllerButton.Right, WiiU.ProControllerButton.Left,
         WiiU.ProControllerButton.Right, WiiU.ProControllerButton.B, WiiU.ProControllerButton.A
     };
 
-    private WiiU.ClassicButton[] KonamiCodeClassicController =
+    private WiiU.ClassicButton[] konamiCodeClassicController =
     {
         WiiU.ClassicButton.Up, WiiU.ClassicButton.Up, WiiU.ClassicButton.Down, WiiU.ClassicButton.Down,
         WiiU.ClassicButton.Left, WiiU.ClassicButton.Right, WiiU.ClassicButton.Left, WiiU.ClassicButton.Right,
         WiiU.ClassicButton.B, WiiU.ClassicButton.A
     };
 
-    private WiiU.RemoteButton[] KonamiCodeRemote =
+    private WiiU.RemoteButton[] konamiCodeRemote =
     {
         WiiU.RemoteButton.Up, WiiU.RemoteButton.Up, WiiU.RemoteButton.Down, WiiU.RemoteButton.Down,
         WiiU.RemoteButton.Left, WiiU.RemoteButton.Right, WiiU.RemoteButton.Left, WiiU.RemoteButton.Right,
@@ -62,11 +62,11 @@ public class KonamiCode : MonoBehaviour
         WiiU.RemoteState remoteState = remote.state;
 
         // Gamepad Konami code combo
-        if (gamePadState.IsTriggered(KonamiCodeGamepad[konamiIndexGamepad]))
+        if (gamePadState.IsTriggered(konamiCodeGamepad[konamiIndexGamepad]))
         {
             konamiIndexGamepad++;
 
-            if (konamiIndexGamepad == KonamiCodeGamepad.Length)
+            if (konamiIndexGamepad == konamiCodeGamepad.Length)
             {
                 Debug.Log("Konami code activated with Gamepad !");
 
@@ -75,8 +75,6 @@ public class KonamiCode : MonoBehaviour
         }
         else if (Input.anyKeyDown)
         {
-            Debug.Log("Error in Konami code");
-
             konamiIndexGamepad = 0;
         }
 
@@ -84,11 +82,11 @@ public class KonamiCode : MonoBehaviour
         switch(remoteState.devType)
         {
             case WiiU.RemoteDevType.ProController:
-                if (remoteState.pro.IsTriggered(KonamiCodeProController[konamiIndexProController]))
+                if (remoteState.pro.IsTriggered(konamiCodeProController[konamiIndexProController]))
                 {
                     konamiIndexProController++;
 
-                    if (konamiIndexProController == KonamiCodeProController.Length)
+                    if (konamiIndexProController == konamiCodeProController.Length)
                     {
                         Debug.Log("Konami code activated with Pro Controller !");
 
@@ -97,17 +95,15 @@ public class KonamiCode : MonoBehaviour
                 }
                 else if (Input.anyKeyDown)
                 {
-                    Debug.Log("Error in Konami code");
-
                     konamiIndexProController = 0;
                 }
                 break;
             case WiiU.RemoteDevType.Classic:
-                if (remoteState.classic.IsTriggered(KonamiCodeClassicController[konamiIndexClassicController]))
+                if (remoteState.classic.IsTriggered(konamiCodeClassicController[konamiIndexClassicController]))
                 {
                     konamiIndexClassicController++;
 
-                    if (konamiIndexClassicController == KonamiCodeClassicController.Length)
+                    if (konamiIndexClassicController == konamiCodeClassicController.Length)
                     {
                         Debug.Log("Konami code activated with Classic Controller");
 
@@ -116,17 +112,15 @@ public class KonamiCode : MonoBehaviour
                 }
                 else if (Input.anyKeyDown)
                 {
-                    Debug.Log("Error in Konami code");
-
                     konamiIndexClassicController = 0;
                 }
                 break;
             default:
-                if (remoteState.IsTriggered(KonamiCodeRemote[konamiIndexRemote]))
+                if (remoteState.IsTriggered(konamiCodeRemote[konamiIndexRemote]))
                 {
                     konamiIndexRemote++;
 
-                    if (konamiIndexRemote == KonamiCodeRemote.Length)
+                    if (konamiIndexRemote == konamiCodeRemote.Length)
                     {
                         Debug.Log("Konami code activated with Wiimote");
 
@@ -135,8 +129,6 @@ public class KonamiCode : MonoBehaviour
                 }
                 else if (Input.anyKeyDown)
                 {
-                    Debug.Log("Error in Konami code");
-
                     konamiIndexRemote = 0;
                 }
                 break;
@@ -158,8 +150,6 @@ public class KonamiCode : MonoBehaviour
             }
             else if (Input.anyKeyDown)
             {
-                Debug.Log("Error in Konami code");
-
                 konamiIndexPC = 0;
             }
         }
