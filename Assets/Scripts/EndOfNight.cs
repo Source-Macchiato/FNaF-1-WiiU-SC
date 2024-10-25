@@ -48,5 +48,13 @@ public class EndOfNight : MonoBehaviour {
 
             SceneManager.LoadScene("TheEnd");
         }
+        else if (nightNumber == 7)
+        {
+            // When custom night is finished enable the third star
+            saveManager.SaveStars(3);
+            bool saveResult = saveGameState.DoSave();
+
+            SceneManager.LoadScene("TheEnd");
+        }
     }
 }
