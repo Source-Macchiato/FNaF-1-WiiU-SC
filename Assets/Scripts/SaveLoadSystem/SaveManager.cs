@@ -56,19 +56,11 @@ public class SaveManager : MonoBehaviour {
     {
         if (PlayerPrefs.HasKey("NightNumber"))
         {
-            float nightNumber = PlayerPrefs.GetFloat("NightNumber");
-            if (nightNumber > 5)
-            {
-                return 5;
-            }
-            else
-            {
-                return PlayerPrefs.GetFloat("NightNumber");
-            }
+            return PlayerPrefs.GetFloat("NightNumber");
         }
         else
         {
-            return 1;
+            return 0;
         }
     }
 

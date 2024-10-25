@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 1400213474}
   - component: {fileID: 1400213473}
   m_Layer: 0
-  m_Name: 6am param
+  m_Name: EndOfNight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Children: {fileID: 627522480}
-  NightNumber: 0
+  nightNumber: 0
 --- !u!4 &1400213474
 Transform:
   m_ObjectHideFlags: 0

@@ -163,6 +163,12 @@ public class MenuData : MonoBehaviour
         bool saveResult = saveGameState.DoSave();
     }
 
+    public void SaveNightNumber()
+    {
+        saveManager.SaveNightNumber(nightNumber);
+        bool saveResult = saveGameState.DoSave();
+    }
+
     // Night number system 
     public void GenerateNightNumber()
     {
@@ -176,12 +182,12 @@ public class MenuData : MonoBehaviour
 
         if (textNightNumber != null)
         {
-            textNightNumber.text = nightNumber.ToString();
+            textNightNumber.text = (nightNumber + 1).ToString();
         }
 
         if (tmpTextNightNumber != null)
         {
-            tmpTextNightNumber.text = nightNumber.ToString();
+            tmpTextNightNumber.text = (nightNumber + 1).ToString();
         }
 
         RectTransform nightNumberRect = nightNumberGameObject.GetComponent<RectTransform>();

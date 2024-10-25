@@ -62,9 +62,11 @@ public class MenuSetup : MonoBehaviour
     {
         menuManager.canNavigate = false;
 
-        menuData.nightNumber = 1;
-        PlayerPrefs.SetFloat("NightNumber", menuData.nightNumber);
-        PlayerPrefs.Save();
+        menuData.nightNumber = 0;
+
+        // Save night number
+        menuData.SaveNightNumber();
+
         menuData.LoadAdvertisement();
     }
 
@@ -72,13 +74,11 @@ public class MenuSetup : MonoBehaviour
     {
         menuManager.canNavigate = false;
 
-        menuData.nightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
-
-        if (menuData.nightNumber == 1)
+        if (menuData.nightNumber == 0) // Night is 1
         {
             menuData.LoadAdvertisement();
         }
-        else if (menuData.nightNumber > 1 && menuData.nightNumber < 6)
+        else if (menuData.nightNumber >= 1 && menuData.nightNumber <= 4) // Night is between 2 and 5
         {
             SceneManager.LoadScene("NextNight");
         }

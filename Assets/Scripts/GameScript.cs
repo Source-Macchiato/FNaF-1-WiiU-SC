@@ -46,16 +46,16 @@ public class GameScript : MonoBehaviour
 
         officeRect = officeContainer.GetComponent<RectTransform>();
 
-        nightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        nightNumber = PlayerPrefs.GetFloat("NightNumber", 0);
 
         if (textNightNumber != null)
         {
-            textNightNumber.text = nightNumber.ToString();
+            textNightNumber.text = (nightNumber + 1).ToString();
         }
 
         if (tmpTextNightNumber != null)
         {
-            tmpTextNightNumber.text = nightNumber.ToString();
+            tmpTextNightNumber.text = (nightNumber + 1).ToString();
         }
 
         saveGameState = FindObjectOfType<SaveGameState>();
