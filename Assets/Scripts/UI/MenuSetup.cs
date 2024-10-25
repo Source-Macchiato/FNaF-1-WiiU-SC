@@ -85,6 +85,7 @@ public class MenuSetup : MonoBehaviour
         else if (menuData.nightNumber >= 5)
         {
             menuData.nightNumber = 4;
+            menuData.SaveNightNumber();
 
             SceneManager.LoadScene("NextNight");
         }
