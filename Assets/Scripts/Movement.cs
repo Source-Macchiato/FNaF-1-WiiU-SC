@@ -66,39 +66,41 @@ public class Movement : MonoBehaviour {
     //these 4 variables is used for the Difficulties of animatronics depend of what hour it is
     //each column represent a night (night 1, night 2 etc...), and each row represent an Hour "12 AM to 5AM"
     private float[,] bonnieDifficulties = {
-    {11, 0, 1, 0, 0, 0}, // Night 1
-    {0, 0, 0, 0, 0, 0}, // Night 2
-    {0, 0, 0, 0, 0, 0}, // Night 3
-    {0, 0, 0, 0, 0, 0}, // Night 4
-    {0, 0, 0, 0, 0, 0}, // Night 5
-    {0, 0, 0, 0, 0, 0}  // Night 6
+    {0, 3, 0, 2, 5, 10}, // Night 1
+    {0, 4, 0, 3, 6, 11}, // Night 2
+    {0, 1, 1, 2, 3, 10}, // Night 3
+    {2, 2, 2, 3, 5, 13}, // Night 4
+    {5, 6, 7, 8, 9, 10}, // Night 5
+    {10, 11, 12, 13, 14, 15}  // Night 6
 };
 
-// Repeat for each character (Chica, Freddy, Foxy)
-private float[,] chicaDifficulties = {
-    {11, 0, 1, 0, 0, 0}, // Night 1
-    {0, 0, 0, 0, 0, 0}, // Night 2
-    {0, 0, 0, 0, 0, 0}, // Night 3
-    {0, 0, 0, 0, 0, 0}, // Night 4
-    {0, 0, 0, 0, 0, 0}, // Night 5
-    {0, 0, 0, 0, 0, 0}  // Night 6
+    private float[,] chicaDifficulties = {
+    {0, 1, 5, 4, 7, 12}, // Night 1
+    {1, 2, 2, 4, 8, 12}, // Night 2
+    {5, 5, 6, 7, 8, 13}, // Night 3
+    {4, 4, 5, 6, 8, 14}, // Night 4
+    {7, 7, 8, 9, 10, 15}, // Night 5
+    {12, 12, 13, 14, 15, 20}  // Night 6
 };
-private float[,] freddyDifficulties = {
-    {11, 0, 1, 0, 0, 0}, // Night 1
-    {0, 0, 0, 0, 0, 0}, // Night 2
-    {0, 0, 0, 0, 0, 0}, // Night 3
-    {0, 0, 0, 0, 0, 0}, // Night 4
-    {0, 0, 0, 0, 0, 0}, // Night 5
-    {0, 0, 0, 0, 0, 0}  // Night 6
+
+    private float[,] freddyDifficulties = {
+    {0, 0, 1, 1, 3, 4}, // Night 1
+    {0, 0, 0, 0, 3, 4}, // Night 2
+    {1, 1, 1, 1, 3, 4}, // Night 3
+    {1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 4}, // Night 4 (50/50 chance between 1 and 2)
+    {3, 3, 3, 3, 3, 4}, // Night 5
+    {4, 4, 4, 4, 4, 4}  // Night 6
 };
-private float[,] foxyDifficulties = {
-    {0, 0, 1, 0, 0, 0}, // Night 1
-    {0, 0, 0, 0, 0, 0}, // Night 2
-    {0, 0, 0, 0, 0, 0}, // Night 3
-    {0, 0, 0, 0, 0, 0}, // Night 4
-    {0, 0, 0, 0, 0, 0}, // Night 5
-    {0, 0, 0, 0, 0, 0}  // Night 6
+
+    private float[,] foxyDifficulties = {
+    {0, 0, 1, 6, 5, 16}, // Night 1
+    {0, 0, 0, 0, 5, 16}, // Night 2
+    {0, 0, 0, 0, 0, 17}, // Night 3
+    {6, 6, 7, 8, 8, 18}, // Night 4
+    {5, 5, 6, 7, 7, 19}, // Night 5
+    {16, 16, 17, 18, 19, 20}  // Night 6
 };
+
 
 
     void Start()
@@ -114,7 +116,7 @@ private float[,] foxyDifficulties = {
         ChicaInKitchen.SetActive(false);
 
         //Get the current NightNumber at the start of the game
-        NightNumber = PlayerPrefs.GetFloat("NightNumber", 1);
+        NightNumber = SaveManager.LoadNightNumber();
     }
 
     // Function to save the difficulty of each animatronic
@@ -157,9 +159,9 @@ private float[,] foxyDifficulties = {
     //Press P to have the current state of the Hour, the night Number, the saved difficulties, and the Bonnie difficulty for test
     if (Input.GetKeyDown(KeyCode.P))
     {
-     Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
-    Debug.Log("Saved: Bonnie=" + BonnieDifficulty + ", Chica=" + ChicaDifficulty + ", Freddy=" + FreddyDifficulty + ", Foxy=" + FoxyDifficulty);
-    Debug.Log("Bonnie Difficulty (Array): " + bonnieDifficulties[(int)NightNumber - 1, (int)hourIndex]);
+        Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
+        Debug.Log("Saved: Bonnie=" + BonnieDifficulty + ", Chica=" + ChicaDifficulty + ", Freddy=" + FreddyDifficulty + ", Foxy=" + FoxyDifficulty);
+        Debug.Log("Bonnie Difficulty (Array): " + bonnieDifficulties[(int)NightNumber - 1, (int)hourIndex]);
     }
 
 
@@ -175,298 +177,49 @@ private float[,] foxyDifficulties = {
         PlayerPrefs.SetFloat("WhereFreddy", WhereFreddy);
         PlayerPrefs.Save();
 
+        //Get the references RandNumberGen (the other code was spaghetti asf)
+        RandNumberGen randNumberGen = OfficeObject.GetComponent<RandNumberGen>();
+        Office office = OfficeObject.GetComponent<Office>();
+
+        //Check if somebody left the stage by checking if an Where<name> is higher than 2 or equal
         if (WhereBonnie >= 2)
         {
-            OfficeObject.GetComponent<RandNumberGen>().BonnieLeftStage = true;
+            randNumberGen.BonnieLeftStage = true;
         }
 
         if (WhereChica >= 2)
         {
-            OfficeObject.GetComponent<RandNumberGen>().ChicaLeftStage = true;
+            randNumberGen.ChicaLeftStage = true;
         }
 
         if (WhereFreddy >= 2)
         {
-            OfficeObject.GetComponent<RandNumberGen>().FreddyLeftStage = true;
+            randNumberGen.FreddyLeftStage = true;
         }
 
+        // Update the current stat of the AI at the door
         if (BonnieOutsideDoor)
         {
-            OfficeObject.GetComponent<Office>().BonnieOutsideDoor = true;
+            office.BonnieOutsideDoor = true;
         }
 
-        if (ChicaOutsideDoor)
+        if (ChicaOutsideDoor && !BonnieOutsideDoor)
         {
-            if (!BonnieOutsideDoor)
-            {
-                OfficeObject.GetComponent<Office>().ChicaOutsideDoor = true;
-            }
+            office.ChicaOutsideDoor = true;
         }
 
-        if (FreddyOutsideDoor)
+        if (FreddyOutsideDoor && !ChicaOutsideDoor)
         {
-            if (!ChicaOutsideDoor)
-            {
-                OfficeObject.GetComponent<Office>().FreddyOutsideDoor = true;
-            }
+            office.FreddyOutsideDoor = true;
         }
 
-        if (FoxyRunningHallway)
+        if (FoxyRunningHallway && !BonnieOutsideDoor)
         {
-            if (!BonnieOutsideDoor)
-            {
-                OfficeObject.GetComponent<Office>().FoxyRunningHallway = true;
-            }
+            office.FoxyRunningHallway = true;
         }
 
-        //------------------------AI param depend of nights----------------------------------------
 
-//wait 240 seconds
-if(GameScript.timeRemaining <= 267.0f)
-{
-    if (NightNumber == 1)
-{
-    //-------------------bonnie init------------------------------
-    BonnieMovementTime -= Time.deltaTime;
-
-    if (BonnieMovementTime <= 0)
-    {
-        if (BonnieActive)
-        {
-            
-            if (WhereBonnie == WhereChica)
-            {
-                
-                WhereBonnie += 1;
-                bonnieInCount = false;
-                
-                MoveGlitchUp = 0.5f;
-                MoveGlitch.SetActive(true);
-                GlitchActive = true;
-                LongGlitch = false;
-                
-
-                if (!camIsUp)
-                {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                }
-                
-            }
-            else
-            {
-                
-                WhereBonnie += 1;
-                bonnieInCount = false;
-                GlitchActive = true;
-                MoveGlitch.SetActive(true);
-
-                if (!camIsUp)
-                {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                }
-
-                
-            }
-        }
-    }
-    //-----------------------------------------------------
-
-
-    //---------chica init--------------------------------
-    if(WhereChica != WhereBonnie)
-    {
-        ChicaMovementTime -= Time.deltaTime;
-    }
-    
-
-    if (ChicaMovementTime <= 0)
-    {
-        if (ChicaActive)
-        {
-            if(WhereBonnie != 1) //check if bonnie is ou of the stage.
-            {
-            if (WhereBonnie == 2) // check if bonnie is on Dining Area
-            {
-                
-                WhereChica += 2;
-                chicaInCount = false;
-                GlitchActive = true;
-                MoveGlitch.SetActive(true);
-
-                if (!camIsUp)
-                {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                }
-
-                
-            }
-            else // if bonnie isn't at Dining Area 
-            {
-                
-                WhereChica += 1;
-                chicaInCount = false;
-                GlitchActive = true;
-                MoveGlitch.SetActive(true);
-
-                if (!camIsUp)
-                {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                }
-
-                
-            }
-
-            }
-            
-
-        }
-    }
-    //-----------------------------------------------
-}
-
-
-
-
-
-}
-// ---------------Night 2 param------------------
-if(GameScript.timeRemaining <= 300.0f)
-{
-    if (NightNumber == 2)
-{
-    
-    //-------------------bonnie init------------------------------
-    BonnieMovementTime -= Time.deltaTime;
-    
-
-    if (BonnieMovementTime <= 0)
-    {
-        if (BonnieActive)
-        {
-            
-            if (WhereBonnie == WhereChica)
-            {
-                
-                WhereBonnie += 1;
-                bonnieInCount = false;
-                GlitchActive = true;
-                MoveGlitch.SetActive(true);
-
-                if (!camIsUp)
-                {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                }
-
-                
-            }
-            else
-            {
-                
-                WhereBonnie += 1;
-                bonnieInCount = false;
-                GlitchActive = true;
-                MoveGlitch.SetActive(true);
-
-                if (!camIsUp)
-                {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                }
-
-                
-            }
-        }
-    }
-    //-----------------------------------------------------
-
-    //---------chica init--------------------------------
-        if(WhereChica != WhereBonnie)
-    {
-        ChicaMovementTime -= Time.deltaTime;
-    }
-
-    if (ChicaMovementTime <= 0)
-    {
-        if (ChicaActive)
-        {
-            if(WhereBonnie != 1) //check if bonnie is out of the stage.
-            {
-            if (WhereBonnie == 2) // checki if bonnie is on Dining Area
-            {
-                
-                WhereChica += 2;
-                chicaInCount = false;
-                GlitchActive = true;
-                MoveGlitch.SetActive(true);
-
-                if (!camIsUp)
-                {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                }
-
-                
-            }
-            else // if bonnie isn't at Dining Area 
-            {
-                
-                WhereChica += 1;
-                chicaInCount = false;
-                GlitchActive = true;
-                MoveGlitch.SetActive(true);
-
-                if (!camIsUp)
-                {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                }
-
-                
-            }
-
-            }
-            
-
-        }
-    }
-    //-----------------------------------------------
-
-    //------------Foxy init--------------------------
-    if (!camIsUp)
-    {
-        FoxyMovementTime -= Time.deltaTime;
-    }
-     if (FoxyMovementTime <= 0)
-      {
-          if (FoxyActive)
-           {
-               WhereFoxy += 1;
-               foxyInCount = false;
-               GlitchActive = true;
-              MoveGlitch.SetActive(true);
-
-              if (!camIsUp)
-            {
-                GlitchActive = false;
-                MoveGlitch.SetActive(false);
-               }
-            
-                }
-            }
-
-    //-----------------------------------------------
-}
-
-}
-
-
-    
-//----------night 3, 4, 5 param------------------------
+/**
     if (NightNumber >= 3) {
       //-------------------bonnie init------------------------------
       
@@ -610,7 +363,8 @@ if(GameScript.timeRemaining <= 300.0f)
         }
       }
       //-------------------------------------------------
-    }
+      
+    }**/
 
     //----------------------------------------------
 
