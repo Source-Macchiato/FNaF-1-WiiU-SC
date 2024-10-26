@@ -1,9 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using WiiU = UnityEngine.WiiU;
 
 public class EndScript : MonoBehaviour
 {
+    public Image theEndImage;
+
+    public Sprite theEndNight5;
+    public Sprite theEndNight6;
+    public Sprite theEndCustomNight;
+
+    private float nightNumber;
+
     // References to WiiU controllers
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -13,6 +22,21 @@ public class EndScript : MonoBehaviour
         // Access the WiiU GamePad and Remote
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
+
+        nightNumber = SaveManager.LoadNightNumber();
+
+        if (nightNumber == 5)
+        {
+            theEndImage.sprite = theEndNight5;
+        }
+        else if (nightNumber == 6)
+        {
+            theEndImage.sprite = theEndNight6;
+        }
+        else if (nightNumber == 7)
+        {
+            theEndImage.sprite = theEndCustomNight;
+        }
     }
 	
 	void Update()

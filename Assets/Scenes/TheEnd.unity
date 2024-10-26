@@ -568,7 +568,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 956682167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -579,13 +579,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: f1174f8e87836104095a75572d2c6348, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 21300000, guid: b85aac58d0fe4904f898200ef1a40435, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!222 &956682170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1157,3 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79494d964ae063e4d9a39bbab256f591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theEndImage: {fileID: 956682169}
+  theEndNight5: {fileID: 21300000, guid: b85aac58d0fe4904f898200ef1a40435, type: 3}
+  theEndNight6: {fileID: 21300000, guid: 47ec23a81bf321245b472e56f77b52ef, type: 3}
+  theEndCustomNight: {fileID: 21300000, guid: 047dbecddf9caeb4ea1ed0f567c8b30c, type: 3}
