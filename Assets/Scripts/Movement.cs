@@ -198,6 +198,7 @@ public class Movement : MonoBehaviour {
         BonnieMovementTime -= Time.deltaTime;
         if(BonnieMovementTime <=0)
         {
+            BonnieProbability = Random.Range(0, 100);
             AttemptBonnieMovement();
             BonnieMovementTime = 5f;
         }
@@ -538,27 +539,25 @@ public class Movement : MonoBehaviour {
 
     void AttemptBonnieMovement()
     {
-        if (Random.Range(0, 100) < BonnieDifficulty) // probability bonnie to move
+        if (BonnieProbability < BonnieDifficulty) // probability bonnie to move
         {
-            // BonnieCode
+            // Bonnie Code
+            Debug.Log("Bonnie Porbability : "+BonnieProbability+"\nBonnieDifficulty : ");
         }
 
     }
-void AttemptChicaMovement()
-{
+    void AttemptChicaMovement()
+    {
 
-}    
-void AttemptFreddyMovement()
-{
+    }    
+    void AttemptFreddyMovement()
+    {
 
-}
-void AttemptFoxyMovement()
-{
+    }
+    void AttemptFoxyMovement()
+    {
 
-}
-
-
-
+    }
 
     // Move From Door
     void MoveFromDoorBonnie()
