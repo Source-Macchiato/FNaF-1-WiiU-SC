@@ -21,6 +21,14 @@
       "value": "Continue"
     },
     {
+      "key": "mainmenu.sixthnight",
+      "value": "6th Night"
+    },
+    {
+      "key": "mainmenu.customnight",
+      "value": "Custom Night"
+    },
+    {
       "key": "mainmenu.night",
       "value": "Night"
     },
