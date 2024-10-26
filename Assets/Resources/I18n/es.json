@@ -21,6 +21,10 @@
       "value": "Continuar"
     },
     {
+      "key": "mainmenu.customnight",
+      "value": "Noche Personalizada"
+    },
+    {
       "key": "mainmenu.night",
       "value": "Noche"
     },
@@ -67,6 +71,10 @@
     {
       "key": "nextnight.fifthnight",
       "value": "5ta Noche"
+    },
+    {
+      "key": "nextnight.sixthnight",
+      "value": "6ta Noche"
     },
     {
       "key": "office.night",

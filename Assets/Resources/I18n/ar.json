@@ -21,6 +21,10 @@
       "value": "إستمر"
     },
     {
+      "key": "mainmenu.customnight",
+      "value": "ليلة مخصصة"
+    },
+    {
       "key": "mainmenu.night",
       "value": "الليل"
     },
@@ -67,6 +71,10 @@
     {
       "key": "nextnight.fifthnight",
       "value": "الليلة الخامسة"
+    },
+    {
+      "key": "nextnight.sixthnight",
+      "value": "الليلة السادسة"
     },
     {
       "key": "office.night",

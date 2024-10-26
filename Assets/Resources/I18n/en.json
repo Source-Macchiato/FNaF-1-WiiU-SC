@@ -21,10 +21,6 @@
       "value": "Continue"
     },
     {
-      "key": "mainmenu.sixthnight",
-      "value": "6th Night"
-    },
-    {
       "key": "mainmenu.customnight",
       "value": "Custom Night"
     },
@@ -54,7 +50,7 @@
     },
     {
       "key": "mainmenu.analyticdata",
-      "value":  "Analytic Data"
+      "value": "Analytic Data"
     },
     {
       "key": "nextnight.firstnight",
@@ -75,6 +71,10 @@
     {
       "key": "nextnight.fifthnight",
       "value": "5th Night"
+    },
+    {
+      "key": "nextnight.sixthnight",
+      "value": "6th Night"
     },
     {
       "key": "office.night",
