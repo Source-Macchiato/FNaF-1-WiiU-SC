@@ -14,7 +14,12 @@ public class Movement : MonoBehaviour {
     public float ChicaMovementTime = 5f; 
     public float FreddyMovementTime = 5f;
     public float FoxyMovementTime = 5f; 
-    
+
+
+    public int BonnieProbability = 0;
+    public int ChicaProbability = 0;
+    public int FreddyProbability = 0;
+    public int FoxyProbability = 0;
 
     public float WhereBonnie = 1; //done
     public float WhereChica = 1; //done
@@ -89,7 +94,7 @@ public class Movement : MonoBehaviour {
         ChicaMovementTime = 5f; 
         FreddyMovementTime = 5f;
         FoxyMovementTime = 5f;
-        
+
         //Disable Chica sounds when she is in the kitchen
         ChicaInKitchen.SetActive(false);
 
@@ -533,13 +538,27 @@ public class Movement : MonoBehaviour {
 
     void AttemptBonnieMovement()
     {
-        if (Random.Range(0, 100) < BonnieDifficulty) // Exécute avec la probabilité de BonnieDifficulty
+        if (Random.Range(0, 100) < BonnieDifficulty) // probability bonnie to move
         {
-            // Code pour permettre à Bonnie de bouger
-            Debug.Log("Bonnie bouge!");
+            // BonnieCode
         }
 
     }
+void AttemptChicaMovement()
+{
+
+}    
+void AttemptFreddyMovement()
+{
+
+}
+void AttemptFoxyMovement()
+{
+
+}
+
+
+
 
     // Move From Door
     void MoveFromDoorBonnie()
