@@ -118,10 +118,10 @@ public class Movement : MonoBehaviour {
     int nightIndex = Mathf.Clamp((int)NightNumber, 0, 5);  // Limit nightIndex to valid range (0-5)
 
     // Set initial difficulties based on the starting array
-    FreddyDifficulty = startingDifficulties[nightIndex, 0];
-    BonnieDifficulty = startingDifficulties[nightIndex, 1];
-    ChicaDifficulty = startingDifficulties[nightIndex, 2];
-    FoxyDifficulty = startingDifficulties[nightIndex, 3];
+    FreddyDifficulty = startingDifficulties[nightIndex, 0]*5;
+    BonnieDifficulty = startingDifficulties[nightIndex, 1]*5;
+    ChicaDifficulty = startingDifficulties[nightIndex, 2]*5;
+    FoxyDifficulty = startingDifficulties[nightIndex, 3]*5;
 
     // Increment difficulties based on the hour
     if (hour == 2) {
