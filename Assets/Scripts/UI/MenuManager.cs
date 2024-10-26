@@ -1368,13 +1368,15 @@ public class MenuManager : MonoBehaviour
 
         currentMenuId = menuId;
 
+        // Hide other extra containers and show current extra container (if exists)
+        foreach (var container in extraContainers.Values)
+        {
+            container.SetActive(false);
+        }
+
         if (extraContainers.ContainsKey(menuId))
         {
             extraContainers[menuId].SetActive(true);
-        }
-        else
-        {
-            HideExtraContainer();
         }
 
         if (menuButtons.ContainsKey(menuId) && menuButtons[menuId].Count > 0)
@@ -1444,15 +1446,6 @@ public class MenuManager : MonoBehaviour
             Button newButton = currentButtons[0].GetComponent<Button>();
             newButton.Select();
             currentButton = newButton;
-        }
-    }
-
-    // Method to hide the extra container
-    private void HideExtraContainer()
-    {
-        if (extraContainers.ContainsKey(currentMenuId))
-        {
-            extraContainers[currentMenuId].SetActive(false);
         }
     }
 }
