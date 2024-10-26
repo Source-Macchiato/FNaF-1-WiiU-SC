@@ -33,9 +33,9 @@ public class MoveInOffice : MonoBehaviour
         {
             Vector2 leftStickGamepad = gamePadState.lStick;
 
-            if (Mathf.Abs(leftStickGamepad.y) > stickDeadzone)
+            if (Mathf.Abs(leftStickGamepad.x) > stickDeadzone)
             {
-                if (leftStickGamepad.y > 0)
+                if (leftStickGamepad.x > 0)
                 {
                     MoveLeft();
                 }
@@ -61,9 +61,9 @@ public class MoveInOffice : MonoBehaviour
             case WiiU.RemoteDevType.ProController:
                 Vector2 leftStickProController = remoteState.pro.leftStick;
 
-                if (Mathf.Abs(leftStickProController.y) > stickDeadzone)
+                if (Mathf.Abs(leftStickProController.x) > stickDeadzone)
                 {
-                    if (leftStickProController.y > 0)
+                    if (leftStickProController.x > 0)
                     {
                         MoveLeft();
                     }
@@ -85,9 +85,9 @@ public class MoveInOffice : MonoBehaviour
             case WiiU.RemoteDevType.Classic:
                 Vector2 leftStickClassicController = remoteState.classic.leftStick;
 
-                if (Mathf.Abs(leftStickClassicController.y) > stickDeadzone)
+                if (Mathf.Abs(leftStickClassicController.x) > stickDeadzone)
                 {
-                    if (leftStickClassicController.y > 0)
+                    if (leftStickClassicController.x > 0)
                     {
                         MoveLeft();
                     }
@@ -109,9 +109,9 @@ public class MoveInOffice : MonoBehaviour
             default:
                 Vector2 stickNunchuk = remoteState.nunchuk.stick;
 
-                if (Mathf.Abs(stickNunchuk.y) > stickDeadzone)
+                if (Mathf.Abs(stickNunchuk.x) > stickDeadzone)
                 {
-                    if (stickNunchuk.y > 0)
+                    if (stickNunchuk.x > 0)
                     {
                         MoveLeft();
                     }
