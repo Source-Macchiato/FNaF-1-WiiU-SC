@@ -125,17 +125,17 @@ public class Movement : MonoBehaviour {
 
     // Increment difficulties based on the hour
     if (hour == 2) {
-        BonnieDifficulty += 1;
+        BonnieDifficulty += 5;
     }
     if (hour == 3) {
-        BonnieDifficulty += 1;
-        ChicaDifficulty += 1;
-        FoxyDifficulty += 1;
+        BonnieDifficulty += 5;
+        ChicaDifficulty += 5;
+        FoxyDifficulty += 5;
     }
     if (hour == 4) {
-        BonnieDifficulty += 1;
-        ChicaDifficulty += 1;
-        FoxyDifficulty += 1;
+        BonnieDifficulty += 5;
+        ChicaDifficulty += 5;
+        FoxyDifficulty += 5;
     }
 
     // Check if animatronics are active
