@@ -291,6 +291,8 @@ MonoBehaviour:
   tvOnly: {fileID: 21300000, guid: 636e7d7f2a512ef45a8be32e8fc850b1, type: 3}
   tvGamepad: {fileID: 21300000, guid: 943cb8d683cc8e04c9e5d6887edf28b1, type: 3}
   gamepadOnly: {fileID: 21300000, guid: 04fc7ab796661b844909156fb80d44c0, type: 3}
+  mainMenuContainer: {fileID: 959594340}
+  starsContainer: {fileID: 42665248}
   nightNumberGameObject: {fileID: 0}
   layoutButtons: []
   advertisementImage: {fileID: 1316367838}

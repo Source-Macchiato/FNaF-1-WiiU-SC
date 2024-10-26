@@ -14,6 +14,10 @@ public class MenuData : MonoBehaviour
     public Sprite tvGamepad;
     public Sprite gamepadOnly;
 
+    [Header("Other")]
+    public GameObject mainMenuContainer;
+    public GameObject starsContainer;
+
     [HideInInspector]
     public GameObject nightNumberGameObject;
     public Button[] layoutButtons;
@@ -50,6 +54,22 @@ public class MenuData : MonoBehaviour
         if (Time.time - startTime >= waitTime && advertisementIsActive == true)
         {
             SceneManager.LoadScene("NextNight");
+        }
+
+        // Enable and disable stars
+        if (mainMenuContainer.activeSelf)
+        {
+            if (!starsContainer.activeSelf)
+            {
+                starsContainer.SetActive(true);
+            }
+        }
+        else
+        {
+            if (starsContainer.activeSelf)
+            {
+                starsContainer.SetActive(false);
+            }
         }
     }
 
