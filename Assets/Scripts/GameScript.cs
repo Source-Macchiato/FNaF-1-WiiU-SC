@@ -195,6 +195,35 @@ public class GameScript : MonoBehaviour
                 SceneManager.LoadScene("6AM");
             break;
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            timeRemaining = 446f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            timeRemaining = 355f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            timeRemaining = 267f;
+        }        
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            timeRemaining = 178f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            timeRemaining = 89f;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            timeRemaining = 0f;
+        }
+
+
+
+
         //--------------------------------------TIME------------------------------//
 
         //-------------------------------PowerUsage-------------------------------//

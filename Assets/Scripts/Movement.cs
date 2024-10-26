@@ -66,40 +66,13 @@ public class Movement : MonoBehaviour {
 
     //these 4 variables is used for the Difficulties of animatronics depend of what hour it is
     //each column represent a night (night 1, night 2 etc...), and each row represent an Hour "12 AM to 5AM"
-    private float[,] bonnieDifficulties = {
-    {0, 3, 0, 2, 5, 10}, // Night 1
-    {0, 4, 0, 3, 6, 11}, // Night 2
-    {0, 1, 1, 2, 3, 10}, // Night 3
-    {2, 2, 2, 3, 5, 13}, // Night 4
-    {5, 6, 7, 8, 9, 10}, // Night 5
-    {10, 11, 12, 13, 14, 15}  // Night 6
-};
-
-    private float[,] chicaDifficulties = {
-    {0, 1, 5, 4, 7, 12}, // Night 1
-    {1, 2, 2, 4, 8, 12}, // Night 2
-    {5, 5, 6, 7, 8, 13}, // Night 3
-    {4, 4, 5, 6, 8, 14}, // Night 4
-    {7, 7, 8, 9, 10, 15}, // Night 5
-    {12, 12, 13, 14, 15, 20}  // Night 6
-};
-
-    private float[,] freddyDifficulties = {
-    {0, 0, 1, 1, 3, 4}, // Night 1
-    {0, 0, 0, 0, 3, 4}, // Night 2
-    {1, 1, 1, 1, 3, 4}, // Night 3
-    {1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 4}, // Night 4 (50/50 chance between 1 and 2)
-    {3, 3, 3, 3, 3, 4}, // Night 5
-    {4, 4, 4, 4, 4, 4}  // Night 6
-};
-
-    private float[,] foxyDifficulties = {
-    {0, 0, 1, 6, 5, 16}, // Night 1
-    {0, 0, 0, 0, 5, 16}, // Night 2
-    {0, 0, 0, 0, 0, 17}, // Night 3
-    {6, 6, 7, 8, 8, 18}, // Night 4
-    {5, 5, 6, 7, 7, 19}, // Night 5
-    {16, 16, 17, 18, 19, 20}  // Night 6
+    private int[,] startingDifficulties = {
+    {0, 0, 0, 0}, // Night 1 - Freddy, Bonnie, Chica, Foxy
+    {0, 3, 1, 1}, // Night 2
+    {1, 0, 5, 2}, // Night 3
+    {1, 2, 4, 6}, // Night 4
+    {3, 5, 7, 5}, // Night 5
+    {4, 10, 12, 16} // Night 6
 };
     //check if AI is active
     bool IsAIActive(float[,] difficulties, int nightNumber, int hourIndex)
@@ -112,17 +85,11 @@ public class Movement : MonoBehaviour {
         gameScript = GetComponent<GameScript>();
 
         //set movement time Z
-        public float BonnieMovementTime = 5f;
-        public float ChicaMovementTime = 5f; 
-        public float FreddyMovementTime = 5f;
-        public float FoxyMovementTime = 5f;
-        //Random Generated number the animatronics (random int number 1-20)
-        RandMovement randMovement = GetComponent<RandMovement>();
-        randMovement.BonnieRandMove();
-        randMovement.ChicaRandMove();
-        randMovement.FreddyRandMove();
-        randMovement.FoxyRandMove();
-
+        BonnieMovementTime = 5f;
+        ChicaMovementTime = 5f; 
+        FreddyMovementTime = 5f;
+        FoxyMovementTime = 5f;
+        
         //Disable Chica sounds when she is in the kitchen
         ChicaInKitchen.SetActive(false);
 
@@ -140,48 +107,43 @@ public class Movement : MonoBehaviour {
         PlayerPrefs.Save();
     }
     
-	void Update ()
-    {
-    
-    int hourIndex = gameScript.Hour - 12; // Shift hour to index range (0 to 5)
+	void Update()
+{
+    int hour = gameScript.Hour;
+    int nightIndex = Mathf.Clamp((int)NightNumber, 0, 5);  // Limit nightIndex to valid range (0-5)
 
-    //Check if the night is valid (between 0 to 5) and hour (between 0 and 5)
-    if (NightNumber >= 0 && NightNumber <= 5 && hourIndex >= 0 && hourIndex <= 5)
-    {
-        // Set difficulties based on the current night and hour. multiplied by 5 to make a %.
-        BonnieDifficulty = bonnieDifficulties[(int)NightNumber, (int)hourIndex]*5;
-        ChicaDifficulty = chicaDifficulties[(int)NightNumber, (int)hourIndex]*5;
-        FreddyDifficulty = freddyDifficulties[(int)NightNumber, (int)hourIndex]*5;
-        FoxyDifficulty = foxyDifficulties[(int)NightNumber, (int)hourIndex]*5;
+    // Set initial difficulties based on the starting array
+    FreddyDifficulty = startingDifficulties[nightIndex, 0];
+    BonnieDifficulty = startingDifficulties[nightIndex, 1];
+    ChicaDifficulty = startingDifficulties[nightIndex, 2];
+    FoxyDifficulty = startingDifficulties[nightIndex, 3];
 
-        //call the function to save the difficulty of the AI
-        SaveDifficulty();
+    // Increment difficulties based on the hour
+    if (hour == 2) {
+        BonnieDifficulty += 1;
+    }
+    if (hour == 3) {
+        BonnieDifficulty += 1;
+        ChicaDifficulty += 1;
+        FoxyDifficulty += 1;
+    }
+    if (hour == 4) {
+        BonnieDifficulty += 1;
+        ChicaDifficulty += 1;
+        FoxyDifficulty += 1;
     }
 
-    //Night 7 (custom night) depend on the player's choice.
-    else if (NightNumber == 7)
-    {
-        // Custom night: retrieve saved difficulties
-        BonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", BonnieDifficulty);
-        ChicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", ChicaDifficulty);
-        FreddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", FreddyDifficulty);
-        FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
-    }
-    
-    //Press P to have the current state of the Hour, the night Number, the saved difficulties, and the Bonnie difficulty for test
+    // Check if animatronics are active
+    BonnieActive = BonnieDifficulty > 0;
+    ChicaActive = ChicaDifficulty > 0;
+    FreddyActive = FreddyDifficulty > 0;
+    FoxyActive = FoxyDifficulty > 0;
+
     if (Input.GetKeyDown(KeyCode.P))
     {
         Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
         Debug.Log("Saved: Bonnie=" + BonnieDifficulty + ", Chica=" + ChicaDifficulty + ", Freddy=" + FreddyDifficulty + ", Foxy=" + FoxyDifficulty);
-        Debug.Log("Bonnie Difficulty (Array): " + bonnieDifficulties[(int)NightNumber - 1, (int)hourIndex]);
     }
-
-    //check is AI is active
-    BonnieActive = IsAIActive(bonnieDifficulties, (int)NightNumber, (int)hourIndex);
-    ChicaActive = IsAIActive(chicaDifficulties, (int)NightNumber, (int)hourIndex);
-    FreddyActive = IsAIActive(freddyDifficulties, (int)NightNumber, (int)hourIndex);
-    FoxyActive = IsAIActive(foxyDifficulties, (int)NightNumber, (int)hourIndex);
-
 
     RandMovement randMovement = GetComponent<RandMovement>();
     PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
@@ -226,11 +188,30 @@ public class Movement : MonoBehaviour {
         office.FoxyRunningHallway = true;
     }
 
-    //start Countdown
-
-    while(BonnieActive)
+    if(BonnieActive)
     {
         BonnieMovementTime -= Time.deltaTime;
+        if(BonnieMovementTime <=0)
+        {
+            AttemptBonnieMovement();
+            BonnieMovementTime = 5f;
+        }
+    }
+    
+
+    //start Countdown
+
+    /**while(BonnieActive)
+    {
+        if(BonnieMovementTime <= 0)
+        {
+            BonnieMovementTime -= Time.deltaTime;
+        }
+        else
+        {
+            BonnieMovementTime = 5f;
+        }
+        
     }
     if(BonnieActive)
     {
@@ -247,8 +228,7 @@ public class Movement : MonoBehaviour {
     if(FoxyActive)
     {
         FoxyMovementTime -= Time.deltaTime;
-    }
-
+    } **/
 
     // BonnieMovementTime*5 == ChanceToMove
 
@@ -341,7 +321,7 @@ public class Movement : MonoBehaviour {
         if (ChicaActive) {
           if (WhereBonnie != 1) //check if bonnie is ou of the stage.
           {
-            if (WhereBonnie == 2) // checki if bonnie is on Dining Area
+            if (WhereBonnie == 2) // check if bonnie is on Dining Area
             {
 
               WhereChica += 2;
@@ -442,7 +422,7 @@ public class Movement : MonoBehaviour {
 
 
         //---------bonnie at door config------------
-        if (BonnieOutsideDoor)
+        /**if (BonnieOutsideDoor)
         {
             if (LeftDoorClosed)
             {
@@ -548,7 +528,17 @@ public class Movement : MonoBehaviour {
         } else if (WhereChica != 5)
         {
             ChicaInKitchen.SetActive(false);
+        }  **/
+    }
+
+    void AttemptBonnieMovement()
+    {
+        if (Random.Range(0, 100) < BonnieDifficulty) // Exécute avec la probabilité de BonnieDifficulty
+        {
+            // Code pour permettre à Bonnie de bouger
+            Debug.Log("Bonnie bouge!");
         }
+
     }
 
     // Move From Door
