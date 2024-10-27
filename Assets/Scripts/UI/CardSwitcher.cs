@@ -8,13 +8,14 @@ public class CardSwitcher : MonoBehaviour
 
 	public string titleName;
 	public Sprite coverSprite;
+	public string descriptionTranslationId;
 	public int minValue;
 	public int maxValue;
 
 	[Header("Components")]
 	public Text textTitle;
 	public Image cover;
-	public RTLTextMeshPro tmpDescription;
+	public I18nTextTranslator descriptionTranslator;
 	public RTLTextMeshPro tmpSwitcherValue;
 
 	void Start()
@@ -54,6 +55,12 @@ public class CardSwitcher : MonoBehaviour
 		if (cover.sprite != coverSprite)
 		{
 			cover.sprite = coverSprite;
+		}
+
+		// Update description translation
+		if (descriptionTranslator.textId != descriptionTranslationId)
+		{
+			descriptionTranslator.textId = descriptionTranslationId;
 		}
 
 		// Update value

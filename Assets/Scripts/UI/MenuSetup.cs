@@ -43,10 +43,10 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");
 
         // Adding card switchers to the main menu
-        menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, 1, 20, 1);
-        menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, 1, 20, 1);
-        menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, 1, 20, 1);
-        menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, 1, 20, 1);
+        menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, "customnight.ailevel", 1, 20, 1);
+        menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 1, 20, 1);
+        menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 1, 20, 1);
+        menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 1, 20, 1);
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);

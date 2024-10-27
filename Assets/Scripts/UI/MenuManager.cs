@@ -1176,7 +1176,7 @@ public class MenuManager : MonoBehaviour
         menuButtons[menuId].Add(newSwitcher);
     }
 
-    public void AddCardSwitcher(int menuId, string titleName, Sprite cover, int minValue, int maxValue, int defaultValue = 0)
+    public void AddCardSwitcher(int menuId, string titleName, Sprite cover, string descriptionTranslationId, int minValue, int maxValue, int defaultValue = 0)
     {
         // Instantiate the card switcher prefab
         GameObject newCardSwitcher = Instantiate(cardSwitcherPrefab, menus[menuId]);
@@ -1188,6 +1188,7 @@ public class MenuManager : MonoBehaviour
         CardSwitcher cardSwitcher = newCardSwitcher.GetComponent<CardSwitcher>();
         cardSwitcher.titleName = titleName;
         cardSwitcher.coverSprite = cover;
+        cardSwitcher.descriptionTranslationId = descriptionTranslationId;
         cardSwitcher.minValue = minValue;
         cardSwitcher.maxValue = maxValue;
         cardSwitcher.difficultyId = defaultValue;
@@ -1197,6 +1198,28 @@ public class MenuManager : MonoBehaviour
         if (!menuButtons.ContainsKey(menuId))
         {
             menuButtons[menuId] = new List<GameObject>();
+        }
+
+        // Handle navigation setup
+        int cardIndex = menuButtons[menuId].Count;
+
+        if (cardIndex > 0)
+        {
+            // Get the previous button
+            GameObject previousCard = menuButtons[menuId][cardIndex - 1];
+            Button previousCardComponent = previousCard.GetComponent<Button>();
+
+            // Set navigation for the new button
+            Navigation newNav = cardSwitcherComponent.navigation;
+            newNav.mode = Navigation.Mode.Explicit;
+            newNav.selectOnLeft = previousCardComponent;
+            cardSwitcherComponent.navigation = newNav;
+
+            // Set navigation for the previous button
+            Navigation prevNav = previousCardComponent.navigation;
+            prevNav.mode = Navigation.Mode.Explicit;
+            prevNav.selectOnRight = cardSwitcherComponent;
+            previousCardComponent.navigation = prevNav;
         }
 
         // Add the new button to the list
