@@ -13,8 +13,17 @@ public class MenuSetup : MonoBehaviour
         // Adding buttons to the main menu with corresponding actions
         menuManager.AddButton("New Game", NewGame, 0, "mainmenu.newgame");
         menuManager.AddButton("Continue", Continue, 0, "mainmenu.continue");
-        menuManager.AddButton("6th Night", SixthNight, 0, "nextnight.sixthnight");
-        menuManager.AddButton("Custom Night", CustomNight, 0, "mainmenu.customnight");
+
+        if (SaveManager.LoadStarsId() >= 1)
+        {
+            menuManager.AddButton("6th Night", SixthNight, 0, "nextnight.sixthnight");
+        }
+        
+        if (SaveManager.LoadStarsId() >= 2)
+        {
+            menuManager.AddButton("Custom Night", CustomNight, 0, "mainmenu.customnight");
+        }
+        
         menuManager.AddButton("Options", Options, 0, "mainmenu.options", true);
         menuManager.AddButton("Credits", Credits, 0, "mainmenu.credits", true);
 
