@@ -9,13 +9,9 @@ public class LoadDubbingLanguage : MonoBehaviour
     private float nightNumber;
     private string dubbingLanguage;
 
-    AssetBundleManager assetBundleManager;
-
 	void Start()
 	{
         nightNumber = SaveManager.LoadNightNumber();
-
-        assetBundleManager = FindObjectOfType<AssetBundleManager>();
 
         if (nightNumber >= 0 && nightNumber <= 4)
         {
@@ -37,29 +33,53 @@ public class LoadDubbingLanguage : MonoBehaviour
             }
 
             // Play the dubbing
-            if (assetBundleManager != null)
-            {
-                StartCoroutine(PlayAudio(assetBundleManager.GetAssetBundle(bundleName), audioName));
-            }
+            StartCoroutine(PlayAudio(bundleName, audioName));
         } 
     }
 
-    private IEnumerator PlayAudio(AssetBundle assetBundle, string objectNameToLoad)
+    private IEnumerator PlayAudio(string assetBundleName, string objectNameToLoad)
     {
-        if (assetBundle != null)
+        // Check if AssetBundle is already in memory
+        AssetBundle assetBundle = null;
+        foreach (var loadedBundle in AssetBundle.GetAllLoadedAssetBundles())
         {
-            // Load asset
-            AssetBundleRequest asset = assetBundle.LoadAssetAsync<AudioClip>(objectNameToLoad);
-            yield return asset;
+            if (loadedBundle.name == assetBundleName)
+            {
+                assetBundle = loadedBundle;
+                break;
+            }
+        }
 
-            // Get audio clip
-            AudioClip loadedAsset = asset.asset as AudioClip;
+        // Load AssetBundle if not in memory
+        if (assetBundle == null)
+        {
+            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "AssetBundles");
+            filePath = System.IO.Path.Combine(filePath, assetBundleName);
+            var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(filePath);
+            yield return assetBundleCreateRequest;
 
-            // Assign audio
+            assetBundle = assetBundleCreateRequest.assetBundle;
+            if (assetBundle == null)
+            {
+                Debug.LogError("Failed to load AssetBundle: " + assetBundleName);
+                yield break;
+            }
+        }
+
+        // Load AudioClip from AssetBundle
+        AssetBundleRequest asset = assetBundle.LoadAssetAsync<AudioClip>(objectNameToLoad);
+        yield return asset;
+
+        // Assign AudioClip to AudioSource and play audio
+        AudioClip loadedAsset = asset.asset as AudioClip;
+        if (loadedAsset != null)
+        {
             phoneCallAudio.clip = loadedAsset;
-
-            // Play audio
             phoneCallAudio.Play();
+        }
+        else
+        {
+            Debug.LogError("Failed to load AudioClip: " + objectNameToLoad);
         }
     }
 }

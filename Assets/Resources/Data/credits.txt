@@ -9,6 +9,7 @@ Alyx Lihoreau
 Max K.
 
 ## Web programming
+Alyx Lihoreau
 Henrique Kirch Heck
 
 ## API programming
@@ -37,10 +38,8 @@ Daniel Jödecke
 EzNothing
 
 ## Beta tester
-TeraByte38
-
-## Closed beta
 Gato-kun
+TeraByte38
 
 ## Donators
 Branzon200
