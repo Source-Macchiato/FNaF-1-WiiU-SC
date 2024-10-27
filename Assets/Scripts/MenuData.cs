@@ -21,6 +21,7 @@ public class MenuData : MonoBehaviour
     [Header("Other")]
     public GameObject mainMenuContainer;
     public GameObject starsContainer;
+    public GameObject customNightBackground;
 
     [HideInInspector]
     public GameObject nightNumberGameObject;
@@ -268,5 +269,10 @@ public class MenuData : MonoBehaviour
 
             rect.sizeDelta = new Vector2(80f, 80f);
         }
+    }
+
+    public void CustomNightBackgroundStatus(bool status)
+    {
+        customNightBackground.SetActive(status);
     }
 }

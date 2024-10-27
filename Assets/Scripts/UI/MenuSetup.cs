@@ -53,6 +53,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.SetBackCallback(2, OnBackFromLanguage);
         menuManager.SetBackCallback(5, OnBackFromLayout);
         menuManager.SetBackCallback(6, OnBackFromAnalyticData);
+        menuManager.SetBackCallback(7, OnBackFromCustomNight);
 
         // Display main menu after loaded all buttons
         menuManager.ChangeMenu(0);
@@ -120,6 +121,8 @@ public class MenuSetup : MonoBehaviour
 
     void CustomNight()
     {
+        menuData.CustomNightBackgroundStatus(true);
+
         menuManager.ChangeMenu(7);
     }
 
@@ -206,5 +209,10 @@ public class MenuSetup : MonoBehaviour
     void OnBackFromAnalyticData()
     {
         menuData.SaveShareData();
+    }
+
+    void OnBackFromCustomNight()
+    {
+        menuData.CustomNightBackgroundStatus(false);
     }
 }
