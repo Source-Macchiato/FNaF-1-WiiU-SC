@@ -35,24 +35,33 @@ public class EndOfNight : MonoBehaviour {
         else if (nightNumber == 5)
         {
             // When night 5 is finished enable the first star
-            saveManager.SaveStars(1);
-            bool saveResult = saveGameState.DoSave();
+            if (SaveManager.LoadStarsId() == 0)
+            {
+                saveManager.SaveStars(1);
+                bool saveResult = saveGameState.DoSave();
+            }
 
             SceneManager.LoadScene("TheEnd");
         }
         else if (nightNumber == 6)
         {
             // When night 6 is finished enable the second star
-            saveManager.SaveStars(2);
-            bool saveResult = saveGameState.DoSave();
+            if (SaveManager.LoadStarsId() <= 1)
+            {
+                saveManager.SaveStars(2);
+                bool saveResult = saveGameState.DoSave();
+            }
 
             SceneManager.LoadScene("TheEnd");
         }
         else if (nightNumber == 7)
         {
             // When custom night is finished enable the third star
-            saveManager.SaveStars(3);
-            bool saveResult = saveGameState.DoSave();
+            if (SaveManager.LoadStarsId() <= 2)
+            {
+                saveManager.SaveStars(3);
+                bool saveResult = saveGameState.DoSave();
+            }
 
             SceneManager.LoadScene("TheEnd");
         }
