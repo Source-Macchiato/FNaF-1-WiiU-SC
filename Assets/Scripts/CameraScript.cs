@@ -17,13 +17,15 @@ public class CameraScript : MonoBehaviour
     public GameObject CamViewTabletOpen;
     public GameObject CamViewTabletClose;
 
-    public GameObject OfficeControllerObject;
-
     public GameObject Dot;
     public GameObject Glitch;
     public GameObject Stripes;
 
-    public Office officescript;
+    private GameScript gameScript;
+    private Office office;
+    private Movement movement;
+    private ChangeImages changeImages;
+    private RandNumberGen randNumberGen;
     private MoveInOffice moveInOffice;
 
     WiiU.GamePad gamePad;
@@ -34,6 +36,11 @@ public class CameraScript : MonoBehaviour
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
 
+        gameScript = FindObjectOfType<GameScript>();
+        office = FindObjectOfType<Office>();
+        movement = FindObjectOfType<Movement>();
+        changeImages = FindObjectOfType<ChangeImages>();
+        randNumberGen = FindObjectOfType<RandNumberGen>();
         moveInOffice = FindObjectOfType<MoveInOffice>();
     }
 
@@ -140,67 +147,67 @@ public class CameraScript : MonoBehaviour
                 Glitch.SetActive(true);
                 Stripes.SetActive(true);
                 cameraScreen.SetActive(true);
-                OfficeControllerObject.GetComponent<Office>().enabled = false;
+                office.enabled = false;
                 OfficeStuff.SetActive(false);
                 minimapGameObject.SetActive(true);
 
-                if (officescript.LeftLightIsOn)
+                if (office.LeftLightIsOn)
                 {
-                    if (!officescript.BonnieOutsideDoor)
+                    if (!office.BonnieOutsideDoor)
                     {
-                        officescript.Light_L_No_Door.enabled = false;
-                        officescript.lightSound.Pause();
+                        office.Light_L_No_Door.enabled = false;
+                        office.lightSound.Pause();
                     }
 
-                    if (officescript.BonnieOutsideDoor)
+                    if (office.BonnieOutsideDoor)
                     {
-                        officescript.Light_L_Door_Bonnie.enabled = false;
-                        officescript.lightSound.Pause();
+                        office.Light_L_Door_Bonnie.enabled = false;
+                        office.lightSound.Pause();
                     }
 
-                    officescript.OriginalOfficeImage.GetComponent<Image>().enabled = true;
+                    office.OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                    officescript.DoorButton_L3.enabled = false;
+                    office.DoorButton_L3.enabled = false;
 
-                    if (officescript.L_Door_Closed)
+                    if (office.L_Door_Closed)
                     {
-                        officescript.DoorButton_L1.enabled = true;
-                        officescript.DoorButton_L4.enabled = false;
+                        office.DoorButton_L1.enabled = true;
+                        office.DoorButton_L4.enabled = false;
                     }
 
-                    officescript.OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+                    gameScript.PowerUsage -= 1;
 
-                    officescript.LeftLightIsOn = false;
+                    office.LeftLightIsOn = false;
                 }
 
 
-                else if (officescript.RightLightIsOn)
+                else if (office.RightLightIsOn)
                 {
-                    if (!officescript.ChicaOutsideDoor)
+                    if (!office.ChicaOutsideDoor)
                     {
-                        officescript.Light_R_No_Door.enabled = false;
-                        officescript.lightSound.Pause();
+                        office.Light_R_No_Door.enabled = false;
+                        office.lightSound.Pause();
                     }
 
-                    if (officescript.ChicaOutsideDoor)
+                    if (office.ChicaOutsideDoor)
                     {
-                        officescript.Light_R_Door_Chica.enabled = false;
-                        officescript.lightSound.Pause();
+                        office.Light_R_Door_Chica.enabled = false;
+                        office.lightSound.Pause();
                     }
 
-                    officescript.OriginalOfficeImage.GetComponent<Image>().enabled = true;
+                    office.OriginalOfficeImage.GetComponent<Image>().enabled = true;
 
-                    officescript.DoorButton_R3.enabled = false;
+                    office.DoorButton_R3.enabled = false;
 
-                    if (officescript.R_Door_Closed)
+                    if (office.R_Door_Closed)
                     {
-                        officescript.DoorButton_R1.enabled = true;
-                        officescript.DoorButton_R4.enabled = false;
+                        office.DoorButton_R1.enabled = true;
+                        office.DoorButton_R4.enabled = false;
                     }
 
-                    officescript.OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+                    gameScript.PowerUsage -= 1;
 
-                    officescript.RightLightIsOn = false;
+                    office.RightLightIsOn = false;
                 }
             }
         }
@@ -272,14 +279,12 @@ public class CameraScript : MonoBehaviour
 
             wait = 0.2f;
 
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-            OfficeControllerObject.GetComponent<Office>().enabled = true;
-            OfficeControllerObject.GetComponent<Movement>().camIsUp = false;
-            OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = false;
-            OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = false;
+            gameScript.PowerUsage -= 1;
+            office.enabled = true;
+            movement.camIsUp = false;
+            changeImages.camIsUp = false;
+            randNumberGen.camIsUp = false;
             moveInOffice.camIsUp = false;
-            //OfficeControllerObject.GetComponent<ChangeImages>().enabled = false; Why this line isn't used ? Can be delete it ?
-
         }
         else
         {
@@ -291,16 +296,14 @@ public class CameraScript : MonoBehaviour
 
             wait = 0.2f;
 
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-            //OfficeControllerObject.GetComponent<Office>().enabled = false; Why this line isn't used ?
-            OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
-            OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
-            OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
-            OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
+            gameScript.PowerUsage += 1;
+            office.centerPosition = 0;
+            movement.camIsUp = true;
+            changeImages.camIsUp = true;
+            randNumberGen.camIsUp = true;
             moveInOffice.camIsUp = true;
-            //OfficeControllerObject.GetComponent<ChangeImages>().enabled = true; Same
 
-            //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for -- for real idk it's really dumb, use Vector3.zero is a better way
+            //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for -- for real idk it's really dumb, use Vector3.zero or Vector2.zero is a better way
         }
     }
 }
