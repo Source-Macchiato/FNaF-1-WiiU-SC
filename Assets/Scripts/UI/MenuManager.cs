@@ -1176,7 +1176,7 @@ public class MenuManager : MonoBehaviour
         menuButtons[menuId].Add(newSwitcher);
     }
 
-    public void AddCardSwitcher(int menuId, string titleName, Sprite cover, int minValue, int maxValue)
+    public void AddCardSwitcher(int menuId, string titleName, Sprite cover, int minValue, int maxValue, int defaultValue = 0)
     {
         // Instantiate the card switcher prefab
         GameObject newCardSwitcher = Instantiate(cardSwitcherPrefab, menus[menuId]);
@@ -1190,10 +1190,8 @@ public class MenuManager : MonoBehaviour
         cardSwitcher.coverSprite = cover;
         cardSwitcher.minValue = minValue;
         cardSwitcher.maxValue = maxValue;
-
-        // Set difficulty ID
-        cardSwitcher.difficultyId = 1;
-        cardSwitcher.UpdateTextValue();
+        cardSwitcher.difficultyId = defaultValue;
+        cardSwitcher.UpdateCardSwitcher();
 
         // Add the card switcher to the correct menu list in the dictionary
         if (!menuButtons.ContainsKey(menuId))

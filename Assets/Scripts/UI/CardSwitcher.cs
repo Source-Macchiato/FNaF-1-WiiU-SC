@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using RTLTMPro;
 
 public class CardSwitcher : MonoBehaviour
@@ -10,11 +11,15 @@ public class CardSwitcher : MonoBehaviour
 	public int minValue;
 	public int maxValue;
 
+	[Header("Components")]
+	public Text textTitle;
+	public Image cover;
+	public RTLTextMeshPro tmpDescription;
 	public RTLTextMeshPro tmpSwitcherValue;
 
 	void Start()
 	{
-		UpdateTextValue();
+        UpdateCardSwitcher();
 	}
 
 	public void IncreaseDifficulty()
@@ -23,7 +28,7 @@ public class CardSwitcher : MonoBehaviour
 		{
             difficultyId++;
 
-			UpdateTextValue();
+            UpdateCardSwitcher();
         }
 	}
 
@@ -33,12 +38,25 @@ public class CardSwitcher : MonoBehaviour
 		{
 			difficultyId--;
 
-			UpdateTextValue();
+            UpdateCardSwitcher();
 		}
 	}
 
-	public void UpdateTextValue()
+	public void UpdateCardSwitcher()
 	{
+		// Update title
+		if (textTitle.text != titleName)
+		{
+			textTitle.text = titleName;
+		}
+
+		// Update cover
+		if (cover.sprite != coverSprite)
+		{
+			cover.sprite = coverSprite;
+		}
+
+		// Update value
         if (tmpSwitcherValue.text != difficultyId.ToString())
         {
             tmpSwitcherValue.text = difficultyId.ToString();
