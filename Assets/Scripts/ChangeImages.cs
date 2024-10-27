@@ -693,7 +693,6 @@ public class ChangeImages : MonoBehaviour
                 if (camIsUp)
                 {
                     foxyStarted = true;
-
                 }
 
                 if (foxyStarted)

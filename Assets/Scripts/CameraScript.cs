@@ -22,7 +22,9 @@ public class CameraScript : MonoBehaviour
     public GameObject Dot;
     public GameObject Glitch;
     public GameObject Stripes;
+
     public Office officescript;
+    private MoveInOffice moveInOffice;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -31,6 +33,8 @@ public class CameraScript : MonoBehaviour
     {
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
+
+        moveInOffice = FindObjectOfType<MoveInOffice>();
     }
 
     void Update()
@@ -273,7 +277,8 @@ public class CameraScript : MonoBehaviour
             OfficeControllerObject.GetComponent<Movement>().camIsUp = false;
             OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = false;
             OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = false;
-            //OfficeControllerObject.GetComponent<ChangeImages>().enabled = false;
+            moveInOffice.camIsUp = false;
+            //OfficeControllerObject.GetComponent<ChangeImages>().enabled = false; Why this line isn't used ? Can be delete it ?
 
         }
         else
@@ -287,12 +292,13 @@ public class CameraScript : MonoBehaviour
             wait = 0.2f;
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-            //OfficeControllerObject.GetComponent<Office>().enabled = false; why this script isn't used ?
+            //OfficeControllerObject.GetComponent<Office>().enabled = false; Why this line isn't used ?
             OfficeControllerObject.GetComponent<Office>().centerPosition = 0;
             OfficeControllerObject.GetComponent<Movement>().camIsUp = true;
             OfficeControllerObject.GetComponent<ChangeImages>().camIsUp = true;
             OfficeControllerObject.GetComponent<RandNumberGen>().camIsUp = true;
-            //OfficeControllerObject.GetComponent<ChangeImages>().enabled = true;
+            moveInOffice.camIsUp = true;
+            //OfficeControllerObject.GetComponent<ChangeImages>().enabled = true; Same
 
             //OfficeStuff.transform.position = ResetPoint.transform.position; again wth was this for -- for real idk it's really dumb, use Vector3.zero is a better way
         }

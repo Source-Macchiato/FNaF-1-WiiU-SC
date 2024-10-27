@@ -5,6 +5,7 @@ public class MoveInOffice : MonoBehaviour
 {
     public GameObject OfficeContainer;
     private RectTransform officeRect;
+    public bool camIsUp = false;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -152,19 +153,27 @@ public class MoveInOffice : MonoBehaviour
 
     private void MoveLeft()
     {
-        OfficeContainer.transform.Translate(Vector3.right * speed * Time.deltaTime);
-        if (OfficeContainer.transform.localPosition.x >= leftEdge)
+        if (!camIsUp)
         {
-            OfficeContainer.transform.localPosition = new Vector3(leftEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
+            OfficeContainer.transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+            if (OfficeContainer.transform.localPosition.x >= leftEdge)
+            {
+                OfficeContainer.transform.localPosition = new Vector3(leftEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
+            }
         }
     }
 
     private void MoveRight()
     {
-        OfficeContainer.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        if (OfficeContainer.transform.localPosition.x <= rightEdge)
+        if (!camIsUp)
         {
-            OfficeContainer.transform.localPosition = new Vector3(rightEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
+            OfficeContainer.transform.Translate(Vector3.left * speed * Time.deltaTime);
+
+            if (OfficeContainer.transform.localPosition.x <= rightEdge)
+            {
+                OfficeContainer.transform.localPosition = new Vector3(rightEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
+            }
         }
     }
 }

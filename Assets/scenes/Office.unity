@@ -1852,7 +1852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &186167419
 Transform:
   m_ObjectHideFlags: 0
@@ -16873,6 +16873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 535
+  Hour: 12
   Usage: 1
   nightNumberDisplayer: {fileID: 1398303399}
   powerDisplayer: {fileID: 1819803410}
@@ -17075,6 +17076,10 @@ MonoBehaviour:
   ChicaMovementTime: 0
   FreddyMovementTime: 0
   FoxyMovementTime: 0
+  BonnieProbability: 0
+  ChicaProbability: 0
+  FreddyProbability: 0
+  FoxyProbability: 0
   WhereBonnie: 1
   WhereChica: 1
   WhereFreddy: 1
