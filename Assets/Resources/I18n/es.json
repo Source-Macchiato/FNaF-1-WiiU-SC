@@ -25,6 +25,30 @@
       "value": "Noche Personalizada"
     },
     {
+      "key": "customnight.ailevel",
+      "value": "Nivel de IA"
+    },
+    {
+      "key": "customnight.ready",
+      "value": "Preparado"
+    },
+    {
+      "key": "difficulty.easy",
+      "value": "Facil"
+    },
+    {
+      "key": "difficulty.medium",
+      "value": "Normal"
+    },
+    {
+      "key": "difficulty.hard",
+      "value": "Dificil"
+    },
+    {
+      "key": "difficulty.extreme",
+      "value": "Extremo"
+    },
+    {
       "key": "mainmenu.night",
       "value": "Noche"
     },
