@@ -53,6 +53,30 @@
       "value": "البيانات التحليلية"
     },
     {
+      "key": "customnight.ailevel",
+      "value": "مستوى الذكاء الصناعي"
+    },
+    {
+      "key": "customnight.ready",
+      "value": "جاهز"
+    },
+    {
+      "key": "difficulty.easy",
+      "value": "سهل"
+    },
+    {
+      "key": "difficulty.medium",
+      "value": "متوسطة"
+    },
+    {
+      "key": "difficulty.hard",
+      "value": "صعب"
+    },
+    {
+      "key": "difficulty.extreme",
+      "value": "شديد"
+    },
+    {
       "key": "nextnight.firstnight",
       "value": "الليلة الأولى"
     },

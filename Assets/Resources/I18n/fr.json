@@ -53,6 +53,30 @@
       "value": "Données Analytiques"
     },
     {
+      "key": "customnight.ailevel",
+      "value": "Difficultée IA"
+    },
+    {
+      "key": "customnight.ready",
+      "value": "Ready"
+    },
+    {
+      "key": "difficulty.easy",
+      "value": "Facile"
+    },
+    {
+      "key": "difficulty.medium",
+      "value": "Moyenne"
+    },
+    {
+      "key": "difficulty.hard",
+      "value": "Difficile"
+    },
+    {
+      "key": "difficulty.extreme",
+      "value": "Extrême"
+    },
+    {
       "key": "nextnight.firstnight",
       "value": "1re Nuit"
     },
