@@ -242,6 +242,20 @@ public class MenuManager : MonoBehaviour
                         ToggleContainer();
                     }
                 }
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.ZL))
+                {
+                    if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                    {
+                        currentButton.gameObject.GetComponent<CardSwitcher>().DecreaseDifficulty();
+                    }
+                }
+                else if (gamePadState.IsTriggered(WiiU.GamePadButton.ZR))
+                {
+                    if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                    {
+                        currentButton.gameObject.GetComponent<CardSwitcher>().IncreaseDifficulty();
+                    }
+                }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
                     if (currentScrollRect == null && currentPopup == null && canNavigate)
@@ -428,6 +442,20 @@ public class MenuManager : MonoBehaviour
                             ToggleContainer();
                         }
                     }
+                    else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.ZL))
+                    {
+                        if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                        {
+                            currentButton.gameObject.GetComponent<CardSwitcher>().DecreaseDifficulty();
+                        }
+                    }
+                    else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.ZR))
+                    {
+                        if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                        {
+                            currentButton.gameObject.GetComponent<CardSwitcher>().IncreaseDifficulty();
+                        }
+                    }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
                     {
                         if (currentScrollRect == null && currentPopup == null && canNavigate)
@@ -609,6 +637,20 @@ public class MenuManager : MonoBehaviour
                         else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             ToggleContainer();
+                        }
+                    }
+                    else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.ZL) || remoteState.classic.IsTriggered(WiiU.ClassicButton.L))
+                    {
+                        if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                        {
+                            currentButton.gameObject.GetComponent<CardSwitcher>().DecreaseDifficulty();
+                        }
+                    }
+                    else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.ZR) || remoteState.classic.IsTriggered(WiiU.ClassicButton.R))
+                    {
+                        if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                        {
+                            currentButton.gameObject.GetComponent<CardSwitcher>().IncreaseDifficulty();
                         }
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.A))
@@ -793,6 +835,20 @@ public class MenuManager : MonoBehaviour
                             ToggleContainer();
                         }
                     }
+                    else if (remoteState.IsTriggered(WiiU.RemoteButton.Minus) || remoteState.IsTriggered(WiiU.RemoteButton.NunchukZ))
+                    {
+                        if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                        {
+                            currentButton.gameObject.GetComponent<CardSwitcher>().DecreaseDifficulty();
+                        }
+                    }
+                    else if (remoteState.IsTriggered(WiiU.RemoteButton.Plus) || remoteState.IsTriggered(WiiU.RemoteButton.NunchukC))
+                    {
+                        if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                        {
+                            currentButton.gameObject.GetComponent<CardSwitcher>().IncreaseDifficulty();
+                        }
+                    }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.A))
                     {
                         if (currentScrollRect == null && currentPopup == null && canNavigate)
@@ -899,6 +955,20 @@ public class MenuManager : MonoBehaviour
                 else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                 {
                     ToggleContainer();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                {
+                    currentButton.gameObject.GetComponent<CardSwitcher>().DecreaseDifficulty();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (currentButton.gameObject.GetComponent<CardSwitcher>() != null && canNavigate)
+                {
+                    currentButton.gameObject.GetComponent<CardSwitcher>().IncreaseDifficulty();
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Return))
