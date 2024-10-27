@@ -13,6 +13,10 @@ public class MenuData : MonoBehaviour
     public Sprite tvOnly;
     public Sprite tvGamepad;
     public Sprite gamepadOnly;
+    public Sprite freddyPicture;
+    public Sprite bonniePicture;
+    public Sprite chicaPicture;
+    public Sprite foxyPicture;
 
     [Header("Other")]
     public GameObject mainMenuContainer;

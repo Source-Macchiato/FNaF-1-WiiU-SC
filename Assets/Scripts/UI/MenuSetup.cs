@@ -42,6 +42,12 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddSwitcher(2, new string[] { "English", "French", "Spanish", "Italian", "German", "Arabic" }, "switcher.translation");
         menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");
 
+        // Adding card switchers to the main menu
+        menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, 1, 20);
+        menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, 1, 20);
+        menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, 1, 20);
+        menuManager.AddCardSwitcher(7, "foxy", menuData.foxyPicture, 1, 20);
+
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(2, OnBackFromLanguage);

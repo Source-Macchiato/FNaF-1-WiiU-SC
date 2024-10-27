@@ -5,6 +5,8 @@ public class CardSwitcher : MonoBehaviour
 {
 	public int difficultyId;
 
+	public string titleName;
+	public Sprite coverSprite;
 	public int minValue;
 	public int maxValue;
 
@@ -35,7 +37,7 @@ public class CardSwitcher : MonoBehaviour
 		}
 	}
 
-	private void UpdateTextValue()
+	public void UpdateTextValue()
 	{
         if (tmpSwitcherValue.text != difficultyId.ToString())
         {

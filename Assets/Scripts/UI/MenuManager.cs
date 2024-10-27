@@ -27,6 +27,7 @@ public class MenuManager : MonoBehaviour
     public GameObject buttonPrefab;
     public GameObject cardPrefab;
     public GameObject switcherPrefab;
+    public GameObject cardSwitcherPrefab;
     public GameObject[] popupPrefab;
     public GameObject selectionPrefab;
     public GameObject selectionPopupPrefab;
@@ -1173,6 +1174,35 @@ public class MenuManager : MonoBehaviour
 
         // Add the new button to the list
         menuButtons[menuId].Add(newSwitcher);
+    }
+
+    public void AddCardSwitcher(int menuId, string titleName, Sprite cover, int minValue, int maxValue)
+    {
+        // Instantiate the card switcher prefab
+        GameObject newCardSwitcher = Instantiate(cardSwitcherPrefab, menus[menuId]);
+
+        // Get the card switcher button
+        Button cardSwitcherComponent = newCardSwitcher.GetComponent<Button>();
+
+        // Get CardSwitcher script
+        CardSwitcher cardSwitcher = newCardSwitcher.GetComponent<CardSwitcher>();
+        cardSwitcher.titleName = titleName;
+        cardSwitcher.coverSprite = cover;
+        cardSwitcher.minValue = minValue;
+        cardSwitcher.maxValue = maxValue;
+
+        // Set difficulty ID
+        cardSwitcher.difficultyId = 1;
+        cardSwitcher.UpdateTextValue();
+
+        // Add the card switcher to the correct menu list in the dictionary
+        if (!menuButtons.ContainsKey(menuId))
+        {
+            menuButtons[menuId] = new List<GameObject>();
+        }
+
+        // Add the new button to the list
+        menuButtons[menuId].Add(newCardSwitcher);
     }
 
     // Shows the next popup in the queue
