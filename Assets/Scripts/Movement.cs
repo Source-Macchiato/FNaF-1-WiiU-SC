@@ -542,7 +542,7 @@ public class Movement : MonoBehaviour {
         if (BonnieProbability < BonnieDifficulty) // probability bonnie to move
         {
             // Bonnie Code
-            Debug.Log("Bonnie Porbability : "+BonnieProbability+"\nBonnieDifficulty : ");
+            Debug.Log("Bonnie Porbability : "+BonnieProbability+"\nBonnieDifficulty : " + BonnieDifficulty);
         }
 
     }
