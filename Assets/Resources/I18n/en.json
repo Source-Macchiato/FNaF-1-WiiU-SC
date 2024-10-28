@@ -101,6 +101,10 @@
       "value": "6th Night"
     },
     {
+      "key": "nextnight.seventhnight",
+      "value": "7th Night"
+    },
+    {
       "key": "office.night",
       "value": "Night"
     },

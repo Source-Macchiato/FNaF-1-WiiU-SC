@@ -297,6 +297,7 @@ MonoBehaviour:
   foxyPicture: {fileID: 21300000, guid: 60094c3db0dd52e4f9c993cd1766634a, type: 3}
   mainMenuContainer: {fileID: 959594340}
   starsContainer: {fileID: 42665248}
+  customNightContainer: {fileID: 632105417}
   customNightBackground: {fileID: 906226892}
   nightNumberGameObject: {fileID: 0}
   layoutButtons: []

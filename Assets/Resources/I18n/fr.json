@@ -54,7 +54,7 @@
     },
     {
       "key": "customnight.ailevel",
-      "value": "Difficultée I.A."
+      "value": "Difficulté I.A."
     },
     {
       "key": "customnight.ready",
@@ -99,6 +99,10 @@
     {
       "key": "nextnight.sixthnight",
       "value": "6e Nuit"
+    },
+    {
+      "key": "nextnight.seventhnight",
+      "value": "7e Night"
     },
     {
       "key": "office.night",

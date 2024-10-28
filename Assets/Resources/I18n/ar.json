@@ -101,6 +101,10 @@
       "value": "الليلة السادسة"
     },
     {
+      "key": "nextnight.seventhnight",
+      "value": "7th Night"
+    },
+    {
       "key": "office.night",
       "value": "الليل"
     },
