@@ -11,27 +11,27 @@ public class MenuSetup : MonoBehaviour
     void Start()
     {
         // Adding buttons to the main menu with corresponding actions
-        menuManager.AddButton("New Game", NewGame, 0, "mainmenu.newgame");
-        menuManager.AddButton("Continue", Continue, 0, "mainmenu.continue");
+        menuManager.AddButton(0, "New Game", NewGame, "mainmenu.newgame");
+        menuManager.AddButton(0, "Continue", Continue, "mainmenu.continue");
 
         if (SaveManager.LoadStarsId() >= 1)
         {
-            menuManager.AddButton("6th Night", SixthNight, 0, "nextnight.sixthnight");
+            menuManager.AddButton(0, "6th Night", SixthNight, "nextnight.sixthnight");
         }
         
         if (SaveManager.LoadStarsId() >= 2)
         {
-            menuManager.AddButton("Custom Night", CustomNight, 0, "mainmenu.customnight");
+            menuManager.AddButton(0, "Custom Night", CustomNight, "mainmenu.customnight");
         }
         
-        menuManager.AddButton("Options", Options, 0, "mainmenu.options", true);
-        menuManager.AddButton("Credits", Credits, 0, "mainmenu.credits", true);
+        menuManager.AddButton(0, "Options", Options, "mainmenu.options", true);
+        menuManager.AddButton(0, "Credits", Credits, "mainmenu.credits", true);
 
-        menuManager.AddButton("Language", Language, 1, "mainmenu.language");
-        menuManager.AddButton("Layout", Layout, 1, "mainmenu.layout");
-        menuManager.AddButton("Online", Online, 1, "mainmenu.online");
+        menuManager.AddButton(1, "Language", Language, "mainmenu.language");
+        menuManager.AddButton(1, "Layout", Layout, "mainmenu.layout");
+        menuManager.AddButton(1, "Online", Online, "mainmenu.online");
 
-        menuManager.AddButton("Analytic Data", Analytics, 4, "mainmenu.analyticdata");
+        menuManager.AddButton(4, "Analytic Data", Analytics, "mainmenu.analyticdata");
 
         // Adding cards to the main menu
         menuManager.AddCard(5, "TV only", menuData.tvOnly);
@@ -43,10 +43,10 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");
 
         // Adding card switchers to the main menu
-        menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, "customnight.ailevel", 0, 20, 1);
-        menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 0, 20, 1);
-        menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 0, 20, 1);
-        menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 1);
+        menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, "customnight.ailevel", 0, 20, 0);
+        menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 0, 20, 0);
+        menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 0, 20, 0);
+        menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 0);
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);

@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
 {
     // Prefab for creating buttons dynamically
     [Header("Prefabs")]
-    public GameObject buttonPrefab;
+    public GameObject[] buttonPrefab;
     public GameObject cardPrefab;
     public GameObject switcherPrefab;
     public GameObject cardSwitcherPrefab;
@@ -1218,7 +1218,7 @@ public class MenuManager : MonoBehaviour
     }
 
     // Adds a button to the menu with the given text and click action
-    public void AddButton(string buttonText, UnityEngine.Events.UnityAction onClickAction, int menuId, string translationId, bool isExtraContainer = false)
+    public void AddButton(int menuId, string buttonText, UnityEngine.Events.UnityAction onClickAction, string translationId, bool isExtraContainer = false)
     {
         // Check the target container to add the button
         Transform parentTransform = isExtraContainer
@@ -1228,7 +1228,7 @@ public class MenuManager : MonoBehaviour
         if (parentTransform == null) return;  // If the extra container does not exist for this menu, stop adding
 
         // Instantiates the button in the specified container
-        GameObject newButton = Instantiate(buttonPrefab, parentTransform);
+        GameObject newButton = Instantiate(buttonPrefab[0], parentTransform);
 
         // Configure the button text
         GameObject buttonTextComponent = newButton.transform.Find("Text").gameObject;
