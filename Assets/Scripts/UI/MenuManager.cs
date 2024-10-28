@@ -1218,7 +1218,7 @@ public class MenuManager : MonoBehaviour
     }
 
     // Adds a button to the menu with the given text and click action
-    public void AddButton(int menuId, string buttonText, UnityEngine.Events.UnityAction onClickAction, string translationId, bool isExtraContainer = false)
+    public void AddButton(int menuId, int buttonType, string buttonText, UnityEngine.Events.UnityAction onClickAction, string translationId, bool isExtraContainer = false)
     {
         // Check the target container to add the button
         Transform parentTransform = isExtraContainer
@@ -1228,7 +1228,7 @@ public class MenuManager : MonoBehaviour
         if (parentTransform == null) return;  // If the extra container does not exist for this menu, stop adding
 
         // Instantiates the button in the specified container
-        GameObject newButton = Instantiate(buttonPrefab[0], parentTransform);
+        GameObject newButton = Instantiate(buttonPrefab[buttonType], parentTransform);
 
         // Configure the button text
         GameObject buttonTextComponent = newButton.transform.Find("Text").gameObject;

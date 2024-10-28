@@ -11,27 +11,29 @@ public class MenuSetup : MonoBehaviour
     void Start()
     {
         // Adding buttons to the main menu with corresponding actions
-        menuManager.AddButton(0, "New Game", NewGame, "mainmenu.newgame");
-        menuManager.AddButton(0, "Continue", Continue, "mainmenu.continue");
+        menuManager.AddButton(0, 0, "New Game", NewGame, "mainmenu.newgame");
+        menuManager.AddButton(0, 0, "Continue", Continue, "mainmenu.continue");
 
         if (SaveManager.LoadStarsId() >= 1)
         {
-            menuManager.AddButton(0, "6th Night", SixthNight, "nextnight.sixthnight");
+            menuManager.AddButton(0, 0, "6th Night", SixthNight, "nextnight.sixthnight");
         }
         
         if (SaveManager.LoadStarsId() >= 2)
         {
-            menuManager.AddButton(0, "Custom Night", CustomNight, "mainmenu.customnight");
+            menuManager.AddButton(0, 0, "Custom Night", CustomNight, "mainmenu.customnight");
         }
         
-        menuManager.AddButton(0, "Options", Options, "mainmenu.options", true);
-        menuManager.AddButton(0, "Credits", Credits, "mainmenu.credits", true);
+        menuManager.AddButton(0, 0, "Options", Options, "mainmenu.options", true);
+        menuManager.AddButton(0, 0, "Credits", Credits, "mainmenu.credits", true);
 
-        menuManager.AddButton(1, "Language", Language, "mainmenu.language");
-        menuManager.AddButton(1, "Layout", Layout, "mainmenu.layout");
-        menuManager.AddButton(1, "Online", Online, "mainmenu.online");
+        menuManager.AddButton(1, 0, "Language", Language, "mainmenu.language");
+        menuManager.AddButton(1, 0, "Layout", Layout, "mainmenu.layout");
+        menuManager.AddButton(1, 0, "Online", Online, "mainmenu.online");
 
-        menuManager.AddButton(4, "Analytic Data", Analytics, "mainmenu.analyticdata");
+        menuManager.AddButton(4, 0, "Analytic Data", Analytics, "mainmenu.analyticdata");
+
+        menuManager.AddButton(7, 1, "READY", CustomNightReady, "customnight.ready", true);
 
         // Adding cards to the main menu
         menuManager.AddCard(5, "TV only", menuData.tvOnly);
@@ -174,6 +176,11 @@ public class MenuSetup : MonoBehaviour
         menuManager.ChangeMenu(6);
 
         menuData.LoadShareDataAndUpdateSwitcher();
+    }
+
+    void CustomNightReady()
+    {
+
     }
 
     // Callback functions
