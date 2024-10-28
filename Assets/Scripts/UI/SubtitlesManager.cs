@@ -65,51 +65,54 @@ public class SubtitlesManager : MonoBehaviour
 
     void Update()
     {
-        if (!isDelayOver)
+        if (nightNumber >= 0 && nightNumber <= 4)
         {
-            if (Time.timeSinceLevelLoad >= displayStartTime)
+            if (!isDelayOver)
             {
-                isDelayOver = true;
-                DisplaySubtitle();
-            }
-            return;
-        }
-
-        if (currentIndex >= subtitleIdentifiers.Count)
-        {
-            return;
-        }
-
-        if (Time.timeSinceLevelLoad >= displayStartTime + displayDurations[currentIndex])
-        {
-            currentIndex++;
-
-            if (currentIndex < subtitleIdentifiers.Count)
-            {
-                DisplaySubtitle();
-            }
-            else
-            {
-                foreach (GameObject subtitleContainer in subtitlesContainers)
+                if (Time.timeSinceLevelLoad >= displayStartTime)
                 {
-                    Text textComponent = subtitleContainer.GetComponent<Text>();
-                    RTLTextMeshPro tmpTextComponent = subtitleContainer.GetComponent<RTLTextMeshPro>();
+                    isDelayOver = true;
+                    DisplaySubtitle();
+                }
+                return;
+            }
 
-                    if (textComponent != null)
+            if (currentIndex >= subtitleIdentifiers.Count)
+            {
+                return;
+            }
+
+            if (Time.timeSinceLevelLoad >= displayStartTime + displayDurations[currentIndex])
+            {
+                currentIndex++;
+
+                if (currentIndex < subtitleIdentifiers.Count)
+                {
+                    DisplaySubtitle();
+                }
+                else
+                {
+                    foreach (GameObject subtitleContainer in subtitlesContainers)
                     {
-                        if (subtitleContainer.activeSelf)
+                        Text textComponent = subtitleContainer.GetComponent<Text>();
+                        RTLTextMeshPro tmpTextComponent = subtitleContainer.GetComponent<RTLTextMeshPro>();
+
+                        if (textComponent != null)
                         {
-                            textComponent.text = "";
-                            subtitleContainer.SetActive(false);
+                            if (subtitleContainer.activeSelf)
+                            {
+                                textComponent.text = "";
+                                subtitleContainer.SetActive(false);
+                            }
                         }
-                    }
 
-                    if (tmpTextComponent != null)
-                    {
-                        if (subtitleContainer.activeSelf)
+                        if (tmpTextComponent != null)
                         {
-                            tmpTextComponent.text = "";
-                            subtitleContainer.SetActive(false);
+                            if (subtitleContainer.activeSelf)
+                            {
+                                tmpTextComponent.text = "";
+                                subtitleContainer.SetActive(false);
+                            }
                         }
                     }
                 }
