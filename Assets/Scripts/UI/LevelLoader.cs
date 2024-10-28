@@ -39,12 +39,12 @@ public class LevelLoader : MonoBehaviour
 
             if (textComponent != null)
             {
-                textComponent.text = (progress * 100).ToString() + "%";
+                textComponent.text = (progress * 100).ToString("F2") + "%";
             }
             
             if (tmpTextComponent != null)
             {
-                tmpTextComponent.text = (progress * 100).ToString() + "%";
+                tmpTextComponent.text = (progress * 100).ToString("F2") + "%";
             }
 
             yield return null;
