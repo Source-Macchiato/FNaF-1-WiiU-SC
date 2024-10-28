@@ -21,8 +21,12 @@
       "value": "Pokračovať"
     },
     {
+      "key": "mainmenu.customnight",
+      "value": "Custom Night"
+    },
+    {
       "key": "mainmenu.night",
-      "value": "NOC"
+      "value": "Noc"
     },
     {
       "key": "mainmenu.options",
@@ -37,24 +41,68 @@
       "value": "Zásluhy"
     },
     {
+      "key": "mainmenu.layout",
+      "value": "Layout"
+    },
+    {
+      "key": "mainmenu.online",
+      "value": "Online"
+    },
+    {
+      "key": "mainmenu.analyticdata",
+      "value": "Analytic Data"
+    },
+    {
+      "key": "customnight.ailevel",
+      "value": "A.I. Level"
+    },
+    {
+      "key": "customnight.ready",
+      "value": "Ready"
+    },
+    {
+      "key": "difficulty.easy",
+      "value": "Easy"
+    },
+    {
+      "key": "difficulty.medium",
+      "value": "Medium"
+    },
+    {
+      "key": "difficulty.hard",
+      "value": "Hard"
+    },
+    {
+      "key": "difficulty.extreme",
+      "value": "Extreme"
+    },
+    {
       "key": "nextnight.firstnight",
-      "value": "1 .  N o c"
+      "value": "1. Noc"
     },
     {
       "key": "nextnight.secondnight",
-      "value": "2.  N o c"
+      "value": "2. Noc"
     },
     {
       "key": "nextnight.thirdnight",
-      "value": "3.  N o c"
+      "value": "3. Noc"
     },
     {
       "key": "nextnight.fourthnight",
-      "value": "4.  N o c"
+      "value": "4. Noc"
     },
     {
       "key": "nextnight.fifthnight",
-      "value": "5.  N o c"
+      "value": "5. Noc"
+    },
+    {
+      "key": "nextnight.sixthnight",
+      "value": "6th Night"
+    },
+    {
+      "key": "nextnight.seventhnight",
+      "value": "7th Night"
     },
     {
       "key": "office.night",
