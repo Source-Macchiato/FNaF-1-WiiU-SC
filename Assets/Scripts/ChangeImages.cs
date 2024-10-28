@@ -728,8 +728,7 @@ public class ChangeImages : MonoBehaviour
 
                             if (foxyRunTime <= -3)
                             {
-                                CanvasGameOver.SetActive(true);
-                                GameOverScript.SetActive(true);
+                                SceneManager.LoadScene("GameOver");
                                 foxyRunTime = 3.5f;
                                 foxyStarted = false;
                             }
