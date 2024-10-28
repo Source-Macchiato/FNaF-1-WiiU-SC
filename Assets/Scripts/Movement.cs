@@ -153,6 +153,7 @@ public class Movement : MonoBehaviour {
     //debug garbage
     if (Input.GetKeyDown(KeyCode.P))
     {
+        Debug.ClearDeveloperConsole();
         Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
         Debug.Log("Saved: Bonnie=" + BonnieDifficulty + "\n Chica=" + ChicaDifficulty + "\n Freddy=" + FreddyDifficulty + "\n Foxy=" + FoxyDifficulty);
         Debug.Log("WhereBonnie=" +WhereBonnie+ "\nWhereChica =" +WhereChica+ "\nWhereFreddy =" +WhereFreddy+ "\nWhereFoxy = " +WhereFoxy);
