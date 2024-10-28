@@ -1711,5 +1711,11 @@ public class MenuManager : MonoBehaviour
             newButton.Select();
             currentButton = newButton;
         }
+
+        // Play effect
+        if (buttonAudio != null)
+        {
+            buttonAudio.Play();
+        }
     }
 }
