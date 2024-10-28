@@ -21,6 +21,7 @@ public class MenuData : MonoBehaviour
     [Header("Other")]
     public GameObject mainMenuContainer;
     public GameObject starsContainer;
+    public GameObject customNightContainer;
     public GameObject customNightBackground;
 
     [HideInInspector]
@@ -274,5 +275,24 @@ public class MenuData : MonoBehaviour
     public void CustomNightBackgroundStatus(bool status)
     {
         customNightBackground.SetActive(status);
+    }
+
+    public void SaveCustomNightValues()
+    {
+        int[] characterValue = new int[customNightContainer.transform.childCount];
+        int index = 0;
+
+        foreach (Transform character in customNightContainer.transform)
+        {
+            characterValue[index] = character.GetComponent<CardSwitcher>().difficultyId;
+
+            index++;
+        }
+
+        PlayerPrefs.SetFloat("FreddyDifficulty", characterValue[0]);
+        PlayerPrefs.SetFloat("BonnieDifficulty", characterValue[1]);
+        PlayerPrefs.SetFloat("ChicaDifficulty", characterValue[2]);
+        PlayerPrefs.SetFloat("FoxyDifficulty", characterValue[3]);
+        PlayerPrefs.Save();
     }
 }

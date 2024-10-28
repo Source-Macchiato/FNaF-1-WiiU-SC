@@ -180,7 +180,9 @@ public class MenuSetup : MonoBehaviour
 
     void CustomNightReady()
     {
+        menuData.SaveCustomNightValues();
 
+        SceneManager.LoadScene("NextNight");
     }
 
     // Callback functions
