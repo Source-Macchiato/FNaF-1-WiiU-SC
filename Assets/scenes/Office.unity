@@ -16891,6 +16891,8 @@ MonoBehaviour:
     type: 3}
   PirateCovePhase3Default: {fileID: 21300000, guid: eb2640a0abbd8354b8ac7426c7749e39,
     type: 3}
+  PirateCovePhase4Default: {fileID: 21300000, guid: 05be658005994194d99b00f35bd9ea3f,
+    type: 3}
   WestHallDefault: {fileID: 21300000, guid: 413faaeec342849499ae9cb10cd7f50c, type: 3}
   WestHallBonnieDefault: {fileID: 21300000, guid: e7b9eb16fe6012c43baef8d29a5f87b2,
     type: 3}
