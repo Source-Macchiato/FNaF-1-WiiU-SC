@@ -36,6 +36,7 @@ public class ChangeImages : MonoBehaviour
     public Sprite PirateCovePhase1Default;
     public Sprite PirateCovePhase2Default;
     public Sprite PirateCovePhase3Default;
+    public Sprite PirateCovePhase4Default;
 
     [Header("West Hall sprites")]
     public Sprite WestHallDefault;
@@ -297,7 +298,7 @@ public class ChangeImages : MonoBehaviour
                 i18nTextTranslator.UpdateText();
 
                 // Foxy phase 1
-                if (WhereFoxy <= 1)
+                if (WhereFoxy == 1)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != PirateCovePhase1Default)
@@ -317,12 +318,20 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Foxy phase 3
-                if (WhereFoxy >= 3)
+                if (WhereFoxy == 3)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != PirateCovePhase3Default)
                     {
                         currentSprite = PirateCovePhase3Default;
+                    }
+                }
+                if(WhereFoxy == 4)
+                {
+                    // Check if sprite is already displayed
+                    if (currentSprite != PirateCovePhase4Default)
+                    {
+                        currentSprite = PirateCovePhase4Default;
                     }
                 }
             }
@@ -686,7 +695,7 @@ public class ChangeImages : MonoBehaviour
             controllersRumble.IsRumbleTriggered("Freddy");
         }
 
-        if (WhereFoxy >= 3)
+        if (WhereFoxy >= 4)
         {
             if (WhichCamera == 4)
             {

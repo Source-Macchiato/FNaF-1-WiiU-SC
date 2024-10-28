@@ -327,7 +327,7 @@ public class Movement : MonoBehaviour {
 
     void AttemptBonnieMovement()
     {
-        if (BonnieProbability < BonnieDifficulty && WhereBonnie == WhereChica) // probability bonnie to move
+        if (BonnieProbability < BonnieDifficulty) // probability bonnie to move
         {
             WhereBonnie += 1;
             bonnieInCount = false;
@@ -339,7 +339,6 @@ public class Movement : MonoBehaviour {
             }
             Debug.Log("Bonnie Porbability : "+BonnieProbability+"\nBonnieDifficulty : " + BonnieDifficulty);
         }
-
     }
 
     void AttemptChicaMovement()
