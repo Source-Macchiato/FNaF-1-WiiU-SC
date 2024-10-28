@@ -32,6 +32,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EasterEgg.unity
     guid: f1c37120d10f18648811308b20dffb92
-  - enabled: 1
-    path: Assets/Scenes/CustomNight.unity
-    guid: 939471e45299cc74ea3eea85678e5896

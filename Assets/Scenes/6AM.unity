@@ -1362,6 +1362,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Children: {fileID: 627522480}
   nightNumber: 0
+  achievementsIcons:
+  - {fileID: 21300000, guid: b87e88a6374c3f84887e34c8fe81d151, type: 3}
+  - {fileID: 21300000, guid: a23b212b840b58e49a043f25b0e99c06, type: 3}
+  - {fileID: 21300000, guid: db9cd2334b7cbe94d8162496302260e1, type: 3}
+  - {fileID: 21300000, guid: 97b8dc26c0eb64a47bca272fa7e762cc, type: 3}
+  - {fileID: 21300000, guid: 220659fbda9f3b84088f927183c52002, type: 3}
+  - {fileID: 21300000, guid: dbef9646e38534344872a1cee711b4cc, type: 3}
+  - {fileID: 21300000, guid: c9ef12f2489b4554492cf4f67cff8899, type: 3}
 --- !u!4 &1400213474
 Transform:
   m_ObjectHideFlags: 0

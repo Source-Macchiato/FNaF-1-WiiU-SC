@@ -4,9 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class GameOverWait : MonoBehaviour
 {
+	public Sprite achievementIcon;
+
 	void Start()
 	{
-		StartCoroutine(InitCoroutine());	
+        MedalsManager.medalsManager.ShowAchievement("No Hiding", "Experienced a jumpscare, and then... who knows?", achievementIcon);
+
+        StartCoroutine(InitCoroutine());	
 	}
 
 	IEnumerator InitCoroutine()

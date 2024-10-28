@@ -1312,6 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d03812b61542342b8b4790eef50c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  achievementIcon: {fileID: 21300000, guid: 5d33736ccf002ac4690bbb0af1b5a860, type: 3}
 --- !u!1 &1728639319
 GameObject:
   m_ObjectHideFlags: 0
