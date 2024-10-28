@@ -236,7 +236,7 @@ public class Movement : MonoBehaviour {
         }
     }
     //generate Foxy chance  to move
-    if(FoxyActive && !camIsUp)
+    if(FoxyActive && !camIsUp && WhereFoxy < 4)
     {
         FoxyMovementTime -= Time.deltaTime;
         if(FoxyMovementTime <=0)
@@ -374,9 +374,6 @@ public class Movement : MonoBehaviour {
                     GlitchActive = false;
                     MoveGlitch.SetActive(false);
                   }
-
-
-
                 }
 
             }
