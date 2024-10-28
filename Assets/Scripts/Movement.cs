@@ -69,7 +69,6 @@ public class Movement : MonoBehaviour {
 
     public AudioSource FreddyLaugh1;
 
-    //these 4 variables is used for the Difficulties of animatronics depend of what hour it is
     //each column represent a night (night 1, night 2 etc...), and each row represent an Hour "12 AM to 5AM"
     private int[,] startingDifficulties = {
     {0, 0, 0, 0}, // Night 1 - Freddy, Bonnie, Chica, Foxy
@@ -101,24 +100,11 @@ public class Movement : MonoBehaviour {
         FreddyProbability = Random.Range(0, 100);
         FoxyProbability = Random.Range(0, 100);
 
-
-
-
         //Disable Chica sounds when she is in the kitchen
         ChicaInKitchen.SetActive(false);
 
         //Get the current NightNumber at the start of the game
         NightNumber = SaveManager.LoadNightNumber();
-    }
-
-    // Function to save the difficulty of each animatronic
-    void SaveDifficulty()
-    {
-        PlayerPrefs.SetFloat("BonnieDifficulty", BonnieDifficulty);
-        PlayerPrefs.SetFloat("ChicaDifficulty", ChicaDifficulty);
-        PlayerPrefs.SetFloat("FreddyDifficulty", FreddyDifficulty);
-        PlayerPrefs.SetFloat("FoxyDifficulty", FoxyDifficulty);
-        PlayerPrefs.Save();
     }
     
 	void Update()
@@ -126,11 +112,22 @@ public class Movement : MonoBehaviour {
     int hour = gameScript.Hour;
     int nightIndex = Mathf.Clamp((int)NightNumber, 0, 5);  // Limit nightIndex to valid range (0-5)
 
-    // Set initial difficulties based on the starting array
-    FreddyDifficulty = startingDifficulties[nightIndex, 0]*5;
-    BonnieDifficulty = startingDifficulties[nightIndex, 1]*5;
-    ChicaDifficulty = startingDifficulties[nightIndex, 2]*5;
-    FoxyDifficulty = startingDifficulties[nightIndex, 3]*5;
+    if(NightNumber <= 5)
+    {
+        // Set initial difficulties based on the starting array
+        FreddyDifficulty = startingDifficulties[nightIndex, 0] * 5;
+        BonnieDifficulty = startingDifficulties[nightIndex, 1] * 5;
+        ChicaDifficulty = startingDifficulties[nightIndex, 2] * 5;
+        FoxyDifficulty = startingDifficulties[nightIndex, 3] * 5;
+    }
+    else
+    {
+        BonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", BonnieDifficulty);
+        ChicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", ChicaDifficulty);
+        FreddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", FreddyDifficulty);
+        FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
+    }
+    
 
     // Increment difficulties based on the hour
     if (hour == 2) {
@@ -153,10 +150,12 @@ public class Movement : MonoBehaviour {
     FreddyActive = FreddyDifficulty > 0;
     FoxyActive = FoxyDifficulty > 0;
 
+    //debug garbage
     if (Input.GetKeyDown(KeyCode.P))
     {
         Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
-        Debug.Log("Saved: Bonnie=" + BonnieDifficulty + ", Chica=" + ChicaDifficulty + ", Freddy=" + FreddyDifficulty + ", Foxy=" + FoxyDifficulty);
+        Debug.Log("Saved: Bonnie=" + BonnieDifficulty + "\n Chica=" + ChicaDifficulty + "\n Freddy=" + FreddyDifficulty + "\n Foxy=" + FoxyDifficulty);
+        Debug.Log("WhereBonnie=" +WhereBonnie+ "\nWhereChica =" +WhereChica+ "\nWhereFreddy =" +WhereFreddy+ "\nWhereFoxy = " +WhereFoxy);
     }
 
     RandMovement randMovement = GetComponent<RandMovement>();
