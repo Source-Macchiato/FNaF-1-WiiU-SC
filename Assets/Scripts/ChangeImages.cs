@@ -697,76 +697,64 @@ public class ChangeImages : MonoBehaviour
 
         if (WhereFoxy >= 4)
         {
-            if (WhichCamera == 4)
+
+
+            foxyStarted = true;
+
+            if (foxyStarted)
             {
-                if (camIsUp)
+                FoxyFootsteps.Play();
+                FoxyRunDownHall.SetActive(true);
+                FoxyAnimationPlayed = true;
+                
+                foxyRunTime -= Time.deltaTime;
+                FoxyAnimationTimer -= Time.deltaTime;
+                if (FoxyAnimationTimer <= 0f)
                 {
-                    foxyStarted = true;
+                    foxyAnimator.enabled = false;
                 }
-
-                if (foxyStarted)
+                if (foxyRunTime <= 0)
                 {
-                    FoxyFootsteps.Play();
-                    FoxyRunDownHall.SetActive(true);
-                    FoxyAnimationPlayed = true;
-                    
-                    foxyRunTime -= Time.deltaTime;
-                    FoxyAnimationTimer -= Time.deltaTime;
-
-                    if (FoxyAnimationTimer <= 0f)
+                    if (!L_Door_Closed)
                     {
-                        foxyAnimator.enabled = false;
-                    }
-
-                    if (foxyRunTime <= 0)
-                    {
-                        if (!L_Door_Closed)
+                        FoxyEnterOffice.SetActive(true);
+                        OriginalOfficeImage.GetComponent<Image>().enabled = false;
+                        FoxyRunDownHall.SetActive(false);
+                        LowerCanvas.SetActive(false);
+                        Phonecalls.SetActive(false);
+                        AudioSources.SetActive(false);
+                        CamViewTabletClose.SetActive(false);
+                        CamViewTabletOpen.SetActive(false);
+                        Dot.SetActive(false);
+                        Black.SetActive(false);
+                        StripeGlitches.SetActive(false);
+                        if (foxyRunTime <= -3)
                         {
-                            FoxyEnterOffice.SetActive(true);
-                            OriginalOfficeImage.GetComponent<Image>().enabled = false;
-                            FoxyRunDownHall.SetActive(false);
-
-                            LowerCanvas.SetActive(false);
-                            Phonecalls.SetActive(false);
-                            AudioSources.SetActive(false);
-                            CamViewTabletClose.SetActive(false);
-                            CamViewTabletOpen.SetActive(false);
-                            Dot.SetActive(false);
-                            Black.SetActive(false);
-                            StripeGlitches.SetActive(false);
-
-                            if (foxyRunTime <= -3)
-                            {
-                                SceneManager.LoadScene("GameOver");
-                                foxyRunTime = 3.5f;
-                                foxyStarted = false;
-                            }
-                        }
-
-                        if (L_Door_Closed)
-                        {
-                            DoorBang.Play();
-                            OfficeObject.GetComponent<Movement>().WhereFoxy = 1;
-                            OfficeObject.GetComponent<Movement>().foxyInCount = false;
-                            //OfficeObject.GetComponent<Movement>().GenNumber();
-                            OriginalOfficeImage.GetComponent<Image>().enabled = true;
-                            FoxyRunDownHall.SetActive(false);
-
+                            SceneManager.LoadScene("GameOver");
                             foxyRunTime = 3.5f;
                             foxyStarted = false;
                         }
                     }
+                    if (L_Door_Closed)
+                    {
+                        DoorBang.Play();
+                        OfficeObject.GetComponent<Movement>().WhereFoxy = 1;
+                        OfficeObject.GetComponent<Movement>().foxyInCount = false;
+                        //OfficeObject.GetComponent<Movement>().GenNumber();
+                        OriginalOfficeImage.GetComponent<Image>().enabled = true;
+                        FoxyRunDownHall.SetActive(false);
+                        foxyRunTime = 3.5f;
+                        foxyStarted = false;
+                    }
                 }
-
-                else if (!camIsUp)
-                {
-                    FoxyRunDownHall.SetActive(false);
-                }
-
-                if(WhichCamera != 4)
-                {
-                    FoxyRunDownHall.SetActive(false);
-                }
+            }
+            else if (!camIsUp)
+            {
+                FoxyRunDownHall.SetActive(false);
+            }
+            if(WhichCamera != 4)
+            {
+                FoxyRunDownHall.SetActive(false);
             }
         }
 
