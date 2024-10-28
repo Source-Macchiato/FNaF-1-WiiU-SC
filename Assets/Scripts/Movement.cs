@@ -122,10 +122,10 @@ public class Movement : MonoBehaviour {
     }
     else
     {
-        BonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", BonnieDifficulty);
-        ChicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", ChicaDifficulty);
-        FreddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", FreddyDifficulty);
-        FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty);
+        BonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", BonnieDifficulty) * 5;
+        ChicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", ChicaDifficulty) * 5;
+        FreddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", FreddyDifficulty) * 5;
+        FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty) * 5;
     }
     
 
