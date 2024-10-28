@@ -180,6 +180,11 @@ public class MenuSetup : MonoBehaviour
 
     void CustomNightReady()
     {
+        menuManager.canNavigate = false;
+
+        menuData.nightNumber = 6;
+        menuData.SaveNightNumber();
+
         menuData.SaveCustomNightValues();
 
         SceneManager.LoadScene("NextNight");
