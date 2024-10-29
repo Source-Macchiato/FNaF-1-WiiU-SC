@@ -764,6 +764,8 @@ public class ChangeImages : MonoBehaviour
                         FoxyRunDownHall.SetActive(false);
 
                         isBeingJumpscared = true;
+
+                        controllersRumble.IsRumbleTriggered("Foxy");
                     }
                     if (L_Door_Closed)
                     {
