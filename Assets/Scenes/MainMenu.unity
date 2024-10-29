@@ -299,6 +299,7 @@ MonoBehaviour:
   starsContainer: {fileID: 42665248}
   customNightContainer: {fileID: 632105417}
   customNightBackground: {fileID: 906226892}
+  achievementIcon: {fileID: 21300000, guid: 409d3e13915616a4fbe66684cab4cf89, type: 3}
   nightNumberGameObject: {fileID: 0}
   layoutButtons: []
   advertisementImage: {fileID: 1316367838}

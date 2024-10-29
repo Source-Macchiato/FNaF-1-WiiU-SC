@@ -23,6 +23,7 @@ public class MenuData : MonoBehaviour
     public GameObject starsContainer;
     public GameObject customNightContainer;
     public GameObject customNightBackground;
+    public Sprite achievementIcon;
 
     [HideInInspector]
     public GameObject nightNumberGameObject;

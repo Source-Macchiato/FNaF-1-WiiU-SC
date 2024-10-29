@@ -187,7 +187,23 @@ public class MenuSetup : MonoBehaviour
 
         menuData.SaveCustomNightValues();
 
-        SceneManager.LoadScene("NextNight");
+        float freddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", 0);
+        float bonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", 0);
+        float chicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", 0);
+        float foxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", 0);
+
+        if (freddyDifficulty == 1 && bonnieDifficulty == 9 && chicaDifficulty == 8 && foxyDifficulty == 7)
+        {
+            menuData.CustomNightBackgroundStatus(false);
+
+            menuManager.ChangeMenu(0);
+
+            MedalsManager.medalsManager.ShowAchievement("The Bite of '87", "Unlock Golden Freddy in the Custom Night.", menuData.achievementIcon);
+        }
+        else
+        {
+            SceneManager.LoadScene("NextNight");
+        }
     }
 
     // Callback functions
