@@ -17235,6 +17235,8 @@ MonoBehaviour:
     type: 3}
   ShowStageChicaFreddyDefault: {fileID: 21300000, guid: 03b8e40396cd176479e14c915d53b1c5,
     type: 3}
+  ShowStageBonnieFreddyDefault: {fileID: 21300000, guid: f12c3cbacb697d043977e23375677c4a,
+    type: 3}
   ShowStageFreddyDefault: {fileID: 21300000, guid: ee7767b077c477544acdd83abc55e5b2,
     type: 3}
   ShowStageFreddyEasterEgg: {fileID: 21300000, guid: 2733874c1fab08046befd0f0dca8cbda,
