@@ -52,7 +52,7 @@ public class MenuSetup : MonoBehaviour
         
         if (SaveManager.LoadGoldenFreddyStatus() == 1)
         {
-            menuManager.AddCardSwitcher(7, "Golden Freddy", menuData.goldenPicture, "customnight.ailevel", 0, 20);
+            menuData.AddGoldenFreddy();
         }
 
         // Set back callbacks for specific menus
@@ -195,15 +195,19 @@ public class MenuSetup : MonoBehaviour
         float chicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", 0);
         float foxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", 0);
 
-        if (freddyDifficulty == 1 && bonnieDifficulty == 9 && chicaDifficulty == 8 && foxyDifficulty == 7)
+        if (freddyDifficulty == 1 && bonnieDifficulty == 9 && chicaDifficulty == 8 && foxyDifficulty == 7 && SaveManager.LoadGoldenFreddyStatus() == 0)
         {
             menuData.CustomNightBackgroundStatus(false);
 
+            MedalsManager.medalsManager.ShowAchievement("The Bite of '87", "Unlock Golden Freddy in the Custom Night.", menuData.achievementIcon);
+
             menuData.SaveGoldenFreddy();
 
-            menuManager.ChangeMenu(0);
+            menuData.AddGoldenFreddy();
 
-            MedalsManager.medalsManager.ShowAchievement("The Bite of '87", "Unlock Golden Freddy in the Custom Night.", menuData.achievementIcon);
+            // --- Animation ---
+
+            menuManager.ChangeMenu(0);
         }
         else
         {

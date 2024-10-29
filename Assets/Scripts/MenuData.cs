@@ -33,6 +33,7 @@ public class MenuData : MonoBehaviour
     // Scripts
     SaveGameState saveGameState;
     SaveManager saveManager;
+    MenuManager menuManager;
 
     // Advertisement
     public GameObject advertisementImage;
@@ -45,6 +46,7 @@ public class MenuData : MonoBehaviour
         // Get scripts
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
+        menuManager = FindObjectOfType<MenuManager>();
 
         // Load
         nightNumber = SaveManager.LoadNightNumber();
@@ -250,6 +252,14 @@ public class MenuData : MonoBehaviour
     public void CustomNightBackgroundStatus(bool status)
     {
         customNightBackground.SetActive(status);
+    }
+
+    public void AddGoldenFreddy()
+    {
+        menuManager.AddCardSwitcher(7, "Golden Freddy", goldenPicture, "customnight.ailevel", 0, 20);
+
+        HorizontalLayoutGroup horizontalLayoutGroup = customNightContainer.GetComponent<HorizontalLayoutGroup>();
+        horizontalLayoutGroup.spacing = 71;
     }
 
     public void SaveShareData()
