@@ -5,7 +5,10 @@ public class MoveInOffice : MonoBehaviour
 {
     public GameObject OfficeContainer;
     private RectTransform officeRect;
+
+    [HideInInspector]
     public bool camIsUp = false;
+    public bool canMove = true;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -153,7 +156,7 @@ public class MoveInOffice : MonoBehaviour
 
     private void MoveLeft()
     {
-        if (!camIsUp)
+        if (!camIsUp && canMove)
         {
             OfficeContainer.transform.Translate(Vector3.right * speed * Time.deltaTime);
 
@@ -166,7 +169,7 @@ public class MoveInOffice : MonoBehaviour
 
     private void MoveRight()
     {
-        if (!camIsUp)
+        if (!camIsUp && canMove)
         {
             OfficeContainer.transform.Translate(Vector3.left * speed * Time.deltaTime);
 

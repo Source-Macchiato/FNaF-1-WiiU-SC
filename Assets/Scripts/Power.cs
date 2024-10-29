@@ -16,11 +16,14 @@ public class Power : MonoBehaviour {
     public float JumpscarePlayTime = 0.2f;
 
     private ControllersRumble controllersRumble;
+    private MoveInOffice moveInOffice;
 
     void Start()
     {
         Blink.SetActive(false);
+
         controllersRumble = FindObjectOfType<ControllersRumble>();
+        moveInOffice = FindObjectOfType<MoveInOffice>();
 
         // Assign PlayTime a random value between 15 and 28 seconds
         PlayTime = Random.Range(15f, 28f);
@@ -52,6 +55,8 @@ public class Power : MonoBehaviour {
 
                 if (DarkTime <= 0)
                 {
+                    moveInOffice.canMove = false;
+
                     freddyJumpScare.SetActive(true);
                     PlayTime = 0;
                     JumpscarePlayTime -= Time.deltaTime;

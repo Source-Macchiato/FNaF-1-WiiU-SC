@@ -9,13 +9,11 @@ public class ChangeImages : MonoBehaviour
     public float FoxyAnimationTimer = 0.50f;
     public GameObject KitckenAudioOnly;
     public float WhichCamera = 1;
-    public GameObject WichCameraShower;
     public GameObject cameraScreen;
-    public GameObject CanvasGameOver;
-    public GameObject GameOverScript;
 
     public I18nTextTranslator i18nTextTranslator;
     private ControllersRumble controllersRumble;
+    private MoveInOffice moveInOffice;
 
     // -----------DiningArea var----------
 
@@ -84,9 +82,9 @@ public class ChangeImages : MonoBehaviour
     public double RandCamNoise;
     public bool noiseIsPlaying;
 
+    public float WhereFreddy = 1;
     public float WhereBonnie = 1;
     public float WhereChica = 1;
-    public float WhereFreddy = 1;
     public float WhereFoxy = 1;
 
     public int GoldenFreddyChance;
@@ -149,6 +147,7 @@ public class ChangeImages : MonoBehaviour
     {
         foxyAnimator = FoxyRunDownHall.GetComponent<Animator>();
         controllersRumble = FindObjectOfType<ControllersRumble>();
+        moveInOffice = FindObjectOfType<MoveInOffice>();
         
         GoldenFreddyJumpscareTime = 10f;
         GoldenFreddyOffice.SetActive(false);
@@ -179,7 +178,7 @@ public class ChangeImages : MonoBehaviour
                 GoldenFreddyJumpscareTime -= Time.deltaTime;
                 if(GoldenFreddyJumpscareTime <= 6f)
                 {
-                    SceneManager.LoadScene("GOLDENFREDDYCRASHCONSOLE");
+                    Application.Quit();
                 }
             }
         }
@@ -835,6 +834,11 @@ public class ChangeImages : MonoBehaviour
 
         if (isBeingJumpscared)
         {
+            if (moveInOffice.canMove)
+            {
+                moveInOffice.canMove = false;
+            }
+
             WaitJumpscare -= Time.deltaTime;
 
             if (WaitJumpscare <= 0)
