@@ -17,6 +17,7 @@ public class MenuData : MonoBehaviour
     public Sprite bonniePicture;
     public Sprite chicaPicture;
     public Sprite foxyPicture;
+    public Sprite goldenPicture;
 
     [Header("Other")]
     public GameObject mainMenuContainer;

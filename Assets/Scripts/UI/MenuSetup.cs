@@ -45,10 +45,11 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");
 
         // Adding card switchers to the main menu
-        menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, "customnight.ailevel", 0, 20, 0);
-        menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 0, 20, 0);
-        menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 0, 20, 0);
-        menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 0);
+        menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, "customnight.ailevel", 0, 20, 1);
+        menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 0, 20, 3);
+        menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 0, 20, 3);
+        menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 1);
+        menuManager.AddCardSwitcher(7, "Golden Freddy", menuData.goldenPicture, "customnight.ailevel", 0, 20);
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
@@ -180,8 +181,6 @@ public class MenuSetup : MonoBehaviour
 
     void CustomNightReady()
     {
-        menuManager.canNavigate = false;
-
         menuData.nightNumber = 6;
         menuData.SaveNightNumber();
 
@@ -202,6 +201,8 @@ public class MenuSetup : MonoBehaviour
         }
         else
         {
+            menuManager.canNavigate = false;
+
             SceneManager.LoadScene("NextNight");
         }
     }

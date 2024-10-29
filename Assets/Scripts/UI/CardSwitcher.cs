@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using RTLTMPro;
 
 public class CardSwitcher : MonoBehaviour
 {
 	public int difficultyId;
 
+	public GameObject selection;
 	public string titleName;
 	public Sprite coverSprite;
 	public string descriptionTranslationId;
@@ -13,7 +15,7 @@ public class CardSwitcher : MonoBehaviour
 	public int maxValue;
 
 	[Header("Components")]
-	public Text textTitle;
+	public RTLTextMeshPro tmpTitle;
 	public Image cover;
 	public I18nTextTranslator descriptionTranslator;
 	public RTLTextMeshPro tmpSwitcherValue;
@@ -21,6 +23,24 @@ public class CardSwitcher : MonoBehaviour
 	void Start()
 	{
         UpdateCardSwitcher();
+	}
+
+	void Update()
+	{
+		if (EventSystem.current.currentSelectedGameObject == gameObject)
+		{
+			if (!selection.activeSelf)
+			{
+				selection.SetActive(true);
+			}
+		}
+		else
+		{
+			if (selection.activeSelf)
+			{
+				selection.SetActive(false);
+			}
+		}
 	}
 
 	public void IncreaseDifficulty()
@@ -46,9 +66,9 @@ public class CardSwitcher : MonoBehaviour
 	public void UpdateCardSwitcher()
 	{
 		// Update title
-		if (textTitle.text != titleName)
+		if (tmpTitle.text != titleName)
 		{
-			textTitle.text = titleName;
+			tmpTitle.text = titleName;
 		}
 
 		// Update cover
