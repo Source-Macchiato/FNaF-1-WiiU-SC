@@ -291,7 +291,7 @@ MonoBehaviour:
   tvOnly: {fileID: 21300000, guid: 636e7d7f2a512ef45a8be32e8fc850b1, type: 3}
   tvGamepad: {fileID: 21300000, guid: 943cb8d683cc8e04c9e5d6887edf28b1, type: 3}
   gamepadOnly: {fileID: 21300000, guid: 04fc7ab796661b844909156fb80d44c0, type: 3}
-  freddyPicture: {fileID: 21300000, guid: 9b7ded4259388f54e9f61620c7d34391, type: 3}
+  freddyPicture: {fileID: 21300000, guid: 5c0f49c119b571946bb794011d2159a5, type: 3}
   bonniePicture: {fileID: 21300000, guid: 3fe5e69b13b464a4d8eee52088c0a6e8, type: 3}
   chicaPicture: {fileID: 21300000, guid: 81547d94ad7fa5b409286968db90782f, type: 3}
   foxyPicture: {fileID: 21300000, guid: 60094c3db0dd52e4f9c993cd1766634a, type: 3}

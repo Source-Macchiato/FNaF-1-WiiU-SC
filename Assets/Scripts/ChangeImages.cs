@@ -45,6 +45,7 @@ public class ChangeImages : MonoBehaviour
     [Header("West Hall Corner sprites")]
     public Sprite WestHallCornerDefault;
     public Sprite WestHallCornerEasterEgg;
+    public Sprite WestHallCornerGoldenFreddy;
     public Sprite WestHallCornerBonnieDefault;
 
     [Header("Closet sprites")]
@@ -87,6 +88,14 @@ public class ChangeImages : MonoBehaviour
     public float WhereFreddy = 1;
     public float WhereFoxy = 1;
 
+    public int GoldenFreddyChance;
+    public bool GoldenFreddyActive;
+    public GameObject GoldenFreddyOffice;
+    public float GoldenFreddyJumpscareTime = 10f;
+    public float GoldenFreddyDoJumpscare = 5f;
+    public GameObject GoldenFreddyLaugh;
+    public GameObject GoldenFreddyJumpscare;
+    private bool hasGeneratedGFNumber = false;
     public bool BonnieLeft = false;
     public bool ChicaLeft = false;
     public bool FreddyLeft = false;
@@ -139,6 +148,10 @@ public class ChangeImages : MonoBehaviour
     {
         foxyAnimator = FoxyRunDownHall.GetComponent<Animator>();
         controllersRumble = FindObjectOfType<ControllersRumble>();
+        
+        GoldenFreddyJumpscareTime = 10f;
+        GoldenFreddyOffice.SetActive(false);
+        GoldenFreddyLaugh.SetActive(false);
     }
 
     void Update()
@@ -154,8 +167,49 @@ public class ChangeImages : MonoBehaviour
         // Get current sprite and assign it in a local variable
         currentSprite = cameraScreen.GetComponent<Image>().sprite;
 
+        if(GoldenFreddyActive && !camIsUp)
+        {
+            GoldenFreddyJumpscareTime -= Time.deltaTime;
+            if(GoldenFreddyJumpscareTime <= 0)
+            {
+                controllersRumble.IsRumbleTriggered("GoldenFreddy");
+                GoldenFreddyJumpscare.SetActive(true);
+                GoldenFreddyJumpscareTime = 10f;
+                GoldenFreddyJumpscareTime -= Time.deltaTime;
+                if(GoldenFreddyJumpscareTime <= 6f)
+                {
+                    SceneManager.LoadScene("GOLDENFREDDYCRASHCONSOLE");
+                }
+            }
+        }
+        else if(camIsUp)
+        {
+            GoldenFreddyActive = false;
+        }
+
+        if(!GoldenFreddyActive)
+        {
+            GoldenFreddyOffice.SetActive(false);
+        }
         if (camIsUp)
         {
+            if(!hasGeneratedGFNumber)
+            {
+                GenerateGoldenFreddyChance();
+                hasGeneratedGFNumber = true;
+                
+            }
+            
+            if(GoldenFreddyChance == 0 && WhichCamera == 5)
+            {
+                GoldenFreddyActive = true;
+                GoldenFreddyOffice.SetActive(true);
+            }
+            else
+            {
+                GoldenFreddyActive = false;
+                GoldenFreddyOffice.SetActive(false);
+            }
             if (WhichCamera == 1)
             {
                 i18nTextTranslator.textId = "camera.showstage";
@@ -376,7 +430,7 @@ public class ChangeImages : MonoBehaviour
                 else
                 {
                     // Check if sprite is already displayed
-                    if (currentSprite != WestHallCornerDefault && currentSprite != WestHallCornerEasterEgg)
+                    if (currentSprite != WestHallCornerDefault && currentSprite != WestHallCornerEasterEgg && !GoldenFreddyActive)
                     {
                         if (EasterEgg(100))
                         {
@@ -386,6 +440,13 @@ public class ChangeImages : MonoBehaviour
                         {
                             currentSprite = WestHallCornerDefault;
                         }
+                    }
+                    if(GoldenFreddyActive && currentSprite != WestHallBonnieDefault)
+                    {
+                        currentSprite = WestHallCornerGoldenFreddy;
+                    }
+                    else{
+                        currentSprite = WestHallCornerDefault;
                     }
                 }
             }
@@ -558,6 +619,11 @@ public class ChangeImages : MonoBehaviour
         else
         {
             KitckenAudioOnly.SetActive(false);
+        }
+
+        if(!camIsUp)
+        {
+            hasGeneratedGFNumber = false;
         }
 
         if (WhichCamera == 11)
@@ -772,6 +838,14 @@ public class ChangeImages : MonoBehaviour
         cameraScreen.GetComponent<Image>().sprite = currentSprite;
     }
 
+    public void GenerateGoldenFreddyChance()
+    {
+        //GoldenFreddyChance = Random.Range(0, 32768);
+        GoldenFreddyChance = Random.Range(0, 4);
+        Debug.Log("GoldenFreddy chance generated : "+ GoldenFreddyChance);
+
+    }
+
     public void cam1a()
     {
         WhichCamera = 1;
@@ -826,7 +900,6 @@ public class ChangeImages : MonoBehaviour
     {
         WhichCamera = 11;
     }
-
     bool EasterEgg(int max)
     {
         int randomNumber = Random.Range(0, max);

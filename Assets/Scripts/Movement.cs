@@ -31,6 +31,7 @@ public class Movement : MonoBehaviour {
     public float FreddyDifficulty; //done
     public float FoxyDifficulty; //done
 
+
     public bool bonnieInCount;
     public bool chicaInCount;
     public bool freddyInCount;
@@ -214,7 +215,7 @@ public class Movement : MonoBehaviour {
         }
     }
     //generate Chica chance  to move
-    if(ChicaActive && WhereBonnie != WhereChica)
+    if(ChicaActive)
     {
         ChicaMovementTime -= Time.deltaTime;
         if(ChicaMovementTime <=0)
