@@ -6,6 +6,7 @@ public class CameraScript : MonoBehaviour
 {
     public AudioSource Boop;
     public bool camIsUp = false;
+    public bool canUseCamera = true;
 
     public float wait = 0.2f;
 
@@ -54,7 +55,10 @@ public class CameraScript : MonoBehaviour
         {
             if (gamePadState.IsTriggered(WiiU.GamePadButton.L))
             {
-                CameraSystem();
+                if (canUseCamera)
+                {
+                    CameraSystem();
+                }
             }
 
             if (gamePadState.IsTriggered(WiiU.GamePadButton.X))
@@ -72,7 +76,10 @@ public class CameraScript : MonoBehaviour
             case WiiU.RemoteDevType.ProController:
                 if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.L))
                 {
-                    CameraSystem();
+                    if (canUseCamera)
+                    {
+                        CameraSystem();
+                    }
                 }
 
                 if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.X))
@@ -86,7 +93,10 @@ public class CameraScript : MonoBehaviour
             case WiiU.RemoteDevType.Classic:
                 if (remoteState.classic.IsTriggered(WiiU.ClassicButton.L))
                 {
-                    CameraSystem();
+                    if (canUseCamera)
+                    {
+                        CameraSystem();
+                    }
                 }
 
                 if (remoteState.classic.IsTriggered(WiiU.ClassicButton.X))
@@ -100,7 +110,10 @@ public class CameraScript : MonoBehaviour
             default:
                 if (remoteState.IsTriggered(WiiU.RemoteButton.One))
                 {
-                    CameraSystem();
+                    if (canUseCamera)
+                    {
+                        CameraSystem();
+                    }
                 }
 
                 if (remoteState.IsTriggered(WiiU.RemoteButton.Two))
@@ -118,7 +131,10 @@ public class CameraScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
-                CameraSystem();
+                if (canUseCamera)
+                {
+                    CameraSystem();
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.X))
@@ -251,7 +267,7 @@ public class CameraScript : MonoBehaviour
         }
     }
 
-    private void CameraSystem()
+    public void CameraSystem()
     {
         if (camIsUp)
         {

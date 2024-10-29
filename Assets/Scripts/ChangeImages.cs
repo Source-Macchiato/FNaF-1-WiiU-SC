@@ -14,6 +14,7 @@ public class ChangeImages : MonoBehaviour
     public I18nTextTranslator i18nTextTranslator;
     private ControllersRumble controllersRumble;
     private MoveInOffice moveInOffice;
+    private CameraScript cameraScript;
 
     // -----------DiningArea var----------
 
@@ -148,6 +149,7 @@ public class ChangeImages : MonoBehaviour
         foxyAnimator = FoxyRunDownHall.GetComponent<Animator>();
         controllersRumble = FindObjectOfType<ControllersRumble>();
         moveInOffice = FindObjectOfType<MoveInOffice>();
+        cameraScript = FindObjectOfType<CameraScript>();
         
         GoldenFreddyJumpscareTime = 10f;
         GoldenFreddyOffice.SetActive(false);
@@ -176,6 +178,7 @@ public class ChangeImages : MonoBehaviour
                 GoldenFreddyJumpscare.SetActive(true);
                 GoldenFreddyJumpscareTime = 10f;
                 GoldenFreddyJumpscareTime -= Time.deltaTime;
+
                 if(GoldenFreddyJumpscareTime <= 6f)
                 {
                     Application.Quit();
@@ -771,8 +774,6 @@ public class ChangeImages : MonoBehaviour
 
         if (WhereFoxy >= 4)
         {
-
-
             foxyStarted = true;
 
             if (foxyStarted)
@@ -792,22 +793,9 @@ public class ChangeImages : MonoBehaviour
                     if (!L_Door_Closed)
                     {
                         FoxyEnterOffice.SetActive(true);
-                        OriginalOfficeImage.GetComponent<Image>().enabled = false;
                         FoxyRunDownHall.SetActive(false);
-                        LowerCanvas.SetActive(false);
-                        Phonecalls.SetActive(false);
-                        AudioSources.SetActive(false);
-                        CamViewTabletClose.SetActive(false);
-                        CamViewTabletOpen.SetActive(false);
-                        Dot.SetActive(false);
-                        Black.SetActive(false);
-                        StripeGlitches.SetActive(false);
-                        if (foxyRunTime <= -3)
-                        {
-                            SceneManager.LoadScene("GameOver");
-                            foxyRunTime = 3.5f;
-                            foxyStarted = false;
-                        }
+
+                        isBeingJumpscared = true;
                     }
                     if (L_Door_Closed)
                     {
@@ -832,12 +820,23 @@ public class ChangeImages : MonoBehaviour
             }
         }
 
+        // When jumpscare
         if (isBeingJumpscared)
         {
             if (moveInOffice.canMove)
             {
                 moveInOffice.canMove = false;
             }
+
+            if (cameraScript.canUseCamera)
+            {
+                cameraScript.canUseCamera = false;
+            }
+
+            if (cameraScript.camIsUp)
+            {
+                cameraScript.CameraSystem();
+            }            
 
             WaitJumpscare -= Time.deltaTime;
 
