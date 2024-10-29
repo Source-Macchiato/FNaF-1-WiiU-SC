@@ -698,17 +698,6 @@ public class ChangeImages : MonoBehaviour
         {
             BonnieJumpscare.SetActive(true);
             isBeingJumpscared = true;
-            OriginalOfficeImage.SetActive(false);
-
-            LowerCanvas.SetActive(false);
-            CamViewTabletOpen.SetActive(false);
-            CamViewTabletClose.SetActive(false);
-            Black.SetActive(false);
-            Image.SetActive(false);
-            Dot.SetActive(false);
-            StripeGlitches.SetActive(false);
-            AudioSources.SetActive(false);
-            Phonecalls.SetActive(false);
 
             controllersRumble.IsRumbleTriggered("Bonnie");
         }
@@ -730,17 +719,6 @@ public class ChangeImages : MonoBehaviour
             {
                 ChicaJumpscare.SetActive(true);
                 isBeingJumpscared = true;
-                OriginalOfficeImage.SetActive(false);
-
-                LowerCanvas.SetActive(false);
-                CamViewTabletOpen.SetActive(false);
-                CamViewTabletClose.SetActive(false);
-                Black.SetActive(false);
-                Image.SetActive(false);
-                Dot.SetActive(false);
-                StripeGlitches.SetActive(false);
-                AudioSources.SetActive(false);
-                Phonecalls.SetActive(false);
 
                 controllersRumble.IsRumbleTriggered("Chica");
             }
@@ -756,18 +734,8 @@ public class ChangeImages : MonoBehaviour
         if (WhereFreddy >= 7)
         {
             FreddyJumpscare.SetActive(true);
-            isBeingJumpscared = true;
-            OriginalOfficeImage.SetActive(false);
 
-            LowerCanvas.SetActive(false);
-            CamViewTabletOpen.SetActive(false);
-            CamViewTabletClose.SetActive(false);
-            Black.SetActive(false);
-            Image.SetActive(false);
-            Dot.SetActive(false);
-            StripeGlitches.SetActive(false);
-            AudioSources.SetActive(false);
-            Phonecalls.SetActive(false);
+            isBeingJumpscared = true;
 
             controllersRumble.IsRumbleTriggered("Freddy");
         }
@@ -827,6 +795,9 @@ public class ChangeImages : MonoBehaviour
             {
                 moveInOffice.canMove = false;
             }
+
+            // Disable audios
+            AudioSources.SetActive(false);
 
             if (cameraScript.canUseCamera)
             {

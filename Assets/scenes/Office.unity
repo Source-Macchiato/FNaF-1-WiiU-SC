@@ -195,13 +195,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 2086740292}
+  - {fileID: 1556741739}
+  - {fileID: 1525722926}
   - {fileID: 1551155051}
   - {fileID: 1097015885}
   - {fileID: 1743620087}
   - {fileID: 1155714872}
-  - {fileID: 2086740292}
-  - {fileID: 1556741739}
-  - {fileID: 1525722926}
   - {fileID: 409080841}
   - {fileID: 113357119}
   - {fileID: 59438678}
@@ -8941,7 +8941,7 @@ RectTransform:
   m_Children:
   - {fileID: 1900354053}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -9510,7 +9510,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 26534564}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12614,7 +12614,7 @@ RectTransform:
   m_Children:
   - {fileID: 596264438}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -12976,7 +12976,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 26534564}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13013,7 +13013,7 @@ RectTransform:
   m_Children:
   - {fileID: 59919455}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -14269,7 +14269,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 26534564}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16880,6 +16880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OfficeContainer: {fileID: 1969409250}
   camIsUp: 0
+  canMove: 1
 --- !u!1 &1928386306
 GameObject:
   m_ObjectHideFlags: 0
@@ -17218,10 +17219,7 @@ MonoBehaviour:
   FoxyAnimationTimer: 1
   KitckenAudioOnly: {fileID: 59438677}
   WhichCamera: 1
-  WichCameraShower: {fileID: 1265514370}
   cameraScreen: {fileID: 1097015881}
-  CanvasGameOver: {fileID: 0}
-  GameOverScript: {fileID: 0}
   i18nTextTranslator: {fileID: 1265514374}
   DiningAreaEmptyDefault: {fileID: 21300000, guid: 60eabec4d85147d4a88217413c88c802,
     type: 3}
@@ -17297,9 +17295,9 @@ MonoBehaviour:
     type: 3}
   RandCamNoise: 0
   noiseIsPlaying: 0
+  WhereFreddy: 1
   WhereBonnie: 1
   WhereChica: 1
-  WhereFreddy: 1
   WhereFoxy: 1
   GoldenFreddyChance: 0
   GoldenFreddyActive: 0
@@ -17350,6 +17348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Boop: {fileID: 327504710}
   camIsUp: 0
+  canUseCamera: 1
   wait: 0.2
   minimapGameObject: {fileID: 2139986448}
   OfficeStuff: {fileID: 1969409250}
@@ -18698,7 +18697,7 @@ RectTransform:
   m_Children:
   - {fileID: 1665518217}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
