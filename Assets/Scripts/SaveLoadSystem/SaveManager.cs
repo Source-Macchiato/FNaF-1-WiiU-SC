@@ -39,6 +39,12 @@ public class SaveManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
+    public void SaveGoldenFreddyStatus(int goldenFreddyEnabled)
+    {
+        PlayerPrefs.SetInt("GoldenFreddy", goldenFreddyEnabled);
+        PlayerPrefs.Save();
+    }
+
     // Load
     public static string LoadLanguage()
 	{
@@ -109,6 +115,18 @@ public class SaveManager : MonoBehaviour {
         if (PlayerPrefs.HasKey("Stars"))
         {
             return PlayerPrefs.GetInt("Stars");
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public static int LoadGoldenFreddyStatus()
+    {
+        if (PlayerPrefs.HasKey("GoldenFreddy"))
+        {
+            return PlayerPrefs.GetInt("GoldenFreddy");
         }
         else
         {

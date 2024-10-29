@@ -170,33 +170,6 @@ public class MenuData : MonoBehaviour
         }
     }
 
-    public void SaveShareData()
-    {
-        // Get SwitcherData scripts
-        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
-
-        foreach (SwitcherData switcher in switchers)
-        {
-            if (switcher.switcherId == "switcher.analyticdata")
-            {
-                saveManager.SaveShareData(switcher.currentOptionId);
-                bool saveResult = saveGameState.DoSave();
-            }
-        }
-    }
-
-    public void SaveLayout()
-    {
-        saveManager.SaveLayoutId(layoutId);
-        bool saveResult = saveGameState.DoSave();
-    }
-
-    public void SaveNightNumber()
-    {
-        saveManager.SaveNightNumber(nightNumber);
-        bool saveResult = saveGameState.DoSave();
-    }
-
     // Night number system 
     public void GenerateNightNumber()
     {
@@ -279,6 +252,33 @@ public class MenuData : MonoBehaviour
         customNightBackground.SetActive(status);
     }
 
+    public void SaveShareData()
+    {
+        // Get SwitcherData scripts
+        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+
+        foreach (SwitcherData switcher in switchers)
+        {
+            if (switcher.switcherId == "switcher.analyticdata")
+            {
+                saveManager.SaveShareData(switcher.currentOptionId);
+                bool saveResult = saveGameState.DoSave();
+            }
+        }
+    }
+
+    public void SaveLayout()
+    {
+        saveManager.SaveLayoutId(layoutId);
+        bool saveResult = saveGameState.DoSave();
+    }
+
+    public void SaveNightNumber()
+    {
+        saveManager.SaveNightNumber(nightNumber);
+        bool saveResult = saveGameState.DoSave();
+    }
+
     public void SaveCustomNightValues()
     {
         int[] characterValue = new int[customNightContainer.transform.childCount];
@@ -296,5 +296,11 @@ public class MenuData : MonoBehaviour
         PlayerPrefs.SetFloat("ChicaDifficulty", characterValue[2]);
         PlayerPrefs.SetFloat("FoxyDifficulty", characterValue[3]);
         PlayerPrefs.Save();
+    }
+
+    public void SaveGoldenFreddy()
+    {
+        saveManager.SaveGoldenFreddyStatus(1);
+        bool saveResult = saveGameState.DoSave();
     }
 }

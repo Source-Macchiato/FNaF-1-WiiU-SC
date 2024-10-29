@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 222157895164321140}
   - component: {fileID: 114554527941966876}
   - component: {fileID: 114271205862325628}
+  - component: {fileID: 114057082305668732}
   m_Layer: 5
   m_Name: CardSwitcher
   m_TagString: Untagged
@@ -169,6 +170,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114057082305668732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354274405348878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dbc5bd500a349344bc322c5a1cd211a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorGameObject: {fileID: 1109822159567644}
 --- !u!114 &114189411172797746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,7 +234,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyId: 0
-  selection: {fileID: 1109822159567644}
   titleName: 
   coverSprite: {fileID: 0}
   descriptionTranslationId: 

@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using RTLTMPro;
 
 public class CardSwitcher : MonoBehaviour
 {
 	public int difficultyId;
 
-	public GameObject selection;
 	public string titleName;
 	public Sprite coverSprite;
 	public string descriptionTranslationId;
@@ -23,24 +21,6 @@ public class CardSwitcher : MonoBehaviour
 	void Start()
 	{
         UpdateCardSwitcher();
-	}
-
-	void Update()
-	{
-		if (EventSystem.current.currentSelectedGameObject == gameObject)
-		{
-			if (!selection.activeSelf)
-			{
-				selection.SetActive(true);
-			}
-		}
-		else
-		{
-			if (selection.activeSelf)
-			{
-				selection.SetActive(false);
-			}
-		}
 	}
 
 	public void IncreaseDifficulty()

@@ -33,7 +33,7 @@ public class MenuSetup : MonoBehaviour
 
         menuManager.AddButton(4, 0, "Analytic Data", Analytics, "mainmenu.analyticdata");
 
-        menuManager.AddButton(7, 1, "READY", CustomNightReady, "customnight.ready", true);
+        menuManager.AddButton(7, 1, "READY", StartCustomNight, "customnight.ready", true);
 
         // Adding cards to the main menu
         menuManager.AddCard(5, "TV only", menuData.tvOnly);
@@ -49,7 +49,11 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 0, 20, 3);
         menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 0, 20, 3);
         menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 1);
-        menuManager.AddCardSwitcher(7, "Golden Freddy", menuData.goldenPicture, "customnight.ailevel", 0, 20);
+        
+        if (SaveManager.LoadGoldenFreddyStatus() == 1)
+        {
+            menuManager.AddCardSwitcher(7, "Golden Freddy", menuData.goldenPicture, "customnight.ailevel", 0, 20);
+        }
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
@@ -179,7 +183,7 @@ public class MenuSetup : MonoBehaviour
         menuData.LoadShareDataAndUpdateSwitcher();
     }
 
-    void CustomNightReady()
+    void StartCustomNight()
     {
         menuData.nightNumber = 6;
         menuData.SaveNightNumber();
@@ -194,6 +198,8 @@ public class MenuSetup : MonoBehaviour
         if (freddyDifficulty == 1 && bonnieDifficulty == 9 && chicaDifficulty == 8 && foxyDifficulty == 7)
         {
             menuData.CustomNightBackgroundStatus(false);
+
+            menuData.SaveGoldenFreddy();
 
             menuManager.ChangeMenu(0);
 
