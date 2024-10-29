@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class ChangeImages : MonoBehaviour
 {
@@ -113,15 +114,7 @@ public class ChangeImages : MonoBehaviour
 
     public bool camIsUp = false;
 
-    public GameObject LowerCanvas;
-    public GameObject Phonecalls;
     public GameObject AudioSources;
-    public GameObject CamViewTabletOpen;
-    public GameObject CamViewTabletClose;
-    public GameObject Dot;
-    public GameObject Image;
-    public GameObject Black;
-    public GameObject StripeGlitches;
 
     public GameObject OriginalOfficeImage;
     public GameObject FoxyEnterOffice;
@@ -181,7 +174,14 @@ public class ChangeImages : MonoBehaviour
 
                 if(GoldenFreddyJumpscareTime <= 6f)
                 {
-                    Application.Quit();
+                    if (Application.isEditor)
+                    {
+                        EditorApplication.isPlaying = false;
+                    }
+                    else
+                    {
+                        Application.Quit();
+                    }
                 }
             }
         }

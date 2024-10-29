@@ -20,7 +20,8 @@ public class CameraScript : MonoBehaviour
 
     public GameObject Dot;
     public GameObject Glitch;
-    public GameObject Stripes;
+    public GameObject stripes;
+    public GameObject stripesMovement;
 
     private GameScript gameScript;
     private Office office;
@@ -161,7 +162,7 @@ public class CameraScript : MonoBehaviour
                 // UI to enable and disable
                 Dot.SetActive(true);
                 Glitch.SetActive(true);
-                Stripes.SetActive(true);
+                stripes.SetActive(true);
                 cameraScreen.SetActive(true);
                 office.enabled = false;
                 OfficeStuff.SetActive(false);
@@ -289,7 +290,8 @@ public class CameraScript : MonoBehaviour
 
             Dot.SetActive(false);
             Glitch.SetActive(false);
-            Stripes.SetActive(false);
+            stripes.SetActive(false);
+            stripesMovement.SetActive(false);
 
             camIsUp = false;
 
