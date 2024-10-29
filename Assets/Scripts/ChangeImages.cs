@@ -28,6 +28,7 @@ public class ChangeImages : MonoBehaviour
     [Header("Show Stage sprites")]
     public Sprite ShowStageBonnieChicaFreddyDefault;
     public Sprite ShowStageChicaFreddyDefault;
+    public Sprite ShowStageBonnieFreddyDefault;
     public Sprite ShowStageFreddyDefault;
     public Sprite ShowStageFreddyEasterEgg;
     public Sprite ShowStageEmptyDefault;
@@ -260,12 +261,20 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Chica and Freddy at Show Stage
-                if (AmountLeft == 1)
+                if (AmountLeft == 1 && WhereChica == 1)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != ShowStageChicaFreddyDefault)
                     {
                         currentSprite = ShowStageChicaFreddyDefault;
+                    }
+                }
+                else if(WhereBonnie == 1 && WhereFreddy == 1 && WhereChica != 1)
+                {
+                    // Check if sprite is already displayed
+                    if(currentSprite != ShowStageBonnieFreddyDefault)
+                    {
+                        currentSprite = ShowStageBonnieFreddyDefault;
                     }
                 }
 

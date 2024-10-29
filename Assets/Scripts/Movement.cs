@@ -346,37 +346,28 @@ public class Movement : MonoBehaviour {
     {
         if (ChicaProbability < ChicaDifficulty) // probability bonnie to move
         {
-            if (WhereBonnie != 1) //check if bonnie is ou of the stage.
+
+            if (WhereBonnie == 2) // check if bonnie is on Dining Area
             {
-                if (WhereBonnie == 2) // check if bonnie is on Dining Area
-                {
-
-                  WhereChica += 2;
-                  chicaInCount = false;
-                  AIGlitch();
-
-                  if (!camIsUp) 
-                  {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                  }
-
-
-                } 
-                else // if bonnie isn't at Dining Area 
-                {
-
-                  WhereChica += 1;
-                  chicaInCount = false;
-                  AIGlitch();
-
-                  if (!camIsUp) 
-                  {
-                    GlitchActive = false;
-                    MoveGlitch.SetActive(false);
-                  }
-                }
-
+              WhereChica += 2;
+              chicaInCount = false;
+              AIGlitch();
+              if (!camIsUp) 
+              {
+                GlitchActive = false;
+                MoveGlitch.SetActive(false);
+              }
+            } 
+            else // if bonnie isn't at Dining Area 
+            {
+              WhereChica += 1;
+              chicaInCount = false;
+              AIGlitch();
+              if (!camIsUp) 
+              {
+                GlitchActive = false;
+                MoveGlitch.SetActive(false);
+              }
             }
             Debug.Log("Chica Porbability : "+BonnieProbability+"\nChicaDifficulty : " + BonnieDifficulty);
         }
