@@ -330,6 +330,12 @@ public class MenuData : MonoBehaviour
         PlayerPrefs.SetFloat("BonnieDifficulty", characterValue[1]);
         PlayerPrefs.SetFloat("ChicaDifficulty", characterValue[2]);
         PlayerPrefs.SetFloat("FoxyDifficulty", characterValue[3]);
+
+        if (characterValue.Length > 4)
+        {
+            PlayerPrefs.SetFloat("GoldenDifficulty", characterValue[4]);
+        }
+
         PlayerPrefs.Save();
     }
 
