@@ -62,7 +62,6 @@ public class Movement : MonoBehaviour {
     public bool WaitForMovingFromDoorBonnie = false;
     public bool WaitForMovingFromDoorChica = false; 
     public bool WaitForMovingFromDoorFreddy = false;
-
     public bool LeftDoorClosed = false;
     public bool RightDoorClosed = false;
 
@@ -110,6 +109,9 @@ public class Movement : MonoBehaviour {
     
 	void Update()
 {
+    Office office = OfficeObject.GetComponent<Office>();
+    LeftDoorClosed = office.L_Door_Closed;
+    RightDoorClosed = office.R_Door_Closed;
     int hour = gameScript.Hour;
     int nightIndex = Mathf.Clamp((int)NightNumber, 0, 5);  // Limit nightIndex to valid range (0-5)
 
@@ -171,7 +173,6 @@ public class Movement : MonoBehaviour {
     PlayerPrefs.Save();
     //Get the references RandNumberGen (the other code was spaghetti asf)
     RandNumberGen randNumberGen = OfficeObject.GetComponent<RandNumberGen>();
-    Office office = OfficeObject.GetComponent<Office>();
     //Check if somebody left the stage by checking if an Where<name> is higher than 2 or equal
     if (WhereBonnie >= 2)
     {
