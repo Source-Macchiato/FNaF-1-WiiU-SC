@@ -544,14 +544,14 @@ public class ChangeImages : MonoBehaviour
                 }
                 if (WhereFreddy == 6)
                 {
-                    if (WhereChica <= 6)
+                    if (WhereChica != 6)
                     {
                         currentSprite = EastHall2_3;
                     }
                 }
 
                 // East Hall Corner empty
-                if (WhereChica != 7 && WhereFreddy != 6)
+                if (WhereChica >= 7 && WhereFreddy != 6)
                 {
                     if (currentSprite != EastHallCornerEmptyDefault)
                     {
