@@ -97,6 +97,9 @@ public class ChangeImages : MonoBehaviour
     public GameObject GoldenFreddyLaugh;
     public GameObject GoldenFreddyJumpscare;
     private bool hasGeneratedGFNumber = false;
+    public GameObject Itsme;
+    public AudioSource ItsmeSound;
+    
 
 
     public bool BonnieLeft = false;
@@ -164,6 +167,11 @@ public class ChangeImages : MonoBehaviour
         // Get current sprite and assign it in a local variable
         currentSprite = cameraScreen.GetComponent<Image>().sprite;
 
+        if(GoldenFreddyActive)
+        {
+            ItsmeSound.Play();
+            Itsme.SetActive(true);
+        }
         if(GoldenFreddyActive && !camIsUp)
         {
             GoldenFreddyJumpscareTime -= Time.deltaTime;

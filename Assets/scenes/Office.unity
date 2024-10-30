@@ -4354,7 +4354,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bf732d9603bf8664cac3d5c9a622eec2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ec54519e6a784c04b8adef41b2a43926, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -9683,7 +9683,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 761067010867bfe4e8e2b9a65e393477, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.216
+  m_Volume: 0.444
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -17306,6 +17306,8 @@ MonoBehaviour:
   GoldenFreddyDoJumpscare: 5
   GoldenFreddyLaugh: {fileID: 1404824418}
   GoldenFreddyJumpscare: {fileID: 626154237}
+  Itsme: {fileID: 1030642246}
+  ItsmeSound: {fileID: 1172743786}
   BonnieLeft: 0
   ChicaLeft: 0
   FreddyLeft: 0
