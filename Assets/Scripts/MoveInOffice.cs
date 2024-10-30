@@ -39,7 +39,7 @@ public class MoveInOffice : MonoBehaviour
 
             if (Mathf.Abs(leftStickGamepad.x) > stickDeadzone)
             {
-                if (leftStickGamepad.x > 0)
+                if (leftStickGamepad.x < 0)
                 {
                     MoveLeft();
                 }
@@ -67,7 +67,7 @@ public class MoveInOffice : MonoBehaviour
 
                 if (Mathf.Abs(leftStickProController.x) > stickDeadzone)
                 {
-                    if (leftStickProController.x > 0)
+                    if (leftStickProController.x < 0)
                     {
                         MoveLeft();
                     }
@@ -91,7 +91,7 @@ public class MoveInOffice : MonoBehaviour
 
                 if (Mathf.Abs(leftStickClassicController.x) > stickDeadzone)
                 {
-                    if (leftStickClassicController.x > 0)
+                    if (leftStickClassicController.x < 0)
                     {
                         MoveLeft();
                     }
@@ -115,7 +115,7 @@ public class MoveInOffice : MonoBehaviour
 
                 if (Mathf.Abs(stickNunchuk.x) > stickDeadzone)
                 {
-                    if (stickNunchuk.x > 0)
+                    if (stickNunchuk.x < 0)
                     {
                         MoveLeft();
                     }
