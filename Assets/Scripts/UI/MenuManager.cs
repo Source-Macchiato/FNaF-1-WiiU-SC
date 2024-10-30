@@ -183,7 +183,7 @@ public class MenuManager : MonoBehaviour
                             lastNavigationTime = 0f;
                         }
                     }
-                    else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                    else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                     {
                         if (lastNavigationTime > stickNavigationCooldown)
                         {
@@ -220,7 +220,7 @@ public class MenuManager : MonoBehaviour
                     {
                         MenuNavigation(currentButton.navigation.selectOnUp);
                     }
-                    else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                    else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                     {
                         ToggleContainer();
                     }
@@ -233,7 +233,7 @@ public class MenuManager : MonoBehaviour
                     {
                         MenuNavigation(currentButton.navigation.selectOnDown);
                     }
-                    else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                    else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                     {
                         ToggleContainer();
                     }
@@ -246,7 +246,7 @@ public class MenuManager : MonoBehaviour
                     {
                         MenuNavigation(currentButton.navigation.selectOnLeft);
                     }
-                    else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                    else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                     {
                         ToggleContainer();
                     }
@@ -263,7 +263,7 @@ public class MenuManager : MonoBehaviour
                     {
                         MenuNavigation(currentButton.navigation.selectOnRight);
                     }
-                    else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                    else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                     {
                         ToggleContainer();
                     }
@@ -413,7 +413,7 @@ public class MenuManager : MonoBehaviour
                                 lastNavigationTime = 0f;
                             }
                         }
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             if (lastNavigationTime > stickNavigationCooldown)
                             {
@@ -452,7 +452,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
-                        else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -465,7 +465,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
-                        else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -478,7 +478,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -495,7 +495,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -642,7 +642,7 @@ public class MenuManager : MonoBehaviour
                                 lastNavigationTime = 0f;
                             }
                         }                        
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             if (lastNavigationTime > stickNavigationCooldown)
                             {
@@ -681,7 +681,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
-                        else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -694,7 +694,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
-                        else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -707,7 +707,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -724,7 +724,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }                        
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -870,7 +870,7 @@ public class MenuManager : MonoBehaviour
                                 lastNavigationTime = 0f;
                             }
                         }
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             if (lastNavigationTime > stickNavigationCooldown)
                             {
@@ -909,7 +909,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnUp);
                         }
-                        else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -922,7 +922,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnDown);
                         }
-                        else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -935,7 +935,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnLeft);
                         }                        
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -952,7 +952,7 @@ public class MenuManager : MonoBehaviour
                         {
                             MenuNavigation(currentButton.navigation.selectOnRight);
                         }                        
-                        else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                        else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                         {
                             ToggleContainer();
                         }
@@ -1047,7 +1047,7 @@ public class MenuManager : MonoBehaviour
                 {
                     MenuNavigation(currentButton.navigation.selectOnUp);
                 }
-                else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                 {
                     ToggleContainer();
                 }
@@ -1060,7 +1060,7 @@ public class MenuManager : MonoBehaviour
                 {
                     MenuNavigation(currentButton.navigation.selectOnDown);
                 }
-                else if (currentScrollRect == null && verticalContainer == null && canNavigate)
+                else if (currentScrollRect == null && currentPopup == null && verticalContainer == null && canNavigate)
                 {
                     ToggleContainer();
                 }
@@ -1073,7 +1073,7 @@ public class MenuManager : MonoBehaviour
                 {
                     MenuNavigation(currentButton.navigation.selectOnLeft);
                 }                
-                else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                 {
                     ToggleContainer();
                 }
@@ -1091,7 +1091,7 @@ public class MenuManager : MonoBehaviour
                     MenuNavigation(currentButton.navigation.selectOnRight);
                 }
                 
-                else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
+                else if (currentScrollRect == null && currentPopup == null && currentButton.gameObject.GetComponent<SwitcherData>() == null && horizontalContainer == null && extraContainers.ContainsKey(currentMenuId) && canNavigate)
                 {
                     ToggleContainer();
                 }
