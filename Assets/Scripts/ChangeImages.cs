@@ -94,6 +94,7 @@ public class ChangeImages : MonoBehaviour
     public GameObject GoldenFreddyOffice;
     public float GoldenFreddyJumpscareTime = 10f;
     public float GoldenFreddyDoJumpscare = 5f;
+    
     public GameObject GoldenFreddyLaugh;
     public GameObject GoldenFreddyJumpscare;
     private bool hasGeneratedGFNumber = false;
@@ -167,13 +168,10 @@ public class ChangeImages : MonoBehaviour
         // Get current sprite and assign it in a local variable
         currentSprite = cameraScreen.GetComponent<Image>().sprite;
 
-        if(GoldenFreddyActive)
+        if(GoldenFreddyActive && !camIsUp)
         {
             ItsmeSound.Play();
             Itsme.SetActive(true);
-        }
-        if(GoldenFreddyActive && !camIsUp)
-        {
             GoldenFreddyJumpscareTime -= Time.deltaTime;
             if(GoldenFreddyJumpscareTime <= 0)
             {
@@ -187,8 +185,6 @@ public class ChangeImages : MonoBehaviour
             }
             if(GoldenFreddyDoJumpscare <= 0f)
             {
-                Debug.Log("Game end");
-                //SceneManager.LoadScene("GameOver");
                 // The game is stopped
                 Application.Quit();
             }
