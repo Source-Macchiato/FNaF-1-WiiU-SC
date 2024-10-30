@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 public class ChangeImages : MonoBehaviour
 {
@@ -174,14 +173,8 @@ public class ChangeImages : MonoBehaviour
 
                 if(GoldenFreddyJumpscareTime <= 6f)
                 {
-                    if (Application.isEditor)
-                    {
-                        EditorApplication.isPlaying = false;
-                    }
-                    else
-                    {
-                        Application.Quit();
-                    }
+                    // The game is stopped
+                    Application.Quit();
                 }
             }
         }
