@@ -55,9 +55,9 @@ public class Movement : MonoBehaviour {
     public bool FreddyOutsideDoor = false;
     public bool FoxyRunningHallway = false;
 
-    public float BonnieOutsideDoorTime;
-    public float ChicaOutsideDoorTime;
-    public float FreddyOutsideDoorTime;
+    public float BonnieOutsideDoorTime = 5f;
+    public float ChicaOutsideDoorTime = 5f;
+    public float FreddyOutsideDoorTime = 5f;
 
     public bool WaitForMovingFromDoorBonnie = false;
     public bool WaitForMovingFromDoorChica = false; 
@@ -434,7 +434,7 @@ void AIGlitch()
     {
         if (!WaitForMovingFromDoorBonnie)
         {
-            BonnieOutsideDoorTime += BonnieDifficulty;
+            BonnieOutsideDoorTime -= Time.deltaTime;
             WaitForMovingFromDoorBonnie = true;
         }
     }
@@ -443,7 +443,7 @@ void AIGlitch()
     {
         if (!WaitForMovingFromDoorChica)
         {
-            ChicaOutsideDoorTime += ChicaDifficulty;
+            ChicaOutsideDoorTime -= Time.deltaTime;
             WaitForMovingFromDoorChica = true;
         }
     }
@@ -452,7 +452,7 @@ void AIGlitch()
     {
         if (!WaitForMovingFromDoorFreddy)
         {
-            FreddyOutsideDoorTime += FreddyDifficulty;
+            FreddyOutsideDoorTime -= Time.deltaTime;
             WaitForMovingFromDoorFreddy = true;
         }
     }
