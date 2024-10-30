@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -24,7 +25,9 @@ public class MenuData : MonoBehaviour
     public GameObject starsContainer;
     public GameObject customNightContainer;
     public GameObject customNightBackground;
+    public GameObject goldenFreddyGameObject;
     public Sprite achievementIcon;
+    public AudioSource mainMenuThemeSound;
 
     [HideInInspector]
     public GameObject nightNumberGameObject;
@@ -260,6 +263,26 @@ public class MenuData : MonoBehaviour
 
         HorizontalLayoutGroup horizontalLayoutGroup = customNightContainer.GetComponent<HorizontalLayoutGroup>();
         horizontalLayoutGroup.spacing = 71;
+    }
+
+    public void ActivateGoldenFreddyJumpscare()
+    {
+        StartCoroutine(GoldenFreddyJumpscareAnimation());
+    }
+
+    private IEnumerator GoldenFreddyJumpscareAnimation()
+    {
+        menuManager.canNavigate = false;
+        goldenFreddyGameObject.SetActive(true);
+        mainMenuThemeSound.mute = true;
+
+        yield return new WaitForSeconds(1f);
+
+        goldenFreddyGameObject.SetActive(false);
+        mainMenuThemeSound.mute = false;
+        AddGoldenFreddy();
+        menuManager.ChangeMenu(0);
+        menuManager.canNavigate = true;
     }
 
     public void SaveShareData()

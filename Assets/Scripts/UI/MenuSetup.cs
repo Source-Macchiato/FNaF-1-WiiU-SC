@@ -203,11 +203,7 @@ public class MenuSetup : MonoBehaviour
 
             menuData.SaveGoldenFreddy();
 
-            menuData.AddGoldenFreddy();
-
-            // --- Animation ---
-
-            menuManager.ChangeMenu(0);
+            menuData.ActivateGoldenFreddyJumpscare();
         }
         else
         {
