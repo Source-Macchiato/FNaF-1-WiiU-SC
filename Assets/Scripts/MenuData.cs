@@ -283,6 +283,8 @@ public class MenuData : MonoBehaviour
         AddGoldenFreddy();
         menuManager.ChangeMenu(0);
         menuManager.canNavigate = true;
+
+        MedalsManager.medalsManager.ShowAchievement("The Bite of '87", "Unlock Golden Freddy in the Custom Night.", achievementIcon);
     }
 
     public void SaveShareData()

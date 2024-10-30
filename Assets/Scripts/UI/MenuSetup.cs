@@ -199,8 +199,6 @@ public class MenuSetup : MonoBehaviour
         {
             menuData.CustomNightBackgroundStatus(false);
 
-            MedalsManager.medalsManager.ShowAchievement("The Bite of '87", "Unlock Golden Freddy in the Custom Night.", menuData.achievementIcon);
-
             menuData.SaveGoldenFreddy();
 
             menuData.ActivateGoldenFreddyJumpscare();
