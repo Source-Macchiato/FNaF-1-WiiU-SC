@@ -75,7 +75,7 @@ public class UnlockAllStars : MonoBehaviour
 
             if (unlockIndexGamepad == unlockCodeGamepad.Length)
             {
-                Debug.Log("unlock code activated with Gamepad !");
+                Debug.Log("Unlock code activated with Gamepad !");
 
                 UnlockStars();
 
@@ -97,7 +97,7 @@ public class UnlockAllStars : MonoBehaviour
 
                     if (unlockIndexProController == unlockCodeProController.Length)
                     {
-                        Debug.Log("unlock code activated with Pro Controller !");
+                        Debug.Log("Unlock code activated with Pro Controller !");
 
                         UnlockStars();
 
@@ -116,7 +116,7 @@ public class UnlockAllStars : MonoBehaviour
 
                     if (unlockIndexClassicController == unlockCodeClassicController.Length)
                     {
-                        Debug.Log("unlock code activated with Classic Controller");
+                        Debug.Log("Unlock code activated with Classic Controller");
 
                         UnlockStars();
 
@@ -135,7 +135,7 @@ public class UnlockAllStars : MonoBehaviour
 
                     if (unlockIndexRemote == unlockCodeRemote.Length)
                     {
-                        Debug.Log("unlock code activated with Wiimote");
+                        Debug.Log("Unlock code activated with Wiimote");
 
                         UnlockStars();
 
@@ -158,7 +158,7 @@ public class UnlockAllStars : MonoBehaviour
 
                 if (unlockIndexPC == unlockCodePC.Length)
                 {
-                    Debug.Log("unlock code activated with keyboard !");
+                    Debug.Log("Unlock code activated with keyboard !");
 
                     UnlockStars();
 

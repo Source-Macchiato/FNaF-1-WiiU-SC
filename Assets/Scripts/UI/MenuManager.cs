@@ -155,6 +155,8 @@ public class MenuManager : MonoBehaviour
                             {
                                 ToggleContainer();
                             }
+
+                            lastNavigationTime = 0f;
                         }
                     }
                     else if (currentScrollRect != null && currentPopup == null && canNavigate)
@@ -191,6 +193,8 @@ public class MenuManager : MonoBehaviour
                             {
                                 ToggleContainer();
                             }
+
+                            lastNavigationTime = 0f;
                         }
                     }
                     else if (currentScrollRect == null && currentButton.gameObject.GetComponent<SwitcherData>() != null && canNavigate)
