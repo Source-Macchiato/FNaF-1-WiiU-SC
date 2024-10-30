@@ -21,6 +21,8 @@ public class Office : MonoBehaviour {
 
     public GameObject Door_R_closed;
     public GameObject Door_R_open;
+    [Header("Animators")]
+    private Animator[] animators;
 
     [Header("Images")]
     public Image DoorButton_L1;
@@ -95,13 +97,15 @@ public class Office : MonoBehaviour {
         Light_R_Door_Chica.enabled = false;
 
         officeBounds = OfficeImage.GetComponent<RectTransform>();
+
+        animators = FindObjectsOfType<Animator>();
     }
 
     void Update()
     {
         WiiU.GamePadState gamePadState = gamePad.state;
         WiiU.RemoteState remoteState = remote.state;
-        foreach (Animator anim in FindObjectsOfType<Animator>())
+        foreach (Animator anim in animators)
         {
             if (anim.gameObject.name.Contains("Office") || anim.gameObject.name.Contains("office"))
             {
@@ -374,7 +378,7 @@ public class Office : MonoBehaviour {
 
     void LeftDoorSystem()
     {
-        foreach (Animator anim in FindObjectsOfType<Animator>())
+        foreach (Animator anim in animators)
         {
             if (anim.gameObject.name.Contains("Door"))
             {
@@ -445,7 +449,7 @@ public class Office : MonoBehaviour {
 
     void RightDoorSystem()
     {
-        foreach (Animator anim in FindObjectsOfType<Animator>())
+        foreach (Animator anim in animators)
         {
             if (anim.gameObject.name.Contains("Door"))
             {
@@ -507,7 +511,7 @@ public class Office : MonoBehaviour {
 
     void LeftLightSystem()
     {
-        foreach (Animator anim in FindObjectsOfType<Animator>())
+        foreach (Animator anim in animators)
         {
             if (anim.gameObject.name.Contains("Office"))
             {

@@ -88,6 +88,7 @@ public class ChangeImages : MonoBehaviour
     public float WhereChica = 1;
     public float WhereFoxy = 1;
 
+    [Header("Golden Freddy shit")]
     public int GoldenFreddyChance;
     public bool GoldenFreddyActive;
     public GameObject GoldenFreddyOffice;
@@ -96,6 +97,8 @@ public class ChangeImages : MonoBehaviour
     public GameObject GoldenFreddyLaugh;
     public GameObject GoldenFreddyJumpscare;
     private bool hasGeneratedGFNumber = false;
+
+
     public bool BonnieLeft = false;
     public bool ChicaLeft = false;
     public bool FreddyLeft = false;
@@ -169,13 +172,17 @@ public class ChangeImages : MonoBehaviour
                 controllersRumble.IsRumbleTriggered("GoldenFreddy");
                 GoldenFreddyJumpscare.SetActive(true);
                 GoldenFreddyJumpscareTime = 10f;
-                GoldenFreddyJumpscareTime -= Time.deltaTime;
-
-                if(GoldenFreddyJumpscareTime <= 6f)
-                {
-                    // The game is stopped
-                    Application.Quit();
-                }
+            }
+            if(GoldenFreddyJumpscare.activeInHierarchy)
+            {
+                GoldenFreddyDoJumpscare -= Time.deltaTime;
+            }
+            if(GoldenFreddyDoJumpscare <= 0f)
+            {
+                Debug.Log("Game end");
+                //SceneManager.LoadScene("GameOver");
+                // The game is stopped
+                Application.Quit();
             }
         }
         else if(camIsUp)
