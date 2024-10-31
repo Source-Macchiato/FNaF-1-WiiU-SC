@@ -11,7 +11,6 @@ public class CameraScript : MonoBehaviour
     public float wait = 0.2f;
 
     public GameObject minimapGameObject;
-    public GameObject OfficeStuff;
     public GameObject cameraScreen;
     public AudioSource FlipOpen;
     public AudioSource FlipClose;
@@ -22,6 +21,7 @@ public class CameraScript : MonoBehaviour
     public GameObject Glitch;
     public GameObject stripes;
     public GameObject stripesMovement;
+    public GameObject hideOfficeGameObject;
 
     private GameScript gameScript;
     private Office office;
@@ -165,8 +165,8 @@ public class CameraScript : MonoBehaviour
                 stripes.SetActive(true);
                 cameraScreen.SetActive(true);
                 office.enabled = false;
-                OfficeStuff.SetActive(false);
                 minimapGameObject.SetActive(true);
+                hideOfficeGameObject.SetActive(true);
 
                 if (office.LeftLightIsOn)
                 {
@@ -243,8 +243,6 @@ public class CameraScript : MonoBehaviour
                 RemoveAnimator();
 
                 wait = 0.2f;
-
-                //Black.SetActive(false);
             }
         }
     }
@@ -273,15 +271,6 @@ public class CameraScript : MonoBehaviour
         if (camIsUp)
         {
             minimapGameObject.SetActive(false);
-            OfficeStuff.SetActive(true);
-
-            foreach (Animator anim in FindObjectsOfType<Animator>())
-            {
-                if (anim.gameObject.name.Contains("Door"))
-                {
-                    anim.enabled = false;
-                }
-            }
 
             FlipClose.Play();
 
@@ -292,6 +281,7 @@ public class CameraScript : MonoBehaviour
             Glitch.SetActive(false);
             stripes.SetActive(false);
             stripesMovement.SetActive(false);
+            hideOfficeGameObject.SetActive(false);
 
             camIsUp = false;
 

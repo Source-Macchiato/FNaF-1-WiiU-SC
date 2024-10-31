@@ -211,8 +211,8 @@ RectTransform:
   - {fileID: 1970830748}
   - {fileID: 1041895248}
   - {fileID: 238944092}
-  - {fileID: 969611534}
   - {fileID: 626154238}
+  - {fileID: 969611534}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5104,7 +5104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &620632519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5324,7 +5324,7 @@ RectTransform:
   m_Children:
   - {fileID: 530184935}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5923,7 +5923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &745054069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6701,7 +6701,7 @@ GameObject:
   - component: {fileID: 861070637}
   - component: {fileID: 861070636}
   - component: {fileID: 861070635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6744,7 +6744,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -7565,7 +7565,7 @@ Camera:
   m_GameObject: {fileID: 935168459}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -7587,7 +7587,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -8109,7 +8109,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2038018150}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12061,7 +12061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1480350698
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12388,6 +12388,74 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1509051263}
+--- !u!1 &1516609506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1516609507}
+  - component: {fileID: 1516609509}
+  - component: {fileID: 1516609508}
+  m_Layer: 5
+  m_Name: HideOffice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1516609507
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516609506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2038018150}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1516609508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516609506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1516609509
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516609506}
 --- !u!1 &1523668145
 GameObject:
   m_ObjectHideFlags: 0
@@ -14805,7 +14873,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -15873,7 +15941,7 @@ Prefab:
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 224809005109794456, guid: 43e269f2118830447b194d4571f0778a,
         type: 2}
@@ -16935,7 +17003,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -17135,10 +17203,14 @@ MonoBehaviour:
   OfficeImage: {fileID: 1969409250}
   officeBounds: {fileID: 0}
   OfficeControllerObject: {fileID: 1959479695}
-  Door_L_closed: {fileID: 620632518}
-  Door_L_open: {fileID: 745054068}
-  Door_R_closed: {fileID: 1480350697}
-  Door_R_open: {fileID: 2101286253}
+  Door_L_closed: {fileID: 620632520}
+  Door_L_open: {fileID: 745054071}
+  Door_R_closed: {fileID: 1480350699}
+  Door_R_open: {fileID: 2101286256}
+  leftDoorCloseAnimator: {fileID: 620632522}
+  leftDoorOpenAnimator: {fileID: 745054070}
+  rightDoorCloseAnimator: {fileID: 1480350701}
+  rightDoorOpenAnimator: {fileID: 2101286255}
   DoorButton_L1: {fileID: 170545079}
   DoorButton_L2: {fileID: 943347023}
   DoorButton_L3: {fileID: 1899132713}
@@ -17345,7 +17417,6 @@ MonoBehaviour:
   canUseCamera: 1
   wait: 0.2
   minimapGameObject: {fileID: 2139986448}
-  OfficeStuff: {fileID: 1969409250}
   cameraScreen: {fileID: 1097015881}
   FlipOpen: {fileID: 284829986}
   FlipClose: {fileID: 622291134}
@@ -17355,6 +17426,7 @@ MonoBehaviour:
   Glitch: {fileID: 969611533}
   stripes: {fileID: 409080837}
   stripesMovement: {fileID: 113357115}
+  hideOfficeGameObject: {fileID: 1516609506}
 --- !u!114 &1959479701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18474,6 +18546,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1969409251}
+  - {fileID: 1516609507}
   - {fileID: 1030642247}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -18766,7 +18839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2101286254
 RectTransform:
   m_ObjectHideFlags: 0

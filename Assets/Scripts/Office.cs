@@ -16,13 +16,18 @@ public class Office : MonoBehaviour {
 
     public GameObject OfficeControllerObject;
 
-    public GameObject Door_L_closed;
-    public GameObject Door_L_open;
+    [Header("Doors Images")]
+    public Image Door_L_closed;
+    public Image Door_L_open;
+    public Image Door_R_closed;
+    public Image Door_R_open;
 
-    public GameObject Door_R_closed;
-    public GameObject Door_R_open;
     [Header("Animators")]
     private Animator[] animators;
+    public Animator leftDoorCloseAnimator;
+    public Animator leftDoorOpenAnimator;
+    public Animator rightDoorCloseAnimator;
+    public Animator rightDoorOpenAnimator;
 
     [Header("Images")]
     public Image DoorButton_L1;
@@ -95,6 +100,9 @@ public class Office : MonoBehaviour {
 
         Light_L_Door_Bonnie.enabled = false;
         Light_R_Door_Chica.enabled = false;
+
+        Door_L_closed.enabled = false;
+        Door_R_closed.enabled = false;
 
         officeBounds = OfficeImage.GetComponent<RectTransform>();
 
@@ -378,17 +386,14 @@ public class Office : MonoBehaviour {
 
     void LeftDoorSystem()
     {
-        foreach (Animator anim in animators)
-        {
-            if (anim.gameObject.name.Contains("Door"))
-            {
-                anim.enabled = true;
-            }
-        }
+
         if (L_Door_Closed)
         {
-            Door_L_closed.SetActive(false);
-            Door_L_open.SetActive(true);
+            Door_L_closed.enabled = false;
+            Door_L_open.enabled = true;
+
+            leftDoorOpenAnimator.Play("Base Layer.DooOpen", 0, 0);
+
             L_Door_Closed = false;
 
             // Check if already displayed
@@ -418,8 +423,11 @@ public class Office : MonoBehaviour {
         }
         else
         {
-            Door_L_closed.SetActive(true);
-            Door_L_open.SetActive(false);
+            Door_L_closed.enabled = true;
+            Door_L_open.enabled = false;
+
+            leftDoorCloseAnimator.Play("Base Layer.Door_close", 0, 0);
+
             L_Door_Closed = true;
 
             // Check if already displayed
@@ -449,17 +457,13 @@ public class Office : MonoBehaviour {
 
     void RightDoorSystem()
     {
-        foreach (Animator anim in animators)
-        {
-            if (anim.gameObject.name.Contains("Door"))
-            {
-                anim.enabled = true;
-            }
-        }
         if (R_Door_Closed)
         {
-            Door_R_closed.SetActive(false);
-            Door_R_open.SetActive(true);
+            Door_R_closed.enabled = false;
+            Door_R_open.enabled = true;
+
+            rightDoorOpenAnimator.Play("Base Layer.R_door_opened", 0, 0);
+
             R_Door_Closed = false;
 
             // Check if already displayed
@@ -483,30 +487,33 @@ public class Office : MonoBehaviour {
             DoorClose.Play();
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-    }
-    else
-    {
-        Door_R_closed.SetActive(true);
-        Door_R_open.SetActive(false);
-        R_Door_Closed = true;
-
-        // Check if already displayed
-        if (DoorButton_R1.isActiveAndEnabled)
-        {
-            DoorButton_R1.enabled = false;
         }
+        else
+        {
+            Door_R_closed.enabled = true;
+            Door_R_open.enabled = false;
+
+            rightDoorCloseAnimator.Play("Base Layer.R_door_closed", 0, 0);
+
+            R_Door_Closed = true;
+
+            // Check if already displayed
+            if (DoorButton_R1.isActiveAndEnabled)
+            {
+                DoorButton_R1.enabled = false;
+            }
         
-        // Check if already displayed
-        if (!DoorButton_R2.isActiveAndEnabled)
-        {
-            DoorButton_R2.enabled = true;
+            // Check if already displayed
+            if (!DoorButton_R2.isActiveAndEnabled)
+            {
+                DoorButton_R2.enabled = true;
+            }
+
+            DoorClose.Play();
+
+            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
         }
-
-        DoorClose.Play();
-
-        OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
     }
-}
 
 
     void LeftLightSystem()
