@@ -94,6 +94,10 @@ public class Movement : MonoBehaviour {
         FreddyMovementTime = 3.02f;
         FoxyMovementTime = 5.01f;
 
+        BonnieOutsideDoorTime = 5f;
+        ChicaOutsideDoorTime = 5f;
+        FreddyOutsideDoorTime = 5f;
+
         //generate AI Difficulties
         BonnieProbability = Random.Range(0, 100);
         ChicaProbability = Random.Range(0, 100);        
@@ -248,83 +252,98 @@ public class Movement : MonoBehaviour {
             FoxyMovementTime = 5.01f;
         }
     }
+    if (BonnieOutsideDoor)
+    {
+        if (LeftDoorClosed)
+        {
+            MoveFromDoorBonnie();
+            BonnieMovementTime = 20;
+            if (WaitForMovingFromDoorBonnie)
+            {
+                BonnieOutsideDoorTime -= Time.deltaTime;
+                if (BonnieOutsideDoorTime <= 0)
+                {
+                    BonnieOutsideDoor = false;
+                    OfficeObject.GetComponent<Office>().BonnieOutsideDoor = false;
+                    WhereBonnie = 3;
+                    PlayerPrefs.SetFloat("WhereBonnie", WhereBonnie);
+                    PlayerPrefs.Save();
+                    WaitForMovingFromDoorBonnie = false;
+                    BonnieOutsideDoorTime = 0;
+                }
+            }
+        }
+    }
 
-    // Handle movement checks for each character outside their door
-    HandleOutsideDoor(ref BonnieOutsideDoor, LeftDoorClosed, ref BonnieMovementTime, ref WaitForMovingFromDoorBonnie, ref BonnieOutsideDoorTime, "Bonnie", 3);
-    
-    HandleOutsideDoor(ref ChicaOutsideDoor, RightDoorClosed, ref ChicaMovementTime, ref WaitForMovingFromDoorChica,ref ChicaOutsideDoorTime, "Chica", 2);
-    
-    HandleOutsideDoor(ref FreddyOutsideDoor, RightDoorClosed, ref FreddyMovementTime, ref WaitForMovingFromDoorFreddy, ref FreddyOutsideDoorTime, "Freddy", 1);
-
-    // Glitch activity handler
+    if (ChicaOutsideDoor)
+    {
+        if (RightDoorClosed)
+        {
+            MoveFromDoorChica();
+            ChicaMovementTime = 20;
+            if (WaitForMovingFromDoorChica)
+            {
+                ChicaOutsideDoorTime -= Time.deltaTime;
+                if (ChicaOutsideDoorTime <= 0)
+                {
+                    ChicaOutsideDoor = false;
+                    OfficeObject.GetComponent<Office>().ChicaOutsideDoor = false;
+                    WhereChica = 2;
+                    PlayerPrefs.SetFloat("WhereChica", WhereChica);
+                    PlayerPrefs.Save();
+                    WaitForMovingFromDoorChica = false;
+                    ChicaOutsideDoorTime = 0;
+                }
+            }
+        }
+    }
+    if (FreddyOutsideDoor)
+    {
+        if (RightDoorClosed)
+        {
+            MoveFromDoorFreddy();
+            FreddyMovementTime = 20;
+            if (WaitForMovingFromDoorFreddy)
+            {
+                FreddyOutsideDoorTime -= Time.deltaTime;
+                if  (FreddyOutsideDoorTime <= 0)
+                {
+                    FreddyOutsideDoor = false;
+                    OfficeObject.GetComponent<Office>().FreddyOutsideDoor = false;
+                    WhereFreddy = 1;
+                    PlayerPrefs.SetFloat("WhereFreddy", WhereFreddy);
+                    PlayerPrefs.Save();
+                    WaitForMovingFromDoorFreddy = false;
+                    FreddyOutsideDoorTime = 0;
+                }
+            }
+        }
+    }
     if (GlitchActive)
     {
         MoveGlitchUp -= Time.deltaTime;
-        if (MoveGlitchUp <= 0)
+        if (MoveGlitchUp <= 0 && LongGlitch == true)
         {
             MoveGlitch.SetActive(false);
             GlitchActive = false;
             MoveGlitchUp = 0.5f;
             LongGlitch = false;
         }
+        else if(MoveGlitchUp <= 0)
+        {
+            MoveGlitch.SetActive(false);
+            GlitchActive = false;
+            MoveGlitchUp = 0.5f;
+        }
+    }  
+    if(WhereChica == 5)
+    {
+        ChicaInKitchen.SetActive(true);
+    } else if (WhereChica != 5)
+    {
+        ChicaInKitchen.SetActive(false);
     }
-
-    // Chica in kitchen
-    ChicaInKitchen.SetActive(WhereChica == 5);
 }
-
-    void HandleOutsideDoor(ref bool outsideDoor, bool doorClosed, ref float movementTime, ref bool waitForMoving, ref float outsideDoorTime, string animatronicName, int defaultPosition)
-    {
-        if (outsideDoor && doorClosed)
-        {
-            MoveFromDoor(animatronicName);
-            movementTime = 20;
-
-            if (waitForMoving)
-            {
-                outsideDoorTime -= Time.deltaTime;
-
-                if (outsideDoorTime <= 0)
-                {
-                    outsideDoor = false;
-
-                    // Set the corresponding animatronic's outside door status
-                    if (animatronicName == "Bonnie")
-                    {
-                        OfficeObject.GetComponent<Office>().BonnieOutsideDoor = false;
-                    }
-                    else if (animatronicName == "Chica")
-                    {
-                        OfficeObject.GetComponent<Office>().ChicaOutsideDoor = false;
-                    }
-                    else if (animatronicName == "Freddy")
-                    {
-                        OfficeObject.GetComponent<Office>().FreddyOutsideDoor = false;
-                    }
-
-                    PlayerPrefs.SetFloat("Where" + animatronicName, defaultPosition);
-                    PlayerPrefs.Save();
-                    waitForMoving = false;
-                    outsideDoorTime = 0;
-                }
-            }
-        }
-    }
-    void MoveFromDoor(string animatronicName)
-    {
-        switch (animatronicName)
-        {
-            case "Bonnie":
-                MoveFromDoorBonnie();
-            break;
-            case "Chica":
-                MoveFromDoorChica();
-            break;
-            case "Freddy":
-                MoveFromDoorFreddy();
-            break;
-        }
-    }
     //CHeck if the purcentage to move of each AI
 
     void AttemptBonnieMovement()
