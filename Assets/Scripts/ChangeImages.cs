@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeImages : MonoBehaviour
 {
+    public bool CanEnableLight = true;
     private Animator foxyAnimator;
     public bool FoxyAnimationStarted = false;
     public float FoxyAnimationTimer = 0.50f;
@@ -96,6 +97,7 @@ public class ChangeImages : MonoBehaviour
     public GameObject GoldenFreddyOffice;
     public float GoldenFreddyJumpscareTime = 10f;
     public float GoldenFreddyDoJumpscare = 5f;
+    public int GoldenFreddyRange = 0;
     
     public GameObject GoldenFreddyLaugh;
     public GameObject GoldenFreddyJumpscare;
@@ -157,6 +159,7 @@ public class ChangeImages : MonoBehaviour
         GoldenFreddyLaugh.SetActive(false);
 
         foxyRunTime = 3.5f;
+        GoldenFreddyRange = (int)PlayerPrefs.GetFloat("GoldenDifficulty", 0)*15;
     }
 
     void Update()
@@ -211,7 +214,7 @@ public class ChangeImages : MonoBehaviour
                 
             }
             
-            if(GoldenFreddyChance == 0 && WhichCamera == 5)
+            if(GoldenFreddyChance == GoldenFreddyRange && WhichCamera == 5)
             {
                 GoldenFreddyActive = true;
                 GoldenFreddyOffice.SetActive(true);
@@ -702,14 +705,13 @@ public class ChangeImages : MonoBehaviour
             OfficeObject.GetComponent<RandNumberGen>().BonnieOutsideLeftDoor = true;
         }
 
-        if (WhereBonnie >= 8)
+        if (WhereBonnie >= 8 && camIsUp)
         {
             BonnieJumpscare.SetActive(true);
             isBeingJumpscared = true;
 
             controllersRumble.IsRumbleTriggered("Bonnie");
         }
-
         // where is Chica system
         if (WhereChica < 8)
         {
@@ -721,7 +723,7 @@ public class ChangeImages : MonoBehaviour
             OfficeObject.GetComponent<Movement>().ChicaOutsideDoor = true;
             OfficeObject.GetComponent<RandNumberGen>().ChicaOutsideRightDoor = true;
         }
-        if (WhereChica >= 9)
+        if (WhereChica >= 9 && camIsUp)
         {
             if (camIsUp)
             {
@@ -847,8 +849,7 @@ public class ChangeImages : MonoBehaviour
 
     public void GenerateGoldenFreddyChance()
     {
-        //GoldenFreddyChance = Random.Range(0, 32768);
-        GoldenFreddyChance = Random.Range(0, 4);
+        GoldenFreddyChance = Random.Range(GoldenFreddyRange, 491520);
         Debug.Log("GoldenFreddy chance generated : "+ GoldenFreddyChance);
 
     }
