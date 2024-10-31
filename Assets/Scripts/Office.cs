@@ -518,13 +518,6 @@ public class Office : MonoBehaviour {
 
     void LeftLightSystem()
     {
-        foreach (Animator anim in animators)
-        {
-            if (anim.gameObject.name.Contains("Office"))
-            {
-                anim.enabled = true;
-            }
-        }
         if (LeftLightIsOn)
         {
             if (BonnieOutsideDoor)
