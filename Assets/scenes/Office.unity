@@ -6745,7 +6745,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -7566,7 +7566,7 @@ Camera:
   m_GameObject: {fileID: 935168459}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -14874,7 +14874,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -17004,7 +17004,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -17288,8 +17288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b14b969827bf164f85fdf34ab3f2418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanEnableLight: 1
   FoxyAnimationStarted: 0
   FoxyAnimationTimer: 1
+  WaitPlayerToNotice: 6
+  PlayerSawFoxy: 0
   KitckenAudioOnly: {fileID: 59438677}
   WhichCamera: 1
   cameraScreen: {fileID: 1097015881}
@@ -17377,6 +17380,7 @@ MonoBehaviour:
   GoldenFreddyOffice: {fileID: 1020080428}
   GoldenFreddyJumpscareTime: 10
   GoldenFreddyDoJumpscare: 5
+  GoldenFreddyRange: 0
   GoldenFreddyLaugh: {fileID: 1404824418}
   GoldenFreddyJumpscare: {fileID: 626154237}
   Itsme: {fileID: 1030642246}

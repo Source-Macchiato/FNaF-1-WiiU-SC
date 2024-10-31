@@ -44,6 +44,8 @@ public class CameraScript : MonoBehaviour
         changeImages = FindObjectOfType<ChangeImages>();
         randNumberGen = FindObjectOfType<RandNumberGen>();
         moveInOffice = FindObjectOfType<MoveInOffice>();
+
+        hideOfficeGameObject.SetActive(false);
     }
 
     void Update()
