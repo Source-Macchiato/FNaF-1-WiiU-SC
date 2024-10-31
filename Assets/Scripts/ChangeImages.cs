@@ -7,6 +7,8 @@ public class ChangeImages : MonoBehaviour
     private Animator foxyAnimator;
     public bool FoxyAnimationStarted = false;
     public float FoxyAnimationTimer = 0.50f;
+    public float WaitPlayerToNotice = 6f;
+    public bool PlayerSawFoxy = false;
     public GameObject KitckenAudioOnly;
     public float WhichCamera = 1;
     public GameObject cameraScreen;
@@ -153,6 +155,8 @@ public class ChangeImages : MonoBehaviour
         GoldenFreddyJumpscareTime = 10f;
         GoldenFreddyOffice.SetActive(false);
         GoldenFreddyLaugh.SetActive(false);
+
+        foxyRunTime = 3.5f;
     }
 
     void Update()
@@ -750,19 +754,32 @@ public class ChangeImages : MonoBehaviour
 
             if (foxyStarted)
             {
+                WaitPlayerToNotice -= Time.deltaTime;
                 FoxyFootsteps.Play();
                 FoxyRunDownHall.SetActive(true);
                 FoxyAnimationPlayed = true;
                 
-                foxyRunTime -= Time.deltaTime;
-                FoxyAnimationTimer -= Time.deltaTime;
+                if(WhichCamera == 4)
+                {
+                    FoxyAnimationTimer -= Time.deltaTime;
+                    PlayerSawFoxy = true;
+                }
+                if (PlayerSawFoxy)
+                {
+                    WaitPlayerToNotice = 0f;
+                }
                 if (FoxyAnimationTimer <= 0f)
                 {
+                    FoxyRunDownHall.SetActive(false);
                     foxyAnimator.enabled = false;
                 }
-                if (foxyRunTime <= 0)
+                if (WaitPlayerToNotice <= 0)
                 {
-                    if (!L_Door_Closed)
+                    foxyRunTime -= Time.deltaTime;
+
+                    if(foxyRunTime <= 0)
+                    {
+                        if (!L_Door_Closed)
                     {
                         FoxyEnterOffice.SetActive(true);
                         FoxyRunDownHall.SetActive(false);
@@ -771,7 +788,7 @@ public class ChangeImages : MonoBehaviour
 
                         controllersRumble.IsRumbleTriggered("Foxy");
                     }
-                    if (L_Door_Closed)
+                    else if(L_Door_Closed)
                     {
                         DoorBang.Play();
                         OfficeObject.GetComponent<Movement>().WhereFoxy = 1;
@@ -781,6 +798,7 @@ public class ChangeImages : MonoBehaviour
                         FoxyRunDownHall.SetActive(false);
                         foxyRunTime = 3.5f;
                         foxyStarted = false;
+                    }
                     }
                 }
             }
