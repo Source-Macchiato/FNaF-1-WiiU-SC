@@ -74,9 +74,11 @@ public class Office : MonoBehaviour {
     private float joystickThreshold = 0.5f;
 
     public float centerPosition;
+    ChangeImages changeImages;
 
     void Start()
     {
+        changeImages = FindObjectOfType<ChangeImages>();
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
 

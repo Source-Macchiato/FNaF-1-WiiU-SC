@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeImages : MonoBehaviour
 {
+    public bool CanEnableLight = true;
     private Animator foxyAnimator;
     public bool FoxyAnimationStarted = false;
     public float FoxyAnimationTimer = 0.50f;
@@ -704,14 +705,13 @@ public class ChangeImages : MonoBehaviour
             OfficeObject.GetComponent<RandNumberGen>().BonnieOutsideLeftDoor = true;
         }
 
-        if (WhereBonnie >= 8)
+        if (WhereBonnie >= 8 && camIsUp)
         {
             BonnieJumpscare.SetActive(true);
             isBeingJumpscared = true;
 
             controllersRumble.IsRumbleTriggered("Bonnie");
         }
-
         // where is Chica system
         if (WhereChica < 8)
         {
@@ -723,7 +723,7 @@ public class ChangeImages : MonoBehaviour
             OfficeObject.GetComponent<Movement>().ChicaOutsideDoor = true;
             OfficeObject.GetComponent<RandNumberGen>().ChicaOutsideRightDoor = true;
         }
-        if (WhereChica >= 9)
+        if (WhereChica >= 9 && camIsUp)
         {
             if (camIsUp)
             {
