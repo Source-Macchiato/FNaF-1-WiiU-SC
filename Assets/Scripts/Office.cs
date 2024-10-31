@@ -527,23 +527,21 @@ public class Office : MonoBehaviour {
         }
         if (LeftLightIsOn)
         {
-            if (!BonnieOutsideDoor)
+            if (BonnieOutsideDoor)
+            {
+                if (Light_L_Door_Bonnie.isActiveAndEnabled)
+                {
+                    Light_L_Door_Bonnie.enabled = false;
+                }
+
+                lightSound.Pause();
+            }
+            else
             {
                 // Check if already displayed
                 if (Light_L_No_Door.isActiveAndEnabled)
                 {
                     Light_L_No_Door.enabled = false;
-                }
-
-                lightSound.Pause();
-            }
-
-            if (BonnieOutsideDoor)
-            {
-                // Check if already displayed
-                if (Light_L_Door_Bonnie.isActiveAndEnabled)
-                {
-                    Light_L_Door_Bonnie.enabled = false;
                 }
 
                 lightSound.Pause();
@@ -588,25 +586,18 @@ public class Office : MonoBehaviour {
                 RightLightSystem();
             }
 
-            // The left light system
-            if (!BonnieOutsideDoor)
-            {
-                // Check if already displayed
-                if (!Light_L_No_Door.isActiveAndEnabled)
-                {
-                    Light_L_No_Door.enabled = true;
-                }
-
-                lightSound.Play();
-                LeftScareAlrdPlayed = false;
-            }
-
             if (BonnieOutsideDoor)
             {
-                // Check if already displayed
+                // Enable Bonnie
                 if (!Light_L_Door_Bonnie.isActiveAndEnabled)
                 {
                     Light_L_Door_Bonnie.enabled = true;
+                }
+
+                // Disable light
+                if (Light_L_No_Door.isActiveAndEnabled)
+                {
+                    Light_L_No_Door.enabled = false;
                 }
 
                 lightSound.Play();
@@ -619,6 +610,19 @@ public class Office : MonoBehaviour {
             }
             else
             {
+                // Disable Bonnie
+                if (Light_L_Door_Bonnie.isActiveAndEnabled)
+                {
+                    Light_L_Door_Bonnie.enabled = false;
+                }
+
+                // Enable Light
+                if (!Light_L_No_Door.isActiveAndEnabled)
+                {
+                    Light_L_No_Door.enabled = true;
+                }
+
+                lightSound.Play();
                 LeftScareAlrdPlayed = false;
             }
 
@@ -659,23 +663,22 @@ public class Office : MonoBehaviour {
     {
         if (RightLightIsOn)
         {
-            if (!ChicaOutsideDoor)
-            {
-                // Check if already displayed
-                if (Light_R_No_Door.isActiveAndEnabled)
-                {
-                    Light_R_No_Door.enabled = false;
-                }
-
-                lightSound.Pause();
-            }
-
             if (ChicaOutsideDoor)
             {
                 // Check if already displayed
                 if (Light_R_Door_Chica.isActiveAndEnabled)
                 {
                     Light_R_Door_Chica.enabled = false;
+                }
+
+                lightSound.Pause();
+            }
+            else
+            {
+                // Check if already displayed
+                if (Light_R_No_Door.isActiveAndEnabled)
+                {
+                    Light_R_No_Door.enabled = false;
                 }
 
                 lightSound.Pause();
@@ -720,25 +723,17 @@ public class Office : MonoBehaviour {
                 LeftLightSystem();
             }
 
-            // The right light system
-            if (!ChicaOutsideDoor)
-            {
-                // Check if already displayed
-                if (!Light_R_No_Door.isActiveAndEnabled)
-                {
-                    Light_R_No_Door.enabled = true;
-                }
-
-                lightSound.Play();
-                RightScareAlrdPlayed = false;
-            }
-
             if (ChicaOutsideDoor)
             {
                 // Check if already displayed
                 if (!Light_R_Door_Chica.isActiveAndEnabled)
                 {
                     Light_R_Door_Chica.enabled = true;
+                }
+
+                if (Light_R_No_Door.isActiveAndEnabled)
+                {
+                    Light_R_No_Door.enabled = false;
                 }
 
                 lightSound.Play();
@@ -748,7 +743,22 @@ public class Office : MonoBehaviour {
                     RightScareAlrdPlayed = true;
                     Scare.Play();
                 }
+            }
+            else
+            {
+                // Check if already displayed
+                if (Light_R_Door_Chica.isActiveAndEnabled)
+                {
+                    Light_R_Door_Chica.enabled = false;
+                }
 
+                if (!Light_R_No_Door.isActiveAndEnabled)
+                {
+                    Light_R_No_Door.enabled = true;
+                }
+
+                lightSound.Play();
+                RightScareAlrdPlayed = false;
             }
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
