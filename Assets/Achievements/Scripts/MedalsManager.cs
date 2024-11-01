@@ -105,6 +105,7 @@ public class MedalsManager : MonoBehaviour {
 	{
         isShowing = true;
         PlayerPrefs.SetString(MainMessage, "obtained");
+        MedalsSave.inst.Save();
         obtainedMedals.Add(MainMessage);
         mainText.text = MainMessage;
         descText.text = Description;
@@ -115,10 +116,5 @@ public class MedalsManager : MonoBehaviour {
         medalAnim.SetBool("show", true);
         yield return new WaitForSeconds(durationPopup);
         medalAnim.SetBool("show", false);
-    }
-
-    void OnApplicationQuit()
-    {
-        MedalsSave.inst.Save();
     }
 }
