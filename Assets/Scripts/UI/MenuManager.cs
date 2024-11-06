@@ -1448,7 +1448,7 @@ public class MenuManager : MonoBehaviour
         GameObject newDescription = Instantiate(descriptionPrefab, menus[menuId]);
 
         // Set the translation for the description
-        I18nTextTranslator translator = GetComponent<I18nTextTranslator>();
+        I18nTextTranslator translator = newDescription.GetComponent<I18nTextTranslator>();
         translator.textId = translationId;
     }
 
