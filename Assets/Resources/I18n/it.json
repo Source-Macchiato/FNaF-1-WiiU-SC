@@ -53,6 +53,26 @@
       "value": "Analisi dei dati"
     },
     {
+      "key": "mainmenu.audio",
+      "value": "Audio"
+    },
+    {
+      "key": "mainmenu.generalvolume",
+      "value": "Volume generale"
+    },
+    {
+      "key": "mainmenu.musicvolume",
+      "value": "Volume della musica"
+    },
+    {
+      "key": "mainmenu.voicevolume",
+      "value": "Volume della voce"
+    },
+    {
+      "key": "mainmenu.sfxvolume",
+      "value": "Volume degli effetti sonori"
+    },
+    {
       "key": "customnight.ailevel",
       "value": "Difficoltà I.A."
     },

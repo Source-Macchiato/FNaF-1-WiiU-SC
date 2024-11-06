@@ -53,6 +53,26 @@
       "value": "البيانات التحليلية"
     },
     {
+      "key": "mainmenu.audio",
+      "value": "الصوت"
+    },
+    {
+      "key": "mainmenu.generalvolume",
+      "value": "الصوت العام"
+    },
+    {
+      "key": "mainmenu.musicvolume",
+      "value": "صوت الموسيقى"
+    },
+    {
+      "key": "mainmenu.voicevolume",
+      "value": "مستوى الصوت"
+    },
+    {
+      "key": "mainmenu.sfxvolume",
+      "value": "حجم المؤثرات الصوتية"
+    },
+    {
       "key": "customnight.ailevel",
       "value": "مستوى الذكاء الصناعي"
     },

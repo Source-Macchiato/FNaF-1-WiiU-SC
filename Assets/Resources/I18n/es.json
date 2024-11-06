@@ -77,6 +77,26 @@
       "value": "Datos de Estadisticas"
     },
     {
+      "key": "mainmenu.audio",
+      "value": "Audio"
+    },
+    {
+      "key": "mainmenu.generalvolume",
+      "value": "Volumen general"
+    },
+    {
+      "key": "mainmenu.musicvolume",
+      "value": "Volumen de la música"
+    },
+    {
+      "key": "mainmenu.voicevolume",
+      "value": "Volumen de la voz"
+    },
+    {
+      "key": "mainmenu.sfxvolume",
+      "value": "Volumen de los efectos de sonido"
+    },
+    {
       "key": "nextnight.firstnight",
       "value": "1ra Noche"
     },

@@ -53,6 +53,26 @@
       "value": "Analytische Daten"
     },
     {
+      "key": "mainmenu.audio",
+      "value": "Audio"
+    },
+    {
+      "key": "mainmenu.generalvolume",
+      "value": "Allgemeine Lautstärke"
+    },
+    {
+      "key": "mainmenu.musicvolume",
+      "value": "Musiklautstärke"
+    },
+    {
+      "key": "mainmenu.voicevolume",
+      "value": "Stimmenlautstärke"
+    },
+    {
+      "key": "mainmenu.sfxvolume",
+      "value": "Lautstärke der Soundeffekte"
+    },
+    {
       "key": "customnight.ailevel",
       "value": "K.I. Level"
     },
