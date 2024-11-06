@@ -28,6 +28,7 @@ public class MenuManager : MonoBehaviour
     public GameObject cardPrefab;
     public GameObject switcherPrefab;
     public GameObject cardSwitcherPrefab;
+    public GameObject descriptionPrefab;
     public GameObject[] popupPrefab;
     public GameObject selectionPrefab;
     public GameObject selectionPopupPrefab;
@@ -1222,7 +1223,7 @@ public class MenuManager : MonoBehaviour
     }
 
     // Adds a button to the menu with the given text and click action
-    public void AddButton(int menuId, int buttonType, string buttonText, UnityEngine.Events.UnityAction onClickAction, string translationId, bool isExtraContainer = false)
+    public void AddButton(int menuId, int buttonType, UnityEngine.Events.UnityAction onClickAction, string translationId, bool isExtraContainer = false)
     {
         // Check the target container to add the button
         Transform parentTransform = isExtraContainer
@@ -1238,8 +1239,6 @@ public class MenuManager : MonoBehaviour
         GameObject buttonTextComponent = newButton.transform.Find("Text").gameObject;
         Text textComponent = buttonTextComponent.GetComponent<Text>();
         TMP_Text tmpTextComponent = buttonTextComponent.GetComponent<TextMeshProUGUI>();
-        if (textComponent != null) textComponent.text = buttonText;
-        if (tmpTextComponent != null) tmpTextComponent.text = buttonText;
 
         // Configure text translation
         I18nTextTranslator translator = buttonTextComponent.GetComponent<I18nTextTranslator>();
@@ -1441,6 +1440,16 @@ public class MenuManager : MonoBehaviour
 
         // Add the new button to the list
         menuButtons[menuId].Add(newCardSwitcher);
+    }
+
+    public void AddDescription(int menuId, string translationId)
+    {
+        // Instantiate the description prefab
+        GameObject newDescription = Instantiate(descriptionPrefab, menus[menuId]);
+
+        // Set the translation for the description
+        I18nTextTranslator translator = GetComponent<I18nTextTranslator>();
+        translator.textId = translationId;
     }
 
     // Shows the next popup in the queue
