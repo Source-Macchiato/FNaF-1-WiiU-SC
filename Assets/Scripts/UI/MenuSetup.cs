@@ -32,24 +32,26 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddButton(1, 0, Layout, "mainmenu.layout");
         menuManager.AddButton(1, 0, Online, "mainmenu.online");
 
-        menuManager.AddButton(4, 0, Analytics, "mainmenu.analyticdata");
+        menuManager.AddSwitcher(2, new string[] { "English", "French", "Spanish", "Italian", "German", "Arabic" }, "switcher.translation");
 
-        menuManager.AddButton(7, 1, StartCustomNight, "customnight.ready", true);
+        menuManager.AddButton(4, 0, Analytics, "mainmenu.analyticdata");        
 
-        // Adding cards to the main menu
         menuManager.AddCard(5, "TV only", menuData.tvOnly);
         menuManager.AddCard(5, "TV + Gamepad", menuData.tvGamepad);
         menuManager.AddCard(5, "Gamepad only", menuData.gamepadOnly);
+        
+        menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");        
 
-        // Adding switchers to the main menu
-        menuManager.AddSwitcher(2, new string[] { "English", "French", "Spanish", "Italian", "German", "Arabic" }, "switcher.translation");
-        menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");
-
-        // Adding card switchers to the main menu
         menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, "customnight.ailevel", 0, 20, 1);
         menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 0, 20, 3);
         menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 0, 20, 3);
         menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 1);
+        menuManager.AddButton(7, 1, StartCustomNight, "customnight.ready", true);
+
+        if (SaveManager.LoadGoldenFreddyStatus() == 1)
+        {
+            menuData.AddGoldenFreddy();
+        }
 
         menuManager.AddDescription(8, "mainmenu.generalvolume");
         menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.generalvolume");
@@ -60,10 +62,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddDescription(8, "mainmenu.sfxvolume");
         menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.sfxvolume");
 
-        if (SaveManager.LoadGoldenFreddyStatus() == 1)
-        {
-            menuData.AddGoldenFreddy();
-        }
+        menuManager.AddButton(9, 0, Volume, "mainmenu.volume");
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
@@ -150,7 +149,7 @@ public class MenuSetup : MonoBehaviour
 
     void Audio()
     {
-        menuManager.ChangeMenu(8);
+        menuManager.ChangeMenu(9);
     }
 
     void Language()
@@ -189,6 +188,11 @@ public class MenuSetup : MonoBehaviour
     void Online()
     {
         menuManager.ChangeMenu(4);
+    }
+
+    void Volume()
+    {
+        menuManager.ChangeMenu(8);
     }
 
     void Analytics()
