@@ -1388,6 +1388,28 @@ public class MenuManager : MonoBehaviour
             menuButtons[menuId] = new List<GameObject>();
         }
 
+        // Handle navigation setup
+        int switcherIndex = menuButtons[menuId].Count;
+
+        if (switcherIndex > 0)
+        {
+            // Get the previous button
+            GameObject previousSwitcher = menuButtons[menuId][switcherIndex - 1];
+            Button previousSwitcherComponent = previousSwitcher.GetComponent<Button>();
+
+            // Set navigation for the new button
+            Navigation newNav = switcherComponent.navigation;
+            newNav.mode = Navigation.Mode.Explicit;
+            newNav.selectOnUp = previousSwitcherComponent;
+            switcherComponent.navigation = newNav;
+
+            // Set navigation for the previous button
+            Navigation prevNav = previousSwitcherComponent.navigation;
+            prevNav.mode = Navigation.Mode.Explicit;
+            prevNav.selectOnDown = switcherComponent;
+            previousSwitcherComponent.navigation = prevNav;
+        }
+
         // Add the new button to the list
         menuButtons[menuId].Add(newSwitcher);
     }
