@@ -273,6 +273,6 @@ public class MenuSetup : MonoBehaviour
 
     void OnBackFromVolume()
     {
-
+        menuData.SaveAndUpdateVolume();
     }
 }

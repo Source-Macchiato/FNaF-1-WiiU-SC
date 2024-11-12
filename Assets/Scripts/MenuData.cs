@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Audio;
 
 public class MenuData : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class MenuData : MonoBehaviour
     public GameObject goldenFreddyGameObject;
     public Sprite achievementIcon;
     public AudioSource mainMenuThemeSound;
+    public AudioMixer audioMixer;
 
     [HideInInspector]
     public GameObject nightNumberGameObject;
@@ -147,6 +149,44 @@ public class MenuData : MonoBehaviour
 
                 // Reload the language
                 I18n.LoadLanguage();
+            }
+        }
+    }
+
+    public void SaveAndUpdateVolume()
+    {
+        // Get SwitcherData scripts
+        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+
+        foreach (SwitcherData switcher in switchers)
+        {
+            if (switcher.switcherId == "switcher.generalvolume")
+            {
+                saveManager.SaveGeneralVolume(switcher.currentOptionId);
+                bool saveResult = saveGameState.DoSave();
+
+                audioMixer.SetFloat("Master", (switcher.currentOptionId / 10f) * 80f - 80f);
+            }
+            else if (switcher.switcherId == "switcher.musicvolume")
+            {
+                saveManager.SaveMusicVolume(switcher.currentOptionId);
+                bool saveResult = saveGameState.DoSave();
+
+                audioMixer.SetFloat("Music", (switcher.currentOptionId / 10f) * 80f - 80f);
+            }
+            else if (switcher.switcherId == "switcher.voicevolume")
+            {
+                saveManager.SaveVoiceVolume(switcher.currentOptionId);
+                bool saveResult = saveGameState.DoSave();
+
+                audioMixer.SetFloat("Voice", (switcher.currentOptionId / 10f) * 80f - 80f);
+            }
+            else if (switcher.switcherId == "switcher.sfxvolume")
+            {
+                saveManager.SaveSFXVolume(switcher.currentOptionId);
+                bool saveResult = saveGameState.DoSave();
+
+                audioMixer.SetFloat("SFX", (switcher.currentOptionId / 10f) * 80f - 80f);
             }
         }
     }
