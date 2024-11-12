@@ -194,6 +194,8 @@ public class MenuSetup : MonoBehaviour
     void Volume()
     {
         menuManager.ChangeMenu(8);
+
+        menuData.UpdateVolumeSwitchers();
     }
 
     void Analytics()

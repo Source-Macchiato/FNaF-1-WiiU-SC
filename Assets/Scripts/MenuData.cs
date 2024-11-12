@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.Audio;
 
 public class MenuData : MonoBehaviour
 {
@@ -56,6 +56,7 @@ public class MenuData : MonoBehaviour
         // Load
         nightNumber = SaveManager.LoadNightNumber();
         layoutId = SaveManager.LoadLayoutId();
+        LoadVolume();
 
         // Disable advertisement by default
         advertisementIsActive = false;
@@ -131,6 +132,41 @@ public class MenuData : MonoBehaviour
                 {
                     switcher.currentOptionId = 0;
                 }
+            }
+        }
+    }
+
+    private void LoadVolume()
+    {
+        audioMixer.SetFloat("Master", (SaveManager.LoadGeneralVolume() / 10f) * 80f - 80f);
+        audioMixer.SetFloat("Music", (SaveManager.LoadMusicVolume() / 10f) * 80f - 80f);
+        audioMixer.SetFloat("Voice", (SaveManager.LoadVoiceVolume() / 10f) * 80f - 80f);
+        audioMixer.SetFloat("SFX", (SaveManager.LoadSFXVolume() / 10f) * 80f - 80f);
+
+    }
+
+    public void UpdateVolumeSwitchers()
+    {
+        // Get SwitcherData scripts
+        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+
+        foreach (SwitcherData switcher in switchers)
+        {
+            if (switcher.switcherId == "switcher.generalvolume")
+            {
+                switcher.currentOptionId = SaveManager.LoadGeneralVolume();
+            }
+            else if (switcher.switcherId == "switcher.musicvolume")
+            {
+                switcher.currentOptionId = SaveManager.LoadMusicVolume();
+            }
+            else if (switcher.switcherId == "switcher.voicevolume")
+            {
+                switcher.currentOptionId = SaveManager.LoadVoiceVolume();
+            }
+            else if (switcher.switcherId == "switcher.sfxvolume")
+            {
+                switcher.currentOptionId = SaveManager.LoadSFXVolume();
             }
         }
     }
