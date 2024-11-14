@@ -392,20 +392,22 @@ public class Office : MonoBehaviour {
         RightLightSystem();
     }
 
-    private void ToggleLeftLight()
+    public void ToggleLeftLight()
     {
         leftLightIsOn = !leftLightIsOn;
 
         LightPowerUsage();
         LightSound();
+        OfficeImageState();
     }
 
-    private void ToggleRightLight()
+    public void ToggleRightLight()
     {
         rightLightIsOn = !rightLightIsOn;
 
         LightPowerUsage();
         LightSound();
+        OfficeImageState();
     }
 
     private void LightPowerUsage()
@@ -455,6 +457,24 @@ public class Office : MonoBehaviour {
             if (!lightSound.isPlaying)
             {
                 lightSound.Play();
+            }
+        }
+    }
+
+    private void OfficeImageState()
+    {
+        if (!leftLightIsOn && !rightLightIsOn)
+        {
+            if (!OriginalOfficeImage.isActiveAndEnabled)
+            {
+                OriginalOfficeImage.enabled = true;
+            }
+        }
+        else
+        {
+            if (OriginalOfficeImage.isActiveAndEnabled)
+            {
+                OriginalOfficeImage.enabled = false;
             }
         }
     }
@@ -545,6 +565,7 @@ public class Office : MonoBehaviour {
         {
             // --- When the left light is disabled ---
 
+            // Disable Bonnie or light image if Bonnie is not here
             if (BonnieOutsideDoor)
             {
                 if (Light_L_Door_Bonnie.isActiveAndEnabled)
@@ -560,11 +581,7 @@ public class Office : MonoBehaviour {
                 }
             }
 
-            // Check if already displayed
-            if (!OriginalOfficeImage.isActiveAndEnabled)
-            {
-                OriginalOfficeImage.enabled = true;
-            }
+            
 
             // Check if already displayed
             if (DoorButton_L3.isActiveAndEnabled)

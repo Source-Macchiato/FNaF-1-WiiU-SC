@@ -196,7 +196,7 @@ public class CameraScript : MonoBehaviour
 
                     gameScript.PowerUsage -= 1;
 
-                    office.leftLightIsOn = false;
+                    office.ToggleLeftLight();
                 }
 
 
@@ -226,7 +226,7 @@ public class CameraScript : MonoBehaviour
 
                     gameScript.PowerUsage -= 1;
 
-                    office.rightLightIsOn = false;
+                    office.ToggleRightLight();
                 }
             }
         }
