@@ -388,8 +388,8 @@ public class Office : MonoBehaviour {
             }
         }
 
-        // LeftLightSystem();
-        // RightLightSystem();
+        LeftLightSystem();
+        RightLightSystem();
     }
 
     private void ToggleLeftLight()
@@ -397,6 +397,7 @@ public class Office : MonoBehaviour {
         leftLightIsOn = !leftLightIsOn;
 
         LightPowerUsage();
+        LightSound();
     }
 
     private void ToggleRightLight()
@@ -404,6 +405,7 @@ public class Office : MonoBehaviour {
         rightLightIsOn = !rightLightIsOn;
 
         LightPowerUsage();
+        LightSound();
     }
 
     private void LightPowerUsage()
@@ -439,19 +441,116 @@ public class Office : MonoBehaviour {
         }
     }
 
+    private void LightSound()
+    {
+        if (!leftLightIsOn && !rightLightIsOn)
+        {
+            if (lightSound.isPlaying)
+            {
+                lightSound.Stop();
+            }
+        }
+        else
+        {
+            if (!lightSound.isPlaying)
+            {
+                lightSound.Play();
+            }
+        }
+    }
+
     private void LeftLightSystem()
     {
         if (leftLightIsOn)
         {
+            // --- When the left light is enabled ---
+
+            // Disable the right light
+            if (rightLightIsOn)
+            {
+                ToggleRightLight();
+            }
+
+            if (BonnieOutsideDoor)
+            {
+                // Enable Bonnie
+                if (!Light_L_Door_Bonnie.isActiveAndEnabled)
+                {
+                    Light_L_Door_Bonnie.enabled = true;
+                }
+
+                // Disable light
+                if (Light_L_No_Door.isActiveAndEnabled)
+                {
+                    Light_L_No_Door.enabled = false;
+                }
+
+
+                if (!L_Door_Closed && LeftScareAlrdPlayed == false)
+                {
+                    if (!Scare.isPlaying)
+                    {
+                        Scare.Play();
+                    }
+
+                    LeftScareAlrdPlayed = true;
+                }
+            }
+            else
+            {
+                // Disable Bonnie
+                if (Light_L_Door_Bonnie.isActiveAndEnabled)
+                {
+                    Light_L_Door_Bonnie.enabled = false;
+                }
+
+                // Enable Light
+                if (!Light_L_No_Door.isActiveAndEnabled)
+                {
+                    Light_L_No_Door.enabled = true;
+                }
+
+                
+                LeftScareAlrdPlayed = false;
+            }
+
+            // Check if already displayed
+            if (OriginalOfficeImage.isActiveAndEnabled)
+            {
+                OriginalOfficeImage.enabled = false;
+            }
+
+            // Check if already displayed
+            if (!DoorButton_L3.isActiveAndEnabled)
+            {
+                DoorButton_L3.enabled = true;
+            }
+
+            if (L_Door_Closed)
+            {
+                // Check if already displayed
+                if (DoorButton_L1.isActiveAndEnabled)
+                {
+                    DoorButton_L1.enabled = false;
+                }
+
+                // Check if already displayed
+                if (!DoorButton_L4.isActiveAndEnabled)
+                {
+                    DoorButton_L4.enabled = true;
+                }
+            }
+        }
+        else
+        {
             // --- When the left light is disabled ---
+
             if (BonnieOutsideDoor)
             {
                 if (Light_L_Door_Bonnie.isActiveAndEnabled)
                 {
                     Light_L_Door_Bonnie.enabled = false;
                 }
-
-                lightSound.Pause();
             }
             else
             {
@@ -459,8 +558,6 @@ public class Office : MonoBehaviour {
                 {
                     Light_L_No_Door.enabled = false;
                 }
-
-                lightSound.Pause();
             }
 
             // Check if already displayed
@@ -489,18 +586,129 @@ public class Office : MonoBehaviour {
                     DoorButton_L4.enabled = false;
                 }
             }
-
-            leftLightIsOn = false;
-        }
-        else
-        {
-            // --- When the left light is enabled ---
         }
     }
 
     private void RightLightSystem()
     {
+        if (rightLightIsOn)
+        {
+            // --- When the left light is enabled ---
 
+            // Disable left light
+            if (leftLightIsOn)
+            {
+                ToggleLeftLight();
+            }
+
+            if (ChicaOutsideDoor)
+            {
+                // Check if already displayed
+                if (!Light_R_Door_Chica.isActiveAndEnabled)
+                {
+                    Light_R_Door_Chica.enabled = true;
+                }
+
+                if (Light_R_No_Door.isActiveAndEnabled)
+                {
+                    Light_R_No_Door.enabled = false;
+                }
+
+                if (!R_Door_Closed && RightScareAlrdPlayed == false)
+                {
+                    if (!Scare.isPlaying)
+                    {
+                        Scare.Play();
+                    }
+
+                    RightScareAlrdPlayed = true;
+                }
+            }
+            else
+            {
+                // Check if already displayed
+                if (Light_R_Door_Chica.isActiveAndEnabled)
+                {
+                    Light_R_Door_Chica.enabled = false;
+                }
+
+                if (!Light_R_No_Door.isActiveAndEnabled)
+                {
+                    Light_R_No_Door.enabled = true;
+                }
+
+                RightScareAlrdPlayed = false;
+            }
+
+            // Check if already displayed
+            if (!DoorButton_R3.isActiveAndEnabled)
+            {
+                DoorButton_R3.enabled = true;
+            }
+
+            if (R_Door_Closed)
+            {
+                // Check if already displayed
+                if (DoorButton_R1.isActiveAndEnabled)
+                {
+                    DoorButton_R1.enabled = false;
+                }
+
+                // Check if already displayed
+                if (!DoorButton_R4.isActiveAndEnabled)
+                {
+                    DoorButton_R4.enabled = true;
+                }
+            }
+        }
+        else
+        {
+            // --- When the left light is disabled ---
+
+            if (ChicaOutsideDoor)
+            {
+                // Check if already displayed
+                if (Light_R_Door_Chica.isActiveAndEnabled)
+                {
+                    Light_R_Door_Chica.enabled = false;
+                }
+            }
+            else
+            {
+                // Check if already displayed
+                if (Light_R_No_Door.isActiveAndEnabled)
+                {
+                    Light_R_No_Door.enabled = false;
+                }
+            }
+
+            // Check if already displayed
+            if (!OriginalOfficeImage.isActiveAndEnabled)
+            {
+                OriginalOfficeImage.enabled = true;
+            }
+
+            // Check if already displayed
+            if (DoorButton_R3.isActiveAndEnabled)
+            {
+                DoorButton_R3.enabled = false;
+            }
+
+            if (R_Door_Closed)
+            {
+                // Check if already displayed
+                if (!DoorButton_R1.isActiveAndEnabled)
+                {
+                    DoorButton_R1.enabled = true;
+                }
+
+                // Check if already displayed
+                if (DoorButton_R4.isActiveAndEnabled)
+                {
+                    DoorButton_R4.enabled = false;
+                }
+            }
+        }
     }
 
     private void LeftDoorSystem()
