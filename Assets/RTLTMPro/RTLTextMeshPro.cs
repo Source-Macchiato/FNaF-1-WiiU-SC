@@ -67,7 +67,7 @@ namespace RTLTMPro
             }
         }
 
-        protected bool ForceFix
+        public bool ForceFix
         {
             get { return forceFix; }
             set
@@ -77,6 +77,8 @@ namespace RTLTMPro
 
                 forceFix = value;
                 havePropertiesChanged = true;
+
+                UpdateText();
             }
         }
 

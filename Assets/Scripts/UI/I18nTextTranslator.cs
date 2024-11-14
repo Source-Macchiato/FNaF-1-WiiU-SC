@@ -72,6 +72,7 @@ public class I18nTextTranslator : MonoBehaviour
                 if (arabicFont != null)
                 {
                     tmpTextComponent.font = arabicFont;
+                    tmpTextComponent.ForceFix = true;
                 }
             }
             else
@@ -79,6 +80,7 @@ public class I18nTextTranslator : MonoBehaviour
                 if (mainFont != null)
                 {
                     tmpTextComponent.font = mainFont;
+                    tmpTextComponent.ForceFix = false;
                 }
             }
         }
