@@ -358,7 +358,7 @@ public class Movement : MonoBehaviour {
                 GlitchActive = false;
                 MoveGlitch.SetActive(false);
             }
-            Debug.Log("Bonnie Porbability : "+BonnieProbability+"\nBonnieDifficulty : " + BonnieDifficulty);
+            Debug.Log("Bonnie Probability : "+BonnieProbability+"\nBonnie Difficulty : " + BonnieDifficulty);
         }
     }
 
@@ -389,7 +389,7 @@ public class Movement : MonoBehaviour {
                 MoveGlitch.SetActive(false);
               }
             }
-            Debug.Log("Chica Porbability : "+BonnieProbability+"\nChicaDifficulty : " + BonnieDifficulty);
+            Debug.Log("Chica Probability : "+BonnieProbability+"\nChica Difficulty : " + BonnieDifficulty);
         }
     }    
     void AttemptFreddyMovement()
@@ -444,7 +444,7 @@ void AIGlitch()
             }
 
             //debug
-            Debug.Log("Foxy Porbability : "+BonnieProbability+"\nFoxyDifficulty : " + BonnieDifficulty);
+            Debug.Log("Foxy Probability : "+BonnieProbability+"\nFoxy Difficulty : " + BonnieDifficulty);
         }
     }
 

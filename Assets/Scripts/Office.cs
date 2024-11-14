@@ -65,8 +65,11 @@ public class Office : MonoBehaviour {
     public bool FreddyOutsideDoor = false;
     public bool FoxyRunningHallway = false;
 
-    public bool LeftLightIsOn = false;
-    public bool RightLightIsOn = false;
+    public bool leftLightIsOn = false;
+    public bool rightLightIsOn = false;
+
+    private bool previousLeftLightState = false;
+    private bool previousRightLightState = false;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -189,7 +192,7 @@ public class Office : MonoBehaviour {
             {
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
                 {
-                    LeftLightSystem();
+                    ToggleLeftLight();
                 }
             }
 
@@ -199,19 +202,19 @@ public class Office : MonoBehaviour {
                 case WiiU.RemoteDevType.ProController:
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
                     {
-                        LeftLightSystem();
+                        ToggleLeftLight();
                     }
                     break;
                 case WiiU.RemoteDevType.Classic:
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.B))
                     {
-                        LeftLightSystem();
+                        ToggleLeftLight();
                     }
                     break;
                 default:
                     if (remoteState.IsTriggered(WiiU.RemoteButton.B))
                     {
-                        LeftLightSystem();
+                        ToggleLeftLight();
                     }
                     break;
             }
@@ -221,7 +224,7 @@ public class Office : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    LeftLightSystem();
+                    ToggleLeftLight();
                 }
             }
         }
@@ -240,7 +243,7 @@ public class Office : MonoBehaviour {
 
                 if (gamePadState.IsTriggered(WiiU.GamePadButton.B))
                 {
-                    RightLightSystem();
+                    ToggleRightLight();
                 }
             }
 
@@ -255,7 +258,7 @@ public class Office : MonoBehaviour {
 
                     if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.B))
                     {
-                        RightLightSystem();
+                        ToggleRightLight();
                     }
                     break;
                 case WiiU.RemoteDevType.Classic:
@@ -266,7 +269,7 @@ public class Office : MonoBehaviour {
 
                     if (remoteState.classic.IsTriggered(WiiU.ClassicButton.B))
                     {
-                        RightLightSystem();
+                        ToggleRightLight();
                     }
                     break;
                 default:
@@ -277,7 +280,7 @@ public class Office : MonoBehaviour {
 
                     if (remoteState.IsTriggered(WiiU.RemoteButton.B))
                     {
-                        RightLightSystem();
+                        ToggleRightLight();
                     }
                     break;
             }
@@ -292,7 +295,7 @@ public class Office : MonoBehaviour {
 
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    RightLightSystem();
+                    ToggleRightLight();
                 }
             }
         }
@@ -384,11 +387,124 @@ public class Office : MonoBehaviour {
                 OfficeControllerObject.GetComponent<ChangeImages>().WhereFreddy = 1;
             }
         }
+
+        // LeftLightSystem();
+        // RightLightSystem();
     }
 
-    void LeftDoorSystem()
+    private void ToggleLeftLight()
+    {
+        leftLightIsOn = !leftLightIsOn;
+
+        LightPowerUsage();
+    }
+
+    private void ToggleRightLight()
+    {
+        rightLightIsOn = !rightLightIsOn;
+
+        LightPowerUsage();
+    }
+
+    private void LightPowerUsage()
+    {
+        GameScript gameScript = OfficeControllerObject.GetComponent<GameScript>();
+
+        // Check the status of the left light and update the energy only if the status changes
+        if (leftLightIsOn != previousLeftLightState)
+        {
+            if (leftLightIsOn)
+            {
+                gameScript.PowerUsage += 1;
+            }
+            else
+            {
+                gameScript.PowerUsage -= 1;
+            }
+            previousLeftLightState = leftLightIsOn;
+        }
+
+        // Check the status of the right light and update the energy only if the status changes
+        if (rightLightIsOn != previousRightLightState)
+        {
+            if (rightLightIsOn)
+            {
+                gameScript.PowerUsage += 1;
+            }
+            else
+            {
+                gameScript.PowerUsage -= 1;
+            }
+            previousRightLightState = rightLightIsOn;
+        }
+    }
+
+    private void LeftLightSystem()
+    {
+        if (leftLightIsOn)
+        {
+            // --- When the left light is disabled ---
+            if (BonnieOutsideDoor)
+            {
+                if (Light_L_Door_Bonnie.isActiveAndEnabled)
+                {
+                    Light_L_Door_Bonnie.enabled = false;
+                }
+
+                lightSound.Pause();
+            }
+            else
+            {
+                if (Light_L_No_Door.isActiveAndEnabled)
+                {
+                    Light_L_No_Door.enabled = false;
+                }
+
+                lightSound.Pause();
+            }
+
+            // Check if already displayed
+            if (!OriginalOfficeImage.isActiveAndEnabled)
+            {
+                OriginalOfficeImage.enabled = true;
+            }
+
+            // Check if already displayed
+            if (DoorButton_L3.isActiveAndEnabled)
+            {
+                DoorButton_L3.enabled = false;
+            }
+
+            if (L_Door_Closed)
+            {
+                // Check if already displayed
+                if (!DoorButton_L1.isActiveAndEnabled)
+                {
+                    DoorButton_L1.enabled = true;
+                }
+
+                // Check if already displayed
+                if (DoorButton_L4.isActiveAndEnabled)
+                {
+                    DoorButton_L4.enabled = false;
+                }
+            }
+
+            leftLightIsOn = false;
+        }
+        else
+        {
+            // --- When the left light is enabled ---
+        }
+    }
+
+    private void RightLightSystem()
     {
 
+    }
+
+    private void LeftDoorSystem()
+    {
         if (L_Door_Closed)
         {
             Door_L_closed.enabled = false;
@@ -455,9 +571,7 @@ public class Office : MonoBehaviour {
         }
     }
 
-
-
-    void RightDoorSystem()
+    private void RightDoorSystem()
     {
         if (R_Door_Closed)
         {
@@ -515,273 +629,7 @@ public class Office : MonoBehaviour {
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
         }
-    }
-
-
-    void LeftLightSystem()
-    {
-        if (LeftLightIsOn)
-        {
-            if (BonnieOutsideDoor)
-            {
-                if (Light_L_Door_Bonnie.isActiveAndEnabled)
-                {
-                    Light_L_Door_Bonnie.enabled = false;
-                }
-
-                lightSound.Pause();
-            }
-            else
-            {
-                // Check if already displayed
-                if (Light_L_No_Door.isActiveAndEnabled)
-                {
-                    Light_L_No_Door.enabled = false;
-                }
-
-                lightSound.Pause();
-            }
-
-            // Check if already displayed
-            if (!OriginalOfficeImage.isActiveAndEnabled)
-            {
-                OriginalOfficeImage.enabled = true;
-            }
-
-            // Check if already displayed
-            if (DoorButton_L3.isActiveAndEnabled)
-            {
-                DoorButton_L3.enabled = false;
-            }
-
-            if (L_Door_Closed)
-            {
-                // Check if already displayed
-                if (!DoorButton_L1.isActiveAndEnabled)
-                {
-                    DoorButton_L1.enabled = true;
-                }
-
-                // Check if already displayed
-                if (DoorButton_L4.isActiveAndEnabled)
-                {
-                    DoorButton_L4.enabled = false;
-                }
-            }
-
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-            LeftLightIsOn = false;
-        }
-        else
-        {
-            // Disable right light
-            if (RightLightIsOn)
-            {
-                RightLightSystem();
-            }
-
-            if (BonnieOutsideDoor)
-            {
-                // Enable Bonnie
-                if (!Light_L_Door_Bonnie.isActiveAndEnabled)
-                {
-                    Light_L_Door_Bonnie.enabled = true;
-                }
-
-                // Disable light
-                if (Light_L_No_Door.isActiveAndEnabled)
-                {
-                    Light_L_No_Door.enabled = false;
-                }
-
-                lightSound.Play();
-
-                if (!L_Door_Closed && LeftScareAlrdPlayed == false)
-                {
-                    Scare.Play();
-                    LeftScareAlrdPlayed = true;
-                }
-            }
-            else
-            {
-                // Disable Bonnie
-                if (Light_L_Door_Bonnie.isActiveAndEnabled)
-                {
-                    Light_L_Door_Bonnie.enabled = false;
-                }
-
-                // Enable Light
-                if (!Light_L_No_Door.isActiveAndEnabled)
-                {
-                    Light_L_No_Door.enabled = true;
-                }
-
-                lightSound.Play();
-                LeftScareAlrdPlayed = false;
-            }
-
-            // Check if already displayed
-            if (OriginalOfficeImage.isActiveAndEnabled)
-            {
-                OriginalOfficeImage.enabled = false;
-            }
-
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-            // Check if already displayed
-            if (!DoorButton_L3.isActiveAndEnabled)
-            {
-                DoorButton_L3.enabled = true;
-            }
-
-            if (L_Door_Closed)
-            {
-                // Check if already displayed
-                if (DoorButton_L1.isActiveAndEnabled)
-                {
-                    DoorButton_L1.enabled = false;
-                }
-
-                // Check if already displayed
-                if (!DoorButton_L4.isActiveAndEnabled)
-                {
-                    DoorButton_L4.enabled = true;
-                }
-            }
-
-            LeftLightIsOn = true;
-        }
-    }
-
-    void RightLightSystem()
-    {
-        if (RightLightIsOn)
-        {
-            if (ChicaOutsideDoor)
-            {
-                // Check if already displayed
-                if (Light_R_Door_Chica.isActiveAndEnabled)
-                {
-                    Light_R_Door_Chica.enabled = false;
-                }
-
-                lightSound.Pause();
-            }
-            else
-            {
-                // Check if already displayed
-                if (Light_R_No_Door.isActiveAndEnabled)
-                {
-                    Light_R_No_Door.enabled = false;
-                }
-
-                lightSound.Pause();
-            }
-
-            // Check if already displayed
-            if (!OriginalOfficeImage.isActiveAndEnabled)
-            {
-                OriginalOfficeImage.enabled = true;
-            }
-
-            // Check if already displayed
-            if (DoorButton_R3.isActiveAndEnabled)
-            {
-                DoorButton_R3.enabled = false;
-            }
-
-            if (R_Door_Closed)
-            {
-                // Check if already displayed
-                if (!DoorButton_R1.isActiveAndEnabled)
-                {
-                    DoorButton_R1.enabled = true;
-                }
-
-                // Check if already displayed
-                if (DoorButton_R4.isActiveAndEnabled)
-                {
-                    DoorButton_R4.enabled = false;
-                }
-            }
-
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-            RightLightIsOn = false;
-        }
-        else
-        {
-            // Disable left light
-            if (LeftLightIsOn)
-            {
-                LeftLightSystem();
-            }
-
-            if (ChicaOutsideDoor)
-            {
-                // Check if already displayed
-                if (!Light_R_Door_Chica.isActiveAndEnabled)
-                {
-                    Light_R_Door_Chica.enabled = true;
-                }
-
-                if (Light_R_No_Door.isActiveAndEnabled)
-                {
-                    Light_R_No_Door.enabled = false;
-                }
-
-                lightSound.Play();
-
-                if (!R_Door_Closed && RightScareAlrdPlayed == false)
-                {
-                    RightScareAlrdPlayed = true;
-                    Scare.Play();
-                }
-            }
-            else
-            {
-                // Check if already displayed
-                if (Light_R_Door_Chica.isActiveAndEnabled)
-                {
-                    Light_R_Door_Chica.enabled = false;
-                }
-
-                if (!Light_R_No_Door.isActiveAndEnabled)
-                {
-                    Light_R_No_Door.enabled = true;
-                }
-
-                lightSound.Play();
-                RightScareAlrdPlayed = false;
-            }
-
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-            // Check if already displayed
-            if (!DoorButton_R3.isActiveAndEnabled)
-            {
-                DoorButton_R3.enabled = true;
-            }
-
-            if (R_Door_Closed)
-            {
-                // Check if already displayed
-                if (DoorButton_R1.isActiveAndEnabled)
-                {
-                    DoorButton_R1.enabled = false;
-                }
-
-                // Check if already displayed
-                if (!DoorButton_R4.isActiveAndEnabled)
-                {
-                    DoorButton_R4.enabled = true;
-                }
-            }
-
-            RightLightIsOn = true;
-        }
-    }
+    }    
 
     void CharactersMovement()
     {

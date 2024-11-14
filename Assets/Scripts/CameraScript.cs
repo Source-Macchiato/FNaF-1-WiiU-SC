@@ -170,7 +170,7 @@ public class CameraScript : MonoBehaviour
                 minimapGameObject.SetActive(true);
                 hideOfficeGameObject.SetActive(true);
 
-                if (office.LeftLightIsOn)
+                if (office.leftLightIsOn)
                 {
                     if (!office.BonnieOutsideDoor)
                     {
@@ -196,11 +196,11 @@ public class CameraScript : MonoBehaviour
 
                     gameScript.PowerUsage -= 1;
 
-                    office.LeftLightIsOn = false;
+                    office.leftLightIsOn = false;
                 }
 
 
-                else if (office.RightLightIsOn)
+                else if (office.rightLightIsOn)
                 {
                     if (!office.ChicaOutsideDoor)
                     {
@@ -226,7 +226,7 @@ public class CameraScript : MonoBehaviour
 
                     gameScript.PowerUsage -= 1;
 
-                    office.RightLightIsOn = false;
+                    office.rightLightIsOn = false;
                 }
             }
         }
