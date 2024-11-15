@@ -394,13 +394,12 @@ public class Office : MonoBehaviour {
 
     public void ToggleLeftLight()
     {
-        // Disable the right light
+        leftLightIsOn = !leftLightIsOn;
+
         if (rightLightIsOn)
         {
-            ToggleRightLight();
+            rightLightIsOn = false;
         }
-
-        leftLightIsOn = !leftLightIsOn;
 
         LightPowerUsage();
         LightSound();
@@ -409,13 +408,12 @@ public class Office : MonoBehaviour {
 
     public void ToggleRightLight()
     {
-        // Disable the left light
+        rightLightIsOn = !rightLightIsOn;
+
         if (leftLightIsOn)
         {
-            ToggleLeftLight();
+            leftLightIsOn = false;
         }
-
-        rightLightIsOn = !rightLightIsOn;
 
         LightPowerUsage();
         LightSound();
