@@ -23,7 +23,7 @@ public class RenderMovie : MonoBehaviour
 
         if (hasStarted && !movTexture.isPlaying)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Warning");
         }
     }
 }

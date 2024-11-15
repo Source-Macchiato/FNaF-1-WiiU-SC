@@ -14,7 +14,6 @@ public class NextNight : MonoBehaviour
 
     [Header("Loading")]
     private float nightNumber;
-    public GameObject LoadingSprite;
     public GameObject loadingScreenPanel;
 
     void Start()
@@ -22,7 +21,6 @@ public class NextNight : MonoBehaviour
         nightNumber = SaveManager.LoadNightNumber();
 
         loadingScreenPanel.SetActive(false);
-        LoadingSprite.SetActive(false);
 
         Night1.SetActive(false);
         Night2.SetActive(false);
@@ -68,7 +66,6 @@ public class NextNight : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         loadingScreenPanel.SetActive(true);
-        LoadingSprite.SetActive(true);
         GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadLevel("Office");
     }
 }

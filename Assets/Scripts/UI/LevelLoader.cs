@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Canvas canvaUI;
     public GameObject loadingScreen;
     public Slider slider;
     public GameObject progression;
