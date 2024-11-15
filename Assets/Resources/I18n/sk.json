@@ -6,7 +6,7 @@
     },
     {
       "key": "mainmenu.update",
-      "value": "Nová verzia je dostupná, stiahni si ju na itch.io !"
+      "value": "Nová verzia je dostupná, stiahnite si ju na itch.io !"
     },
     {
       "key": "mainmenu.sharedata",
@@ -22,7 +22,7 @@
     },
     {
       "key": "mainmenu.customnight",
-      "value": "Custom Night"
+      "value": "Vlastná Noc"
     },
     {
       "key": "mainmenu.night",
@@ -30,7 +30,7 @@
     },
     {
       "key": "mainmenu.options",
-      "value": "Nastavenia"
+      "value": "Možnosti"
     },
     {
       "key": "mainmenu.language",
@@ -42,7 +42,7 @@
     },
     {
       "key": "mainmenu.layout",
-      "value": "Layout"
+      "value": "Rozloženie"
     },
     {
       "key": "mainmenu.online",
@@ -50,31 +50,51 @@
     },
     {
       "key": "mainmenu.analyticdata",
-      "value": "Analytic Data"
+      "value": "Analytické Dáta"
+    },
+    {
+      "key": "mainmenu.audio",
+      "value": "Audio"
+    },
+    {
+      "key": "mainmenu.generalvolume",
+      "value": "General volume"
+    },
+    {
+      "key": "mainmenu.musicvolume",
+      "value": "Music volume"
+    },
+    {
+      "key": "mainmenu.voicevolume",
+      "value": "Voice volume"
+    },
+    {
+      "key": "mainmenu.sfxvolume",
+      "value": "Sound effects volume"
     },
     {
       "key": "customnight.ailevel",
-      "value": "A.I. Level"
+      "value": "Level A.I."
     },
     {
       "key": "customnight.ready",
-      "value": "Ready"
+      "value": "Štart"
     },
     {
       "key": "difficulty.easy",
-      "value": "Easy"
+      "value": "Ľahká"
     },
     {
       "key": "difficulty.medium",
-      "value": "Medium"
+      "value": "Stredná"
     },
     {
       "key": "difficulty.hard",
-      "value": "Hard"
+      "value": "Ťažká"
     },
     {
       "key": "difficulty.extreme",
-      "value": "Extreme"
+      "value": "Extrémna"
     },
     {
       "key": "nextnight.firstnight",
@@ -158,15 +178,15 @@
     },
     {
       "key": "camera.restrooms",
-      "value": "Toaley"
+      "value": "Toalety"
     },
     {
       "key": "nightone.phoneguy.lineone",
-      "value": "Haló? Haló, haló? Umm, Chcel som Vám nahrať správu ktorá Vám pomôže usadiť sa v prvú noc."
+      "value": "Haló? Haló, haló? Uhh, Chcel som Vám nahrať správu ktorá Vám pomôže usadiť sa v prvú noc."
     },
     {
       "key": "nightone.phoneguy.linetwo",
-      "value": "Um, ja som pracoval v tejto kancelárií pred Vami. Vlastne, teraz končim svoj posledný týždeň. Takže,"
+      "value": "Uh, ja som pracoval v tejto kancelárií pred Vami. Vlastne, teraz končim svoj posledný týždeň. Takže,"
     },
     {
       "key": "nightone.phoneguy.linethree",
@@ -174,15 +194,15 @@
     },
     {
       "key": "nightone.phoneguy.linefour",
-      "value": "Um, pôjde Vám to dobre. Takže, sústreďme sa na to aby ste prešli Váš prvý týždeň, okej?"
+      "value": "Uh, pôjde Vám to dobre. Takže, sústreďme sa na to aby ste prešli Váš prvý týždeň, okej?"
     },
     {
       "key": "nightone.phoneguy.linefive",
-      "value": "Um, pozrime sa, ako prvý je tu úvodný pozdrav od tejto spoločnosti ktorý mám prečítať."
+      "value": "Uh, pozrime sa, ako prvý je tu úvodný pozdrav od tejto spoločnosti ktorý mám prečítať."
     },
     {
       "key": "nightone.phoneguy.linesix",
-      "value": "Um, vieš, je to tak trochu taká legála vec. Uh, \"Vitajte vo Freddy Fazbear's Pizza."
+      "value": "Uh, vieš, je to tak trochu taká legála vec. Uh, \"Vitajte vo Freddy Fazbear's Pizza."
     },
     {
       "key": "nightone.phoneguy.lineseven",
@@ -206,7 +226,7 @@
     },
     {
       "key": "nightone.phoneguy.linetwelve",
-      "value": "Um, tie animatronické postavy sú v noci trochu zvláštne, ale obviňujem ich? Nie."
+      "value": "Uh, tie animatronické postavy sú v noci trochu zvláštne, ale obviňujem ich? Nie."
     },
     {
       "key": "nightone.phoneguy.linethirteen",
@@ -222,215 +242,215 @@
     },
     {
       "key": "nightone.phoneguy.linesixteen",
-      "value": "Takže, buďte si vedomí toho, že tie postavy majú tendenciu sa trochu potulovať. Um, v noci sú v nejakom"
+      "value": "Takže, buďte si vedomí toho, že tie postavy majú tendenciu sa trochu potulovať. Uh, v noci sú v nejakom"
     },
     {
       "key": "nightone.phoneguy.lineseventeen",
-      "value": "voľne túlajucom sa režime. Um... niečo o tom, že ich servá sa zablokujú"
+      "value": "voľne túlajucom sa režime. Uh... niečo o tom, že ich servá sa zablokujú"
     },
     {
       "key": "nightone.phoneguy.lineeighteen",
-      "value": "ak by boli príliš dlho vypnutý. Uh, they used to be allowed to walk around during the day too."
+      "value": "ak by boli príliš dlho vypnutý. Uh, kedysi mohli chodiť aj cez deň."
     },
     {
       "key": "nightone.phoneguy.linenineteen",
-      "value": "But then there was The Bite of '87. Yeah. I-It's amazing that the human body can live without the frontal lobe, you know?"
+      "value": "Ale potom tu bol The Bite '87. Hej. J-je úžasné, že ľudské telo može žiť bez predného laloku, vieš?"
     },
     {
       "key": "nightone.phoneguy.linetwenty",
-      "value": "Uh, now concerning your safety, the only real risk to you as a night watchman here, if any,"
+      "value": "Uh, teraz hoľadom Vašej bezpečnosti, jediné skutočné riziko pre Vás ako nočného strážcu, ak nejaké,"
     },
     {
       "key": "nightone.phoneguy.linetwentyone",
-      "value": "is the fact that these characters, uh, if they happen to see you after hours probably won't recognize you as a person."
+      "value": "je fakt, že tieto postavy, uh, ak Vás náhodou uvidia po otváracích hodinách, tak Vás asi nespoznajú ako človeka."
     },
     {
       "key": "nightone.phoneguy.linetwentytwo",
-      "value": "They'll pr- they'll most likely see you as a metal endoskeleton without its costume on."
+      "value": "Mož- s najväčsou pravdepodobnosťou Vás uvidia ako kovového endoskeletona bez svojho kostýmu."
     },
     {
       "key": "nightone.phoneguy.linetwentythree",
-      "value": "Now since that's against the rules here at Freddy Fazbear's Pizza, they'll probably try to..."
+      "value": "Keďže je to proti pravidlám tu vo Freddy Fazbear's Pizza, tak sa Vás pokúsia..."
     },
     {
       "key": "nightone.phoneguy.linetwentyfour",
-      "value": "forcefully stuff you inside a Freddy Fazbear suit. Um, now, that wouldn't be so bad"
+      "value": "nasilu napchať do obleku Freddyho Fazbeara. Uh, no, to by nebolo také zlé"
     },
     {
       "key": "nightone.phoneguy.linetwentyfive",
-      "value": "if the suits themselves weren't filled with crossbeams, wires, and animatronic devices,"
+      "value": "ak by tie obleky neboli naplnené traverzami, drôtmi, a animatronickými zariadeniami,"
     },
     {
       "key": "nightone.phoneguy.linetwentysix",
-      "value": "especially around the facial area. So, you could imagine how having your head"
+      "value": "najmä v oblasti tváre. Viete si teda predstaviť, že keď máte hlavu "
     },
     {
       "key": "nightone.phoneguy.linetwentyseven",
-      "value": "forcefully pressed inside one of those could cause a bit of discomfort... and death."
+      "value": "nasilu tlačenú do jedného z nich, môže to spôsobiť trochu nepohodlia... a smrť."
     },
     {
       "key": "nightone.phoneguy.linetwentyheight",
-      "value": "Uh, the only parts of you that would likely see the light of day again would be your eyeballs"
+      "value": "Uh, jediné Vaše časti, ktoré by možno znovu zazreli svetlo dňa, by boli Vaše očné buľvy"
     },
     {
       "key": "nightone.phoneguy.linetwentynine",
-      "value": "and teeth when they pop out the front of the mask, heh."
+      "value": "a zuby, keď vyskočia z prednej časti masky, heh."
     },
     {
       "key": "nightone.phoneguy.linethirty",
-      "value": "Y-Yeah, they don't tell you these things when you sign up. But hey, first day should be a breeze."
+      "value": "A-Áno, tieto veci Vám nepovedia keď sa zaregistrujete. Ale hej, prvý deň by mal byť hračkou."
     },
     {
       "key": "nightone.phoneguy.linethirtyone",
-      "value": "I'll chat with you tomorrow. Uh, check those cameras, and remember to close the doors"
+      "value": "Zajtra sa s Vami zase porozprávam. Uh, skontroluj tie kamery, a nezabudni zavrieť dvere"
     },
     {
       "key": "nightone.phoneguy.linethirtytwo",
-      "value": "only if absolutely necessary. Gotta conserve power. Alright, good night."
+      "value": "len ak je to absolútne nevyhnutné. Treba šetriť energiu. Dobre, dobrú noc."
     },
     {
       "key": "nighttwo.phoneguy.lineone",
-      "value": "Uhh, Hello? Hello? Uh, well, if you're hearing this and you made it to day two, uh, congrats!"
+      "value": "Uhh, Haló? Haló? Uh, no, ak toto počúvate a dostali ste sa do druhého dňa, uh, gratulujem!"
     },
     {
       "key": "nighttwo.phoneguy.linetwo",
-      "value": "I-I won't talk quite as long this time since Freddy and his friends tend to become more active as the week progresses."
+      "value": "Tentoraz nebudem tak dlho hovoriť kedže Freddy a jeho priatelia majú tendenciu byť v priebehu týždňa aktívnejší."
     },
     {
       "key": "nighttwo.phoneguy.linethree",
-      "value": "Uhh, it might be a good idea to peek at those cameras while I talk"
+      "value": "Uhh, asi by bolo dobré nakuknúť do tých kamier kým rozprávam"
     },
     {
       "key": "nighttwo.phoneguy.linefour",
-      "value": "just to make sure everyone's in their proper place. You know..."
+      "value": "aby ste sa uisil že každý je na svojom mieste. Viete..."
     },
     {
       "key": "nighttwo.phoneguy.linefive",
-      "value": "Uh... interestingly enough, Freddy himself doesn't come off stage very often."
+      "value": "Uh... je zaujimavé, že samotný Freddy tak často z javiska nevychádza."
     },
     {
       "key": "nighttwo.phoneguy.linesix",
-      "value": "I heard he becomes a lot more active in the dark though, so, hey,"
+      "value": "Počul som, že v tme je oveľa aktívnejší, takže, hej,"
     },
     {
       "key": "nighttwo.phoneguy.lineseven",
-      "value": "I guess that's one more reason not to run out of power, right?"
+      "value": "Myslím že to je ďalší dôvod na to aby ste nevyčerpali všetkú elektrinu, však?"
     },
     {
       "key": "nighttwo.phoneguy.lineheight",
-      "value": "I-I also want to emphasize the importance of using your door lights."
+      "value": "Chcem tiež zdôrazniť dôležitosť používania osvetlenia dverí."
     },
     {
       "key": "nighttwo.phoneguy.linenine",
-      "value": "There are blind spots in your camera views, and those blind spots happen to be right outside of your doors."
+      "value": "V záberoch Vašich kamier sú mŕtve uhly a tie mŕtve uhly sa čistou náhodou nachádzajú pred Vašimi dverami."
     },
     {
       "key": "nighttwo.phoneguy.lineten",
-      "value": "So if-if you can't find something, or someone, on your cameras, be sure to check the door lights."
+      "value": "Takže ak-ak nemôžete niečo, alebo niekoho, nájsť va Vašich kamerách, určite skontrolujte osvetlenie dverí."
     },
     {
       "key": "nighttwo.phoneguy.lineeleven",
-      "value": "Uh, you might only have a few seconds to react... Uh, not that you would be in any danger, of course."
+      "value": "Uh, možno budete mať len pár sekúnd na zareagovanie... Uh, nie že by ste boli v nebezpečí, samozrejme."
     },
     {
       "key": "nighttwo.phoneguy.linetwelve",
-      "value": "I'm not implying that. Also, check on the curtain in Pirate Cove from time to time."
+      "value": "To nenaznačujem. Taktiež, z času na čas skontrolujte záves v Pirátskej Zátoke."
     },
     {
       "key": "nighttwo.phoneguy.linethirteen",
-      "value": "The character in there seems unique in that he becomes more active if the cameras remain off for long periods of time."
+      "value": "Postava v nej sa zdá byť jedinečná v tom, že ak su kamery dlhšie vypnuté, stáva sa aktívnejšou."
     },
     {
       "key": "nighttwo.phoneguy.linefourteen",
-      "value": "I guess he doesn't like being watched. I don't know."
+      "value": "Asi nemá rád, keď ho niekto sleduje. Neviem."
     },
     {
       "key": "nighttwo.phoneguy.linefifteen",
-      "value": "Anyway, I'm sure you have everything under control! Uh, talk to you soon."
+      "value": "Každopádne som si istý, že máte vŠetko pod kontrolou! Uh, čoskoro sa porozprávame."
     },
     {
       "key": "nighthree.phoneguy.lineone",
-      "value": "Hello, hello? Hey you're doing great! Most people don't last this long."
+      "value": "Haló, haló? Hej, ide Vám to skvele! Väčšina ľudí takto dlho nevydrží."
     },
     {
       "key": "nighthree.phoneguy.linetwo",
-      "value": "I mean, you know, they usually move on to other things by now. I'm not implying that they died."
+      "value": "Tead, vieš, oni by sa už vrhli na iné veci. Nenaznačujem že zomreli."
     },
     {
       "key": "nighthree.phoneguy.linethree",
-      "value": "Th-th-that's not what I meant. Uh, anyway I better not take up too much of your time."
+      "value": "T-T-To som nemyslel. Uh, každopádne, radšej by som ti nezabral veľa času."
     },
     {
       "key": "nighthree.phoneguy.linefour",
-      "value": "Things start getting real tonight. Uh... hey, listen, I had an idea: if you happen to get caught"
+      "value": "Veci túto noc začínajú byť skutočné. Uh... hej, počúvaj, mal som nápoad: ak ta náhodou chytia"
     },
     {
       "key": "nighthree.phoneguy.linefive",
-      "value": "and want to avoid getting stuffed into a Freddy suit, uhh, try playing dead! You know, go limp."
+      "value": "a chcete sa vyhnúť tomu, aby Vás napchali do obleku Freddyho, uhh, skúste hrať mŕtveho! Viete, ochabnite."
     },
     {
       "key": "nighthree.phoneguy.linesix",
-      "value": "Then there's a chance that, uh, maybe they'll think that you're an empty costume instead."
+      "value": "Potom je tu šanca, že si, uh, možno budú myslieť že ste namiesto toho prázdny kostým."
     },
     {
       "key": "nighthree.phoneguy.lineseven",
-      "value": "Then again, if they think you're an empty costume, they might try to... stuff a metal skeleton into you."
+      "value": "Potom znova, ak si budú myslieť, že ste prázdny kostým, možno sa pokúsia... do Vás napchať kovovú kostru."
     },
     {
       "key": "nighthree.phoneguy.lineheight",
-      "value": "I wonder how that would work. Yeah, never mind, scratch that. It's best just not to get caught."
+      "value": "Zaujímalo by ma, ako by to fungovalo. Hej, nechaj to tak. Najlepšie je proste nenechať sa chytiť."
     },
     {
       "key": "nighthree.phoneguy.linenine",
-      "value": "Um... okay, I'll leave you to it. See you on the flip side!"
+      "value": "Um... okej, nechám Vás v tom. Vidíme sa na druhej strane!"
     },
     {
       "key": "nightfour.phoneguy.lineone",
-      "value": "Hello, hello? Hey! Hey, wow, day 4. I knew you could do it. Uh, hey, listen,"
+      "value": "Haló, haló? Hej! Hej, wow, deň 4. Vedel som že to dokážete. Uh, hej, počúvaj,"
     },
     {
       "key": "nightfour.phoneguy.linetwo",
-      "value": "I may not be around to send you a message tomorrow. *banging* It's-It's been a bad night here for me."
+      "value": "možno tu zajtra nebudem aby som Vám poslal správu. *búchanie* Bola-Bola to pre mňa zlá noc."
     },
     {
       "key": "nightfour.phoneguy.linethree",
-      "value": "Um, I-I'm kinda glad that I recorded my messages for you *clears throat* uh, when I did."
+      "value": "Uh, S-Som celkom rád že som pre Vás nahral tieto správy *odkašle si* uh, keď som ich nahral."
     },
     {
       "key": "nightfour.phoneguy.linefour",
-      "value": "Uh, hey, do me a favor. *banging* Maybe sometime, uh, you could check inside those suits in the back room?"
+      "value": "Uh, hej, sprav mi láskavosť. *búchanie* Mohol by si niekedy, uh, možno skontolovať tie obleky v tej zadnej miestnosti?"
     },
     {
       "key": "nightfour.phoneguy.linefive",
-      "value": "*banging* I'm gonna to try to hold out until someone checks. Maybe it won't be so bad."
+      "value": "*búchanie* Pokúsim sa vydržaťm, kým to niekto neskontroluje. Možno to nebude také zlé."
     },
     {
       "key": "nightfour.phoneguy.linesix",
-      "value": "*bang bang* Uh, I-I-I-I always wondered what was in all those empty heads back there. *chime plays*."
+      "value": "*tresk tresk* Uh, Ja-ja-ja-vždy som premýšľal, čo je vo všetkých tých prázdnych hlavách tam vzadu. *zvonkohra*."
     },
     {
       "key": "nightfour.phoneguy.lineseven",
-      "value": "You know... *deep moan* oh, no - *noises followed by a loud screech and static*"
+      "value": "Vieš... *hlboký ston* oh, nie - *zvuky nasledované hlasným škrípaním a zvukom statiky*"
     },
     {
       "key": "nightfive.phoneguy.lineone",
-      "value": "seldom knows contemporaneous (Omitted: reward; it is enough to possess) the joy of creative (Omitted: service.)"
+      "value": "málokedy pozná súčasnú (Vynechané: odmenu; stačí to na vlastnenie) radosť z tvorivostnej (Vynechané: služby.)"
     },
     {
       "key": "nightfive.phoneguy.linetwo",
-      "value": "Countless uses (Omitted: of Bose instruments) will be made by future gener- (Omitted: ations. The scientist)"
+      "value": "Nepoćetné využitia (Vynechané: Boseových prístrojov) budú vyrobené budúcimi gener- (Vynechané: Národy. Vedec)"
     },
     {
       "key": "nightfive.phoneguy.linethree",
-      "value": "to indicate the influence of various types of fertilizers on plant growth? You are right."
+      "value": "naznačili vplyv rôznych typov hnojív na rast rastlín? Máš pravdu."
     },
     {
       "key": "nightfive.phoneguy.linefour",
-      "value": "Would it not be easily possible to employ some of them in quick laboratory experiments"
+      "value": "Nebolo by možné ľahko použiť niektoré z nich v rýchlich laboratórnych experimentoch"
     },
     {
       "key": "nightfive.phoneguy.linefive",
-     "value": "(Omitted: Sir,) it is lamentable that mass agricultural development is (Omitted: not) speeded by fuller use of your marvelous mechanisms."
+      "value": "(Vynechané: Pane,) je poľutovaniahodné, že masový rozvoj poľnohospodárstva (Vynechané: nie) je urýchlený plnším využívaním vašich úžasných mechanizmov."
     }
   ]
 }
