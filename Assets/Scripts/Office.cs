@@ -394,6 +394,12 @@ public class Office : MonoBehaviour {
 
     public void ToggleLeftLight()
     {
+        // Disable the right light
+        if (rightLightIsOn)
+        {
+            ToggleRightLight();
+        }
+
         leftLightIsOn = !leftLightIsOn;
 
         LightPowerUsage();
@@ -403,6 +409,12 @@ public class Office : MonoBehaviour {
 
     public void ToggleRightLight()
     {
+        // Disable the left light
+        if (leftLightIsOn)
+        {
+            ToggleLeftLight();
+        }
+
         rightLightIsOn = !rightLightIsOn;
 
         LightPowerUsage();
@@ -484,12 +496,6 @@ public class Office : MonoBehaviour {
         if (leftLightIsOn)
         {
             // --- When the left light is enabled ---
-
-            // Disable the right light
-            if (rightLightIsOn)
-            {
-                ToggleRightLight();
-            }
 
             if (BonnieOutsideDoor)
             {
@@ -612,12 +618,6 @@ public class Office : MonoBehaviour {
         {
             // --- When the left light is enabled ---
 
-            // Disable left light
-            if (leftLightIsOn)
-            {
-                ToggleLeftLight();
-            }
-
             if (ChicaOutsideDoor)
             {
                 // Check if already displayed
@@ -697,12 +697,6 @@ public class Office : MonoBehaviour {
                 {
                     Light_R_No_Door.enabled = false;
                 }
-            }
-
-            // Check if already displayed
-            if (!OriginalOfficeImage.isActiveAndEnabled)
-            {
-                OriginalOfficeImage.enabled = true;
             }
 
             // Check if already displayed
