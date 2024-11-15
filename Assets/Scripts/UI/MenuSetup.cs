@@ -32,9 +32,9 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddButton(1, 0, Layout, "mainmenu.layout");
         menuManager.AddButton(1, 0, Online, "mainmenu.online");
 
-        menuManager.AddSwitcher(2, new string[] { "English", "French", "Spanish", "Italian", "German", "Arabic" }, "switcher.translation");
+        menuManager.AddSwitcher(2, new string[] { "English", "French", "Spanish", "Italian", "German", "Arabic", "Slovak" }, "switcher.translation");
 
-        menuManager.AddButton(4, 0, Analytics, "mainmenu.analyticdata");        
+        menuManager.AddButton(4, 0, Analytics, "mainmenu.analyticdata");
 
         menuManager.AddCard(5, "TV only", menuData.tvOnly);
         menuManager.AddCard(5, "TV + Gamepad", menuData.tvGamepad);

@@ -54,23 +54,23 @@
     },
     {
       "key": "mainmenu.audio",
-      "value": "Audio"
+      "value": "Zvuk"
     },
     {
       "key": "mainmenu.generalvolume",
-      "value": "General volume"
+      "value": "Všeobecná hlasitosť"
     },
     {
       "key": "mainmenu.musicvolume",
-      "value": "Music volume"
+      "value": "Hlasitosť hudby"
     },
     {
       "key": "mainmenu.voicevolume",
-      "value": "Voice volume"
+      "value": "Hlasitosť hlasu"
     },
     {
       "key": "mainmenu.sfxvolume",
-      "value": "Sound effects volume"
+      "value": "Hlasitosť zvukových efektov"
     },
     {
       "key": "customnight.ailevel",

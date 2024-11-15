@@ -128,6 +128,10 @@ public class MenuData : MonoBehaviour
                 {
                     switcher.currentOptionId = 5;
                 }
+                else if (language == "sk")
+                {
+                    switcher.currentOptionId = 6;
+                }
                 else
                 {
                     switcher.currentOptionId = 0;
