@@ -16,11 +16,14 @@ public class NextNight : MonoBehaviour
     private float nightNumber;
     public GameObject loadingScreenPanel;
 
+    private LevelLoader levelLoader;
+
     void Start()
     {
         nightNumber = SaveManager.LoadNightNumber();
 
         loadingScreenPanel.SetActive(false);
+        levelLoader = FindObjectOfType<LevelLoader>();
 
         Night1.SetActive(false);
         Night2.SetActive(false);
@@ -66,6 +69,6 @@ public class NextNight : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         loadingScreenPanel.SetActive(true);
-        GameObject.Find("LevelLoader").GetComponent<LevelLoader>().LoadLevel("Office");
+        levelLoader.LoadLevel("Office");
     }
 }
