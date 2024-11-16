@@ -159,7 +159,7 @@ public class ChangeImages : MonoBehaviour
         GoldenFreddyLaugh.SetActive(false);
 
         foxyRunTime = 3.5f;
-        GoldenFreddyRange = (int)PlayerPrefs.GetFloat("GoldenDifficulty", 0)*15;
+        GoldenFreddyRange = (int)PlayerPrefs.GetFloat("GoldenDifficulty", 0)*600;
     }
 
     void Update()
