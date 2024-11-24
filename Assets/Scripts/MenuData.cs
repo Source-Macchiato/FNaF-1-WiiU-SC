@@ -132,6 +132,14 @@ public class MenuData : MonoBehaviour
                 {
                     switcher.currentOptionId = 6;
                 }
+                else if (language == "ca")
+                {
+                    switcher.currentOptionId = 7;
+                }
+                else if (language == "tr")
+                {
+                    switcher.currentOptionId = 8;
+                }
                 else
                 {
                     switcher.currentOptionId = 0;

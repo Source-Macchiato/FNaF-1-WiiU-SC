@@ -66,6 +66,14 @@ public class I18n
         {
             lang = "ar";
         }
+        else if (languagePlayerPrefs == "Catalan")
+        {
+            lang = "ca";
+        }
+        else if (languagePlayerPrefs == "Turkish")
+        {
+            lang = "tr";
+        }
         else
         {
             lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
@@ -115,6 +123,14 @@ public class I18n
         {
             return "ar";
         }
+        else if (languagePlayerPrefs == "Catalan")
+        {
+            return "ca";
+        }
+        else if (languagePlayerPrefs == "Turkish")
+        {
+            return "tr";
+        }
         else
         {
             return Get2LetterISOCodeFromSystemLanguage().ToLower();
@@ -134,6 +150,8 @@ public class I18n
             case SystemLanguage.German: res = "DE"; break;
             case SystemLanguage.Slovak: res = "SK"; break;
             case SystemLanguage.Arabic: res = "AR"; break;
+            case SystemLanguage.Catalan: res = "CA"; break;
+            case SystemLanguage.Turkish: res = "TR"; break;
         }
         return res;
     }
