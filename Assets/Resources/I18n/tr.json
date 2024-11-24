@@ -54,23 +54,23 @@
     },
     {
       "key": "mainmenu.audio",
-      "value": "Audio"
+      "value": "Ses"
     },
     {
       "key": "mainmenu.generalvolume",
-      "value": "General volume"
+      "value": "Genel ses seviyesi"
     },
     {
       "key": "mainmenu.musicvolume",
-      "value": "Music volume"
+      "value": "Müzik ses seviyesi"
     },
     {
       "key": "mainmenu.voicevolume",
-      "value": "Voice volume"
+      "value": "Konuşma sesi seviyesi"
     },
     {
       "key": "mainmenu.sfxvolume",
-      "value": "Sound effects volume"
+      "value": "Ses efektleri seviyesi"
     },
     {
       "key": "customnight.ailevel",
