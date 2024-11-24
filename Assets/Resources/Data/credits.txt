@@ -40,6 +40,13 @@ Daniel Jödecke
 ### Arabic
 EzNothing
 
+### Catalan
+Jocsencat
+Nathan Tool
+
+## Turkish
+twig6843
+
 ## Beta tester
 Gato-kun
 TeraByte38
