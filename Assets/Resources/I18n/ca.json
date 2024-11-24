@@ -58,19 +58,19 @@
     },
     {
       "key": "mainmenu.generalvolume",
-      "value": "General volume"
+      "value": "Volum general"
     },
     {
       "key": "mainmenu.musicvolume",
-      "value": "Music volume"
+      "value": "Volum de Música"
     },
     {
       "key": "mainmenu.voicevolume",
-      "value": "Voice volume"
+      "value": "Volum de Veus"
     },
     {
       "key": "mainmenu.sfxvolume",
-      "value": "Sound effects volume"
+      "value": "Volum d'Efectes de so"
     },
     {
       "key": "customnight.ailevel",
