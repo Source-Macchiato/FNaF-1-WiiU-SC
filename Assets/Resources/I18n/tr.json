@@ -1,0 +1,456 @@
+{
+  "items": [
+    {
+      "key": "none",
+      "value": ""
+    },
+    {
+      "key": "mainmenu.update",
+      "value": "Yeni bir sürüm mevcut, itch.io'dan indir!"
+    },
+    {
+      "key": "mainmenu.sharedata",
+      "value": "Oyunu başlatma sıklığı gibi istatistiksel bilgilerin Source Macchiato ile paylaşılmasını kabul ediyor musunuz?"
+    },
+    {
+      "key": "mainmenu.newgame",
+      "value": "Yeni Oyun"
+    },
+    {
+      "key": "mainmenu.continue",
+      "value": "Devam Et"
+    },
+    {
+      "key": "mainmenu.customnight",
+      "value": "Özel Gece"
+    },
+    {
+      "key": "mainmenu.night",
+      "value": "Gece"
+    },
+    {
+      "key": "mainmenu.options",
+      "value": "Ayarlar"
+    },
+    {
+      "key": "mainmenu.language",
+      "value": "Dil"
+    },
+    {
+      "key": "mainmenu.credits",
+      "value": "Emeği geçenler"
+    },
+    {
+      "key": "mainmenu.layout",
+      "value": "Düzen"
+    },
+    {
+      "key": "mainmenu.online",
+      "value": "Çevrimiçi"
+    },
+    {
+      "key": "mainmenu.analyticdata",
+      "value": "Analitik Veri"
+    },
+    {
+      "key": "mainmenu.audio",
+      "value": "Audio"
+    },
+    {
+      "key": "mainmenu.generalvolume",
+      "value": "General volume"
+    },
+    {
+      "key": "mainmenu.musicvolume",
+      "value": "Music volume"
+    },
+    {
+      "key": "mainmenu.voicevolume",
+      "value": "Voice volume"
+    },
+    {
+      "key": "mainmenu.sfxvolume",
+      "value": "Sound effects volume"
+    },
+    {
+      "key": "customnight.ailevel",
+      "value": "Y.Z. Seviyesi"
+    },
+    {
+      "key": "customnight.ready",
+      "value": "Hazır"
+    },
+    {
+      "key": "difficulty.easy",
+      "value": "Kolay"
+    },
+    {
+      "key": "difficulty.medium",
+      "value": "Orta"
+    },
+    {
+      "key": "difficulty.hard",
+      "value": "Zor"
+    },
+    {
+      "key": "difficulty.extreme",
+      "value": "Aşırı zor"
+    },
+    {
+      "key": "nextnight.firstnight",
+      "value": "1. Gece"
+    },
+    {
+      "key": "nextnight.secondnight",
+      "value": "2. Gece"
+    },
+    {
+      "key": "nextnight.thirdnight",
+      "value": "3. Gece"
+    },
+    {
+      "key": "nextnight.fourthnight",
+      "value": "4. Gece"
+    },
+    {
+      "key": "nextnight.fifthnight",
+      "value": "5. Gece"
+    },
+    {
+      "key": "nextnight.sixthnight",
+      "value": "6. Gece"
+    },
+    {
+      "key": "nextnight.seventhnight",
+      "value": "7. Gece"
+    },
+    {
+      "key": "office.night",
+      "value": "Gece"
+    },
+    {
+      "key": "office.usage",
+      "value": "Kullanım:"
+    },
+    {
+      "key": "office.power",
+      "value": "Kalan Güç:"
+    },
+    {
+      "key": "camera.showstage",
+      "value": "Gösteri Sahnesi"
+    },
+    {
+      "key": "camera.diningarea",
+      "value": "Yemek Alanı"
+    },
+    {
+      "key": "camera.piratecove",
+      "value": "Korsan Koyu"
+    },
+    {
+      "key": "camera.westhall",
+      "value": "Batı Koridoru"
+    },
+    {
+      "key": "camera.westhallcorner",
+      "value": "Batı Koridoru Köşesi"
+    },
+    {
+      "key": "camera.supplycloset",
+      "value": "Malzeme Dolabı"
+    },
+    {
+      "key": "camera.easthall",
+      "value": "Doğu Koridoru"
+    },
+    {
+      "key": "camera.easthallcorner",
+      "value": "Doğu Koridoru Köşesi"
+    },
+    {
+      "key": "camera.backstage",
+      "value": "Sahne Arkası"
+    },
+    {
+      "key": "camera.kitchen",
+      "value": "Mutfak"
+    },
+    {
+      "key": "camera.restrooms",
+      "value": "Tuvaletler"
+    },
+    {
+      "key": "nightone.phoneguy.lineone",
+      "value": "Merhaba? Merhaba, merhaba? Ehm, ilk gecenizde size yardımcı olabilmek için bir mesaj kaydetmek istedim."
+    },
+    {
+      "key": "nightone.phoneguy.linetwo",
+      "value": "Aslında, sizden önce o ofiste çalışıyordum. Şuan son haftamı bitiriyorum. Yani,"
+    },
+    {
+      "key": "nightone.phoneguy.linethree",
+      "value": "bunun biraz bunaltıcı olabileceğini biliyorum, ama endişelenecek bir şey yok, size gayet iyi olacağınızı"
+    },
+    {
+      "key": "nightone.phoneguy.linefour",
+      "value": "söylemek için burdayım. İlk haftanızı atlatmaya odaklanalım, tamam mı?"
+    },
+    {
+      "key": "nightone.phoneguy.linefive",
+      "value": "Eee, bakalım, şirketten gelen okumam gereken bir tanıtım mesajı var."
+    },
+    {
+      "key": "nightone.phoneguy.linesix",
+      "value": "bu aslında yasal bir durum, biliyorsunuz. ee, \"Freddy Fazbear'ın Pizza dükkanına hoş geldiniz."
+    },
+    {
+      "key": "nightone.phoneguy.lineseven",
+      "value": "Çocuklar ve yetişkinler için büyülü olan, hayal gücü ve eğlencenin hayat bulduğu bir yer."
+    },
+    {
+      "key": "nightone.phoneguy.lineheight",
+      "value": "Fazbear Şirketi, mal veya kişi zararlarından sorumlu değildir."
+    },
+    {
+      "key": "nightone.phoneguy.linenine",
+      "value": "Zarar veya ölüm tespit edilirse, kaybolan kişi raporu 90 gün içinde dosyalanacaktır ve"
+    },
+    {
+      "key": "nightone.phoneguy.lineten",
+      "value": "mal ve tesisler iyice temizlenip çamaşır suyu ile dezenfekte edilip halılar yenilenecektir.\""
+    },
+    {
+      "key": "nightone.phoneguy.lineeleven",
+      "value": "vesaire vesaire, Şimdi bu kulağa kötü gibi gelebilir, biliyorum, ama gerçekten endişelenecek bir şey yok."
+    },
+    {
+      "key": "nightone.phoneguy.linetwelve",
+      "value": "Buradaki animatronik karakterler gece biraz tuhaflaşabiliyor, ama onları suçluyor muyum? Hayır."
+    },
+    {
+      "key": "nightone.phoneguy.linethirteen",
+      "value": "Eğer ben, o aynı aptal şarkıları yirmi yıl boyunca söylemek zorunda kalsaydım ve bir kere bile banyo yapmasaydım?"
+    },
+    {
+      "key": "nightone.phoneguy.linefourteen",
+      "value": "Ben de muhtemelen geceleri biraz huysuz olurdum. O yüzden unutmayın, bu karakterlerin çocukların kalbinde özel bir yeri var"
+    },
+    {
+      "key": "nightone.phoneguy.linefifteen",
+      "value": "ve onlara biraz saygı göstermeliyiz, değil mi? Tamam mı?"
+    },
+    {
+      "key": "nightone.phoneguy.linesixteen",
+      "value": "Yani, dikkatli olun, karakterler dolaşmaya biraz eğilimliler. Eee, gece bir tür"
+    },
+    {
+      "key": "nightone.phoneguy.lineseventeen",
+      "value": "serbest dolaşma moduna bırakılıyorlar. Uh... motorlarının uzun süre kapalı kalınca"
+    },
+    {
+      "key": "nightone.phoneguy.lineeighteen",
+      "value": "kitlenmesiyle alakalı birşey. Eskiden gündüzleri de kıpırdamalarına izin verilirdi."
+    },
+    {
+      "key": "nightone.phoneguy.linenineteen",
+      "value": "ama sonra 87'deki Isırık oldu. İnsan vücudunun ön beyin lobu olmadan yaşayabilmesi inanılmaz, değil mi?"
+    },
+    {
+      "key": "nightone.phoneguy.linetwenty",
+      "value": "Eee, şimdi güvenliğinizle ilgili, burada gece bekçisi olarak karşılaşabileceğiniz tek gerçek tehlike"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyone",
+      "value": "bu karakterler, eğer nöbetten sonra sizi görürlerse, sizi"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentytwo",
+      "value": "büyük ihtimalle sizi kıyafeti olmayan bir metal iskelet olarak görecekler."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentythree",
+      "value": "Şimdi, bu Freddy Fazbear's Pizza'da kurallara aykırı olduğu için, sizi zorla.."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyfour",
+      "value": "Freddy Fazbear kostümüne sokmaya çalışacaklar. Uhh, şimdi, bu o kostümler teller ve animatronik cihazlarla dolu olmasaydı"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyfive",
+      "value": "o kadar kötü olmazdı."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentysix",
+      "value": "Özellikle yüz bölgesinde. Kafanızın zorla içeriye sıkıştırılmasının ne kadar"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyseven",
+      "value": "rahatsız ve ölümcül olabileceğini hayal edebilirsiniz."
+    },
+    {
+      "key": "nightone.phoneguy.linetwentyheight",
+      "value": "Eee, muhtemelen günışığını tekrar görebilecek tek parçalarınız gözleriniz"
+    },
+    {
+      "key": "nightone.phoneguy.linetwentynine",
+      "value": "ve maskenin önünden çıktığında dişleriniz olucaktır."
+    },
+    {
+      "key": "nightone.phoneguy.linethirty",
+      "value": "E-Evet, bunları iş başvurusunda size söylemiyorlar. Ama hey, ilk gün kolay olmalı."
+    },
+    {
+      "key": "nightone.phoneguy.linethirtyone",
+      "value": "Yarın konuşuruz. Eee, kameraları kontrol etmeyi unutma ve kapıları"
+    },
+    {
+      "key": "nightone.phoneguy.linethirtytwo",
+      "value": "ancak gerçekten gerekirse kapatmayı. Güçten tasarruf etmelisin. Tamamdır, iyi geceler."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineone",
+      "value": "Eee, Merhaba? Merhaba? eğer bunu duyuyorsanız ve ikinci güne ulaştınız, tebrikler!"
+    },
+    {
+      "key": "nighttwo.phoneguy.linetwo",
+      "value": "Bu sefer çok uzun konuşmayacağım çünkü Freddy ve arkadaşları hafta ilerledikçe daha aktif olmaya başlıyolar."
+    },
+    {
+      "key": "nighttwo.phoneguy.linethree",
+      "value": "Eee, ben konuşurken herkesin uygun yerinde olduğundan emin olmak için"
+    },
+    {
+      "key": "nighttwo.phoneguy.linefour",
+      "value": "o kameraları kontrol etmek iyi bir fikir olabilir. Biliyorsun..."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefive",
+      "value": "Eee... ilginç bir şekilde, Freddy genellikle sahneden pek inmez."
+    },
+    {
+      "key": "nighttwo.phoneguy.linesix",
+      "value": "Karanlıkta daha aktif olduğunu duydum ama hey,"
+    },
+    {
+      "key": "nighttwo.phoneguy.lineseven",
+      "value": "sanırım bu da gücü bitirmemek için bir neden daha, değil mi?"
+    },
+    {
+      "key": "nighttwo.phoneguy.lineheight",
+      "value": "Ayrıca kapı ışıklarını kullanmanın önemini vurgulamak istiyorum."
+    },
+    {
+      "key": "nighttwo.phoneguy.linenine",
+      "value": "Kameralarınızda kör noktalar var ve bu kör noktalar tam olarak kapılarınızın dışında."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineten",
+      "value": "Yani, eğer kameralarınızda birşeyi yada birilerini bulamıyorsanız kapı ışıklarını kontrol ettiğinizden emin olun."
+    },
+    {
+      "key": "nighttwo.phoneguy.lineeleven",
+      "value": "Eee, tepki vermek için sadece birkaç saniyeniz olabilir... Eee, tabii ki herhangi bir tehlikede olucağınızdan değil."
+    },
+    {
+      "key": "nighttwo.phoneguy.linetwelve",
+      "value": "Bunu ima etmiyorum. Ayrıca arada bir Korsan Koyu'ndaki perdenin durumuna da bak."
+    },
+    {
+      "key": "nighttwo.phoneguy.linethirteen",
+      "value": "Oradaki karakter, kameralar uzun süre kapalı kaldığında daha aktif hale geliyor gibi."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefourteen",
+      "value": "Herhalde izlenmekten hoşlanmıyor. Bilmiyorum."
+    },
+    {
+      "key": "nighttwo.phoneguy.linefifteen",
+      "value": "Her neyse, eminim her şey kontrolün altındadır! Eee, yakında görüşürüz."
+    },
+    {
+      "key": "nighthree.phoneguy.lineone",
+      "value": "Merhaba, merhaba? Hey, çok iyi gidiyorsun! Çoğu insan bu kadar uzun süre dayanmaz."
+    },
+    {
+      "key": "nighthree.phoneguy.linetwo",
+      "value": "Yani, bilirsin, genelde şimdiye kadar başka şeylere yönelirler. Öldüklerini ima etmiyorum."
+    },
+    {
+      "key": "nighthree.phoneguy.linethree",
+      "value": "B-b-bunu demek istemedim. Eh, her neyse, fazla zamanını almıyim."
+    },
+    {
+      "key": "nighthree.phoneguy.linefour",
+      "value": "Bu gece işler gerçekten ciddileşiyor. Eh... hey, dinle, bir fikrim var, Eğer yakalanırsan"
+    },
+    {
+      "key": "nighthree.phoneguy.linefive",
+      "value": "ve Freddy kostümüne sıkıştırılmak istemiyosan, eh, ölü gibi davranmayı dene! Yani, sal kendini."
+    },
+    {
+      "key": "nighthree.phoneguy.linesix",
+      "value": "O zaman belki, uh, sizi boş bir kostüm olarak düşünebilirler."
+    },
+    {
+      "key": "nighthree.phoneguy.lineseven",
+      "value": "Ama sizi boş bir kostüm olarak düşünürlerse, içinize metal bir iskelet koymayı deneyebilirler..."
+    },
+    {
+      "key": "nighthree.phoneguy.lineheight",
+      "value": "O nasıl olurdu merak ediyorum. Ehh, boş ver onu. En iyisi yakalanmamak."
+    },
+    {
+      "key": "nighthree.phoneguy.linenine",
+      "value": "Eh... tamam, seni işinle baş başa bırakıyorum . Görüşmek üzere!"
+    },
+    {
+      "key": "nightfour.phoneguy.lineone",
+      "value": "Merhaba, merhaba? Hey! Hey, vay be, 4. gün. Yapabileceğini biliyordum. Eh, hey, dinle,"
+    },
+    {
+      "key": "nightfour.phoneguy.linetwo",
+      "value": "Yarın sana bir mesaj gönderemeyebilirim. *gürültü* Burada gece benim için çok kötü geçti."
+    },
+    {
+      "key": "nightfour.phoneguy.linethree",
+      "value": "Eh, ben iyi ki de senin için mesajlarımı kaydetmişim *boğaz temizleme*"
+    },
+    {
+      "key": "nightfour.phoneguy.linefour",
+      "value": "Eh, bana bir iyilik yap. *gürültü* Belki bir ara, eh, o arka odadaki kostümleri kontrol et"
+    },
+    {
+      "key": "nightfour.phoneguy.linefive",
+      "value": "*gürültü* Biri kontrol edene kadar dayanmaya çalışacağım. Belki o kadarda kötü olmaz."
+    },
+    {
+      "key": "nightfour.phoneguy.linesix",
+      "value": "*pat pat* Eh, ben hep o boş kafaların içinde ne olduğunu merak etmişimdir. *melodi çalar*"
+    },
+    {
+      "key": "nightfour.phoneguy.lineseven",
+      "value": "Bilirsin... *derin inleme* oh, hayır - *sesler, ardından yüksek bir çığlık ve statik*"
+    },
+    {
+      "key": "nightfive.phoneguy.lineone",
+      "value": "nadiren çağdaşlarını tanır (Atlanmış: ödül; sahip olmak yeterlidir) yaratıcı sevinci (Atlanmış: hizmet.)"
+    },
+    {
+      "key": "nightfive.phoneguy.linetwo",
+      "value": "Sayısız kullanım (Atlanmış: Bose enstrümanları) gelecekteki nesiller tarafından yapılacak- (Atlanmış: bilim insanı)"
+    },
+    {
+      "key": "nightfive.phoneguy.linethree",
+      "value": "çeşitli gübre türlerinin bitki büyümesi üzerindeki etkisini göstermek için mi? Haklısınız."
+    },
+    {
+      "key": "nightfive.phoneguy.linefour",
+      "value": "Onları hızlı laboratuvar deneylerinde kullanmak kolayca mümkün olmaz mıydı?"
+    },
+    {
+      "key": "nightfive.phoneguy.linefive",
+      "value": "(Atlanmış: Beyefendi,) üzülerek söylüyorum ki, kitle tarım gelişimi (Atlanmış: değil) mükemmel mekanizmalarınızın tam kullanımıyla hızlandırılmıyor."
+    }
+  ]
+}
