@@ -17234,8 +17234,8 @@ MonoBehaviour:
   ChicaOutsideDoor: 0
   FreddyOutsideDoor: 0
   FoxyRunningHallway: 0
-  LeftLightIsOn: 0
-  RightLightIsOn: 0
+  leftLightIsOn: 0
+  rightLightIsOn: 0
   centerPosition: 65
 --- !u!4 &1959479697
 Transform:

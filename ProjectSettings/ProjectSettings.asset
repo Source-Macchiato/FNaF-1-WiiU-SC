@@ -246,7 +246,7 @@ PlayerSettings:
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
   wiiUTitleID: 000500001026F400
-  wiiUGroupID: 000026F3
+  wiiUGroupID: 001026F4
   wiiUCommonSaveSize: 4096
   wiiUAccountSaveSize: 2048
   wiiUOlvAccessKey: 0
