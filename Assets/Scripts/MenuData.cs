@@ -3,12 +3,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class MenuData : MonoBehaviour
 {
     public float nightNumber;
-    public GameObject nightNumberPrefab;
+    public GameObject nightNumberContainer;
+    public GameObject continueButtonGameObject;
+    public GameObject gameTitle;
     public int layoutId;
 
     [Header("Layout images")]
@@ -87,6 +90,14 @@ public class MenuData : MonoBehaviour
                 starsContainer.SetActive(false);
             }
         }
+
+        // Display night text only when continue button is selected
+        nightNumberContainer.SetActive(EventSystem.current.currentSelectedGameObject == continueButtonGameObject);
+    }
+
+    public void ToggleGameTitle(bool visibility)
+    {
+        gameTitle.SetActive(visibility);
     }
 
     public void LoadAdvertisement()
@@ -263,47 +274,6 @@ public class MenuData : MonoBehaviour
         }
     }
 
-    // Night number system 
-    public void GenerateNightNumber()
-    {
-        Transform canvaUI = GameObject.Find("CanvaUI").transform;
-        Transform nightNumberContainer = canvaUI.Find("NightNumberContainer").transform;
-
-        nightNumberGameObject = Instantiate(nightNumberPrefab, nightNumberContainer);
-
-        Text textNightNumber = nightNumberGameObject.transform.Find("NumberText").GetComponent<Text>();
-        TMP_Text tmpTextNightNumber = nightNumberGameObject.transform.Find("NumberText").GetComponent<TextMeshProUGUI>();
-
-        if (textNightNumber != null)
-        {
-            if (nightNumber < 5)
-            {
-                textNightNumber.text = (nightNumber + 1).ToString();
-            }
-            else
-            {
-                textNightNumber.text = "5";
-            }
-        }
-
-        if (tmpTextNightNumber != null)
-        {
-            if (nightNumber < 5)
-            {
-                tmpTextNightNumber.text = (nightNumber + 1).ToString();
-            }
-            else
-            {
-                tmpTextNightNumber.text = "5";
-            }
-        }
-
-        RectTransform nightNumberRect = nightNumberGameObject.GetComponent<RectTransform>();
-        nightNumberRect.anchoredPosition = new Vector2(-700f, -234.2f);
-
-        nightNumberGameObject.SetActive(false);
-    }
-
     public void UpdateCursorSize(bool isOriginalSize, GameObject cursor)
     {
         Text textComponent = cursor.GetComponent<Text>();
@@ -347,7 +317,7 @@ public class MenuData : MonoBehaviour
 
     public void AddGoldenFreddy()
     {
-        menuManager.AddCardSwitcher(7, "Golden Freddy", goldenPicture, "customnight.ailevel", 0, 20);
+        //menuManager.AddCardSwitcher(7, "Golden Freddy", goldenPicture, "customnight.ailevel", 0, 20);
 
         HorizontalLayoutGroup horizontalLayoutGroup = customNightContainer.GetComponent<HorizontalLayoutGroup>();
         horizontalLayoutGroup.spacing = 71;
@@ -409,7 +379,7 @@ public class MenuData : MonoBehaviour
 
         foreach (Transform character in customNightContainer.transform)
         {
-            characterValue[index] = character.GetComponent<CardSwitcher>().difficultyId;
+            //characterValue[index] = character.GetComponent<CardSwitcherData>().difficultyId;
 
             index++;
         }

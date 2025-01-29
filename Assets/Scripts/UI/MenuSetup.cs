@@ -11,28 +11,19 @@ public class MenuSetup : MonoBehaviour
     void Start()
     {
         // Adding buttons to the main menu with corresponding actions
-        menuManager.AddButton(0, 0, NewGame, "mainmenu.newgame");
-        menuManager.AddButton(0, 0, Continue, "mainmenu.continue");
 
         if (SaveManager.LoadStarsId() >= 1)
         {
-            menuManager.AddButton(0, 0, SixthNight, "nextnight.sixthnight");
+            //menuManager.AddButton(0, 0, SixthNight, "nextnight.sixthnight");
         }
         
         if (SaveManager.LoadStarsId() >= 2)
         {
-            menuManager.AddButton(0, 0, CustomNight, "mainmenu.customnight");
+            //menuManager.AddButton(0, 0, CustomNight, "mainmenu.customnight");
         }
-        
-        menuManager.AddButton(0, 0, Options, "mainmenu.options", true);
-        menuManager.AddButton(0, 0, Credits, "mainmenu.credits", true);
 
-        menuManager.AddButton(1, 0, Audio, "mainmenu.audio");
-        menuManager.AddButton(1, 0, Language, "mainmenu.language");
-        menuManager.AddButton(1, 0, Layout, "mainmenu.layout");
-        menuManager.AddButton(1, 0, Online, "mainmenu.online");
+        /*
 
-        menuManager.AddSwitcher(2, new string[] { "English", "French", "Spanish", "Italian", "German", "Arabic", "Slovak", "Catalan", "Turkish" }, "switcher.translation");
 
         menuManager.AddButton(4, 0, Analytics, "mainmenu.analyticdata");
 
@@ -46,14 +37,14 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 0, 20, 3);
         menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 0, 20, 3);
         menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 1);
-        menuManager.AddButton(7, 1, StartCustomNight, "customnight.ready", true);
+        menuManager.AddButton(7, 1, StartCustomNight, "customnight.ready", true);*/
 
         if (SaveManager.LoadGoldenFreddyStatus() == 1)
         {
             menuData.AddGoldenFreddy();
         }
 
-        menuManager.AddDescription(8, "mainmenu.generalvolume");
+        /*menuManager.AddDescription(8, "mainmenu.generalvolume");
         menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.generalvolume");
         menuManager.AddDescription(8, "mainmenu.musicvolume");
         menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.musicvolume");
@@ -62,7 +53,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddDescription(8, "mainmenu.sfxvolume");
         menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.sfxvolume");
 
-        menuManager.AddButton(9, 0, Volume, "mainmenu.volume");
+        menuManager.AddButton(9, 0, Volume, "mainmenu.volume");*/
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
@@ -71,29 +62,10 @@ public class MenuSetup : MonoBehaviour
         menuManager.SetBackCallback(6, OnBackFromAnalyticData);
         menuManager.SetBackCallback(7, OnBackFromCustomNight);
         menuManager.SetBackCallback(8, OnBackFromVolume);
-
-        // Display main menu after loaded all buttons
-        menuManager.ChangeMenu(0);
-
-        // Some actions to do
-        menuData.GenerateNightNumber();
-    }
-
-    void Update()
-    {
-        // Display night number if Continue button selected
-        if (menuManager.currentButton == menuManager.menuButtons[0][1].GetComponent<Button>() && !menuData.nightNumberGameObject.activeSelf)
-        {
-            menuData.nightNumberGameObject.SetActive(true);
-        }
-        else if (menuManager.currentButton != menuManager.menuButtons[0][1].GetComponent<Button>() && menuData.nightNumberGameObject.activeSelf)
-        {
-            menuData.nightNumberGameObject.SetActive(false);
-        }
     }
 
     // Buttons functions
-    void NewGame()
+    public void NewGame()
     {
         menuManager.canNavigate = false;
 
@@ -104,7 +76,7 @@ public class MenuSetup : MonoBehaviour
         menuData.LoadAdvertisement();
     }
 
-    void Continue()
+    public void Continue()
     {
         menuManager.canNavigate = false;
 
@@ -126,7 +98,7 @@ public class MenuSetup : MonoBehaviour
         }
     }
 
-    void SixthNight()
+    public void SixthNight()
     {
         menuManager.canNavigate = false;
 
@@ -136,31 +108,14 @@ public class MenuSetup : MonoBehaviour
         SceneManager.LoadScene("NextNight");
     }
 
-    void CustomNight()
+    public void CustomNight()
     {
         menuData.CustomNightBackgroundStatus(true);
 
-        menuManager.ChangeMenu(7);
-    }
-
-    void Options()
-    {
-        menuManager.ChangeMenu(1);
-    }
-
-    void Audio()
-    {
-        menuManager.ChangeMenu(9);
-    }
-
-    void Language()
-    {
         menuManager.ChangeMenu(2);
-
-        menuData.LoadLanguageAndUpdateSwitcher();
     }
 
-    void Credits()
+    public void Credits()
     {
         menuManager.ChangeMenu(3);
 
@@ -171,24 +126,11 @@ public class MenuSetup : MonoBehaviour
         }
     }
 
-    void Layout()
+    void Language()
     {
-        menuManager.ChangeMenu(5);
+        menuManager.ChangeMenu(2);
 
-        menuData.layoutButtons = menuManager.GetCurrentMenu().transform.GetComponentsInChildren<Button>();
-
-        Button newButton = menuData.layoutButtons[menuData.layoutId];
-
-        newButton.Select();
-
-        menuManager.currentButton = newButton;
-
-        menuData.UpdateCursorSize(false, menuManager.currentSelection);
-    }
-
-    void Online()
-    {
-        menuManager.ChangeMenu(4);
+        menuData.LoadLanguageAndUpdateSwitcher();
     }
 
     void Volume()
@@ -242,25 +184,12 @@ public class MenuSetup : MonoBehaviour
     void OnBackFromCredits()
     {
         menuManager.currentScrollRect = null;
+        menuData.ToggleGameTitle(true);
     }
 
     void OnBackFromLayout()
     {
-        int index = 0;
-
-        foreach (Button layoutButton in menuData.layoutButtons)
-        {
-            if (layoutButton == menuManager.currentButton)
-            {
-                menuData.layoutId = index;
-                menuData.SaveLayout();
-                break;
-            }
-
-            index++;
-        }
-
-        menuData.UpdateCursorSize(true, menuManager.currentSelection);
+        
     }
 
     void OnBackFromAnalyticData()

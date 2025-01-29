@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using RTLTMPro;
 
 public class SwitcherData : MonoBehaviour
 {
@@ -8,31 +10,70 @@ public class SwitcherData : MonoBehaviour
     public int currentOptionId;
     public string[] optionsName;
 
-    private Text textComponent;
-    private TMP_Text tmpTextComponent;
+    public RTLTextMeshPro text;
+    public I18nTextTranslator i18nTextTranslator;
+    public Image[] inputIcons;
+
+    public UnityEvent events;
 
     void Start()
     {
-        textComponent = transform.Find("Text").GetComponent<Text>();
-        tmpTextComponent = transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        UpdateText();
+
+        events.Invoke();
     }
 
     void Update()
     {
-        if (textComponent != null)
+        foreach (Image inputIcon in inputIcons)
         {
-            if (textComponent.text != optionsName[currentOptionId] || textComponent.text == null)
-            {
-                textComponent.text = optionsName[currentOptionId];
-            }
+            ChangeImageOpacity(inputIcon, EventSystem.current.currentSelectedGameObject == gameObject ? 1f : 0.5f);
+        }
+    }
+
+    public void IncreaseOptions()
+    {
+        if (currentOptionId >= 0 && currentOptionId < optionsName.Length - 1)
+        {
+            currentOptionId++;
+
+            UpdateText();
+
+            events.Invoke();
+        }
+    }
+
+    public void DecreaseOptions()
+    {
+        if (currentOptionId > 0 && currentOptionId <= optionsName.Length - 1)
+        {
+            currentOptionId--;
+
+            UpdateText();
+
+            events.Invoke();
+        }
+    }
+
+    public void UpdateText()
+    {
+        if (text != null)
+        {
+            text.text = optionsName[currentOptionId];
         }
 
-        if (tmpTextComponent != null)
+        if (i18nTextTranslator != null)
         {
-            if (tmpTextComponent.text != optionsName[currentOptionId] || tmpTextComponent.text == null)
-            {
-                tmpTextComponent.text = optionsName[currentOptionId];
-            }
+            i18nTextTranslator.textId = optionsName[currentOptionId];
+            i18nTextTranslator.UpdateText();
         }
+    }
+
+    private void ChangeImageOpacity(Image image, float opacity)
+    {
+        Color color = image.color;
+        color.a = opacity;
+
+        image.color = color;
     }
 }
