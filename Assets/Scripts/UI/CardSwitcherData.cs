@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -11,7 +10,6 @@ public class CardSwitcherData : MonoBehaviour
     public int maxValue = 20;
 
     public TextMeshProUGUI valueText;
-    public Image coverImage;
     public GameObject cursorObject;
 
     void Start()
@@ -47,15 +45,5 @@ public class CardSwitcherData : MonoBehaviour
     public void UpdateCardSwitcher()
     {
         valueText.text = difficultyValue.ToString();
-
-        ChangeCoverOpacity(difficultyValue > 0 ? 1f : 0.2f);
-    }
-
-    private void ChangeCoverOpacity(float opacity)
-    {
-        Color color = coverImage.color;
-        color.a = opacity;
-
-        coverImage.color = color;
     }
 }
