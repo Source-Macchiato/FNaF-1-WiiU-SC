@@ -39,10 +39,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 1);
         menuManager.AddButton(7, 1, StartCustomNight, "customnight.ready", true);*/
 
-        if (SaveManager.LoadGoldenFreddyStatus() == 1)
-        {
-            menuData.AddGoldenFreddy();
-        }
+        menuData.GoldenFreddy(SaveManager.LoadGoldenFreddyStatus() == 1);
 
         /*menuManager.AddDescription(8, "mainmenu.generalvolume");
         menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.generalvolume");
@@ -147,17 +144,17 @@ public class MenuSetup : MonoBehaviour
         menuData.LoadShareDataAndUpdateSwitcher();
     }
 
-    void StartCustomNight()
+    public void StartCustomNight()
     {
         menuData.nightNumber = 6;
         menuData.SaveNightNumber();
 
         menuData.SaveCustomNightValues();
 
-        float freddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", 0);
-        float bonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", 0);
-        float chicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", 0);
-        float foxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", 0);
+        float freddyDifficulty = PlayerPrefs.GetInt("FreddyDifficulty", 0);
+        float bonnieDifficulty = PlayerPrefs.GetInt("BonnieDifficulty", 0);
+        float chicaDifficulty = PlayerPrefs.GetInt("ChicaDifficulty", 0);
+        float foxyDifficulty = PlayerPrefs.GetInt("FoxyDifficulty", 0);
 
         if (freddyDifficulty == 1 && bonnieDifficulty == 9 && chicaDifficulty == 8 && foxyDifficulty == 7 && SaveManager.LoadGoldenFreddyStatus() == 0)
         {

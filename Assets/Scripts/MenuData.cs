@@ -24,13 +24,18 @@ public class MenuData : MonoBehaviour
     public Sprite foxyPicture;
     public Sprite goldenPicture;
 
-    [Header("Other")]
-    public GameObject mainMenuContainer;
-    public GameObject starsContainer;
+    [Header("Custom Night")]
+    public GameObject[] customNightCharacters;
     public GameObject customNightContainer;
     public GameObject customNightBackground;
     public GameObject goldenFreddyGameObject;
+    public Button readyButton;
     public Sprite achievementIcon;
+
+    [Header("Other")]
+    public GameObject mainMenuContainer;
+    public GameObject starsContainer;
+    
     public AudioSource mainMenuThemeSound;
     public AudioMixer audioMixer;
 
@@ -315,12 +320,38 @@ public class MenuData : MonoBehaviour
         customNightBackground.SetActive(status);
     }
 
-    public void AddGoldenFreddy()
+    public void GoldenFreddy(bool status)
     {
-        //menuManager.AddCardSwitcher(7, "Golden Freddy", goldenPicture, "customnight.ailevel", 0, 20);
+        if (status)
+        {
+            HorizontalLayoutGroup horizontalLayoutGroup = customNightContainer.GetComponent<HorizontalLayoutGroup>();
+            horizontalLayoutGroup.spacing = 71;
 
-        HorizontalLayoutGroup horizontalLayoutGroup = customNightContainer.GetComponent<HorizontalLayoutGroup>();
-        horizontalLayoutGroup.spacing = 71;
+            customNightCharacters[4].SetActive(true);
+
+            Navigation navigationFoxyButton = customNightCharacters[3].GetComponent<Button>().navigation;
+            navigationFoxyButton.selectOnRight = customNightCharacters[4].GetComponent<Button>();
+            customNightCharacters[3].GetComponent<Button>().navigation = navigationFoxyButton;
+
+            Navigation navigationReadyButton = readyButton.navigation;
+            navigationReadyButton.selectOnUp = customNightCharacters[4].GetComponent<Button>();
+            readyButton.navigation = navigationReadyButton;
+        }
+        else
+        {
+            HorizontalLayoutGroup horizontalLayoutGroup = customNightContainer.GetComponent<HorizontalLayoutGroup>();
+            horizontalLayoutGroup.spacing = 120;
+
+            customNightCharacters[4].SetActive(false);
+
+            Navigation navigationFoxyButton = customNightCharacters[3].GetComponent<Button>().navigation;
+            navigationFoxyButton.selectOnRight = null;
+            customNightCharacters[3].GetComponent<Button>().navigation = navigationFoxyButton;
+
+            Navigation navigationReadyButton = readyButton.navigation;
+            navigationReadyButton.selectOnUp = customNightCharacters[3].GetComponent<Button>();
+            readyButton.navigation = navigationReadyButton;
+        }
     }
 
     public void ActivateGoldenFreddyJumpscare()
@@ -338,11 +369,9 @@ public class MenuData : MonoBehaviour
 
         goldenFreddyGameObject.SetActive(false);
         mainMenuThemeSound.mute = false;
-        AddGoldenFreddy();
-        menuManager.GoBack();
+        GoldenFreddy(true);
         menuManager.canNavigate = true;
-
-        MedalsManager.medalsManager.ShowAchievement("The Bite of '87", "Unlock Golden Freddy in the Custom Night.", achievementIcon);
+        menuManager.GoBack();
     }
 
     public void SaveShareData()
@@ -374,24 +403,14 @@ public class MenuData : MonoBehaviour
 
     public void SaveCustomNightValues()
     {
-        int[] characterValue = new int[customNightContainer.transform.childCount];
-        int index = 0;
+        PlayerPrefs.SetInt("FreddyDifficulty", customNightCharacters[0].GetComponent<CardSwitcherData>().difficultyValue);
+        PlayerPrefs.SetInt("BonnieDifficulty", customNightCharacters[1].GetComponent<CardSwitcherData>().difficultyValue);
+        PlayerPrefs.SetInt("ChicaDifficulty", customNightCharacters[2].GetComponent<CardSwitcherData>().difficultyValue);
+        PlayerPrefs.SetInt("FoxyDifficulty", customNightCharacters[3].GetComponent<CardSwitcherData>().difficultyValue);
 
-        foreach (Transform character in customNightContainer.transform)
+        if (customNightCharacters[4].activeSelf)
         {
-            //characterValue[index] = character.GetComponent<CardSwitcherData>().difficultyId;
-
-            index++;
-        }
-
-        PlayerPrefs.SetFloat("FreddyDifficulty", characterValue[0]);
-        PlayerPrefs.SetFloat("BonnieDifficulty", characterValue[1]);
-        PlayerPrefs.SetFloat("ChicaDifficulty", characterValue[2]);
-        PlayerPrefs.SetFloat("FoxyDifficulty", characterValue[3]);
-
-        if (characterValue.Length > 4)
-        {
-            PlayerPrefs.SetFloat("GoldenDifficulty", characterValue[4]);
+            PlayerPrefs.SetInt("GoldenDifficulty", customNightCharacters[4].GetComponent<CardSwitcherData>().difficultyValue);
         }
 
         PlayerPrefs.Save();
