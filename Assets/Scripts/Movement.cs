@@ -26,10 +26,10 @@ public class Movement : MonoBehaviour {
     public float WhereFreddy = 1; //done
     public float WhereFoxy = 1; //done
 
-    public float BonnieDifficulty; //done
-    public float ChicaDifficulty; //done
-    public float FreddyDifficulty; //done
-    public float FoxyDifficulty; //done
+    public int BonnieDifficulty; //done
+    public int ChicaDifficulty; //done
+    public int FreddyDifficulty; //done
+    public int FoxyDifficulty; //done
 
 
     public bool bonnieInCount;
@@ -129,10 +129,10 @@ public class Movement : MonoBehaviour {
     }
     else
     {
-        BonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", BonnieDifficulty) * 5;
-        ChicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", ChicaDifficulty) * 5;
-        FreddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", FreddyDifficulty) * 5;
-        FoxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", FoxyDifficulty) * 5;
+        BonnieDifficulty = PlayerPrefs.GetInt("BonnieDifficulty", 0) * 5;
+        ChicaDifficulty = PlayerPrefs.GetInt("ChicaDifficulty", 0) * 5;
+        FreddyDifficulty = PlayerPrefs.GetInt("FreddyDifficulty", 0) * 5;
+        FoxyDifficulty = PlayerPrefs.GetInt("FoxyDifficulty", 0) * 5;
     }
     
 
