@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Collections.Generic;
 
 public class MenuData : MonoBehaviour
 {
@@ -14,26 +15,14 @@ public class MenuData : MonoBehaviour
     public GameObject gameTitle;
     public int layoutId;
 
-    [Header("Layout images")]
-    public Sprite tvOnly;
-    public Sprite tvGamepad;
-    public Sprite gamepadOnly;
-    public Sprite freddyPicture;
-    public Sprite bonniePicture;
-    public Sprite chicaPicture;
-    public Sprite foxyPicture;
-    public Sprite goldenPicture;
-
     [Header("Custom Night")]
     public GameObject[] customNightCharacters;
     public GameObject customNightContainer;
     public GameObject customNightBackground;
     public GameObject goldenFreddyGameObject;
     public Button readyButton;
-    public Sprite achievementIcon;
 
     [Header("Other")]
-    public GameObject mainMenuContainer;
     public GameObject starsContainer;
     
     public AudioSource mainMenuThemeSound;
@@ -81,20 +70,7 @@ public class MenuData : MonoBehaviour
         }
 
         // Enable and disable stars
-        if (mainMenuContainer.activeSelf)
-        {
-            if (!starsContainer.activeSelf)
-            {
-                starsContainer.SetActive(true);
-            }
-        }
-        else
-        {
-            if (starsContainer.activeSelf)
-            {
-                starsContainer.SetActive(false);
-            }
-        }
+        starsContainer.SetActive(menuManager.currentMenuId == 0);
 
         // Display night text only when continue button is selected
         nightNumberContainer.SetActive(EventSystem.current.currentSelectedGameObject == continueButtonGameObject);
@@ -419,6 +395,50 @@ public class MenuData : MonoBehaviour
     public void SaveGoldenFreddy()
     {
         saveManager.SaveGoldenFreddyStatus(1);
+        bool saveResult = saveGameState.DoSave();
+    }
+
+    public void DisplaySelectedLayoutButton()
+    {
+        // Dictionary to map cardId to layoutId
+        Dictionary<string, int> cardLayoutMapping = new Dictionary<string, int>();
+        cardLayoutMapping.Add("card.tvonly", 0);
+        cardLayoutMapping.Add("card.tvgamepadclassic", 1);
+        cardLayoutMapping.Add("card.tvgamepadalternative", 2);
+        cardLayoutMapping.Add("card.gamepadonly", 3);
+
+        // Get all CardData scripts
+        CardData[] cards = FindObjectsOfType<CardData>();
+
+        foreach (CardData card in cards)
+        {
+            // Check if cardId matches layoutId
+            if (cardLayoutMapping.ContainsKey(card.cardId) && cardLayoutMapping[card.cardId] == layoutId)
+            {
+                Button button = card.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.Select();
+                }
+            }
+        }
+    }
+
+    public void SelectLayoutButton()
+    {
+        // Dictionary to map cardId to layoutId
+        Dictionary<string, int> cardLayoutMapping = new Dictionary<string, int>();
+        cardLayoutMapping.Add("card.tvonly", 0);
+        cardLayoutMapping.Add("card.tvgamepadclassic", 1);
+        cardLayoutMapping.Add("card.tvgamepadalternative", 2);
+        cardLayoutMapping.Add("card.gamepadonly", 3);
+
+        string cardId = EventSystem.current.currentSelectedGameObject.GetComponent<CardData>().cardId;
+
+        layoutId = cardLayoutMapping[cardId];
+
+        // Save layout id
+        saveManager.SaveLayoutId(layoutId);
         bool saveResult = saveGameState.DoSave();
     }
 }

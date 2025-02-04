@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
-  m_Name: WiiU-Inputs
+  m_Name: Inputs
   m_EditorClassIdentifier: 
   hashCode: -650895062
   material: {fileID: 21408726791889916}
@@ -22,9 +22,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-A
     hashCode: -840829938
     unicode: 0
@@ -36,9 +36,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-B
     hashCode: -840829939
     unicode: 0
@@ -50,9 +50,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-Plus
     hashCode: -1810064843
     unicode: 0
@@ -64,9 +64,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-Minus
     hashCode: 366285955
     unicode: 0
@@ -78,9 +78,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-ZL
     hashCode: -1977583879
     unicode: 0
@@ -92,9 +92,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-ZR
     hashCode: -1977583897
     unicode: 0
@@ -106,9 +106,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-L
     hashCode: -840829949
     unicode: 0
@@ -120,9 +120,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-R
     hashCode: -840829923
     unicode: 0
@@ -134,9 +134,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-Up
     hashCode: -1977583830
     unicode: 0
@@ -148,9 +148,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-Left
     hashCode: -1811052332
     unicode: 0
@@ -162,9 +162,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-Down
     hashCode: -1810770883
     unicode: 0
@@ -176,9 +176,9 @@ MonoBehaviour:
     width: 100
     height: 100
     xOffset: 0
-    yOffset: 0
+    yOffset: 80
     xAdvance: 100
-    scale: 1
+    scale: 1.4
     name: WiiU-Right
     hashCode: 399824943
     unicode: 0

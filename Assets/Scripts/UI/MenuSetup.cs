@@ -26,18 +26,8 @@ public class MenuSetup : MonoBehaviour
 
 
         menuManager.AddButton(4, 0, Analytics, "mainmenu.analyticdata");
-
-        menuManager.AddCard(5, "TV only", menuData.tvOnly);
-        menuManager.AddCard(5, "TV + Gamepad", menuData.tvGamepad);
-        menuManager.AddCard(5, "Gamepad only", menuData.gamepadOnly);
         
-        menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");        
-
-        menuManager.AddCardSwitcher(7, "Freddy", menuData.freddyPicture, "customnight.ailevel", 0, 20, 1);
-        menuManager.AddCardSwitcher(7, "Bonnie", menuData.bonniePicture, "customnight.ailevel", 0, 20, 3);
-        menuManager.AddCardSwitcher(7, "Chica", menuData.chicaPicture, "customnight.ailevel", 0, 20, 3);
-        menuManager.AddCardSwitcher(7, "Foxy", menuData.foxyPicture, "customnight.ailevel", 0, 20, 1);
-        menuManager.AddButton(7, 1, StartCustomNight, "customnight.ready", true);*/
+        menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");*/
 
         menuData.GoldenFreddy(SaveManager.LoadGoldenFreddyStatus() == 1);
 
@@ -128,6 +118,13 @@ public class MenuSetup : MonoBehaviour
         menuManager.ChangeMenu(5);
 
         menuData.LoadLanguageAndUpdateSwitcher();
+    }
+
+    public void Layout()
+    {
+        menuManager.ChangeMenu(6);
+
+        menuData.DisplaySelectedLayoutButton();
     }
 
     void Volume()
