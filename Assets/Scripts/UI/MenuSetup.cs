@@ -54,11 +54,11 @@ public class MenuSetup : MonoBehaviour
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
-        menuManager.SetBackCallback(2, OnBackFromLanguage);
-        menuManager.SetBackCallback(5, OnBackFromLayout);
-        menuManager.SetBackCallback(6, OnBackFromAnalyticData);
-        menuManager.SetBackCallback(7, OnBackFromCustomNight);
-        menuManager.SetBackCallback(8, OnBackFromVolume);
+        menuManager.SetBackCallback(5, OnBackFromLanguage);
+        //menuManager.SetBackCallback(5, OnBackFromLayout);
+        //menuManager.SetBackCallback(6, OnBackFromAnalyticData);
+        //menuManager.SetBackCallback(7, OnBackFromCustomNight);
+        //menuManager.SetBackCallback(8, OnBackFromVolume);
     }
 
     // Buttons functions
@@ -123,9 +123,9 @@ public class MenuSetup : MonoBehaviour
         }
     }
 
-    void Language()
+    public void Language()
     {
-        menuManager.ChangeMenu(2);
+        menuManager.ChangeMenu(5);
 
         menuData.LoadLanguageAndUpdateSwitcher();
     }
