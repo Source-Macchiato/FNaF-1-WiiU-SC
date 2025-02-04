@@ -22,6 +22,9 @@ public class MenuData : MonoBehaviour
     public GameObject goldenFreddyGameObject;
     public Button readyButton;
 
+    [Header("Switchers")]
+    public SwitcherData analyticsSwitcher;
+
     [Header("Other")]
     public GameObject starsContainer;
     
@@ -140,6 +143,29 @@ public class MenuData : MonoBehaviour
         }
     }
 
+    public void SaveAndUpdateShareAnalytics()
+    {
+        // Get SwitcherData scripts
+        saveManager.SaveShareAnalytics(analyticsSwitcher.currentOptionId == 1 ? 0 : 1);
+        bool saveResult = saveGameState.DoSave();
+
+        //analyticsData.CanShareAnalytics();
+    }
+
+    public void LoadShareAnalyticsAndUpdateSwitcher()
+    {
+        // Get share analytics
+        int shareAnalytics = SaveManager.LoadShareAnalytics();
+
+        int switcherIndex = shareAnalytics == 1 ? 0 : 1;
+
+        if (switcherIndex >= 0 && switcherIndex < analyticsSwitcher.optionsName.Length)
+        {
+            analyticsSwitcher.currentOptionId = switcherIndex;
+            analyticsSwitcher.UpdateText();
+        }
+    }
+
     private void LoadVolume()
     {
         audioMixer.SetFloat("Master", (SaveManager.LoadGeneralVolume() / 10f) * 80f - 80f);
@@ -237,7 +263,7 @@ public class MenuData : MonoBehaviour
         SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
 
         // Get share data value
-        float shareDataId = SaveManager.LoadShareData();
+        int shareDataId = SaveManager.LoadShareAnalytics();
 
         foreach (SwitcherData switcher in switchers)
         {
@@ -348,21 +374,6 @@ public class MenuData : MonoBehaviour
         GoldenFreddy(true);
         menuManager.canNavigate = true;
         menuManager.GoBack();
-    }
-
-    public void SaveShareData()
-    {
-        // Get SwitcherData scripts
-        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
-
-        foreach (SwitcherData switcher in switchers)
-        {
-            if (switcher.switcherId == "switcher.analyticdata")
-            {
-                saveManager.SaveShareData(switcher.currentOptionId);
-                bool saveResult = saveGameState.DoSave();
-            }
-        }
     }
 
     public void SaveLayout()

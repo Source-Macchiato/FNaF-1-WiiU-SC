@@ -7,7 +7,7 @@ public class ShareData : MonoBehaviour
 {
 	private const string url = "https://api.sourcemacchiato.com/v1/fnaf/analytics";
 
-    private float canShareData = -1;
+    private int canShareData = -1;
 
     private bool isSent = false;
     private bool popupDisplayed = false;
@@ -34,7 +34,7 @@ public class ShareData : MonoBehaviour
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
 
-        canShareData = SaveManager.LoadShareData();
+        canShareData = SaveManager.LoadShareAnalytics();
     }
 
     void Update()
@@ -49,13 +49,13 @@ public class ShareData : MonoBehaviour
             if (menuManager.currentPopup.optionId == 0) // The data can be shared
             {
                 canShareData = 1;
-                saveManager.SaveShareData(canShareData);
+                saveManager.SaveShareAnalytics(canShareData);
                 bool saveResult = saveGameState.DoSave();
             }
             else if (menuManager.currentPopup.optionId == 1) // The data can't be shared
             {
                 canShareData = 0;
-                saveManager.SaveShareData(canShareData);
+                saveManager.SaveShareAnalytics(canShareData);
                 bool saveResult = saveGameState.DoSave();
             }
 

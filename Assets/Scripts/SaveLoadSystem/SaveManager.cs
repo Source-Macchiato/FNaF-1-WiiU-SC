@@ -15,9 +15,9 @@ public class SaveManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
-    public void SaveShareData(float shareData)
+    public void SaveShareAnalytics(int shareAnalytics)
     {
-        PlayerPrefs.SetFloat("ShareData", shareData);
+        PlayerPrefs.SetInt("ShareData", shareAnalytics);
         PlayerPrefs.Save();
     }
 
@@ -94,13 +94,11 @@ public class SaveManager : MonoBehaviour {
         }
     }
 
-    public static float LoadShareData()
+    public static int LoadShareAnalytics()
     {
         if (PlayerPrefs.HasKey("ShareData"))
         {
-            float shareData = PlayerPrefs.GetFloat("ShareData");
-
-            return shareData;
+            return PlayerPrefs.GetInt("ShareData");
         }
         else
         {

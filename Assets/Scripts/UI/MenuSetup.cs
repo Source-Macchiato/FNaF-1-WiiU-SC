@@ -22,13 +22,6 @@ public class MenuSetup : MonoBehaviour
             //menuManager.AddButton(0, 0, CustomNight, "mainmenu.customnight");
         }
 
-        /*
-
-
-        menuManager.AddButton(4, 0, Analytics, "mainmenu.analyticdata");
-        
-        menuManager.AddSwitcher(6, new string[] { "No", "Yes" }, "switcher.analyticdata");*/
-
         menuData.GoldenFreddy(SaveManager.LoadGoldenFreddyStatus() == 1);
 
         /*menuManager.AddDescription(8, "mainmenu.generalvolume");
@@ -45,7 +38,6 @@ public class MenuSetup : MonoBehaviour
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(5, OnBackFromLanguage);
-        //menuManager.SetBackCallback(5, OnBackFromLayout);
         //menuManager.SetBackCallback(6, OnBackFromAnalyticData);
         //menuManager.SetBackCallback(7, OnBackFromCustomNight);
         //menuManager.SetBackCallback(8, OnBackFromVolume);
@@ -127,6 +119,11 @@ public class MenuSetup : MonoBehaviour
         menuData.DisplaySelectedLayoutButton();
     }
 
+    public void Online()
+    {
+        menuManager.ChangeMenu(7);
+    }
+
     void Volume()
     {
         menuManager.ChangeMenu(8);
@@ -181,14 +178,9 @@ public class MenuSetup : MonoBehaviour
         menuData.ToggleGameTitle(true);
     }
 
-    void OnBackFromLayout()
-    {
-        
-    }
-
     void OnBackFromAnalyticData()
     {
-        menuData.SaveShareData();
+        menuData.SaveAndUpdateShareAnalytics();
     }
 
     void OnBackFromCustomNight()
