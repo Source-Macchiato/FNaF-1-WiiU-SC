@@ -38,7 +38,7 @@ public class MenuSetup : MonoBehaviour
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(5, OnBackFromLanguage);
-        //menuManager.SetBackCallback(6, OnBackFromAnalyticData);
+        menuManager.SetBackCallback(7, OnBackFromOnline);
         //menuManager.SetBackCallback(7, OnBackFromCustomNight);
         //menuManager.SetBackCallback(8, OnBackFromVolume);
     }
@@ -122,6 +122,8 @@ public class MenuSetup : MonoBehaviour
     public void Online()
     {
         menuManager.ChangeMenu(7);
+
+        menuData.LoadAnalyticsAndUpdateSwitcher();
     }
 
     void Volume()
@@ -178,9 +180,9 @@ public class MenuSetup : MonoBehaviour
         menuData.ToggleGameTitle(true);
     }
 
-    void OnBackFromAnalyticData()
+    void OnBackFromOnline()
     {
-        menuData.SaveAndUpdateShareAnalytics();
+        menuData.SaveAndUpdateAnalytics();
     }
 
     void OnBackFromCustomNight()

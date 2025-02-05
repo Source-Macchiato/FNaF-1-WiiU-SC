@@ -143,7 +143,7 @@ public class MenuData : MonoBehaviour
         }
     }
 
-    public void SaveAndUpdateShareAnalytics()
+    public void SaveAndUpdateAnalytics()
     {
         // Get SwitcherData scripts
         saveManager.SaveShareAnalytics(analyticsSwitcher.currentOptionId == 1 ? 0 : 1);
@@ -152,7 +152,7 @@ public class MenuData : MonoBehaviour
         //analyticsData.CanShareAnalytics();
     }
 
-    public void LoadShareAnalyticsAndUpdateSwitcher()
+    public void LoadAnalyticsAndUpdateSwitcher()
     {
         // Get share analytics
         int shareAnalytics = SaveManager.LoadShareAnalytics();
