@@ -9,9 +9,9 @@ public class SaveManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
-    public void SaveNightNumber(float nightNumber)
+    public void SaveNightNumber(int nightNumber)
     {
-        PlayerPrefs.SetFloat("NightNumber", nightNumber);
+        PlayerPrefs.SetInt("NightNumber", nightNumber);
         PlayerPrefs.Save();
     }
 
@@ -82,11 +82,11 @@ public class SaveManager : MonoBehaviour {
         }
     }
 
-    public static float LoadNightNumber()
+    public static int LoadNightNumber()
     {
         if (PlayerPrefs.HasKey("NightNumber"))
         {
-            return PlayerPrefs.GetFloat("NightNumber");
+            return PlayerPrefs.GetInt("NightNumber");
         }
         else
         {

@@ -2,7 +2,7 @@
 
 public class DebugFunctions : MonoBehaviour
 {
-    private float nightNumber;
+    private int nightNumber;
 
     SaveGameState saveGameState;
     SaveManager saveManager;

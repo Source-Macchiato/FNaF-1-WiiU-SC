@@ -101,6 +101,19 @@ public class MenuSetup : MonoBehaviour
         }
     }
 
+    public void Volume()
+    {
+        menuManager.ChangeMenu(4);
+
+        if (menuManager.GetCurrentMenu() != null)
+        {
+            Transform creditsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
+            menuManager.currentScrollRect = creditsChild.GetComponent<ScrollRect>();
+        }
+
+        menuData.UpdateVolumeSwitchers();
+    }
+
     public void Language()
     {
         menuManager.ChangeMenu(5);
@@ -120,20 +133,6 @@ public class MenuSetup : MonoBehaviour
         menuManager.ChangeMenu(7);
 
         menuData.LoadAnalyticsAndUpdateSwitcher();
-    }
-
-    void Volume()
-    {
-        menuManager.ChangeMenu(8);
-
-        menuData.UpdateVolumeSwitchers();
-    }
-
-    void Analytics()
-    {
-        menuManager.ChangeMenu(6);
-
-        menuData.LoadShareDataAndUpdateSwitcher();
     }
 
     public void StartCustomNight()

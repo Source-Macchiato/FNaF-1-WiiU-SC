@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
 {
-    private float nightNumber;
+    private int nightNumber;
     public float timeRemaining = 535; //fixed i hope -- who wrote this ? who are you ?
     public int Hour = 12;
     public float Usage = 1;

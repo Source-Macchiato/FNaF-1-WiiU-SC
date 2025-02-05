@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 public class MenuData : MonoBehaviour
 {
-    public float nightNumber;
+    public int nightNumber;
     public GameObject nightNumberContainer;
     public TextMeshProUGUI nightNumberText;
     public GameObject continueButtonGameObject;
