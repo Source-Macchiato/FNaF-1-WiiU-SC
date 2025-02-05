@@ -11,6 +11,7 @@ public class MenuData : MonoBehaviour
 {
     public float nightNumber;
     public GameObject nightNumberContainer;
+    public TextMeshProUGUI nightNumberText;
     public GameObject continueButtonGameObject;
     public GameObject gameTitle;
     public int layoutId;
@@ -61,6 +62,20 @@ public class MenuData : MonoBehaviour
         // Disable advertisement by default
         advertisementIsActive = false;
         advertisementImage.SetActive(false);
+
+        // System for display night number and prevent being out of range
+        if (nightNumber >= 0 && nightNumber <= 4) // If is between night 1 and night 5
+        {
+            nightNumberText.text = (nightNumber + 1).ToString();
+        }
+        else if (nightNumber >= 5) // If is night 6 or more
+        {
+            nightNumberText.text = "5";
+        }
+        else // Or if is another value, in the case less than night 1
+        {
+            nightNumberText.text = "1";
+        }
     }
 	
 	// Update is called once per frame

@@ -594,6 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nightNumber: 0
   nightNumberContainer: {fileID: 606250845}
+  nightNumberText: {fileID: 969478563}
   continueButtonGameObject: {fileID: 1981850727}
   gameTitle: {fileID: 83517058}
   layoutId: 0
