@@ -24,23 +24,11 @@ public class MenuSetup : MonoBehaviour
 
         menuData.GoldenFreddy(SaveManager.LoadGoldenFreddyStatus() == 1);
 
-        /*menuManager.AddDescription(8, "mainmenu.generalvolume");
-        menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.generalvolume");
-        menuManager.AddDescription(8, "mainmenu.musicvolume");
-        menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.musicvolume");
-        menuManager.AddDescription(8, "mainmenu.voicevolume");
-        menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.voicevolume");
-        menuManager.AddDescription(8, "mainmenu.sfxvolume");
-        menuManager.AddSwitcher(8, new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, "switcher.sfxvolume");
-
-        menuManager.AddButton(9, 0, Volume, "mainmenu.volume");*/
-
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(5, OnBackFromLanguage);
         menuManager.SetBackCallback(7, OnBackFromOnline);
-        //menuManager.SetBackCallback(7, OnBackFromCustomNight);
-        //menuManager.SetBackCallback(8, OnBackFromVolume);
+        menuManager.SetBackCallback(4, OnBackFromVolume);
     }
 
     // Buttons functions
@@ -180,13 +168,9 @@ public class MenuSetup : MonoBehaviour
         menuData.SaveAndUpdateAnalytics();
     }
 
-    void OnBackFromCustomNight()
-    {
-        menuData.CustomNightBackgroundStatus(false);
-    }
-
     void OnBackFromVolume()
     {
         menuData.SaveAndUpdateVolume();
+        menuManager.currentScrollRect = null;
     }
 }

@@ -185,19 +185,22 @@ public class MenuManager : MonoBehaviour
                 }
                 else if (gamePadState.IsTriggered(WiiU.GamePadButton.A))
                 {
-                    if (currentScrollRect == null && currentPopup == null && canNavigate)
+                    if (canNavigate)
                     {
-                        ClickSelectedButton();
-                    }
-                    else if (currentPopup != null && canNavigate)
-                    {
-                        if (currentPopup.actionType == 0)
-                        {
-                            CloseCurrentPopup();
-                        }
-                        else if (currentPopup.actionType == 1)
+                        if (currentPopup == null)
                         {
                             ClickSelectedButton();
+                        }
+                        else
+                        {
+                            if (currentPopup.actionType == 0)
+                            {
+                                CloseCurrentPopup();
+                            }
+                            else if (currentPopup.actionType == 1)
+                            {
+                                ClickSelectedButton();
+                            }
                         }
                     }
                 }
@@ -790,7 +793,7 @@ public class MenuManager : MonoBehaviour
 
     private void MenuNavigation(Vector2 direction)
     {
-        if (currentScrollRect == null && canNavigate)
+        if (EventSystem.current.currentSelectedGameObject != null && canNavigate)
         {
             if (direction == Vector2.up)
             {
@@ -839,11 +842,12 @@ public class MenuManager : MonoBehaviour
         }
 
         ToggleCursorVisibility();
+        EnsureButtonVisible();
     }
 
     public void ScrollNavigation(Vector2 direction)
     {
-        if (currentScrollRect != null && currentPopup == null && canNavigate)
+        if (currentScrollRect != null && EventSystem.current.currentSelectedGameObject == null && currentPopup == null && canNavigate)
         {
             RectTransform content = currentScrollRect.content;
             RectTransform viewport = currentScrollRect.viewport;
@@ -902,8 +906,8 @@ public class MenuManager : MonoBehaviour
     {
         if (cursor != null)
         {
-            if (currentScrollRect == null && currentPopup == null
-                && EventSystem.current.currentSelectedGameObject != null
+            if (EventSystem.current.currentSelectedGameObject != null
+                && EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null
                 && EventSystem.current.currentSelectedGameObject.GetComponent<SwitcherData>() == null
                 && EventSystem.current.currentSelectedGameObject.GetComponent<CardSwitcherData>() == null
                 && EventSystem.current.currentSelectedGameObject.GetComponent<CardData>() == null
@@ -951,6 +955,10 @@ public class MenuManager : MonoBehaviour
                 {
                     defaultButtons[i].Select();
                     buttonAudio.Play();
+                }
+                else
+                {
+                    EventSystem.current.SetSelectedGameObject(null);
                 }
             }
         }
@@ -1015,4 +1023,38 @@ public class MenuManager : MonoBehaviour
             }
         }
     }
+
+    private void EnsureButtonVisible()
+    {
+        if (currentScrollRect == null || EventSystem.current.currentSelectedGameObject == null)
+            return;
+
+        RectTransform selectedRect = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
+        RectTransform viewportRect = currentScrollRect.viewport;
+        RectTransform contentRect = currentScrollRect.content;
+
+        if (selectedRect == null || viewportRect == null || contentRect == null)
+            return;
+
+        Vector3[] selectedCorners = new Vector3[4];
+        selectedRect.GetWorldCorners(selectedCorners);
+
+        Vector3[] viewportCorners = new Vector3[4];
+        viewportRect.GetWorldCorners(viewportCorners);
+
+        // Vérifie si le bouton est en dehors du viewport
+        bool isAbove = selectedCorners[0].y > viewportCorners[1].y;
+        bool isBelow = selectedCorners[1].y < viewportCorners[0].y;
+
+        if (isAbove || isBelow)
+        {
+            // Convertir les positions en coordonnées locales du contenu
+            Vector3 localPosition = contentRect.InverseTransformPoint(selectedCorners[0]);
+
+            // Ajuste la position en fonction du bouton sélectionné
+            float normalizedY = Mathf.Clamp01(1 - ((localPosition.y - contentRect.rect.yMin) / contentRect.rect.height));
+            currentScrollRect.verticalNormalizedPosition = normalizedY;
+        }
+    }
+
 }
