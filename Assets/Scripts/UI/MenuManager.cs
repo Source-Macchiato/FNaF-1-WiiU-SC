@@ -854,7 +854,6 @@ public class MenuManager : MonoBehaviour
             }
 
             ToggleCursorVisibility();
-            EnsureButtonVisible();
         }
     }
 
@@ -951,14 +950,6 @@ public class MenuManager : MonoBehaviour
             menuHistory.Push(currentMenuId);
         }
 
-        // Menu
-        foreach (GameObject menu in menus)
-        {
-            menu.SetActive(menu == menus[menuId]);
-        }
-
-        currentMenuId = menuId;
-
         // Button
         for (int i = 0; i < defaultButtons.Length; i++)
         {
@@ -976,6 +967,14 @@ public class MenuManager : MonoBehaviour
                 }
             }
         }
+
+        // Menu
+        foreach (GameObject menu in menus)
+        {
+            menu.SetActive(menu == menus[menuId]);
+        }
+
+        currentMenuId = menuId;
 
         ToggleCursorVisibility();
 
@@ -1035,39 +1034,6 @@ public class MenuManager : MonoBehaviour
             {
                 button.interactable = interactable;
             }
-        }
-    }
-
-    private void EnsureButtonVisible()
-    {
-        if (currentScrollRect == null || EventSystem.current.currentSelectedGameObject == null)
-            return;
-
-        RectTransform selectedRect = EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>();
-        RectTransform viewportRect = currentScrollRect.viewport;
-        RectTransform contentRect = currentScrollRect.content;
-
-        if (selectedRect == null || viewportRect == null || contentRect == null)
-            return;
-
-        Vector3[] selectedCorners = new Vector3[4];
-        selectedRect.GetWorldCorners(selectedCorners);
-
-        Vector3[] viewportCorners = new Vector3[4];
-        viewportRect.GetWorldCorners(viewportCorners);
-
-        // Vérifie si le bouton est en dehors du viewport
-        bool isAbove = selectedCorners[0].y > viewportCorners[1].y;
-        bool isBelow = selectedCorners[1].y < viewportCorners[0].y;
-
-        if (isAbove || isBelow)
-        {
-            // Convertir les positions en coordonnées locales du contenu
-            Vector3 localPosition = contentRect.InverseTransformPoint(selectedCorners[0]);
-
-            // Ajuste la position en fonction du bouton sélectionné
-            float normalizedY = Mathf.Clamp01(1 - ((localPosition.y - contentRect.rect.yMin) / contentRect.rect.height));
-            currentScrollRect.verticalNormalizedPosition = normalizedY;
         }
     }
 }
