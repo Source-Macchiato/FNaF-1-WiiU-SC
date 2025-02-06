@@ -957,8 +957,7 @@ public class MenuManager : MonoBehaviour
             {
                 if (defaultButtons[i] != null && currentPopup == null)
                 {
-                    defaultButtons[i].Select();
-                    buttonAudio.Play();
+                    Select(defaultButtons[i]);
                 }
                 else
                 {
