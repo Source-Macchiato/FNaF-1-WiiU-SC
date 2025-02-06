@@ -847,7 +847,10 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
-                Select(lastSelected);
+                if (lastSelected != null)
+                {
+                    Select(lastSelected);
+                }
             }
 
             ToggleCursorVisibility();
@@ -969,6 +972,7 @@ public class MenuManager : MonoBehaviour
                 else
                 {
                     EventSystem.current.SetSelectedGameObject(null);
+                    lastSelected = null;
                 }
             }
         }
