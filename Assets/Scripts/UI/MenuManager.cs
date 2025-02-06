@@ -693,6 +693,8 @@ public class MenuManager : MonoBehaviour
 
         // Calculate stick last navigation time
         lastNavigationTime += Time.deltaTime;
+
+        AutoScroll();
     }
 
     public void AddPopup(int actionType) // Action type : 0 = Press input to continue, 1 = Options
@@ -1033,6 +1035,29 @@ public class MenuManager : MonoBehaviour
             {
                 button.interactable = interactable;
             }
+        }
+    }
+
+    private void AutoScroll()
+    {
+        if (currentScrollRect != null && EventSystem.current.currentSelectedGameObject != null)
+        {
+            int index = 0;
+            float verticalPosition;
+
+            foreach (Button button in GetCurrentMenu().GetComponentsInChildren<Button>())
+            {
+                if (button == EventSystem.current.currentSelectedGameObject.GetComponent<Button>())
+                {
+                    break;
+                }
+
+                index++;
+            }
+
+            verticalPosition = 1f - ((float)index / (GetCurrentMenu().GetComponentsInChildren<Button>().Length - 1));
+
+            currentScrollRect.verticalNormalizedPosition = Mathf.Lerp(currentScrollRect.verticalNormalizedPosition, verticalPosition, Time.deltaTime / 0.1f);
         }
     }
 }
