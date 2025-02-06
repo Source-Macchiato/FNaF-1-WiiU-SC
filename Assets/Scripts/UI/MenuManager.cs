@@ -63,6 +63,7 @@ public class MenuManager : MonoBehaviour
     [HideInInspector]
     public ScrollRect currentScrollRect;
     public PopupData currentPopup;
+    private Selectable lastSelected;
 
     // Stick navigation
     private float stickNavigationCooldown = 0.2f;
@@ -772,16 +773,18 @@ public class MenuManager : MonoBehaviour
         {
             // Get next button and select it
 
-            if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
+            if (nextSelectable.GetComponent<Button>() != null)
             {
                 Button newSelectable = nextSelectable.GetComponent<Button>();
                 newSelectable.Select();
             }
-            else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
+            else if (nextSelectable.GetComponent<TMP_InputField>() != null)
             {
                 TMP_InputField newSelectable = nextSelectable.GetComponent<TMP_InputField>();
                 newSelectable.Select();
             }
+
+            lastSelected = nextSelectable;
 
             // Play effect
             if (buttonAudio != null)
@@ -793,56 +796,63 @@ public class MenuManager : MonoBehaviour
 
     private void MenuNavigation(Vector2 direction)
     {
-        if (EventSystem.current.currentSelectedGameObject != null && canNavigate)
+        if (canNavigate)
         {
-            if (direction == Vector2.up)
+            if (EventSystem.current.currentSelectedGameObject != null)
             {
-                if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
+                if (direction == Vector2.up)
                 {
-                    Select(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
+                    if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
+                    {
+                        Select(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnUp);
+                    }
+                    else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
+                    {
+                        Select(EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>().navigation.selectOnUp);
+                    }
                 }
-                else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
+                else if (direction == Vector2.left)
                 {
-                    Select(EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>().navigation.selectOnUp);
+                    if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
+                    {
+                        Select(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
+                    }
+                    else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
+                    {
+                        Select(EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>().navigation.selectOnLeft);
+                    }
+                }
+                else if (direction == Vector2.down)
+                {
+                    if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
+                    {
+                        Select(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
+                    }
+                    else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
+                    {
+                        Select(EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>().navigation.selectOnDown);
+                    }
+                }
+                else if (direction == Vector2.right)
+                {
+                    if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
+                    {
+                        Select(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
+                    }
+                    else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
+                    {
+                        Select(EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>().navigation.selectOnRight);
+                    }
                 }
             }
-            else if (direction == Vector2.left)
+            else
             {
-                if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
-                {
-                    Select(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnLeft);
-                }
-                else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
-                {
-                    Select(EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>().navigation.selectOnLeft);
-                }
+                Select(lastSelected);
             }
-            else if (direction == Vector2.down)
-            {
-                if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
-                {
-                    Select(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnDown);
-                }
-                else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
-                {
-                    Select(EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>().navigation.selectOnDown);
-                }
-            }
-            else if (direction == Vector2.right)
-            {
-                if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
-                {
-                    Select(EventSystem.current.currentSelectedGameObject.GetComponent<Button>().navigation.selectOnRight);
-                }
-                else if (EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>() != null)
-                {
-                    Select(EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>().navigation.selectOnRight);
-                }
-            }
-        }
 
-        ToggleCursorVisibility();
-        EnsureButtonVisible();
+            ToggleCursorVisibility();
+            EnsureButtonVisible();
+        }
     }
 
     public void ScrollNavigation(Vector2 direction)
@@ -1056,5 +1066,4 @@ public class MenuManager : MonoBehaviour
             currentScrollRect.verticalNormalizedPosition = normalizedY;
         }
     }
-
 }
