@@ -225,26 +225,10 @@ public class MenuData : MonoBehaviour
 
     public void LoadShareDataAndUpdateSwitcher()
     {
-        // Get SwitcherData scripts
-        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
-
         // Get share data value
         int shareDataId = SaveManager.LoadShareAnalytics();
 
-        foreach (SwitcherData switcher in switchers)
-        {
-            if (switcher.switcherId == "switcher.analyticdata")
-            {
-                if (shareDataId == 1f)
-                {
-                    switcher.currentOptionId = 1;
-                }
-                else
-                {
-                    switcher.currentOptionId = 0;
-                }
-            }
-        }
+        analyticsSwitcher.currentOptionId = (shareDataId == 1) ? 1 : 0;
     }
 
     public void UpdateCursorSize(bool isOriginalSize, GameObject cursor)
