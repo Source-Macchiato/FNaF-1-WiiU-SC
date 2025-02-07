@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -64,6 +65,7 @@ public class MenuManager : MonoBehaviour
     public ScrollRect currentScrollRect;
     public PopupData currentPopup;
     private Selectable lastSelected;
+    private Coroutine autoScrollCoroutine;
 
     // Stick navigation
     private float stickNavigationCooldown = 0.2f;
@@ -693,8 +695,6 @@ public class MenuManager : MonoBehaviour
 
         // Calculate stick last navigation time
         lastNavigationTime += Time.deltaTime;
-
-        AutoScroll();
     }
 
     public void AddPopup(int actionType) // Action type : 0 = Press input to continue, 1 = Options
@@ -856,6 +856,7 @@ public class MenuManager : MonoBehaviour
             }
 
             ToggleCursorVisibility();
+            AutoScroll();
         }
     }
 
@@ -1040,24 +1041,53 @@ public class MenuManager : MonoBehaviour
 
     private void AutoScroll()
     {
-        if (currentScrollRect != null && EventSystem.current.currentSelectedGameObject != null)
+        if (currentScrollRect != null && EventSystem.current.currentSelectedGameObject != null && EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
         {
             int index = 0;
-            float verticalPosition;
+            float targetPosition;
 
-            foreach (Button button in GetCurrentMenu().GetComponentsInChildren<Button>())
+            Button[] buttons = GetCurrentMenu().GetComponentsInChildren<Button>();
+
+            foreach (Button button in buttons)
             {
                 if (button == EventSystem.current.currentSelectedGameObject.GetComponent<Button>())
                 {
                     break;
                 }
-
                 index++;
             }
 
-            verticalPosition = 1f - ((float)index / (GetCurrentMenu().GetComponentsInChildren<Button>().Length - 1));
+            targetPosition = 1f - ((float)index / (buttons.Length - 1));
 
-            currentScrollRect.verticalNormalizedPosition = Mathf.Lerp(currentScrollRect.verticalNormalizedPosition, verticalPosition, Time.deltaTime / 0.1f);
+            // Stop any running coroutine to avoid conflicts
+            if (autoScrollCoroutine != null)
+            {
+                StopCoroutine(autoScrollCoroutine);
+            }
+
+            // Start a new coroutine
+            autoScrollCoroutine = StartCoroutine(ScrollCoroutine(targetPosition));
         }
+    }
+
+    private IEnumerator ScrollCoroutine(float targetPosition)
+    {
+        float duration = 0.1f;
+        float elapsedTime = 0f;
+        float startPosition = currentScrollRect.verticalNormalizedPosition;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            currentScrollRect.verticalNormalizedPosition = Mathf.Lerp(startPosition, targetPosition, elapsedTime / duration);
+
+            // Appeler UpdateSelectionPosition() tant que l'animation est en cours
+            UpdateSelectionPosition(EventSystem.current.currentSelectedGameObject);
+
+            yield return null; // Attendre le prochain frame
+        }
+
+        // S'assurer que la position finale est bien atteinte
+        currentScrollRect.verticalNormalizedPosition = targetPosition;
     }
 }
