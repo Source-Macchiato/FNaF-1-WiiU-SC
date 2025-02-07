@@ -25,6 +25,7 @@ public class MenuSetup : MonoBehaviour
         menuData.GoldenFreddy(SaveManager.LoadGoldenFreddyStatus() == 1);
 
         // Set back callbacks for specific menus
+        menuManager.SetBackCallback(1, OnBackFromOptions);
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(5, OnBackFromLanguage);
         menuManager.SetBackCallback(7, OnBackFromOnline);
@@ -69,6 +70,14 @@ public class MenuSetup : MonoBehaviour
         menuData.SaveNightNumber();
 
         SceneManager.LoadScene("NextNight");
+    }
+
+    public void Options()
+    {
+        menuManager.ChangeMenu(1);
+
+        Transform optionsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
+        menuManager.currentScrollRect = optionsChild.GetComponent<ScrollRect>();
     }
 
     public void CustomNight()
@@ -146,6 +155,11 @@ public class MenuSetup : MonoBehaviour
     }
 
     // Callback functions
+    void OnBackFromOptions()
+    {
+        menuManager.currentScrollRect = null;
+    }
+
     void OnBackFromLanguage()
     {
         menuData.SaveAndUpdateLanguage();
