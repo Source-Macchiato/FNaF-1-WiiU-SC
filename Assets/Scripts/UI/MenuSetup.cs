@@ -28,7 +28,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(5, OnBackFromLanguage);
         menuManager.SetBackCallback(7, OnBackFromOnline);
-        menuManager.SetBackCallback(4, OnBackFromVolume);
+        menuManager.SetBackCallback(8, OnBackFromVolume);
     }
 
     // Buttons functions
@@ -82,24 +82,8 @@ public class MenuSetup : MonoBehaviour
     {
         menuManager.ChangeMenu(3);
 
-        if (menuManager.GetCurrentMenu() != null)
-        {
-            Transform creditsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
-            menuManager.currentScrollRect = creditsChild.GetComponent<ScrollRect>();
-        }
-    }
-
-    public void Volume()
-    {
-        menuManager.ChangeMenu(4);
-
-        if (menuManager.GetCurrentMenu() != null)
-        {
-            Transform creditsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
-            menuManager.currentScrollRect = creditsChild.GetComponent<ScrollRect>();
-        }
-
-        menuData.UpdateVolumeSwitchers();
+        Transform creditsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
+        menuManager.currentScrollRect = creditsChild.GetComponent<ScrollRect>();
     }
 
     public void Language()
@@ -121,6 +105,16 @@ public class MenuSetup : MonoBehaviour
         menuManager.ChangeMenu(7);
 
         menuData.LoadAnalyticsAndUpdateSwitcher();
+    }
+
+    public void Volume()
+    {
+        menuManager.ChangeMenu(8);
+
+        Transform volumeChild = menuManager.GetCurrentMenu().transform.GetChild(0);
+        menuManager.currentScrollRect = volumeChild.GetComponent<ScrollRect>();
+
+        menuData.UpdateVolumeSwitchers();
     }
 
     public void StartCustomNight()

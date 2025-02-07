@@ -34,50 +34,7 @@ public class I18n
 
         Texts.Clear();
 
-        string lang;
-
-        string languagePlayerPrefs = SaveManager.LoadLanguage();
-
-        if (languagePlayerPrefs == "English")
-        {
-            lang = "en";
-        }
-        else if (languagePlayerPrefs == "French")
-        {
-            lang = "fr";
-        }
-        else if (languagePlayerPrefs == "Spanish")
-        {
-            lang = "es";
-        }
-        else if (languagePlayerPrefs == "Italian")
-        {
-            lang = "it";
-        }
-        else if (languagePlayerPrefs == "German")
-        {
-            lang = "de";
-        }
-        else if (languagePlayerPrefs == "Slovak")
-        {
-            lang = "sk";
-        }
-        else if (languagePlayerPrefs == "Arabic")
-        {
-            lang = "ar";
-        }
-        else if (languagePlayerPrefs == "Catalan")
-        {
-            lang = "ca";
-        }
-        else if (languagePlayerPrefs == "Turkish")
-        {
-            lang = "tr";
-        }
-        else
-        {
-            lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
-        }
+        string lang = GetLanguage();
 
         string filePath = "I18n/" + lang;
 
@@ -93,65 +50,33 @@ public class I18n
 
     public static string GetLanguage()
     {
-        string languagePlayerPrefs = SaveManager.LoadLanguage();
+        string loadedLanguage = SaveManager.LoadLanguage();
 
-        if (languagePlayerPrefs == "English")
+        if (loadedLanguage != null)
         {
-            return "en";
-        }
-        else if (languagePlayerPrefs == "French")
-        {
-            return "fr";
-        }
-        else if (languagePlayerPrefs == "Spanish")
-        {
-            return "es";
-        }
-        else if (languagePlayerPrefs == "Italian")
-        {
-            return "it";
-        }
-        else if (languagePlayerPrefs == "German")
-        {
-            return "de";
-        }
-        else if (languagePlayerPrefs == "Slovak")
-        {
-            return "sk";
-        }
-        else if (languagePlayerPrefs == "Arabic")
-        {
-            return "ar";
-        }
-        else if (languagePlayerPrefs == "Catalan")
-        {
-            return "ca";
-        }
-        else if (languagePlayerPrefs == "Turkish")
-        {
-            return "tr";
+            return loadedLanguage;
         }
         else
         {
-            return Get2LetterISOCodeFromSystemLanguage().ToLower();
+            return Get2LetterISOCodeFromSystemLanguage();
         }
     }
 
     public static string Get2LetterISOCodeFromSystemLanguage()
     {
         SystemLanguage lang = Application.systemLanguage;
-        string res = "EN";
+        string res = "en";
         switch (lang)
         {
-            case SystemLanguage.English: res = "EN"; break;
-            case SystemLanguage.French: res = "FR"; break;
-            case SystemLanguage.Spanish: res = "ES"; break;
-            case SystemLanguage.Italian: res = "IT"; break;
-            case SystemLanguage.German: res = "DE"; break;
-            case SystemLanguage.Slovak: res = "SK"; break;
-            case SystemLanguage.Arabic: res = "AR"; break;
-            case SystemLanguage.Catalan: res = "CA"; break;
-            case SystemLanguage.Turkish: res = "TR"; break;
+            case SystemLanguage.English: res = "en"; break;
+            case SystemLanguage.French: res = "fr"; break;
+            case SystemLanguage.Spanish: res = "es"; break;
+            case SystemLanguage.Italian: res = "it"; break;
+            case SystemLanguage.German: res = "de"; break;
+            case SystemLanguage.Slovak: res = "sk"; break;
+            case SystemLanguage.Arabic: res = "ar"; break;
+            case SystemLanguage.Catalan: res = "ca"; break;
+            case SystemLanguage.Turkish: res = "tr"; break;
         }
         return res;
     }

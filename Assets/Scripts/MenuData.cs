@@ -24,7 +24,12 @@ public class MenuData : MonoBehaviour
     public Button readyButton;
 
     [Header("Switchers")]
+    public SwitcherData languageSwitcher;
     public SwitcherData analyticsSwitcher;
+    public SwitcherData generalVolumeSwitcher;
+    public SwitcherData musicVolumeSwitcher;
+    public SwitcherData voiceVolumeSwitcher;
+    public SwitcherData sfxVolumeSwitcher;
 
     [Header("Other")]
     public GameObject starsContainer;
@@ -108,53 +113,43 @@ public class MenuData : MonoBehaviour
 
     public void LoadLanguageAndUpdateSwitcher()
     {
-        // Get SwitcherData scripts
-        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
-
-        // Get language
         string language = I18n.GetLanguage();
 
-        foreach (SwitcherData switcher in switchers)
+        if (language == "fr")
         {
-            if (switcher.switcherId == "switcher.translation")
-            {
-                if (language == "fr")
-                {
-                    switcher.currentOptionId = 1;
-                }
-                else if (language == "es")
-                {
-                    switcher.currentOptionId = 2;
-                }
-                else if (language == "it")
-                {
-                    switcher.currentOptionId = 3;
-                }
-                else if (language == "de")
-                {
-                    switcher.currentOptionId = 4;
-                }
-                else if (language == "ar")
-                {
-                    switcher.currentOptionId = 5;
-                }
-                else if (language == "sk")
-                {
-                    switcher.currentOptionId = 6;
-                }
-                else if (language == "ca")
-                {
-                    switcher.currentOptionId = 7;
-                }
-                else if (language == "tr")
-                {
-                    switcher.currentOptionId = 8;
-                }
-                else
-                {
-                    switcher.currentOptionId = 0;
-                }
-            }
+            languageSwitcher.currentOptionId = 1;
+        }
+        else if (language == "es")
+        {
+            languageSwitcher.currentOptionId = 2;
+        }
+        else if (language == "it")
+        {
+            languageSwitcher.currentOptionId = 3;
+        }
+        else if (language == "de")
+        {
+            languageSwitcher.currentOptionId = 4;
+        }
+        else if (language == "ar")
+        {
+            languageSwitcher.currentOptionId = 5;
+        }
+        else if (language == "sk")
+        {
+            languageSwitcher.currentOptionId = 6;
+        }
+        else if (language == "ca")
+        {
+            languageSwitcher.currentOptionId = 7;
+        }
+        else if (language == "tr")
+        {
+            languageSwitcher.currentOptionId = 8;
+        }
+        else
+        {
+            languageSwitcher.currentOptionId = 0;
         }
     }
 
@@ -192,84 +187,40 @@ public class MenuData : MonoBehaviour
 
     public void UpdateVolumeSwitchers()
     {
-        // Get SwitcherData scripts
-        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
-
-        foreach (SwitcherData switcher in switchers)
-        {
-            if (switcher.switcherId == "switcher.generalvolume")
-            {
-                switcher.currentOptionId = SaveManager.LoadGeneralVolume();
-            }
-            else if (switcher.switcherId == "switcher.musicvolume")
-            {
-                switcher.currentOptionId = SaveManager.LoadMusicVolume();
-            }
-            else if (switcher.switcherId == "switcher.voicevolume")
-            {
-                switcher.currentOptionId = SaveManager.LoadVoiceVolume();
-            }
-            else if (switcher.switcherId == "switcher.sfxvolume")
-            {
-                switcher.currentOptionId = SaveManager.LoadSFXVolume();
-            }
-        }
+        generalVolumeSwitcher.currentOptionId = SaveManager.LoadGeneralVolume();
+        musicVolumeSwitcher.currentOptionId = SaveManager.LoadMusicVolume();
+        voiceVolumeSwitcher.currentOptionId = SaveManager.LoadVoiceVolume();
+        sfxVolumeSwitcher.currentOptionId = SaveManager.LoadSFXVolume();
     }
 
     public void SaveAndUpdateLanguage()
     {
-        // Get SwitcherData scripts
-        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+        saveManager.SaveLanguage(languageSwitcher.optionsName[languageSwitcher.currentOptionId]);
+        bool saveResult = saveGameState.DoSave();
 
-        foreach (SwitcherData switcher in switchers)
-        {
-            if (switcher.switcherId == "switcher.translation")
-            {
-                saveManager.SaveLanguage(switcher.optionsName[switcher.currentOptionId]);
-                bool saveResult = saveGameState.DoSave();
-
-                // Reload the language
-                I18n.LoadLanguage();
-            }
-        }
+        // Reload the language
+        I18n.LoadLanguage();
     }
 
     public void SaveAndUpdateVolume()
     {
-        // Get SwitcherData scripts
-        SwitcherData[] switchers = FindObjectsOfType<SwitcherData>();
+        // Save and apply general volume
+        saveManager.SaveGeneralVolume(generalVolumeSwitcher.currentOptionId);
+        audioMixer.SetFloat("Master", (generalVolumeSwitcher.currentOptionId / 10f) * 80f - 80f);
 
-        foreach (SwitcherData switcher in switchers)
-        {
-            if (switcher.switcherId == "switcher.generalvolume")
-            {
-                saveManager.SaveGeneralVolume(switcher.currentOptionId);
-                bool saveResult = saveGameState.DoSave();
+        // Save and apply music volume
+        saveManager.SaveMusicVolume(musicVolumeSwitcher.currentOptionId);
+        audioMixer.SetFloat("Music", (musicVolumeSwitcher.currentOptionId / 10f) * 80f - 80f);
 
-                audioMixer.SetFloat("Master", (switcher.currentOptionId / 10f) * 80f - 80f);
-            }
-            else if (switcher.switcherId == "switcher.musicvolume")
-            {
-                saveManager.SaveMusicVolume(switcher.currentOptionId);
-                bool saveResult = saveGameState.DoSave();
+        // Save and apply voice volume
+        saveManager.SaveVoiceVolume(voiceVolumeSwitcher.currentOptionId);
+        audioMixer.SetFloat("Voice", (voiceVolumeSwitcher.currentOptionId / 10f) * 80f - 80f);
 
-                audioMixer.SetFloat("Music", (switcher.currentOptionId / 10f) * 80f - 80f);
-            }
-            else if (switcher.switcherId == "switcher.voicevolume")
-            {
-                saveManager.SaveVoiceVolume(switcher.currentOptionId);
-                bool saveResult = saveGameState.DoSave();
+        // Save and apply SFX volume
+        saveManager.SaveSFXVolume(sfxVolumeSwitcher.currentOptionId);
+        audioMixer.SetFloat("SFX", (sfxVolumeSwitcher.currentOptionId / 10f) * 80f - 80f);
 
-                audioMixer.SetFloat("Voice", (switcher.currentOptionId / 10f) * 80f - 80f);
-            }
-            else if (switcher.switcherId == "switcher.sfxvolume")
-            {
-                saveManager.SaveSFXVolume(switcher.currentOptionId);
-                bool saveResult = saveGameState.DoSave();
-
-                audioMixer.SetFloat("SFX", (switcher.currentOptionId / 10f) * 80f - 80f);
-            }
-        }
+        bool saveResult = saveGameState.DoSave();
     }
 
     public void LoadShareDataAndUpdateSwitcher()
