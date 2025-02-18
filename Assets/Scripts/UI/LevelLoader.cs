@@ -8,16 +8,6 @@ public class LevelLoader : MonoBehaviour
 {
     public GameObject loadingScreen;
     public Slider slider;
-    public GameObject progression;
-
-    private Text textComponent;
-    private TMP_Text tmpTextComponent;
-
-    void Start()
-    {
-        textComponent = progression.GetComponent<Text>();
-        tmpTextComponent = progression.GetComponent<TextMeshProUGUI>();
-    }
 
     public void LoadLevel(string sceneName)
     {
@@ -35,16 +25,6 @@ public class LevelLoader : MonoBehaviour
             float progress = Mathf.Clamp01(operationLoadLevel.progress / 0.9f);
 
             slider.value = progress;
-
-            if (textComponent != null)
-            {
-                textComponent.text = (progress * 100).ToString("F2") + "%";
-            }
-            
-            if (tmpTextComponent != null)
-            {
-                tmpTextComponent.text = (progress * 100).ToString("F2") + "%";
-            }
 
             yield return null;
         }
