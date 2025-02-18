@@ -540,6 +540,7 @@ MonoBehaviour:
   musicVolumeSwitcher: {fileID: 927049284}
   voiceVolumeSwitcher: {fileID: 817670640}
   sfxVolumeSwitcher: {fileID: 172055593}
+  motionSwitcher: {fileID: 1875350896}
   starsContainer: {fileID: 42665248}
   mainMenuThemeSound: {fileID: 359768159}
   audioMixer: {fileID: 24100000, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39, type: 2}
@@ -22858,9 +22859,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1357081283}
-        m_MethodName: ChangeMenu
-        m_Mode: 3
+      - m_Target: {fileID: 1848047508}
+        m_MethodName: Controls
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

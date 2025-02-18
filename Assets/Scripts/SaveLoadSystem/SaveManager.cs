@@ -69,6 +69,12 @@ public class SaveManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
+    public void SaveMotionControls(bool motionControls)
+    {
+        PlayerPrefs.SetInt("MotionControls", motionControls ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
     // Load
     public static string LoadLanguage()
 	{
@@ -201,6 +207,18 @@ public class SaveManager : MonoBehaviour {
         else
         {
             return 10;
+        }
+    }
+
+    public static bool LoadMotionControls()
+    {
+        if (PlayerPrefs.HasKey("MotionControls"))
+        {
+            return PlayerPrefs.GetInt("MotionControls") == 1;
+        }
+        else
+        {
+            return true;
         }
     }
 }

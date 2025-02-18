@@ -30,6 +30,7 @@ public class MenuData : MonoBehaviour
     public SwitcherData musicVolumeSwitcher;
     public SwitcherData voiceVolumeSwitcher;
     public SwitcherData sfxVolumeSwitcher;
+    public SwitcherData motionSwitcher;
 
     [Header("Other")]
     public GameObject starsContainer;
@@ -229,6 +230,26 @@ public class MenuData : MonoBehaviour
         int shareDataId = SaveManager.LoadShareAnalytics();
 
         analyticsSwitcher.currentOptionId = (shareDataId == 1) ? 1 : 0;
+    }
+
+    public void SaveMotionControls()
+    {
+        saveManager.SaveMotionControls(motionSwitcher.currentOptionId == 0);
+        bool saveResult = saveGameState.DoSave();
+    }
+
+    public void LoadMotionControls()
+    {
+        // Get motion controls status
+        bool motionControls = SaveManager.LoadMotionControls();
+
+        int switcherIndex = motionControls ? 0 : 1;
+
+        if (switcherIndex >= 0 && switcherIndex < motionSwitcher.optionsName.Length)
+        {
+            motionSwitcher.currentOptionId = switcherIndex;
+            motionSwitcher.UpdateText();
+        }
     }
 
     public void UpdateCursorSize(bool isOriginalSize, GameObject cursor)

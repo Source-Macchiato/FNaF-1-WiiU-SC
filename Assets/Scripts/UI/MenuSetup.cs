@@ -29,6 +29,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.SetBackCallback(5, OnBackFromLanguage);
         menuManager.SetBackCallback(7, OnBackFromOnline);
         menuManager.SetBackCallback(8, OnBackFromVolume);
+        menuManager.SetBackCallback(9, OnBackFromControls);
     }
 
     // Buttons functions
@@ -116,6 +117,13 @@ public class MenuSetup : MonoBehaviour
         menuData.UpdateVolumeSwitchers();
     }
 
+    public void Controls()
+    {
+        menuManager.ChangeMenu(9);
+
+        menuData.LoadMotionControls();
+    }
+
     public void StartCustomNight()
     {
         menuData.nightNumber = 6;
@@ -163,5 +171,10 @@ public class MenuSetup : MonoBehaviour
     void OnBackFromVolume()
     {
         menuData.SaveAndUpdateVolume();
+    }
+
+    void OnBackFromControls()
+    {
+        menuData.SaveMotionControls();
     }
 }
