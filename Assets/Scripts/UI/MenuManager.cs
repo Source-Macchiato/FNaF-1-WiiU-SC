@@ -901,7 +901,7 @@ public class MenuManager : MonoBehaviour
     // Clicks the currently selected button
     private void ClickSelectedButton()
     {
-        if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
+        if (EventSystem.current.currentSelectedGameObject != null && EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
         {
             EventSystem.current.currentSelectedGameObject.GetComponent<Button>().onClick.Invoke();
         }
