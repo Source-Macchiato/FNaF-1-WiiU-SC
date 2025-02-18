@@ -1,11 +1,11 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
-using System.Collections.Generic;
 
 public class MenuData : MonoBehaviour
 {
@@ -179,10 +179,10 @@ public class MenuData : MonoBehaviour
 
     private void LoadVolume()
     {
-        audioMixer.SetFloat("Master", (SaveManager.LoadGeneralVolume() / 10f) * 80f - 80f);
-        audioMixer.SetFloat("Music", (SaveManager.LoadMusicVolume() / 10f) * 80f - 80f);
-        audioMixer.SetFloat("Voice", (SaveManager.LoadVoiceVolume() / 10f) * 80f - 80f);
-        audioMixer.SetFloat("SFX", (SaveManager.LoadSFXVolume() / 10f) * 80f - 80f);
+        audioMixer.SetFloat("Master", ConvertToDecibel(SaveManager.LoadGeneralVolume()));
+        audioMixer.SetFloat("Music", ConvertToDecibel(SaveManager.LoadMusicVolume()));
+        audioMixer.SetFloat("Voice", ConvertToDecibel(SaveManager.LoadVoiceVolume()));
+        audioMixer.SetFloat("SFX", ConvertToDecibel(SaveManager.LoadSFXVolume()));
 
     }
 
@@ -207,19 +207,19 @@ public class MenuData : MonoBehaviour
     {
         // Save and apply general volume
         saveManager.SaveGeneralVolume(generalVolumeSwitcher.currentOptionId);
-        audioMixer.SetFloat("Master", (generalVolumeSwitcher.currentOptionId / 10f) * 80f - 80f);
+        audioMixer.SetFloat("Master", ConvertToDecibel(generalVolumeSwitcher.currentOptionId));
 
         // Save and apply music volume
         saveManager.SaveMusicVolume(musicVolumeSwitcher.currentOptionId);
-        audioMixer.SetFloat("Music", (musicVolumeSwitcher.currentOptionId / 10f) * 80f - 80f);
+        audioMixer.SetFloat("Music", ConvertToDecibel(musicVolumeSwitcher.currentOptionId));
 
         // Save and apply voice volume
         saveManager.SaveVoiceVolume(voiceVolumeSwitcher.currentOptionId);
-        audioMixer.SetFloat("Voice", (voiceVolumeSwitcher.currentOptionId / 10f) * 80f - 80f);
+        audioMixer.SetFloat("Voice", ConvertToDecibel(voiceVolumeSwitcher.currentOptionId));
 
         // Save and apply SFX volume
         saveManager.SaveSFXVolume(sfxVolumeSwitcher.currentOptionId);
-        audioMixer.SetFloat("SFX", (sfxVolumeSwitcher.currentOptionId / 10f) * 80f - 80f);
+        audioMixer.SetFloat("SFX", ConvertToDecibel(sfxVolumeSwitcher.currentOptionId));
 
         bool saveResult = saveGameState.DoSave();
     }
@@ -422,5 +422,11 @@ public class MenuData : MonoBehaviour
         // Save layout id
         saveManager.SaveLayoutId(layoutId);
         bool saveResult = saveGameState.DoSave();
+    }
+
+    private float ConvertToDecibel(int volume)
+    {
+        // Convert volume (0-10) to decibels (-80dB to 0dB)
+        return Mathf.Log10(Mathf.Max(volume / 10f, 0.0001f)) * 20f;
     }
 }
