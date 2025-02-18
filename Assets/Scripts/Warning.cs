@@ -3,21 +3,51 @@ using UnityEngine;
 
 public class Warning : MonoBehaviour
 {
-	public GameObject loadingScreen;
-	private LevelLoader levelLoader;
+    public Animator warningAnimator;
 
-	void Start()
-	{
-		loadingScreen.SetActive(false);
-		levelLoader = FindObjectOfType<LevelLoader>();
+    private bool skipRequested = false;
+
+    LevelLoader levelLoader;
+
+    void Start()
+    {
+        // Get LevelLoader script
+        levelLoader = FindObjectOfType<LevelLoader>();
+
+        // Disable loading screen when the level starts
+        levelLoader.loadingScreen.SetActive(false);
 
         StartCoroutine(InitCoroutine());
     }
 
+    void Update()
+    {
+        if (Input.anyKeyDown && !skipRequested)
+        {
+            skipRequested = true;
+        }
+    }
+
     IEnumerator InitCoroutine()
     {
-        yield return new WaitForSeconds(4);
-        loadingScreen.SetActive(true);
+        // Wait 4 seconds or until skip is requested
+        float elapsedTime = 0f;
+        while (elapsedTime < 4f && !skipRequested)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Play fade out animation
+        warningAnimator.Play("Fade Out");
+
+        // Wait one second
+        yield return new WaitForSeconds(1f);
+
+        // Display loading screen
+        levelLoader.loadingScreen.SetActive(true);
+
+        // Request level to load
         levelLoader.LoadLevel("MainMenu");
     }
 }
