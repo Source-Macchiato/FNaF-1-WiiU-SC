@@ -61,8 +61,7 @@ public class MenuManager : MonoBehaviour
     public int currentMenuId = 0;
 
     // Elements to keep in memory
-    [HideInInspector]
-    public ScrollRect currentScrollRect;
+    private ScrollRect currentScrollRect;
     public PopupData currentPopup;
     private Selectable lastSelected;
     private Coroutine autoScrollCoroutine;
@@ -989,6 +988,9 @@ public class MenuManager : MonoBehaviour
         }
 
         currentMenuId = menuId;
+
+        // Set scroll rect if component exists
+        currentScrollRect = GetCurrentMenu().transform.GetChild(0).GetComponent<ScrollRect>();
 
         ToggleCursorVisibility();
 

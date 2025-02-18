@@ -25,7 +25,6 @@ public class MenuSetup : MonoBehaviour
         menuData.GoldenFreddy(SaveManager.LoadGoldenFreddyStatus() == 1);
 
         // Set back callbacks for specific menus
-        menuManager.SetBackCallback(1, OnBackFromOptions);
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(5, OnBackFromLanguage);
         menuManager.SetBackCallback(7, OnBackFromOnline);
@@ -75,9 +74,6 @@ public class MenuSetup : MonoBehaviour
     public void Options()
     {
         menuManager.ChangeMenu(1);
-
-        Transform optionsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
-        menuManager.currentScrollRect = optionsChild.GetComponent<ScrollRect>();
     }
 
     public void CustomNight()
@@ -90,9 +86,6 @@ public class MenuSetup : MonoBehaviour
     public void Credits()
     {
         menuManager.ChangeMenu(3);
-
-        Transform creditsChild = menuManager.GetCurrentMenu().transform.GetChild(0);
-        menuManager.currentScrollRect = creditsChild.GetComponent<ScrollRect>();
     }
 
     public void Language()
@@ -119,9 +112,6 @@ public class MenuSetup : MonoBehaviour
     public void Volume()
     {
         menuManager.ChangeMenu(8);
-
-        Transform volumeChild = menuManager.GetCurrentMenu().transform.GetChild(0);
-        menuManager.currentScrollRect = volumeChild.GetComponent<ScrollRect>();
 
         menuData.UpdateVolumeSwitchers();
     }
@@ -155,11 +145,6 @@ public class MenuSetup : MonoBehaviour
     }
 
     // Callback functions
-    void OnBackFromOptions()
-    {
-        menuManager.currentScrollRect = null;
-    }
-
     void OnBackFromLanguage()
     {
         menuData.SaveAndUpdateLanguage();
@@ -167,7 +152,6 @@ public class MenuSetup : MonoBehaviour
 
     void OnBackFromCredits()
     {
-        menuManager.currentScrollRect = null;
         menuData.ToggleGameTitle(true);
     }
 
@@ -179,6 +163,5 @@ public class MenuSetup : MonoBehaviour
     void OnBackFromVolume()
     {
         menuData.SaveAndUpdateVolume();
-        menuManager.currentScrollRect = null;
     }
 }
