@@ -322,19 +322,22 @@ public class MenuManager : MonoBehaviour
                     }
                     else if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.A))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (canNavigate)
                         {
-                            ClickSelectedButton();
-                        }
-                        else if (currentPopup != null && canNavigate)
-                        {
-                            if (currentPopup.actionType == 0)
-                            {
-                                CloseCurrentPopup();
-                            }
-                            else if (currentPopup.actionType == 1)
+                            if (currentPopup == null)
                             {
                                 ClickSelectedButton();
+                            }
+                            else
+                            {
+                                if (currentPopup.actionType == 0)
+                                {
+                                    CloseCurrentPopup();
+                                }
+                                else if (currentPopup.actionType == 1)
+                                {
+                                    ClickSelectedButton();
+                                }
                             }
                         }
                     }
@@ -450,19 +453,22 @@ public class MenuManager : MonoBehaviour
                     }
                     else if (remoteState.classic.IsTriggered(WiiU.ClassicButton.A))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (canNavigate)
                         {
-                            ClickSelectedButton();
-                        }
-                        else if (currentPopup != null && canNavigate)
-                        {
-                            if (currentPopup.actionType == 0)
-                            {
-                                CloseCurrentPopup();
-                            }
-                            else if (currentPopup.actionType == 1)
+                            if (currentPopup == null)
                             {
                                 ClickSelectedButton();
+                            }
+                            else
+                            {
+                                if (currentPopup.actionType == 0)
+                                {
+                                    CloseCurrentPopup();
+                                }
+                                else if (currentPopup.actionType == 1)
+                                {
+                                    ClickSelectedButton();
+                                }
                             }
                         }
                     }
@@ -571,19 +577,22 @@ public class MenuManager : MonoBehaviour
                     }
                     else if (remoteState.IsTriggered(WiiU.RemoteButton.A))
                     {
-                        if (currentScrollRect == null && currentPopup == null && canNavigate)
+                        if (canNavigate)
                         {
-                            ClickSelectedButton();
-                        }
-                        else if (currentPopup != null && canNavigate)
-                        {
-                            if (currentPopup.actionType == 0)
-                            {
-                                CloseCurrentPopup();
-                            }
-                            else if (currentPopup.actionType == 1)
+                            if (currentPopup == null)
                             {
                                 ClickSelectedButton();
+                            }
+                            else
+                            {
+                                if (currentPopup.actionType == 0)
+                                {
+                                    CloseCurrentPopup();
+                                }
+                                else if (currentPopup.actionType == 1)
+                                {
+                                    ClickSelectedButton();
+                                }
                             }
                         }
                     }
@@ -655,19 +664,22 @@ public class MenuManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Return))
             {
-                if (currentScrollRect == null && currentPopup == null && canNavigate)
+                if (canNavigate)
                 {
-                    ClickSelectedButton();
-                }
-                else if (currentPopup != null && canNavigate)
-                {
-                    if (currentPopup.actionType == 0)
-                    {
-                        CloseCurrentPopup();
-                    }
-                    else if (currentPopup.actionType == 1)
+                    if (currentPopup == null)
                     {
                         ClickSelectedButton();
+                    }
+                    else
+                    {
+                        if (currentPopup.actionType == 0)
+                        {
+                            CloseCurrentPopup();
+                        }
+                        else if (currentPopup.actionType == 1)
+                        {
+                            ClickSelectedButton();
+                        }
                     }
                 }
             }
