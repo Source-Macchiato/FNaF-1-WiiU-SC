@@ -6,7 +6,6 @@ using RTLTMPro;
 
 public class SwitcherData : MonoBehaviour
 {
-    public string switcherId;
     public int currentOptionId;
     public string[] optionsName;
 
