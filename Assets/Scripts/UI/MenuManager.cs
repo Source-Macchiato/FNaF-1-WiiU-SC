@@ -1095,13 +1095,13 @@ public class MenuManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             currentScrollRect.verticalNormalizedPosition = Mathf.Lerp(startPosition, targetPosition, elapsedTime / duration);
 
-            // Appeler UpdateSelectionPosition() tant que l'animation est en cours
+            // Call UpdateSelectionPosition() while the animation is running
             UpdateSelectionPosition(EventSystem.current.currentSelectedGameObject);
 
-            yield return null; // Attendre le prochain frame
+            yield return null; // Wait for next frame
         }
 
-        // S'assurer que la position finale est bien atteinte
+        // Ensure that the final position is reached
         currentScrollRect.verticalNormalizedPosition = targetPosition;
     }
 }
