@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
     public AudioSource Boop;
     public bool camIsUp = false;
     public bool canUseCamera = true;
+    private int layoutId;
 
     public float wait = 0.2f;
 
@@ -46,6 +47,8 @@ public class CameraScript : MonoBehaviour
         moveInOffice = FindObjectOfType<MoveInOffice>();
 
         hideOfficeGameObject.SetActive(false);
+
+        layoutId = SaveManager.LoadLayoutId();
     }
 
     void Update()
@@ -168,7 +171,7 @@ public class CameraScript : MonoBehaviour
                 cameraScreen.SetActive(true);
                 office.enabled = false;
                 minimapGameObject.SetActive(true);
-                hideOfficeGameObject.SetActive(true);
+                hideOfficeGameObject.SetActive(layoutId != 2);
 
                 if (office.leftLightIsOn)
                 {

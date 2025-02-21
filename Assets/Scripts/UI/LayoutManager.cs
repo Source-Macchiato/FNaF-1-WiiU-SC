@@ -9,20 +9,17 @@ public class LayoutManager : MonoBehaviour
 
     [Header("Screens")]
     public GameObject[] screenOffice;
+    public GameObject[] screenMonitor;
     public GameObject[] screenUI;
     public GameObject[] screenMinimap;
     public GameObject[] screenSubtitles;
 
     // Scripts
-    SaveGameState saveGameState;
-    SaveManager saveManager;
     Movement movement;
 
     void Start()
 	{
         // Get scripts
-        saveGameState = FindObjectOfType<SaveGameState>();
-        saveManager = FindObjectOfType<SaveManager>();
         movement = FindObjectOfType<Movement>();
 
         layoutId = SaveManager.LoadLayoutId();
@@ -33,9 +30,13 @@ public class LayoutManager : MonoBehaviour
         }
         else if (layoutId == 1)
         {
-            TVGamepad();
+            TVGamepadClassic();
         }
         else if (layoutId == 2)
+        {
+            TVGamepadAlternative();
+        }
+        else if (layoutId == 3)
         {
             GamepadOnly();
         }
@@ -43,7 +44,7 @@ public class LayoutManager : MonoBehaviour
 	
 	void Update()
 	{
-		if (layoutId == 0 || layoutId == 2)
+		if (layoutId == 0 || layoutId == 3)
         {
             ChangeSubtitlePosition(movement.camIsUp);
         }
@@ -53,6 +54,9 @@ public class LayoutManager : MonoBehaviour
     {
         screenOffice[0].SetActive(true);
         screenOffice[1].SetActive(false);
+
+        screenMonitor[0].SetActive(true);
+        screenMonitor[1].SetActive(false);
 
         screenUI[0].SetActive(true);
         screenUI[1].SetActive(false);
@@ -67,10 +71,13 @@ public class LayoutManager : MonoBehaviour
         minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
     }
 
-    private void TVGamepad()
+    private void TVGamepadClassic()
     {
         screenOffice[0].SetActive(true);
         screenOffice[1].SetActive(false);
+
+        screenMonitor[0].SetActive(true);
+        screenMonitor[1].SetActive(false);
 
         screenUI[0].SetActive(true);
         screenUI[1].SetActive(false);
@@ -87,6 +94,27 @@ public class LayoutManager : MonoBehaviour
         subtitles[0].SetActive(true);
         subtitles[1].SetActive(false);
         subtitles[2].SetActive(false);
+    }
+
+    private void TVGamepadAlternative()
+    {
+        screenOffice[0].SetActive(true);
+        screenOffice[1].SetActive(false);
+
+        screenMonitor[0].SetActive(false);
+        screenMonitor[1].SetActive(true);
+
+        screenUI[0].SetActive(true);
+        screenUI[1].SetActive(false);
+
+        screenMinimap[0].SetActive(false);
+        screenMinimap[1].SetActive(true);
+
+        screenSubtitles[0].SetActive(true);
+        screenSubtitles[1].SetActive(false);
+
+        minimap.transform.localScale = new Vector3(1f, 1f, 1f);
+        minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
     }
 
     private void GamepadOnly()
