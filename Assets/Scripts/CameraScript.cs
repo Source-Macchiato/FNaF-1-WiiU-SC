@@ -7,7 +7,6 @@ public class CameraScript : MonoBehaviour
     public AudioSource Boop;
     public bool camIsUp = false;
     public bool canUseCamera = true;
-    private int layoutId;
 
     public float wait = 0.2f;
 
@@ -30,6 +29,7 @@ public class CameraScript : MonoBehaviour
     private ChangeImages changeImages;
     private RandNumberGen randNumberGen;
     private MoveInOffice moveInOffice;
+    private LayoutManager layoutManager;
 
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
@@ -45,10 +45,9 @@ public class CameraScript : MonoBehaviour
         changeImages = FindObjectOfType<ChangeImages>();
         randNumberGen = FindObjectOfType<RandNumberGen>();
         moveInOffice = FindObjectOfType<MoveInOffice>();
+        layoutManager = FindObjectOfType<LayoutManager>();
 
         hideOfficeGameObject.SetActive(false);
-
-        layoutId = SaveManager.LoadLayoutId();
     }
 
     void Update()
@@ -171,7 +170,8 @@ public class CameraScript : MonoBehaviour
                 cameraScreen.SetActive(true);
                 office.enabled = false;
                 minimapGameObject.SetActive(true);
-                hideOfficeGameObject.SetActive(layoutId != 2);
+                hideOfficeGameObject.SetActive(layoutManager.layoutId != 2);
+                layoutManager.ChangeSubtitlePosition(layoutManager.layoutId == 0 || layoutManager.layoutId == 3);
 
                 if (office.leftLightIsOn)
                 {
@@ -287,6 +287,7 @@ public class CameraScript : MonoBehaviour
             stripes.SetActive(false);
             stripesMovement.SetActive(false);
             hideOfficeGameObject.SetActive(false);
+            layoutManager.ChangeSubtitlePosition(false);
 
             camIsUp = false;
 

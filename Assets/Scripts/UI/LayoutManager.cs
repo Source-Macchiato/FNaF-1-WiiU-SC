@@ -2,7 +2,7 @@
 
 public class LayoutManager : MonoBehaviour
 {
-	private int layoutId;
+	public int layoutId;
 
     public GameObject minimap;
     public GameObject[] subtitles;
@@ -14,14 +14,9 @@ public class LayoutManager : MonoBehaviour
     public GameObject[] screenMinimap;
     public GameObject[] screenSubtitles;
 
-    // Scripts
-    Movement movement;
-
     void Start()
 	{
         // Get scripts
-        movement = FindObjectOfType<Movement>();
-
         layoutId = SaveManager.LoadLayoutId();
 
         if (layoutId == 0)
@@ -40,14 +35,8 @@ public class LayoutManager : MonoBehaviour
         {
             GamepadOnly();
         }
-	}
-	
-	void Update()
-	{
-		if (layoutId == 0 || layoutId == 3)
-        {
-            ChangeSubtitlePosition(movement.camIsUp);
-        }
+
+        ChangeSubtitlePosition(false);
 	}
 
     private void TVOnly()
@@ -135,7 +124,7 @@ public class LayoutManager : MonoBehaviour
         minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
     }
 
-    private void ChangeSubtitlePosition(bool cameraStatus)
+    public void ChangeSubtitlePosition(bool cameraStatus)
     {
         if (cameraStatus)
         {
