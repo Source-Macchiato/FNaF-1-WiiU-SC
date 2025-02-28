@@ -306,11 +306,11 @@ public class Office : MonoBehaviour {
                         {
                             if (moveInOffice.lastPointerPosition.y > (WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV) / 2) - 55)
                             {
-                                LeftDoorSystem();
+                                RightDoorSystem();
                             }
                             else
                             {
-                                LeftLightSystem();
+                                RightLightSystem();
                             }
                         }
                         else
