@@ -10,7 +10,7 @@
     },
     {
       "key": "mainmenu.sharedata",
-      "value": "Do you accept the sharing of statistical information with Source Macchiato such as the frequency of starting the game ?"
+      "value": "Do you accept the sharing of statistical information with Source Macchiato ?"
     },
     {
       "key": "mainmenu.newgame",
@@ -47,6 +47,22 @@
     {
       "key": "mainmenu.online",
       "value": "Online"
+    },
+    {
+      "key": "mainmenu.volume",
+      "value": "Volume"
+    },
+    {
+      "key": "mainmenu.controls",
+      "value": "Controls"
+    },
+    {
+      "key": "mainmenu.motioncontrolsdescription",
+      "value": "Wii remote motion controls"
+    },
+    {
+      "key": "mainmenu.displaypointerdescription",
+      "value": "Display Wii remote pointer"
     },
     {
       "key": "mainmenu.analyticdata",
