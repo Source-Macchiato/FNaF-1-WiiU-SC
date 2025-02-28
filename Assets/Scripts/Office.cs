@@ -310,7 +310,7 @@ public class Office : MonoBehaviour {
                             }
                             else
                             {
-                                RightLightSystem();
+                                ToggleRightLight();
                             }
                         }
                         else
