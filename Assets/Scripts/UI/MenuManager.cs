@@ -101,25 +101,28 @@ public class MenuManager : MonoBehaviour
 
                 if (Mathf.Abs(leftStickGamepad.y) > stickDeadzone)
                 {
-                    if (currentScrollRect == null)
+                    if (EventSystem.current.currentSelectedGameObject != null)
                     {
-                        if (lastNavigationTime > stickNavigationCooldown)
+                        if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
                         {
-                            if (leftStickGamepad.y > stickDeadzone)
+                            if (lastNavigationTime > stickNavigationCooldown)
                             {
-                                MenuNavigation(Vector2.up);
-                            }
-                            else if (leftStickGamepad.y < -stickDeadzone)
-                            {
-                                MenuNavigation(Vector2.down);
-                            }
+                                if (leftStickGamepad.y > stickDeadzone)
+                                {
+                                    MenuNavigation(Vector2.up);
+                                }
+                                else if (leftStickGamepad.y < -stickDeadzone)
+                                {
+                                    MenuNavigation(Vector2.down);
+                                }
 
-                            lastNavigationTime = 0f;
+                                lastNavigationTime = 0f;
+                            }
                         }
-                    }
-                    else
-                    {
-                        ScrollNavigation(new Vector2(0, leftStickGamepad.y));
+                        else
+                        {
+                            ScrollNavigation(new Vector2(0, leftStickGamepad.y));
+                        }
                     }
                 }
 
@@ -235,25 +238,28 @@ public class MenuManager : MonoBehaviour
 
                     if (Mathf.Abs(leftStickProController.y) > stickDeadzone)
                     {
-                        if (currentScrollRect == null)
+                        if (EventSystem.current.currentSelectedGameObject != null)
                         {
-                            if (lastNavigationTime > stickNavigationCooldown)
+                            if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
                             {
-                                if (leftStickProController.y > stickDeadzone)
+                                if (lastNavigationTime > stickNavigationCooldown)
                                 {
-                                    MenuNavigation(Vector2.up);
-                                }
-                                else if (leftStickProController.y < -stickDeadzone)
-                                {
-                                    MenuNavigation(Vector2.down);
-                                }
+                                    if (leftStickProController.y > stickDeadzone)
+                                    {
+                                        MenuNavigation(Vector2.up);
+                                    }
+                                    else if (leftStickProController.y < -stickDeadzone)
+                                    {
+                                        MenuNavigation(Vector2.down);
+                                    }
 
-                                lastNavigationTime = 0f;
+                                    lastNavigationTime = 0f;
+                                }
                             }
-                        }
-                        else
-                        {
-                            ScrollNavigation(new Vector2(0, leftStickProController.y));
+                            else
+                            {
+                                ScrollNavigation(new Vector2(0, leftStickProController.y));
+                            }
                         }
                     }
 
@@ -365,26 +371,29 @@ public class MenuManager : MonoBehaviour
 
                     if (Mathf.Abs(leftStickClassicController.y) > stickDeadzone)
                     {
-                        if (currentScrollRect == null)
+                        if (EventSystem.current.currentSelectedGameObject != null)
                         {
-                            if (lastNavigationTime > stickNavigationCooldown)
+                            if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
                             {
-                                if (leftStickClassicController.y > stickDeadzone)
+                                if (lastNavigationTime > stickNavigationCooldown)
                                 {
-                                    MenuNavigation(Vector2.up);
-                                }
-                                else if (leftStickClassicController.y < -stickDeadzone)
-                                {
-                                    MenuNavigation(Vector2.down);
+                                    if (leftStickClassicController.y > stickDeadzone)
+                                    {
+                                        MenuNavigation(Vector2.up);
+                                    }
+                                    else if (leftStickClassicController.y < -stickDeadzone)
+                                    {
+                                        MenuNavigation(Vector2.down);
+                                    }
+
+                                    lastNavigationTime = 0f;
                                 }
 
-                                lastNavigationTime = 0f;
                             }
-
-                        }
-                        else
-                        {
-                            ScrollNavigation(new Vector2(0, leftStickClassicController.y));
+                            else
+                            {
+                                ScrollNavigation(new Vector2(0, leftStickClassicController.y));
+                            }
                         }
                     }
 
@@ -496,25 +505,28 @@ public class MenuManager : MonoBehaviour
 
                     if (Mathf.Abs(stickNunchuk.y) > stickDeadzone)
                     {
-                        if (currentScrollRect == null)
+                        if (EventSystem.current.currentSelectedGameObject != null)
                         {
-                            if (lastNavigationTime > stickNavigationCooldown)
+                            if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
                             {
-                                if (stickNunchuk.y > stickDeadzone)
+                                if (lastNavigationTime > stickNavigationCooldown)
                                 {
-                                    MenuNavigation(Vector2.up);
-                                }
-                                else if (stickNunchuk.y < -stickDeadzone)
-                                {
-                                    MenuNavigation(Vector2.down);
-                                }
+                                    if (stickNunchuk.y > stickDeadzone)
+                                    {
+                                        MenuNavigation(Vector2.up);
+                                    }
+                                    else if (stickNunchuk.y < -stickDeadzone)
+                                    {
+                                        MenuNavigation(Vector2.down);
+                                    }
 
-                                lastNavigationTime = 0f;
+                                    lastNavigationTime = 0f;
+                                }
                             }
-                        }
-                        else
-                        {
-                            ScrollNavigation(new Vector2(0, stickNunchuk.y));
+                            else
+                            {
+                                ScrollNavigation(new Vector2(0, stickNunchuk.y));
+                            }
                         }
                     }
 
@@ -744,9 +756,8 @@ public class MenuManager : MonoBehaviour
             if (currentPopup.actionType == 1)
             {
                 // Select button
-                GameObject optionsContainer = currentPopup.popupObject.transform.Find("Options").gameObject;
-                Button button = optionsContainer.transform.GetChild(0).GetComponent<Button>();
-                button.Select();
+                PopupOptions popupOptions = currentPopup.popupObject.GetComponent<PopupOptions>();
+                Select(popupOptions.buttons[0]);
             }
             else if (currentPopup.actionType == 2)
             {
@@ -774,7 +785,8 @@ public class MenuManager : MonoBehaviour
             else
             {
                 SetMenusInteractable(true);
-                defaultButtons[currentMenuId].Select();
+                Select(defaultButtons[currentMenuId]);
+                ToggleCursorVisibility();
             }
         }
     }
@@ -937,7 +949,8 @@ public class MenuManager : MonoBehaviour
                 && EventSystem.current.currentSelectedGameObject.GetComponent<SwitcherData>() == null
                 && EventSystem.current.currentSelectedGameObject.GetComponent<CardSwitcherData>() == null
                 && EventSystem.current.currentSelectedGameObject.GetComponent<CardData>() == null
-                && EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelectionHandler>() == null)
+                && EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelectionHandler>() == null
+                && currentPopup == null)
             {
                 if (!cursor.activeSelf)
                 {
@@ -969,14 +982,17 @@ public class MenuManager : MonoBehaviour
         {
             if (i == menuId)
             {
-                if (defaultButtons[i] != null && currentPopup == null)
+                if (currentPopup == null)
                 {
-                    Select(defaultButtons[i]);
-                }
-                else
-                {
-                    EventSystem.current.SetSelectedGameObject(null);
-                    lastSelected = null;
+                    if (defaultButtons[i] != null)
+                    {
+                        Select(defaultButtons[i]);
+                    }
+                    else
+                    {
+                        EventSystem.current.SetSelectedGameObject(null);
+                        lastSelected = null;
+                    }
                 }
             }
         }
