@@ -77,13 +77,17 @@ public class Office : MonoBehaviour {
     private float joystickThreshold = 0.5f;
 
     public float centerPosition;
+
     ChangeImages changeImages;
+    MoveInOffice moveInOffice;
 
     void Start()
     {
-        changeImages = FindObjectOfType<ChangeImages>();
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
+
+        changeImages = FindObjectOfType<ChangeImages>();
+        moveInOffice = FindObjectOfType<MoveInOffice>();
 
         movementScript = GetComponent<Movement>();
 
@@ -172,7 +176,17 @@ public class Office : MonoBehaviour {
                 default:
                     if (remoteState.IsTriggered(WiiU.RemoteButton.A))
                     {
-                        LeftDoorSystem();
+                        if (moveInOffice.isPointerDisplayed)
+                        {
+                            if (moveInOffice.lastPointerPosition.y > (WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV) / 2) - 55)
+                            {
+                                LeftDoorSystem();
+                            }
+                        }
+                        else
+                        {
+                            LeftDoorSystem();
+                        }
                     }
                     break;
             }
@@ -212,9 +226,22 @@ public class Office : MonoBehaviour {
                     }
                     break;
                 default:
-                    if (remoteState.IsTriggered(WiiU.RemoteButton.B))
+                    if (moveInOffice.isPointerDisplayed)
                     {
-                        ToggleLeftLight();
+                        if (remoteState.IsTriggered(WiiU.RemoteButton.A))
+                        {
+                            if (moveInOffice.lastPointerPosition.y <= (WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV) / 2) - 55)
+                            {
+                                ToggleLeftLight();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (remoteState.IsTriggered(WiiU.RemoteButton.B))
+                        {
+                            ToggleLeftLight();
+                        }
                     }
                     break;
             }
@@ -275,12 +302,29 @@ public class Office : MonoBehaviour {
                 default:
                     if (remoteState.IsTriggered(WiiU.RemoteButton.A))
                     {
-                        RightDoorSystem();
+                        if (moveInOffice.isPointerDisplayed)
+                        {
+                            if (moveInOffice.lastPointerPosition.y > (WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV) / 2) - 55)
+                            {
+                                LeftDoorSystem();
+                            }
+                            else
+                            {
+                                LeftLightSystem();
+                            }
+                        }
+                        else
+                        {
+                            RightDoorSystem();
+                        }
                     }
 
                     if (remoteState.IsTriggered(WiiU.RemoteButton.B))
                     {
-                        ToggleRightLight();
+                        if (!moveInOffice.isPointerDisplayed)
+                        {
+                            ToggleRightLight();
+                        }
                     }
                     break;
             }

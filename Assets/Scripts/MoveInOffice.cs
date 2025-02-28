@@ -15,13 +15,15 @@ public class MoveInOffice : MonoBehaviour
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
+    [HideInInspector]
     private const float speed = 5f;
     private const float leftEdge = 160f;
     private const float rightEdge = -130f;
     private float stickDeadzone = 0.19f;
     private bool canUseMotionControls = true;
-    private bool isPointerDisplayed = true;
+    public bool isPointerDisplayed = true;
     private Vector3 lastMousePosition;
+    public Vector2 lastPointerPosition;
 
     void Start()
 	{
@@ -158,6 +160,8 @@ public class MoveInOffice : MonoBehaviour
                     Vector2 pointerPosition = remoteState.pos;
                     pointerPosition.x = ((pointerPosition.x + 1.0f) / 2.0f) * WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV);
                     pointerPosition.y = WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV) - ((pointerPosition.y + 1.0f) / 2.0f) * WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV);
+                    
+                    lastPointerPosition = pointerPosition;
 
                     if (pointerPosition.x < 250f)
                     {
@@ -225,11 +229,9 @@ public class MoveInOffice : MonoBehaviour
     {
         if (!camIsUp && canMove)
         {
-            OfficeContainer.transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-            if (OfficeContainer.transform.localPosition.x >= leftEdge)
+            if (OfficeContainer.transform.localPosition.x <= leftEdge)
             {
-                OfficeContainer.transform.localPosition = new Vector3(leftEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
+                OfficeContainer.transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
         }
     }
@@ -238,11 +240,9 @@ public class MoveInOffice : MonoBehaviour
     {
         if (!camIsUp && canMove)
         {
-            OfficeContainer.transform.Translate(Vector3.left * speed * Time.deltaTime);
-
-            if (OfficeContainer.transform.localPosition.x <= rightEdge)
+            if (OfficeContainer.transform.localPosition.x >= rightEdge)
             {
-                OfficeContainer.transform.localPosition = new Vector3(rightEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
+                OfficeContainer.transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
         }
     }
