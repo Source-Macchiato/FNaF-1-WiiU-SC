@@ -31,6 +31,7 @@ public class MenuData : MonoBehaviour
     public SwitcherData voiceVolumeSwitcher;
     public SwitcherData sfxVolumeSwitcher;
     public SwitcherData motionSwitcher;
+    public SwitcherData pointerSwitcher;
 
     [Header("Other")]
     public GameObject starsContainer;
@@ -249,6 +250,25 @@ public class MenuData : MonoBehaviour
         {
             motionSwitcher.currentOptionId = switcherIndex;
             motionSwitcher.UpdateText();
+        }
+    }
+
+    public void SavePointerVisibility()
+    {
+        saveManager.SavePointerVisibility(pointerSwitcher.currentOptionId == 0);
+        bool saveResult = saveGameState.DoSave();
+    }
+
+    public void LoadPointerVisibility()
+    {
+        bool pointerVisibility = SaveManager.LoadPointerVisibility();
+
+        int switcherIndex = pointerVisibility ? 0 : 1;
+
+        if (switcherIndex >= 0 && switcherIndex < pointerSwitcher.optionsName.Length)
+        {
+            pointerSwitcher.currentOptionId = switcherIndex;
+            pointerSwitcher.UpdateText();
         }
     }
 

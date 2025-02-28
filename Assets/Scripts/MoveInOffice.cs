@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using WiiU = UnityEngine.WiiU;
 
 public class MoveInOffice : MonoBehaviour
 {
     public GameObject OfficeContainer;
     private RectTransform officeRect;
+    public RectTransform pointerCursor;
 
     [HideInInspector]
     public bool camIsUp = false;
@@ -18,6 +20,8 @@ public class MoveInOffice : MonoBehaviour
     private const float rightEdge = -130f;
     private float stickDeadzone = 0.19f;
     private bool canUseMotionControls = true;
+    private bool isPointerDisplayed = true;
+    private Vector3 lastMousePosition;
 
     void Start()
 	{
@@ -25,9 +29,14 @@ public class MoveInOffice : MonoBehaviour
         remote = WiiU.Remote.Access(0);
 
         canUseMotionControls = SaveManager.LoadMotionControls();
+        isPointerDisplayed = SaveManager.LoadPointerVisibility();
 
         officeRect = OfficeContainer.GetComponent<RectTransform>();
         officeRect.anchoredPosition = new Vector2(GameScript.officePositionX, officeRect.anchoredPosition.y);
+
+        lastMousePosition = Input.mousePosition;
+
+        pointerCursor.gameObject.SetActive(false);
     }
 	
 	void Update()
@@ -60,6 +69,11 @@ public class MoveInOffice : MonoBehaviour
             {
                 MoveRight();
             }
+
+            if (IsGamepadInputTriggered(gamePadState))
+            {
+                pointerCursor.gameObject.SetActive(false);
+            }
         }
 
         // Remotes
@@ -88,6 +102,11 @@ public class MoveInOffice : MonoBehaviour
                 {
                     MoveRight();
                 }
+
+                if (IsProInputTriggered(remoteState))
+                {
+                    pointerCursor.gameObject.SetActive(false);
+                }
                 break;
             case WiiU.RemoteDevType.Classic:
                 Vector2 leftStickClassicController = remoteState.classic.leftStick;
@@ -112,6 +131,11 @@ public class MoveInOffice : MonoBehaviour
                 {
                     MoveRight();
                 }
+
+                if (IsClassicInputTriggered(remoteState))
+                {
+                    pointerCursor.gameObject.SetActive(false);
+                }
                 break;
             default:
                 Vector2 stickNunchuk = remoteState.nunchuk.stick;
@@ -133,14 +157,33 @@ public class MoveInOffice : MonoBehaviour
                 {
                     Vector2 pointerPosition = remoteState.pos;
                     pointerPosition.x = ((pointerPosition.x + 1.0f) / 2.0f) * WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV);
+                    pointerPosition.y = WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV) - ((pointerPosition.y + 1.0f) / 2.0f) * WiiU.Core.GetScreenHeight(WiiU.DisplayIndex.TV);
 
-                    if (pointerPosition.x < 300f)
+                    if (pointerPosition.x < 250f)
                     {
                         MoveLeft();
                     }
-                    else if (pointerPosition.x > WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV) - 300f)
+
+                    if (pointerPosition.x > WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV) - 250f)
                     {
                         MoveRight();
+                    }
+
+                    if (isPointerDisplayed)
+                    {
+                        if (IsRemoteInputTriggered(remoteState))
+                        {
+                            pointerCursor.gameObject.SetActive(true);
+                        }
+
+                        if (pointerCursor != null && pointerCursor.gameObject.activeSelf)
+                        {
+                            pointerCursor.anchoredPosition = pointerPosition;
+                        }
+                    }
+                    else
+                    {
+                        pointerCursor.gameObject.SetActive(false);
                     }
                 }
                 else
@@ -167,6 +210,13 @@ public class MoveInOffice : MonoBehaviour
             else if (Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x > WiiU.Core.GetScreenWidth(WiiU.DisplayIndex.TV) - 300f)
             {
                 MoveRight();
+            }
+
+            if (Input.anyKeyDown || Input.mousePosition != lastMousePosition)
+            {
+                pointerCursor.gameObject.SetActive(false);
+
+                lastMousePosition = Input.mousePosition;
             }
         }
     }
@@ -195,5 +245,54 @@ public class MoveInOffice : MonoBehaviour
                 OfficeContainer.transform.localPosition = new Vector3(rightEdge, OfficeContainer.transform.localPosition.y, OfficeContainer.transform.localPosition.z);
             }
         }
+    }
+
+    // Functions for check if any input is triggered
+    private bool IsGamepadInputTriggered(WiiU.GamePadState gamePadState)
+    {
+        foreach (WiiU.GamePadButton button in Enum.GetValues(typeof(WiiU.GamePadButton)))
+        {
+            if (gamePadState.IsTriggered(button))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool IsProInputTriggered(WiiU.RemoteState remoteState)
+    {
+        foreach (WiiU.ProControllerButton button in Enum.GetValues(typeof(WiiU.ProControllerButton)))
+        {
+            if (remoteState.pro.IsTriggered(button))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool IsClassicInputTriggered(WiiU.RemoteState remoteState)
+    {
+        foreach (WiiU.ClassicButton button in Enum.GetValues(typeof(WiiU.ClassicButton)))
+        {
+            if (remoteState.classic.IsTriggered(button))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool IsRemoteInputTriggered(WiiU.RemoteState remoteState)
+    {
+        foreach (WiiU.RemoteButton button in Enum.GetValues(typeof(WiiU.RemoteButton)))
+        {
+            if (remoteState.IsTriggered(button))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

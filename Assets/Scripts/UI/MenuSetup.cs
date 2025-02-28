@@ -122,6 +122,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.ChangeMenu(9);
 
         menuData.LoadMotionControls();
+        menuData.LoadPointerVisibility();
     }
 
     public void StartCustomNight()
@@ -176,5 +177,6 @@ public class MenuSetup : MonoBehaviour
     void OnBackFromControls()
     {
         menuData.SaveMotionControls();
+        menuData.SavePointerVisibility();
     }
 }

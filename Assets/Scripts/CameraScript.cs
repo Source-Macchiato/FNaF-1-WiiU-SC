@@ -171,7 +171,12 @@ public class CameraScript : MonoBehaviour
                 office.enabled = false;
                 minimapGameObject.SetActive(true);
                 hideOfficeGameObject.SetActive(layoutManager.layoutId != 2);
+
+                // System for change the position of subtitles
                 layoutManager.ChangeSubtitlePosition(layoutManager.layoutId == 0 || layoutManager.layoutId == 3);
+
+                // System for change the screen where is displayed pointer
+                layoutManager.ChangePointerScreen(layoutManager.layoutId == 1 || layoutManager.layoutId == 2);
 
                 if (office.leftLightIsOn)
                 {
@@ -288,6 +293,7 @@ public class CameraScript : MonoBehaviour
             stripesMovement.SetActive(false);
             hideOfficeGameObject.SetActive(false);
             layoutManager.ChangeSubtitlePosition(false);
+            layoutManager.ChangePointerScreen(false);
 
             camIsUp = false;
 

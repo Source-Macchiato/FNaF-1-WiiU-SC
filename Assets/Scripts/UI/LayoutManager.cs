@@ -13,6 +13,7 @@ public class LayoutManager : MonoBehaviour
     public GameObject[] screenUI;
     public GameObject[] screenMinimap;
     public GameObject[] screenSubtitles;
+    public GameObject[] screenPointer;
 
     void Start()
 	{
@@ -56,6 +57,9 @@ public class LayoutManager : MonoBehaviour
         screenSubtitles[0].SetActive(true);
         screenSubtitles[1].SetActive(false);
 
+        screenPointer[0].SetActive(true);
+        screenPointer[1].SetActive(false);
+
         minimap.transform.localScale = new Vector3(1f, 1f, 1f);
         minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
     }
@@ -76,6 +80,9 @@ public class LayoutManager : MonoBehaviour
 
         screenSubtitles[0].SetActive(false);
         screenSubtitles[1].SetActive(true);
+
+        screenPointer[0].SetActive(true);
+        screenPointer[1].SetActive(false);
 
         minimap.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
         minimap.transform.localPosition = Vector3.zero;
@@ -102,6 +109,9 @@ public class LayoutManager : MonoBehaviour
         screenSubtitles[0].SetActive(true);
         screenSubtitles[1].SetActive(false);
 
+        screenPointer[0].SetActive(true);
+        screenPointer[1].SetActive(false);
+
         minimap.transform.localScale = new Vector3(1f, 1f, 1f);
         minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
     }
@@ -119,6 +129,9 @@ public class LayoutManager : MonoBehaviour
 
         screenSubtitles[0].SetActive(false);
         screenSubtitles[1].SetActive(true);
+
+        screenPointer[0].SetActive(false);
+        screenPointer[1].SetActive(true);
 
         minimap.transform.localScale = new Vector3(1f, 1f, 1f);
         minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
@@ -138,5 +151,11 @@ public class LayoutManager : MonoBehaviour
             subtitles[1].SetActive(true);
             subtitles[2].SetActive(false);
         }
+    }
+
+    public void ChangePointerScreen(bool onGamepad)
+    {
+        screenSubtitles[0].SetActive(!onGamepad);
+        screenSubtitles[1].SetActive(onGamepad);
     }
 }
