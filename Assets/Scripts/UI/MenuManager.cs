@@ -119,10 +119,10 @@ public class MenuManager : MonoBehaviour
                                 lastNavigationTime = 0f;
                             }
                         }
-                        else
-                        {
-                            ScrollNavigation(new Vector2(0, leftStickGamepad.y));
-                        }
+                    }
+                    else
+                    {
+                        ScrollNavigation(new Vector2(0, leftStickGamepad.y));
                     }
                 }
 
@@ -256,10 +256,10 @@ public class MenuManager : MonoBehaviour
                                     lastNavigationTime = 0f;
                                 }
                             }
-                            else
-                            {
-                                ScrollNavigation(new Vector2(0, leftStickProController.y));
-                            }
+                        }
+                        else
+                        {
+                            ScrollNavigation(new Vector2(0, leftStickProController.y));
                         }
                     }
 
@@ -390,10 +390,10 @@ public class MenuManager : MonoBehaviour
                                 }
 
                             }
-                            else
-                            {
-                                ScrollNavigation(new Vector2(0, leftStickClassicController.y));
-                            }
+                        }
+                        else
+                        {
+                            ScrollNavigation(new Vector2(0, leftStickClassicController.y));
                         }
                     }
 
@@ -523,10 +523,10 @@ public class MenuManager : MonoBehaviour
                                     lastNavigationTime = 0f;
                                 }
                             }
-                            else
-                            {
-                                ScrollNavigation(new Vector2(0, stickNunchuk.y));
-                            }
+                        }
+                        else
+                        {
+                            ScrollNavigation(new Vector2(0, stickNunchuk.y));
                         }
                     }
 
@@ -878,8 +878,8 @@ public class MenuManager : MonoBehaviour
                 }
             }
 
-            ToggleCursorVisibility();
             AutoScroll();
+            ToggleCursorVisibility();
         }
     }
 
@@ -940,7 +940,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    void ToggleCursorVisibility()
+    public void ToggleCursorVisibility()
     {
         if (cursor != null)
         {
@@ -949,7 +949,6 @@ public class MenuManager : MonoBehaviour
                 && EventSystem.current.currentSelectedGameObject.GetComponent<SwitcherData>() == null
                 && EventSystem.current.currentSelectedGameObject.GetComponent<CardSwitcherData>() == null
                 && EventSystem.current.currentSelectedGameObject.GetComponent<CardData>() == null
-                && EventSystem.current.currentSelectedGameObject.GetComponent<ButtonSelectionHandler>() == null
                 && currentPopup == null)
             {
                 if (!cursor.activeSelf)
@@ -1008,6 +1007,7 @@ public class MenuManager : MonoBehaviour
         // Set scroll rect if component exists
         currentScrollRect = GetCurrentMenu().transform.GetChild(0).GetComponent<ScrollRect>();
 
+        AutoScroll();
         ToggleCursorVisibility();
 
         isNavigatingBack = false;
@@ -1069,7 +1069,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    private void AutoScroll()
+    public void AutoScroll()
     {
         if (currentScrollRect != null && EventSystem.current.currentSelectedGameObject != null && EventSystem.current.currentSelectedGameObject.GetComponent<Button>() != null)
         {
