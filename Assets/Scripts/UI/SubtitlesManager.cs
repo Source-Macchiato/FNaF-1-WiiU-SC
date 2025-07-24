@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WiiU = UnityEngine.WiiU;
 
 public class SubtitlesManager : MonoBehaviour
 {
     public GameObject[] subtitlesContainers;
+    public GameObject muteCall;
+    public AudioSource phoneCall;
 
     private List<string> subtitleIdentifiers;
     private List<float> displayDurations;
@@ -23,8 +26,14 @@ public class SubtitlesManager : MonoBehaviour
     public TMP_FontAsset mainFont;
     public TMP_FontAsset arabicFont;
 
+    WiiU.GamePad gamePad;
+    WiiU.Remote remote;
+
     void Start()
     {
+        gamePad = WiiU.GamePad.access;
+        remote = WiiU.Remote.Access(0);
+
         subtitleIdentifiers = new List<string>();
         displayDurations = new List<float>();
 
@@ -77,6 +86,52 @@ public class SubtitlesManager : MonoBehaviour
                 return;
             }
 
+            if (currentIndex < subtitleIdentifiers.Count)
+            {
+                WiiU.GamePadState gamePadState = gamePad.state;
+                WiiU.RemoteState remoteState = remote.state;
+                if (gamePadState.gamePadErr == WiiU.GamePadError.None)
+                {
+                    if (gamePadState.IsTriggered(WiiU.GamePadButton.Minus))
+                    {
+                        MuteCall();
+                        return;
+                    }
+                }
+                switch (remoteState.devType)
+                {
+                    case WiiU.RemoteDevType.ProController:
+                        if (remoteState.pro.IsTriggered(WiiU.ProControllerButton.Minus))
+                        {
+                            MuteCall();
+                            return;
+                        }
+                        break;
+                    case WiiU.RemoteDevType.Classic:
+                        if (remoteState.classic.IsTriggered(WiiU.ClassicButton.Minus))
+                        {
+                            MuteCall();
+                            return;
+                        }
+                        break;
+                    default:
+                        if (remoteState.IsTriggered(WiiU.RemoteButton.Minus))
+                        {
+                            MuteCall();
+                            return;
+                        }
+                        break;
+                }
+                if (Application.isEditor)
+                {
+                    if (Input.GetKeyDown(KeyCode.KeypadMinus))
+                    {
+                        MuteCall();
+                        return;
+                    }
+                }
+            }
+
             if (currentIndex >= subtitleIdentifiers.Count)
             {
                 return;
@@ -92,6 +147,8 @@ public class SubtitlesManager : MonoBehaviour
                 }
                 else
                 {
+                    muteCall.SetActive(false);
+
                     foreach (GameObject subtitleContainer in subtitlesContainers)
                     {
                         Text textComponent = subtitleContainer.GetComponent<Text>();
@@ -118,11 +175,41 @@ public class SubtitlesManager : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            muteCall.SetActive(false);
+
+            foreach (GameObject subtitleContainer in subtitlesContainers)
+            {
+                Text textComponent = subtitleContainer.GetComponent<Text>();
+                RTLTextMeshPro tmpTextComponent = subtitleContainer.GetComponent<RTLTextMeshPro>();
+
+                if (textComponent != null)
+                {
+                    if (subtitleContainer.activeSelf)
+                    {
+                        textComponent.text = "";
+                        subtitleContainer.SetActive(false);
+                    }
+                }
+
+                if (tmpTextComponent != null)
+                {
+                    if (subtitleContainer.activeSelf)
+                    {
+                        tmpTextComponent.text = "";
+                        subtitleContainer.SetActive(false);
+                    }
+                }
+            }
+        }
     }
 
     void DisplaySubtitle()
     {
         string translatedText = GetTranslatedText(subtitleIdentifiers[currentIndex]);
+
+        muteCall.SetActive(true);
 
         foreach (GameObject subtitleContainer in subtitlesContainers)
         {
@@ -174,5 +261,37 @@ public class SubtitlesManager : MonoBehaviour
         {
             return identifier;
         }
+    }
+
+    public void MuteCall()
+    {
+        currentIndex = subtitleIdentifiers.Count;
+
+        foreach (GameObject subtitleContainer in subtitlesContainers)
+        {
+            Text textComponent = subtitleContainer.GetComponent<Text>();
+            RTLTextMeshPro tmpTextComponent = subtitleContainer.GetComponent<RTLTextMeshPro>();
+
+            if (textComponent != null)
+            {
+                if (subtitleContainer.activeSelf)
+                {
+                    textComponent.text = "";
+                }
+            }
+
+            if (tmpTextComponent != null)
+            {
+                if (subtitleContainer.activeSelf)
+                {
+                    tmpTextComponent.text = "";
+                }
+            }
+
+            subtitleContainer.SetActive(false);
+        }
+
+        phoneCall.Stop();
+        muteCall.SetActive(false);
     }
 }
