@@ -614,9 +614,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: c9a6739a-682e-4361-9173-71f35ca9d234
-  projectName: 'FNaF: Wii U Edition'
-  organizationId: source-macchiato
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
