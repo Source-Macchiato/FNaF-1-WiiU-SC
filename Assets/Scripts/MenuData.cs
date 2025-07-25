@@ -47,6 +47,7 @@ public class MenuData : MonoBehaviour
     SaveGameState saveGameState;
     SaveManager saveManager;
     MenuManager menuManager;
+    ControllersRumble controllersRumble;
 
     // Advertisement
     public GameObject advertisementImage;
@@ -60,6 +61,7 @@ public class MenuData : MonoBehaviour
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
         menuManager = FindObjectOfType<MenuManager>();
+        controllersRumble = FindObjectOfType<ControllersRumble>();
 
         // Load
         nightNumber = SaveManager.LoadNightNumber();
@@ -83,6 +85,8 @@ public class MenuData : MonoBehaviour
         {
             nightNumberText.text = "1";
         }
+
+        controllersRumble.TriggerRumble(3.5f, "This is a test");
     }
 	
 	// Update is called once per frame

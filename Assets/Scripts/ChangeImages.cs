@@ -182,7 +182,7 @@ public class ChangeImages : MonoBehaviour
             GoldenFreddyJumpscareTime -= Time.deltaTime;
             if(GoldenFreddyJumpscareTime <= 0)
             {
-                controllersRumble.IsRumbleTriggered("GoldenFreddy");
+                controllersRumble.TriggerRumble(2f, "Golden Freddy");
                 GoldenFreddyJumpscare.SetActive(true);
                 GoldenFreddyJumpscareTime = 10f;
             }
@@ -710,7 +710,7 @@ public class ChangeImages : MonoBehaviour
             BonnieJumpscare.SetActive(true);
             isBeingJumpscared = true;
 
-            controllersRumble.IsRumbleTriggered("Bonnie");
+            controllersRumble.TriggerRumble(2f, "Bonnie");
         }
         // where is Chica system
         if (WhereChica < 8)
@@ -730,7 +730,7 @@ public class ChangeImages : MonoBehaviour
                 ChicaJumpscare.SetActive(true);
                 isBeingJumpscared = true;
 
-                controllersRumble.IsRumbleTriggered("Chica");
+                controllersRumble.TriggerRumble(2f, "Chica");
             }
         }
 
@@ -747,7 +747,7 @@ public class ChangeImages : MonoBehaviour
 
             isBeingJumpscared = true;
 
-            controllersRumble.IsRumbleTriggered("Freddy");
+            controllersRumble.TriggerRumble(2f, "Freddy");
         }
 
         if (WhereFoxy >= 4)
@@ -779,28 +779,28 @@ public class ChangeImages : MonoBehaviour
                 {
                     foxyRunTime -= Time.deltaTime;
 
-                    if(foxyRunTime <= 0)
+                    if (foxyRunTime <= 0)
                     {
                         if (!L_Door_Closed)
-                    {
-                        FoxyEnterOffice.SetActive(true);
-                        FoxyRunDownHall.SetActive(false);
+                        {
+                            FoxyEnterOffice.SetActive(true);
+                            FoxyRunDownHall.SetActive(false);
 
-                        isBeingJumpscared = true;
+                            isBeingJumpscared = true;
 
-                        controllersRumble.IsRumbleTriggered("Foxy");
-                    }
-                    else if(L_Door_Closed)
-                    {
-                        DoorBang.Play();
-                        OfficeObject.GetComponent<Movement>().WhereFoxy = 1;
-                        OfficeObject.GetComponent<Movement>().foxyInCount = false;
-                        //OfficeObject.GetComponent<Movement>().GenNumber();
-                        OriginalOfficeImage.GetComponent<Image>().enabled = true;
-                        FoxyRunDownHall.SetActive(false);
-                        foxyRunTime = 3.5f;
-                        foxyStarted = false;
-                    }
+                            controllersRumble.TriggerRumble(2f, "Foxy");
+                        }
+                        else if (L_Door_Closed)
+                        {
+                            DoorBang.Play();
+                            OfficeObject.GetComponent<Movement>().WhereFoxy = 1;
+                            OfficeObject.GetComponent<Movement>().foxyInCount = false;
+                            //OfficeObject.GetComponent<Movement>().GenNumber();
+                            OriginalOfficeImage.GetComponent<Image>().enabled = true;
+                            FoxyRunDownHall.SetActive(false);
+                            foxyRunTime = 3.5f;
+                            foxyStarted = false;
+                        }
                     }
                 }
             }

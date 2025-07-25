@@ -61,7 +61,7 @@ public class Power : MonoBehaviour {
                     PlayTime = 0;
                     JumpscarePlayTime -= Time.deltaTime;
 
-                    controllersRumble.IsRumbleTriggered("No power");
+                    controllersRumble.TriggerRumble(2f, "No power");
                 }
                 if (JumpscarePlayTime <= 0)
                 {
