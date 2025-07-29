@@ -21,7 +21,7 @@ public class EndOfNight : MonoBehaviour {
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
 
-        nightNumber = SaveManager.LoadNightNumber();
+        nightNumber = SaveManager.saveData.game.nightNumber;
 
         // Get difficulty
         freddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", 0);
@@ -80,10 +80,10 @@ public class EndOfNight : MonoBehaviour {
         else if (nightNumber == 5)
         {
             // When night 5 is finished enable the first star
-            if (SaveManager.LoadStarsId() == 0)
+            if (SaveManager.saveData.game.starsId == 0)
             {
-                saveManager.SaveStars(1);
-                bool saveResult = saveGameState.DoSave();
+                SaveManager.saveData.game.starsId = 1;
+                SaveManager.Save();
             }
 
             SceneManager.LoadScene("TheEnd");
@@ -91,10 +91,10 @@ public class EndOfNight : MonoBehaviour {
         else if (nightNumber == 6)
         {
             // When night 6 is finished enable the second star
-            if (SaveManager.LoadStarsId() <= 1)
+            if (SaveManager.saveData.game.starsId <= 1)
             {
-                saveManager.SaveStars(2);
-                bool saveResult = saveGameState.DoSave();
+                SaveManager.saveData.game.starsId = 2;
+                SaveManager.Save();
             }
 
             SceneManager.LoadScene("TheEnd");
@@ -104,10 +104,10 @@ public class EndOfNight : MonoBehaviour {
             if (freddyDifficulty == 20 && bonnieDifficulty == 20 && chicaDifficulty == 20 && foxyDifficulty == 20)
             {
                 // When custom night is finished enable the third star
-                if (SaveManager.LoadStarsId() <= 2)
+                if (SaveManager.saveData.game.starsId <= 2)
                 {
-                    saveManager.SaveStars(3);
-                    bool saveResult = saveGameState.DoSave();
+                    SaveManager.saveData.game.starsId = 3;
+                    SaveManager.Save();
                 }
             }
 

@@ -30,8 +30,8 @@ public class MoveInOffice : MonoBehaviour
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
 
-        canUseMotionControls = SaveManager.LoadMotionControls();
-        isPointerDisplayed = SaveManager.LoadPointerVisibility();
+        canUseMotionControls = SaveManager.saveData.settings.motionControls;
+        isPointerDisplayed = SaveManager.saveData.settings.pointerVisibility;
 
         officeRect = OfficeContainer.GetComponent<RectTransform>();
         officeRect.anchoredPosition = new Vector2(GameScript.officePositionX, officeRect.anchoredPosition.y);

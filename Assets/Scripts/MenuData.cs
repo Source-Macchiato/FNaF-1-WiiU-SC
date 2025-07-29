@@ -44,8 +44,6 @@ public class MenuData : MonoBehaviour
     public Button[] layoutButtons;
 
     // Scripts
-    SaveGameState saveGameState;
-    SaveManager saveManager;
     MenuManager menuManager;
     ControllersRumble controllersRumble;
 
@@ -58,14 +56,12 @@ public class MenuData : MonoBehaviour
     void Start()
     {
         // Get scripts
-        saveGameState = FindObjectOfType<SaveGameState>();
-        saveManager = FindObjectOfType<SaveManager>();
         menuManager = FindObjectOfType<MenuManager>();
         controllersRumble = FindObjectOfType<ControllersRumble>();
 
         // Load
-        nightNumber = SaveManager.LoadNightNumber();
-        layoutId = SaveManager.LoadLayoutId();
+        nightNumber = SaveManager.saveData.game.nightNumber;
+        layoutId = SaveManager.saveData.settings.layoutId;
         LoadVolume();
 
         // Disable advertisement by default
@@ -162,16 +158,14 @@ public class MenuData : MonoBehaviour
     public void SaveAndUpdateAnalytics()
     {
         // Get SwitcherData scripts
-        saveManager.SaveShareAnalytics(analyticsSwitcher.currentOptionId == 1 ? 0 : 1);
-        bool saveResult = saveGameState.DoSave();
-
-        //analyticsData.CanShareAnalytics();
+        SaveManager.saveData.settings.shareAnalytics = analyticsSwitcher.currentOptionId == 1 ? 0 : 1;
+        SaveManager.Save();
     }
 
     public void LoadAnalyticsAndUpdateSwitcher()
     {
         // Get share analytics
-        int shareAnalytics = SaveManager.LoadShareAnalytics();
+        int shareAnalytics = SaveManager.saveData.settings.shareAnalytics;
 
         int switcherIndex = shareAnalytics == 1 ? 0 : 1;
 
@@ -184,25 +178,24 @@ public class MenuData : MonoBehaviour
 
     private void LoadVolume()
     {
-        audioMixer.SetFloat("Master", ConvertToDecibel(SaveManager.LoadGeneralVolume()));
-        audioMixer.SetFloat("Music", ConvertToDecibel(SaveManager.LoadMusicVolume()));
-        audioMixer.SetFloat("Voice", ConvertToDecibel(SaveManager.LoadVoiceVolume()));
-        audioMixer.SetFloat("SFX", ConvertToDecibel(SaveManager.LoadSFXVolume()));
-
+        audioMixer.SetFloat("Master", ConvertToDecibel(SaveManager.saveData.settings.volume.generalVolume));
+        audioMixer.SetFloat("Music", ConvertToDecibel(SaveManager.saveData.settings.volume.musicVolume));
+        audioMixer.SetFloat("Voice", ConvertToDecibel(SaveManager.saveData.settings.volume.voiceVolume));
+        audioMixer.SetFloat("SFX", ConvertToDecibel(SaveManager.saveData.settings.volume.sfxVolume));
     }
 
     public void UpdateVolumeSwitchers()
     {
-        generalVolumeSwitcher.currentOptionId = SaveManager.LoadGeneralVolume();
-        musicVolumeSwitcher.currentOptionId = SaveManager.LoadMusicVolume();
-        voiceVolumeSwitcher.currentOptionId = SaveManager.LoadVoiceVolume();
-        sfxVolumeSwitcher.currentOptionId = SaveManager.LoadSFXVolume();
+        generalVolumeSwitcher.currentOptionId = SaveManager.saveData.settings.volume.generalVolume;
+        musicVolumeSwitcher.currentOptionId = SaveManager.saveData.settings.volume.musicVolume;
+        voiceVolumeSwitcher.currentOptionId = SaveManager.saveData.settings.volume.voiceVolume;
+        sfxVolumeSwitcher.currentOptionId = SaveManager.saveData.settings.volume.sfxVolume;
     }
 
     public void SaveAndUpdateLanguage()
     {
-        saveManager.SaveLanguage(languageSwitcher.optionsName[languageSwitcher.currentOptionId]);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.settings.language = languageSwitcher.optionsName[languageSwitcher.currentOptionId];
+        SaveManager.Save();
 
         // Reload the language
         I18n.LoadLanguage();
@@ -211,42 +204,42 @@ public class MenuData : MonoBehaviour
     public void SaveAndUpdateVolume()
     {
         // Save and apply general volume
-        saveManager.SaveGeneralVolume(generalVolumeSwitcher.currentOptionId);
+        SaveManager.saveData.settings.volume.generalVolume = generalVolumeSwitcher.currentOptionId;
         audioMixer.SetFloat("Master", ConvertToDecibel(generalVolumeSwitcher.currentOptionId));
 
         // Save and apply music volume
-        saveManager.SaveMusicVolume(musicVolumeSwitcher.currentOptionId);
+        SaveManager.saveData.settings.volume.musicVolume = musicVolumeSwitcher.currentOptionId;
         audioMixer.SetFloat("Music", ConvertToDecibel(musicVolumeSwitcher.currentOptionId));
 
         // Save and apply voice volume
-        saveManager.SaveVoiceVolume(voiceVolumeSwitcher.currentOptionId);
+        SaveManager.saveData.settings.volume.voiceVolume = voiceVolumeSwitcher.currentOptionId;
         audioMixer.SetFloat("Voice", ConvertToDecibel(voiceVolumeSwitcher.currentOptionId));
 
         // Save and apply SFX volume
-        saveManager.SaveSFXVolume(sfxVolumeSwitcher.currentOptionId);
+        SaveManager.saveData.settings.volume.sfxVolume = sfxVolumeSwitcher.currentOptionId;
         audioMixer.SetFloat("SFX", ConvertToDecibel(sfxVolumeSwitcher.currentOptionId));
 
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.Save();
     }
 
     public void LoadShareDataAndUpdateSwitcher()
     {
         // Get share data value
-        int shareDataId = SaveManager.LoadShareAnalytics();
+        int shareDataId = SaveManager.saveData.settings.shareAnalytics;
 
         analyticsSwitcher.currentOptionId = (shareDataId == 1) ? 1 : 0;
     }
 
     public void SaveMotionControls()
     {
-        saveManager.SaveMotionControls(motionSwitcher.currentOptionId == 0);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.settings.motionControls = motionSwitcher.currentOptionId == 0;
+        SaveManager.Save();
     }
 
     public void LoadMotionControls()
     {
         // Get motion controls status
-        bool motionControls = SaveManager.LoadMotionControls();
+        bool motionControls = SaveManager.saveData.settings.motionControls;
 
         int switcherIndex = motionControls ? 0 : 1;
 
@@ -259,13 +252,13 @@ public class MenuData : MonoBehaviour
 
     public void SavePointerVisibility()
     {
-        saveManager.SavePointerVisibility(pointerSwitcher.currentOptionId == 0);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.settings.pointerVisibility = pointerSwitcher.currentOptionId == 0;
+        SaveManager.Save();
     }
 
     public void LoadPointerVisibility()
     {
-        bool pointerVisibility = SaveManager.LoadPointerVisibility();
+        bool pointerVisibility = SaveManager.saveData.settings.pointerVisibility;
 
         int switcherIndex = pointerVisibility ? 0 : 1;
 
@@ -373,14 +366,14 @@ public class MenuData : MonoBehaviour
 
     public void SaveLayout()
     {
-        saveManager.SaveLayoutId(layoutId);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.settings.layoutId = layoutId;
+        SaveManager.Save();
     }
 
     public void SaveNightNumber()
     {
-        saveManager.SaveNightNumber(nightNumber);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.game.nightNumber = nightNumber;
+        SaveManager.Save();
     }
 
     public void SaveCustomNightValues()
@@ -400,8 +393,8 @@ public class MenuData : MonoBehaviour
 
     public void SaveGoldenFreddy()
     {
-        saveManager.SaveGoldenFreddyStatus(1);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.game.goldenFreddyUnlocked = true;
+        SaveManager.Save();
     }
 
     public void DisplaySelectedLayoutButton()
@@ -444,8 +437,8 @@ public class MenuData : MonoBehaviour
         layoutId = cardLayoutMapping[cardId];
 
         // Save layout id
-        saveManager.SaveLayoutId(layoutId);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.settings.layoutId = layoutId;
+        SaveManager.Save();
     }
 
     private float ConvertToDecibel(int volume)

@@ -12,15 +12,13 @@ public class DebugFunctions : MonoBehaviour
         saveGameState = FindObjectOfType<SaveGameState>();
         saveManager = FindObjectOfType<SaveManager>();
 
-        nightNumber = SaveManager.LoadNightNumber();
+        nightNumber = SaveManager.saveData.game.nightNumber;
     }
 
     public void NightAdd()
     {
-        nightNumber++;
-
-        saveManager.SaveNightNumber(nightNumber);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.game.nightNumber = nightNumber++;
+        SaveManager.Save();
 
         Debug.Log("Night number: " + nightNumber);
     }

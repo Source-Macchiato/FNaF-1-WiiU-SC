@@ -10,19 +10,7 @@ public class MenuSetup : MonoBehaviour
 
     void Start()
     {
-        // Adding buttons to the main menu with corresponding actions
-
-        if (SaveManager.LoadStarsId() >= 1)
-        {
-            //menuManager.AddButton(0, 0, SixthNight, "nextnight.sixthnight");
-        }
-        
-        if (SaveManager.LoadStarsId() >= 2)
-        {
-            //menuManager.AddButton(0, 0, CustomNight, "mainmenu.customnight");
-        }
-
-        menuData.GoldenFreddy(SaveManager.LoadGoldenFreddyStatus() == 1);
+        menuData.GoldenFreddy(SaveManager.saveData.game.goldenFreddyUnlocked);
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
@@ -137,7 +125,7 @@ public class MenuSetup : MonoBehaviour
         float chicaDifficulty = PlayerPrefs.GetInt("ChicaDifficulty", 0);
         float foxyDifficulty = PlayerPrefs.GetInt("FoxyDifficulty", 0);
 
-        if (freddyDifficulty == 1 && bonnieDifficulty == 9 && chicaDifficulty == 8 && foxyDifficulty == 7 && SaveManager.LoadGoldenFreddyStatus() == 0)
+        if (freddyDifficulty == 1 && bonnieDifficulty == 9 && chicaDifficulty == 8 && foxyDifficulty == 7 && SaveManager.saveData.game.goldenFreddyUnlocked == false)
         {
             menuData.CustomNightBackgroundStatus(false);
 

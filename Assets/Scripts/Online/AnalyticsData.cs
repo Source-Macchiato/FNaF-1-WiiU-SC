@@ -45,7 +45,7 @@ public class AnalyticsData : MonoBehaviour
 
     private IEnumerator SendAnalytics()
     {
-        if (analyticsToken == null && SaveManager.LoadShareAnalytics() == 1 && !Application.isEditor)
+        if (analyticsToken == null && SaveManager.saveData.settings.shareAnalytics == 1 && !Application.isEditor)
         {
             string url = "https://api.brew-connect.com/v1/online/send_analytics";
             string json = "{" +
@@ -98,7 +98,7 @@ public class AnalyticsData : MonoBehaviour
 
     public IEnumerator UpdateAnalytics(string key, object value)
     {
-        if (analyticsToken != null && SaveManager.LoadShareAnalytics() == 1 && !Application.isEditor)
+        if (analyticsToken != null && SaveManager.saveData.settings.shareAnalytics == 1 && !Application.isEditor)
         {
             string url = "https://api.brew-connect.com/v1/online/update_analytics";
             string json = "{" +
@@ -174,7 +174,7 @@ public class AnalyticsData : MonoBehaviour
 
     public string GetLanguage()
     {
-        string language = SaveManager.LoadLanguage();
+        string language = SaveManager.saveData.settings.language;
 
         if (language == null)
         {
@@ -186,12 +186,12 @@ public class AnalyticsData : MonoBehaviour
 
     public int GetCurrentNight()
     {
-        return Mathf.Clamp(SaveManager.LoadNightNumber() + 1, 1, 7);
+        return Mathf.Clamp(SaveManager.saveData.game.nightNumber++, 1, 7);
     }
 
     public string GetLayout()
     {
-        switch (SaveManager.LoadLayoutId())
+        switch (SaveManager.saveData.settings.layoutId)
         {
             case 0:
                 return "TV only";
@@ -210,8 +210,8 @@ public class AnalyticsData : MonoBehaviour
     {
         menuManager.CloseCurrentPopup();
 
-        saveManager.SaveShareAnalytics(share ? 1 : 0);
-        bool saveResult = saveGameState.DoSave();
+        SaveManager.saveData.settings.shareAnalytics = share ? 1 : 0;
+        SaveManager.Save();
 
         if (share)
         {
@@ -221,7 +221,7 @@ public class AnalyticsData : MonoBehaviour
 
     public void CanShareAnalytics()
     {
-        int canShareAnalytics = SaveManager.LoadShareAnalytics();
+        int canShareAnalytics = SaveManager.saveData.settings.shareAnalytics;
 
         if (canShareAnalytics == -1)
         {

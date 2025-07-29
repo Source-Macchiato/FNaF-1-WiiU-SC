@@ -8,7 +8,7 @@ public class StarsSystem : MonoBehaviour
 
 	void Start()
 	{
-		starsId = SaveManager.LoadStarsId();
+		starsId = SaveManager.saveData.game.starsId;
 
         int counter = 0;
 

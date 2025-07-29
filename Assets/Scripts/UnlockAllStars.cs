@@ -174,10 +174,10 @@ public class UnlockAllStars : MonoBehaviour
 
     void UnlockStars()
     {
-        if (SaveManager.LoadStarsId() <= 2)
+        if (SaveManager.saveData.game.starsId <= 2)
         {
-            saveManager.SaveStars(3);
-            bool saveResult = saveGameState.DoSave();
+            SaveManager.saveData.game.starsId = 3;
+            SaveManager.Save();
 
             SceneManager.LoadScene("MainMenu");
         }

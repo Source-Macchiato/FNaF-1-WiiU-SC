@@ -23,7 +23,7 @@ public class EndScript : MonoBehaviour
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);
 
-        nightNumber = SaveManager.LoadNightNumber();
+        nightNumber = SaveManager.saveData.game.nightNumber;
 
         if (nightNumber == 5)
         {

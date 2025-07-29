@@ -108,7 +108,7 @@ public class Movement : MonoBehaviour {
         ChicaInKitchen.SetActive(false);
 
         //Get the current NightNumber at the start of the game
-        NightNumber = SaveManager.LoadNightNumber();
+        NightNumber = SaveManager.saveData.game.nightNumber;
     }
     
 	void Update()

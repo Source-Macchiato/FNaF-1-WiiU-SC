@@ -37,7 +37,7 @@ public class SubtitlesManager : MonoBehaviour
         subtitleIdentifiers = new List<string>();
         displayDurations = new List<float>();
 
-        nightNumber = SaveManager.LoadNightNumber();
+        nightNumber = SaveManager.saveData.game.nightNumber;
 
         if (nightNumber >= 0 && nightNumber <= 4)
         {

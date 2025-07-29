@@ -1,29 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RenderMovie : MonoBehaviour
 {
-    public AudioSource SrcMacchiatoSound;
     public MovieTexture movTexture;
-    bool hasStarted = false;
+    public AudioSource audioSource;
 
     void Start()
     {
-        movTexture.Play();
-        SrcMacchiatoSound.Play();
+        StartCoroutine(Sequence());
     }
 
-    void Update()
+    private IEnumerator Sequence()
     {
-        if (!hasStarted && movTexture.isPlaying)
-        {
-            hasStarted = true;
-            
-        }
+        movTexture.Play();
+        audioSource.Play();
 
-        if (hasStarted && !movTexture.isPlaying)
-        {
-            SceneManager.LoadScene("Warning");
-        }
+        yield return new WaitUntil(() => !audioSource.isPlaying);
+
+        SceneManager.LoadScene("Warning");
     }
 }

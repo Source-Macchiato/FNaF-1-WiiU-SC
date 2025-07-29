@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Text;
 using System.IO;
+using UnityEngine;
 using WiiU = UnityEngine.WiiU;
 
 public class SaveGameState : MonoBehaviour
 {
-    public bool DoSave()
+    public static bool DoSave(byte[] data)
     {
         WiiU.SaveCommand cmd = WiiU.Save.SaveCommand(WiiU.Save.accountNo);
 
@@ -13,7 +14,7 @@ public class SaveGameState : MonoBehaviour
         if (status != WiiU.Save.FSStatus.OK)
             return false;
 
-        long needspace = Mathf.Max(1024 * 1024, WiiU.PlayerPrefsHelper.rawData.Length);
+        long needspace = Mathf.Max(1024 * 1024, data.Length);
 
         if (freespace < needspace)
         {
@@ -22,10 +23,9 @@ public class SaveGameState : MonoBehaviour
         }
         else
         {
-            var path = Application.persistentDataPath + "/game_data.bin";
+            var path = Application.persistentDataPath + "/data.bin";
             var fileStream = new FileStream(path, FileMode.Create);
-            byte[] prefsData = WiiU.PlayerPrefsHelper.rawData;
-            fileStream.Write(prefsData, 0, prefsData.Length);
+            fileStream.Write(data, 0, data.Length);
             fileStream.Close();
 
             // It is very important to flush quota, otherwise filesystem changes will be discarded upon reboot
@@ -35,5 +35,38 @@ public class SaveGameState : MonoBehaviour
         }
 
         return true;
+    }
+
+    public static string DoLoad()
+    {
+        try
+        {
+            using (var fileStream = new FileStream(Application.persistentDataPath + "/data.bin", FileMode.Open))
+            {
+                var dataSize = (int)fileStream.Length;
+
+                if (dataSize <= 0)
+                {
+                    return string.Empty;
+                }
+
+                byte[] data = new byte[dataSize];
+
+                if (fileStream.Read(data, 0, dataSize) < dataSize)
+                {
+                    return string.Empty;
+                }
+
+                string json = Encoding.UTF8.GetString(data);
+
+                fileStream.Close();
+
+                return json;
+            }
+        }
+        catch (FileNotFoundException)
+        {
+            return string.Empty;
+        }
     }
 }

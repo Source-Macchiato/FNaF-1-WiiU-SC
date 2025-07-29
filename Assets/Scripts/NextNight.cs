@@ -20,7 +20,7 @@ public class NextNight : MonoBehaviour
 
     void Start()
     {
-        nightNumber = SaveManager.LoadNightNumber();
+        nightNumber = SaveManager.saveData.game.nightNumber;
 
         loadingScreenPanel.SetActive(false);
         levelLoader = FindObjectOfType<LevelLoader>();

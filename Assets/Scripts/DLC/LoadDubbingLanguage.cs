@@ -11,15 +11,15 @@ public class LoadDubbingLanguage : MonoBehaviour
 
 	void Start()
 	{
-        nightNumber = SaveManager.LoadNightNumber();
+        nightNumber = SaveManager.saveData.game.nightNumber;
 
         if (nightNumber >= 0 && nightNumber <= 4)
         {
             // Get dubbing language
-            dubbingLanguage = SaveManager.LoadDubbingLanguage();
+            dubbingLanguage = SaveManager.saveData.settings.dubbingLanguage;
 
             // Assign bundleName and audioName variables
-            if (dubbingLanguage == null || dubbingLanguage == "en")
+            if (dubbingLanguage == string.Empty || dubbingLanguage == "en")
             {
                 bundleName = "vo-language-pack";
 

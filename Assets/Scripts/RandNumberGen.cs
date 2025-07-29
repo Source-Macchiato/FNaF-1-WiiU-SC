@@ -21,7 +21,22 @@ public class RandNumberGen : MonoBehaviour {
 
     public float nightNumber;
 
-	void GenRandomNumber ()
+    void Start()
+    {
+        nightNumber = SaveManager.saveData.game.nightNumber;
+    }
+
+    void Update()
+    {
+        CountDown -= Time.deltaTime;
+
+        if (CountDown <= 0)
+        {
+            GenRandomNumber();
+        }
+    }
+
+    void GenRandomNumber()
     {
         CountDown = System.Math.Round(Random.Range(30f, 40f), 0);
 
@@ -210,17 +225,4 @@ public class RandNumberGen : MonoBehaviour {
             
         }
     }
-	
-
-	void Update()
-    {
-        nightNumber = SaveManager.LoadNightNumber();
-
-        CountDown -= Time.deltaTime;
-
-        if (CountDown <= 0)
-        {
-            GenRandomNumber();
-        }
-	}
 }

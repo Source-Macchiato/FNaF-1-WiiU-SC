@@ -50,7 +50,7 @@ public class GameScript : MonoBehaviour
 
         officeRect = officeContainer.GetComponent<RectTransform>();
 
-        nightNumber = SaveManager.LoadNightNumber();
+        nightNumber = SaveManager.saveData.game.nightNumber;
 
         if (textNightNumber != null)
         {
@@ -189,8 +189,8 @@ public class GameScript : MonoBehaviour
                     tmpTextTimeDisplayer.text = "6 AM";
                 }
 
-                saveManager.SaveNightNumber(nightNumber + 1);
-                bool saveResult = saveGameState.DoSave();
+                SaveManager.saveData.game.nightNumber = nightNumber++;
+                SaveManager.Save();
 
                 SceneManager.LoadScene("6AM");
             break;

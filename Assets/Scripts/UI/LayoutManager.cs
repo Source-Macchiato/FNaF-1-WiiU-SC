@@ -18,7 +18,7 @@ public class LayoutManager : MonoBehaviour
     void Start()
 	{
         // Get scripts
-        layoutId = SaveManager.LoadLayoutId();
+        layoutId = SaveManager.saveData.settings.layoutId;
 
         if (layoutId == 0)
         {
