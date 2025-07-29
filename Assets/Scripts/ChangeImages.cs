@@ -182,7 +182,7 @@ public class ChangeImages : MonoBehaviour
             GoldenFreddyJumpscareTime -= Time.deltaTime;
             if(GoldenFreddyJumpscareTime <= 0)
             {
-                controllersRumble.TriggerRumble(2f, "Golden Freddy");
+                controllersRumble.TriggerRumble(30, "Golden Freddy");
                 GoldenFreddyJumpscare.SetActive(true);
                 GoldenFreddyJumpscareTime = 10f;
             }
@@ -710,7 +710,7 @@ public class ChangeImages : MonoBehaviour
             BonnieJumpscare.SetActive(true);
             isBeingJumpscared = true;
 
-            controllersRumble.TriggerRumble(2f, "Bonnie");
+            controllersRumble.TriggerRumble(30, "Bonnie");
         }
         // where is Chica system
         if (WhereChica < 8)
@@ -730,7 +730,7 @@ public class ChangeImages : MonoBehaviour
                 ChicaJumpscare.SetActive(true);
                 isBeingJumpscared = true;
 
-                controllersRumble.TriggerRumble(2f, "Chica");
+                controllersRumble.TriggerRumble(30, "Chica");
             }
         }
 
@@ -747,7 +747,7 @@ public class ChangeImages : MonoBehaviour
 
             isBeingJumpscared = true;
 
-            controllersRumble.TriggerRumble(2f, "Freddy");
+            controllersRumble.TriggerRumble(30, "Freddy");
         }
 
         if (WhereFoxy >= 4)
@@ -788,7 +788,7 @@ public class ChangeImages : MonoBehaviour
 
                             isBeingJumpscared = true;
 
-                            controllersRumble.TriggerRumble(2f, "Foxy");
+                            controllersRumble.TriggerRumble(30, "Foxy");
                         }
                         else if (L_Door_Closed)
                         {

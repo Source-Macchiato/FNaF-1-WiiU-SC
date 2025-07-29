@@ -86,7 +86,7 @@ public class MenuData : MonoBehaviour
             nightNumberText.text = "1";
         }
 
-        controllersRumble.TriggerRumble(3.5f, "This is a test");
+        controllersRumble.TriggerRumble(50, "This is a test");
     }
 	
 	// Update is called once per frame
