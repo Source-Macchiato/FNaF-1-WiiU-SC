@@ -371,8 +371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e701d8156f6cb94e9c610ba7ed2fff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 903183357}
   movTexture: {fileID: 15200000, guid: 0b7e339f7588ede4faba3165cf09c5a9, type: 3}
+  audioSource: {fileID: 903183357}
 --- !u!1 &1752311295
 GameObject:
   m_ObjectHideFlags: 0

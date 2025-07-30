@@ -111,11 +111,11 @@ PlayerSettings:
   psp2PowerMode: 0
   psp2AcquireBGM: 1
   wiiUTVResolution: 0
-  wiiUGamePadMSAA: 1
+  wiiUGamePadMSAA: 2
   wiiUSupportsNunchuk: 1
   wiiUSupportsClassicController: 1
   wiiUSupportsBalanceBoard: 0
-  wiiUSupportsMotionPlus: 0
+  wiiUSupportsMotionPlus: 1
   wiiUSupportsProController: 1
   wiiUAllowScreenCapture: 1
   wiiUControllerCount: 1
@@ -246,7 +246,7 @@ PlayerSettings:
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
   wiiUTitleID: 000500001026F400
-  wiiUGroupID: 001026F4
+  wiiUGroupID: 000026F4
   wiiUCommonSaveSize: 4096
   wiiUAccountSaveSize: 2048
   wiiUOlvAccessKey: 0
