@@ -46,6 +46,7 @@ public class SaveData
     public Settings settings = new Settings();
 }
 
+[Serializable]
 public class Game
 {
     public int nightNumber = 0;
@@ -53,6 +54,7 @@ public class Game
     public bool goldenFreddyUnlocked = false;
 }
 
+[Serializable]
 public class Settings
 {
     public string language = string.Empty;
@@ -64,6 +66,7 @@ public class Settings
     public bool pointerVisibility = true;
 }
 
+[Serializable]
 public class Volume
 {
     public int generalVolume = 10;
