@@ -1,11 +1,27 @@
 ﻿using System.Text;
 using System.IO;
+using System.Threading;
 using UnityEngine;
 using WiiU = UnityEngine.WiiU;
 
 public class SaveGameState : MonoBehaviour
 {
     public static bool DoSave(byte[] data)
+    {
+        string path = Application.persistentDataPath + "/data.bin";
+        bool res = false;
+        Thread t = new Thread(new ThreadStart(
+            delegate
+            {
+                res = DelegatedSave(data, path);
+            })
+        );
+
+        t.Start();
+        return res;
+    }
+
+    public static bool DelegatedSave(byte[] data, string path)
     {
         WiiU.SaveCommand cmd = WiiU.Save.SaveCommand(WiiU.Save.accountNo);
 
@@ -23,7 +39,6 @@ public class SaveGameState : MonoBehaviour
         }
         else
         {
-            var path = Application.persistentDataPath + "/data.bin";
             var fileStream = new FileStream(path, FileMode.Create);
             fileStream.Write(data, 0, data.Length);
             fileStream.Close();
