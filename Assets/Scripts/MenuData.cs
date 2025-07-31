@@ -45,7 +45,6 @@ public class MenuData : MonoBehaviour
 
     // Scripts
     MenuManager menuManager;
-    ControllersRumble controllersRumble;
 
     // Advertisement
     public GameObject advertisementImage;
@@ -57,7 +56,6 @@ public class MenuData : MonoBehaviour
     {
         // Get scripts
         menuManager = FindObjectOfType<MenuManager>();
-        controllersRumble = FindObjectOfType<ControllersRumble>();
 
         // Load
         nightNumber = SaveManager.saveData.game.nightNumber;
@@ -89,7 +87,7 @@ public class MenuData : MonoBehaviour
         // Load scene after advertisementload is called
         if (Time.time - startTime >= waitTime && advertisementIsActive == true)
         {
-            SceneManager.LoadScene("NextNight");
+            SceneManager.LoadSceneAsync("NextNight");
         }
 
         // Enable and disable stars
@@ -316,6 +314,7 @@ public class MenuData : MonoBehaviour
             horizontalLayoutGroup.spacing = 71;
 
             customNightCharacters[4].SetActive(true);
+            customNightCharacters[4].GetComponent<Button>().interactable = true;
 
             Navigation navigationFoxyButton = customNightCharacters[3].GetComponent<Button>().navigation;
             navigationFoxyButton.selectOnRight = customNightCharacters[4].GetComponent<Button>();
@@ -331,6 +330,7 @@ public class MenuData : MonoBehaviour
             horizontalLayoutGroup.spacing = 120;
 
             customNightCharacters[4].SetActive(false);
+            customNightCharacters[4].GetComponent<Button>().interactable = false;
 
             Navigation navigationFoxyButton = customNightCharacters[3].GetComponent<Button>().navigation;
             navigationFoxyButton.selectOnRight = null;
