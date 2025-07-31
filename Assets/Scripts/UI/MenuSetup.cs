@@ -38,7 +38,7 @@ public class MenuSetup : MonoBehaviour
 
         if (menuData.nightNumber >= 0 && menuData.nightNumber <= 4) // Night is between 1 and 5
         {
-            SceneManager.LoadScene("NextNight");
+            SceneManager.LoadSceneAsync("NextNight");
         }
         else if (menuData.nightNumber >= 5)
         {
@@ -46,7 +46,7 @@ public class MenuSetup : MonoBehaviour
             menuData.nightNumber = 4;
             menuData.SaveNightNumber();
 
-            SceneManager.LoadScene("NextNight");
+            SceneManager.LoadSceneAsync("NextNight");
         }
     }
 
@@ -57,7 +57,7 @@ public class MenuSetup : MonoBehaviour
         menuData.nightNumber = 5;
         menuData.SaveNightNumber();
 
-        SceneManager.LoadScene("NextNight");
+        SceneManager.LoadSceneAsync("NextNight");
     }
 
     public void Options()
@@ -137,7 +137,7 @@ public class MenuSetup : MonoBehaviour
         {
             menuManager.canNavigate = false;
 
-            SceneManager.LoadScene("NextNight");
+            SceneManager.LoadSceneAsync("NextNight");
         }
     }
 
