@@ -221,8 +221,6 @@ public class RandNumberGen : MonoBehaviour {
                     OfficeObject.GetComponent<Movement>().GlitchActive = true;
                 }
             }
-
-            
         }
     }
 }

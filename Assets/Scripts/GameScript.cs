@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
 {
-    private int nightNumber;
+    public static int nightNumber;
     public float timeRemaining = 535; //fixed i hope -- who wrote this ? who are you ?
-    public int Hour = 12;
+    public static int hour = 12;
     public float Usage = 1;
 
     public GameObject nightNumberDisplayer;
@@ -100,7 +100,7 @@ public class GameScript : MonoBehaviour
         switch((int)timeRemaining)
         {
             case 535:
-                Hour = 12;
+                hour = 12;
                 if (textTimeDisplayer != null)
                 {
                     textTimeDisplayer.text = "12 AM";
@@ -113,7 +113,7 @@ public class GameScript : MonoBehaviour
             break;
                 
             case 445:
-                Hour = 1;
+                hour = 1;
                 if (textTimeDisplayer != null)
                 {
                     textTimeDisplayer.text = "1 AM";
@@ -126,7 +126,7 @@ public class GameScript : MonoBehaviour
                 break;
 
             case 354:
-                Hour = 2;
+                hour = 2;
                 if (textTimeDisplayer != null)
                 {
                     textTimeDisplayer.text = "2 AM";
@@ -139,7 +139,7 @@ public class GameScript : MonoBehaviour
                 break;
             
             case 267:
-                Hour = 3;
+                hour = 3;
                 if (textTimeDisplayer != null)
                 {
                     textTimeDisplayer.text = "3 AM";
@@ -152,7 +152,7 @@ public class GameScript : MonoBehaviour
                 break;
 
             case 178:
-                Hour = 4;
+                hour = 4;
                 if (textTimeDisplayer != null)
                 {
                     textTimeDisplayer.text = "4 AM";
@@ -165,7 +165,7 @@ public class GameScript : MonoBehaviour
                 break;
 
             case 89:
-                Hour = 5;
+                hour = 5;
                 if (textTimeDisplayer != null)
                 {
                     textTimeDisplayer.text = "5 AM";
@@ -178,7 +178,7 @@ public class GameScript : MonoBehaviour
                 break;
             
             case 0:
-                Hour = 6;
+                hour = 6;
                 if (textTimeDisplayer != null)
                 {
                     textTimeDisplayer.text = "6 AM";

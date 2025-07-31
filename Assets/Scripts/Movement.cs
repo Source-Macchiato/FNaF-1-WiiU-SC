@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
 
-public class Movement : MonoBehaviour {
-    
-    //public ChangeImages changeImages;
-    public GameScript GameScript;
-    private GameScript gameScript;
-
+public class Movement : MonoBehaviour
+{
     public bool LongGlitch = false;
 
     public GameObject ChicaInKitchen;
@@ -26,11 +22,11 @@ public class Movement : MonoBehaviour {
     public static int chicaPosition = 1;
     public static int foxyPosition = 1;
 
-    public int BonnieDifficulty; //done
-    public int ChicaDifficulty; //done
-    public int FreddyDifficulty; //done
-    public int FoxyDifficulty; //done
-
+    public static int freddyDifficulty = 0;
+    public static int bonnieDifficulty = 0;
+    public static int chicaDifficulty = 0;
+    public static int foxyDifficulty = 0;
+    public static int goldenDifficulty = 0;
 
     public bool bonnieInCount;
     public bool chicaInCount;
@@ -38,8 +34,6 @@ public class Movement : MonoBehaviour {
     public bool foxyInCount;
 
     public bool camIsUp = false;
-
-    public float NightNumber; //done
 
     public GameObject MoveGlitch;
     public bool GlitchActive = false;
@@ -67,6 +61,8 @@ public class Movement : MonoBehaviour {
 
     public GameObject OfficeObject;
 
+    private Office office;
+
     public AudioSource FreddyLaugh1;
 
     //each column represent a night (night 1, night 2 etc...), and each row represent an Hour "12 AM to 5AM"
@@ -85,8 +81,7 @@ public class Movement : MonoBehaviour {
     }
     void Start()
     {
-        // Used for to get the "Hour" variable
-        gameScript = GetComponent<GameScript>();
+        office = FindObjectOfType<Office>();
 
         //set movement time Z
         BonnieMovementTime = 4.97f;
@@ -106,69 +101,58 @@ public class Movement : MonoBehaviour {
 
         //Disable Chica sounds when she is in the kitchen
         ChicaInKitchen.SetActive(false);
-
-        //Get the current NightNumber at the start of the game
-        NightNumber = SaveManager.saveData.game.nightNumber;
     }
     
 	void Update()
     {
-        Office office = OfficeObject.GetComponent<Office>();
         LeftDoorClosed = office.L_Door_Closed;
         RightDoorClosed = office.R_Door_Closed;
-        int hour = gameScript.Hour;
-        int nightIndex = Mathf.Clamp((int)NightNumber, 0, 5);  // Limit nightIndex to valid range (0-5)
 
-        if(NightNumber <= 5)
+        if(GameScript.nightNumber <= 5)
         {
             // Set initial difficulties based on the starting array
-            FreddyDifficulty = startingDifficulties[nightIndex, 0] * 5;
-            BonnieDifficulty = startingDifficulties[nightIndex, 1] * 5;
-            ChicaDifficulty = startingDifficulties[nightIndex, 2] * 5;
-            FoxyDifficulty = startingDifficulties[nightIndex, 3] * 5;
-        }
-        else
-        {
-            BonnieDifficulty = PlayerPrefs.GetInt("BonnieDifficulty", 0) * 5;
-            ChicaDifficulty = PlayerPrefs.GetInt("ChicaDifficulty", 0) * 5;
-            FreddyDifficulty = PlayerPrefs.GetInt("FreddyDifficulty", 0) * 5;
-            FoxyDifficulty = PlayerPrefs.GetInt("FoxyDifficulty", 0) * 5;
+            freddyDifficulty = startingDifficulties[GameScript.nightNumber, 0] * 5;
+            bonnieDifficulty = startingDifficulties[GameScript.nightNumber, 1] * 5;
+            chicaDifficulty = startingDifficulties[GameScript.nightNumber, 2] * 5;
+            foxyDifficulty = startingDifficulties[GameScript.nightNumber, 3] * 5;
         }
 
         // Increment difficulties based on the hour
-        if (hour == 2) {
-            BonnieDifficulty += 5;
+        if (GameScript.hour == 2)
+        {
+            bonnieDifficulty += 5;
         }
-        if (hour == 3) {
-            BonnieDifficulty += 5;
-            ChicaDifficulty += 5;
-            FoxyDifficulty += 5;
+        if (GameScript.hour == 3)
+        {
+            bonnieDifficulty += 5;
+            chicaDifficulty += 5;
+            foxyDifficulty += 5;
         }
-        if (hour == 4) {
-            BonnieDifficulty += 5;
-            ChicaDifficulty += 5;
-            FoxyDifficulty += 5;
+        if (GameScript.hour == 4)
+        {
+            bonnieDifficulty += 5;
+            chicaDifficulty += 5;
+            foxyDifficulty += 5;
         }
 
         // Check if animatronics are active
-        BonnieActive = BonnieDifficulty > 0;
-        ChicaActive = ChicaDifficulty > 0;
-        FreddyActive = FreddyDifficulty > 0;
-        FoxyActive = FoxyDifficulty > 0;
+        BonnieActive = bonnieDifficulty > 0;
+        ChicaActive = chicaDifficulty > 0;
+        FreddyActive = freddyDifficulty > 0;
+        FoxyActive = foxyDifficulty > 0;
 
         //debug garbage
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.ClearDeveloperConsole();
-            Debug.Log("Hour: " + gameScript.Hour + " NightNumber: " + NightNumber);
-            Debug.Log("Saved: Bonnie=" + BonnieDifficulty + "\n Chica=" + ChicaDifficulty + "\n Freddy=" + FreddyDifficulty + "\n Foxy=" + FoxyDifficulty);
-            Debug.Log("WhereBonnie=" + bonniePosition + "\nWhereChica= " + chicaPosition + "\nWhereFreddy=" + freddyPosition + "\nWhereFoxy=" + foxyPosition);
+            Debug.Log("Hour: " + GameScript.hour + " Night: " + GameScript.nightNumber);
+            Debug.Log("Difficulty: \n- Bonnie=" + bonnieDifficulty + "\n- Chica=" + chicaDifficulty + "\n- Freddy=" + freddyDifficulty + "\n- Foxy=" + foxyDifficulty + "\n- Golden Freddy=" + goldenDifficulty);
+            Debug.Log("Position: \n- Bonnie=" + bonniePosition + "\n- Chica= " + chicaPosition + "\n- Freddy=" + freddyPosition + "\n- Foxy=" + foxyPosition);
         }
 
         RandMovement randMovement = GetComponent<RandMovement>();
 
-        // Get the references RandNumberGen (the other code was spaghetti asf)
-        // Use PlayerPrefs too lmao
+        // Get the references RandNumberGen (the other code was spaghetti asf) -- Use PlayerPrefs too lmao
         RandNumberGen randNumberGen = OfficeObject.GetComponent<RandNumberGen>();
         // Check if somebody left the stage by checking if an Where<name> is higher than 2 or equal
         if (bonniePosition >= 2)
@@ -330,7 +314,7 @@ public class Movement : MonoBehaviour {
 
     void AttemptBonnieMovement()
     {
-        if (BonnieProbability < BonnieDifficulty) // probability bonnie to move
+        if (BonnieProbability < bonnieDifficulty) // probability bonnie to move
         {
             bonniePosition += 1;
             bonnieInCount = false;
@@ -340,13 +324,13 @@ public class Movement : MonoBehaviour {
                 GlitchActive = false;
                 MoveGlitch.SetActive(false);
             }
-            Debug.Log("Bonnie Probability : "+BonnieProbability+"\nBonnie Difficulty : " + BonnieDifficulty);
+            Debug.Log("Bonnie Probability : "+BonnieProbability+"\nBonnie Difficulty : " + bonnieDifficulty);
         }
     }
 
     void AttemptChicaMovement()
     {
-        if (ChicaProbability < ChicaDifficulty) // probability bonnie to move
+        if (ChicaProbability < chicaDifficulty) // probability bonnie to move
         {
 
             if (bonniePosition == 2) // check if bonnie is on Dining Area
@@ -371,12 +355,12 @@ public class Movement : MonoBehaviour {
                 MoveGlitch.SetActive(false);
                 }
             }
-            Debug.Log("Chica Probability : "+BonnieProbability+"\nChica Difficulty : " + BonnieDifficulty);
+            Debug.Log("Chica Probability : "+BonnieProbability+"\nChica Difficulty : " + bonnieDifficulty);
         }
     }    
     void AttemptFreddyMovement()
     {
-        if (FreddyProbability < FreddyDifficulty) // Check if Freddy should move
+        if (FreddyProbability < freddyDifficulty) // Check if Freddy should move
         {
             // Ensure Freddy’s path is clear
             bool pathClear = 
@@ -403,7 +387,7 @@ public class Movement : MonoBehaviour {
                 }
             }
 
-            Debug.Log("Freddy Probability: " + FreddyProbability + "\nFreddy Difficulty: " + FreddyDifficulty);
+            Debug.Log("Freddy Probability: " + FreddyProbability + "\nFreddy Difficulty: " + freddyDifficulty);
         }
     }
 
@@ -414,7 +398,7 @@ void AIGlitch()
 }
     void AttemptFoxyMovement()
     {
-        if (FoxyProbability < FoxyDifficulty) // probability bonnie to move
+        if (FoxyProbability < foxyDifficulty) // probability bonnie to move
         {
             foxyPosition += 1;
             foxyInCount = false;
@@ -426,7 +410,7 @@ void AIGlitch()
             }
 
             //debug
-            Debug.Log("Foxy Probability : "+BonnieProbability+"\nFoxy Difficulty : " + BonnieDifficulty);
+            Debug.Log("Foxy Probability : "+BonnieProbability+"\nFoxy Difficulty : " + bonnieDifficulty);
         }
     }
 

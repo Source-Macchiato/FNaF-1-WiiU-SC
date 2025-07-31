@@ -374,19 +374,17 @@ public class MenuData : MonoBehaviour
         SaveManager.Save();
     }
 
-    public void SaveCustomNightValues()
+    public void ApplyCustomNightValues()
     {
-        PlayerPrefs.SetInt("FreddyDifficulty", customNightCharacters[0].GetComponent<CardSwitcherData>().difficultyValue);
-        PlayerPrefs.SetInt("BonnieDifficulty", customNightCharacters[1].GetComponent<CardSwitcherData>().difficultyValue);
-        PlayerPrefs.SetInt("ChicaDifficulty", customNightCharacters[2].GetComponent<CardSwitcherData>().difficultyValue);
-        PlayerPrefs.SetInt("FoxyDifficulty", customNightCharacters[3].GetComponent<CardSwitcherData>().difficultyValue);
+        Movement.freddyDifficulty = customNightCharacters[0].GetComponent<CardSwitcherData>().difficultyValue;
+        Movement.bonnieDifficulty = customNightCharacters[1].GetComponent<CardSwitcherData>().difficultyValue;
+        Movement.chicaDifficulty = customNightCharacters[2].GetComponent<CardSwitcherData>().difficultyValue;
+        Movement.foxyDifficulty = customNightCharacters[3].GetComponent<CardSwitcherData>().difficultyValue;
 
-        if (customNightCharacters[4].activeSelf)
+        if (SaveManager.saveData.game.goldenFreddyUnlocked)
         {
-            PlayerPrefs.SetInt("GoldenDifficulty", customNightCharacters[4].GetComponent<CardSwitcherData>().difficultyValue);
+            Movement.goldenDifficulty = customNightCharacters[4].GetComponent<CardSwitcherData>().difficultyValue;
         }
-
-        PlayerPrefs.Save();
     }
 
     public void SaveGoldenFreddy()

@@ -118,14 +118,9 @@ public class MenuSetup : MonoBehaviour
         menuData.nightNumber = 6;
         menuData.SaveNightNumber();
 
-        menuData.SaveCustomNightValues();
+        menuData.ApplyCustomNightValues();
 
-        float freddyDifficulty = PlayerPrefs.GetInt("FreddyDifficulty", 0);
-        float bonnieDifficulty = PlayerPrefs.GetInt("BonnieDifficulty", 0);
-        float chicaDifficulty = PlayerPrefs.GetInt("ChicaDifficulty", 0);
-        float foxyDifficulty = PlayerPrefs.GetInt("FoxyDifficulty", 0);
-
-        if (freddyDifficulty == 1 && bonnieDifficulty == 9 && chicaDifficulty == 8 && foxyDifficulty == 7 && SaveManager.saveData.game.goldenFreddyUnlocked == false)
+        if (Movement.freddyDifficulty == 1 && Movement.bonnieDifficulty == 9 && Movement.chicaDifficulty == 8 && Movement.foxyDifficulty == 7 && SaveManager.saveData.game.goldenFreddyUnlocked == false)
         {
             menuData.CustomNightBackgroundStatus(false);
 
