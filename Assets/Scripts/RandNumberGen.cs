@@ -74,7 +74,7 @@ public class RandNumberGen : MonoBehaviour {
         {
             if (RandNumberBonnie == 2)
             {
-                OfficeObject.GetComponent<Movement>().WhereBonnie = 2;
+                Movement.bonniePosition = 2;
 
                 if (camIsUp)
                 {
@@ -85,7 +85,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberBonnie == 3)
             {
-                OfficeObject.GetComponent<Movement>().WhereBonnie = 3;
+                Movement.bonniePosition = 3;
 
                 if (camIsUp)
                 {
@@ -96,7 +96,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberBonnie == 4)
             {
-                OfficeObject.GetComponent<Movement>().WhereBonnie = 4;
+                Movement.bonniePosition = 4;
 
                 if (camIsUp)
                 {
@@ -107,7 +107,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberBonnie == 5)
             {
-                OfficeObject.GetComponent<Movement>().WhereBonnie = 5;
+                Movement.bonniePosition = 5;
 
                 if (camIsUp)
                 {
@@ -118,7 +118,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberBonnie == 6)
             {
-                OfficeObject.GetComponent<Movement>().WhereBonnie = 6;
+                Movement.bonniePosition = 6;
 
                 if (camIsUp)
                 {
@@ -132,7 +132,7 @@ public class RandNumberGen : MonoBehaviour {
         {
             if (RandNumberChica == 2)
             {
-                OfficeObject.GetComponent<Movement>().WhereChica = 2;
+                Movement.chicaPosition = 2;
 
                 if (camIsUp)
                 {
@@ -143,7 +143,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberChica == 3)
             {
-                OfficeObject.GetComponent<Movement>().WhereChica = 3;
+                Movement.chicaPosition = 3;
 
                 if (camIsUp)
                 {
@@ -154,7 +154,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberChica == 4)
             {
-                OfficeObject.GetComponent<Movement>().WhereChica = 4;
+                Movement.chicaPosition = 4;
 
                 if (camIsUp)
                 {
@@ -165,7 +165,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberChica == 5)
             {
-                OfficeObject.GetComponent<Movement>().WhereChica = 5;
+                Movement.chicaPosition = 5;
 
                 if (camIsUp)
                 {
@@ -176,7 +176,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberChica == 6)
             {
-                OfficeObject.GetComponent<Movement>().WhereChica = 6;
+                Movement.chicaPosition = 6;
 
                 if (camIsUp)
                 {
@@ -187,7 +187,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberChica == 7)
             {
-                OfficeObject.GetComponent<Movement>().WhereChica = 7;
+                Movement.chicaPosition = 7;
 
                 if (camIsUp)
                 {
@@ -202,7 +202,7 @@ public class RandNumberGen : MonoBehaviour {
         {
             if (RandNumberFreddy == 1)
             {
-                OfficeObject.GetComponent<Movement>().WhereFreddy = 1;
+                Movement.freddyPosition = 1;
 
                 if (camIsUp)
                 {
@@ -213,7 +213,7 @@ public class RandNumberGen : MonoBehaviour {
 
             if (RandNumberFreddy > 2)
             {
-                OfficeObject.GetComponent<Movement>().WhereFreddy = 2;
+                Movement.freddyPosition = 2;
 
                 if (camIsUp)
                 {

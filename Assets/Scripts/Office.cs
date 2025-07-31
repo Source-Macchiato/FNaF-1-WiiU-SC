@@ -410,7 +410,8 @@ public class Office : MonoBehaviour {
             if (L_Door_Closed)
             {
                 OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoor = true;
-                OfficeControllerObject.GetComponent<ChangeImages>().WhereBonnie = 2;
+                
+                Movement.bonniePosition = 2;
             }
         }
 
@@ -419,7 +420,8 @@ public class Office : MonoBehaviour {
             if (R_Door_Closed)
             {
                 OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoor = true;
-                OfficeControllerObject.GetComponent<ChangeImages>().WhereChica = 2;
+
+                Movement.chicaPosition = 2;
             }
         }
 
@@ -428,7 +430,8 @@ public class Office : MonoBehaviour {
             if (R_Door_Closed)
             {
                 OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoor = true;
-                OfficeControllerObject.GetComponent<ChangeImages>().WhereFreddy = 1;
+
+                Movement.freddyPosition = 1;
             }
         }
 

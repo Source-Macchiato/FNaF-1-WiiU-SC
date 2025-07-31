@@ -11,7 +11,7 @@ public class ChangeImages : MonoBehaviour
     public float WaitPlayerToNotice = 6f;
     public bool PlayerSawFoxy = false;
     public GameObject KitckenAudioOnly;
-    public float WhichCamera = 1;
+    private int currentCamera = 1;
     public GameObject cameraScreen;
 
     public I18nTextTranslator i18nTextTranslator;
@@ -86,11 +86,6 @@ public class ChangeImages : MonoBehaviour
     public double RandCamNoise;
     public bool noiseIsPlaying;
 
-    public float WhereFreddy = 1;
-    public float WhereBonnie = 1;
-    public float WhereChica = 1;
-    public float WhereFoxy = 1;
-
     [Header("Golden Freddy shit")]
     public int GoldenFreddyChance;
     public bool GoldenFreddyActive;
@@ -164,14 +159,6 @@ public class ChangeImages : MonoBehaviour
 
     void Update()
     {
-        PlayerPrefs.SetFloat("WhichCamera", WhichCamera);
-        PlayerPrefs.Save();
-
-        WhereBonnie = PlayerPrefs.GetFloat("WhereBonnie", WhereBonnie);
-        WhereChica = PlayerPrefs.GetFloat("WhereChica", WhereChica);
-        WhereFreddy = PlayerPrefs.GetFloat("WhereFreddy", WhereFreddy);
-        WhereFoxy = PlayerPrefs.GetFloat("WhereFoxy", WhereFoxy);
-
         // Get current sprite and assign it in a local variable
         currentSprite = cameraScreen.GetComponent<Image>().sprite;
 
@@ -196,12 +183,12 @@ public class ChangeImages : MonoBehaviour
                 Application.Quit();
             }
         }
-        else if(camIsUp)
+        else if (camIsUp)
         {
             GoldenFreddyActive = false;
         }
 
-        if(!GoldenFreddyActive)
+        if (!GoldenFreddyActive)
         {
             GoldenFreddyOffice.SetActive(false);
         }
@@ -214,7 +201,7 @@ public class ChangeImages : MonoBehaviour
                 
             }
             
-            if(GoldenFreddyChance == GoldenFreddyRange && WhichCamera == 5)
+            if(GoldenFreddyChance == GoldenFreddyRange && currentCamera == 5)
             {
                 GoldenFreddyActive = true;
                 GoldenFreddyOffice.SetActive(true);
@@ -224,7 +211,7 @@ public class ChangeImages : MonoBehaviour
                 GoldenFreddyActive = false;
                 GoldenFreddyOffice.SetActive(false);
             }
-            if (WhichCamera == 1)
+            if (currentCamera == 1)
             {
                 i18nTextTranslator.textId = "camera.showstage";
                 i18nTextTranslator.UpdateText();
@@ -234,7 +221,7 @@ public class ChangeImages : MonoBehaviour
                     currentSprite = ShowStageBonnieChicaFreddyDefault;
                 }
 
-                if (WhereBonnie >= 2)
+                if (Movement.bonniePosition >= 2)
                 {
                     if (!BonnieLeft)
                     {
@@ -244,7 +231,7 @@ public class ChangeImages : MonoBehaviour
                     }
                 }
 
-                if (WhereChica >= 2)
+                if (Movement.chicaPosition >= 2)
                 {
                     if (BonnieLeft)
                     {
@@ -257,7 +244,7 @@ public class ChangeImages : MonoBehaviour
                     }
                 }
 
-                if (WhereFreddy >= 2)
+                if (Movement.freddyPosition >= 2)
                 {
                     if (BonnieLeft)
                     {
@@ -274,7 +261,7 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Chica and Freddy at Show Stage
-                if (AmountLeft == 1 && WhereChica == 1)
+                if (AmountLeft == 1 && Movement.chicaPosition == 1)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != ShowStageChicaFreddyDefault)
@@ -282,7 +269,7 @@ public class ChangeImages : MonoBehaviour
                         currentSprite = ShowStageChicaFreddyDefault;
                     }
                 }
-                else if(WhereBonnie == 1 && WhereFreddy == 1 && WhereChica != 1)
+                else if(Movement.bonniePosition == 1 && Movement.freddyPosition == 1 && Movement.chicaPosition != 1)
                 {
                     // Check if sprite is already displayed
                     if(currentSprite != ShowStageBonnieFreddyDefault)
@@ -320,13 +307,13 @@ public class ChangeImages : MonoBehaviour
             }
 
             //-----------------dining Area-------------------
-            if (WhichCamera == 2)
+            if (currentCamera == 2)
             {
                 i18nTextTranslator.textId = "camera.diningarea";
                 i18nTextTranslator.UpdateText();
 
                 // Bonnie at Dining Area
-                if (WhereBonnie == 2)
+                if (Movement.bonniePosition == 2)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != DiningAreaBonnieDefault)
@@ -336,7 +323,7 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Chica at Dining Area
-                if (WhereChica == 2)
+                if (Movement.chicaPosition == 2)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != DiningAreaChicaDefault)
@@ -346,7 +333,7 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Freddy at Dining Area
-                if (WhereFreddy == 2)
+                if (Movement.freddyPosition == 2)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != DiningAreaFreddyDefault)
@@ -357,7 +344,7 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Empty Dining Area
-                if (WhereFreddy != 2 && WhereBonnie != 2 && WhereChica != 2)
+                if (Movement.freddyPosition != 2 && Movement.bonniePosition != 2 && Movement.chicaPosition != 2)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != DiningAreaEmptyDefault)
@@ -368,13 +355,13 @@ public class ChangeImages : MonoBehaviour
 
             }
 
-            if (WhichCamera == 3)
+            if (currentCamera == 3)
             {
                 i18nTextTranslator.textId = "camera.piratecove";
                 i18nTextTranslator.UpdateText();
 
                 // Foxy phase 1
-                if (WhereFoxy == 1)
+                if (Movement.foxyPosition == 1)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != PirateCovePhase1Default)
@@ -384,7 +371,7 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Foxy phase 2
-                if (WhereFoxy == 2)
+                if (Movement.foxyPosition == 2)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != PirateCovePhase2Default)
@@ -394,7 +381,7 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Foxy phase 3
-                if (WhereFoxy == 3)
+                if (Movement.foxyPosition == 3)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != PirateCovePhase3Default)
@@ -402,7 +389,7 @@ public class ChangeImages : MonoBehaviour
                         currentSprite = PirateCovePhase3Default;
                     }
                 }
-                if(WhereFoxy == 4)
+                if (Movement.foxyPosition == 4)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != PirateCovePhase4Default)
@@ -412,13 +399,13 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
-            if (WhichCamera == 4)
+            if (currentCamera == 4)
             {
                 i18nTextTranslator.textId = "camera.westhall";
                 i18nTextTranslator.UpdateText();
 
                 // Does Bonnie is at West Hall
-                if (WhereBonnie == 5)
+                if (Movement.bonniePosition == 5)
                 {
                     // Check if sprite is alrady displayed
                     if (currentSprite != WestHallBonnieDefault)
@@ -436,12 +423,12 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
-            if (WhichCamera == 5)
+            if (currentCamera == 5)
             {
                 i18nTextTranslator.textId = "camera.westhallcorner";
                 i18nTextTranslator.UpdateText();
 
-                if (WhereBonnie == 6)
+                if (Movement.bonniePosition == 6)
                 {
                     // Check if sprite is alraedy displayed
                     if (currentSprite != WestHallCornerBonnieDefault)
@@ -473,13 +460,13 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
-            if (WhichCamera == 6)
+            if (currentCamera == 6)
             {
                 i18nTextTranslator.textId = "camera.supplycloset";
                 i18nTextTranslator.UpdateText();
 
                 // Does Bonnie is at Closet
-                if (WhereBonnie == 4)
+                if (Movement.bonniePosition == 4)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != ClosetBonnieDefault)
@@ -497,13 +484,13 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
-            if (WhichCamera == 7)
+            if (currentCamera == 7)
             {
                 i18nTextTranslator.textId = "camera.easthall";
                 i18nTextTranslator.UpdateText();
 
                 // Chica at East Hall
-                if (WhereChica == 5)
+                if (Movement.chicaPosition == 5)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != EastHallChicaPhase1Default)
@@ -511,7 +498,7 @@ public class ChangeImages : MonoBehaviour
                         currentSprite = EastHallChicaPhase1Default;
                     }
                 }
-                else if (WhereChica == 6)
+                else if (Movement.chicaPosition == 6)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != EastHallChicaPhase2Default)
@@ -521,7 +508,7 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // Freddy at East Hall
-                if (WhereFreddy == 5)
+                if (Movement.freddyPosition == 5)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != EastHallFreddyDefault)
@@ -531,7 +518,7 @@ public class ChangeImages : MonoBehaviour
                 }
 
                 // East Hall empty
-                if (WhereChica != 5 && WhereChica != 6 && WhereFreddy != 5)
+                if (Movement.chicaPosition != 5 && Movement.chicaPosition != 6 && Movement.freddyPosition != 5)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != EastHallEmptyDefault)
@@ -541,28 +528,28 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
-            if (WhichCamera == 8)
+            if (currentCamera == 8)
             {
                 i18nTextTranslator.textId = "camera.easthallcorner";
                 i18nTextTranslator.UpdateText();
 
-                if (WhereChica == 7)
+                if (Movement.chicaPosition == 7)
                 {
-                    if (WhereFreddy <= 1)
+                    if (Movement.freddyPosition <= 1)
                     {
                         currentSprite = EastHall2_2;
                     }
                 }
-                if (WhereFreddy == 6)
+                if (Movement.freddyPosition == 6)
                 {
-                    if (WhereChica != 6)
+                    if (Movement.chicaPosition != 6)
                     {
                         currentSprite = EastHall2_3;
                     }
                 }
 
                 // East Hall Corner empty
-                if (WhereChica != 7 && WhereFreddy != 6)
+                if (Movement.chicaPosition != 7 && Movement.freddyPosition != 6)
                 {
                     if (currentSprite != EastHallCornerEmptyDefault)
                     {
@@ -571,13 +558,13 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
-            if (WhichCamera == 9)
+            if (currentCamera == 9)
             {
                 i18nTextTranslator.textId = "camera.backstage";
                 i18nTextTranslator.UpdateText();
 
                 // Does Bonnis is at Back Stage
-                if (WhereBonnie == 3)
+                if (Movement.bonniePosition == 3)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != BackStageBonnieDefault && currentSprite != BackStageBonnieEasterEgg)
@@ -609,14 +596,14 @@ public class ChangeImages : MonoBehaviour
                 }
             }
 
-            if (WhichCamera == 10)
+            if (currentCamera == 10)
             {
                 i18nTextTranslator.textId = "camera.kitchen";
                 i18nTextTranslator.UpdateText();
 
                 KitckenAudioOnly.SetActive(true);
 
-                if (WhereChica == 5)
+                if (Movement.chicaPosition == 5)
                 {
                     // Check if sprite is already displayed
                     if (currentSprite != KitchenEmptyDefault)
@@ -648,13 +635,13 @@ public class ChangeImages : MonoBehaviour
             hasGeneratedGFNumber = false;
         }
 
-        if (WhichCamera == 11)
+        if (currentCamera == 11)
         {
             i18nTextTranslator.textId = "camera.restrooms";
             i18nTextTranslator.UpdateText();
 
             // Chica is at Rest Rooms
-            if (WhereChica == 3)
+            if (Movement.chicaPosition == 3)
             {
                 // Check if sprite is already displayed
                 if (currentSprite != RestRoomsChicaPhase1Default)
@@ -662,7 +649,7 @@ public class ChangeImages : MonoBehaviour
                     currentSprite = RestRoomsChicaPhase1Default;
                 }
             }
-            else if (WhereChica == 4)
+            else if (Movement.chicaPosition == 4)
             {
                 // Check if sprite is already displayed
                 if (currentSprite != RestRoomsChicaPhase2Default)
@@ -672,7 +659,7 @@ public class ChangeImages : MonoBehaviour
             }
 
             // Freddy is at Rest Rooms
-            if (WhereFreddy == 3)
+            if (Movement.freddyPosition == 3)
             {
                 // Check if sprite is already displayed
                 if (currentSprite != RestRoomsFreddyDefault)
@@ -682,7 +669,7 @@ public class ChangeImages : MonoBehaviour
             }
 
             // Rest Rooms empty
-            if (WhereChica !=3 && WhereChica !=4 && WhereFreddy !=3)
+            if (Movement.chicaPosition !=3 && Movement.chicaPosition !=4 && Movement.freddyPosition !=3)
             {
                 // Check if sprite is already displayed
                 if (currentSprite != RestRoomsEmptyDefault)
@@ -693,19 +680,19 @@ public class ChangeImages : MonoBehaviour
         }
 
         // where is Bonnie system
-        if (WhereBonnie < 7)
+        if (Movement.bonniePosition < 7)
         {
             OfficeObject.GetComponent<RandNumberGen>().BonnieOutsideLeftDoor = false;
         }
 
 
-        if (WhereBonnie >= 7)
+        if (Movement.bonniePosition >= 7)
         {
             OfficeObject.GetComponent<Movement>().BonnieOutsideDoor = true;
             OfficeObject.GetComponent<RandNumberGen>().BonnieOutsideLeftDoor = true;
         }
 
-        if (WhereBonnie >= 8 && camIsUp)
+        if (Movement.bonniePosition >= 8 && camIsUp)
         {
             BonnieJumpscare.SetActive(true);
             isBeingJumpscared = true;
@@ -713,17 +700,17 @@ public class ChangeImages : MonoBehaviour
             controllersRumble.TriggerRumble(30, "Bonnie");
         }
         // where is Chica system
-        if (WhereChica < 8)
+        if (Movement.chicaPosition < 8)
         {
             OfficeObject.GetComponent<RandNumberGen>().ChicaOutsideRightDoor = false;
         }
 
-        if (WhereChica >= 8)
+        if (Movement.chicaPosition >= 8)
         {
             OfficeObject.GetComponent<Movement>().ChicaOutsideDoor = true;
             OfficeObject.GetComponent<RandNumberGen>().ChicaOutsideRightDoor = true;
         }
-        if (WhereChica >= 9 && camIsUp)
+        if (Movement.chicaPosition >= 9 && camIsUp)
         {
             if (camIsUp)
             {
@@ -735,13 +722,13 @@ public class ChangeImages : MonoBehaviour
         }
 
         // where is Freddy system
-        if (WhereFreddy >= 6)
+        if (Movement.freddyPosition >= 6)
         {
             OfficeObject.GetComponent<Movement>().FreddyOutsideDoor = true;
             OfficeObject.GetComponent<RandNumberGen>().FreddyOutsideRightDoor = true;
         }
 
-        if (WhereFreddy >= 7)
+        if (Movement.freddyPosition >= 7)
         {
             FreddyJumpscare.SetActive(true);
 
@@ -750,7 +737,7 @@ public class ChangeImages : MonoBehaviour
             controllersRumble.TriggerRumble(30, "Freddy");
         }
 
-        if (WhereFoxy >= 4)
+        if (Movement.foxyPosition >= 4)
         {
             foxyStarted = true;
 
@@ -761,7 +748,7 @@ public class ChangeImages : MonoBehaviour
                 FoxyRunDownHall.SetActive(true);
                 FoxyAnimationPlayed = true;
                 
-                if(WhichCamera == 4)
+                if (currentCamera == 4)
                 {
                     FoxyAnimationTimer -= Time.deltaTime;
                     PlayerSawFoxy = true;
@@ -793,7 +780,7 @@ public class ChangeImages : MonoBehaviour
                         else if (L_Door_Closed)
                         {
                             DoorBang.Play();
-                            OfficeObject.GetComponent<Movement>().WhereFoxy = 1;
+                            Movement.foxyPosition = 1;
                             OfficeObject.GetComponent<Movement>().foxyInCount = false;
                             //OfficeObject.GetComponent<Movement>().GenNumber();
                             OriginalOfficeImage.GetComponent<Image>().enabled = true;
@@ -808,7 +795,7 @@ public class ChangeImages : MonoBehaviour
             {
                 FoxyRunDownHall.SetActive(false);
             }
-            if(WhichCamera != 4)
+            if (currentCamera != 4)
             {
                 FoxyRunDownHall.SetActive(false);
             }
@@ -856,57 +843,57 @@ public class ChangeImages : MonoBehaviour
 
     public void cam1a()
     {
-        WhichCamera = 1;
+        currentCamera = 1;
     }
 
     public void cam1b()
     {
-        WhichCamera = 2;
+        currentCamera = 2;
     }
 
     public void cam1c()
     {
-        WhichCamera = 3;
+        currentCamera = 3;
     }
 
     public void cam2a()
     {
-        WhichCamera = 4;
+        currentCamera = 4;
     }
 
     public void cam2b()
     {
-        WhichCamera = 5;
+        currentCamera = 5;
     }
 
     public void cam3()
     {
-        WhichCamera = 6;
+        currentCamera = 6;
     }
 
     public void cam4a()
     {
-        WhichCamera = 7;
+        currentCamera = 7;
     }
 
     public void cam4b()
     {
-        WhichCamera = 8;
+        currentCamera = 8;
     }
 
     public void cam5()
     {
-        WhichCamera = 9;
+        currentCamera = 9;
     }
 
     public void cam6()
     {
-        WhichCamera = 10;
+        currentCamera = 10;
     }
 
     public void cam7()
     {
-        WhichCamera = 11;
+        currentCamera = 11;
     }
     bool EasterEgg(int max)
     {
