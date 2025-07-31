@@ -4934,7 +4934,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -109}
-  m_SizeDelta: {x: 316.6, y: 109}
+  m_SizeDelta: {x: 435.33, y: 109}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &247091325
 MonoBehaviour:
@@ -4995,7 +4995,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 247091329}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -6408,10 +6408,9 @@ GameObject:
   m_Component:
   - component: {fileID: 312102430}
   - component: {fileID: 312102433}
-  - component: {fileID: 312102432}
   - component: {fileID: 312102431}
   m_Layer: 5
-  m_Name: OnlineText
+  m_Name: BrewConnectText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6434,33 +6433,17 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -54.5}
-  m_SizeDelta: {x: 237.45, y: 109}
+  m_SizeDelta: {x: 435.33, y: 109}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &312102431
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114096722155754264, guid: 95c04a004dba3ae419ebc45b239d2eb7,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 312102429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textId: mainmenu.online
-  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
-  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
---- !u!114 &312102432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114194893131427366, guid: 95c04a004dba3ae419ebc45b239d2eb7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 312102429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9839c2d141529145a431aef4d757ff3, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -6471,7 +6454,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Online
+  m_text: BrewConnect
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
   m_sharedMaterial: {fileID: 21368496934537178, guid: 3ddc042d24729f549a147933c5b158e5,
@@ -6503,8 +6486,8 @@ MonoBehaviour:
   m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 0
+  m_fontSizeMax: 0
   m_fontStyle: 0
   m_textAlignment: 513
   m_isAlignmentEnumConverted: 1
@@ -6514,13 +6497,13 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
-  m_enableKerning: 1
+  m_enableKerning: 0
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -6538,8 +6521,8 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
-    textComponent: {fileID: 312102432}
-    characterCount: 6
+    textComponent: {fileID: 0}
+    characterCount: 11
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -6547,7 +6530,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -6565,11 +6548,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
-  preserveNumbers: 0
-  farsi: 1
-  originalText: Online
-  fixTags: 1
-  forceFix: 0
 --- !u!222 &312102433
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11311,7 +11289,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 316.6, y: 109}
+  m_SizeDelta: {x: 435.33, y: 109}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &583766092
 MonoBehaviour:
@@ -11372,7 +11350,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 583766096}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -18695,7 +18673,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -218}
-  m_SizeDelta: {x: 316.6, y: 109}
+  m_SizeDelta: {x: 435.33, y: 109}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1035673836
 MonoBehaviour:
@@ -18756,7 +18734,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1035673840}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -20479,7 +20457,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 316.6, y: 436}
+  m_SizeDelta: {x: 435.33, y: 436}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1152398009
 MonoBehaviour:
@@ -20894,7 +20872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181553489}
   m_Layer: 5
-  m_Name: OnlineMenu
+  m_Name: BrewConnectMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21658,7 +21636,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 260.0001, y: -34.199997}
-  m_SizeDelta: {x: 316.6, y: 436}
+  m_SizeDelta: {x: 435.33, y: 436}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1264513381
 MonoBehaviour:
@@ -25495,6 +25473,7 @@ GameObject:
   - component: {fileID: 1500013153}
   - component: {fileID: 1500013155}
   - component: {fileID: 1500013154}
+  - component: {fileID: 1500013156}
   m_Layer: 5
   m_Name: AnalyticsHeader
   m_TagString: Untagged
@@ -25644,6 +25623,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1500013152}
+--- !u!114 &1500013156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1500013152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: mainmenu.shareanalyticsdescription
+  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &1506294432
 GameObject:
   m_ObjectHideFlags: 0
@@ -27759,7 +27752,7 @@ GameObject:
   - component: {fileID: 1710501158}
   - component: {fileID: 1710501155}
   m_Layer: 5
-  m_Name: OnlineButton
+  m_Name: BrewConnectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27783,7 +27776,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -436}
-  m_SizeDelta: {x: 316.6, y: 109}
+  m_SizeDelta: {x: 435.33, y: 109}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1710501155
 MonoBehaviour:
@@ -27844,12 +27837,12 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1710501159}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1848047508}
-        m_MethodName: Online
+        m_MethodName: BrewConnect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32295,7 +32288,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -327}
-  m_SizeDelta: {x: 316.6, y: 109}
+  m_SizeDelta: {x: 435.33, y: 109}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2000341769
 MonoBehaviour:
@@ -32356,7 +32349,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 2000341773}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -33858,7 +33851,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 316.6, y: 545}
+  m_SizeDelta: {x: 435.33, y: 545}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2091252267
 MonoBehaviour:

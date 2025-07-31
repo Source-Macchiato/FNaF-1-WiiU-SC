@@ -15,7 +15,7 @@ public class MenuSetup : MonoBehaviour
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(5, OnBackFromLanguage);
-        menuManager.SetBackCallback(7, OnBackFromOnline);
+        menuManager.SetBackCallback(7, OnBackFromBrewConnect);
         menuManager.SetBackCallback(8, OnBackFromVolume);
         menuManager.SetBackCallback(9, OnBackFromControls);
     }
@@ -91,7 +91,7 @@ public class MenuSetup : MonoBehaviour
         menuData.DisplaySelectedLayoutButton();
     }
 
-    public void Online()
+    public void BrewConnect()
     {
         menuManager.ChangeMenu(7);
 
@@ -147,7 +147,7 @@ public class MenuSetup : MonoBehaviour
         menuData.ToggleGameTitle(true);
     }
 
-    void OnBackFromOnline()
+    void OnBackFromBrewConnect()
     {
         menuData.SaveAndUpdateAnalytics();
     }
