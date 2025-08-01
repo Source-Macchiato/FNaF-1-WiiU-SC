@@ -649,6 +649,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &804477311
 GameObject:
   m_ObjectHideFlags: 0

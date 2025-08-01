@@ -418,6 +418,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 0
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &57948062
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 59919455}
   - component: {fileID: 59919456}
+  - component: {fileID: 59919457}
   m_Layer: 5
   m_Name: Jumpscare (1)
   m_TagString: Untagged
@@ -616,7 +625,8 @@ AudioSource:
   m_GameObject: {fileID: 59919454}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c4b5f2616eba6c04ba911fd69cb2abab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -688,6 +698,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &59919457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59919454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 1
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &76452997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2326,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &198760462
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,7 +3067,7 @@ GameObject:
   - component: {fileID: 284829986}
   - component: {fileID: 284829987}
   m_Layer: 0
-  m_Name: CAMERA_LOA
+  m_Name: PutCameraUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3141,6 +3178,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 0
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &287220282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,7 +3306,7 @@ GameObject:
   - component: {fileID: 312262509}
   - component: {fileID: 312262510}
   m_Layer: 0
-  m_Name: BIP3
+  m_Name: Blip3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3373,6 +3418,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 0
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &327504708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,6 +3548,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &331989236
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,6 +3800,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &355748162
 GameObject:
   m_ObjectHideFlags: 0
@@ -4702,8 +4771,9 @@ GameObject:
   m_Component:
   - component: {fileID: 530184935}
   - component: {fileID: 530184936}
+  - component: {fileID: 530184937}
   m_Layer: 5
-  m_Name: Audio Source
+  m_Name: GoldenFreddyScream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4803,6 +4873,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &530184937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 530184934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &554777308
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,6 +5332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 596264438}
   - component: {fileID: 596264439}
+  - component: {fileID: 596264440}
   m_Layer: 5
   m_Name: Jumpscare
   m_TagString: Untagged
@@ -5271,7 +5361,8 @@ AudioSource:
   m_GameObject: {fileID: 596264437}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c4b5f2616eba6c04ba911fd69cb2abab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -5343,6 +5434,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &596264440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596264437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 1
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &616761959
 GameObject:
   m_ObjectHideFlags: 0
@@ -5465,6 +5575,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &620632518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5562,7 +5680,7 @@ GameObject:
   - component: {fileID: 622291134}
   - component: {fileID: 622291135}
   m_Layer: 0
-  m_Name: Camera_down
+  m_Name: PutCameraDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5673,6 +5791,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 0
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &626154237
 GameObject:
   m_ObjectHideFlags: 0
@@ -6577,6 +6703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 775819993}
   - component: {fileID: 775819994}
+  - component: {fileID: 775819995}
   m_Layer: 5
   m_Name: Jumpscare (3)
   m_TagString: Untagged
@@ -6605,7 +6732,8 @@ AudioSource:
   m_GameObject: {fileID: 775819992}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c4b5f2616eba6c04ba911fd69cb2abab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -6677,6 +6805,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &775819995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 775819992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 1
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 1
+  gamepadOnlyGamepad: 1
 --- !u!1 &796983378
 GameObject:
   m_ObjectHideFlags: 0
@@ -7954,6 +8101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!82 &930409633
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10336,6 +10491,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &1178197919
 GameObject:
   m_ObjectHideFlags: 0
@@ -12322,6 +12485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1404824419}
   - component: {fileID: 1404824420}
+  - component: {fileID: 1404824421}
   m_Layer: 0
   m_Name: GoldenFreddyLaugh
   m_TagString: Untagged
@@ -12350,7 +12514,8 @@ AudioSource:
   m_GameObject: {fileID: 1404824418}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: ed503787540494340b2fe8a5864dc43e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -12422,6 +12587,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1404824421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1404824418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &1438955410
 GameObject:
   m_ObjectHideFlags: 0
@@ -13376,6 +13560,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 0
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &1525722925
 GameObject:
   m_ObjectHideFlags: 0
@@ -14306,6 +14498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1665518217}
   - component: {fileID: 1665518218}
+  - component: {fileID: 1665518219}
   m_Layer: 5
   m_Name: Jumpscare (2)
   m_TagString: Untagged
@@ -14334,7 +14527,8 @@ AudioSource:
   m_GameObject: {fileID: 1665518216}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c4b5f2616eba6c04ba911fd69cb2abab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -14406,6 +14600,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1665518219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1665518216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 1
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &1684035037
 GameObject:
   m_ObjectHideFlags: 0
@@ -15526,6 +15739,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &1768309159
 GameObject:
   m_ObjectHideFlags: 0
@@ -16224,6 +16445,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &1805222385
 GameObject:
   m_ObjectHideFlags: 0
@@ -17075,6 +17304,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &1849677439
 GameObject:
   m_ObjectHideFlags: 0
@@ -19199,6 +19436,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 0
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &2018316003
 GameObject:
   m_ObjectHideFlags: 0
@@ -19478,6 +19723,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 1
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &2038018149
 GameObject:
   m_ObjectHideFlags: 0
@@ -19696,6 +19949,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 0
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 0
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &2086740291
 GameObject:
   m_ObjectHideFlags: 0

@@ -723,7 +723,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 1967288192}
   slider: {fileID: 833013076}
-  progression: {fileID: 716433113}
 --- !u!1 &527609496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,11 +1233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!1 &716433113 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1440917917724570, guid: 718d1fd8b6fc960488631e6f60775dcd,
-    type: 2}
-  m_PrefabInternal: {fileID: 792915518}
 --- !u!1 &756531812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1355,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1001 &792915518
 Prefab:
   m_ObjectHideFlags: 0

@@ -159,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288138561}
   - component: {fileID: 288138562}
+  - component: {fileID: 288138563}
   m_Layer: 5
   m_Name: xscream
   m_TagString: Untagged
@@ -260,6 +261,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &288138563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288138560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 1
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &323694625
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +429,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!82 &543985317
 AudioSource:
   m_ObjectHideFlags: 0
@@ -962,6 +990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1483001541}
   - component: {fileID: 1483001542}
+  - component: {fileID: 1483001543}
   m_Layer: 5
   m_Name: power down
   m_TagString: Untagged
@@ -1063,6 +1092,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1483001543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1483001540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &1600279597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1575,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!1 &2019271039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,3 +1930,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OfficeContainer: {fileID: 2111956734}
+  pointerCursor: {fileID: 0}
+  camIsUp: 0
+  canMove: 1
+  isPointerDisplayed: 1
+  lastPointerPosition: {x: 0, y: 0}
