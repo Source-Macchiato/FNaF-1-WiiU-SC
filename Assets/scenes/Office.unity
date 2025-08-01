@@ -18229,7 +18229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 535
-  Hour: 12
   Usage: 1
   nightNumberDisplayer: {fileID: 1398303399}
   powerDisplayer: {fileID: 1819803410}
@@ -18336,10 +18335,6 @@ MonoBehaviour:
     type: 3}
   RandCamNoise: 0
   noiseIsPlaying: 0
-  WhereFreddy: 1
-  WhereBonnie: 1
-  WhereChica: 1
-  WhereFoxy: 1
   GoldenFreddyChance: 0
   GoldenFreddyActive: 0
   GoldenFreddyOffice: {fileID: 1020080428}
@@ -18432,7 +18427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998d6286e8193a84e9fe68e04c8e85b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameScript: {fileID: 1959479698}
   LongGlitch: 0
   ChicaInKitchen: {fileID: 1524675008}
   BonnieMovementTime: 0
@@ -18443,20 +18437,11 @@ MonoBehaviour:
   ChicaProbability: 0
   FreddyProbability: 0
   FoxyProbability: 0
-  WhereBonnie: 1
-  WhereChica: 1
-  WhereFreddy: 1
-  WhereFoxy: 1
-  BonnieDifficulty: 0
-  ChicaDifficulty: 0
-  FreddyDifficulty: 0
-  FoxyDifficulty: 0
   bonnieInCount: 0
   chicaInCount: 0
   freddyInCount: 0
   foxyInCount: 0
   camIsUp: 0
-  NightNumber: 0
   MoveGlitch: {fileID: 113357115}
   GlitchActive: 0
   MoveGlitchUp: 0.5
@@ -18689,7 +18674,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1974914104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 935168460}
