@@ -175,7 +175,7 @@ public class CameraScript : MonoBehaviour
                 hideOfficeGameObject.SetActive(layoutManager.layoutId != 2);
 
                 // System for change the position of subtitles
-                layoutManager.ChangeSubtitlePosition(layoutManager.layoutId != 2);
+                layoutManager.ChangeSubtitlePosition(true);
 
                 // System for change the screen where is displayed pointer
                 layoutManager.ChangePointerScreen(true);
