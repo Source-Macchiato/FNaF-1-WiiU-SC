@@ -64,6 +64,7 @@ public class Settings
     public Volume volume = new Volume();
     public bool motionControls = true;
     public bool pointerVisibility = true;
+    public bool panoramaEffect = true;
 }
 
 [Serializable]

@@ -32,6 +32,7 @@ public class MenuData : MonoBehaviour
     public SwitcherData sfxVolumeSwitcher;
     public SwitcherData motionSwitcher;
     public SwitcherData pointerSwitcher;
+    public SwitcherData panoramaEffectSwitcher;
 
     [Header("Other")]
     public GameObject starsContainer;
@@ -246,6 +247,7 @@ public class MenuData : MonoBehaviour
         }
     }
 
+    // Pointer visibility
     public void SavePointerVisibility()
     {
         SaveManager.saveData.settings.pointerVisibility = pointerSwitcher.currentOptionId == 0;
@@ -262,6 +264,26 @@ public class MenuData : MonoBehaviour
         {
             pointerSwitcher.currentOptionId = switcherIndex;
             pointerSwitcher.UpdateText();
+        }
+    }
+
+    // Panorama effect
+    public void SavePanoramaEffect()
+    {
+        SaveManager.saveData.settings.panoramaEffect = panoramaEffectSwitcher.currentOptionId == 0;
+        SaveManager.Save();
+    }
+
+    public void LoadPanoramaEffect()
+    {
+        bool panoramaEffect = SaveManager.saveData.settings.panoramaEffect;
+
+        int switcherIndex = panoramaEffect ? 0 : 1;
+
+        if (switcherIndex >= 0 && switcherIndex < panoramaEffectSwitcher.optionsName.Length)
+        {
+            panoramaEffectSwitcher.currentOptionId = switcherIndex;
+            panoramaEffectSwitcher.UpdateText();
         }
     }
 

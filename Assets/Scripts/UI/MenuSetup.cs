@@ -18,6 +18,7 @@ public class MenuSetup : MonoBehaviour
         menuManager.SetBackCallback(7, OnBackFromBrewConnect);
         menuManager.SetBackCallback(8, OnBackFromVolume);
         menuManager.SetBackCallback(9, OnBackFromControls);
+        menuManager.SetBackCallback(10, OnBackFromVideo);
     }
 
     // Buttons functions
@@ -113,6 +114,13 @@ public class MenuSetup : MonoBehaviour
         menuData.LoadPointerVisibility();
     }
 
+    public void Video()
+    {
+        menuManager.ChangeMenu(10);
+
+        menuData.LoadPanoramaEffect();
+    }
+
     public void StartCustomNight()
     {
         menuData.nightNumber = 6;
@@ -161,5 +169,10 @@ public class MenuSetup : MonoBehaviour
     {
         menuData.SaveMotionControls();
         menuData.SavePointerVisibility();
+    }
+
+    void OnBackFromVideo()
+    {
+        menuData.SavePanoramaEffect();
     }
 }

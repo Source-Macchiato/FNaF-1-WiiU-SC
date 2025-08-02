@@ -12,6 +12,11 @@ public class PanoramicEffect : MonoBehaviour
     [Range(0f, 1f)]
     public float curveAmount = 0.35f;
 
+    void Start()
+    {
+        enableEffect = SaveManager.saveData.settings.panoramaEffect;
+    }
+
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
         if (enableEffect && panoramicMaterial != null)
