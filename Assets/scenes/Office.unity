@@ -8292,7 +8292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panoramicMaterial: {fileID: 2100000, guid: be7df15cb3553ea499792c276c87a9fc, type: 2}
-  curveAmount: 0.4
+  enableEffect: 1
+  curveAmount: 0.35
 --- !u!1 &943347021
 GameObject:
   m_ObjectHideFlags: 0
@@ -18083,7 +18084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panoramicMaterial: {fileID: 2100000, guid: be7df15cb3553ea499792c276c87a9fc, type: 2}
-  curveAmount: 0.4
+  enableEffect: 1
+  curveAmount: 0.35
 --- !u!1 &1919395714
 GameObject:
   m_ObjectHideFlags: 0

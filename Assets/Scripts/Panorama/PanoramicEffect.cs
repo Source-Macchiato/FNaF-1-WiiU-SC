@@ -10,7 +10,7 @@ public class PanoramicEffect : MonoBehaviour
     public bool enableEffect = true;
 
     [Range(0f, 1f)]
-    public float curveAmount = 0.3f;
+    public float curveAmount = 0.35f;
 
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
