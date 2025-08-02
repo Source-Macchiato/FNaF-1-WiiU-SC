@@ -171,7 +171,10 @@ public class LayoutManager : MonoBehaviour
 
     public void ChangePointerScreen(bool onGamepad)
     {
-        screenSubtitles[0].SetActive(!onGamepad);
-        screenSubtitles[1].SetActive(onGamepad);
+        if (layoutId == 1 || layoutId == 2)
+        {
+            screenPointer[0].SetActive(!onGamepad);
+            screenPointer[1].SetActive(onGamepad);
+        }
     }
 }
