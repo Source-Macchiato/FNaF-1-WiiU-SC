@@ -923,6 +923,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phoneCallAudio: {fileID: 930409633}
+  languageAudios:
+  - languageCode: en
+    clips:
+    - {fileID: 8300000, guid: 89da253fa76a2be4690e3837bcbfeb26, type: 3}
+    - {fileID: 8300000, guid: f4df1a4745f07ba4cab1f08f2909b478, type: 3}
+    - {fileID: 8300000, guid: 625f59141f00ab44692ff3b5da40a509, type: 3}
+    - {fileID: 8300000, guid: a67f0407302850947a761e2d1ed1bc3e, type: 3}
+    - {fileID: 8300000, guid: 36a43cd7bb0f09c48aa68ce54bf5f987, type: 3}
+  - languageCode: fr
+    clips: []
 --- !u!1 &80361502
 GameObject:
   m_ObjectHideFlags: 0

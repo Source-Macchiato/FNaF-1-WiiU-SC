@@ -1,85 +1,65 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public struct LanguageAudio
+{
+    public string languageCode;
+    public AudioClip[] clips;
+}
 
 public class LoadDubbingLanguage : MonoBehaviour
 {
-    public AudioSource phoneCallAudio;
-    private string bundleName;
-    private string audioName;
-    private float nightNumber;
+    [SerializeField] private AudioSource phoneCallAudio;
+    [SerializeField] private LanguageAudio[] languageAudios;
+
+    private Dictionary<string, AudioClip[]> audioLookup;
+    private int nightNumber;
     private string dubbingLanguage;
 
-	void Start()
-	{
-        nightNumber = SaveManager.saveData.game.nightNumber;
+    void Awake()
+    {
+        audioLookup = new Dictionary<string, AudioClip[]>(StringComparer.OrdinalIgnoreCase);
 
-        if (nightNumber >= 0 && nightNumber <= 4)
+        foreach (var language in languageAudios)
         {
-            // Get dubbing language
-            dubbingLanguage = SaveManager.saveData.settings.dubbingLanguage;
-
-            // Assign bundleName and audioName variables
-            if (dubbingLanguage == string.Empty || dubbingLanguage == "en")
+            if (language.languageCode != string.Empty && !audioLookup.ContainsKey(language.languageCode))
             {
-                bundleName = "vo-language-pack";
-
-                audioName = "VO-Call" + (nightNumber + 1);
+                audioLookup[language.languageCode] = language.clips;
             }
-            else
-            {
-                bundleName = dubbingLanguage + "-language-pack";
-
-                audioName = dubbingLanguage.ToUpper() + "-Call" + (nightNumber + 1);
-            }
-
-            // Play the dubbing
-            StartCoroutine(PlayAudio(bundleName, audioName));
-        } 
+        }
     }
 
-    private IEnumerator PlayAudio(string assetBundleName, string objectNameToLoad)
+    void Start()
     {
-        // Check if AssetBundle is already in memory
-        AssetBundle assetBundle = null;
-        foreach (var loadedBundle in AssetBundle.GetAllLoadedAssetBundles())
+        nightNumber = SaveManager.saveData.game.nightNumber;
+
+        // Validité de la nuit
+        if (nightNumber < 0 || nightNumber > 4)
         {
-            if (loadedBundle.name == assetBundleName)
-            {
-                assetBundle = loadedBundle;
-                break;
-            }
+            Debug.Log("Night number '" + nightNumber + "' don't have audio clips.");
+            return;
         }
 
-        // Load AssetBundle if not in memory
-        if (assetBundle == null)
-        {
-            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "AssetBundles");
-            filePath = System.IO.Path.Combine(filePath, assetBundleName);
-            var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(filePath);
-            yield return assetBundleCreateRequest;
+        dubbingLanguage = SaveManager.saveData.settings.dubbingLanguage;
+        string lang = dubbingLanguage == string.Empty ? "en" : dubbingLanguage;
 
-            assetBundle = assetBundleCreateRequest.assetBundle;
-            if (assetBundle == null)
-            {
-                Debug.LogError("Failed to load AssetBundle: " + assetBundleName);
-                yield break;
-            }
+        AudioClip[] clips;
+
+        if (!audioLookup.TryGetValue(lang, out clips) && !audioLookup.TryGetValue("en", out clips))
+        {
+            Debug.Log("no clip for language '" + lang + "' or fallback 'en'.");
+            return;
         }
 
-        // Load AudioClip from AssetBundle
-        AssetBundleRequest asset = assetBundle.LoadAssetAsync<AudioClip>(objectNameToLoad);
-        yield return asset;
+        if (clips == null || nightNumber >= clips.Length || clips[nightNumber] == null)
+        {
+            Debug.Log("Missing clip for night number '" + nightNumber + "' in language '" + lang + "'.");
+            return;
+        }
 
-        // Assign AudioClip to AudioSource and play audio
-        AudioClip loadedAsset = asset.asset as AudioClip;
-        if (loadedAsset != null)
-        {
-            phoneCallAudio.clip = loadedAsset;
-            phoneCallAudio.Play();
-        }
-        else
-        {
-            Debug.LogError("Failed to load AudioClip: " + objectNameToLoad);
-        }
+        phoneCallAudio.clip = clips[nightNumber];
+        phoneCallAudio.Play();
     }
 }
