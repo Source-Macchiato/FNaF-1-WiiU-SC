@@ -8199,6 +8199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935168460}
   - component: {fileID: 935168464}
+  - component: {fileID: 935168465}
   - component: {fileID: 935168463}
   - component: {fileID: 935168462}
   - component: {fileID: 935168461}
@@ -8279,6 +8280,19 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!114 &935168465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 935168459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0920f71588cc33d40b807acb021cae86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panoramicMaterial: {fileID: 2100000, guid: be7df15cb3553ea499792c276c87a9fc, type: 2}
+  curveAmount: 0.4
 --- !u!1 &943347021
 GameObject:
   m_ObjectHideFlags: 0
@@ -17984,6 +17998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1911446378}
   - component: {fileID: 1911446381}
+  - component: {fileID: 1911446382}
   - component: {fileID: 1911446380}
   - component: {fileID: 1911446379}
   m_Layer: 0
@@ -18056,6 +18071,19 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!114 &1911446382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1911446377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0920f71588cc33d40b807acb021cae86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panoramicMaterial: {fileID: 2100000, guid: be7df15cb3553ea499792c276c87a9fc, type: 2}
+  curveAmount: 0.4
 --- !u!1 &1919395714
 GameObject:
   m_ObjectHideFlags: 0
