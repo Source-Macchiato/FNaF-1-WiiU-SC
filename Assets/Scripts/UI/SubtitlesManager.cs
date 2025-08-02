@@ -253,7 +253,11 @@ public class SubtitlesManager : MonoBehaviour
 
     string GetTranslatedText(string identifier)
     {
-        if (I18n.Texts.ContainsKey(identifier))
+        if (identifier == "none")
+        {
+            return string.Empty;
+        }
+        else if (I18n.Texts.ContainsKey(identifier))
         {
             return I18n.Texts[identifier];
         }
