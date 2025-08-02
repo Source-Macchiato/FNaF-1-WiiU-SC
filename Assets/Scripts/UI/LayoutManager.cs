@@ -10,6 +10,7 @@ public class LayoutManager : MonoBehaviour
     [Header("Screens")]
     public GameObject[] screenOffice;
     public GameObject[] screenMonitor;
+    public GameObject[] screenMonitorUI;
     public GameObject[] screenUI;
     public GameObject[] screenMinimap;
     public GameObject[] screenSubtitles;
@@ -48,6 +49,9 @@ public class LayoutManager : MonoBehaviour
         screenMonitor[0].SetActive(true);
         screenMonitor[1].SetActive(false);
 
+        screenMonitorUI[0].SetActive(true);
+        screenMonitorUI[1].SetActive(false);
+
         screenUI[0].SetActive(true);
         screenUI[1].SetActive(false);
 
@@ -71,6 +75,9 @@ public class LayoutManager : MonoBehaviour
 
         screenMonitor[0].SetActive(true);
         screenMonitor[1].SetActive(false);
+
+        screenMonitorUI[0].SetActive(true);
+        screenMonitorUI[1].SetActive(false);
 
         screenUI[0].SetActive(true);
         screenUI[1].SetActive(false);
@@ -100,6 +107,9 @@ public class LayoutManager : MonoBehaviour
         screenMonitor[0].SetActive(false);
         screenMonitor[1].SetActive(true);
 
+        screenMonitorUI[0].SetActive(false);
+        screenMonitorUI[1].SetActive(true);
+
         screenUI[0].SetActive(true);
         screenUI[1].SetActive(false);
 
@@ -120,6 +130,12 @@ public class LayoutManager : MonoBehaviour
     {
         screenOffice[0].SetActive(false);
         screenOffice[1].SetActive(true);
+
+        screenMonitor[0].SetActive(false);
+        screenMonitor[1].SetActive(true);
+
+        screenMonitorUI[0].SetActive(false);
+        screenMonitorUI[1].SetActive(true);
 
         screenUI[0].SetActive(false);
         screenUI[1].SetActive(true);
