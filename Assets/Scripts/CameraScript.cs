@@ -48,6 +48,8 @@ public class CameraScript : MonoBehaviour
         layoutManager = FindObjectOfType<LayoutManager>();
 
         hideOfficeGameObject.SetActive(false);
+        camIsUp = false;
+        minimapGameObject.SetActive(false);
     }
 
     void Update()
