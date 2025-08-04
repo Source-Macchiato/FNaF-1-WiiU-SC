@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 8204316}
   - component: {fileID: 8204318}
   - component: {fileID: 8204317}
+  - component: {fileID: 8204319}
   m_Layer: 5
   m_Name: SwitcherText
   m_TagString: Untagged
@@ -407,6 +408,20 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 8204315}
+--- !u!114 &8204319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 8204315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: 
+  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &11806465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,10 +1544,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOptionId: 0
   optionsName:
-  - Yes
-  - No
+  - mainmenu.yes
+  - mainmenu.no
   text: {fileID: 1757395405}
-  i18nTextTranslator: {fileID: 0}
+  i18nTextTranslator: {fileID: 1757395407}
   inputIcons:
   - {fileID: 894712521}
   - {fileID: 743980012}
@@ -6955,10 +6970,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOptionId: 0
   optionsName:
-  - Yes
-  - No
+  - mainmenu.yes
+  - mainmenu.no
   text: {fileID: 8204317}
-  i18nTextTranslator: {fileID: 0}
+  i18nTextTranslator: {fileID: 8204319}
   inputIcons:
   - {fileID: 1422191031}
   - {fileID: 150322386}
@@ -15145,6 +15160,7 @@ GameObject:
   - component: {fileID: 779268018}
   - component: {fileID: 779268017}
   - component: {fileID: 779268016}
+  - component: {fileID: 779268019}
   m_Layer: 5
   m_Name: SwitcherText
   m_TagString: Untagged
@@ -15297,6 +15313,20 @@ RectTransform:
   m_AnchoredPosition: {x: 109, y: 0}
   m_SizeDelta: {x: -218, y: 0}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &779268019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 779268015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: 
+  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &781059390
 GameObject:
   m_ObjectHideFlags: 0
@@ -19203,6 +19233,7 @@ GameObject:
   - component: {fileID: 1030647235}
   - component: {fileID: 1030647237}
   - component: {fileID: 1030647236}
+  - component: {fileID: 1030647238}
   m_Layer: 5
   m_Name: SwitcherText
   m_TagString: Untagged
@@ -19249,7 +19280,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 0
+  m_text: Yes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
   m_sharedMaterial: {fileID: 21368496934537178, guid: 3ddc042d24729f549a147933c5b158e5,
@@ -19329,8 +19360,8 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
-  m_inputSource: 0
+  m_isInputParsingRequired: 1
+  m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -19345,7 +19376,7 @@ MonoBehaviour:
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
   preserveNumbers: 0
   farsi: 1
-  originalText: 0
+  originalText: Yes
   fixTags: 1
   forceFix: 0
 --- !u!222 &1030647237
@@ -19355,6 +19386,20 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1030647234}
+--- !u!114 &1030647238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1030647234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: 
+  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &1031437092
 GameObject:
   m_ObjectHideFlags: 0
@@ -20903,6 +20948,7 @@ GameObject:
   - component: {fileID: 1132077843}
   - component: {fileID: 1132077845}
   - component: {fileID: 1132077844}
+  - component: {fileID: 1132077846}
   m_Layer: 5
   m_Name: SwitcherText
   m_TagString: Untagged
@@ -21055,6 +21101,20 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1132077842}
+--- !u!114 &1132077846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1132077842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: 
+  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &1134529601
 GameObject:
   m_ObjectHideFlags: 0
@@ -25298,10 +25358,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOptionId: 0
   optionsName:
-  - Yes
-  - No
+  - mainmenu.yes
+  - mainmenu.no
   text: {fileID: 1030647236}
-  i18nTextTranslator: {fileID: 0}
+  i18nTextTranslator: {fileID: 1030647238}
   inputIcons:
   - {fileID: 105485438}
   - {fileID: 1776960272}
@@ -30349,6 +30409,7 @@ GameObject:
   - component: {fileID: 1757395404}
   - component: {fileID: 1757395406}
   - component: {fileID: 1757395405}
+  - component: {fileID: 1757395407}
   m_Layer: 5
   m_Name: SwitcherText
   m_TagString: Untagged
@@ -30501,6 +30562,20 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1757395403}
+--- !u!114 &1757395407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1757395403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ccaf2f0c2c54a4bb4b804ef7f8e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: 
+  mainFont: {fileID: 11400000, guid: 3ddc042d24729f549a147933c5b158e5, type: 2}
+  arabicFont: {fileID: 11400000, guid: 3a81c3323628f0d48b7e6a6f32975d2a, type: 2}
 --- !u!1 &1768921557
 GameObject:
   m_ObjectHideFlags: 0
@@ -31847,10 +31922,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOptionId: 0
   optionsName:
-  - Yes
-  - No
+  - mainmenu.yes
+  - mainmenu.no
   text: {fileID: 1132077844}
-  i18nTextTranslator: {fileID: 0}
+  i18nTextTranslator: {fileID: 1132077846}
   inputIcons:
   - {fileID: 150324037}
   - {fileID: 571896276}
@@ -34029,10 +34104,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOptionId: 0
   optionsName:
-  - Yes
-  - No
+  - mainmenu.yes
+  - mainmenu.no
   text: {fileID: 779268016}
-  i18nTextTranslator: {fileID: 0}
+  i18nTextTranslator: {fileID: 779268019}
   inputIcons:
   - {fileID: 1653315751}
   - {fileID: 1768921558}
