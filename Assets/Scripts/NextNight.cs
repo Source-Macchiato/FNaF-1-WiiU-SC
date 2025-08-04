@@ -3,17 +3,14 @@ using UnityEngine;
 
 public class NextNight : MonoBehaviour
 {
-    [Header("Nights")]
-    public GameObject Night1;
-    public GameObject Night2;
-    public GameObject Night3;
-    public GameObject Night4;
-    public GameObject Night5;
-    public GameObject Night6;
-    public GameObject Night7;
+    [SerializeField]
+    private GameObject nightContainer;
+    [SerializeField]
+    private I18nTextTranslator nightTextTranslator;
+    [SerializeField]
+    private Animator nightAnimator;
 
-    [Header("Loading")]
-    private float nightNumber;
+    private int nightNumber;
     public GameObject loadingScreenPanel;
 
     private LevelLoader levelLoader;
@@ -25,49 +22,47 @@ public class NextNight : MonoBehaviour
         loadingScreenPanel.SetActive(false);
         levelLoader = FindObjectOfType<LevelLoader>();
 
-        Night1.SetActive(false);
-        Night2.SetActive(false);
-        Night3.SetActive(false);
-        Night4.SetActive(false);
-        Night5.SetActive(false);
-        Night6.SetActive(false);
-        Night7.SetActive(false);
-    
-        if (nightNumber == 0)
+        switch (nightNumber)
         {
-            Night1.SetActive(true);
+            case 0:
+                nightTextTranslator.textId = "nextnight.firstnight";
+                break;
+            case 1:
+                nightTextTranslator.textId = "nextnight.secondnight";
+                break;
+            case 2:
+                nightTextTranslator.textId = "nextnight.thirdnight";
+                break;
+            case 3:
+                nightTextTranslator.textId = "nextnight.fourthnight";
+                break;
+            case 4:
+                nightTextTranslator.textId = "nextnight.fifthnight";
+                break;
+            case 5:
+                nightTextTranslator.textId = "nextnight.sixthnight";
+                break;
+            case 6:
+                nightTextTranslator.textId = "nextnight.seventhnight";
+                break;
+            default:
+                nightTextTranslator.textId = "nextnight.firstnight";
+                break;
         }
-        else if (nightNumber == 1)
-        {
-            Night2.SetActive(true);
-        }
-        else if (nightNumber == 2)
-        {
-            Night3.SetActive(true);
-        }
-        else if (nightNumber == 3)
-        {
-            Night4.SetActive(true);
-        }
-        else if (nightNumber == 4)
-        {
-            Night5.SetActive(true);
-        }
-        else if (nightNumber == 5)
-        {
-            Night6.SetActive(true);
-        }
-        else if (nightNumber == 6)
-        {
-            Night7.SetActive(true);
-        }
+
+        nightTextTranslator.UpdateText();
 
         StartCoroutine(InitCoroutine());
     }
 
     IEnumerator InitCoroutine()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
+
+        nightAnimator.Play("Fade");
+
+        yield return new WaitForSeconds(1);
+
         loadingScreenPanel.SetActive(true);
         levelLoader.LoadLevel("Office");
     }
