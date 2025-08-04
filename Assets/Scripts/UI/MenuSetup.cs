@@ -10,7 +10,7 @@ public class MenuSetup : MonoBehaviour
 
     void Start()
     {
-        menuData.GoldenFreddy(SaveManager.saveData.game.goldenFreddyUnlocked);
+        menuData.GoldenFreddyEnabled(SaveManager.saveData.game.goldenFreddyUnlocked);
 
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
@@ -132,9 +132,7 @@ public class MenuSetup : MonoBehaviour
         {
             menuData.CustomNightBackgroundStatus(false);
 
-            menuData.SaveGoldenFreddy();
-
-            menuData.ActivateGoldenFreddyJumpscare();
+            StartCoroutine(menuData.ActivateGoldenFreddyJumpscare());
         }
         else
         {

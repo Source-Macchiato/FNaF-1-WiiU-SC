@@ -328,7 +328,7 @@ public class MenuData : MonoBehaviour
         customNightBackground.SetActive(status);
     }
 
-    public void GoldenFreddy(bool status)
+    public void GoldenFreddyEnabled(bool status)
     {
         if (status)
         {
@@ -364,24 +364,18 @@ public class MenuData : MonoBehaviour
         }
     }
 
-    public void ActivateGoldenFreddyJumpscare()
-    {
-        StartCoroutine(GoldenFreddyJumpscareAnimation());
-    }
-
-    private IEnumerator GoldenFreddyJumpscareAnimation()
+    public IEnumerator ActivateGoldenFreddyJumpscare()
     {
         menuManager.canNavigate = false;
         goldenFreddyGameObject.SetActive(true);
         mainMenuThemeSound.mute = true;
 
+        SaveManager.saveData.game.goldenFreddyUnlocked = true;
+        SaveManager.Save();
+
         yield return new WaitForSeconds(1f);
 
-        goldenFreddyGameObject.SetActive(false);
-        mainMenuThemeSound.mute = false;
-        GoldenFreddy(true);
-        menuManager.canNavigate = true;
-        menuManager.GoBack();
+        Application.Quit();
     }
 
     public void SaveLayout()
@@ -407,12 +401,6 @@ public class MenuData : MonoBehaviour
         {
             Movement.goldenDifficulty = customNightCharacters[4].GetComponent<CardSwitcherData>().difficultyValue;
         }
-    }
-
-    public void SaveGoldenFreddy()
-    {
-        SaveManager.saveData.game.goldenFreddyUnlocked = true;
-        SaveManager.Save();
     }
 
     public void DisplaySelectedLayoutButton()
