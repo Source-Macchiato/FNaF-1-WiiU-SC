@@ -1,115 +1,121 @@
-mainmenu.update,"A new version is available, go download it on itch.io !"
-mainmenu.sharedata,Do you accept the sharing of statistical information with Source Macchiato ?
-mainmenu.newgame,New Game
-mainmenu.continue,Continue
-mainmenu.customnight,Custom Night
-mainmenu.night,Night
-mainmenu.options,Options
-mainmenu.language,Language
-mainmenu.credits,Credits
-mainmenu.layout,Layout
-mainmenu.volume,Volume
-mainmenu.controls,Controls
-mainmenu.motioncontrolsdescription,Wii remote motion controls
-mainmenu.displaypointerdescription,Display Wii remote pointer
-mainmenu.shareanalyticsdescription,Share analytics data
-mainmenu.audio,Audio
-mainmenu.generalvolume,General volume
-mainmenu.musicvolume,Music volume
-mainmenu.voicevolume,Voice volume
-mainmenu.sfxvolume,Sound effects volume
-customnight.ailevel,A.I. Level
-customnight.ready,Ready
-difficulty.easy,Easy
-difficulty.medium,Medium
-difficulty.hard,Hard
-difficulty.extreme,Extreme
-nextnight.firstnight,1st Night
-nextnight.secondnight,2nd Night
-nextnight.thirdnight,3rd Night
-nextnight.fourthnight,4th Night
-nextnight.fifthnight,5th Night
-nextnight.sixthnight,6th Night
-nextnight.seventhnight,7th Night
-office.night,Night
-office.usage,Usage:
-office.power,Power left:
-camera.showstage,Show Stage
-camera.diningarea,Dining Area
-camera.piratecove,Pirate Cove
-camera.westhall,West Hall
-camera.westhallcorner,West Hall Corner
-camera.supplycloset,Supply Closet
-camera.easthall,East Hall
-camera.easthallcorner,East Hall Corner
-camera.backstage,Backstage
-camera.kitchen,Kitchen
-camera.restrooms,Restrooms
-nightone.phoneguy.lineone,"Hello? Hello, hello? Uh, I wanted to record a message for you to help you get settled in on your first night."
-nightone.phoneguy.linetwo,"Um, I actually worked in that office before you. I'm finishing up my last week now, as a matter of fact. So,"
-nightone.phoneguy.linethree,"I know it can be a bit overwhelming, but I'm here to tell you there's nothing to worry about."
-nightone.phoneguy.linefour,"Uh, you'll do fine. So, let's just focus on getting you through your first week, okay?"
-nightone.phoneguy.linefive,"Uh, let's see, first there's an introductory greeting from the company that I'm supposed to read."
-nightone.phoneguy.linesix,"Uh, it's kind of a legal thing, you know. Um, ""Welcome to Freddy Fazbear's Pizza."
-nightone.phoneguy.lineseven,"A magical place for kids and grown-ups alike, where fantasy and fun come to life."
-nightone.phoneguy.lineheight,Fazbear Entertainment is not responsible for damage to property or person.
-nightone.phoneguy.linenine,"Upon discovering that damage or death has occurred, a missing person report will be filed within 90 days, or as soon"
-nightone.phoneguy.lineten,"property and premises have been thoroughly cleaned and bleached, and the carpets have been replaced."""
-nightone.phoneguy.lineeleven,"Blah, blah, blah. Now that might sound bad, I know, but there's really nothing to worry about."
-nightone.phoneguy.linetwelve,"Uh, the animatronic characters here do get a bit quirky at night, but do I blame them? No."
-nightone.phoneguy.linethirteen,If I were forced to sing those same stupid songs for twenty years and I never got a bath?
-nightone.phoneguy.linefourteen,"I'd probably be a bit irritable at night too. So, remember, these characters hold a"
-nightone.phoneguy.linefifteen,"special place in the hearts of children and we need to show them a little respect, right? Okay."
-nightone.phoneguy.linesixteen,"So, just be aware, the characters do tend to wander a bit. Uh, they're left in some kind of"
-nightone.phoneguy.lineseventeen,free roaming mode at night. Uh... something about their servos locking up
-nightone.phoneguy.lineeighteen,"if they get turned off for too long. Uh, they used to be allowed to walk around during the day too."
-nightone.phoneguy.linenineteen,"But then there was The Bite of '87. Yeah. I-It's amazing that the human body can live without the frontal lobe, you know?"
-nightone.phoneguy.linetwenty,"Uh, now concerning your safety, the only real risk to you as a night watchman here, if any,"
-nightone.phoneguy.linetwentyone,"is the fact that these characters, uh, if they happen to see you after hours probably won't recognize you as a person."
-nightone.phoneguy.linetwentytwo,They'll pr- they'll most likely see you as a metal endoskeleton without its costume on.
-nightone.phoneguy.linetwentythree,"Now since that's against the rules here at Freddy Fazbear's Pizza, they'll probably try to..."
-nightone.phoneguy.linetwentyfour,"forcefully stuff you inside a Freddy Fazbear suit. Um, now, that wouldn't be so bad"
-nightone.phoneguy.linetwentyfive,"if the suits themselves weren't filled with crossbeams, wires, and animatronic devices,"
-nightone.phoneguy.linetwentysix,"especially around the facial area. So, you could imagine how having your head"
-nightone.phoneguy.linetwentyseven,forcefully pressed inside one of those could cause a bit of discomfort... and death.
-nightone.phoneguy.linetwentyheight,"Uh, the only parts of you that would likely see the light of day again would be your eyeballs"
-nightone.phoneguy.linetwentynine,"and teeth when they pop out the front of the mask, heh."
-nightone.phoneguy.linethirty,"Y-Yeah, they don't tell you these things when you sign up. But hey, first day should be a breeze."
-nightone.phoneguy.linethirtyone,"I'll chat with you tomorrow. Uh, check those cameras, and remember to close the doors"
-nightone.phoneguy.linethirtytwo,"only if absolutely necessary. Gotta conserve power. Alright, good night."
-nighttwo.phoneguy.lineone,"Uhh, Hello? Hello? Uh, well, if you're hearing this and you made it to day two, uh, congrats!"
-nighttwo.phoneguy.linetwo,I-I won't talk quite as long this time since Freddy and his friends tend to become more active as the week progresses.
-nighttwo.phoneguy.linethree,"Uhh, it might be a good idea to peek at those cameras while I talk"
-nighttwo.phoneguy.linefour,just to make sure everyone's in their proper place. You know...
-nighttwo.phoneguy.linefive,"Uh... interestingly enough, Freddy himself doesn't come off stage very often."
-nighttwo.phoneguy.linesix,"I heard he becomes a lot more active in the dark though, so, hey,"
-nighttwo.phoneguy.lineseven,"I guess that's one more reason not to run out of power, right?"
-nighttwo.phoneguy.lineheight,I-I also want to emphasize the importance of using your door lights.
-nighttwo.phoneguy.linenine,"There are blind spots in your camera views, and those blind spots happen to be right outside of your doors."
-nighttwo.phoneguy.lineten,"So if-if you can't find something, or someone, on your cameras, be sure to check the door lights."
-nighttwo.phoneguy.lineeleven,"Uh, you might only have a few seconds to react... Uh, not that you would be in any danger, of course."
-nighttwo.phoneguy.linetwelve,"I'm not implying that. Also, check on the curtain in Pirate Cove from time to time."
-nighttwo.phoneguy.linethirteen,The character in there seems unique in that he becomes more active if the cameras remain off for long periods of time.
-nighttwo.phoneguy.linefourteen,I guess he doesn't like being watched. I don't know.
-nighttwo.phoneguy.linefifteen,"Anyway, I'm sure you have everything under control! Uh, talk to you soon."
-nighthree.phoneguy.lineone,"Hello, hello? Hey you're doing great! Most people don't last this long."
-nighthree.phoneguy.linetwo,"I mean, you know, they usually move on to other things by now. I'm not implying that they died."
-nighthree.phoneguy.linethree,"Th-th-that's not what I meant. Uh, anyway I better not take up too much of your time."
-nighthree.phoneguy.linefour,"Things start getting real tonight. Uh... hey, listen, I had an idea: if you happen to get caught"
-nighthree.phoneguy.linefive,"and want to avoid getting stuffed into a Freddy suit, uhh, try playing dead! You know, go limp."
-nighthree.phoneguy.linesix,"Then there's a chance that, uh, maybe they'll think that you're an empty costume instead."
-nighthree.phoneguy.lineseven,"Then again, if they think you're an empty costume, they might try to... stuff a metal skeleton into you."
-nighthree.phoneguy.lineheight,"I wonder how that would work. Yeah, never mind, scratch that. It's best just not to get caught."
-nighthree.phoneguy.linenine,"Um... okay, I'll leave you to it. See you on the flip side!"
-nightfour.phoneguy.lineone,"Hello, hello? Hey! Hey, wow, day 4. I knew you could do it. Uh, hey, listen,"
-nightfour.phoneguy.linetwo,I may not be around to send you a message tomorrow. *banging* It's-It's been a bad night here for me.
-nightfour.phoneguy.linethree,"Um, I-I'm kinda glad that I recorded my messages for you *clears throat* uh, when I did."
-nightfour.phoneguy.linefour,"Uh, hey, do me a favor. *banging* Maybe sometime, uh, you could check inside those suits in the back room?"
-nightfour.phoneguy.linefive,*banging* I'm gonna to try to hold out until someone checks. Maybe it won't be so bad.
-nightfour.phoneguy.linesix,"*bang bang* Uh, I-I-I-I always wondered what was in all those empty heads back there. *chime plays*."
-nightfour.phoneguy.lineseven,"You know... *deep moan* oh, no - *noises followed by a loud screech and static*"
-nightfive.phoneguy.lineone,seldom knows contemporaneous (Omitted: reward; it is enough to possess) the joy of creative (Omitted: service.)
-nightfive.phoneguy.linetwo,Countless uses (Omitted: of Bose instruments) will be made by future gener- (Omitted: ations. The scientist)
-nightfive.phoneguy.linethree,to indicate the influence of various types of fertilizers on plant growth? You are right.
-nightfive.phoneguy.linefour,Would it not be easily possible to employ some of them in quick laboratory experiments
-nightfive.phoneguy.linefive,"(Omitted: Sir,) it is lamentable that mass agricultural development is (Omitted: not) speeded by fuller use of your marvelous mechanisms."
+"mainmenu.update","A new version is available, go download it on itch.io !"
+"mainmenu.sharedata","Do you accept the sharing of statistical information with Source Macchiato ?"
+"mainmenu.newgame","New Game"
+"mainmenu.continue","Continue"
+"mainmenu.customnight","Custom Night"
+"mainmenu.night","Night"
+"mainmenu.options","Options"
+"mainmenu.language","Language"
+"mainmenu.credits","Credits"
+"mainmenu.layout","Layout"
+"mainmenu.volume","Volume"
+"mainmenu.controls","Controls"
+"mainmenu.motioncontrolsdescription","Wii remote motion controls"
+"mainmenu.displaypointerdescription","Display Wii remote pointer"
+"mainmenu.shareanalyticsdescription","Share analytics data"
+"mainmenu.audio","Audio"
+"mainmenu.generalvolume","General volume"
+"mainmenu.musicvolume","Music volume"
+"mainmenu.voicevolume","Voice volume"
+"mainmenu.sfxvolume","Sound effects volume"
+"customnight.ailevel","A.I. Level"
+"customnight.ready","Ready"
+"difficulty.easy","Easy"
+"difficulty.medium","Medium"
+"difficulty.hard","Hard"
+"difficulty.extreme","Extreme"
+"nextnight.firstnight","1st Night"
+"nextnight.secondnight","2nd Night"
+"nextnight.thirdnight","3rd Night"
+"nextnight.fourthnight","4th Night"
+"nextnight.fifthnight","5th Night"
+"nextnight.sixthnight","6th Night"
+"nextnight.seventhnight","7th Night"
+"office.night","Night"
+"office.usage","Usage:"
+"office.power","Power left:"
+"camera.showstage","Show Stage"
+"camera.diningarea","Dining Area"
+"camera.piratecove","Pirate Cove"
+"camera.westhall","West Hall"
+"camera.westhallcorner","West Hall Corner"
+"camera.supplycloset","Supply Closet"
+"camera.easthall","East Hall"
+"camera.easthallcorner","East Hall Corner"
+"camera.backstage","Backstage"
+"camera.kitchen","Kitchen"
+"camera.restrooms","Restrooms"
+"nightone.phoneguy.lineone","Hello? Hello, hello? Uh, I wanted to record a message for you to help you get settled in on your first night."
+"nightone.phoneguy.linetwo","Um, I actually worked in that office before you. I'm finishing up my last week now, as a matter of fact. So,"
+"nightone.phoneguy.linethree","I know it can be a bit overwhelming, but I'm here to tell you there's nothing to worry about."
+"nightone.phoneguy.linefour","Uh, you'll do fine. So, let's just focus on getting you through your first week, okay?"
+"nightone.phoneguy.linefive","Uh, let's see, first there's an introductory greeting from the company that I'm supposed to read."
+"nightone.phoneguy.linesix","Uh, it's kind of a legal thing, you know. Um, ""Welcome to Freddy Fazbear's Pizza."
+"nightone.phoneguy.lineseven","A magical place for kids and grown-ups alike, where fantasy and fun come to life."
+"nightone.phoneguy.lineheight","Fazbear Entertainment is not responsible for damage to property or person."
+"nightone.phoneguy.linenine","Upon discovering that damage or death has occurred, a missing person report will be filed within 90 days, or as soon"
+"nightone.phoneguy.lineten","property and premises have been thoroughly cleaned and bleached, and the carpets have been replaced."""
+"nightone.phoneguy.lineeleven","Blah, blah, blah. Now that might sound bad, I know, but there's really nothing to worry about."
+"nightone.phoneguy.linetwelve","Uh, the animatronic characters here do get a bit quirky at night, but do I blame them? No."
+"nightone.phoneguy.linethirteen","If I were forced to sing those same stupid songs for twenty years and I never got a bath?"
+"nightone.phoneguy.linefourteen","I'd probably be a bit irritable at night too. So, remember, these characters hold a"
+"nightone.phoneguy.linefifteen","special place in the hearts of children and we need to show them a little respect, right? Okay."
+"nightone.phoneguy.linesixteen","So, just be aware, the characters do tend to wander a bit. Uh, they're left in some kind of"
+"nightone.phoneguy.lineseventeen","free roaming mode at night. Uh... something about their servos locking up"
+"nightone.phoneguy.lineeighteen","if they get turned off for too long. Uh, they used to be allowed to walk around during the day too."
+"nightone.phoneguy.linenineteen","But then there was The Bite of '87. Yeah. I-It's amazing that the human body can live without the frontal lobe, you know?"
+"nightone.phoneguy.linetwenty","Uh, now concerning your safety, the only real risk to you as a night watchman here, if any,"
+"nightone.phoneguy.linetwentyone","is the fact that these characters, uh, if they happen to see you after hours probably won't recognize you as a person."
+"nightone.phoneguy.linetwentytwo","They'll pr- they'll most likely see you as a metal endoskeleton without its costume on."
+"nightone.phoneguy.linetwentythree","Now since that's against the rules here at Freddy Fazbear's Pizza, they'll probably try to..."
+"nightone.phoneguy.linetwentyfour","forcefully stuff you inside a Freddy Fazbear suit. Um, now, that wouldn't be so bad"
+"nightone.phoneguy.linetwentyfive","if the suits themselves weren't filled with crossbeams, wires, and animatronic devices,"
+"nightone.phoneguy.linetwentysix","especially around the facial area. So, you could imagine how having your head"
+"nightone.phoneguy.linetwentyseven","forcefully pressed inside one of those could cause a bit of discomfort... and death."
+"nightone.phoneguy.linetwentyheight","Uh, the only parts of you that would likely see the light of day again would be your eyeballs"
+"nightone.phoneguy.linetwentynine","and teeth when they pop out the front of the mask, heh."
+"nightone.phoneguy.linethirty","Y-Yeah, they don't tell you these things when you sign up. But hey, first day should be a breeze."
+"nightone.phoneguy.linethirtyone","I'll chat with you tomorrow. Uh, check those cameras, and remember to close the doors"
+"nightone.phoneguy.linethirtytwo","only if absolutely necessary. Gotta conserve power. Alright, good night."
+"nighttwo.phoneguy.lineone","Uhh, Hello? Hello? Uh, well, if you're hearing this and you made it to day two, uh, congrats!"
+"nighttwo.phoneguy.linetwo","I-I won't talk quite as long this time since Freddy and his friends tend to become more active as the week progresses."
+"nighttwo.phoneguy.linethree","Uhh, it might be a good idea to peek at those cameras while I talk"
+"nighttwo.phoneguy.linefour","just to make sure everyone's in their proper place. You know..."
+"nighttwo.phoneguy.linefive","Uh... interestingly enough, Freddy himself doesn't come off stage very often."
+"nighttwo.phoneguy.linesix","I heard he becomes a lot more active in the dark though, so, hey,"
+"nighttwo.phoneguy.lineseven","I guess that's one more reason not to run out of power, right?"
+"nighttwo.phoneguy.lineheight","I-I also want to emphasize the importance of using your door lights."
+"nighttwo.phoneguy.linenine","There are blind spots in your camera views, and those blind spots happen to be right outside of your doors."
+"nighttwo.phoneguy.lineten","So if-if you can't find something, or someone, on your cameras, be sure to check the door lights."
+"nighttwo.phoneguy.lineeleven","Uh, you might only have a few seconds to react... Uh, not that you would be in any danger, of course."
+"nighttwo.phoneguy.linetwelve","I'm not implying that. Also, check on the curtain in Pirate Cove from time to time."
+"nighttwo.phoneguy.linethirteen","The character in there seems unique in that he becomes more active if the cameras remain off for long periods of time."
+"nighttwo.phoneguy.linefourteen","I guess he doesn't like being watched. I don't know."
+"nighttwo.phoneguy.linefifteen","Anyway, I'm sure you have everything under control! Uh, talk to you soon."
+"nighthree.phoneguy.lineone","Hello, hello? Hey you're doing great! Most people don't last this long."
+"nighthree.phoneguy.linetwo","I mean, you know, they usually move on to other things by now. I'm not implying that they died."
+"nighthree.phoneguy.linethree","Th-th-that's not what I meant. Uh, anyway I better not take up too much of your time."
+"nighthree.phoneguy.linefour","Things start getting real tonight. Uh... hey, listen, I had an idea: if you happen to get caught"
+"nighthree.phoneguy.linefive","and want to avoid getting stuffed into a Freddy suit, uhh, try playing dead! You know, go limp."
+"nighthree.phoneguy.linesix","Then there's a chance that, uh, maybe they'll think that you're an empty costume instead."
+"nighthree.phoneguy.lineseven","Then again, if they think you're an empty costume, they might try to... stuff a metal skeleton into you."
+"nighthree.phoneguy.lineheight","I wonder how that would work. Yeah, never mind, scratch that. It's best just not to get caught."
+"nighthree.phoneguy.linenine","Um... okay, I'll leave you to it. See you on the flip side!"
+"nightfour.phoneguy.lineone","Hello, hello? Hey! Hey, wow, day 4. I knew you could do it. Uh, hey, listen,"
+"nightfour.phoneguy.linetwo","I may not be around to send you a message tomorrow. *banging* It's-It's been a bad night here for me."
+"nightfour.phoneguy.linethree","Um, I-I'm kinda glad that I recorded my messages for you *clears throat* uh, when I did."
+"nightfour.phoneguy.linefour","Uh, hey, do me a favor. *banging* Maybe sometime, uh, you could check inside those suits in the back room?"
+"nightfour.phoneguy.linefive","*banging* I'm gonna to try to hold out until someone checks. Maybe it won't be so bad."
+"nightfour.phoneguy.linesix","*bang bang* Uh, I-I-I-I always wondered what was in all those empty heads back there. *chime plays*."
+"nightfour.phoneguy.lineseven","You know... *deep moan* oh, no - *noises followed by a loud screech and static*"
+"nightfive.phoneguy.lineone","seldom knows contemporaneous (Omitted: reward; it is enough to possess) the joy of creative (Omitted: service.)"
+"nightfive.phoneguy.linetwo","Countless uses (Omitted: of Bose instruments) will be made by future gener- (Omitted: ations. The scientist)"
+"nightfive.phoneguy.linethree","to indicate the influence of various types of fertilizers on plant growth? You are right."
+"nightfive.phoneguy.linefour","Would it not be easily possible to employ some of them in quick laboratory experiments"
+"nightfive.phoneguy.linefive","(Omitted: Sir,) it is lamentable that mass agricultural development is (Omitted: not) speeded by fuller use of your marvelous mechanisms."
+"mainmenu.video","Video"
+"mainmenu.subtitles","Subtitles"
+"mainmenu.subtitlesdescription","Enable subtitles"
+"mainmenu.panoramaeffectdescription","Enable the panorama effect"
+"mainmenu.yes","Yes"
+"mainmenu.no","No"
