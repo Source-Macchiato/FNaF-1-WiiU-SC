@@ -33,6 +33,7 @@ public class MenuData : MonoBehaviour
     public SwitcherData motionSwitcher;
     public SwitcherData pointerSwitcher;
     public SwitcherData panoramaEffectSwitcher;
+    public SwitcherData subtitlesSwitcher;
 
     [Header("Other")]
     public GameObject starsContainer;
@@ -284,6 +285,25 @@ public class MenuData : MonoBehaviour
         {
             panoramaEffectSwitcher.currentOptionId = switcherIndex;
             panoramaEffectSwitcher.UpdateText();
+        }
+    }
+
+    public void SaveSubtitlesStatus()
+    {
+        SaveManager.saveData.settings.subtitlesEnabled = subtitlesSwitcher.currentOptionId == 0;
+        SaveManager.Save();
+    }
+
+    public void LoadSubtitlesStatus()
+    {
+        bool subtitlesStatus = SaveManager.saveData.settings.subtitlesEnabled;
+
+        int switcherIndex = subtitlesStatus ? 0 : 1;
+
+        if (switcherIndex >= 0 && switcherIndex < subtitlesSwitcher.optionsName.Length)
+        {
+            subtitlesSwitcher.currentOptionId = switcherIndex;
+            subtitlesSwitcher.UpdateText();
         }
     }
 

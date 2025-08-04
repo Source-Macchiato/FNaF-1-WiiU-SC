@@ -65,6 +65,7 @@ public class Settings
     public bool motionControls = true;
     public bool pointerVisibility = true;
     public bool panoramaEffect = true;
+    public bool subtitlesEnabled = true;
 }
 
 [Serializable]

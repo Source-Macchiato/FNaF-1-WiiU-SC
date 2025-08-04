@@ -155,34 +155,43 @@ public class LayoutManager : MonoBehaviour
 
     public void ChangeSubtitlePosition(bool cameraStatus)
     {
-        if (layoutId == 1)
+        if (SaveManager.saveData.settings.subtitlesEnabled)
         {
-            if (cameraStatus)
+            if (layoutId == 1)
             {
-                screenSubtitles[0].SetActive(false);
-                screenSubtitles[1].SetActive(true);
+                if (cameraStatus)
+                {
+                    screenSubtitles[0].SetActive(false);
+                    screenSubtitles[1].SetActive(true);
 
-                subtitles[0].SetActive(true);
-                subtitles[1].SetActive(false);
-                subtitles[2].SetActive(false);
-            }
-            else
-            {
-                screenSubtitles[0].SetActive(true);
-                screenSubtitles[1].SetActive(false);
+                    subtitles[0].SetActive(true);
+                    subtitles[1].SetActive(false);
+                    subtitles[2].SetActive(false);
+                }
+                else
+                {
+                    screenSubtitles[0].SetActive(true);
+                    screenSubtitles[1].SetActive(false);
 
-                subtitles[0].SetActive(false);
-                subtitles[1].SetActive(true);
-                subtitles[2].SetActive(false);
+                    subtitles[0].SetActive(false);
+                    subtitles[1].SetActive(true);
+                    subtitles[2].SetActive(false);
+                }
             }
-        }
-        else if (layoutId == 0 || layoutId == 3)
-        {
-            if (cameraStatus)
+            else if (layoutId == 0 || layoutId == 3)
             {
-                subtitles[0].SetActive(false);
-                subtitles[1].SetActive(false);
-                subtitles[2].SetActive(true);
+                if (cameraStatus)
+                {
+                    subtitles[0].SetActive(false);
+                    subtitles[1].SetActive(false);
+                    subtitles[2].SetActive(true);
+                }
+                else
+                {
+                    subtitles[0].SetActive(false);
+                    subtitles[1].SetActive(true);
+                    subtitles[2].SetActive(false);
+                }
             }
             else
             {
@@ -194,7 +203,7 @@ public class LayoutManager : MonoBehaviour
         else
         {
             subtitles[0].SetActive(false);
-            subtitles[1].SetActive(true);
+            subtitles[1].SetActive(false);
             subtitles[2].SetActive(false);
         }
     }
