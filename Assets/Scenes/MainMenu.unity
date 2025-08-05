@@ -29257,7 +29257,6 @@ MonoBehaviour:
   descText: {fileID: 1902922960}
   achievementObtained: {fileID: 382461931}
   icon: {fileID: 1512599938}
-  audioSource: {fileID: 1644344490}
   medalAnim: {fileID: 725613195}
   isShowing: 0
   unlockedAchievements: 
@@ -29368,7 +29367,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
+  near clip plane: -0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 1

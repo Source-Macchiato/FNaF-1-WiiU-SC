@@ -6,36 +6,42 @@ using WiiU = UnityEngine.WiiU;
 
 public class SaveGameState : MonoBehaviour
 {
-    public static bool DoSave(byte[] data)
+    public static bool issueWhileSaving = false;
+	public static bool saveResult = false;
+	
+    public static void DoSave(byte[] data)
     {
         string path = Application.persistentDataPath + "/data.bin";
-        bool res = false;
+        issueWhileSaving = false;
+        saveResult = false;
         Thread t = new Thread(new ThreadStart(
             delegate
             {
-                res = DelegatedSave(data, path);
+                DelegatedSave(data, path);
             })
         );
 
         t.Start();
-        return res;
     }
 
-    public static bool DelegatedSave(byte[] data, string path)
+    private static void DelegatedSave(byte[] data, string path)
     {
         WiiU.SaveCommand cmd = WiiU.Save.SaveCommand(WiiU.Save.accountNo);
 
         long freespace = 0;
         WiiU.Save.FSStatus status = cmd.GetFreeSpaceSize(out freespace, WiiU.Save.FSRetFlag.None);
-        if (status != WiiU.Save.FSStatus.OK)
-            return false;
-
+        if (status != WiiU.Save.FSStatus.OK){
+            issueWhileSaving = true;
+			saveResult = false;
+		}
+		
         long needspace = Mathf.Max(1024 * 1024, data.Length);
 
         if (freespace < needspace)
         {
             // not enough free space
-            return false;
+            issueWhileSaving = true;
+			saveResult = false;
         }
         else
         {
@@ -45,11 +51,14 @@ public class SaveGameState : MonoBehaviour
 
             // It is very important to flush quota, otherwise filesystem changes will be discarded upon reboot
             status = cmd.FlushQuota(WiiU.Save.FSRetFlag.None);
-            if (status != WiiU.Save.FSStatus.OK)
-                return false;
+            if (status != WiiU.Save.FSStatus.OK){
+                issueWhileSaving = true;
+				saveResult = false;
+			}
         }
 
-        return true;
+        issueWhileSaving = false;
+        saveResult = true;
     }
 
     public static string DoLoad()

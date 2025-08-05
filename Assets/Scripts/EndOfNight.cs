@@ -64,7 +64,7 @@ public class EndOfNight : MonoBehaviour {
 
         if (nightNumber >= 1 && nightNumber <= 4)
         {
-            SceneManager.LoadScene("NextNight");
+            SceneManager.LoadSceneAsync("NextNight");
         }
         else if (nightNumber == 5)
         {
@@ -75,7 +75,7 @@ public class EndOfNight : MonoBehaviour {
                 SaveManager.Save();
             }
 
-            SceneManager.LoadScene("TheEnd");
+            SceneManager.LoadSceneAsync("TheEnd");
         }
         else if (nightNumber == 6)
         {
@@ -86,7 +86,7 @@ public class EndOfNight : MonoBehaviour {
                 SaveManager.Save();
             }
 
-            SceneManager.LoadScene("TheEnd");
+            SceneManager.LoadSceneAsync("TheEnd");
         }
         else if (nightNumber == 7)
         {
@@ -100,7 +100,7 @@ public class EndOfNight : MonoBehaviour {
                 }
             }
 
-            SceneManager.LoadScene("TheEnd");
+            SceneManager.LoadSceneAsync("TheEnd");
         }
     }
 }

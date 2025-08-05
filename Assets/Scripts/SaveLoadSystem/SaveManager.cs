@@ -34,7 +34,7 @@ public class SaveManager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(saveData);
         byte[] data = Encoding.UTF8.GetBytes(json);
-        bool saveResult = SaveGameState.DoSave(data);
+        SaveGameState.DoSave(data);
     }
 }
 
