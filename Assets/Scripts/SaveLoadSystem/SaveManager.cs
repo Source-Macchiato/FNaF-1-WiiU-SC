@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Text;
+using System.Collections.Generic;
 using UnityEngine;
+using WiiU = UnityEngine.WiiU;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveData saveData = new SaveData();
+    public static string token;
 
     void Start()
     {
+        // Load data
         string json = SaveGameState.DoLoad();
         
         if (json != string.Empty)
@@ -20,6 +24,11 @@ public class SaveManager : MonoBehaviour
         {
             Debug.Log("Data has not been loaded.");
         }
+
+        // Load token
+        WiiU.SDCard.Init();
+        token = WiiU.SDCard.ReadAllText("wiiu/apps/BrewConnect/token").Trim();
+        WiiU.SDCard.DeInit();
     }
 
     public static void Save()
