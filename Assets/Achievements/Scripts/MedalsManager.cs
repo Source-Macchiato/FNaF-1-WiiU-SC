@@ -1,30 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Text;
+using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using WiiU = UnityEngine.WiiU;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MedalsManager : MonoBehaviour {
 
 	public static MedalsManager medalsManager;
+    public static Achievements achievements;
 
+    private bool isProcessingQueue = false;
+
+    [Header("BrewConnect")]
+    [SerializeField] private string organizationToken;
+    [SerializeField] private string projectToken;
+
+    [Header("Popup settings")]
     public float durationPopup;
     public Image medalPopup;
-    public Text mainText;
+    public Text titleText;
     public Text descText;
     public Text achievementObtained;
     public Image icon;
+    [SerializeField] private AudioSource audioSource;
 
     public Animator medalAnim;
 
     public bool isShowing = false;
 
-    public List<string> obtainedMedals = new List<string>();
+    public List<Achievements.achievements> unlockedAchievements = new List<Achievements.achievements>();
     [Header("Things in wait list")]
-    public List<string> medalsToShow = new List<string>();
-    public List<string> medalsDescToShow = new List<string>();
-    public List<Sprite> medalsIconToShow = new List<Sprite>();
+    private List<AchievementDisplayData> achievementsToDisplay = new List<AchievementDisplayData>();
 
     [Header("Dark Mode")]
     public bool darkMode = false;
@@ -44,82 +51,202 @@ public class MedalsManager : MonoBehaviour {
         DontDestroyOnLoad(this);
 	}
 
-	void Start ()
+	void Start()
     {
-        MedalsSave.inst.Load();
 		medalAnim.SetBool("show", false);
+
         if (darkMode)
         {
             medalPopup.color = darkPopup;
-            mainText.color = darkText;
+            titleText.color = darkText;
             descText.color = darkText;
             achievementObtained.color = darkText;
         }
         else
         {
             medalPopup.color = normalPopup;
-            mainText.color = normalText;
+            titleText.color = normalText;
             descText.color = normalText;
             achievementObtained.color = normalText;
         }
+
+        UnlockAchievement(Achievements.achievements.ONENIGHTATFREDDYS);
+        UnlockAchievement(Achievements.achievements.TWONIGHTSATFREDDYS);
     }
 
-    void Update()
+    public void UnlockAchievement(Achievements.achievements key)
     {
-        if(obtainedMedals.Count != medalsToShow.Count && obtainedMedals.Count < medalsToShow.Count)
-        {
-            for(int i = 0; i < medalsToShow.Count; i++)
-            {
-                ShowAchievement(medalsToShow[i], medalsDescToShow[i], medalsIconToShow[i]);
-            }
-        }
+        SaveManager.saveData.UnlockAchievement(key);
+        SaveManager.Save();
+
+        StartCoroutine(PublishAchievementIE(key));
     }
 
-    public void ShowAchievement(string MainMessage, string Description, [Optional]Sprite medalIcon)
+    private IEnumerator ShowAchievementIE(string title, string description, Sprite iconSprite = null)
     {
-        string match = "";
-        foreach (string item in obtainedMedals)
-        {
-            if (item == MainMessage)
-            {
-                match = item;
-            }
-        }
-        if (PlayerPrefs.GetString(MainMessage) == string.Empty || PlayerPrefs.GetString(MainMessage) == "" || PlayerPrefs.GetString(MainMessage) == null || match != MainMessage)
-        {
-            if (!medalsToShow.Contains(MainMessage))
-            {
-                medalsToShow.Add(MainMessage);
-                medalsDescToShow.Add(Description);
-                if(!medalIcon)
-                    medalsIconToShow.Add(null);
-                else
-                    medalsIconToShow.Add(medalIcon);
-            }
-            if (isShowing) return;
-            StartCoroutine(ShowAchievementIE(MainMessage, Description, medalIcon));
-        }
-    }
-
-    private IEnumerator ShowAchievementIE(string MainMessage, string Description, [Optional] Sprite medalIcon)
-	{
         isShowing = true;
-        PlayerPrefs.SetString(MainMessage, "obtained");
-        obtainedMedals.Add(MainMessage);
-        MedalsSave.inst.Save();
-        mainText.text = MainMessage;
-        descText.text = Description;
-        if(medalIcon)
-            icon.sprite = medalIcon;
-        else
-            icon.sprite = null;
+
+        titleText.text = title;
+        descText.text = description;
+        
+        if (iconSprite != null)
+        {
+            icon.sprite = iconSprite;
+        }
+
         medalAnim.SetBool("show", true);
+
         yield return new WaitForSeconds(durationPopup);
+
         medalAnim.SetBool("show", false);
+
+        yield return new WaitForSeconds(0.7f);
+
+        isShowing = false;
     }
 
-    void OnApplicationQuit() //Just in case
+    private IEnumerator PublishAchievementIE(Achievements.achievements key)
     {
-        MedalsSave.inst.Save();
+        string url = "https://api.brew-connect.com/v1/online/unlock_achievement";
+        string json = "{" +
+            "\"user_token\": \"" + SaveManager.token + "\"," +
+            "\"organization_token\": \"" + organizationToken + "\"," +
+            "\"project_token\": \"" + projectToken + "\"," +
+            "\"achievement_key\": \"" + key + "\"" +
+        "}";
+        byte[] post = Encoding.UTF8.GetBytes(json);
+        
+        Dictionary<string, string> headers = new Dictionary<string, string>();
+        headers.Add("content-Type", "application/json");
+
+        using (WWW www = new WWW(url, post, headers))
+        {
+            yield return www;
+
+            string jsonResponse = www.text;
+            UnlockAchievementResponse response = JsonUtility.FromJson<UnlockAchievementResponse>(jsonResponse);
+
+            Debug.Log(response.message[0]);
+
+            if (StatusCode(www) == 201)
+            {
+                Sprite downloadedIcon = null;
+
+                if (!string.IsNullOrEmpty(response.achievement.icon_url))
+                {
+                    yield return StartCoroutine(LoadSpriteFromURL(response.achievement.icon_url, (sprite) =>
+                    {
+                        downloadedIcon = sprite;
+                    }));
+                }
+
+                achievementsToDisplay.Add(new AchievementDisplayData
+                {
+                    key = key,
+                    title = response.achievement.title,
+                    description = response.achievement.description,
+                    icon = downloadedIcon
+                });
+
+                if (!isProcessingQueue)
+                {
+                    StartCoroutine(ProcessQueue());
+                }
+            }
+        }
     }
+
+    private int StatusCode(WWW www)
+    {
+        string statusLine;
+        if (www.responseHeaders.TryGetValue("STATUS", out statusLine))
+        {
+            string[] parts = statusLine.Split(' ');
+            int statusCode;
+            if (parts.Length > 1 && int.TryParse(parts[1], out statusCode))
+            {
+                return statusCode;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    private IEnumerator LoadSpriteFromURL(string url, Action<Sprite> callback)
+    {
+        using (WWW www = new WWW(url))
+        {
+            yield return www;
+
+            if (StatusCode(www) != 200)
+            {
+                Debug.LogError("Error while downloading image: " + www.error);
+                callback.Invoke(null);
+                yield break;
+            }
+
+            Texture2D texture = www.texture;
+
+            if (texture == null)
+            {
+                Debug.LogError("Invalid texture downloaded from URL.");
+
+                callback.Invoke(null);
+                yield break;
+            }
+
+            Sprite sprite = Sprite.Create(
+                texture,
+                new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f)
+                );
+
+            callback.Invoke(sprite);
+        }
+    }
+
+    private IEnumerator ProcessQueue()
+    {
+        isProcessingQueue = true;
+
+        while (achievementsToDisplay.Count > 0)
+        {
+            var data = achievementsToDisplay[0];
+            yield return StartCoroutine(ShowAchievementIE(data.title, data.description, data.icon));
+
+            achievementsToDisplay.RemoveAt(0);
+        }
+
+        isProcessingQueue = false;
+    }
+}
+
+[Serializable]
+public class UnlockAchievementResponse
+{
+    public string[] message;
+    public AchievementsResponse achievement;
+}
+
+[Serializable]
+public class AchievementsResponse
+{
+    public string title;
+    public string description;
+    public string icon_url;
+}
+
+[Serializable]
+public class AchievementDisplayData
+{
+    public Achievements.achievements key;
+    public string title;
+    public string description;
+    public Sprite icon;
 }

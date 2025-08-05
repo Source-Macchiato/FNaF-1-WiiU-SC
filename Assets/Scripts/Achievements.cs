@@ -1,0 +1,19 @@
+﻿using System;
+
+[Serializable]
+public class Achievements
+{
+	public enum achievements
+	{
+		ONENIGHTATFREDDYS,
+		TWONIGHTSATFREDDYS,
+		THREENIGHTSATFREDDYS,
+		FOURNIGHTSATFREDDYS,
+		FIVENIGHTSATFREDDYS,
+		OVERTIME,
+		NOTAMPERING,
+		NOHIDING,
+		THEBYTEOF87,
+		WITHEREDBONNIEGAMING
+    }
+}

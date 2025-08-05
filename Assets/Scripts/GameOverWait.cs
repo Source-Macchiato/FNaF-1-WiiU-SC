@@ -8,7 +8,7 @@ public class GameOverWait : MonoBehaviour
 
 	void Start()
 	{
-        MedalsManager.medalsManager.ShowAchievement("No Hiding", "Experienced a jumpscare, and then... who knows?", achievementIcon);
+        MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.NOHIDING);
 
         StartCoroutine(InitCoroutine());	
 	}

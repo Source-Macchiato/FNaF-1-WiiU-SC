@@ -8,11 +8,6 @@ public class EndOfNight : MonoBehaviour {
     public float nightNumber;
     public Sprite[] achievementsIcons;
 
-    private float freddyDifficulty;
-    private float bonnieDifficulty;
-    private float chicaDifficulty;
-    private float foxyDifficulty;
-
     SaveGameState saveGameState;
     SaveManager saveManager;
 
@@ -23,42 +18,36 @@ public class EndOfNight : MonoBehaviour {
 
         nightNumber = SaveManager.saveData.game.nightNumber;
 
-        // Get difficulty
-        freddyDifficulty = PlayerPrefs.GetFloat("FreddyDifficulty", 0);
-        bonnieDifficulty = PlayerPrefs.GetFloat("BonnieDifficulty", 0);
-        chicaDifficulty = PlayerPrefs.GetFloat("ChicaDifficulty", 0);
-        foxyDifficulty = PlayerPrefs.GetFloat("FoxyDifficulty", 0);
-
         // Unlock achievements
         if (nightNumber == 1)
         {
-            MedalsManager.medalsManager.ShowAchievement("One Night at Freddy's", "Survived the 1st night.", achievementsIcons[0]);
+            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.ONENIGHTATFREDDYS);
         }
         else if (nightNumber == 2)
         {
-            MedalsManager.medalsManager.ShowAchievement("Two Nights at Freddy's", "Survived the 2nd night.", achievementsIcons[1]);
+            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.TWONIGHTSATFREDDYS);
         }
         else if (nightNumber == 3)
         {
-            MedalsManager.medalsManager.ShowAchievement("Three Nights at Freddy's", "Survived the 3rd night.", achievementsIcons[2]);
+            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.THREENIGHTSATFREDDYS);
         }
         else if (nightNumber == 4)
         {
-            MedalsManager.medalsManager.ShowAchievement("Four Nights at Freddy's", "Survived the 4th night.", achievementsIcons[3]);
+            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.FOURNIGHTSATFREDDYS);
         }
         else if (nightNumber == 5)
         {
-            MedalsManager.medalsManager.ShowAchievement("Five Nights at Freddy's", "Survived the 5th night.", achievementsIcons[4]);
+            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.FIVENIGHTSATFREDDYS);
         }
         else if (nightNumber == 6)
         {
-            MedalsManager.medalsManager.ShowAchievement("Overtime", "Survived the 6th night.", achievementsIcons[5]);
+            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.OVERTIME);
         }
         else if (nightNumber == 7)
         {
-            if (freddyDifficulty == 20 && bonnieDifficulty == 20 && chicaDifficulty == 20 && foxyDifficulty == 20)
+            if (Movement.freddyDifficulty == 20 && Movement.bonnieDifficulty == 20 && Movement.chicaDifficulty == 20 && Movement.foxyDifficulty == 20)
             {
-                MedalsManager.medalsManager.ShowAchievement("No Tampering", "Completed the custom night on hardest difficulty.", achievementsIcons[6]);
+                MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.NOTAMPERING);
             }
         }
 
@@ -101,7 +90,7 @@ public class EndOfNight : MonoBehaviour {
         }
         else if (nightNumber == 7)
         {
-            if (freddyDifficulty == 20 && bonnieDifficulty == 20 && chicaDifficulty == 20 && foxyDifficulty == 20)
+            if (Movement.freddyDifficulty == 20 && Movement.bonnieDifficulty == 20 && Movement.chicaDifficulty == 20 && Movement.foxyDifficulty == 20)
             {
                 // When custom night is finished enable the third star
                 if (SaveManager.saveData.game.starsId <= 2)

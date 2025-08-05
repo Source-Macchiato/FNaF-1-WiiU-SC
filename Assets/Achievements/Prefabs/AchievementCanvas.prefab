@@ -143,7 +143,6 @@ GameObject:
   - component: {fileID: 114736051096014612}
   - component: {fileID: 114546485211612750}
   - component: {fileID: 114510269256320722}
-  - component: {fileID: 114416969901299092}
   - component: {fileID: 82325422860201500}
   m_Layer: 5
   m_Name: AchievementCanvas
@@ -261,17 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievementPlay: {fileID: 82325422860201500}
---- !u!114 &114416969901299092
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1898218157625050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d167045afc0da49bdba8ea3ebc5a23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114510269256320722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,9 +280,7 @@ MonoBehaviour:
   medalAnim: {fileID: 95580740030684646}
   isShowing: 0
   obtainedMedals: []
-  medalsToShow: []
-  medalsDescToShow: []
-  medalsIconToShow: []
+  medalsToShow: 
   darkMode: 0
   normalText: {r: 0.21568628, g: 0.21568628, b: 0.21568628, a: 1}
   darkText: {r: 0.7882353, g: 0.7882353, b: 0.7882353, a: 1}

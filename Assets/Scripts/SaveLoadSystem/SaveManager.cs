@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Text;
-using System.Collections.Generic;
 using UnityEngine;
 using WiiU = UnityEngine.WiiU;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveData saveData = new SaveData();
-    public static string token;
+    public static string token = "5421d37d83a70e57d3cccde5c8455ff7fd0aff0f3d14035aae658fc141f4100e";
 
     void Start()
     {
@@ -27,7 +26,7 @@ public class SaveManager : MonoBehaviour
 
         // Load token
         WiiU.SDCard.Init();
-        token = WiiU.SDCard.ReadAllText("wiiu/apps/BrewConnect/token").Trim();
+        //token = WiiU.SDCard.ReadAllText("wiiu/apps/BrewConnect/token").Trim();
         WiiU.SDCard.DeInit();
     }
 
@@ -36,15 +35,6 @@ public class SaveManager : MonoBehaviour
         string json = JsonUtility.ToJson(saveData);
         byte[] data = Encoding.UTF8.GetBytes(json);
         bool saveResult = SaveGameState.DoSave(data);
-
-        if (saveResult)
-        {
-            Debug.Log("Data has been saved.");
-        }
-        else
-        {
-            Debug.Log("An error occured while saving.");
-        }
     }
 }
 
@@ -53,6 +43,17 @@ public class SaveData
 {
     public Game game = new Game();
     public Settings settings = new Settings();
+    public bool[] achievements = new bool[Enum.GetValues(typeof(Achievements.achievements)).Length];
+
+    public bool GetAchievement(Achievements.achievements a)
+    {
+        return achievements[(int)a];
+    }
+
+    public void UnlockAchievement(Achievements.achievements a)
+    {
+        achievements[(int)a] = true;
+    }
 }
 
 [Serializable]

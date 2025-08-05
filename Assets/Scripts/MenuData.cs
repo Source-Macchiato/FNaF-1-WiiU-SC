@@ -393,6 +393,8 @@ public class MenuData : MonoBehaviour
         SaveManager.saveData.game.goldenFreddyUnlocked = true;
         SaveManager.Save();
 
+        MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.THEBYTEOF87);
+
         yield return new WaitForSeconds(1f);
 
         Application.Quit();

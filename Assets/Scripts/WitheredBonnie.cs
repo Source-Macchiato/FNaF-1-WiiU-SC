@@ -6,6 +6,6 @@ public class WitheredBonnie : MonoBehaviour
 
 	void Start()
 	{
-        MedalsManager.medalsManager.ShowAchievement("Withered Bonnie Gaming", "Find the easter egg.", achievementIcon);
+        MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.WITHEREDBONNIEGAMING);
     }
 }
