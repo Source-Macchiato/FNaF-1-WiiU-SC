@@ -6,7 +6,7 @@ using WiiU = UnityEngine.WiiU;
 public class SaveManager : MonoBehaviour
 {
     public static SaveData saveData = new SaveData();
-    public static string token = "5421d37d83a70e57d3cccde5c8455ff7fd0aff0f3d14035aae658fc141f4100e";
+    public static string token;
 
     void Start()
     {
