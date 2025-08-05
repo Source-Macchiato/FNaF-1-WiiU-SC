@@ -391,9 +391,8 @@ public class MenuData : MonoBehaviour
         mainMenuThemeSound.mute = true;
 
         SaveManager.saveData.game.goldenFreddyUnlocked = true;
+        SaveManager.saveData.UnlockAchievement(Achievements.achievements.THEBYTEOF87);
         SaveManager.Save();
-
-        MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.THEBYTEOF87);
 
         yield return new WaitForSeconds(1f);
 
