@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 public class EndOfNight : MonoBehaviour {
 
     public GameObject Children;
-    public float nightNumber;
-    public Sprite[] achievementsIcons;
+    public int nightNumber;
 
     SaveGameState saveGameState;
     SaveManager saveManager;
@@ -101,6 +100,10 @@ public class EndOfNight : MonoBehaviour {
             }
 
             SceneManager.LoadSceneAsync("TheEnd");
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync("MainMenu");
         }
     }
 }
