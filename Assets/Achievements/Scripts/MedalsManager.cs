@@ -23,7 +23,6 @@ public class MedalsManager : MonoBehaviour {
     public Text descText;
     public Text achievementObtained;
     public Image icon;
-    [SerializeField] private AudioSource audioSource;
 
     public Animator medalAnim;
 
@@ -70,8 +69,13 @@ public class MedalsManager : MonoBehaviour {
             achievementObtained.color = normalText;
         }
 
-        UnlockAchievement(Achievements.achievements.ONENIGHTATFREDDYS);
-        UnlockAchievement(Achievements.achievements.TWONIGHTSATFREDDYS);
+        for (int i = 0; i < SaveManager.saveData.achievements.Length; i++)
+        {
+            if (SaveManager.saveData.achievements[i])
+            {
+                StartCoroutine(PublishAchievementIE((Achievements.achievements)i));
+            }
+        }
     }
 
     public void UnlockAchievement(Achievements.achievements key)
@@ -107,6 +111,11 @@ public class MedalsManager : MonoBehaviour {
 
     private IEnumerator PublishAchievementIE(Achievements.achievements key)
     {
+        if (string.IsNullOrEmpty(SaveManager.token))
+        {
+            yield break;
+        }
+
         string url = "https://api.brew-connect.com/v1/online/unlock_achievement";
         string json = "{" +
             "\"user_token\": \"" + SaveManager.token + "\"," +
