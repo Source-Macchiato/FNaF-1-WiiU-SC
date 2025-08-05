@@ -26,7 +26,7 @@ public class SaveManager : MonoBehaviour
 
         // Load token
         WiiU.SDCard.Init();
-        //token = WiiU.SDCard.ReadAllText("wiiu/apps/BrewConnect/token").Trim();
+        token = WiiU.SDCard.ReadAllText("wiiu/apps/BrewConnect/token").Trim();
         WiiU.SDCard.DeInit();
     }
 
