@@ -5,8 +5,8 @@ public class HomeMenuStatus : MonoBehaviour
 {
 	public bool enableHomeMenu = false;
 
-	void Start()
+	void Update()
 	{
-		WiiU.Core.homeMenuEnabled = enableHomeMenu;
+		WiiU.Core.homeMenuEnabled = enableHomeMenu && !SaveGameState.isSaving;
 	}
 }
