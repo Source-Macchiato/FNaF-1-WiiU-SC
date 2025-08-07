@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.IO;
 using System.Threading;
 using UnityEngine;
@@ -6,14 +7,12 @@ using WiiU = UnityEngine.WiiU;
 
 public class SaveGameState : MonoBehaviour
 {
-    public static bool issueWhileSaving = false;
-	public static bool saveResult = false;
-	
+    public static int saveResult = -1;
+
     public static void DoSave(byte[] data)
     {
         string path = Application.persistentDataPath + "/data.bin";
-        issueWhileSaving = false;
-        saveResult = false;
+        saveResult = -1;
         Thread t = new Thread(new ThreadStart(
             delegate
             {
@@ -30,9 +29,9 @@ public class SaveGameState : MonoBehaviour
 
         long freespace = 0;
         WiiU.Save.FSStatus status = cmd.GetFreeSpaceSize(out freespace, WiiU.Save.FSRetFlag.None);
-        if (status != WiiU.Save.FSStatus.OK){
-            issueWhileSaving = true;
-			saveResult = false;
+        if (status != WiiU.Save.FSStatus.OK)
+        {
+            saveResult = 0;
 		}
 		
         long needspace = Mathf.Max(1024 * 1024, data.Length);
@@ -40,8 +39,7 @@ public class SaveGameState : MonoBehaviour
         if (freespace < needspace)
         {
             // not enough free space
-            issueWhileSaving = true;
-			saveResult = false;
+            saveResult = 0;
         }
         else
         {
@@ -51,14 +49,13 @@ public class SaveGameState : MonoBehaviour
 
             // It is very important to flush quota, otherwise filesystem changes will be discarded upon reboot
             status = cmd.FlushQuota(WiiU.Save.FSRetFlag.None);
-            if (status != WiiU.Save.FSStatus.OK){
-                issueWhileSaving = true;
-				saveResult = false;
+            if (status != WiiU.Save.FSStatus.OK)
+            {
+                saveResult = 0;
 			}
         }
 
-        issueWhileSaving = false;
-        saveResult = true;
+        saveResult = 1;
     }
 
     public static string DoLoad()

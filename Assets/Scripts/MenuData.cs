@@ -396,17 +396,7 @@ public class MenuData : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        while (SaveGameState.saveResult == false)
-        {
-            if (SaveGameState.issueWhileSaving == false)
-            {
-                yield return null;
-            }
-            else
-            {
-                break;
-            }
-        }
+        yield return new WaitUntil(() => SaveGameState.saveResult != -1);
 
         Application.Quit();
     }

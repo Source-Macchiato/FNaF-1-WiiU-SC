@@ -6,6 +6,9 @@ public class WitheredBonnie : MonoBehaviour
 
 	void Start()
 	{
-        MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.WITHEREDBONNIEGAMING);
+        if (MedalsManager.medalsManager != null)
+		{
+            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.WITHEREDBONNIEGAMING);
+        }
     }
 }

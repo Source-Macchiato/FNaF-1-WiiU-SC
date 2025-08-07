@@ -20,33 +20,54 @@ public class EndOfNight : MonoBehaviour {
         // Unlock achievements
         if (nightNumber == 1)
         {
-            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.ONENIGHTATFREDDYS);
+            if (MedalsManager.medalsManager != null)
+            {
+                MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.ONENIGHTATFREDDYS);
+            }
         }
         else if (nightNumber == 2)
         {
-            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.TWONIGHTSATFREDDYS);
+            if (MedalsManager.medalsManager != null)
+            {
+                MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.TWONIGHTSATFREDDYS);
+            }
         }
         else if (nightNumber == 3)
         {
-            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.THREENIGHTSATFREDDYS);
+            if (MedalsManager.medalsManager != null)
+            {
+                MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.THREENIGHTSATFREDDYS);
+            }
         }
         else if (nightNumber == 4)
         {
-            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.FOURNIGHTSATFREDDYS);
+            if (MedalsManager.medalsManager != null)
+            {
+                MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.FOURNIGHTSATFREDDYS);
+            }
         }
         else if (nightNumber == 5)
         {
-            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.FIVENIGHTSATFREDDYS);
+            if (MedalsManager.medalsManager != null)
+            {
+                MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.FIVENIGHTSATFREDDYS);
+            }
         }
         else if (nightNumber == 6)
         {
-            MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.OVERTIME);
+            if (MedalsManager.medalsManager != null)
+            {
+                MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.OVERTIME);
+            }
         }
         else if (nightNumber == 7)
         {
             if (Movement.freddyDifficulty == 20 && Movement.bonnieDifficulty == 20 && Movement.chicaDifficulty == 20 && Movement.foxyDifficulty == 20)
             {
-                MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.NOTAMPERING);
+                if (MedalsManager.medalsManager != null)
+                {
+                    MedalsManager.medalsManager.UnlockAchievement(Achievements.achievements.NOTAMPERING);
+                }
             }
         }
 
