@@ -1,11 +1,12 @@
 PREPRPL Log
-Output to "G:\Git\SDCard\SD Card Test\Assets\Plugins\WiiU\SDCardPlugin\build\SDCardPlugin.export.o"
-16 CODE EXPORTS
+Output to "G:\Git\Muchos\Assets\Plugins\WiiU\SDCardPlugin\build\SDCardPlugin.export.o"
+17 CODE EXPORTS
 12 DATA EXPORTS
 
 CODE:
 AppendToLogBuffer__FPCc
 CreateDirectoriesRecursively__FPCc
+FILEExists
 GetFileData
 GetFileDataSize
 GetListOfDirectories

@@ -212,14 +212,14 @@ extern "C" {
         FSDirHandle dirHandle;
         FSDirEntry dirEntry;
 
-        FSStatus status = FSOpenDir(fsClient, fsCmdBlock, path, &dirHandle, FS_RET_NO_ERROR);
+        FSStatus status = FSOpenDir(fsClient, fsCmdBlock, path, &dirHandle, FS_RET_ALL_ERROR);
         if (status < FS_STATUS_OK) {
             char logMessage[256];
             snprintf(logMessage, sizeof(logMessage), "PLUGIN: FSOpenDir failed. Error Code: %d\n", status);
             AppendToLogBuffer(logMessage);
             return false;
         }
-        status = FSReadDir(fsClient, fsCmdBlock, dirHandle, &dirEntry, FS_RET_NO_ERROR);
+        status = FSReadDir(fsClient, fsCmdBlock, dirHandle, &dirEntry, FS_RET_ALL_ERROR);
         if(status < FS_STATUS_OK){
             char logMessage[256];
             snprintf(logMessage, sizeof(logMessage), "PLUGIN: FSReadDir failed, probably doesn't exists. Error Code: %d\n", status);
@@ -227,10 +227,33 @@ extern "C" {
             return false;
         }
 
-        FSCloseDir(fsClient, fsCmdBlock, dirHandle, FS_RET_NO_ERROR);
+        FSCloseDir(fsClient, fsCmdBlock, dirHandle, FS_RET_ALL_ERROR);
         AppendToLogBuffer("PLUGIN: Finished checking a specific directory\n");
         return true;
     }
+
+    bool FILEExists(const char* filePath)
+    {
+        if (!isMounted) {
+            AppendToLogBuffer("PLUGIN: SD card not mounted in FileExists\n");
+            return false;
+        }
+    
+        FSFileHandle fileHandle;
+        FSStatus status = FSOpenFile(fsClient, fsCmdBlock, filePath, "r", &fileHandle, FS_RET_ALL_ERROR);
+    
+        if (status == FS_STATUS_OK) {
+            FSCloseFile(fsClient, fsCmdBlock, fileHandle, FS_RET_ALL_ERROR);
+            AppendToLogBuffer("PLUGIN: FileExists - File found using FSOpenFile\n");
+            return true;
+        } else {
+            char errMsg[256];
+            snprintf(errMsg, sizeof(errMsg), "PLUGIN: FileExists - FSOpenFile failed. Error Code: %d\n", status);
+            AppendToLogBuffer(errMsg);
+            return false;
+        }
+    }
+
 
     bool ReadFileData(const char* filePath) {
         if (!isMounted) {

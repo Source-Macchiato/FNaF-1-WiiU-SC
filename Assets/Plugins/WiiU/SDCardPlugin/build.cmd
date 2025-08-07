@@ -33,7 +33,7 @@ set CCDEFINES=-DNDEV=1 -DCAFE=2 -DPLATFORM=CAFE -DEPPC -DWEBPLUG=0 -DFT2_BUILD_L
 :: Configuración de nombres de salida y archivos objeto
 set OUTNAME=SDCardPlugin
 set OUTNAME_EXPORT=%OUTNAME%.export.o
-set OBJS=%B%/main.o
+set OBJS=%B%/sdcard.o
 
 :: Cambio de directorio al del script
 set R=%~dp0
@@ -43,11 +43,11 @@ pushd %R%
 :: Crear directorio de compilación
 if not exist build mkdir build
 
-:: Compilación del archivo main.cpp
-%CC% %CCFLAGS% -I %CCINCLUDES% %CCDEFINES% -o %B%/main.o main.cpp
+:: Compilación del archivo sdcard.cpp
+%CC% %CCFLAGS% -I %CCINCLUDES% %CCDEFINES% -o %B%/sdcard.o sdcard.cpp
 
 :: Preparación y enlace del archivo objeto exportado
-%PREPRPL% -xall -log %B%/%OUTNAME%.log -e __rpl_crt -o %B%/%OUTNAME_EXPORT% %B%/main.o
+%PREPRPL% -xall -log %B%/%OUTNAME%.log -e __rpl_crt -o %B%/%OUTNAME_EXPORT% %B%/sdcard.o
 
 :: Configuración de librerías
 set LIBS=-lnn_os.a

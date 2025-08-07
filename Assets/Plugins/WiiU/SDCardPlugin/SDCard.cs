@@ -33,6 +33,9 @@ namespace UnityEngine.WiiU
         [DllImport("SDCardPlugin")]
         private static extern bool pl_CheckDirectory(IntPtr path);
 
+        [DllImport("SDCardPlugin")]
+        private static extern bool FILEExists(IntPtr path);
+
         public static void Init()
         {
             if (SDCard_Init())
@@ -207,6 +210,20 @@ namespace UnityEngine.WiiU
             IntPtr pathConverted = Marshal.StringToHGlobalAnsi(path);
 
             if (!pl_CheckDirectory(pathConverted))
+            {
+                Marshal.FreeHGlobal(pathConverted);
+                return false;
+            }
+
+            Marshal.FreeHGlobal(pathConverted);
+            return true;
+        }
+
+        public static bool FileExists(string path)
+        {
+            IntPtr pathConverted = Marshal.StringToHGlobalAnsi(path);
+
+            if (!FILEExists(pathConverted))
             {
                 Marshal.FreeHGlobal(pathConverted);
                 return false;
