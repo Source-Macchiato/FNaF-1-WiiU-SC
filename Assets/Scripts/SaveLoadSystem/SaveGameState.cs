@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.IO;
 using System.Threading;
 using UnityEngine;
@@ -8,11 +7,13 @@ using WiiU = UnityEngine.WiiU;
 public class SaveGameState : MonoBehaviour
 {
     public static int saveResult = -1;
+    public static bool isSaving = false;
 
     public static void DoSave(byte[] data)
     {
         string path = Application.persistentDataPath + "/data.bin";
         saveResult = -1;
+        isSaving = true;
         Thread t = new Thread(new ThreadStart(
             delegate
             {
@@ -32,6 +33,7 @@ public class SaveGameState : MonoBehaviour
         if (status != WiiU.Save.FSStatus.OK)
         {
             saveResult = 0;
+            isSaving = false;
 		}
 		
         long needspace = Mathf.Max(1024 * 1024, data.Length);
@@ -40,6 +42,7 @@ public class SaveGameState : MonoBehaviour
         {
             // not enough free space
             saveResult = 0;
+            isSaving = false;
         }
         else
         {
@@ -56,6 +59,7 @@ public class SaveGameState : MonoBehaviour
         }
 
         saveResult = 1;
+        isSaving = false;
     }
 
     public static string DoLoad()
