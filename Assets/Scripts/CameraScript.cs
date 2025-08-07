@@ -198,7 +198,7 @@ public class CameraScript : MonoBehaviour
 
                     office.DoorButton_L3.enabled = false;
 
-                    if (office.L_Door_Closed)
+                    if (office.leftDoorClosed)
                     {
                         office.DoorButton_L1.enabled = true;
                         office.DoorButton_L4.enabled = false;
@@ -228,7 +228,7 @@ public class CameraScript : MonoBehaviour
 
                     office.DoorButton_R3.enabled = false;
 
-                    if (office.R_Door_Closed)
+                    if (office.rightDoorClosed)
                     {
                         office.DoorButton_R1.enabled = true;
                         office.DoorButton_R4.enabled = false;
