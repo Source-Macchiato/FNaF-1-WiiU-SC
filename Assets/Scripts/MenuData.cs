@@ -50,9 +50,6 @@ public class MenuData : MonoBehaviour
 
     // Advertisement
     public GameObject advertisementImage;
-    private bool advertisementIsActive;
-    private float startTime;
-    private float waitTime = 10f;
 
     void Start()
     {
@@ -65,7 +62,6 @@ public class MenuData : MonoBehaviour
         LoadVolume();
 
         // Disable advertisement by default
-        advertisementIsActive = false;
         advertisementImage.SetActive(false);
 
         // System for display night number and prevent being out of range
@@ -86,12 +82,6 @@ public class MenuData : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        // Load scene after advertisementload is called
-        if (Time.time - startTime >= waitTime && advertisementIsActive == true)
-        {
-            SceneManager.LoadSceneAsync("NextNight");
-        }
-
         // Enable and disable stars
         starsContainer.SetActive(menuManager.currentMenuId == 0);
 
@@ -104,11 +94,13 @@ public class MenuData : MonoBehaviour
         gameTitle.SetActive(visibility);
     }
 
-    public void LoadAdvertisement()
+    public IEnumerator LoadAdvertisement()
     {
-        advertisementIsActive = true;
-        startTime = Time.time;
         advertisementImage.SetActive(true);
+
+        yield return new WaitForSeconds(10f);
+
+        SceneManager.LoadSceneAsync("NextNight");
     }
 
     public void LoadLanguageAndUpdateSwitcher()

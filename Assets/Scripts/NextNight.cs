@@ -11,8 +11,6 @@ public class NextNight : MonoBehaviour
 
     private LevelLoader levelLoader;
 
-    private bool coroutineIsPlaying = false;
-
     void Start()
     {
         nightNumber = SaveManager.saveData.game.nightNumber;
@@ -55,18 +53,13 @@ public class NextNight : MonoBehaviour
 
     IEnumerator InitCoroutine()
     {
-        if (!coroutineIsPlaying)
-        {
-            coroutineIsPlaying = true;
+        yield return new WaitForSeconds(3);
 
-            yield return new WaitForSeconds(3);
+        nightAnimator.Play("Fade");
 
-            nightAnimator.Play("Fade");
+        yield return new WaitForSeconds(1);
 
-            yield return new WaitForSeconds(1);
-
-            loadingScreenPanel.SetActive(true);
-            levelLoader.LoadLevel("Office");
-        }
+        loadingScreenPanel.SetActive(true);
+        levelLoader.LoadLevel("Office");
     }
 }

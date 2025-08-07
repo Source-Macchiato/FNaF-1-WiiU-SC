@@ -31,7 +31,7 @@ public class MenuSetup : MonoBehaviour
         menuData.nightNumber = 0;
         menuData.SaveNightNumber();
 
-        menuData.LoadAdvertisement();
+        StartCoroutine(menuData.LoadAdvertisement());
     }
 
     public void Continue()
