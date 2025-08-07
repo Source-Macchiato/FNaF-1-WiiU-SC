@@ -16,10 +16,10 @@ public class Movement : MonoBehaviour
     public int FreddyProbability = 0;
     public int FoxyProbability = 0;
 
-    public static int freddyPosition = 1;
-    public static int bonniePosition = 1;
-    public static int chicaPosition = 1;
-    public static int foxyPosition = 1;
+    public int freddyPosition = 1;
+    public int bonniePosition = 1;
+    public int chicaPosition = 1;
+    public int foxyPosition = 1;
 
     public static int freddyDifficulty = 0;
     public static int bonnieDifficulty = 0;

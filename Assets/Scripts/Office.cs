@@ -80,6 +80,7 @@ public class Office : MonoBehaviour {
 
     ChangeImages changeImages;
     MoveInOffice moveInOffice;
+    Movement movement;
 
     void Start()
     {
@@ -88,6 +89,7 @@ public class Office : MonoBehaviour {
 
         changeImages = FindObjectOfType<ChangeImages>();
         moveInOffice = FindObjectOfType<MoveInOffice>();
+        movement = FindObjectOfType<Movement>();
 
         movementScript = GetComponent<Movement>();
 
@@ -410,8 +412,8 @@ public class Office : MonoBehaviour {
             if (leftDoorClosed)
             {
                 OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoor = true;
-                
-                Movement.bonniePosition = 2;
+
+                movement.bonniePosition = 2;
             }
         }
 
@@ -421,7 +423,7 @@ public class Office : MonoBehaviour {
             {
                 OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoor = true;
 
-                Movement.chicaPosition = 2;
+                movement.chicaPosition = 2;
             }
         }
 
@@ -431,7 +433,7 @@ public class Office : MonoBehaviour {
             {
                 OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoor = true;
 
-                Movement.freddyPosition = 1;
+                movement.freddyPosition = 1;
             }
         }
 

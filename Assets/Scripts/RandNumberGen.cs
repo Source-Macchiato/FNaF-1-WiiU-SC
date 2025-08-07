@@ -19,11 +19,11 @@ public class RandNumberGen : MonoBehaviour {
     public bool ChicaLeftStage = false;
     public bool FreddyLeftStage = false;
 
-    public float nightNumber;
+    private Movement movement;
 
     void Start()
     {
-        nightNumber = SaveManager.saveData.game.nightNumber;
+        movement = FindObjectOfType<Movement>();
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class RandNumberGen : MonoBehaviour {
     {
         CountDown = System.Math.Round(Random.Range(30f, 40f), 0);
 
-        if (nightNumber == 0)
+        if (GameScript.nightNumber == 0)
         {
             if (BonnieLeftStage)
             {
@@ -48,7 +48,7 @@ public class RandNumberGen : MonoBehaviour {
             }
         }
 
-        if (nightNumber >= 1)
+        if (GameScript.nightNumber >= 1)
         {
             if (ChicaLeftStage)
             {
@@ -56,7 +56,7 @@ public class RandNumberGen : MonoBehaviour {
             }
         }
 
-        if (nightNumber >= 2)
+        if (GameScript.nightNumber >= 2)
         {
             if (FreddyLeftStage)
             {
@@ -74,56 +74,56 @@ public class RandNumberGen : MonoBehaviour {
         {
             if (RandNumberBonnie == 2)
             {
-                Movement.bonniePosition = 2;
+                movement.bonniePosition = 2;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberBonnie == 3)
             {
-                Movement.bonniePosition = 3;
+                movement.bonniePosition = 3;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberBonnie == 4)
             {
-                Movement.bonniePosition = 4;
+                movement.bonniePosition = 4;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberBonnie == 5)
             {
-                Movement.bonniePosition = 5;
+                movement.bonniePosition = 5;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberBonnie == 6)
             {
-                Movement.bonniePosition = 6;
+                movement.bonniePosition = 6;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
         }
@@ -132,67 +132,67 @@ public class RandNumberGen : MonoBehaviour {
         {
             if (RandNumberChica == 2)
             {
-                Movement.chicaPosition = 2;
+                movement.chicaPosition = 2;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberChica == 3)
             {
-                Movement.chicaPosition = 3;
+                movement.chicaPosition = 3;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberChica == 4)
             {
-                Movement.chicaPosition = 4;
+                movement.chicaPosition = 4;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberChica == 5)
             {
-                Movement.chicaPosition = 5;
+                movement.chicaPosition = 5;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberChica == 6)
             {
-                Movement.chicaPosition = 6;
+                movement.chicaPosition = 6;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberChica == 7)
             {
-                Movement.chicaPosition = 7;
+                movement.chicaPosition = 7;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
         }
@@ -202,23 +202,23 @@ public class RandNumberGen : MonoBehaviour {
         {
             if (RandNumberFreddy == 1)
             {
-                Movement.freddyPosition = 1;
+                movement.freddyPosition = 1;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
 
             if (RandNumberFreddy > 2)
             {
-                Movement.freddyPosition = 2;
+                movement.freddyPosition = 2;
 
                 if (camIsUp)
                 {
-                    OfficeObject.GetComponent<Movement>().MoveGlitch.SetActive(true);
-                    OfficeObject.GetComponent<Movement>().GlitchActive = true;
+                    movement.MoveGlitch.SetActive(true);
+                    movement.GlitchActive = true;
                 }
             }
         }
