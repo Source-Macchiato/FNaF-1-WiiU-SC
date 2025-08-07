@@ -3,17 +3,15 @@ using UnityEngine;
 
 public class NextNight : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject nightContainer;
-    [SerializeField]
-    private I18nTextTranslator nightTextTranslator;
-    [SerializeField]
-    private Animator nightAnimator;
+    [SerializeField] private I18nTextTranslator nightTextTranslator;
+    [SerializeField] private Animator nightAnimator;
 
     private int nightNumber;
     public GameObject loadingScreenPanel;
 
     private LevelLoader levelLoader;
+
+    private bool coroutineIsPlaying = false;
 
     void Start()
     {
@@ -57,13 +55,18 @@ public class NextNight : MonoBehaviour
 
     IEnumerator InitCoroutine()
     {
-        yield return new WaitForSeconds(3);
+        if (!coroutineIsPlaying)
+        {
+            coroutineIsPlaying = true;
 
-        nightAnimator.Play("Fade");
+            yield return new WaitForSeconds(3);
 
-        yield return new WaitForSeconds(1);
+            nightAnimator.Play("Fade");
 
-        loadingScreenPanel.SetActive(true);
-        levelLoader.LoadLevel("Office");
+            yield return new WaitForSeconds(1);
+
+            loadingScreenPanel.SetActive(true);
+            levelLoader.LoadLevel("Office");
+        }
     }
 }
