@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour
     public float FreddyMovementTime = 5f;
     public float FoxyMovementTime = 5f; 
 
-
     public int BonnieProbability = 0;
     public int ChicaProbability = 0;
     public int FreddyProbability = 0;
@@ -56,8 +55,6 @@ public class Movement : MonoBehaviour
     public bool WaitForMovingFromDoorBonnie = false;
     public bool WaitForMovingFromDoorChica = false; 
     public bool WaitForMovingFromDoorFreddy = false;
-    public bool LeftDoorClosed = false;
-    public bool RightDoorClosed = false;
 
     public GameObject OfficeObject;
 
@@ -101,14 +98,8 @@ public class Movement : MonoBehaviour
 
         //Disable Chica sounds when she is in the kitchen
         ChicaInKitchen.SetActive(false);
-    }
-    
-	void Update()
-    {
-        LeftDoorClosed = office.L_Door_Closed;
-        RightDoorClosed = office.R_Door_Closed;
 
-        if(GameScript.nightNumber <= 5)
+        if (GameScript.nightNumber >= 0 && GameScript.nightNumber <= 5)
         {
             // Set initial difficulties based on the starting array
             freddyDifficulty = startingDifficulties[GameScript.nightNumber, 0] * 5;
@@ -116,7 +107,10 @@ public class Movement : MonoBehaviour
             chicaDifficulty = startingDifficulties[GameScript.nightNumber, 2] * 5;
             foxyDifficulty = startingDifficulties[GameScript.nightNumber, 3] * 5;
         }
-
+    }
+    
+	void Update()
+    {
         // Increment difficulties based on the hour
         if (GameScript.hour == 2)
         {
@@ -231,7 +225,7 @@ public class Movement : MonoBehaviour
         }
         if (BonnieOutsideDoor)
         {
-            if (LeftDoorClosed)
+            if (office.leftDoorClosed)
             {
                 MoveFromDoorBonnie();
                 BonnieMovementTime = 20;
@@ -252,7 +246,7 @@ public class Movement : MonoBehaviour
 
         if (ChicaOutsideDoor)
         {
-            if (RightDoorClosed)
+            if (office.rightDoorClosed)
             {
                 MoveFromDoorChica();
                 ChicaMovementTime = 20;
@@ -272,7 +266,7 @@ public class Movement : MonoBehaviour
         }
         if (FreddyOutsideDoor)
         {
-            if (RightDoorClosed)
+            if (office.rightDoorClosed)
             {
                 MoveFromDoorFreddy();
                 FreddyMovementTime = 20;

@@ -37,6 +37,11 @@ public class GameScript : MonoBehaviour
     SaveGameState saveGameState;
     SaveManager saveManager;
 
+    void Awake()
+    {
+        nightNumber = SaveManager.saveData.game.nightNumber;
+    }
+
     void Start()
     {
         saveGameState = FindObjectOfType<SaveGameState>();
@@ -50,8 +55,6 @@ public class GameScript : MonoBehaviour
         tmpTextTimeDisplayer = timeDisplayer.GetComponent<TextMeshProUGUI>();
 
         officeRect = officeContainer.GetComponent<RectTransform>();
-
-        nightNumber = SaveManager.saveData.game.nightNumber;
 
         if (textNightNumber != null)
         {

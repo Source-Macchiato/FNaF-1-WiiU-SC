@@ -46,8 +46,8 @@ public class Office : MonoBehaviour {
     public Image Light_R_No_Door;
     public Image Light_R_Door_Chica;
 
-    public bool L_Door_Closed = false;
-    public bool R_Door_Closed = false;
+    public bool leftDoorClosed = false;
+    public bool rightDoorClosed = false;
 
     public Image OriginalOfficeImage;
 
@@ -344,11 +344,11 @@ public class Office : MonoBehaviour {
             }
         }
 
-        if (!L_Door_Closed && DoorButton_L4.isActiveAndEnabled)
+        if (!leftDoorClosed && DoorButton_L4.isActiveAndEnabled)
         {
             DoorButton_L4.enabled = false;
         }
-        if (!R_Door_Closed && DoorButton_R4.isActiveAndEnabled)
+        if (!rightDoorClosed && DoorButton_R4.isActiveAndEnabled)
         {
             DoorButton_R4.enabled = false;
         }
@@ -407,7 +407,7 @@ public class Office : MonoBehaviour {
 
         if (BonnieOutsideDoor)
         {
-            if (L_Door_Closed)
+            if (leftDoorClosed)
             {
                 OfficeControllerObject.GetComponent<Movement>().BonnieOutsideDoor = true;
                 
@@ -417,7 +417,7 @@ public class Office : MonoBehaviour {
 
         if (ChicaOutsideDoor)
         {
-            if (R_Door_Closed)
+            if (rightDoorClosed)
             {
                 OfficeControllerObject.GetComponent<Movement>().ChicaOutsideDoor = true;
 
@@ -427,7 +427,7 @@ public class Office : MonoBehaviour {
 
         if (FreddyOutsideDoor)
         {
-            if (R_Door_Closed)
+            if (rightDoorClosed)
             {
                 OfficeControllerObject.GetComponent<Movement>().FreddyOutsideDoor = true;
 
@@ -557,7 +557,7 @@ public class Office : MonoBehaviour {
                 }
 
 
-                if (!L_Door_Closed && LeftScareAlrdPlayed == false)
+                if (!leftDoorClosed && LeftScareAlrdPlayed == false)
                 {
                     if (!Scare.isPlaying)
                     {
@@ -597,7 +597,7 @@ public class Office : MonoBehaviour {
                 DoorButton_L3.enabled = true;
             }
 
-            if (L_Door_Closed)
+            if (leftDoorClosed)
             {
                 // Check if already displayed
                 if (DoorButton_L1.isActiveAndEnabled)
@@ -640,7 +640,7 @@ public class Office : MonoBehaviour {
                 DoorButton_L3.enabled = false;
             }
 
-            if (L_Door_Closed)
+            if (leftDoorClosed)
             {
                 // Check if already displayed
                 if (!DoorButton_L1.isActiveAndEnabled)
@@ -676,7 +676,7 @@ public class Office : MonoBehaviour {
                     Light_R_No_Door.enabled = false;
                 }
 
-                if (!R_Door_Closed && RightScareAlrdPlayed == false)
+                if (!rightDoorClosed && RightScareAlrdPlayed == false)
                 {
                     if (!Scare.isPlaying)
                     {
@@ -708,7 +708,7 @@ public class Office : MonoBehaviour {
                 DoorButton_R3.enabled = true;
             }
 
-            if (R_Door_Closed)
+            if (rightDoorClosed)
             {
                 // Check if already displayed
                 if (DoorButton_R1.isActiveAndEnabled)
@@ -750,7 +750,7 @@ public class Office : MonoBehaviour {
                 DoorButton_R3.enabled = false;
             }
 
-            if (R_Door_Closed)
+            if (rightDoorClosed)
             {
                 // Check if already displayed
                 if (!DoorButton_R1.isActiveAndEnabled)
@@ -769,14 +769,14 @@ public class Office : MonoBehaviour {
 
     private void LeftDoorSystem()
     {
-        if (L_Door_Closed)
+        if (leftDoorClosed)
         {
             Door_L_closed.enabled = false;
             Door_L_open.enabled = true;
 
             leftDoorOpenAnimator.Play("Base Layer.DooOpen", 0, 0);
 
-            L_Door_Closed = false;
+            leftDoorClosed = false;
 
             // Check if already displayed
             if (!DoorButton_L1.isActiveAndEnabled)
@@ -799,9 +799,6 @@ public class Office : MonoBehaviour {
             DoorClose.Play();
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
-
-            OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = false;
-            OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = false;
         }
         else
         {
@@ -810,7 +807,7 @@ public class Office : MonoBehaviour {
 
             leftDoorCloseAnimator.Play("Base Layer.Door_close", 0, 0);
 
-            L_Door_Closed = true;
+            leftDoorClosed = true;
 
             // Check if already displayed
             if (DoorButton_L1.isActiveAndEnabled)
@@ -827,24 +824,19 @@ public class Office : MonoBehaviour {
             DoorClose.Play();
 
             OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
-
-            OfficeControllerObject.GetComponent<Movement>().LeftDoorClosed = true;
-
-            OfficeControllerObject.GetComponent<ChangeImages>().L_Door_Closed = true;
-
         }
     }
 
     private void RightDoorSystem()
     {
-        if (R_Door_Closed)
+        if (rightDoorClosed)
         {
             Door_R_closed.enabled = false;
             Door_R_open.enabled = true;
 
             rightDoorOpenAnimator.Play("Base Layer.R_door_opened", 0, 0);
 
-            R_Door_Closed = false;
+            rightDoorClosed = false;
 
             // Check if already displayed
             if (!DoorButton_R1.isActiveAndEnabled)
@@ -875,7 +867,7 @@ public class Office : MonoBehaviour {
 
             rightDoorCloseAnimator.Play("Base Layer.R_door_closed", 0, 0);
 
-            R_Door_Closed = true;
+            rightDoorClosed = true;
 
             // Check if already displayed
             if (DoorButton_R1.isActiveAndEnabled)

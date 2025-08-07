@@ -18,6 +18,7 @@ public class ChangeImages : MonoBehaviour
     private ControllersRumble controllersRumble;
     private MoveInOffice moveInOffice;
     private CameraScript cameraScript;
+    private Office office;
 
     // -----------DiningArea var----------
 
@@ -99,8 +100,6 @@ public class ChangeImages : MonoBehaviour
     private bool hasGeneratedGFNumber = false;
     public GameObject Itsme;
     public AudioSource ItsmeSound;
-    
-
 
     public bool BonnieLeft = false;
     public bool ChicaLeft = false;
@@ -131,7 +130,6 @@ public class ChangeImages : MonoBehaviour
     public bool FoxyAnimationPlayed = false;
     public float foxyRunTime = 3.5f;
 
-    public bool L_Door_Closed;
     public bool foxyStarted;
 
     void GenRandNoise()
@@ -148,6 +146,7 @@ public class ChangeImages : MonoBehaviour
         controllersRumble = FindObjectOfType<ControllersRumble>();
         moveInOffice = FindObjectOfType<MoveInOffice>();
         cameraScript = FindObjectOfType<CameraScript>();
+        office = FindObjectOfType<Office>();
         
         GoldenFreddyJumpscareTime = 10f;
         GoldenFreddyOffice.SetActive(false);
@@ -768,7 +767,7 @@ public class ChangeImages : MonoBehaviour
 
                     if (foxyRunTime <= 0)
                     {
-                        if (!L_Door_Closed)
+                        if (!office.leftDoorClosed)
                         {
                             FoxyEnterOffice.SetActive(true);
                             FoxyRunDownHall.SetActive(false);
@@ -777,7 +776,7 @@ public class ChangeImages : MonoBehaviour
 
                             controllersRumble.TriggerRumble(30, "Foxy");
                         }
-                        else if (L_Door_Closed)
+                        else
                         {
                             DoorBang.Play();
                             Movement.foxyPosition = 1;
