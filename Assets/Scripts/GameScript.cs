@@ -31,7 +31,8 @@ public class GameScript : MonoBehaviour
     private TMP_Text tmpTextPowerDisplayer;
     private TMP_Text tmpTextTimeDisplayer;
 
-    private bool audioPlayed;
+    private bool audioPlayed = false;
+    private bool endNightReached = false;
 
     SaveGameState saveGameState;
     SaveManager saveManager;
@@ -189,10 +190,15 @@ public class GameScript : MonoBehaviour
                     tmpTextTimeDisplayer.text = "6 AM";
                 }
 
-                SaveManager.saveData.game.nightNumber = nightNumber++;
-                SaveManager.Save();
+                if (!endNightReached)
+                {
+                    SaveManager.saveData.game.nightNumber = nightNumber + 1;
+                    SaveManager.Save();
 
-                SceneManager.LoadScene("6AM");
+                    SceneManager.LoadSceneAsync("6AM");
+
+                    endNightReached = true;
+                }
             break;
         }
 
