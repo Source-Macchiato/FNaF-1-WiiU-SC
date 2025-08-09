@@ -347,7 +347,6 @@ RectTransform:
   - {fileID: 2086740292}
   - {fileID: 1556741739}
   - {fileID: 1525722926}
-  - {fileID: 59438678}
   - {fileID: 1199952400}
   - {fileID: 797033623}
   - {fileID: 1970830748}
@@ -712,8 +711,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 26534564}
-  m_RootOrder: 3
+  m_Father: {fileID: 115275469}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1847,6 +1846,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 59438678}
   - {fileID: 2139986449}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -3008,7 +3008,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 26534564}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3754,7 +3754,7 @@ RectTransform:
   - {fileID: 1619369875}
   - {fileID: 5692897}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6083,7 +6083,7 @@ RectTransform:
   m_Children:
   - {fileID: 530184935}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7354,7 +7354,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 26534564}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9426,7 +9426,7 @@ RectTransform:
   - {fileID: 1849677440}
   - {fileID: 1983494845}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -11208,7 +11208,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 26534564}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18728,8 +18728,8 @@ MonoBehaviour:
   Light_L_Door_Bonnie: {fileID: 1014525241}
   Light_R_No_Door: {fileID: 217767949}
   Light_R_Door_Chica: {fileID: 1894411169}
-  L_Door_Closed: 0
-  R_Door_Closed: 0
+  leftDoorClosed: 0
+  rightDoorClosed: 0
   OriginalOfficeImage: {fileID: 1969409252}
   DoorClose: {fileID: 616761960}
   lightSound: {fileID: 355252805}
@@ -18901,7 +18901,6 @@ MonoBehaviour:
   FoxyFootsteps: {fileID: 2008895001}
   FoxyAnimationPlayed: 0
   foxyRunTime: 3.5
-  L_Door_Closed: 0
   foxyStarted: 0
 --- !u!114 &1959479700
 MonoBehaviour:
@@ -18952,7 +18951,6 @@ MonoBehaviour:
   BonnieLeftStage: 0
   ChicaLeftStage: 0
   FreddyLeftStage: 0
-  nightNumber: 0
 --- !u!114 &1959479702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18974,6 +18972,10 @@ MonoBehaviour:
   ChicaProbability: 0
   FreddyProbability: 0
   FoxyProbability: 0
+  freddyPosition: 1
+  bonniePosition: 1
+  chicaPosition: 1
+  foxyPosition: 1
   bonnieInCount: 0
   chicaInCount: 0
   freddyInCount: 0
@@ -18996,8 +18998,6 @@ MonoBehaviour:
   WaitForMovingFromDoorBonnie: 0
   WaitForMovingFromDoorChica: 0
   WaitForMovingFromDoorFreddy: 0
-  LeftDoorClosed: 0
-  RightDoorClosed: 0
   OfficeObject: {fileID: 1959479695}
   FreddyLaugh1: {fileID: 1766799325}
 --- !u!114 &1959479703
@@ -19147,7 +19147,7 @@ RectTransform:
   - {fileID: 1768309160}
   - {fileID: 569191368}
   m_Father: {fileID: 26534564}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20728,7 +20728,7 @@ RectTransform:
   - {fileID: 1735796341}
   - {fileID: 1265514373}
   m_Father: {fileID: 115275469}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
