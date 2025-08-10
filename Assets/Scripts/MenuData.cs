@@ -47,6 +47,7 @@ public class MenuData : MonoBehaviour
 
     // Scripts
     MenuManager menuManager;
+    ControllersRumble controllersRumble;
 
     // Advertisement
     public GameObject advertisementImage;
@@ -55,6 +56,7 @@ public class MenuData : MonoBehaviour
     {
         // Get scripts
         menuManager = FindObjectOfType<MenuManager>();
+        controllersRumble = FindObjectOfType<ControllersRumble>();
 
         // Load
         nightNumber = SaveManager.saveData.game.nightNumber;
@@ -385,6 +387,8 @@ public class MenuData : MonoBehaviour
         SaveManager.saveData.game.goldenFreddyUnlocked = true;
         SaveManager.saveData.UnlockAchievement(Achievements.achievements.THEBYTEOF87);
         SaveManager.Save();
+
+        controllersRumble.TriggerRumble(15, "Activate Golden Freddy");
 
         yield return new WaitForSeconds(1f);
 
