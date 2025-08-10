@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 224988569760819562}
   - component: {fileID: 222538306132985710}
   - component: {fileID: 95580740030684646}
-  - component: {fileID: 114252989229492974}
+  - component: {fileID: 114958049894762020}
   m_Layer: 5
   m_Name: MainImage
   m_TagString: Untagged
@@ -144,6 +144,9 @@ GameObject:
   - component: {fileID: 114546485211612750}
   - component: {fileID: 114510269256320722}
   - component: {fileID: 82325422860201500}
+  - component: {fileID: 114107730128395862}
+  - component: {fileID: 20666839836653408}
+  - component: {fileID: 92082384118374062}
   m_Layer: 5
   m_Name: AchievementCanvas
   m_TagString: Untagged
@@ -151,6 +154,42 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!20 &20666839836653408
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1898218157625050}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: -0.1
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: cc6ba72b1fffc7441a7766ff971626fd, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!82 &82325422860201500
 AudioSource:
   m_ObjectHideFlags: 1
@@ -159,7 +198,8 @@ AudioSource:
   m_GameObject: {fileID: 1898218157625050}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243681985347400232, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 2e3041eaed82cdc43803e6ab13edff9e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -231,6 +271,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!92 &92082384118374062
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1898218157625050}
+  m_Enabled: 1
 --- !u!95 &95580740030684646
 Animator:
   serializedVersion: 3
@@ -248,18 +295,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114252989229492974
+--- !u!114 &114107730128395862
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1809400788740114}
+  m_GameObject: {fileID: 1898218157625050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd743e8a5b54c0344bc3f91afdb14e33, type: 3}
+  m_Script: {fileID: 11500000, guid: fa1e2ad1f3b0ea74192bf906064bd4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achievementPlay: {fileID: 82325422860201500}
+  tvOnlyTV: 1
+  tvOnlyGamepad: 0
+  tvGamepadClassicTV: 1
+  tvGamepadClassicGamepad: 1
+  tvGamepadAltTV: 1
+  tvGamepadAltGamepad: 1
+  gamepadOnlyTV: 0
+  gamepadOnlyGamepad: 1
 --- !u!114 &114510269256320722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,17 +325,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8805166d010ece44a85509e6064e28d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  organizationToken: 75ca7ec7c52fd4c763b40c7e6a5754e897c101b6a1e986ba28769ab9192da307
+  projectToken: 84c14daff12d468d51c2f849ee2bf6de8329a5e4080c7e2ab895ab3623fdf6a1
   durationPopup: 6
   medalPopup: {fileID: 114786542170103752}
-  mainText: {fileID: 114689839382962538}
+  titleText: {fileID: 114689839382962538}
   descText: {fileID: 114756233868822980}
   achievementObtained: {fileID: 114741108344062328}
   icon: {fileID: 114886454413006842}
   medalAnim: {fileID: 95580740030684646}
   isShowing: 0
-  obtainedMedals: []
-  medalsToShow: 
-  darkMode: 0
+  unlockedAchievements: 
+  darkMode: 1
   normalText: {r: 0.21568628, g: 0.21568628, b: 0.21568628, a: 1}
   darkText: {r: 0.7882353, g: 0.7882353, b: 0.7882353, a: 1}
   normalPopup: {r: 1, g: 1, b: 1, a: 1}
@@ -503,6 +558,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114958049894762020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1809400788740114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd743e8a5b54c0344bc3f91afdb14e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 82325422860201500}
 --- !u!222 &222079160007728478
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -553,15 +620,15 @@ Canvas:
   m_GameObject: {fileID: 1898218157625050}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 20666839836653408}
+  m_PlaneDistance: 0
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 999
   m_TargetDisplay: 0
@@ -580,7 +647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.2, y: -19.7}
+  m_AnchoredPosition: {x: 33.199997, y: -19.7}
   m_SizeDelta: {x: 2292.78, y: 363.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224069500707515484
@@ -598,7 +665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.2, y: 26.5}
+  m_AnchoredPosition: {x: 9.200001, y: 26.5}
   m_SizeDelta: {x: 1869.4, y: 242.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224225969375499514
@@ -616,7 +683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35.3, y: 5.7}
+  m_AnchoredPosition: {x: 35.300003, y: 5.7}
   m_SizeDelta: {x: 2326.43, y: 280.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224750703672427656
@@ -713,6 +780,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -215.44, y: -67.83}
+  m_AnchoredPosition: {x: -215.43994, y: -67.83002}
   m_SizeDelta: {x: 282, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}

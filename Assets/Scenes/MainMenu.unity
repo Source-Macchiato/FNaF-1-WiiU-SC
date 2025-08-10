@@ -14690,7 +14690,8 @@ RectTransform:
 --- !u!114 &725613194
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 114958049894762020, guid: f34483e99651a40458ceb92aa4a8499f,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 725613192}
   m_Enabled: 1
@@ -15167,7 +15168,7 @@ GameObject:
   - component: {fileID: 772651589}
   - component: {fileID: 772651588}
   m_Layer: 5
-  m_Name: Screen
+  m_Name: ScreenUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29328,7 +29329,8 @@ Canvas:
 --- !u!114 &1644344495
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 114107730128395862, guid: f34483e99651a40458ceb92aa4a8499f,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1644344489}
   m_Enabled: 1
@@ -29347,14 +29349,16 @@ MonoBehaviour:
 --- !u!92 &1644344496
 Behaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 92082384118374062, guid: f34483e99651a40458ceb92aa4a8499f,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1644344489}
   m_Enabled: 1
 --- !u!20 &1644344497
 Camera:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 20666839836653408, guid: f34483e99651a40458ceb92aa4a8499f,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1644344489}
   m_Enabled: 1
@@ -31129,7 +31133,7 @@ GameObject:
   - component: {fileID: 1756286545}
   - component: {fileID: 1756286544}
   m_Layer: 5
-  m_Name: Screen
+  m_Name: ScreenUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
