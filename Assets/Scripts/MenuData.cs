@@ -403,12 +403,6 @@ public class MenuData : MonoBehaviour
         SaveManager.Save();
     }
 
-    public void SaveNightNumber()
-    {
-        SaveManager.saveData.game.nightNumber = nightNumber;
-        SaveManager.Save();
-    }
-
     public void ApplyCustomNightValues()
     {
         Movement.freddyDifficulty = customNightCharacters[0].GetComponent<CardSwitcherData>().difficultyValue;

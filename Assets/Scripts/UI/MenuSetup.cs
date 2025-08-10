@@ -30,8 +30,8 @@ public class MenuSetup : MonoBehaviour
             menuManager.canNavigate = false;
 
             // Reset night number and save it
-            menuData.nightNumber = 0;
-            menuData.SaveNightNumber();
+            SaveManager.saveData.game.nightNumber = 0;
+            SaveManager.Save();
 
             StartCoroutine(menuData.LoadAdvertisement());
         }
@@ -50,8 +50,8 @@ public class MenuSetup : MonoBehaviour
             else if (menuData.nightNumber >= 5)
             {
                 // Reset night number to 4 and save it
-                menuData.nightNumber = 4;
-                menuData.SaveNightNumber();
+                SaveManager.saveData.game.nightNumber = 4;
+                SaveManager.Save();
 
                 SceneManager.LoadSceneAsync("NextNight");
             }
@@ -64,8 +64,8 @@ public class MenuSetup : MonoBehaviour
         {
             menuManager.canNavigate = false;
 
-            menuData.nightNumber = 5;
-            menuData.SaveNightNumber();
+            SaveManager.saveData.game.nightNumber = 5;
+            SaveManager.Save();
 
             SceneManager.LoadSceneAsync("NextNight");
         }
@@ -144,9 +144,6 @@ public class MenuSetup : MonoBehaviour
         {
             menuManager.canNavigate = false;
 
-            menuData.nightNumber = 6;
-            menuData.SaveNightNumber();
-
             menuData.ApplyCustomNightValues();
 
             if (Movement.freddyDifficulty == 1 && Movement.bonnieDifficulty == 9 && Movement.chicaDifficulty == 8 && Movement.foxyDifficulty == 7 && SaveManager.saveData.game.goldenFreddyUnlocked == false)
@@ -157,6 +154,9 @@ public class MenuSetup : MonoBehaviour
             }
             else
             {
+                SaveManager.saveData.game.nightNumber = 6;
+                SaveManager.Save();
+
                 SceneManager.LoadSceneAsync("NextNight");
             }
         }
