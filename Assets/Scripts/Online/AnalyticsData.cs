@@ -6,7 +6,7 @@ using WiiU = UnityEngine.WiiU;
 
 public class AnalyticsData : MonoBehaviour
 {
-    private string projectToken = "84c14daff12d468d51c2f849ee2bf6de8329a5e4080c7e2ab895ab3623fdf6a1";
+    private static string projectToken = "84c14daff12d468d51c2f849ee2bf6de8329a5e4080c7e2ab895ab3623fdf6a1";
     private string analyticsToken;
 
     MenuManager menuManager;
