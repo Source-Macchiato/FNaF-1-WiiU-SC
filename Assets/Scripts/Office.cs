@@ -134,7 +134,7 @@ public class Office : MonoBehaviour {
             }
         }
 
-        if (movement.bonniePosition >= 8 || movement.chicaPosition >= 8)
+        if (movement.bonniePosition >= 8 || movement.chicaPosition >= 9)
         {
             buttonLocked = true;
         }
