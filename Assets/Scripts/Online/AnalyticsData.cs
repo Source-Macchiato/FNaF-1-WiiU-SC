@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,12 @@ using WiiU = UnityEngine.WiiU;
 
 public class AnalyticsData : MonoBehaviour
 {
-    private static string projectToken = "84c14daff12d468d51c2f849ee2bf6de8329a5e4080c7e2ab895ab3623fdf6a1";
+    public static AnalyticsData analyticsData;
+
+    private string projectToken = "84c14daff12d468d51c2f849ee2bf6de8329a5e4080c7e2ab895ab3623fdf6a1";
     private string analyticsToken;
 
     MenuManager menuManager;
-    SaveManager saveManager;
-    SaveGameState saveGameState;
 
     // Add analytics
     [Serializable]
@@ -34,11 +35,20 @@ public class AnalyticsData : MonoBehaviour
         public string[] message;
     }
 
+    void Awake()
+    {
+        if (analyticsData != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        analyticsData = this;
+        DontDestroyOnLoad(this);
+    }
+
     void Start()
     {
         menuManager = FindObjectOfType<MenuManager>();
-        saveManager = FindObjectOfType<SaveManager>();
-        saveGameState = FindObjectOfType<SaveGameState>();
 
         CanShareAnalytics();
     }
@@ -74,7 +84,7 @@ public class AnalyticsData : MonoBehaviour
                     "}" +
                 "]" +
             "}";
-            byte[] post = System.Text.Encoding.UTF8.GetBytes(json);
+            byte[] post = Encoding.UTF8.GetBytes(json);
 
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("content-Type", "application/json");
@@ -155,7 +165,7 @@ public class AnalyticsData : MonoBehaviour
     {
         string username = WiiU.Core.accountName;
 
-        if (username == "" || username == "<WiiU_AccountName>")
+        if (string.IsNullOrEmpty(username) || username == "<WiiU_AccountName>")
         {
             return "Unknown";
         }

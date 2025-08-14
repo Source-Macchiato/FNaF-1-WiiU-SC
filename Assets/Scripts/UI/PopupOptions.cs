@@ -6,13 +6,6 @@ public class PopupOptions : MonoBehaviour
 {
 	public Button[] buttons;
 	public GameObject[] cursors;
-
-	AnalyticsData analyticsData;
-
-	void Start()
-	{
-		analyticsData = FindObjectOfType<AnalyticsData>();
-	}
 	
 	void Update()
 	{
@@ -24,6 +17,6 @@ public class PopupOptions : MonoBehaviour
 
 	public void ShareAnalytics(bool share)
 	{
-		analyticsData.ShareAnalytics(share);
+		AnalyticsData.analyticsData.ShareAnalytics(share);
 	}
 }

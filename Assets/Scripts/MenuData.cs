@@ -152,6 +152,8 @@ public class MenuData : MonoBehaviour
         // Get SwitcherData scripts
         SaveManager.saveData.settings.shareAnalytics = analyticsSwitcher.currentOptionId == 1 ? 0 : 1;
         SaveManager.Save();
+
+        AnalyticsData.analyticsData.CanShareAnalytics();
     }
 
     public void LoadAnalyticsAndUpdateSwitcher()

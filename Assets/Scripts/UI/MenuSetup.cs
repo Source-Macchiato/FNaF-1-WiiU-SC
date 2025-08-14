@@ -15,6 +15,7 @@ public class MenuSetup : MonoBehaviour
         // Set back callbacks for specific menus
         menuManager.SetBackCallback(3, OnBackFromCredits);
         menuManager.SetBackCallback(5, OnBackFromLanguage);
+        menuManager.SetBackCallback(6, OnBackFromLayout);
         menuManager.SetBackCallback(7, OnBackFromBrewConnect);
         menuManager.SetBackCallback(8, OnBackFromVolume);
         menuManager.SetBackCallback(9, OnBackFromControls);
@@ -166,11 +167,18 @@ public class MenuSetup : MonoBehaviour
     void OnBackFromLanguage()
     {
         menuData.SaveAndUpdateLanguage();
+
+        StartCoroutine(AnalyticsData.analyticsData.UpdateAnalytics("language", AnalyticsData.analyticsData.GetLanguage()));
     }
 
     void OnBackFromCredits()
     {
         menuData.ToggleGameTitle(true);
+    }
+
+    void OnBackFromLayout()
+    {
+        StartCoroutine(AnalyticsData.analyticsData.UpdateAnalytics("layout", AnalyticsData.analyticsData.GetLayout()));
     }
 
     void OnBackFromBrewConnect()

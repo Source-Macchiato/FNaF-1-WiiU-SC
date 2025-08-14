@@ -48,6 +48,8 @@ public class NextNight : MonoBehaviour
 
         nightTextTranslator.UpdateText();
 
+        StartCoroutine(AnalyticsData.analyticsData.UpdateAnalytics("current_night", AnalyticsData.analyticsData.GetCurrentNight()));
+
         StartCoroutine(InitCoroutine());
     }
 
