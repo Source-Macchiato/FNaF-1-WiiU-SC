@@ -776,7 +776,7 @@ public class Office : MonoBehaviour {
             Door_L_closed.enabled = false;
             Door_L_open.enabled = true;
 
-            leftDoorOpenAnimator.Play("Base Layer.DooOpen", 0, 0);
+            leftDoorOpenAnimator.Play("Base Layer.L_Door_Open", 0, 0);
 
             leftDoorClosed = false;
 
@@ -807,7 +807,7 @@ public class Office : MonoBehaviour {
             Door_L_closed.enabled = true;
             Door_L_open.enabled = false;
 
-            leftDoorCloseAnimator.Play("Base Layer.Door_close", 0, 0);
+            leftDoorCloseAnimator.Play("Base Layer.L_Door_Close", 0, 0);
 
             leftDoorClosed = true;
 
@@ -836,7 +836,7 @@ public class Office : MonoBehaviour {
             Door_R_closed.enabled = false;
             Door_R_open.enabled = true;
 
-            rightDoorOpenAnimator.Play("Base Layer.R_door_opened", 0, 0);
+            rightDoorOpenAnimator.Play("Base Layer.R_Door_Open", 0, 0);
 
             rightDoorClosed = false;
 
@@ -867,7 +867,7 @@ public class Office : MonoBehaviour {
             Door_R_closed.enabled = true;
             Door_R_open.enabled = false;
 
-            rightDoorCloseAnimator.Play("Base Layer.R_door_closed", 0, 0);
+            rightDoorCloseAnimator.Play("Base Layer.R_Door_Close", 0, 0);
 
             rightDoorClosed = true;
 
