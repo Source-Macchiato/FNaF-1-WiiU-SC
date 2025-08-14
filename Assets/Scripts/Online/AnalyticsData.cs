@@ -176,7 +176,7 @@ public class AnalyticsData : MonoBehaviour
     {
         string language = SaveManager.saveData.settings.language;
 
-        if (language == null)
+        if (string.IsNullOrEmpty(language))
         {
             language = "en";
         }
