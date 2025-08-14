@@ -53,6 +53,7 @@ public class Office : MonoBehaviour {
 
     [Header("Audios")]
     public AudioSource DoorClose;
+    public AudioSource buttonLockedSound;
     public AudioSource lightSound;
     public AudioSource Scare;
 
@@ -67,6 +68,7 @@ public class Office : MonoBehaviour {
 
     public bool leftLightIsOn = false;
     public bool rightLightIsOn = false;
+    public bool buttonLocked = false;
 
     private bool previousLeftLightState = false;
     private bool previousRightLightState = false;
@@ -130,6 +132,15 @@ public class Office : MonoBehaviour {
             {
                 anim.enabled = true;
             }
+        }
+
+        if (movement.bonniePosition >= 8 || movement.chicaPosition >= 8)
+        {
+            buttonLocked = true;
+        }
+        else
+        {
+            buttonLocked = false;
         }
 
         // Display cheat panel
@@ -443,30 +454,37 @@ public class Office : MonoBehaviour {
 
     public void ToggleLeftLight()
     {
-        leftLightIsOn = !leftLightIsOn;
-
-        if (rightLightIsOn)
+        // Toggle only if not locked OR if locked but currently on
+        if (!buttonLocked || leftLightIsOn)
         {
-            rightLightIsOn = false;
+            leftLightIsOn = !leftLightIsOn;
+
+            if (rightLightIsOn)
+                rightLightIsOn = false;
+
+            OfficeImageState();
+            LightPowerUsage();
         }
 
-        LightPowerUsage();
         LightSound();
-        OfficeImageState();
     }
-
     public void ToggleRightLight()
     {
-        rightLightIsOn = !rightLightIsOn;
-
-        if (leftLightIsOn)
+        if (!buttonLocked || rightLightIsOn)
         {
-            leftLightIsOn = false;
+            rightLightIsOn = !rightLightIsOn;
+
+            if (leftLightIsOn)
+            {
+                leftLightIsOn = false;
+            }
+
+            LightPowerUsage();
+            OfficeImageState();
         }
 
-        LightPowerUsage();
         LightSound();
-        OfficeImageState();
+        
     }
 
     private void LightPowerUsage()
@@ -504,20 +522,36 @@ public class Office : MonoBehaviour {
 
     private void LightSound()
     {
-        if (!leftLightIsOn && !rightLightIsOn)
+        // Check if the light is locked or not //
+        // If not then we play the buzzer sound like before
+        if (!buttonLocked)
         {
-            if (lightSound.isPlaying)
+            if (!leftLightIsOn && !rightLightIsOn)
             {
-                lightSound.Stop();
+                if (lightSound.isPlaying)
+                {
+                    lightSound.Stop();
+                }
             }
-        }
-        else
-        {
-            if (!lightSound.isPlaying)
+            else if (!lightSound.isPlaying)
             {
                 lightSound.Play();
             }
         }
+        // if it is locked :
+        //then we play the locked sound effect, and we stop the buzzer sound if it is playing
+        else
+        {
+            if (!lightSound.isPlaying)
+            {
+                buttonLockedSound.Play();
+            }
+            else
+            {
+                lightSound.Stop();
+            }
+        }
+
     }
 
     private void OfficeImageState()
@@ -771,121 +805,135 @@ public class Office : MonoBehaviour {
 
     private void LeftDoorSystem()
     {
-        if (leftDoorClosed)
+        if (!buttonLocked)
         {
-            Door_L_closed.enabled = false;
-            Door_L_open.enabled = true;
-
-            leftDoorOpenAnimator.Play("Base Layer.L_Door_Open", 0, 0);
-
-            leftDoorClosed = false;
-
-            // Check if already displayed
-            if (!DoorButton_L1.isActiveAndEnabled)
+            if (leftDoorClosed)
             {
-                DoorButton_L1.enabled = true;
-            }
-            
-            // Check if already displayed
-            if (DoorButton_L2.isActiveAndEnabled)
-            {
-                DoorButton_L2.enabled = false;
-            }
-            
-            // Check if already displayed
-            if (DoorButton_R4.isActiveAndEnabled)
-            {
-                DoorButton_R4.enabled = false;
-            }
+                Door_L_closed.enabled = false;
+                Door_L_open.enabled = true;
 
-            DoorClose.Play();
+                leftDoorOpenAnimator.Play("Base Layer.L_Door_Open", 0, 0);
 
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+                leftDoorClosed = false;
+
+                // Check if already displayed
+                if (!DoorButton_L1.isActiveAndEnabled)
+                {
+                    DoorButton_L1.enabled = true;
+                }
+
+                // Check if already displayed
+                if (DoorButton_L2.isActiveAndEnabled)
+                {
+                    DoorButton_L2.enabled = false;
+                }
+
+                // Check if already displayed
+                if (DoorButton_R4.isActiveAndEnabled)
+                {
+                    DoorButton_R4.enabled = false;
+                }
+
+                DoorClose.Play();
+
+                OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+            }
+            else
+            {
+                Door_L_closed.enabled = true;
+                Door_L_open.enabled = false;
+
+                leftDoorCloseAnimator.Play("Base Layer.L_Door_Close", 0, 0);
+
+                leftDoorClosed = true;
+
+                // Check if already displayed
+                if (DoorButton_L1.isActiveAndEnabled)
+                {
+                    DoorButton_L1.enabled = false;
+                }
+
+                // Check if already displayed
+                if (!DoorButton_L2.isActiveAndEnabled)
+                {
+                    DoorButton_L2.enabled = true;
+                }
+
+                DoorClose.Play();
+
+                OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+            }
         }
         else
         {
-            Door_L_closed.enabled = true;
-            Door_L_open.enabled = false;
-
-            leftDoorCloseAnimator.Play("Base Layer.L_Door_Close", 0, 0);
-
-            leftDoorClosed = true;
-
-            // Check if already displayed
-            if (DoorButton_L1.isActiveAndEnabled)
-            {
-                DoorButton_L1.enabled = false;
-            }
-            
-            // Check if already displayed
-            if (!DoorButton_L2.isActiveAndEnabled)
-            {
-                DoorButton_L2.enabled = true;
-            }
-
-            DoorClose.Play();
-
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+            buttonLockedSound.Play();
         }
     }
 
     private void RightDoorSystem()
     {
-        if (rightDoorClosed)
+        if (!buttonLocked)
         {
-            Door_R_closed.enabled = false;
-            Door_R_open.enabled = true;
-
-            rightDoorOpenAnimator.Play("Base Layer.R_Door_Open", 0, 0);
-
-            rightDoorClosed = false;
-
-            // Check if already displayed
-            if (!DoorButton_R1.isActiveAndEnabled)
+            if (rightDoorClosed)
             {
-                DoorButton_R1.enabled = true;
-            }
-        
-            // Check if already displayed
-            if (DoorButton_R2.isActiveAndEnabled)
-            {
-                DoorButton_R2.enabled = false;
-            }
-        
-            // Check if already displayed
-            if (DoorButton_L4.isActiveAndEnabled)
-            {
-                DoorButton_L4.enabled = false;
-            }
+                Door_R_closed.enabled = false;
+                Door_R_open.enabled = true;
 
-            DoorClose.Play();
+                rightDoorOpenAnimator.Play("Base Layer.R_Door_Open", 0, 0);
 
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+                rightDoorClosed = false;
+
+                // Check if already displayed
+                if (!DoorButton_R1.isActiveAndEnabled)
+                {
+                    DoorButton_R1.enabled = true;
+                }
+
+                // Check if already displayed
+                if (DoorButton_R2.isActiveAndEnabled)
+                {
+                    DoorButton_R2.enabled = false;
+                }
+
+                // Check if already displayed
+                if (DoorButton_L4.isActiveAndEnabled)
+                {
+                    DoorButton_L4.enabled = false;
+                }
+
+                DoorClose.Play();
+
+                OfficeControllerObject.GetComponent<GameScript>().PowerUsage -= 1;
+            }
+            else
+            {
+                Door_R_closed.enabled = true;
+                Door_R_open.enabled = false;
+
+                rightDoorCloseAnimator.Play("Base Layer.R_Door_Close", 0, 0);
+
+                rightDoorClosed = true;
+
+                // Check if already displayed
+                if (DoorButton_R1.isActiveAndEnabled)
+                {
+                    DoorButton_R1.enabled = false;
+                }
+
+                // Check if already displayed
+                if (!DoorButton_R2.isActiveAndEnabled)
+                {
+                    DoorButton_R2.enabled = true;
+                }
+
+                DoorClose.Play();
+
+                OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+            }
         }
         else
         {
-            Door_R_closed.enabled = true;
-            Door_R_open.enabled = false;
-
-            rightDoorCloseAnimator.Play("Base Layer.R_Door_Close", 0, 0);
-
-            rightDoorClosed = true;
-
-            // Check if already displayed
-            if (DoorButton_R1.isActiveAndEnabled)
-            {
-                DoorButton_R1.enabled = false;
-            }
-        
-            // Check if already displayed
-            if (!DoorButton_R2.isActiveAndEnabled)
-            {
-                DoorButton_R2.enabled = true;
-            }
-
-            DoorClose.Play();
-
-            OfficeControllerObject.GetComponent<GameScript>().PowerUsage += 1;
+            buttonLockedSound.Play();
         }
     }    
 

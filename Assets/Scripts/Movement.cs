@@ -358,11 +358,11 @@ public class Movement : MonoBehaviour
         {
             // Ensure Freddy’s path is clear
             bool pathClear = 
-                (bonniePosition != 2 && freddyPosition == 1) || 
-                (chicaPosition != 2 && freddyPosition == 1) || 
-                (chicaPosition != 3 && freddyPosition == 2) || 
-                (chicaPosition != 4 && freddyPosition == 3) || 
-                (chicaPosition != 5 && freddyPosition == 4) || 
+                (bonniePosition != 2 && freddyPosition == 1)||
+                (chicaPosition != 2 && freddyPosition == 1) ||
+                (chicaPosition != 3 && freddyPosition == 2) ||
+                (chicaPosition != 4 && freddyPosition == 3) ||
+                (chicaPosition != 5 && freddyPosition == 4) ||
                 (chicaPosition != 6 && freddyPosition == 5);
 
             // Ensure Bonnie and Chica aren't in Freddy's way at starting position
