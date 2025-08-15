@@ -8,10 +8,6 @@ public class UnlockAllStars : MonoBehaviour
     WiiU.GamePad gamePad;
     WiiU.Remote remote;
 
-    // Scripts
-    SaveGameState saveGameState;
-    SaveManager saveManager;
-
     private WiiU.GamePadButton[] unlockCodeGamepad =
     {
         WiiU.GamePadButton.L, WiiU.GamePadButton.L, WiiU.GamePadButton.R, WiiU.GamePadButton.R,
@@ -54,9 +50,6 @@ public class UnlockAllStars : MonoBehaviour
 
     void Start()
     {
-        saveGameState = FindObjectOfType<SaveGameState>();
-        saveManager = FindObjectOfType<SaveManager>();
-
         // Access the WiiU GamePad and Remote
         gamePad = WiiU.GamePad.access;
         remote = WiiU.Remote.Access(0);

@@ -31,11 +31,7 @@ public class GameScript : MonoBehaviour
     private TMP_Text tmpTextPowerDisplayer;
     private TMP_Text tmpTextTimeDisplayer;
 
-    private bool audioPlayed = false;
     private bool endNightReached = false;
-
-    SaveGameState saveGameState;
-    SaveManager saveManager;
 
     void Awake()
     {
@@ -44,9 +40,6 @@ public class GameScript : MonoBehaviour
 
     void Start()
     {
-        saveGameState = FindObjectOfType<SaveGameState>();
-        saveManager = FindObjectOfType<SaveManager>();
-
         textNightNumber = nightNumberDisplayer.GetComponent<Text>();
         textPowerDisplayer = powerDisplayer.GetComponent<Text>();
         textTimeDisplayer = timeDisplayer.GetComponent<Text>();

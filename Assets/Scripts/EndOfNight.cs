@@ -7,14 +7,8 @@ public class EndOfNight : MonoBehaviour {
     public GameObject Children;
     public int nightNumber;
 
-    SaveGameState saveGameState;
-    SaveManager saveManager;
-
     void Start()
     {
-        saveGameState = FindObjectOfType<SaveGameState>();
-        saveManager = FindObjectOfType<SaveManager>();
-
         nightNumber = SaveManager.saveData.game.nightNumber;
 
         // Unlock achievements
