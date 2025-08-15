@@ -7866,12 +7866,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tvOnlyTV: 1
-  tvOnlyGamepad: 0
+  tvOnlyGamepad: 1
   tvGamepadClassicTV: 1
   tvGamepadClassicGamepad: 1
   tvGamepadAltTV: 1
   tvGamepadAltGamepad: 1
-  gamepadOnlyTV: 0
+  gamepadOnlyTV: 1
   gamepadOnlyGamepad: 1
 --- !u!1 &362459008
 GameObject:
@@ -13124,12 +13124,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tvOnlyTV: 1
-  tvOnlyGamepad: 0
+  tvOnlyGamepad: 1
   tvGamepadClassicTV: 1
   tvGamepadClassicGamepad: 1
   tvGamepadAltTV: 1
   tvGamepadAltGamepad: 1
-  gamepadOnlyTV: 0
+  gamepadOnlyTV: 1
   gamepadOnlyGamepad: 1
 --- !u!1 &650442086
 GameObject:
@@ -28136,12 +28136,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tvOnlyTV: 1
-  tvOnlyGamepad: 0
+  tvOnlyGamepad: 1
   tvGamepadClassicTV: 1
   tvGamepadClassicGamepad: 1
   tvGamepadAltTV: 1
   tvGamepadAltGamepad: 1
-  gamepadOnlyTV: 0
+  gamepadOnlyTV: 1
   gamepadOnlyGamepad: 1
 --- !u!1 &1568457542
 GameObject:
