@@ -59,6 +59,7 @@ public class Movement : MonoBehaviour
     public GameObject OfficeObject;
 
     private Office office;
+    private GameScript gameScript;
 
     public AudioSource FreddyLaugh1;
 
@@ -79,6 +80,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         office = FindObjectOfType<Office>();
+        gameScript = FindObjectOfType<GameScript>();
 
         //set movement time Z
         BonnieMovementTime = 4.97f;
@@ -99,13 +101,13 @@ public class Movement : MonoBehaviour
         //Disable Chica sounds when she is in the kitchen
         ChicaInKitchen.SetActive(false);
 
-        if (GameScript.nightNumber >= 0 && GameScript.nightNumber <= 5)
+        if (gameScript.nightNumber >= 0 && gameScript.nightNumber <= 5)
         {
             // Set initial difficulties based on the starting array
-            freddyDifficulty = startingDifficulties[GameScript.nightNumber, 0] * 5;
-            bonnieDifficulty = startingDifficulties[GameScript.nightNumber, 1] * 5;
-            chicaDifficulty = startingDifficulties[GameScript.nightNumber, 2] * 5;
-            foxyDifficulty = startingDifficulties[GameScript.nightNumber, 3] * 5;
+            freddyDifficulty = startingDifficulties[gameScript.nightNumber, 0] * 5;
+            bonnieDifficulty = startingDifficulties[gameScript.nightNumber, 1] * 5;
+            chicaDifficulty = startingDifficulties[gameScript.nightNumber, 2] * 5;
+            foxyDifficulty = startingDifficulties[gameScript.nightNumber, 3] * 5;
         }
     }
     
@@ -139,7 +141,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.ClearDeveloperConsole();
-            Debug.Log("Hour: " + GameScript.hour + " Night: " + GameScript.nightNumber);
+            Debug.Log("Hour: " + GameScript.hour + " Night: " + gameScript.nightNumber);
             Debug.Log("Difficulty: \n- Bonnie=" + bonnieDifficulty + "\n- Chica=" + chicaDifficulty + "\n- Freddy=" + freddyDifficulty + "\n- Foxy=" + foxyDifficulty + "\n- Golden Freddy=" + goldenDifficulty);
             Debug.Log("Position: \n- Bonnie=" + bonniePosition + "\n- Chica= " + chicaPosition + "\n- Freddy=" + freddyPosition + "\n- Foxy=" + foxyPosition);
         }

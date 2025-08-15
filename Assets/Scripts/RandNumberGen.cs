@@ -20,10 +20,12 @@ public class RandNumberGen : MonoBehaviour {
     public bool FreddyLeftStage = false;
 
     private Movement movement;
+    private GameScript gameScript;
 
     void Start()
     {
         movement = FindObjectOfType<Movement>();
+        gameScript = FindObjectOfType<GameScript>();
     }
 
     void Update()
@@ -40,7 +42,7 @@ public class RandNumberGen : MonoBehaviour {
     {
         CountDown = System.Math.Round(Random.Range(30f, 40f), 0);
 
-        if (GameScript.nightNumber == 0)
+        if (gameScript.nightNumber == 0)
         {
             if (BonnieLeftStage)
             {
@@ -48,7 +50,7 @@ public class RandNumberGen : MonoBehaviour {
             }
         }
 
-        if (GameScript.nightNumber >= 1)
+        if (gameScript.nightNumber >= 1)
         {
             if (ChicaLeftStage)
             {
@@ -56,7 +58,7 @@ public class RandNumberGen : MonoBehaviour {
             }
         }
 
-        if (GameScript.nightNumber >= 2)
+        if (gameScript.nightNumber >= 2)
         {
             if (FreddyLeftStage)
             {

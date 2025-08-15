@@ -196,7 +196,7 @@ public class AnalyticsData : MonoBehaviour
 
     public int GetCurrentNight()
     {
-        return Mathf.Clamp(SaveManager.saveData.game.nightNumber++, 1, 7);
+        return Mathf.Clamp(SaveManager.saveData.game.nightNumber + 1, 1, 7);
     }
 
     public string GetLayout()
