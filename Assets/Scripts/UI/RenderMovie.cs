@@ -17,8 +17,8 @@ public class RenderMovie : MonoBehaviour
         movTexture.Play();
         audioSource.Play();
 
-        yield return new WaitUntil(() => !audioSource.isPlaying);
+        yield return new WaitForSeconds(8f);
 
-        SceneManager.LoadScene("Warning");
+        SceneManager.LoadSceneAsync("Warning");
     }
 }
