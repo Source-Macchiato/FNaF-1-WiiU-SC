@@ -88,7 +88,7 @@ public class ChangeImages : MonoBehaviour
     public double RandCamNoise;
     public bool noiseIsPlaying;
 
-    [Header("Golden Freddy shit")]
+    [Header("Golden Freddy stuff")]
     public int GoldenFreddyChance;
     public bool GoldenFreddyActive;
     public GameObject GoldenFreddyOffice;
@@ -155,7 +155,7 @@ public class ChangeImages : MonoBehaviour
         GoldenFreddyLaugh.SetActive(false);
 
         foxyRunTime = 3.5f;
-        GoldenFreddyRange = PlayerPrefs.GetInt("GoldenDifficulty", 0)*600;
+        GoldenFreddyRange = Movement.goldenDifficulty * 600;
     }
 
     void Update()
