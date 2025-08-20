@@ -10,7 +10,7 @@ public class ChangeImages : MonoBehaviour
     public float FoxyAnimationTimer = 0.50f;
     public float WaitPlayerToNotice = 6f;
     public bool PlayerSawFoxy = false;
-    public GameObject KitckenAudioOnly;
+    [SerializeField] private GameObject[] kitckenAudioOnly;
     private int currentCamera = 1;
     public GameObject cameraScreen;
 
@@ -602,7 +602,19 @@ public class ChangeImages : MonoBehaviour
                 i18nTextTranslator.textId = "camera.kitchen";
                 i18nTextTranslator.UpdateText();
 
-                KitckenAudioOnly.SetActive(true);
+                // Enable kitchen audio only if gameobject is active
+                foreach (GameObject kao in kitckenAudioOnly)
+                {
+                    if (kao.activeSelf)
+                    {
+                        Image kaoImage = kao.GetComponent<Image>();
+
+                        if (kaoImage != null)
+                        {
+                            kaoImage.enabled = true;
+                        }
+                    }
+                }
 
                 if (movement.chicaPosition == 5)
                 {
@@ -623,12 +635,36 @@ public class ChangeImages : MonoBehaviour
             }
             else
             {
-                KitckenAudioOnly.SetActive(false);
+                // Disable kitchen audio only if gameobject is active
+                foreach (GameObject kao in kitckenAudioOnly)
+                {
+                    if (kao.activeSelf)
+                    {
+                        Image kaoImage = kao.GetComponent<Image>();
+
+                        if (kaoImage != null)
+                        {
+                            kaoImage.enabled = false;
+                        }
+                    }
+                }
             }
         }
         else
         {
-            KitckenAudioOnly.SetActive(false);
+            // Disable kitchen audio only if gameobject is active
+            foreach (GameObject kao in kitckenAudioOnly)
+            {
+                if (kao.activeSelf)
+                {
+                    Image kaoImage = kao.GetComponent<Image>();
+                    
+                    if (kaoImage != null)
+                    {
+                        kaoImage.enabled = false;
+                    }
+                }
+            }
         }
 
         if(!camIsUp)

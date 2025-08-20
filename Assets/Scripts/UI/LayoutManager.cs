@@ -5,16 +5,17 @@ public class LayoutManager : MonoBehaviour
 	public int layoutId;
 
     public GameObject minimap;
-    public GameObject[] subtitles;
+    [SerializeField] private GameObject[] subtitles;
+    [SerializeField] private GameObject[] kitchenAudioOnly;
 
     [Header("Screens")]
-    public GameObject[] screenOffice;
-    public GameObject[] screenMonitor;
-    public GameObject[] screenMonitorUI;
-    public GameObject[] screenUI;
-    public GameObject[] screenMinimap;
-    public GameObject[] screenSubtitles;
-    public GameObject[] screenPointer;
+    [SerializeField] private GameObject[] screenOffice;
+    [SerializeField] private GameObject[] screenMonitor;
+    [SerializeField] private GameObject[] screenMonitorUI;
+    [SerializeField] private GameObject[] screenUI;
+    [SerializeField] private GameObject[] screenMinimap;
+    [SerializeField] private GameObject[] screenSubtitles;
+    [SerializeField] private GameObject[] screenPointer;
 
     void Start()
 	{
@@ -43,6 +44,7 @@ public class LayoutManager : MonoBehaviour
 
     private void TVOnly()
     {
+        // Screens
         screenOffice[0].SetActive(true);
         screenOffice[1].SetActive(false);
 
@@ -64,12 +66,18 @@ public class LayoutManager : MonoBehaviour
         screenPointer[0].SetActive(true);
         screenPointer[1].SetActive(false);
 
+        // Change minimap position and scale
         minimap.transform.localScale = new Vector3(1f, 1f, 1f);
         minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
+
+        // Kitchen Audio Only
+        kitchenAudioOnly[0].SetActive(true);
+        kitchenAudioOnly[1].SetActive(false);
     }
 
     private void TVGamepadClassic()
     {
+        // Screens
         screenOffice[0].SetActive(true);
         screenOffice[1].SetActive(false);
 
@@ -91,16 +99,23 @@ public class LayoutManager : MonoBehaviour
         screenPointer[0].SetActive(true);
         screenPointer[1].SetActive(false);
 
+        // Change minimap position and scale
         minimap.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
         minimap.transform.localPosition = Vector3.zero;
 
+        // Subtitles
         subtitles[0].SetActive(true);
         subtitles[1].SetActive(false);
         subtitles[2].SetActive(false);
+
+        // Kitchen Audio Only
+        kitchenAudioOnly[0].SetActive(true);
+        kitchenAudioOnly[1].SetActive(false);
     }
 
     private void TVGamepadAlternative()
     {
+        // Screens
         screenOffice[0].SetActive(true);
         screenOffice[1].SetActive(false);
 
@@ -122,12 +137,18 @@ public class LayoutManager : MonoBehaviour
         screenPointer[0].SetActive(true);
         screenPointer[1].SetActive(false);
 
+        // Change minimap position and scale
         minimap.transform.localScale = new Vector3(1f, 1f, 1f);
         minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
+
+        // Kitchen Audio Only
+        kitchenAudioOnly[0].SetActive(false);
+        kitchenAudioOnly[1].SetActive(true);
     }
 
     private void GamepadOnly()
     {
+        // Screens
         screenOffice[0].SetActive(false);
         screenOffice[1].SetActive(true);
 
@@ -149,8 +170,13 @@ public class LayoutManager : MonoBehaviour
         screenPointer[0].SetActive(false);
         screenPointer[1].SetActive(true);
 
+        // Change minimap position and scale
         minimap.transform.localScale = new Vector3(1f, 1f, 1f);
         minimap.transform.localPosition = new Vector3(407.7f, -152.4f, 0);
+
+        // Kitchen Audio Only
+        kitchenAudioOnly[0].SetActive(true);
+        kitchenAudioOnly[1].SetActive(false);
     }
 
     public void ChangeSubtitlePosition(bool cameraStatus)
