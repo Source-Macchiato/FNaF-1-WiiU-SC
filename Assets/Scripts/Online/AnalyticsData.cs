@@ -55,7 +55,7 @@ public class AnalyticsData : MonoBehaviour
 
     private IEnumerator SendAnalytics()
     {
-        if (analyticsToken == null && SaveManager.saveData.settings.shareAnalytics == 1 && !Application.isEditor)
+        if (string.IsNullOrEmpty(analyticsToken) && SaveManager.saveData.settings.shareAnalytics == 1 && !Application.isEditor)
         {
             string url = "https://api.brew-connect.com/v1/online/send_analytics";
             string json = "{" +
@@ -108,7 +108,7 @@ public class AnalyticsData : MonoBehaviour
 
     public IEnumerator UpdateAnalytics(string key, object value)
     {
-        if (analyticsToken != null && SaveManager.saveData.settings.shareAnalytics == 1 && !Application.isEditor)
+        if (!string.IsNullOrEmpty(analyticsToken) && SaveManager.saveData.settings.shareAnalytics == 1 && !Application.isEditor)
         {
             string url = "https://api.brew-connect.com/v1/online/update_analytics";
             string json = "{" +
@@ -122,7 +122,7 @@ public class AnalyticsData : MonoBehaviour
                     "}" +
                 "]" +
             "}";
-            byte[] post = System.Text.Encoding.UTF8.GetBytes(json);
+            byte[] post = Encoding.UTF8.GetBytes(json);
 
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("content-Type", "application/json");
