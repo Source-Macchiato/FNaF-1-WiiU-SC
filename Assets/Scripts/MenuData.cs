@@ -10,11 +10,11 @@ using TMPro;
 public class MenuData : MonoBehaviour
 {
     public int nightNumber;
+    public int layoutId;
     public GameObject nightNumberContainer;
     public TextMeshProUGUI nightNumberText;
     public GameObject continueButtonGameObject;
     public GameObject gameTitle;
-    public int layoutId;
 
     [Header("Custom Night")]
     public GameObject[] customNightCharacters;
@@ -37,6 +37,10 @@ public class MenuData : MonoBehaviour
 
     [Header("Other")]
     public GameObject starsContainer;
+    [SerializeField] private Button newGameButton;
+    [SerializeField] private Button continueButton;
+    [SerializeField] private Button sixthNightButton;
+    [SerializeField] private Button customNightButton;
     
     public AudioSource mainMenuThemeSound;
     public AudioMixer audioMixer;
@@ -79,6 +83,9 @@ public class MenuData : MonoBehaviour
         {
             nightNumberText.text = "1";
         }
+
+        // Toggle 6th Night and Custom Night buttons
+        UpdateNightButtonsAndNavigation();
     }
 	
 	// Update is called once per frame
@@ -466,5 +473,48 @@ public class MenuData : MonoBehaviour
     {
         // Convert volume (0-10) to decibels (-80dB to 0dB)
         return Mathf.Log10(Mathf.Max(volume / 10f, 0.0001f)) * 20f;
+    }
+
+    private void UpdateNightButtonsAndNavigation()
+    {
+        sixthNightButton.gameObject.SetActive(SaveManager.saveData.game.starsId >= 1);
+        customNightButton.gameObject.SetActive(SaveManager.saveData.game.starsId >= 2);
+
+        if (SaveManager.saveData.game.starsId == 0)
+        {
+            // New Game button
+            Navigation newGameNavigation = newGameButton.navigation;
+            newGameNavigation.selectOnUp = continueButton;
+            newGameButton.navigation = newGameNavigation;
+
+            // Continue button
+            Navigation continueNavigation = continueButton.navigation;
+            continueNavigation.selectOnDown = newGameButton;
+            continueButton.navigation = continueNavigation;
+        }
+        else if (SaveManager.saveData.game.starsId == 1)
+        {
+            // New Game button
+            Navigation newGameNavigation = newGameButton.navigation;
+            newGameNavigation.selectOnUp = sixthNightButton;
+            newGameButton.navigation = newGameNavigation;
+
+            // 6th Night button
+            Navigation sixthNightNavigation = sixthNightButton.navigation;
+            sixthNightNavigation.selectOnDown = newGameButton;
+            sixthNightButton.navigation = sixthNightNavigation;
+        }
+        else if (SaveManager.saveData.game.starsId >= 2)
+        {
+            // New Game button
+            Navigation newGameNavigation = newGameButton.navigation;
+            newGameNavigation.selectOnUp = customNightButton;
+            newGameButton.navigation = newGameNavigation;
+
+            // Custom Night button
+            Navigation customNightNavigation = customNightButton.navigation;
+            customNightNavigation.selectOnDown = newGameButton;
+            customNightButton.navigation = customNightNavigation;
+        }
     }
 }

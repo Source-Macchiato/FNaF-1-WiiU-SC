@@ -534,11 +534,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nightNumber: 0
+  layoutId: 0
   nightNumberContainer: {fileID: 606250845}
   nightNumberText: {fileID: 969478563}
   continueButtonGameObject: {fileID: 1981850727}
   gameTitle: {fileID: 83517058}
-  layoutId: 0
   customNightCharacters:
   - {fileID: 341695570}
   - {fileID: 2011336732}
@@ -560,6 +560,10 @@ MonoBehaviour:
   panoramaEffectSwitcher: {fileID: 1978610798}
   subtitlesSwitcher: {fileID: 1425303825}
   starsContainer: {fileID: 42665248}
+  newGameButton: {fileID: 485391411}
+  continueButton: {fileID: 1981850730}
+  sixthNightButton: {fileID: 689179735}
+  customNightButton: {fileID: 1073552305}
   mainMenuThemeSound: {fileID: 359768159}
   audioMixer: {fileID: 24100000, guid: 27a292a2e3fa1704d8b00ce4bd7b7c39, type: 2}
   nightNumberGameObject: {fileID: 0}
