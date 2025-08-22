@@ -43,7 +43,7 @@ The Latte Team Discord : https://discord.gg/9F2xfT7d9C
 
 
 ## Images of the game
-<img src="/Medias/cover1.jpg" width="500"> <img src="/Medias/cover2.jpg" width="500"> <img src="/Medias/cover3.jpg" width="500"> <img src="/Medias/cover4.jpg" width="500">
+<img src="/Medias/Cover1.png" width="500"> <img src="/Medias/Cover2.png" width="500"> <img src="/Medias/Cover3.png" width="500"> <img src="/Medias/Cover4.png" width="500">
 ## Contributing
 If you’d like to contribute to this project, feel free to submit pull requests. Any bug reports or feature suggestions are welcome in the [Issues](https://github.com/Source-Macchiato/FNaF-WiiU-SC/issues) section.
 
