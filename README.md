@@ -47,8 +47,5 @@ The Latte Team Discord : https://discord.gg/9F2xfT7d9C
 ## Contributing
 If you’d like to contribute to this project, feel free to submit pull requests. Any bug reports or feature suggestions are welcome in the [Issues](https://github.com/Source-Macchiato/FNaF-WiiU-SC/issues) section.
 
-## Special Thanks
-This project began with the source code of a 3DS FNaF 2 remake developed by Dimolade, which served as the foundation for 'FNaF 2: Wii U Edition'. It was primarily used for implementing the A.I. logic of certain animatronics, and was later adapted and modified to fit the Wii U.
-Dimolade Discord Server : https://discord.gg/U5mYmbUwfN
 ## Disclaimer
 This is a **fan project** and is in no way affiliated with Scott Cawthon or Steel Wool Studios. *Five Nights at Freddy's* is a trademark of its respective owners. This project is made for educational and entertainment purposes only.
