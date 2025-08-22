@@ -4,9 +4,9 @@
 ## About
 FNaF: Wii U Edition is a fan-made homebrew port of *Five Nights at Freddy's*, developed from scratch for the Wii U. This project aims to faithfully recreate the experience of the original game while optimizing it for Nintendo's console.
 
-Website : https://sourcemacchiato.com/
-Source Macchiato Discord : https://sourcemacchiato.com/discord
-The Latte Team Discord : https://discord.gg/9F2xfT7d9C
+- Website : https://sourcemacchiato.com/
+- Source Macchiato Discord : https://sourcemacchiato.com/discord 
+- The Latte Team Discord : https://discord.gg/9F2xfT7d9C 
 ## Features
 - Fully playable nights with AI behavior
 - Custom Night
