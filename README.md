@@ -47,5 +47,8 @@ FNaF: Wii U Edition is a fan-made homebrew port of *Five Nights at Freddy's*, de
 ## Contributing
 If you’d like to contribute to this project, feel free to submit pull requests. Any bug reports or feature suggestions are welcome in the [Issues](https://github.com/Source-Macchiato/FNaF-WiiU-SC/issues) section.
 
+## Special Thanks
+Thanks to BasDEV for making FNaF on 3DS which helped us at the very start at the project.
+Thanks to The Latte Team for helping us on some stuff for FNaF: WiiU Edition
 ## Disclaimer
 This is a **fan project** and is in no way affiliated with Scott Cawthon or Steel Wool Studios. *Five Nights at Freddy's* is a trademark of its respective owners. This project is made for educational and entertainment purposes only.
