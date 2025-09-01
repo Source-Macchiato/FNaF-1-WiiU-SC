@@ -115,7 +115,7 @@ public class I18n
     {
         string loadedLanguage = SaveManager.saveData.settings.language;
 
-        if (loadedLanguage != string.Empty)
+        if (!string.IsNullOrEmpty(loadedLanguage))
         {
             return loadedLanguage;
         }

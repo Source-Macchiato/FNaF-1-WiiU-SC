@@ -184,14 +184,7 @@ public class AnalyticsData : MonoBehaviour
 
     public string GetLanguage()
     {
-        string language = SaveManager.saveData.settings.language;
-
-        if (string.IsNullOrEmpty(language))
-        {
-            language = "en";
-        }
-
-        return language.ToUpper();
+        return I18n.GetLanguage().ToUpper();
     }
 
     public int GetCurrentNight()
